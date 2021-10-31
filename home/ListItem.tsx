@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function ListItem() {
   return (
-    <div className="px-1 pb-1 flex flex-row">
+    <div className="mx-1 mb-1 flex flex-row">
       <Image
         alt=""
         width={140}
