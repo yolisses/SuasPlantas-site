@@ -4,7 +4,7 @@ import { ListItem } from "./ListItem";
 export function HomeScreen() {
   const data = [...new Array(20)];
   return (
-    <div className="pt-2">
+    <div className="pt-1">
       {data.map((key) => (
         <ListItem key={key} />
       ))}
