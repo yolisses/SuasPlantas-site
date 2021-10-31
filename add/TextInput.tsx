@@ -1,6 +1,6 @@
 interface TextInputProps {
   label: string;
-  optional?: string;
+  optional?: boolean;
 }
 
 export function TextInput({ label, optional }: TextInputProps) {
