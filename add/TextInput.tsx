@@ -1,4 +1,9 @@
-export function TextInput({ label, optional }) {
+interface TextInputProps {
+  label: string;
+  optional?: string;
+}
+
+export function TextInput({ label, optional }: TextInputProps) {
   return (
     <div className="flex flex-col items-start  transform -translate-y-1">
       <label className="text-lg ml-2 bg-white z-10 relative transform translate-y-1">
