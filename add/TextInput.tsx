@@ -12,7 +12,7 @@ export function TextInput({ label, optional }: TextInputProps) {
       <input
         type="textarea"
         placeholder={optional ? "opcional" : undefined}
-        className="border-2 self-stretch border-gray-300 rounded-lg p-2 mb-4 focus:border-black outline-none focus:border-4"
+        className="border-2 self-stretch border-gray-300 rounded-lg p-2 mb-3 focus:border-black outline-none focus:border-4"
       />
     </div>
   );
