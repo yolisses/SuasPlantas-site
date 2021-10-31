@@ -11,7 +11,7 @@ export function TextInput({ label, optional }: TextInputProps) {
       </label>
       <input
         type="textarea"
-        placeholder={optional ? "opcional" : null}
+        placeholder={optional ? "opcional" : undefined}
         className="border-2 self-stretch border-gray-300 text-lg rounded-lg p-2 mb-4 focus:border-black outline-none focus:border-4"
       />
     </div>
