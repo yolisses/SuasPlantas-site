@@ -1,6 +1,6 @@
 import { AvailabilitySelector } from "./AvailabilitySelector";
-import { EmphasisButton } from "./EmphasisButton";
-import { TextInput } from "./TextInput";
+import { EmphasisButton } from "../forms/EmphasisButton";
+import { TextInput } from "../forms/TextInput";
 
 export function AddScreen() {
   return (

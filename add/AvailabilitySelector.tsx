@@ -1,5 +1,5 @@
-import { Label } from "./Label";
-import { ToggleButton } from "./ToggleButton";
+import { Label } from "../forms/Label";
+import { ToggleButton } from "../forms/ToggleButton";
 
 export function AvailabilitySelector() {
   return (
