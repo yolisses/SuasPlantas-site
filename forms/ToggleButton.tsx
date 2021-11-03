@@ -6,14 +6,14 @@ interface ToggleButtonProps {
 
 export function ToggleButton({ text, className, active }: ToggleButtonProps) {
   return (
-    <button
+    <input
+      type="button"
+      value={text}
       className={
-        "border-2 p-3 border-gray-300 text-center rounded-lg whitespace-nowrap " +
+        "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap " +
         (active ? "border-green-400 " : "text-gray-500 ") +
         (className || "")
       }
-    >
-      {text}
-    </button>
+    ></input>
   );
 }
