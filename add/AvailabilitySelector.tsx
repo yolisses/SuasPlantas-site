@@ -12,7 +12,7 @@ export function AvailabilitySelector() {
         <ToggleButton text="Troca" className="flex flex-1" active />
         <ToggleButton text="Venda" className="flex flex-1" />
       </div>
-      <TextInput label="Preço" leftChild={<MoneySign />} />
+      <TextInput label="Preço" type="number" leftChild={<MoneySign />} />
     </div>
   );
 }

@@ -12,19 +12,22 @@ export function AddScreen() {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-
-  console.error(watch("name")); // watch input value by passing the name of it
+  const onSubmit = (data) => console.log("aqui", data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col flex-1 h-full items-stretch p-2">
         <TextInput label="Nome" {...register("name")} />
         <AvailabilitySelector />
-        <TextInput label="Descrição" optional />
+        <TextInput label="Descrição" optional {...register("description")} />
         <TagsSelector label="Marcar como" options={tags} />
-        <TextInput label="Quantidade" optional />
-        <EmphasisButton text="Adicionar" />
+        <TextInput
+          label="Quantidade"
+          optional
+          {...register("amount")}
+          type="number"
+        />
+        <EmphasisButton text="Adicionar" submit />
       </div>
     </form>
   );

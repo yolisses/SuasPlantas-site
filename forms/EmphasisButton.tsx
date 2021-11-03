@@ -1,11 +1,14 @@
 interface EmphasisButtonProps {
   text: string;
+  submit?: boolean;
 }
 
-export function EmphasisButton({ text }: EmphasisButtonProps) {
+export function EmphasisButton({ text, submit }: EmphasisButtonProps) {
   return (
-    <div className="flex items-center shadow-md justify-center bg-green-600 rounded-lg p-2 w-full text-white ">
-      {text}
-    </div>
+    <input
+      value={text}
+      type={submit ? "submit" : "button"}
+      className="flex items-center shadow-md justify-center bg-green-600 rounded-lg p-3 w-full text-white "
+    ></input>
   );
 }

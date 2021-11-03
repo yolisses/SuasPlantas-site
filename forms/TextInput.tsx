@@ -23,7 +23,6 @@ export const TextInput = forwardRef(
             {leftChild}
             <input
               ref={ref}
-              type="textarea"
               placeholder={optional ? "opcional" : undefined}
               className=" self-stretch flex flex-1 outline-none"
               {...rest}
