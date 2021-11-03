@@ -11,7 +11,7 @@ export function TextInput({ label, optional, leftChild }: TextInputProps) {
     <label>
       <div className="flex flex-col items-start transform -translate-y-1 mb-3">
         <div className="relative transform translate-y-1 ">
-          <Label text={label} className="bg-white" />
+          <Label text={label} className="bg-white pb-1" />
         </div>
         <div
           className={
