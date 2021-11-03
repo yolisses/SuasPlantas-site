@@ -1,11 +1,8 @@
 interface LabelProps {
   text: string;
+  className: string;
 }
 
-export function Label({ text }: LabelProps) {
-  return (
-    <label className="ml-2 bg-white z-10 relative transform translate-y-1">
-      {text}
-    </label>
-  );
+export function Label({ text, className }: LabelProps) {
+  return <label className={"ml-2 " + className || ""}>{text}</label>;
 }
