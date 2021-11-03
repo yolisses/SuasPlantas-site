@@ -1,4 +1,4 @@
-import { Label } from "./Label";
+import { FieldBox } from "./FieldBox";
 import { ToggleButton } from "./ToggleButton";
 
 interface TagsSelectorProps {
@@ -8,13 +8,12 @@ interface TagsSelectorProps {
 
 export function TagsSelector({ options, label }: TagsSelectorProps) {
   return (
-    <div>
-      <Label text={label} />
-      <div className="pt-2 flex flex-row flex-wrap gap-2 mb-4">
+    <FieldBox label={label}>
+      <div className="pt-2 flex flex-row flex-wrap gap-2">
         {options.map((option) => (
           <ToggleButton text={option} key={option} />
         ))}
       </div>
-    </div>
+    </FieldBox>
   );
 }

@@ -9,7 +9,6 @@ export function AddScreen() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log("aqui", data);
@@ -17,7 +16,11 @@ export function AddScreen() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col flex-1 h-full items-stretch p-2">
-        <TextInput label="Nome" {...register("name")} />
+        <TextInput
+          label="Nome"
+          {...register("name", { required: true })}
+          error={errors.name}
+        />
         <AvailabilitySelector />
         <TextInput label="Descrição" optional {...register("description")} />
         <TagsSelector label="Marcar como" options={tags} />
