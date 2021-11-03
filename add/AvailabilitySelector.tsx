@@ -1,4 +1,6 @@
 import { Label } from "../forms/Label";
+import { MoneySign } from "../forms/MoneySign";
+import { TextInput } from "../forms/TextInput";
 import { ToggleButton } from "../forms/ToggleButton";
 
 export function AvailabilitySelector() {
@@ -10,6 +12,7 @@ export function AvailabilitySelector() {
         <ToggleButton text="Troca" className="flex flex-1" active />
         <ToggleButton text="Venda" className="flex flex-1" />
       </div>
+      <TextInput label="Preço" leftChild={<MoneySign />} />
     </div>
   );
 }

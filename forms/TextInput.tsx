@@ -3,17 +3,25 @@ import { Label } from "./Label";
 interface TextInputProps {
   label: string;
   optional?: boolean;
+  leftChild?: JSX.Element;
 }
 
-export function TextInput({ label, optional }: TextInputProps) {
+export function TextInput({ label, optional, leftChild }: TextInputProps) {
   return (
-    <div className="flex flex-col items-start  transform -translate-y-1">
+    <div className="flex flex-col items-start transform -translate-y-1 mb-3">
       <Label text={label} />
-      <input
-        type="textarea"
-        placeholder={optional ? "opcional" : undefined}
-        className="border-2 self-stretch border-gray-300 rounded-lg p-2 mb-3 focus:border-black outline-none focus:border-4"
-      />
+      <div
+        className={
+          "flex flex-1 self-stretch flex-row border-2 border-gray-300 rounded-lg p-3 focus:border-black focus-within:border-gray-800"
+        }
+      >
+        {leftChild}
+        <input
+          type="textarea"
+          placeholder={optional ? "opcional" : undefined}
+          className=" self-stretch flex flex-1 outline-none"
+        />
+      </div>
     </div>
   );
 }
