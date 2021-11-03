@@ -1,3 +1,5 @@
+import { Label } from "./Label";
+
 interface TextInputProps {
   label: string;
   optional?: boolean;
@@ -6,9 +8,7 @@ interface TextInputProps {
 export function TextInput({ label, optional }: TextInputProps) {
   return (
     <div className="flex flex-col items-start  transform -translate-y-1">
-      <label className="ml-2 bg-white z-10 relative transform translate-y-1">
-        {label}
-      </label>
+      <Label text={label} />
       <input
         type="textarea"
         placeholder={optional ? "opcional" : undefined}
