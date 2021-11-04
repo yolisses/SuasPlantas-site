@@ -52,7 +52,12 @@ export function AddScreen() {
         </FieldBox>
         <TextInput label="Preço" type="number" leftChild={<MoneySign />} />
         <TextInput label="Descrição" optional {...register("description")} />
-        <TagsSelector label="Marcar como" options={tags} />
+        <TagsSelector
+          label="Marcar como"
+          id="tags"
+          options={tags}
+          register={register}
+        />
         <TextInput
           label="Quantidade"
           optional
