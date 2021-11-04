@@ -1,19 +1,37 @@
-interface ToggleButtonProps {
+import { forwardRef, HTMLProps, useState } from "react";
+
+interface ToggleButtonProps extends HTMLProps<HTMLInputElement> {
   text: string;
+  error?: string;
   className?: string;
-  active: boolean;
 }
 
-export function ToggleButton({ text, className, active }: ToggleButtonProps) {
+export const ToggleButton = forwardRef((props: ToggleButtonProps, ref) => {
+  const { text, error, onChange, className, ...rest } = props;
+
+  const [checked, setChecked] = useState<boolean>();
+  console.error("checked", checked);
   return (
-    <input
-      type="button"
-      value={text}
-      className={
-        "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap " +
-        (active ? "border-green-400 " : "text-gray-500 ") +
-        (className || "")
-      }
-    ></input>
+    <label>
+      <div
+        className={
+          "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer focus-within:bg-gray-100 " +
+          (checked ? "border-green-400 " : "text-gray-500 ") +
+          (className || "")
+        }
+      >
+        <input
+          ref={ref}
+          type="checkbox"
+          onChange={(e) => {
+            setChecked(e.target.checked);
+            if (onChange) onChange(e);
+          }}
+          {...rest}
+          className="absolute transform scale-0 opacity-0"
+        />
+        {text}
+      </div>
+    </label>
   );
-}
+});
