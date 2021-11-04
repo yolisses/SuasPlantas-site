@@ -17,7 +17,7 @@ export function TagsSelector({
 }: TagsSelectorProps) {
   return (
     <FieldBox label={label} labelActive={false}>
-      <div className="pt-2 flex flex-row flex-wrap gap-2">
+      <div className="pt-1 flex flex-row flex-wrap gap-2">
         {options.map((option) => (
           <ToggleButton
             text={option}
