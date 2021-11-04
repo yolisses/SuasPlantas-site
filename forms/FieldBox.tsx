@@ -1,6 +1,7 @@
 interface FieldBoxProps {
   label: string;
   error?: string;
+  labelActive?: boolean;
   children?: JSX.Element;
   labelClassName?: string;
 }
@@ -10,16 +11,19 @@ export function FieldBox({
   error,
   children,
   labelClassName,
+  labelActive = true,
 }: FieldBoxProps) {
-  return (
-    <label>
-      <div className="flex flex-col items-start transform -translate-y-1 mb-3">
-        <label className={"ml-2 translate-y-1 " + labelClassName || ""}>
-          {label}
-        </label>
-        {children}
-        <div className="text-red-800">{error}</div>
-      </div>
-    </label>
+  const content = (
+    <div className="flex flex-col items-start transform -translate-y-1 mb-3">
+      <label className={"ml-2 translate-y-1 " + labelClassName || ""}>
+        {label}
+      </label>
+      {children}
+      <div className="text-red-800">{error}</div>
+    </div>
   );
+
+  if (!labelActive) return <div>{content}</div>;
+
+  return <label>{content}</label>;
 }

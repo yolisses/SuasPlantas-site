@@ -8,7 +8,7 @@ interface TagsSelectorProps {
 
 export function TagsSelector({ options, label }: TagsSelectorProps) {
   return (
-    <FieldBox label={label}>
+    <FieldBox label={label} labelActive={false}>
       <div className="pt-2 flex flex-row flex-wrap gap-2">
         {options.map((option) => (
           <ToggleButton text={option} key={option} />
