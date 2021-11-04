@@ -13,8 +13,8 @@ export const ToggleButton = forwardRef((props: ToggleButtonProps, ref) => {
   return (
     <label
       className={
-        "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer focus-within:shadow-md " +
-        (checked ? "border-green-700 border-opacity-50 " : "text-gray-500 ") +
+        "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer hover:shadow-md focus-within:shadow-md " +
+        (checked ? "border-green-500 border-opacity-70 " : "text-gray-500 ") +
         (className || "")
       }
     >
