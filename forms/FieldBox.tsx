@@ -18,7 +18,7 @@ export function FieldBox({
           {label}
         </label>
         {children}
-        <div className="text-red-800">Algum erro aconteceu aqui{error}</div>
+        <div className="text-red-800">{error}</div>
       </div>
     </label>
   );

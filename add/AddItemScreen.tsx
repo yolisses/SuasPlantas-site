@@ -13,13 +13,17 @@ export function AddScreen() {
   } = useForm();
   const onSubmit = (data) => console.log("aqui", data);
 
+  console.error(errors);
+
+  const required = { value: true, message: "Esse campo é obrigatório" };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col flex-1 h-full items-stretch p-2">
         <TextInput
           label="Nome"
-          {...register("name", { required: true })}
-          error={errors.name}
+          {...register("name", { required })}
+          error={errors?.name?.message}
         />
         <AvailabilitySelector />
         <TextInput label="Descrição" optional {...register("description")} />
