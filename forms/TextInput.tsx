@@ -14,7 +14,7 @@ export const TextInput = forwardRef(
       <FieldBox
         label={label}
         error={error}
-        labelClassName="transform translate-y-1 bg-white pb-1"
+        labelClassName="transform translate-y-2 bg-white px-1"
       >
         <div
           className={
