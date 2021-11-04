@@ -8,8 +8,8 @@ export function ListItem() {
     <div className="mx-1 mb-1 flex flex-row">
       <Image
         alt=""
-        width={200}
-        height={200}
+        width={140}
+        height={140}
         src={link}
         className="rounded-xl bg-gray-200"
       />
