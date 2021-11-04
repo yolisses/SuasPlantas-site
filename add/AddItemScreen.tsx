@@ -4,8 +4,6 @@ import { TextInput } from "../forms/TextInput";
 import { tags } from "./tags";
 import { TagsSelector } from "../forms/TagsSelector";
 import { useForm } from "react-hook-form";
-import { CustomCheckBox } from "../forms/CustomCheckbox";
-import { MyCheckBox } from "../forms/MyCheckbox";
 
 export function AddScreen() {
   const {
@@ -23,11 +21,6 @@ export function AddScreen() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col flex-1 h-full items-stretch p-2">
-        <MyCheckBox
-          text="alguma coisa a ser clicada"
-          error={errors?.coisa?.message}
-          {...register("coisa", { required })}
-        />
         <TextInput
           label="Nome"
           {...register("name", { required })}

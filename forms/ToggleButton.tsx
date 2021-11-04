@@ -12,26 +12,24 @@ export const ToggleButton = forwardRef((props: ToggleButtonProps, ref) => {
   const [checked, setChecked] = useState<boolean>();
   console.error("checked", checked);
   return (
-    <label>
-      <div
-        className={
-          "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer focus-within:bg-gray-100 " +
-          (checked ? "border-green-400 " : "text-gray-500 ") +
-          (className || "")
-        }
-      >
-        <input
-          ref={ref}
-          type="checkbox"
-          onChange={(e) => {
-            setChecked(e.target.checked);
-            if (onChange) onChange(e);
-          }}
-          {...rest}
-          className="absolute transform scale-0 opacity-0"
-        />
-        {text}
-      </div>
+    <label
+      className={
+        "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer focus-within:shadow-md " +
+        (checked ? "border-green-400 " : "text-gray-500 ") +
+        (className || "")
+      }
+    >
+      <input
+        ref={ref}
+        type="checkbox"
+        onChange={(e) => {
+          setChecked(e.target.checked);
+          if (onChange) onChange(e);
+        }}
+        {...rest}
+        className="absolute transform scale-0 opacity-0"
+      />
+      {text}
     </label>
   );
 });

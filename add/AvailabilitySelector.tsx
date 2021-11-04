@@ -10,7 +10,7 @@ export function AvailabilitySelector() {
         <div className="self-stretch ">
           <div className="flex flex-row gap-2 pt-1 ">
             <ToggleButton text="Doação" className="flex flex-1" />
-            <ToggleButton text="Troca" className="flex flex-1" active />
+            <ToggleButton text="Troca" className="flex flex-1" />
             <ToggleButton text="Venda" className="flex flex-1" />
           </div>
         </div>
