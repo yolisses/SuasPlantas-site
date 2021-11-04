@@ -8,9 +8,8 @@ interface ToggleButtonProps extends HTMLProps<HTMLInputElement> {
 
 export const ToggleButton = forwardRef((props: ToggleButtonProps, ref) => {
   const { text, error, onChange, className, ...rest } = props;
-
   const [checked, setChecked] = useState<boolean>();
-  console.error("checked", checked);
+
   return (
     <label
       className={

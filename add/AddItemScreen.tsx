@@ -1,4 +1,3 @@
-import { AvailabilitySelector } from "./AvailabilitySelector";
 import { EmphasisButton } from "../forms/EmphasisButton";
 import { TextInput } from "../forms/TextInput";
 import { tags } from "./tags";
@@ -7,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { FieldBox } from "../forms/FieldBox";
 import { ToggleButton } from "../forms/ToggleButton";
 import { MoneySign } from "../forms/MoneySign";
+import { allowNumbersRegex } from "../forms/allowNumbersRegex";
 
 export function AddScreen() {
   const {
@@ -28,6 +28,7 @@ export function AddScreen() {
           label="Nome"
           {...register("name", { required })}
           error={errors?.name?.message}
+          maxLength={128}
         />
         <FieldBox label="Disponível para" labelActive={false}>
           <div className="self-stretch ">
@@ -50,8 +51,21 @@ export function AddScreen() {
             </div>
           </div>
         </FieldBox>
-        <TextInput label="Preço" type="number" leftChild={<MoneySign />} />
-        <TextInput label="Descrição" optional {...register("description")} />
+        <TextInput
+          label="Preço"
+          type="number"
+          mask={allowNumbersRegex}
+          min={0}
+          max={9999}
+          maxLength={4}
+          leftChild={<MoneySign />}
+        />
+        <TextInput
+          optional
+          maxLength={2048}
+          label="Descrição"
+          {...register("description")}
+        />
         <TagsSelector
           label="Marcar como"
           id="tags"
@@ -63,6 +77,10 @@ export function AddScreen() {
           optional
           {...register("amount")}
           type="number"
+          min={1}
+          max={9999}
+          maxLength={4}
+          mask={allowNumbersRegex}
         />
         <EmphasisButton text="Adicionar" submit />
       </div>
