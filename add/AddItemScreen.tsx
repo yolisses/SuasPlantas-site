@@ -15,7 +15,7 @@ export function AddScreen() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log("aqui", data);
+  const onSubmit = (data: any) => console.log("aqui", data);
 
   const required = { value: true, message: "Esse campo é obrigatório" };
 
