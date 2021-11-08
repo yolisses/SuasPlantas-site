@@ -7,11 +7,11 @@ import { FieldBox } from "../forms/FieldBox";
 import { ToggleButton } from "../forms/ToggleButton";
 import { MoneySign } from "../forms/MoneySign";
 import { allowNumbersRegex } from "../forms/allowNumbersRegex";
+import { Header } from "../common/Header";
 
 export function AddScreen() {
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -20,68 +20,71 @@ export function AddScreen() {
   const required = { value: true, message: "Esse campo é obrigatório" };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col flex-1 h-full items-stretch p-2">
-        <TextInput
-          label="Nome"
-          {...register("name", { required })}
-          error={errors?.name?.message}
-          maxLength={128}
-        />
-        <FieldBox label="Disponível para" labelActive={false}>
-          <div className="self-stretch ">
-            <div className="flex flex-row gap-2 pt-1 ">
-              <ToggleButton
-                text="Doação"
-                className="flex flex-1"
-                {...register("donate")}
-              />
-              <ToggleButton
-                text="Troca"
-                className="flex flex-1"
-                {...register("swap")}
-              />
-              <ToggleButton
-                text="Venda"
-                className="flex flex-1"
-                {...register("sell")}
-              />
+    <div>
+      <Header />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col flex-1 h-full items-stretch p-2">
+          <TextInput
+            label="Nome"
+            {...register("name", { required })}
+            error={errors?.name?.message}
+            maxLength={128}
+          />
+          <FieldBox label="Disponível para" labelActive={false}>
+            <div className="self-stretch ">
+              <div className="flex flex-row gap-2 pt-1 ">
+                <ToggleButton
+                  text="Doação"
+                  className="flex flex-1"
+                  {...register("donate")}
+                />
+                <ToggleButton
+                  text="Troca"
+                  className="flex flex-1"
+                  {...register("swap")}
+                />
+                <ToggleButton
+                  text="Venda"
+                  className="flex flex-1"
+                  {...register("sell")}
+                />
+              </div>
             </div>
-          </div>
-        </FieldBox>
-        <TextInput
-          label="Preço"
-          type="number"
-          mask={allowNumbersRegex}
-          min={0}
-          max={9999}
-          maxLength={4}
-          leftChild={<MoneySign />}
-        />
-        <TextInput
-          optional
-          maxLength={2048}
-          label="Descrição"
-          {...register("description")}
-        />
-        <TagsSelector
-          label="Marcar como"
-          id="tags"
-          options={tags}
-          register={register}
-        />
-        <TextInput
-          label="Quantidade"
-          optional
-          {...register("amount")}
-          type="number"
-          min={1}
-          max={9999}
-          maxLength={4}
-          mask={allowNumbersRegex}
-        />
-        <EmphasisButton text="Adicionar" submit />
-      </div>
-    </form>
+          </FieldBox>
+          <TextInput
+            label="Preço"
+            type="number"
+            mask={allowNumbersRegex}
+            min={0}
+            max={9999}
+            maxLength={4}
+            leftChild={<MoneySign />}
+          />
+          <TextInput
+            optional
+            maxLength={2048}
+            label="Descrição"
+            {...register("description")}
+          />
+          <TagsSelector
+            label="Marcar como"
+            id="tags"
+            options={tags}
+            register={register}
+          />
+          <TextInput
+            label="Quantidade"
+            optional
+            {...register("amount")}
+            type="number"
+            min={1}
+            max={9999}
+            maxLength={4}
+            mask={allowNumbersRegex}
+          />
+          <EmphasisButton text="Adicionar" submit />
+        </div>
+      </form>
+    </div>
   );
 }
