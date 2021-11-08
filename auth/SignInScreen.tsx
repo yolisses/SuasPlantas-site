@@ -1,6 +1,7 @@
 import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 import { observer } from "mobx-react";
 import { api } from "../api/api";
+import { auth } from "./auth";
 
 export const SignInScreen = observer(() => {
   async function onSuccess(response: GoogleLoginResponse) {

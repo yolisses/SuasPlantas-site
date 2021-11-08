@@ -8,3 +8,5 @@ export class Auth {
     makeAutoObservable(this);
   }
 }
+
+export const auth = new Auth();
