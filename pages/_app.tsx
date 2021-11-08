@@ -5,7 +5,7 @@ import { IconTags } from "./IconTags";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex flex-col w-screen h-screen flex-wrap overflow-hidden">
+    <div className="flex flex-col w-screen h-screen flex-wrap overflow-x-hidden">
       <Head>
         <title>Plantes</title>
         <IconTags />
