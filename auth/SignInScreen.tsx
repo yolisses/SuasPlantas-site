@@ -1,10 +1,11 @@
-import GoogleLogin from "react-google-login";
+import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 import { auth } from "./auth";
 import { observer } from "mobx-react";
 
 export const SignInScreen = observer(() => {
-  function onSuccess() {
-    auth.user = { name: "ulisses" };
+  function onSuccess(response: GoogleLoginResponse) {
+    const { id_token } = response.getAuthResponse(true);
+    auth.user = { name: id_token };
   }
 
   return (
