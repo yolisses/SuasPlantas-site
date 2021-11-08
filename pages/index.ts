@@ -16,6 +16,6 @@ export async function getStaticProps(context) {
   // }
 
   return {
-    props: { data: res.data }, // will be passed to the page component as props
+    props: { data: [  ] }, // will be passed to the page component as props
   };
 }
