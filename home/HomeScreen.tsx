@@ -1,13 +1,13 @@
 import { AddButton } from "./AddButton";
 import { ListItem } from "./ListItem";
 
-export function HomeScreen() {
-  const data = [...new Array(20)];
+export function HomeScreen({ data }) {
   return (
     <div className="pt-1">
-      {data.map((key, index) => (
-        <ListItem key={index} />
-      ))}
+      {/* {data.map((item, index) => (
+        <ListItem key={index} {...item} />
+      ))} */}
+      {JSON.stringify(data)}
       <div className=" z-20 fixed bottom-6 right-6">
         <AddButton />
       </div>
