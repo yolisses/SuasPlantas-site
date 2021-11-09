@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <div className="bg-green-700 text-white p-4 flex flex-row justify-between">
+    <div className="bg-green-700 text-white p-3 flex flex-row justify-between">
       <Link href="/">
         <div className="text-lg">Plantes</div>
       </Link>
