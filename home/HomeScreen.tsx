@@ -1,8 +1,10 @@
+import { useAuth } from "../auth/AuthContext";
 import { Header } from "../common/Header";
 import { AddButton } from "./AddButton";
 import { ListItem } from "./ListItem";
 
 export function HomeScreen({ data = [12, 221, 21] }) {
+  const { user } = useAuth();
   return (
     <div>
       <Header />
@@ -14,6 +16,7 @@ export function HomeScreen({ data = [12, 221, 21] }) {
         <div className=" z-20 fixed bottom-6 right-6">
           <AddButton />
         </div>
+        <div>{JSON.stringify(user)}</div>
       </div>
     </div>
   );
