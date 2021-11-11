@@ -2,11 +2,12 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { IconTags } from "./IconTags";
-import { AuthContextProvider } from "../auth/AuthContext";
+import { DataContextProvider } from "../mobx/DataContext";
+import { observer } from "mobx-react-lite";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthContextProvider>
+    <DataContextProvider>
       <div className="flex flex-col flex-1 flex-wrap overflow-x-hidden">
         <Head>
           <title>Plantes</title>
@@ -14,8 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Head>
         <Component {...pageProps} />
       </div>
-    </AuthContextProvider>
+    </DataContextProvider>
   );
 }
 
-export default MyApp;
+export default observer(MyApp);

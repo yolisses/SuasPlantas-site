@@ -1,11 +1,11 @@
 import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 import { observer } from "mobx-react";
 import { api } from "../api/api";
-import { useAuth } from "./AuthContext";
 import { Header } from "../common/Header";
+import { useData } from "../mobx/DataContext";
 
 export const SignInScreen = observer(() => {
-  const { user, setUser } = useAuth();
+  const { auth } = useData();
 
   async function onSuccess(response: GoogleLoginResponse) {
     try {
@@ -13,7 +13,7 @@ export const SignInScreen = observer(() => {
       console.error(access_token);
       const res = await api.post("google-sign-in", { access_token });
       console.error(res);
-      setUser!(res.data.user);
+      auth.user = res.data.user;
     } catch (err) {
       console.error(err);
     }
@@ -28,7 +28,7 @@ export const SignInScreen = observer(() => {
       <Header />
       <div className="flex flex-1 items-center justify-center gap-1">
         <div>Use uma conta para prosseguir</div>
-        {JSON.stringify(user)}
+        {JSON.stringify(auth.user)}
         <GoogleLogin
           clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
           buttonText={"Continuar com o Google"}

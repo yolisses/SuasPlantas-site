@@ -1,14 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { api } from "../api/api";
-import { useAuth } from "../auth/AuthContext";
 import { Header } from "../common/Header";
+import { useData } from "../mobx/DataContext";
 import { AddButton } from "./AddButton";
 import { ListItem } from "./ListItem";
 
 export function HomeScreen({ data = [12, 221, 21] }) {
-  const { user } = useAuth();
-
   useEffect(() => {
     (async () => {
       try {
@@ -20,9 +17,12 @@ export function HomeScreen({ data = [12, 221, 21] }) {
     })();
   }, []);
 
+  const { auth } = useData();
+
   return (
     <div>
       <Header />
+      <div>{JSON.stringify(auth.user)}</div>
       <div className="pt-1">
         {data.map((item, index) => (
           <ListItem key={index} {...item} />
@@ -31,7 +31,6 @@ export function HomeScreen({ data = [12, 221, 21] }) {
         <div className=" z-20 fixed bottom-6 right-6">
           <AddButton />
         </div>
-        <div>{JSON.stringify(user)}</div>
       </div>
     </div>
   );
