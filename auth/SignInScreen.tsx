@@ -17,7 +17,7 @@ export const SignInScreen = observer(() => {
   return (
     <div className="flex flex-1">
       <Header />
-      <div className="bg-red-500 flex flex-1 items-center justify-center">
+      <div className="flex flex-1 items-center justify-center">
         <div>Use uma conta para prosseguir</div>
         {JSON.stringify(user)}
         <GoogleLogin
