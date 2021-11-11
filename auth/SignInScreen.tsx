@@ -15,15 +15,18 @@ export const SignInScreen = observer(() => {
   }
 
   return (
-    <div>
+    <div className="flex flex-1">
       <Header />
-      <div>Use uma conta para prosseguir</div>
-      {JSON.stringify(user)}
-      <GoogleLogin
-        clientId={process.env.GOOGLE_CLIENT_ID as string}
-        buttonText={"Continuar com o Google"}
-        onSuccess={onSuccess}
-      />
+      <div className="bg-red-500 flex flex-1 items-center justify-center">
+        <div>Use uma conta para prosseguir</div>
+        {JSON.stringify(user)}
+        <GoogleLogin
+          clientId={process.env.GOOGLE_CLIENT_ID as string}
+          buttonText={"Continuar com o Google"}
+          onSuccess={onSuccess}
+        />
+        <div className="h-14" />
+      </div>
     </div>
   );
 });
