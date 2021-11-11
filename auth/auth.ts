@@ -1,14 +1,20 @@
+import localforage from "localforage";
 import { makeAutoObservable } from "mobx";
+import { makePersistable } from "mobx-persist-store";
 import { User } from "../types/User";
-import { create, persist } from "mobx-persist";
 
 export class Auth {
-  @persist user?: User;
-  @persist token?: string;
-  @persist refreshToken?: string;
+  user?: User;
+  token?: string;
+  refreshToken?: string;
 
   constructor() {
     makeAutoObservable(this);
+    makePersistable(this, {
+      storage: localforage,
+      name: "auth",
+      properties: ["user", "token", "refreshToken"],
+    });
   }
 }
 
