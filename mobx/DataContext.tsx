@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { auth } from "../auth/auth";
 
-const stores: { [key: string]: any } = { auth };
+const stores = { auth };
 
 const DataContext = createContext(stores);
 
