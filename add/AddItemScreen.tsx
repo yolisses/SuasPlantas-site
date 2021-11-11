@@ -8,6 +8,7 @@ import { ToggleButton } from "../forms/ToggleButton";
 import { MoneySign } from "../forms/MoneySign";
 import { allowNumbersRegex } from "../forms/allowNumbersRegex";
 import { Header } from "../common/Header";
+import { api } from "../api/api";
 
 export function AddScreen() {
   const {
@@ -15,7 +16,11 @@ export function AddScreen() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: any) => console.log("aqui", data);
+
+  async function onSubmit(data: any) {
+    console.error(JSON.stringify(data));
+    api.post("plants/", data);
+  }
 
   const required = { value: true, message: "Esse campo é obrigatório" };
 
