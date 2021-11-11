@@ -1,18 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import { User } from "../types/User";
-import { makePersistable } from "mobx-persist-store";
+import { create, persist } from "mobx-persist";
 
 export class Auth {
-  user: User | null = null;
+  @persist user?: User;
+  @persist token?: string;
+  @persist refreshToken?: string;
 
   constructor() {
     makeAutoObservable(this);
-    if (process.browser)
-      makePersistable(this, {
-        name: "authStore",
-        properties: ["user"],
-        storage: window.localStorage,
-      });
   }
 }
 

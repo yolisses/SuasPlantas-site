@@ -13,7 +13,12 @@ export const SignInScreen = observer(() => {
       console.error(access_token);
       const res = await api.post("google-sign-in", { access_token });
       console.error(res);
+
+      const { user, token, refreshToken } = res.data;
+      Object.apply(auth, { user, token, refreshToken });
       auth.user = res.data.user;
+      auth.token = res.data.token;
+      auth.refreshToken = res.data.redirectToken;
     } catch (err) {
       console.error(err);
     }
