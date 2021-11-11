@@ -3,13 +3,14 @@ const link =
 
 import Image from "next/image";
 import { someImage } from "../mock/someImage";
+import { Plant } from "../types/Plant";
 
 interface ListItemDTO {
-  name: string;
-  card: string;
+  item: Plant;
 }
 
-export function ListItem({ name, card }: ListItemDTO) {
+export function ListItem({ item }: ListItemDTO) {
+  const { name, description } = item;
   return (
     <div className="mx-1 mb-1 flex flex-row">
       <Image
@@ -19,7 +20,10 @@ export function ListItem({ name, card }: ListItemDTO) {
         src={someImage}
         className="rounded-xl bg-gray-200"
       />
-      <div className="ml-2">{name}</div>
+      <div>
+        <div className="ml-2">{name}</div>
+        <div className="ml-2">{description}</div>
+      </div>
     </div>
   );
 }
