@@ -1,11 +1,12 @@
 import axios from "axios";
+import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { Header } from "../common/Header";
 import { useData } from "../mobx/DataContext";
 import { AddButton } from "./AddButton";
 import { ListItem } from "./ListItem";
 
-export function HomeScreen({ data = [12, 221, 21] }) {
+export const HomeScreen = observer(({ data = [12, 221, 21] }) => {
   useEffect(() => {
     (async () => {
       try {
@@ -34,4 +35,4 @@ export function HomeScreen({ data = [12, 221, 21] }) {
       </div>
     </div>
   );
-}
+});
