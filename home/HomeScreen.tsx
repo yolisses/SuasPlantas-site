@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useEffect } from "react";
+import { api } from "../api/api";
 import { useAuth } from "../auth/AuthContext";
 import { Header } from "../common/Header";
 import { AddButton } from "./AddButton";
@@ -7,9 +9,16 @@ import { ListItem } from "./ListItem";
 export function HomeScreen({ data = [12, 221, 21] }) {
   const { user } = useAuth();
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/plants");
+        console.error(res);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
 
   return (
     <div>
