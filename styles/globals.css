@@ -6,6 +6,9 @@ html,
 body {
   padding: 0;
   margin: 0;
+  display: flex;
+  flex: 1;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,6 +16,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a > * {
+  cursor: pointer;
+}
+
+#__next {
+  display: flex;
+  flex: 1;
 }
 
 * {

@@ -7,7 +7,7 @@ import { AuthContextProvider } from "../auth/AuthContext";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
-      <div className="flex flex-col flex-wrap overflow-x-hidden">
+      <div className="flex flex-col flex-1 flex-wrap overflow-x-hidden">
         <Head>
           <title>Plantes</title>
           <IconTags />
