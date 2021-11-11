@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { Header } from "../common/Header";
 import { AddButton } from "./AddButton";
@@ -5,6 +6,11 @@ import { ListItem } from "./ListItem";
 
 export function HomeScreen({ data = [12, 221, 21] }) {
   const { user } = useAuth();
+
+  useEffect(()=>{
+    
+  },[])
+
   return (
     <div>
       <Header />
