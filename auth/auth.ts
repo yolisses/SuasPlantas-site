@@ -1,4 +1,3 @@
-import localforage from "localforage";
 import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { User } from "../types/User";
@@ -10,11 +9,13 @@ export class Auth {
 
   constructor() {
     makeAutoObservable(this);
-    makePersistable(this, {
-      storage: localforage,
-      name: "auth",
-      properties: ["user", "token", "refreshToken"],
-    });
+    try {
+      makePersistable(this, {
+        name: "auth",
+        storage: localStorage,
+        properties: ["user", "token", "refreshToken"],
+      });
+    } catch (err) {}
   }
 }
 

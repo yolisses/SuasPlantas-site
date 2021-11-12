@@ -1,8 +1,15 @@
-import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from "react-google-login";
 import { observer } from "mobx-react";
 import { api } from "../api/api";
 import { Header } from "../common/Header";
 import { useData } from "../mobx/DataContext";
+
+type success = (
+  response: GoogleLoginResponse | GoogleLoginResponseOffline
+) => void;
 
 export const SignInScreen = observer(() => {
   const { auth } = useData();
@@ -34,7 +41,7 @@ export const SignInScreen = observer(() => {
         <GoogleLogin
           clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
           buttonText={"Continuar com o Google"}
-          onSuccess={onSuccess}
+          onSuccess={onSuccess as success}
           onFailure={onFailure}
         />
         <div className="h-14" />

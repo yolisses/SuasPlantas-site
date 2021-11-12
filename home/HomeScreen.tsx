@@ -2,6 +2,7 @@ import axios from "axios";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { Header } from "../common/Header";
+import { useData } from "../mobx/DataContext";
 import { Plant } from "../types/Plant";
 import { AddButton } from "./AddButton";
 import { ListItem } from "./ListItem";
@@ -21,14 +22,17 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
       }
     })();
   }, []);
+
+  const { auth } = useData();
   return (
     <div>
       <Header />
       <div className="pt-1">
+        {JSON.stringify(auth.user)}
         {data.map((item, index) => (
           <ListItem key={index} item={item} />
         ))}
-        {JSON.stringify(data)}
+        {/* {JSON.stringify(data)} */}
         <div className=" z-20 fixed bottom-6 right-6">
           <AddButton />
         </div>

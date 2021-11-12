@@ -3,7 +3,7 @@ import { HomeScreen } from "../home/HomeScreen";
 
 export default HomeScreen;
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await api.get("plants");
 
   return {
