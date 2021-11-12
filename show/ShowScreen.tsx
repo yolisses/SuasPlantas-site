@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { FaArrowDown, FaChevronDown } from "react-icons/fa";
 import { Header } from "../common/Header";
 import { someImage } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
-import { Label } from "./Label";
 import { Session } from "./Session";
 import { TagsInfo } from "./TagsInfo";
 
