@@ -7,6 +7,8 @@ export interface Plant {
   donate: boolean;
   price: string | null;
   tags: string[];
+  created_at: string;
+  updated_at: string;
 }
 
 export type PlantId = number;

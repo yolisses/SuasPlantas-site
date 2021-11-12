@@ -9,7 +9,16 @@ import { Session } from "./Session";
 import { TagsInfo } from "./TagsInfo";
 
 export function ShowScreen({ data }: { data: Plant }) {
-  const { name, description, swap, donate, price, tags } = data;
+  const {
+    name,
+    description,
+    swap,
+    donate,
+    price,
+    tags,
+    updated_at: updated_at_string,
+  } = data;
+  const updatedAt = new Date(updated_at_string);
   return (
     <div>
       <Header />
@@ -33,6 +42,7 @@ export function ShowScreen({ data }: { data: Plant }) {
             <TagsInfo tags={tags} />
           </Session>
         )}
+        <div>Última edição {updatedAt.toLocaleDateString()}</div>
       </div>
     </div>
   );
