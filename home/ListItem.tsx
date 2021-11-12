@@ -17,7 +17,7 @@ export function ListItem({ item }: ListItemDTO) {
         alt=""
         width={140}
         height={140}
-        src={someImage}
+        src={someImage + "1"}
         className="rounded-xl bg-gray-200"
       />
       <div>
