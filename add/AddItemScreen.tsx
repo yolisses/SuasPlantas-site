@@ -10,6 +10,7 @@ import { allowNumbersRegex } from "../forms/allowNumbersRegex";
 import { Header } from "../common/Header";
 import { api } from "../api/api";
 import { getTrueValuedKeys } from "../utils/getTrueValuedKeys";
+import { useState } from "react";
 
 export function AddScreen() {
   const {
@@ -26,47 +27,23 @@ export function AddScreen() {
 
   const required = { value: true, message: "Esse campo é obrigatório" };
 
+  const [sell, setSell] = useState<boolean>(false);
+
+  function onSellPress() {
+    setSell((value) => !value);
+  }
+
   return (
     <div>
       <Header />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center">
-          <div className="flex flex-col flex-1 h-full items-stretch p-2 max-w-md">
+          <div className="flex flex-col flex-1 h-full items-stretch p-2 max-w-md gap-2">
             <TextInput
               label="Nome"
               {...register("name", { required })}
               error={errors?.name?.message}
               maxLength={128}
-            />
-            <FieldBox label="Disponível para" labelActive={false}>
-              <div className="self-stretch ">
-                <div className="flex flex-row gap-2 pt-1 ">
-                  <ToggleButton
-                    text="Doação"
-                    className="flex flex-1"
-                    {...register("donate")}
-                  />
-                  <ToggleButton
-                    text="Troca"
-                    className="flex flex-1"
-                    {...register("swap")}
-                  />
-                  <ToggleButton
-                    text="Venda"
-                    className="flex flex-1"
-                    {...register("sell")}
-                  />
-                </div>
-              </div>
-            </FieldBox>
-            <TextInput
-              label="Preço"
-              type="number"
-              mask={allowNumbersRegex}
-              min={0}
-              max={9999}
-              maxLength={4}
-              leftChild={<MoneySign />}
             />
             <TextInput
               optional
@@ -90,6 +67,39 @@ export function AddScreen() {
               maxLength={4}
               mask={allowNumbersRegex}
             />
+            <FieldBox label="Disponível para" labelActive={false}>
+              <div className="self-stretch ">
+                <div className="flex flex-row gap-2 pt-1 ">
+                  <ToggleButton
+                    text="Doação"
+                    className="flex flex-1"
+                    {...register("donate")}
+                  />
+                  <ToggleButton
+                    text="Troca"
+                    className="flex flex-1"
+                    {...register("swap")}
+                  />
+                  <ToggleButton
+                    text="Venda"
+                    className="flex flex-1"
+                    value={sell as unknown as string}
+                    onChange={onSellPress}
+                  />
+                </div>
+              </div>
+            </FieldBox>
+            {sell && (
+              <TextInput
+                label="Preço"
+                type="number"
+                mask={allowNumbersRegex}
+                min={0}
+                max={9999}
+                maxLength={4}
+                leftChild={<MoneySign />}
+              />
+            )}
             <EmphasisButton text="Adicionar" submit />
           </div>
         </div>

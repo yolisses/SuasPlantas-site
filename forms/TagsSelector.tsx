@@ -16,7 +16,11 @@ export function TagsSelector({
   register,
 }: TagsSelectorProps) {
   return (
-    <FieldBox label={label} labelActive={false}>
+    <FieldBox
+      label={label}
+      labelActive={false}
+      labelClassName="transform translate-y-1 bg-white "
+    >
       <div className="pt-1 flex flex-row flex-wrap gap-2">
         {options.map((option) => (
           <ToggleButton

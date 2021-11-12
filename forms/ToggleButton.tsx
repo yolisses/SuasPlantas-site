@@ -14,7 +14,7 @@ export const ToggleButton = forwardRef<HTMLInputElement, ToggleButtonProps>(
     return (
       <label
         className={
-          "border-2 p-3 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer hover:shadow-md focus-within:shadow-md " +
+          "border-2 p-2 bg-white border-gray-300 text-center rounded-lg whitespace-nowrap select-none cursor-pointer hover:shadow-md focus-within:shadow-md " +
           (checked ? "border-green-500 border-opacity-70 " : "text-gray-500 ") +
           (className || "")
         }

@@ -28,7 +28,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       >
         <div
           className={
-            "flex flex-1 self-stretch flex-row border-2 border-gray-300 rounded-lg p-3 focus:border-black focus-within:border-gray-800"
+            "flex flex-1 self-stretch flex-row border-2 border-gray-300 rounded-lg p-2 focus:border-black focus-within:border-gray-800"
           }
         >
           {leftChild}

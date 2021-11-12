@@ -14,8 +14,8 @@ export function FieldBox({
   labelActive = true,
 }: FieldBoxProps) {
   const content = (
-    <div className="flex flex-col items-start transform -translate-y-1 mb-3">
-      <label className={"ml-2 translate-y-1 " + labelClassName || ""}>
+    <div className="flex flex-col items-start transform -translate-y-1">
+      <label className={"ml-2 translate-y-1 px-1 " + labelClassName || ""}>
         {label}
       </label>
       {children}
