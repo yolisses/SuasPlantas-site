@@ -3,6 +3,9 @@ export interface Plant {
   name: string;
   description: string;
   card: string;
+  swap: boolean;
+  donate: boolean;
+  price: number | null;
 }
 
 export type PlantId = number;

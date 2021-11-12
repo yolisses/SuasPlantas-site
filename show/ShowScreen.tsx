@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Header } from "../common/Header";
 import { someImage } from "../mock/someImage";
+import { Plant } from "../types/Plant";
 
-export function ShowScreen({ id }: { id: string }) {
+export function ShowScreen({ data }: { data: Plant }) {
   return (
     <div>
       <Header />
@@ -13,7 +14,11 @@ export function ShowScreen({ id }: { id: string }) {
         width={400}
         height={400}
       />
-      <div>hello {id}!</div>
+      <div className="p-2">
+        <div className="text-xl">{data.name}</div>
+        <div>hello {data.id}!</div>
+        <div>{JSON.stringify(data)}</div>
+      </div>
     </div>
   );
 }

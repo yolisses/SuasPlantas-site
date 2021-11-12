@@ -10,8 +10,8 @@ interface ListItemDTO {
 export function ListItem({ item }: ListItemDTO) {
   const { name, description } = item;
   return (
-    <div className="flex flex-row h-32 mb-1 mx-1">
-      <div className="w-32 h-32 mr-1">
+    <div className="flex flex-row h-32 mb-2 mx-2">
+      <div className="w-32 h-32 mr-2">
         <Image
           src={someImage + "1"}
           width={200}
