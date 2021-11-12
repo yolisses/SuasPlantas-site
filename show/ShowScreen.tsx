@@ -14,7 +14,6 @@ export function ShowScreen({ id }: { id: string }) {
         height={400}
       />
       <div>hello {id}!</div>
-      <
     </div>
   );
 }
