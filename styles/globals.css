@@ -26,6 +26,7 @@ a > * {
 #__next {
   display: flex;
   flex: 1;
+  overflow: hidden;
 }
 
 * {
