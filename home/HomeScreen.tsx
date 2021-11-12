@@ -25,10 +25,11 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
   return (
     <div className="w-full">
       <Header />
-      <div className="pt-1" />
-      {data.map((item, index) => (
-        <ListItem key={index} item={item} />
-      ))}
+      <div className="p-1 flex flex-col gap-1">
+        {data.map((item, index) => (
+          <ListItem key={index} item={item} />
+        ))}
+      </div>
       <div className=" z-20 fixed bottom-6 right-6">
         <AddButton />
       </div>
