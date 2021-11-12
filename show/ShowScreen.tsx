@@ -1,15 +1,20 @@
+import Image from "next/image";
+import { Header } from "../common/Header";
+import { someImage } from "../mock/someImage";
+
 export function ShowScreen({ id }: { id: string }) {
   return (
     <div>
+      <Header />
       <Image
-        alt=""
-        width={140}
-        height={140}
-        src={someImage + "1"}
-        className="rounded-xl bg-gray-200"
+        src={someImage}
+        objectFit="cover"
+        className="rounded-b-xl bg-gray-200 bg-fixed w-full"
+        width={400}
+        height={400}
       />
       <div>hello {id}!</div>
-      <div>{Math.random()}</div>
+      <
     </div>
   );
 }
