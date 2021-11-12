@@ -1,5 +1,5 @@
 interface AvailabilityInfoProps {
-  price: number | null;
+  price: string | null;
   swap: boolean;
   donate: boolean;
 }
@@ -9,8 +9,8 @@ export function AvailabilityInfo({
   swap,
   donate,
 }: AvailabilityInfoProps) {
-  function formatPrice(value: number) {
-    return "R$" + value.toFixed(2).replace(".00", "").replace(".", ",");
+  function formatPrice(value: string) {
+    return "R$" + value.replace(".00", "").replace(".", ",");
   }
 
   const word: { [key: string]: string } = {
@@ -25,7 +25,7 @@ export function AvailabilityInfo({
         .map(([key, value], index, array) => {
           const text =
             key === "price"
-              ? formatPrice(value as number)
+              ? formatPrice(value as string)
               : word[key as string];
 
           return (

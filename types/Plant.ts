@@ -5,7 +5,7 @@ export interface Plant {
   card: string;
   swap: boolean;
   donate: boolean;
-  price: number | null;
+  price: string | null;
   tags: string[];
 }
 
