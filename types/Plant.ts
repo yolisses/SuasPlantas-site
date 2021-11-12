@@ -6,6 +6,7 @@ export interface Plant {
   swap: boolean;
   donate: boolean;
   price: number | null;
+  tags: string[];
 }
 
 export type PlantId = number;
