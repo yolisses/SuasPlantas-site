@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <DataContextProvider>
       <div className="flex flex-col flex-1 flex-wrap overflow-x-hidden">
         <Head>
-          <title>Plantes</title>
+          <title>Plantes - Troque mudas de plantas online</title>
           <IconTags />
         </Head>
         <Component {...pageProps} />
