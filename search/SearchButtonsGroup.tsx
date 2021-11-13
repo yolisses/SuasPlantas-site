@@ -22,9 +22,9 @@ export function SearchButtonsGroup({
       <div className="flex flex-row gap-1 flex-wrap">
         {getUniqueValues(options)
           .reverse()
-          .slice(0, 20)
+          .slice(0, 10)
           .map((value) => (
-            <SearchButton text={value} />
+            <SearchButton text={value} key={value} />
           ))}
       </div>
     </div>
