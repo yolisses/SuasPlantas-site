@@ -1,6 +1,4 @@
-import axios from "axios";
 import { observer } from "mobx-react";
-import { useEffect } from "react";
 import { Header } from "../common/Header";
 import { Plant } from "../types/Plant";
 import { AddButton } from "./AddButton";
@@ -11,17 +9,6 @@ interface HomeScreenProps {
 }
 
 export const HomeScreen = observer(({ data }: HomeScreenProps) => {
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get("http://localhost:8000/plants");
-        console.error(res);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, []);
-
   return (
     <div className="w-full">
       <Header />
