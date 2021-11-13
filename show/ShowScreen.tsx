@@ -5,6 +5,8 @@ import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
 import { Session } from "./Session";
 import { TagsInfo } from "./TagsInfo";
+import Head from "next/head";
+import { availabilitiesToString } from "./availabilitiesToString";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -19,6 +21,11 @@ export function ShowScreen({ data }: { data: Plant }) {
   const updatedAt = new Date(updated_at_string);
   return (
     <div>
+      <Head>
+        <title>
+          {name} - {availabilitiesToString({ price, swap, donate })}{" "}
+        </title>
+      </Head>
       <Header />
       <main>
         <Image
@@ -41,7 +48,9 @@ export function ShowScreen({ data }: { data: Plant }) {
               <TagsInfo tags={tags} />
             </Session>
           )}
-          <div>Última edição {updatedAt.toLocaleDateString()}</div>
+          <div>
+            Última edição <time>{updatedAt.toLocaleDateString()}</time>
+          </div>
         </div>
       </main>
     </div>

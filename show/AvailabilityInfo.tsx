@@ -30,7 +30,7 @@ export function AvailabilityInfo({
 
           return (
             <>
-              <span className="font-semibold text-lg">{text}</span>
+              <strong className="font-semibold text-lg">{text}</strong>
               {index < array.length - 1 && (
                 <span className="text-gray-800">
                   {index === array.length - 2 ? " ou " : ", "}
