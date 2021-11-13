@@ -21,6 +21,7 @@ export function SearchButtonsGroup({
       </div>
       <div className="flex flex-row gap-1 flex-wrap">
         {getUniqueValues(options)
+          .reverse()
           .slice(0, 20)
           .map((value) => (
             <SearchButton text={value} />
