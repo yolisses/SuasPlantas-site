@@ -4,10 +4,11 @@ import { useState } from "react";
 import { FaChevronLeft, FaSearch, FaTimesCircle } from "react-icons/fa";
 import { useData } from "../mobx/DataContext";
 import { SearchHistoryButtons } from "./SearchHistoryButtons";
+import Link from "next/link";
 
 export const SearchScreen = observer(() => {
   const { searches } = useData();
-  const [search, setSearch] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
 
   return (
     <div className="px-2 flex gap-2">
@@ -18,18 +19,20 @@ export const SearchScreen = observer(() => {
             type="text"
             className="outline-none flex-1"
             autoFocus
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <FaTimesCircle size={18} color="#aaa" />
         </div>
-        <FaSearch
-          size={20}
-          color="gray"
-          onClick={() => {
-            searches.searches = [...searches.searches, search];
-          }}
-        />
+        <Link href={"/s?q=" + query}>
+          <FaSearch
+            size={20}
+            color="gray"
+            onClick={() => {
+              searches.searches = [...searches.searches, query];
+            }}
+          />
+        </Link>
       </div>
       <SearchHistoryButtons />
     </div>
