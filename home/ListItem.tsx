@@ -10,7 +10,7 @@ interface ListItemDTO {
 export function ListItem({ item }: ListItemDTO) {
   const { name, description } = item;
   return (
-    <Link href={"plants/" + item.id}>
+    <Link href={"/plants/" + item.id}>
       <div className="flex flex-row h-32">
         <div className="w-32 h-32 mr-2">
           <Image

@@ -26,8 +26,8 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
     <div className="w-full">
       <Header />
       <div className="p-1 flex flex-col gap-1">
-        {data.map((item, index) => (
-          <ListItem key={index} item={item} />
+        {data.map((item) => (
+          <ListItem key={item.id} item={item} />
         ))}
       </div>
       <div className=" z-20 fixed bottom-6 right-6">
