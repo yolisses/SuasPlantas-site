@@ -13,7 +13,7 @@ export function AutocompleteOption<type>({
   }
 
   return (
-    <div className="w-full p-2" onClick={handleClick}>
+    <div className="w-full p-2" onMouseDown={handleClick}>
       {children}
     </div>
   );
