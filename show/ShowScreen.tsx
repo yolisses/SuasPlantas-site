@@ -35,7 +35,7 @@ export function ShowScreen({ data }: { data: Plant }) {
               <Image
                 src={someImage}
                 width={600}
-                height={600}
+                height={700}
                 className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
               />
             </div>
