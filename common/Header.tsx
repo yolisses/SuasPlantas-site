@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { GoBackButton } from "./GoBackButton";
+import { HeaderLayout } from "./HeaderLayout";
 import { SearchTop } from "./SearchTop";
 
 interface HeaderProps {
@@ -7,7 +9,7 @@ interface HeaderProps {
 
 export function Header({ searchQuery }: HeaderProps) {
   return (
-    <div className="bg-green-700 text-white h-14 px-2 items-center flex flex-row justify-between select-none gap-2">
+    <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
       <Link href="/">
         <div className="text-lg">Plantes</div>
       </Link>
@@ -15,6 +17,6 @@ export function Header({ searchQuery }: HeaderProps) {
       <Link href="/sign-in">
         <div className="text-lg">sign in</div>
       </Link>
-    </div>
+    </HeaderLayout>
   );
 }

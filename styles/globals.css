@@ -25,6 +25,10 @@ a {
   overflow: hidden;
 }
 
+input {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   flex-direction: column;

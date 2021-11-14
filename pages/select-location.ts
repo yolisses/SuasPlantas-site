@@ -1,3 +1,3 @@
-import HomePage from "../location/HomePage";
+import { SelectLocationScreenImport } from "../location/SelectLocationScreenImport";
 
-export default HomePage;
+export default SelectLocationScreenImport;
