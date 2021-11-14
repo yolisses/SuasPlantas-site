@@ -19,10 +19,6 @@ a {
   text-decoration: none;
 }
 
-a > * {
-  cursor: pointer;
-}
-
 #__next {
   display: flex;
   flex: 1;
