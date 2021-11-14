@@ -1,14 +1,16 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { EmphasisButton } from "../forms/EmphasisButton";
 import { HeaderLayout } from "../common/HeaderLayout";
 import Image from "next/image";
+import { SearchLocationInput } from "./SearchLocationInput";
 
-const Map = () => {
+function Map() {
   const centerSize = 40;
   return (
     <div className="flex flex-1">
       <HeaderLayout>Sua localização</HeaderLayout>
+      <SearchLocationInput />
       <div className="flex flex-1 relative">
         <div className="flex-1 bg-green-300 flex relative z-0">
           <MapContainer
@@ -32,6 +34,6 @@ const Map = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Map;
