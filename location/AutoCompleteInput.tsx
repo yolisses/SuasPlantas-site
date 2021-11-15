@@ -61,7 +61,7 @@ export function AutoCompleteInput<type>({
         <div className="absolute z-30 w-full flex bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
           {options?.map((option) => (
             <AutocompleteOption
-              value={option}
+              value={option as type}
               key={ketExtractor(option)}
               onSelect={handleSelect}
             >

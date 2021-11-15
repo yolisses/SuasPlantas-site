@@ -1,6 +1,9 @@
-interface AutocompleteOptionProps<type> extends HTMLDivElement {
+import { ReactNode } from "react";
+
+interface AutocompleteOptionProps<type> {
   value: type;
   onSelect: (value: type) => void;
+  children: ReactNode;
 }
 
 export function AutocompleteOption<type>({

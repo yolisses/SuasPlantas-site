@@ -1,7 +1,10 @@
+import { ReactNode } from "react";
 import { GoBackButton } from "./GoBackButton";
 
-interface HeaderLayoutProps extends HTMLDivElement {
-  goBackButton: boolean;
+interface HeaderLayoutProps {
+  goBackButton?: boolean;
+  className?: string;
+  children?: ReactNode;
 }
 
 export function HeaderLayout({

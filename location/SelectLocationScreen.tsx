@@ -37,7 +37,10 @@ function SelectLocationScreen() {
 
   return (
     <div className="flex flex-1">
-      <HeaderLayout>Sua localização</HeaderLayout>
+      <HeaderLayout>
+        <div>Sua localização</div>
+      </HeaderLayout>
+
       <AutoCompleteInput
         ketExtractor={keyExtractor}
         getText={getText}
