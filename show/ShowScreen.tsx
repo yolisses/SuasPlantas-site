@@ -8,6 +8,8 @@ import { TagsInfo } from "./TagsInfo";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { loremIpsum } from "../mock/loremIpsum";
+import { UserLink } from "../user/UserLink";
+import { someUser } from "../mock/someUser";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -54,6 +56,9 @@ export function ShowScreen({ data }: { data: Plant }) {
                   <TagsInfo tags={tags} />
                 </Session>
               )}
+              <div>
+                <UserLink user={someUser} />
+              </div>
               <div>
                 Última edição <time>{updatedAt.toLocaleDateString()}</time>
               </div>
