@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/leaflet": "^1.7.5",
     "axios": "^0.24.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "leaflet": "^1.7.1",
