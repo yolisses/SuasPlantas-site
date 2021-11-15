@@ -1,4 +1,3 @@
-import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { EmphasisButton } from "../forms/EmphasisButton";
 import { HeaderLayout } from "../common/HeaderLayout";
@@ -7,15 +6,16 @@ import { useState } from "react";
 import { Feature } from "./Feature";
 import axios from "axios";
 import { AutoCompleteInput } from "./AutoCompleteInput";
+import Map from "./Map";
 
 function SelectLocationScreen() {
   const centerSize = 40;
-  const [center, setCenter] = useState([-6.88634, -38.5614]);
+  const [center, setCenter] = useState([-69.761008, -26.783346]);
   console.error({ center });
 
   function handleChange(value: Feature) {
     console.log("handle select", value);
-    setCenter(value.center);
+    setCenter(value.center.reverse());
     console.error(value);
   }
 
@@ -56,26 +56,6 @@ function SelectLocationScreen() {
         <EmphasisButton text="Salvar" />
       </div>
     </div>
-  );
-}
-
-interface MapProps {
-  center: number[];
-}
-
-function Map({ center }: MapProps) {
-  return (
-    <MapContainer
-      center={center}
-      zoom={13}
-      className="flex-1"
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </MapContainer>
   );
 }
 
