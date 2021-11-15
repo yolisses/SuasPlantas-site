@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 
 interface MapProps {
-  center: number[];
+  center: L.LatLngTuple;
 }
 
 export default function Map({ center }: MapProps) {

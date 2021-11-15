@@ -7,15 +7,16 @@ import { Feature } from "./Feature";
 import axios from "axios";
 import { AutoCompleteInput } from "./AutoCompleteInput";
 import Map from "./Map";
+import { LatLngTuple } from "leaflet";
 
 function SelectLocationScreen() {
   const centerSize = 40;
-  const [center, setCenter] = useState([-69.761008, -26.783346]);
+  const [center, setCenter] = useState<LatLngTuple>([-69.761008, -26.783346]);
   console.error({ center });
 
   function handleChange(value: Feature) {
     console.log("handle select", value);
-    setCenter(value.center.reverse());
+    setCenter(value.center.reverse() as LatLngTuple);
     console.error(value);
   }
 
