@@ -12,12 +12,12 @@ import { LatLngTuple } from "leaflet";
 function SelectLocationScreen() {
   const centerSize = 40;
   const [center, setCenter] = useState<LatLngTuple>([-69.761008, -26.783346]);
-  console.error({ center });
+  console.log({ center });
 
   function handleChange(value: Feature) {
     console.log("handle select", value);
     setCenter(value.center.reverse() as LatLngTuple);
-    console.error(value);
+    console.log(value);
   }
 
   async function getFeaturesByText(text: string) {

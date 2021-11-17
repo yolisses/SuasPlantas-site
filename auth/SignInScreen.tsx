@@ -16,10 +16,11 @@ export const SignInScreen = observer(() => {
 
   async function onSuccess(response: GoogleLoginResponse) {
     try {
-      const { access_token } = response.getAuthResponse(true);
-      console.error(access_token);
+      const { access_token, id_token } = response.getAuthResponse(true);
+      console.log(access_token);
+      console.log(id_token);
       const res = await api.post("google-sign-in", { access_token });
-      console.error(res);
+      console.log(res);
       auth.user = res.data.user;
       auth.token = res.data.access_token;
       auth.refreshToken = res.data.refresh_token;

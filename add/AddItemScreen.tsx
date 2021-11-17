@@ -21,7 +21,7 @@ export function AddScreen() {
 
   async function onSubmit(data: any) {
     data.tags = getTrueValuedKeys(data.tags);
-    console.error(JSON.stringify(data));
+    console.log(JSON.stringify(data));
     api.post("plants/", data);
   }
 
