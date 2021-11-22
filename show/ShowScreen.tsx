@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Header } from "../common/Header";
-import { someImage, someImage2, someImageH } from "../mock/someImage";
+import { someImage, someImageH } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
 import { Session } from "./Session";
