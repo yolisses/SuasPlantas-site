@@ -9,8 +9,9 @@ export function AvailabilityInfo({
   swap,
   donate,
 }: AvailabilityInfoProps) {
-  function formatPrice(value: string) {
-    return "R$" + value.replace(".00", "").replace(".", ",");
+  function formatPrice(value: string | number) {
+    const withTwoDecimals = typeof value == "number" ? value.toFixed(2) : value;
+    return "R$" + withTwoDecimals.replace(".00", "").replace(".", ",");
   }
 
   const word: { [key: string]: string } = {

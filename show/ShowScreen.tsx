@@ -51,7 +51,7 @@ export function ShowScreen({ data }: { data: Plant }) {
                   <div>{description}</div>
                 </Session>
               )}
-              {!!tags.length && (
+              {!!tags?.length && (
                 <Session label="Marcado como">
                   <TagsInfo tags={tags} />
                 </Session>
