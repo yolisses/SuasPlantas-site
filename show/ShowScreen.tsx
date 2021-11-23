@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { Header } from "../common/Header";
-import { someImage, someImageH } from "../mock/someImage";
+import { someImage } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
 import { Session } from "./Session";
 import { TagsInfo } from "./TagsInfo";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
-import { loremIpsum } from "../mock/loremIpsum";
 import { UserLink } from "../user/UserLink";
 import { someUser } from "../mock/someUser";
 
@@ -19,9 +18,11 @@ export function ShowScreen({ data }: { data: Plant }) {
     donate,
     price,
     tags,
-    updated_at: updated_at_string,
+    updatedAt: updatedAtString,
   } = data;
-  const updatedAt = new Date(updated_at_string);
+
+  const updatedAt = new Date(updatedAtString);
+
   return (
     <div>
       <Head>
