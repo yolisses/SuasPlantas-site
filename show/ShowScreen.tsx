@@ -9,6 +9,7 @@ import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
 import { someUser } from "../mock/someUser";
+import { User } from "../types/User";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -16,6 +17,7 @@ export function ShowScreen({ data }: { data: Plant }) {
     description,
     swap,
     donate,
+    user,
     price,
     tags,
     updatedAt: updatedAtString,
@@ -57,11 +59,14 @@ export function ShowScreen({ data }: { data: Plant }) {
                   <TagsInfo tags={tags} />
                 </Session>
               )}
-              <div>
-                <UserLink user={someUser} />
-              </div>
+              {/* <div>
+                <UserLink user={user as User} />
+              </div> */}
               <div>
                 Última edição <time>{updatedAt.toLocaleDateString()}</time>
+              </div>
+              <div>
+                Última edição <time>{updatedAtString}</time>
               </div>
               {/* <div>{loremIpsum}</div> */}
             </div>

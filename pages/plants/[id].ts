@@ -1,14 +1,26 @@
+import gql from "graphql-tag";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { api } from "../../api/api";
+import client from "../../api/apollo-client";
 import { ShowScreen } from "../../show/ShowScreen";
 
 export default ShowScreen;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await api.get("plants/" + params!.id);
+  const query = gql`
+    query ($id: Int) {
+      plant(id: $id) {
+        name
+        description
+      }
+    }
+  `;
+  const res = await client.query({
+    query,
+    variables: { id: params!.id },
+  });
 
   return {
-    props: { data: res.data },
+    props: { data: res.data.plant },
     revalidate: 1,
   };
 };

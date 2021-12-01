@@ -1,6 +1,7 @@
 import { User } from "./User";
 import Image from "next/image";
 import Link from "next/link";
+import { someImage } from "../mock/someImage";
 
 interface UserLinkProps {
   user: User;
@@ -14,7 +15,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <Image
           width={imgSize}
           height={imgSize}
-          src={user.image}
+          src={user.image || someImage + "1"}
           className="rounded-full"
         />
         <div>{user.name}</div>

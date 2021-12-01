@@ -9,7 +9,10 @@ interface HeaderProps {
 
 export function Header({ searchQuery }: HeaderProps) {
   return (
-    <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
+    <HeaderLayout
+      className="bg-green-700 text-white content-between"
+      goBackButton={false}
+    >
       <Link href="/">
         <div className="text-lg">Plantes</div>
       </Link>

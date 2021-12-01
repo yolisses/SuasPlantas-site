@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Plant {
   id: PlantId;
   name: string;
@@ -9,6 +11,7 @@ export interface Plant {
   tags: string[];
   createdAt: string;
   updatedAt: string;
+  user?: User;
 }
 
 export type PlantId = number;
