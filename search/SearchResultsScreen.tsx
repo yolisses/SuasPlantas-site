@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { Header } from "../common/Header";
 import Head from "next/head";
-import { ListItem } from "../home/ListItem";
+import { ListItem } from "../common/ListItem";
 import { Plant } from "../types/Plant";
 
 interface SearchResultsScreenProps {

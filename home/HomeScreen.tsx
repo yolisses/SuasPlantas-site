@@ -3,7 +3,7 @@ import { Header } from "../common/Header";
 import { SelectLocationLink } from "../location/SelectLocationLink";
 import { Plant } from "../types/Plant";
 import { AddButton } from "./AddButton";
-import { ListItem } from "./ListItem";
+import { ListItem } from "../common/ListItem";
 
 interface HomeScreenProps {
   data: Plant[];

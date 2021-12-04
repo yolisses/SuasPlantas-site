@@ -17,7 +17,7 @@ export function ShowScreen({ data }: { data: Plant }) {
     description,
     swap,
     donate,
-    user,
+    owner,
     price,
     tags,
     updatedAt: updatedAtString,
@@ -59,14 +59,11 @@ export function ShowScreen({ data }: { data: Plant }) {
                   <TagsInfo tags={tags} />
                 </Session>
               )}
-              {/* <div>
-                <UserLink user={user as User} />
-              </div> */}
               <div>
-                Última edição <time>{updatedAt.toLocaleDateString()}</time>
+                <UserLink user={owner as User} />
               </div>
               <div>
-                Última edição <time>{updatedAtString}</time>
+                Última edição <time>{updatedAt.toLocaleDateString()}</time>
               </div>
               {/* <div>{loremIpsum}</div> */}
             </div>

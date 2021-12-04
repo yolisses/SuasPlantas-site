@@ -11,7 +11,7 @@ export interface Plant {
   tags: string[];
   createdAt: string;
   updatedAt: string;
-  user?: User;
+  owner?: User;
 }
 
 export type PlantId = number;

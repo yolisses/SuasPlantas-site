@@ -4,8 +4,8 @@ export interface User {
   id: UserId;
   name: string;
   description: string;
-  plants?: Plant[];
-  image: string;
+  plantSet: Plant[];
+  picture: string;
 }
 
 export type UserId = number;

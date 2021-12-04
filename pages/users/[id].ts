@@ -1,25 +1,39 @@
+import gql from "graphql-tag";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { someImageU } from "../../mock/someImage";
+import client from "../../api/apollo-client";
 import { someUser } from "../../mock/someUser";
 import { UserScreen } from "../../user/UserScreen";
 
 export default UserScreen;
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const query = gql`
+    query ($id: Int) {
+      user(id: $id) {
+        id
+        name
+        picture
+        plantSet {
+          id
+          name
+        }
+      }
+    }
+  `;
+  const res = await client.query({
+    query,
+    variables: { id: params!.id },
+  });
+
   return {
-    props: {
-      user: someUser,
-    },
+    props: { user: res.data.user },
+    revalidate: 1,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: [
-      {
-        params: { id: "1" },
-      },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 };

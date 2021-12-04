@@ -9,15 +9,19 @@ export const getStaticProps: GetStaticProps = async () => {
   const query = gql`
     query {
       plants {
-        id
-        name
-        description
+        edges {
+          node {
+            id
+            name
+            description
+          }
+        }
       }
     }
   `;
   const res = await client.query({ query });
   return {
-    props: { data: res.data.plants },
+    props: { data: res.data.plants.edges.map((e) => e.node) },
     revalidate: 1,
   };
 };

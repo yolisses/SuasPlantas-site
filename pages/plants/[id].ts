@@ -11,6 +11,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       plant(id: $id) {
         name
         description
+        swap
+        donate
+        price
+        updatedAt
+        owner {
+          id
+          name
+          picture
+        }
       }
     }
   `;
@@ -27,11 +36,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [
-      // {
-      // params: { id: "123" },
-      // },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 };
