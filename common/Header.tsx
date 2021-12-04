@@ -10,13 +10,14 @@ interface HeaderProps {
 export function Header({ searchQuery }: HeaderProps) {
   return (
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
-      <Link href="/">
-        <div className="text-lg">Plantes</div>
-      </Link>
+      <div className="mr-auto">
+        <Link href="/">
+          <div className="text-lg">Plantes</div>
+        </Link>
+      </div>
       <SearchTop query={searchQuery} />
-      <div className="flex-1"></div>
       <Link href="/sign-in">
-        <div className="text-lg">sign in</div>
+        <div className="text-lg ml-auto">sign in</div>
       </Link>
     </HeaderLayout>
   );
