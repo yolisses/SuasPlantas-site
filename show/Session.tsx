@@ -11,7 +11,7 @@ export function Session({ label, children }: SessionProps) {
     <div>
       {!!label && (
         <div className="flex flex-row items-center mb-0.5">
-          <FaChevronDown className="mr-1" />
+          <FaChevronDown className="mr-1" color="#bbb" />
           <div>{label}</div>
         </div>
       )}
