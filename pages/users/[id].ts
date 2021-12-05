@@ -16,6 +16,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         plantSet {
           id
           name
+          price
+          swap
+          donate
         }
       }
     }

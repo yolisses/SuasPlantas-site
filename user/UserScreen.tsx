@@ -34,7 +34,7 @@ export function UserScreen({ user }: UserScreenProps) {
         <div className="py-3">
           {user.description || loremIpsum.slice(0, 500)}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
           {user.plantSet?.map((plant) => (
             <GridItem item={plant} />
           ))}
