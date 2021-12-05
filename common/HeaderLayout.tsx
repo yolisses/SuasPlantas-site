@@ -13,13 +13,17 @@ export function HeaderLayout({
   goBackButton = true,
 }: HeaderLayoutProps) {
   return (
-    <div
-      className={
-        "flex flex-row h-14 items-center w-full gap-2 px-2 " + (className || "")
-      }
-    >
-      {goBackButton && <GoBackButton />}
-      {children}
-    </div>
+    <>
+      <div
+        className={
+          "absolute flex flex-row h-12 items-center w-full gap-2 px-2 z-50 " +
+          (className || "")
+        }
+      >
+        {goBackButton && <GoBackButton />}
+        {children}
+      </div>
+      <div className="h-12" />
+    </>
   );
 }

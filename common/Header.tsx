@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { GoBackButton } from "./GoBackButton";
 import { HeaderLayout } from "./HeaderLayout";
 import { SearchTop } from "./SearchTop";
 
