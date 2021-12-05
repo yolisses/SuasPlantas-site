@@ -14,7 +14,7 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
     <div className="w-full">
       <Header />
       <SelectLocationLink />
-      <div className="p-1 flex flex-col gap-1">
+      <div className="px-1 flex flex-col gap-1">
         {data.map((item) => (
           <ListItem key={item.id} item={item} />
         ))}

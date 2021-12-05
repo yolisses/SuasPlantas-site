@@ -11,20 +11,19 @@ export function ListItem({ item }: ListItemDTO) {
   const { name, description } = item;
   return (
     <Link href={"/plants/" + item.id}>
-      <div className="flex flex-row h-32">
-        <div className="w-32 h-32 mr-2">
-          <Image
-            src={someImage + "1"}
-            width={200}
-            height={200}
-            className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
-          />
-        </div>
+      <ul className="flex flex-row">
+        <Image
+          src={someImage + "1"}
+          width={150}
+          height={150}
+          className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
+        />
+        <div className="mr-2" />
         <div className="flex-1 overflow-hidden">
-          <div>{name}</div>
-          <div className="text-gray-500 text-sm">{description}</div>
+          <div className="text-lg">{name}</div>
+          <div className="text-gray-700 text-sm">{description}</div>
         </div>
-      </div>
+      </ul>
     </Link>
   );
 }
