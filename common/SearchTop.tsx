@@ -8,7 +8,7 @@ interface SearchTopProps {
 export function SearchTop({ query }: SearchTopProps) {
   return (
     <Link href="/search">
-      <div className="bg-white flex-1 text-black h-9 rounded-full flex flex-row items-center p-3 max-w-md">
+      <div className="bg-white flex-1 text-black h-9 rounded-full flex flex-row items-center p-3 max-w-md overflow-hidden">
         <div
           className={
             "flex-1 focus:border-transparent outline-none bg-transparent w-full " +
@@ -17,7 +17,7 @@ export function SearchTop({ query }: SearchTopProps) {
         >
           {query || "Pesquisar"}
         </div>
-        <FaSearch className="ml-2" />
+        <FaSearch className="ml-2 flex-shrink-0" />
       </div>
     </Link>
   );

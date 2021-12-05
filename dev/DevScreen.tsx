@@ -1,12 +1,16 @@
 import axios from "axios";
 import gql from "graphql-tag";
 import { useEffect, useRef, useState } from "react";
+import { FaImage, FaImages, FaTimes, FaTimesCircle } from "react-icons/fa";
 import client from "../api/apollo-client";
+import { ImagesInput } from "../forms/ImagesInput";
 
+interface selectedFile {
+  file: File;
+  imageSrc: string | ArrayBuffer | null;
+}
 export function DevScreen() {
   const [uploadLink, setUploadLink] = useState();
-  const [files, setFiles] = useState<File[]>();
-  const inputRef = useRef();
 
   async function getUploadLink() {
     const query = gql`
@@ -22,39 +26,10 @@ export function DevScreen() {
     getUploadLink();
   }, []);
 
-  function handleSubmitClick() {
-    axios.put(uploadLink!, files![0]);
-
-    // {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // }
-  }
-
-  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const files = Array.from(e.target.files);
-    setFiles(files);
-    console.log("files:", files);
-  };
-
   return (
-    <div>
-      <div>{uploadLink}</div>
-      <label>
-        <div>massa</div>
-        <input
-          type="file"
-          onChange={handleFileSelected}
-          accept=".jpg, .jpeg, .png, .webp"
-        ></input>
-      </label>
-      <input
-        ref={inputRef}
-        type="button"
-        value="upload"
-        onClick={handleSubmitClick}
-      />
+    <div className="w-full">
+      {uploadLink}
+      <ImagesInput />
     </div>
   );
 }

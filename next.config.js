@@ -7,6 +7,7 @@ module.exports = {
       "images.unsplash.com",
       "github.com",
       "lh3.googleusercontent.com",
+      "plantes.s3.sa-east-1.amazonaws.com",
     ],
   },
 };

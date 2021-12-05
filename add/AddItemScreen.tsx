@@ -12,7 +12,7 @@ import { getTrueValuedKeys } from "../utils/getTrueValuedKeys";
 import { useState } from "react";
 import gql from "graphql-tag";
 import client from "../api/apollo-client";
-import { ImageUpload } from "../forms/ImageUpload";
+import { ImagesInput } from "../forms/ImagesInput";
 
 export function AddScreen() {
   const {
@@ -52,8 +52,8 @@ export function AddScreen() {
     <div>
       <Header />
       <div className="flex flex-col items-center">
-        <div className="flex flex-col flex-1 h-full items-stretch p-2 max-w-md gap-2">
-          <ImageUpload />
+        <div className="flex flex-col flex-1 items-stretch p-2 max-w-lg gap-2">
+          <ImagesInput />
           <TextInput
             label="Nome"
             {...register("name", { required })}

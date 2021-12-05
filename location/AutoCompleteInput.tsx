@@ -46,7 +46,7 @@ export function AutoCompleteInput<type>({
 
   return (
     <div className="group">
-      <div className="p-2 pt-0 relative z-40 group">
+      <div className="pt-0 relative z-40 group">
         <input
           type="text"
           onFocus={handleFocus}

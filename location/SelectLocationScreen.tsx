@@ -41,13 +41,14 @@ function SelectLocationScreen() {
       <HeaderLayout>
         <div>Sua localização</div>
       </HeaderLayout>
-
-      <AutoCompleteInput
-        ketExtractor={keyExtractor}
-        getText={getText}
-        getOptions={getFeaturesByText}
-        onChange={handleChange}
-      />
+      <div className="p-2">
+        <AutoCompleteInput
+          ketExtractor={keyExtractor}
+          getText={getText}
+          getOptions={getFeaturesByText}
+          onChange={handleChange}
+        />
+      </div>
       <div className="flex flex-1 relative">
         <div className="flex-1 bg-green-300 flex relative z-0">
           <Map center={center} />

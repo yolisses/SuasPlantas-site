@@ -13,7 +13,7 @@ export function ListItem({ item }: ListItemDTO) {
     <Link href={"/plants/" + item.id}>
       <ul className="flex flex-row">
         <Image
-          src={someImage + "1"}
+          src={someImage}
           width={140}
           height={140}
           className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
