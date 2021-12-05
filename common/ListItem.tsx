@@ -14,8 +14,8 @@ export function ListItem({ item }: ListItemDTO) {
       <ul className="flex flex-row">
         <Image
           src={someImage + "1"}
-          width={150}
-          height={150}
+          width={140}
+          height={140}
           className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
         />
         <div className="mr-2" />
