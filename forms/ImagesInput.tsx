@@ -56,17 +56,19 @@ export function ImagesInput() {
             <div className="flex-shrink-0" key={key}>
               <div className="relative">
                 <FaTimes
-                  size={32}
-                  color="#a00"
+                  size={28}
+                  color="#000"
                   onClick={() => removeImage(key)}
                   className="bg-white absolute right-1 top-1 rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-100"
                 />
               </div>
-              <img
-                src={imageSrc}
-                alt=""
-                className="flex-shrink-0 rounded-lg object-cover h-48"
-              />
+              <div style={{ maxWidth: "12rem" }}>
+                <img
+                  src={imageSrc}
+                  alt=""
+                  className="flex-shrink-0 rounded-lg object-cover h-48"
+                />
+              </div>
             </div>
           ))}
         </div>
