@@ -1,75 +1,38 @@
-import { useEffect, useState } from "react";
-import { FaImage, FaTimes } from "react-icons/fa";
+import { useState } from "react";
+import { FaImage } from "react-icons/fa";
 import { isEmpty } from "../utils/isEmpty";
-interface image {
-  file: File;
-  imageSrc: string | ArrayBuffer | null;
-}
+import { SelectedImage } from "./SelectedImage";
 
-type imagesCollection = { [key: number]: image };
+type filesCollection = { [key: number]: File };
 
 export function ImagesInput() {
-  const [images, setImages] = useState<imagesCollection>({});
-  const [, setRefresh] = useState(0);
+  const [files, setFiles] = useState<filesCollection>({});
 
-  function addImages(files: File[]) {
-    setImages((old) => {
-      const newImages: imagesCollection = {};
-      files.forEach((file) => {
-        newImages[Math.random()] = { file, imageSrc: null };
-      });
-      return { ...old, ...newImages };
+  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const newFiles: filesCollection = {};
+    Array.from(e.target.files).map((file) => (newFiles[Math.random()] = file));
+    setFiles((old) => ({ ...old, ...newFiles }));
+  };
+
+  function handleRemoveFile(key: number) {
+    setFiles((old) => {
+      const newFiles = { ...old };
+      delete newFiles[key];
+      return newFiles;
     });
   }
 
-  function removeImage(key: number) {
-    delete images[key];
-    setRefresh(Math.random());
-  }
-
-  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const files = Array.from(e.target.files);
-    addImages(files);
-  };
-  console.log(images);
-
-  useEffect(() => {
-    if (images)
-      Object.entries(images).map(([key, { file }]) => {
-        console.log(key, file);
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const src = e.target!.result;
-          console.log(src);
-          images[key].imageSrc = src;
-          setRefresh(Math.random());
-        };
-        reader.readAsDataURL(file);
-      });
-  }, [images]);
-
   return (
     <div className="border-2 border-gray-300 rounded-xl overflow-hidden">
-      {!isEmpty(images) && (
+      {!isEmpty(files) && (
         <div className="flex flex-row overflow-x-auto gap-1 p-1">
-          {Object.entries(images).map(([key, { imageSrc }]) => (
-            <div className="flex-shrink-0" key={key}>
-              <div className="relative">
-                <FaTimes
-                  size={28}
-                  color="#000"
-                  onClick={() => removeImage(key)}
-                  className="bg-white absolute right-1 top-1 rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-100"
-                />
-              </div>
-              <div style={{ maxWidth: "12rem" }}>
-                <img
-                  src={imageSrc}
-                  alt=""
-                  className="flex-shrink-0 rounded-lg object-cover h-48"
-                />
-              </div>
-            </div>
+          {Object.entries(files).map(([key, file]) => (
+            <SelectedImage
+              id={key}
+              key={key}
+              file={file}
+              onRemoveClick={handleRemoveFile}
+            />
           ))}
         </div>
       )}
@@ -77,7 +40,7 @@ export function ImagesInput() {
         <div
           className={
             "bg-gray-300 px-2 flex items-center justify-center cursor-pointer " +
-            (!isEmpty(images) ? " flex-row gap-1 py-3" : "py-14")
+            (!isEmpty(files) ? " flex-row gap-1 py-3" : "py-14")
           }
         >
           <FaImage size={25} />
