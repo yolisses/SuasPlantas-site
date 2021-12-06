@@ -24,7 +24,12 @@ export function ImagesInput() {
 
   return (
     <div className="rounded-xl overflow-hidden">
-      <div className="grid grid-cols-3 sm:grid-cols-4 overflow-x-auto gap-1 p-1">
+      <div
+        className={
+          "overflow-x-auto gap-1 p-1 " +
+          (!isEmpty(files) ? " grid grid-cols-3 sm:grid-cols-4" : "")
+        }
+      >
         {!isEmpty(files) &&
           Object.entries(files).map(([key, file]) => (
             <SelectedImage
@@ -41,7 +46,6 @@ export function ImagesInput() {
               "bg-gray-300 px-2 flex items-center justify-center cursor-pointer rounded-lg " +
               (!isEmpty(files) ? " flex-row gap-1 py-3 h-full" : "py-14")
             }
-            style={{ gridAutoRows: "1fr" }}
           >
             <FaImage size={25} />
             <div>Adicionar imagens</div>
