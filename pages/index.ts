@@ -14,6 +14,9 @@ export const getStaticProps: GetStaticProps = async () => {
             id
             name
             description
+            price
+            swap
+            donate
           }
         }
       }

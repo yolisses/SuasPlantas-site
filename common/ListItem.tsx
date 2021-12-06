@@ -2,6 +2,7 @@ import Image from "next/image";
 import { someImage } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import Link from "next/link";
+import { AvailabilityInfo } from "../show/AvailabilityInfo";
 
 interface ListItemDTO {
   item: Plant;
@@ -19,8 +20,10 @@ export function ListItem({ item }: ListItemDTO) {
           className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
         />
         <div className="mr-2" />
-        <div className="flex-1 overflow-hidden">
+        <div className="flex flex-1 overflow-hidden">
           <div className="text-lg">{name}</div>
+          <AvailabilityInfo {...item} />
+          <div className="pb-2" />
           <div className="text-gray-700 text-sm">{description}</div>
         </div>
       </ul>
