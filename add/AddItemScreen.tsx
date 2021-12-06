@@ -61,6 +61,7 @@ export function AddScreen() {
             maxLength={128}
           />
           <TextInput
+            multiple
             optional
             maxLength={2048}
             label="Descrição"

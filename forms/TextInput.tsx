@@ -1,4 +1,4 @@
-import { FormEvent, forwardRef, HTMLProps } from "react";
+import { FormEvent, forwardRef, HTMLProps, useEffect, useRef } from "react";
 import { FieldBox } from "./FieldBox";
 
 interface TextInputProps extends HTMLProps<HTMLInputElement> {
@@ -7,18 +7,45 @@ interface TextInputProps extends HTMLProps<HTMLInputElement> {
   error?: string;
   optional?: boolean;
   leftChild?: JSX.Element;
+  multiple?: boolean;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (props, ref) => {
-    const { label, optional, leftChild, error, mask, onChange, ...rest } =
-      props;
+  (props, fRef) => {
+    const {
+      label,
+      optional,
+      leftChild,
+      error,
+      mask,
+      onChange,
+      multiple,
+      ...rest
+    } = props;
+
+    const ref = useRef();
 
     function handleBeforeInput(e: FormEvent<HTMLInputElement>) {
       if (mask && !mask.test((e as any).data)) {
         e.preventDefault();
       }
     }
+
+    function handleRef(v: any) {
+      ref.current = v;
+      if (fRef) (fRef as (v: any) => {})(v);
+    }
+
+    function resize() {
+      if (multiple) {
+        ref.current.style.height = "0px";
+        console.log(ref.current);
+        ref.current.style.height =
+          Math.max(ref.current.scrollHeight, 48) + "px";
+      }
+    }
+
+    useEffect(resize, []);
 
     return (
       <FieldBox
@@ -32,13 +59,24 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           }
         >
           {leftChild}
-          <input
-            ref={ref}
-            onBeforeInput={handleBeforeInput}
-            placeholder={optional ? "opcional" : undefined}
-            className=" self-stretch flex flex-1 outline-none"
-            {...rest}
-          />
+          {multiple ? (
+            <textarea
+              ref={handleRef}
+              onBeforeInput={handleBeforeInput}
+              onChange={resize}
+              placeholder={optional ? "opcional" : undefined}
+              className=" self-stretch flex flex-1 outline-none resize-none"
+              {...rest}
+            />
+          ) : (
+            <input
+              ref={handleRef}
+              onBeforeInput={handleBeforeInput}
+              placeholder={optional ? "opcional" : undefined}
+              className=" self-stretch flex flex-1 outline-none resize-none"
+              {...rest}
+            />
+          )}
         </div>
       </FieldBox>
     );
