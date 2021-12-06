@@ -1,7 +1,5 @@
-import axios from "axios";
 import gql from "graphql-tag";
-import { useEffect, useRef, useState } from "react";
-import { FaImage, FaImages, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import client from "../api/apollo-client";
 import { ImagesInput } from "../forms/ImagesInput";
 
