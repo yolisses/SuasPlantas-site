@@ -3,8 +3,8 @@ import { FaTimes } from "react-icons/fa";
 
 interface SelectedImageProps {
   id: any;
-  onRemoveClick: (id: any) => void;
   file: File;
+  onRemoveClick: (id: any) => void;
 }
 
 export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
@@ -14,14 +14,16 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
     onRemoveClick(id);
   }
 
-  useEffect(() => {
+  function getImageSrc() {
     const reader = new FileReader();
     reader.onload = function (e) {
       const src = e.target!.result;
       setSrc(src as string);
     };
     reader.readAsDataURL(file);
-  }, [file]);
+  }
+
+  useEffect(getImageSrc, [file]);
 
   return (
     <div className="flex-shrink-0">
