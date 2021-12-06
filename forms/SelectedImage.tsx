@@ -11,7 +11,6 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
   const [src, setSrc] = useState<string>();
 
   function handleRemoveClick() {
-    console.log("handle remove click");
     onRemoveClick(id);
   }
 
@@ -26,19 +25,28 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
 
   return (
     <div className="flex-shrink-0">
-      <div className="relative">
+      <div className="relative z-10">
         <FaTimes
-          size={28}
+          size={26}
           color="#000"
           onClick={handleRemoveClick}
           className="bg-white absolute right-1 top-1 rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-100"
         />
       </div>
-      <div style={{ maxWidth: "12rem" }}>
+      <div>
         <img
           alt=""
           src={src}
-          className="flex-shrink-0 rounded-lg object-cover h-48"
+          className="flex-shrink-0 rounded-lg"
+          style={{
+            width: "100%",
+            height: 0,
+            paddingBottom: "100%",
+            backgroundColor: "gray",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundImage: `url(${src})`,
+          }}
         />
       </div>
     </div>

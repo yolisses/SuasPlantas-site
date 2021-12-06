@@ -23,10 +23,10 @@ export function ImagesInput() {
   }
 
   return (
-    <div className="border-2 border-gray-300 rounded-xl overflow-hidden">
-      {!isEmpty(files) && (
-        <div className="flex flex-row overflow-x-auto gap-1 p-1">
-          {Object.entries(files).map(([key, file]) => (
+    <div className="rounded-xl overflow-hidden">
+      <div className="grid grid-cols-3 sm:grid-cols-4 overflow-x-auto gap-1 p-1">
+        {!isEmpty(files) &&
+          Object.entries(files).map(([key, file]) => (
             <SelectedImage
               id={key}
               key={key}
@@ -34,26 +34,27 @@ export function ImagesInput() {
               onRemoveClick={handleRemoveFile}
             />
           ))}
-        </div>
-      )}
-      <label>
-        <div
-          className={
-            "bg-gray-300 px-2 flex items-center justify-center cursor-pointer " +
-            (!isEmpty(files) ? " flex-row gap-1 py-3" : "py-14")
-          }
-        >
-          <FaImage size={25} />
-          <div>Adicionar imagens</div>
-        </div>
-        <input
-          type="file"
-          onChange={handleFileSelected}
-          accept=".jpg, .jpeg, .png, .webp"
-          hidden
-          multiple
-        ></input>
-      </label>
+
+        <label>
+          <div
+            className={
+              "bg-gray-300 px-2 flex items-center justify-center cursor-pointer rounded-lg " +
+              (!isEmpty(files) ? " flex-row gap-1 py-3 h-full" : "py-14")
+            }
+            style={{ gridAutoRows: "1fr" }}
+          >
+            <FaImage size={25} />
+            <div>Adicionar imagens</div>
+          </div>
+          <input
+            type="file"
+            onChange={handleFileSelected}
+            accept=".jpg, .jpeg, .png, .webp"
+            hidden
+            multiple
+          ></input>
+        </label>
+      </div>
     </div>
   );
 }
