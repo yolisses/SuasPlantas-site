@@ -23,19 +23,22 @@ export function AddScreen() {
 
   async function onSubmit(data: any) {
     data.tags = getTrueValuedKeys(data.tags);
+    data.amount = data.amount === "" ? null : parseInt(data.amount);
+    delete data.tags;
+    console.log(data);
     const mutation = gql`
-      mutation ($plant: Create) {
-        createPlant(plant: $plant) {
-          id
+      mutation ($input: CreatePlantInput!) {
+        createPlant(input: $input) {
+          plant {
+            id
+          }
         }
       }
     `;
     await client.mutate({
       mutation,
       variables: {
-        plant: {
-          name: "massaterana nya",
-        },
+        input: data,
       },
     });
   }
