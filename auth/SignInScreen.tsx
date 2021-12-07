@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import Image from "next/image";
 import { FacebookButton } from "./FacebookButton";
 import { GoogleButton } from "./GoogleButton";
+import Link from "next/link";
 
 export const SignInScreen = observer(() => {
   return (
@@ -17,7 +18,9 @@ export const SignInScreen = observer(() => {
       <div className="flex flex-1">
         <div className="h-4 bg-white absolute w-full top-32 rounded-t-full sm:hidden" />
         <div className="gap-3 px-4 sm:py-3">
-          <h1 className="text-4xl text-green-600">Plantes</h1>
+          <Link href="/">
+            <h1 className="text-4xl text-green-600 cursor-pointer">Plantes</h1>
+          </Link>
           <h2 className="text-2xl text-gray-700">Trocar mudas de plantas</h2>
         </div>
         <div className="flex flex-1 justify-center items-center">
