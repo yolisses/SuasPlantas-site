@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
   `;
-  const res = await client.query({ query });
+  const res = await client.query({ query, fetchPolicy: "no-cache" });
   return {
     props: { data: res.data.plants.edges.map((e) => e.node) },
     revalidate: 1,
