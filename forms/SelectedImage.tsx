@@ -32,7 +32,7 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
 
   useEffect(() => {
     getImageSrc();
-    if (!sending.sent) sending.send();
+    // if (!sending.sent) sending.send();
   }, [file]);
 
   return (
