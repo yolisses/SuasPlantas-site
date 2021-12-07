@@ -15,11 +15,11 @@ export function ImagesInput() {
   };
 
   function handleRemoveFile(key: number) {
-    // setFiles((old) => {
-    //   const newFiles = { ...old };
-    //   delete newFiles[key];
-    //   return newFiles;
-    // });
+    setFiles((old) => {
+      const newFiles = { ...old };
+      delete newFiles[key];
+      return newFiles;
+    });
   }
 
   return (
