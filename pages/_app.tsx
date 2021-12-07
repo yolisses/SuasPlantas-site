@@ -20,9 +20,19 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
             <title>Plantes - Trocar mudas de plantas</title>
             <IconTags />
-            <script src="https://accounts.google.com/gsi/client" async defer />
           </Head>
           <Component {...pageProps} />
+          {/* google */}
+          <script src="https://accounts.google.com/gsi/client" async defer />
+          {/* facebook */}
+          <div id="fb-root" />
+          <script
+            async
+            defer
+            crossOrigin="anonymous"
+            src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
+            nonce="WxEz4ZHy"
+          ></script>
         </div>
       </DataContextProvider>
     </ApolloProvider>

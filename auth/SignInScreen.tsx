@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import Image from "next/image";
+import { FacebookButton } from "./FacebookButton";
 import { GoogleButton } from "./GoogleButton";
 
 export const SignInScreen = observer(() => {
@@ -15,16 +16,20 @@ export const SignInScreen = observer(() => {
       </div>
       <div className="flex flex-1">
         <div className="h-4 bg-white absolute w-full top-32 rounded-t-full sm:hidden" />
-        <div className="gap-2 px-4 sm:py-3">
-          <h1 className="text-4xl text-green-700">Plantes</h1>
-          <h2 className="text-2xl text-green-700">Trocar mudas de plantas</h2>
+        <div className="gap-3 px-4 sm:py-3">
+          <h1 className="text-4xl text-green-600">Plantes</h1>
+          <h2 className="text-2xl text-gray-700">Trocar mudas de plantas</h2>
         </div>
         <div className="flex flex-1 justify-center items-center">
-          <div className="flex max-w-sm items-stretch gap-2">
+          <div className="flex max-w-sm items-center gap-2">
             <div>Escolha uma conta para continuar</div>
             <GoogleButton />
-            <GoogleButton />
-            <div className="pb-14"></div>
+            <FacebookButton />
+            <div className="pb-2 sm:pb-9"></div>
+            <div className="text-sm text-gray-600 px-6">
+              Ao selecionar uma conta, você concorda com nossos Termos de Uso,
+              Política de Privacidade e Política de Cookies.
+            </div>
           </div>
         </div>
         <div className="text-gray-600 p-3">É de graça, e sempre será</div>

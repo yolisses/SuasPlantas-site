@@ -18,7 +18,7 @@ export class GoogleButton extends Component {
       <div>
         <div
           id="g_id_onload"
-          data-auto_prompt="false"
+          // data-auto_prompt="false"
           data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
           data-callback="customCallback"
         />
@@ -31,7 +31,7 @@ export class GoogleButton extends Component {
           data-type="standard"
           data-callback="mozao"
           className="g_id_signin"
-          data-theme="filled_blue"
+          // data-theme="filled_blue"
           data-logo_alignment="left"
         />
       </div>
