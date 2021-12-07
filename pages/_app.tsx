@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
             <title>Plantes - Trocar mudas de plantas</title>
             <IconTags />
+            <script src="https://accounts.google.com/gsi/client" async defer />
           </Head>
           <Component {...pageProps} />
         </div>

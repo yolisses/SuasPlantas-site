@@ -13,7 +13,7 @@ export const SignInScreen = observer(() => {
         <div>Use uma conta para prosseguir</div>
         {JSON.stringify(auth.user)}
         <GoogleButton />
-        <GoogleOneTap />
+        {/* <GoogleOneTap /> */}
         <div className="h-14" />
       </div>
     </div>
