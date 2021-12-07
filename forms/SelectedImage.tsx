@@ -17,6 +17,7 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
   const [sending] = useState<Sending>(new Sending(file, refresh));
 
   function handleRemoveClick() {
+    sending.cancel();
     onRemoveClick(id);
   }
 

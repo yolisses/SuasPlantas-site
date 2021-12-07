@@ -14,6 +14,7 @@ export class Sending {
   sent: boolean = false;
   progress?: Progress;
   uploadLink?: string;
+  private abortController?: AbortController;
 
   constructor(public file: File, public onUpdate?: () => void) {}
 
@@ -42,9 +43,15 @@ export class Sending {
   };
 
   async uploadImage() {
+    this.abortController = new AbortController();
     await api.put(this.uploadLink!, this.file, {
       onUploadProgress: this.onUploadProgress,
+      signal: this.abortController.signal,
     });
+  }
+
+  cancel() {
+    if (this.abortController) this.abortController.abort();
   }
 
   get getLinkPreview() {

@@ -10,16 +10,16 @@ export function ImagesInput() {
 
   const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newFiles: filesCollection = {};
-    Array.from(e.target.files).map((file) => (newFiles[Math.random()] = file));
+    Array.from(e.target.files!).map((file) => (newFiles[Math.random()] = file));
     setFiles((old) => ({ ...old, ...newFiles }));
   };
 
   function handleRemoveFile(key: number) {
-    setFiles((old) => {
-      const newFiles = { ...old };
-      delete newFiles[key];
-      return newFiles;
-    });
+    // setFiles((old) => {
+    //   const newFiles = { ...old };
+    //   delete newFiles[key];
+    //   return newFiles;
+    // });
   }
 
   return (
