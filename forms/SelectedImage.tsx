@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { Sending } from "../upload/upload";
 
 interface SelectedImageProps {
   id: any;
@@ -9,6 +10,11 @@ interface SelectedImageProps {
 
 export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
   const [src, setSrc] = useState<string>();
+  const [_, setRefreshValue] = useState(0);
+  function refresh() {
+    setRefreshValue(Math.random());
+  }
+  const [sending] = useState<Sending>(new Sending(file, refresh));
 
   function handleRemoveClick() {
     onRemoveClick(id);
@@ -23,7 +29,10 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
     reader.readAsDataURL(file);
   }
 
-  useEffect(getImageSrc, [file]);
+  useEffect(() => {
+    getImageSrc();
+    if (!sending.sent) sending.send();
+  }, [file]);
 
   return (
     <div className="flex-shrink-0">
@@ -51,6 +60,9 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
           }}
         />
       </div>
+      <div className="overflow-hidden">{sending.getLinkPreview}</div>
+      <div>{sending.progressPercentage}</div>
+      <div>{"" + sending.sent}</div>
     </div>
   );
 }

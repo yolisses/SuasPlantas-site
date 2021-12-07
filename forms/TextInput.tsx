@@ -39,7 +39,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     function resize() {
       if (multiple) {
         ref.current.style.height = "0px";
-        console.log(ref.current);
         ref.current.style.height =
           Math.max(ref.current.scrollHeight, 48) + "px";
       }

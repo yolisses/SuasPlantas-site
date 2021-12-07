@@ -8,6 +8,7 @@ module.exports = {
       "github.com",
       "lh3.googleusercontent.com",
       "plantes.s3.sa-east-1.amazonaws.com",
+      "unsplash.it",
     ],
   },
 };
