@@ -23,7 +23,7 @@ export const SignInScreen = observer(() => {
           </Link>
           <h2 className="text-2xl text-gray-700">Trocar mudas de plantas</h2>
         </div>
-        <div className="flex flex-1 justify-center items-center">
+        <div className="flex flex-1 items-center pt-24 sm:pt-0 sm:justify-center">
           <div className="flex max-w-sm items-center gap-2">
             <div>Escolha uma conta para continuar</div>
             <GoogleButton />
