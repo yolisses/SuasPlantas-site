@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "https": "local-ssl-proxy --source 4000 --target 3000",
     "graphql:codegen": "graphql codegen",
     "graphql:coverage": "graphql coverage",
     "graphql:validate": "graphql validate"
