@@ -3,7 +3,7 @@ import { HeaderLayout } from "../common/HeaderLayout";
 import { EmphasisButton } from "../forms/EmphasisButton";
 import { ListItem } from "../common/ListItem";
 import { loremIpsum } from "../mock/loremIpsum";
-import { someImageU } from "../mock/someImage";
+import { someImage, someImageU } from "../mock/someImage";
 import { User } from "./User";
 import { GridItem } from "../common/GridItem";
 
@@ -19,7 +19,7 @@ export function UserScreen({ user }: UserScreenProps) {
         <div className="flex flex-row gap-2">
           <Image
             className="rounded-full bg-cover w-24 h-24 object-cover"
-            src={user.picture}
+            src={user.picture || someImage}
             height={100}
             width={100}
           />

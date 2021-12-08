@@ -8,7 +8,6 @@ import { TagsInfo } from "./TagsInfo";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
-import { someUser } from "../mock/someUser";
 import { User } from "../types/User";
 
 export function ShowScreen({ data }: { data: Plant }) {

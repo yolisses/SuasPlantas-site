@@ -15,7 +15,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <Image
           width={imgSize}
           height={imgSize}
-          src={user.picture}
+          src={user.picture || someImage}
           className="rounded-full"
         />
         <div>{user.name}</div>
