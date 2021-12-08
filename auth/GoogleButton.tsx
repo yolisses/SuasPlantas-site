@@ -9,22 +9,20 @@ export class GoogleButton extends Component {
   }
 
   async handleGoogleResponse(e) {
-    console.log("ONE TAP version 2 ", e);
     const mutation = gql`
       mutation ($accessToken: String) {
-        googleSignIn(accessToken: $accessToken) {
+        signIn(accessToken: $accessToken, provider: "google") {
           id
           name
         }
       }
     `;
-    const res = await client.mutate({
+    await client.mutate({
       mutation,
       variables: {
         accessToken: e.credential,
       },
     });
-    console.log(res);
   }
 
   componentDidMount() {

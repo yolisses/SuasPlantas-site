@@ -1,13 +1,28 @@
 import { Component } from "react";
 import Head from "next/head";
+import gql from "graphql-tag";
+import client from "../api/apollo-client";
 
 export class FacebookButton extends Component {
   constructor(props) {
     super(props);
   }
 
-  handleFacebookResponse(e) {
-    console.log("ONE TAP version 2 ", e);
+  async handleFacebookResponse(e) {
+    const mutation = gql`
+      mutation ($accessToken: String) {
+        signIn(accessToken: $accessToken, provider: "facebook") {
+          id
+          name
+        }
+      }
+    `;
+    await client.mutate({
+      mutation,
+      variables: {
+        accessToken: e.authResponse.accessToken,
+      },
+    });
   }
 
   componentDidMount() {
