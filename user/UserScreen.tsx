@@ -24,7 +24,7 @@ export function UserScreen({ user }: UserScreenProps) {
             width={100}
           />
           <div className="flex-1 flex-wrap flex overflow-ellipsis">
-            <div className="overflow-ellipsis">{user.name}</div>
+            <div className="overflow-ellipsis text-lg">{user.name}</div>
             <div>
               {/* <EmphasisButton text="Mensagem" />
               <EmphasisButton text="Seguir" /> */}
