@@ -40,14 +40,6 @@ export class FacebookButton extends Component {
   render() {
     return (
       <div>
-        <Head>
-          <script
-            async
-            defer
-            src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
-          ></script>
-          <script> if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
-        </Head>
         <div
           className="fb-login-button"
           data-width="300"
@@ -58,6 +50,13 @@ export class FacebookButton extends Component {
           data-use-continue-as="true"
           data-onlogin="handleFacebookResponse"
         />
+        <Head>
+          <script
+            async
+            src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
+          ></script>
+          <script> if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
+        </Head>
       </div>
     );
   }

@@ -38,9 +38,6 @@ export class GoogleButton extends Component {
   render() {
     return (
       <div>
-        <Head>
-          <script src="https://accounts.google.com/gsi/client" async defer />
-        </Head>
         <div
           id="g_id_onload"
           // data-auto_prompt="false"
@@ -59,6 +56,9 @@ export class GoogleButton extends Component {
           // data-theme="filled_blue"
           data-logo_alignment="left"
         />
+        <Head>
+          <script src="https://accounts.google.com/gsi/client" async />
+        </Head>
       </div>
     );
   }
