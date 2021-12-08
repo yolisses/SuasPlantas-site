@@ -22,7 +22,10 @@ const client = new ApolloClient({
         );
       }
     }),
-    new HttpLink({ uri: process.env.NEXT_PUBLIC_API_URL }),
+    new HttpLink({
+      uri: process.env.NEXT_PUBLIC_API_URL,
+      credentials: "include",
+    }),
   ]),
 });
 

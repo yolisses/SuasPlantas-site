@@ -1,13 +1,30 @@
 import { Component } from "react";
 import Head from "next/head";
+import gql from "graphql-tag";
+import client from "../api/apollo-client";
 
 export class GoogleButton extends Component {
   constructor(props) {
     super(props);
   }
 
-  handleGoogleResponse(e) {
+  async handleGoogleResponse(e) {
     console.log("ONE TAP version 2 ", e);
+    const mutation = gql`
+      mutation ($accessToken: String) {
+        googleSignIn(accessToken: $accessToken) {
+          id
+          name
+        }
+      }
+    `;
+    const res = await client.mutate({
+      mutation,
+      variables: {
+        accessToken: e.credential,
+      },
+    });
+    console.log(res);
   }
 
   componentDidMount() {
