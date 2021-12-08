@@ -16,7 +16,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
           width={imgSize}
           height={imgSize}
           src={user.picture || someImage}
-          className="rounded-full"
+          className="rounded-full bg-gray-300"
         />
         <div className="flex flex-col">
           <div className="font-semibold">{user.name}</div>
