@@ -1,8 +1,4 @@
 import { FormEvent, forwardRef, HTMLProps, useEffect, useRef } from "react";
-import {
-  FormEventHandler,
-  LegacyRef,
-} from "react-transition-group/node_modules/@types/react";
 import { FieldBox } from "./FieldBox";
 
 interface TextInputProps extends HTMLProps<HTMLInputElement> {
