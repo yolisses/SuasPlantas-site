@@ -8,7 +8,7 @@ import { TagsInfo } from "./TagsInfo";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
-import { User } from "../types/User";
+import { User } from "../user/User";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -55,7 +55,8 @@ export function ShowScreen({ data }: { data: Plant }) {
               )}
               {!!tags?.length && (
                 <Session label="Marcado como">
-                  <TagsInfo tags={tags} />
+                  <div></div>
+                  {/* <TagsInfo tags={tags} /> */}
                 </Session>
               )}
               <div>

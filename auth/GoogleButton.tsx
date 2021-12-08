@@ -3,12 +3,18 @@ import Head from "next/head";
 import gql from "graphql-tag";
 import client from "../api/apollo-client";
 
-export class GoogleButton extends Component {
-  constructor(props) {
-    super(props);
-  }
+interface GoogleResponse {
+  credential: String;
+}
 
-  async handleGoogleResponse(e) {
+declare global {
+  interface Window {
+    handleGoogleResponse: (e: GoogleResponse) => void;
+  }
+}
+
+export class GoogleButton extends Component {
+  async handleGoogleResponse(e: GoogleResponse) {
     const mutation = gql`
       mutation ($accessToken: String) {
         signIn(accessToken: $accessToken, provider: "google") {

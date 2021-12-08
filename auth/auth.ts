@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import { User } from "../types/User";
+import { User } from "../user/User";
 
 export class Auth {
   user?: User;

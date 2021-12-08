@@ -3,12 +3,20 @@ import Head from "next/head";
 import gql from "graphql-tag";
 import client from "../api/apollo-client";
 
-export class FacebookButton extends Component {
-  constructor(props) {
-    super(props);
-  }
+interface FacebookResponse {
+  authResponse: {
+    accessToken: String;
+  };
+}
 
-  async handleFacebookResponse(e) {
+declare global {
+  interface Window {
+    handleFacebookResponse: (e: FacebookResponse) => void;
+  }
+}
+
+export class FacebookButton extends Component {
+  async handleFacebookResponse(e: FacebookResponse) {
     const mutation = gql`
       mutation ($accessToken: String) {
         signIn(accessToken: $accessToken, provider: "facebook") {

@@ -21,7 +21,7 @@ export function GridItem({ item }: GridItemDTO) {
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         <div>{item.name}</div>
-        <AvailabilityInfo {...{ swap, donate, price }} className="text-sm" />
+        <AvailabilityInfo {...{ swap, donate, price }} />
       </div>
     </Link>
   );

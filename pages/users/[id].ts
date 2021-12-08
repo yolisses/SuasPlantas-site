@@ -1,7 +1,6 @@
 import gql from "graphql-tag";
 import { GetStaticPaths, GetStaticProps } from "next";
 import client from "../../api/apollo-client";
-import { someUser } from "../../mock/someUser";
 import { UserScreen } from "../../user/UserScreen";
 
 export default UserScreen;

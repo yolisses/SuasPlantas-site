@@ -1,4 +1,8 @@
 import { FormEvent, forwardRef, HTMLProps, useEffect, useRef } from "react";
+import {
+  FormEventHandler,
+  LegacyRef,
+} from "react-transition-group/node_modules/@types/react";
 import { FieldBox } from "./FieldBox";
 
 interface TextInputProps extends HTMLProps<HTMLInputElement> {
@@ -23,7 +27,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       ...rest
     } = props;
 
-    const ref = useRef();
+    const ref = useRef<HTMLInputElement>();
 
     function handleBeforeInput(e: FormEvent<HTMLInputElement>) {
       if (mask && !mask.test((e as any).data)) {
@@ -38,9 +42,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     function resize() {
       if (multiple) {
-        ref.current.style.height = "0px";
-        ref.current.style.height =
-          Math.max(ref.current.scrollHeight, 48) + "px";
+        ref.current!.style!.height = "0px";
+        ref.current!.style!.height =
+          Math.max(ref.current!.scrollHeight, 48) + "px";
       }
     }
 
@@ -60,7 +64,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {leftChild}
           {multiple ? (
             <textarea
+              // @ts-ignore
               ref={handleRef}
+              // @ts-ignore
               onBeforeInput={handleBeforeInput}
               onChange={resize}
               placeholder={optional ? "opcional" : undefined}
