@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { getUniqueValues } from "../utils/getUniqueValues";
 import { SearchButton } from "./SearchButton";
 
 interface SearchButtonsGroupProps {
   label: string;
   options: string[];
-  button: ReactElement;
+  button: ReactNode;
 }
 
 export function SearchButtonsGroup({

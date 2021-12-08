@@ -4,11 +4,11 @@ import { someImage } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
 import { Session } from "./Session";
-import { TagsInfo } from "./TagsInfo";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
 import { User } from "../user/User";
+import { loremIpsum } from "../mock/loremIpsum";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -45,9 +45,11 @@ export function ShowScreen({ data }: { data: Plant }) {
             </div>
           </div>
           <div className="flex-1">
-            <div className="p-2 gap-2 flex">
-              <h1 className="text-xl">{name}</h1>
-              <AvailabilityInfo {...{ swap, donate, price }} />
+            <div className="p-2 gap-4 flex">
+              <Session>
+                <h1 className="text-2xl">{name}</h1>
+                <AvailabilityInfo {...{ swap, donate, price }} />
+              </Session>
               {!!description?.length && (
                 <Session label="Descrição">
                   <div>{description}</div>
@@ -59,9 +61,7 @@ export function ShowScreen({ data }: { data: Plant }) {
                   {/* <TagsInfo tags={tags} /> */}
                 </Session>
               )}
-              <div>
-                <UserLink user={owner as User} />
-              </div>
+              <UserLink user={owner as User} />
               <div>
                 Última edição <time>{updatedAt.toLocaleDateString()}</time>
               </div>
