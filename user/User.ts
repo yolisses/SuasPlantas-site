@@ -6,6 +6,7 @@ export interface User {
   description: string;
   plantSet: Plant[];
   picture: string;
+  dateJoined: string;
 }
 
 export type UserId = number;
