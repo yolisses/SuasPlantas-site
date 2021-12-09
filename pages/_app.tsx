@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Head>
             <meta
               name="google-site-verification"
-              content="XipRkG04zmk3gcBYI2q_HzJSU2F6BaT6jbz5N57ilZ8"
+              content="UpWJFOBiLy8KJb465Uj_uJnMo7lz8rLwmu-LQl_Sk5U"
             />
             <title>Plantes - Trocar mudas de plantas</title>
             <IconTags />
