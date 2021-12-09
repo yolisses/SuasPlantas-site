@@ -1,23 +1,22 @@
 import { gql } from "@apollo/client";
-import client from "../api/apollo-client";
-
+import { api } from "../api/api";
 export async function signIn(
   provider: "google" | "facebook",
   accessToken: string
 ) {
-  const mutation = gql`
-    mutation ($provider: String, $accessToken: String) {
-      signIn(provider: $provider, accessToken: $accessToken) {
+  const mutation = `
+    mutation {
+      signIn(provider: "${provider}", accessToken: "${accessToken}") {
         id
         name
       }
     }
   `;
-  await client.mutate({
-    mutation,
-    variables: {
-      provider,
-      accessToken,
-    },
-  });
+
+  console.error(mutation);
+  try {
+    api.post("/", { query: mutation });
+  } catch (err) {
+    console.error(err);
+  }
 }
