@@ -8,7 +8,6 @@ import { onError } from "@apollo/client/link/error";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  credentials: "include",
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (networkError) {
