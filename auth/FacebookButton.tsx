@@ -1,11 +1,10 @@
 import { Component } from "react";
 import Head from "next/head";
-import gql from "graphql-tag";
-import client from "../api/apollo-client";
+import { signIn } from "./signIn";
 
 interface FacebookResponse {
   authResponse: {
-    accessToken: String;
+    accessToken: string;
   };
 }
 
@@ -17,20 +16,7 @@ declare global {
 
 export class FacebookButton extends Component {
   async handleFacebookResponse(e: FacebookResponse) {
-    const mutation = gql`
-      mutation ($accessToken: String) {
-        signIn(accessToken: $accessToken, provider: "facebook") {
-          id
-          name
-        }
-      }
-    `;
-    await client.mutate({
-      mutation,
-      variables: {
-        accessToken: e.authResponse.accessToken,
-      },
-    });
+    signIn("facebook", e.authResponse.accessToken);
   }
 
   componentDidMount() {

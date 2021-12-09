@@ -1,10 +1,9 @@
 import { Component } from "react";
 import Head from "next/head";
-import gql from "graphql-tag";
-import client from "../api/apollo-client";
+import { signIn } from "./signIn";
 
 interface GoogleResponse {
-  credential: String;
+  credential: string;
 }
 
 declare global {
@@ -15,20 +14,7 @@ declare global {
 
 export class GoogleButton extends Component {
   async handleGoogleResponse(e: GoogleResponse) {
-    const mutation = gql`
-      mutation ($accessToken: String) {
-        signIn(accessToken: $accessToken, provider: "google") {
-          id
-          name
-        }
-      }
-    `;
-    await client.mutate({
-      mutation,
-      variables: {
-        accessToken: e.credential,
-      },
-    });
+    signIn("google", e.credential);
   }
 
   componentDidMount() {
