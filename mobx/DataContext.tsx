@@ -2,7 +2,7 @@ import { createContext, ReactChild, useContext } from "react";
 import { auth } from "../auth/auth";
 import { searches } from "../search/searches";
 
-const stores = { auth, searches };
+export const stores = { auth, searches };
 
 const DataContext = createContext(stores);
 
