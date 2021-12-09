@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 interface AvailabilityInfoProps {
   price: string | null;
   swap: boolean;
@@ -30,14 +32,14 @@ export function AvailabilityInfo({
               : word[key as string];
 
           return (
-            <>
+            <Fragment key={key}>
               <strong className={"font-semibold"}>{text}</strong>
               {index < array.length - 1 && (
                 <span className="text-gray-800">
                   {index === array.length - 2 ? " ou " : ", "}
                 </span>
               )}
-            </>
+            </Fragment>
           );
         })}
     </div>
