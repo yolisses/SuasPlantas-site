@@ -1,4 +1,3 @@
-import { gql } from "@apollo/client";
 import { api } from "../api/api";
 export async function signIn(
   provider: "google" | "facebook",
@@ -15,7 +14,7 @@ export async function signIn(
 
   console.error(mutation);
   try {
-    api.post("/", { query: mutation });
+    api.post("/", { query: mutation }, { withCredentials: true });
   } catch (err) {
     console.error(err);
   }
