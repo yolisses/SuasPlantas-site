@@ -20,4 +20,5 @@ export async function signIn(
       accessToken,
     },
   });
+  await client.refetchQueries({ include: ["me"] });
 }
