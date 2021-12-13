@@ -2,11 +2,11 @@ import "reflect-metadata";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { IconTags } from "../common/IconTags";
 import { DataContextProvider } from "../mobx/DataContext";
 import { observer } from "mobx-react-lite";
 import { ApolloProvider } from "@apollo/client";
 import client from "../api/apollo-client";
+import { FaviconTags } from "../common/FaviconTags";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               content="XipRkG04zmk3gcBYI2q_HzJSU2F6BaT6jbz5N57ilZ8"
             />
             <title>SuasPlantas - Trocar mudas de plantas</title>
-            <IconTags />
+            <FaviconTags />
           </Head>
           <Component {...pageProps} />
         </div>

@@ -5,10 +5,10 @@ import { HomeScreen } from "../home/HomeScreen";
 export default HomeScreen;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await api.get('plants')
-  console.log(res.data)
+  // const res = await api.get('plants')
+  // console.log(res.data)
   return {
-    props: { data: res.data.content },
+    props: { data: [] },
     revalidate: 1,
   };
 };
