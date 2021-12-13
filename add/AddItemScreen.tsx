@@ -10,9 +10,8 @@ import { allowNumbersRegex } from "../forms/allowNumbersRegex";
 import { Header } from "../common/Header";
 import { getTrueValuedKeys } from "../utils/getTrueValuedKeys";
 import { useState } from "react";
-import gql from "graphql-tag";
-import client from "../api/apollo-client";
 import { ImagesInput } from "../forms/ImagesInput";
+import { api } from "../api/api";
 
 export function AddScreen() {
   const {
@@ -25,22 +24,7 @@ export function AddScreen() {
     data.tags = getTrueValuedKeys(data.tags);
     data.amount = data.amount === "" ? null : parseInt(data.amount);
     delete data.tags;
-    console.log(data);
-    const mutation = gql`
-      mutation ($input: CreatePlantInput!) {
-        createPlant(input: $input) {
-          plant {
-            id
-          }
-        }
-      }
-    `;
-    await client.mutate({
-      mutation,
-      variables: {
-        input: data,
-      },
-    });
+    await api.post("plants", data);
   }
 
   const required = { value: true, message: "Esse campo é obrigatório" };
