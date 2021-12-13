@@ -21,7 +21,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <div className="flex flex-col">
           <div className="font-semibold">{user.name}</div>
           <div className="text-gray-500 text-sm">
-            Entrou no Plantes em{" "}
+            Entrou no SuasPlantas em{" "}
             <time>{new Date(user.dateJoined).getFullYear()}</time>
           </div>
         </div>

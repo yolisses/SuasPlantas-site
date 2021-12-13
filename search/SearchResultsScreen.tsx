@@ -14,7 +14,7 @@ export function SearchResultsScreen({ data }: SearchResultsScreenProps) {
   return (
     <div>
       <Head>
-        <title>Plantes: {query.q}</title>
+        <title>SuasPlantas: {query.q}</title>
       </Head>
       <Header searchQuery={query.q as string} />
       <div className="p-1 flex flex-col gap-1">

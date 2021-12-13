@@ -19,7 +19,9 @@ export const SignInScreen = observer(() => {
         <div className="h-4 bg-white absolute w-full top-32 rounded-t-full sm:hidden" />
         <div className="gap-3 px-4 sm:py-3 flex items-start">
           <Link href="/">
-            <h1 className="text-4xl text-green-600 cursor-pointer">Plantes</h1>
+            <h1 className="text-4xl text-green-600 cursor-pointer">
+              SuasPlantas
+            </h1>
           </Link>
           <h2 className="text-2xl text-gray-700">Trocar mudas de plantas</h2>
         </div>

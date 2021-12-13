@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               name="google-site-verification"
               content="XipRkG04zmk3gcBYI2q_HzJSU2F6BaT6jbz5N57ilZ8"
             />
-            <title>Plantes - Trocar mudas de plantas</title>
+            <title>SuasPlantas - Trocar mudas de plantas</title>
             <IconTags />
           </Head>
           <Component {...pageProps} />

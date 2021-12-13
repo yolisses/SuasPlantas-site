@@ -23,7 +23,7 @@ export function Header({ searchQuery }: HeaderProps) {
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
       <div className="mr-auto">
         <Link href="/">
-          <div className="text-lg cursor-pointer">Plantes</div>
+          <div className="text-lg cursor-pointer">SuasPlantas</div>
         </Link>
       </div>
       <SearchTop query={searchQuery} />
