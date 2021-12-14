@@ -11,7 +11,7 @@ export const SearchScreen = observer(() => {
   const [query, setQuery] = useState<string>("");
 
   return (
-    <div className="px-2 flex gap-2">
+    <div className="flex gap-2">
       <HeaderLayout>
         <div className="shadow-md rounded-full w-full h-10 border-2 border-gray-200 px-3 flex flex-row items-center">
           <input
@@ -33,7 +33,9 @@ export const SearchScreen = observer(() => {
           />
         </Link>
       </HeaderLayout>
-      <SearchHistoryButtons />
+      <div className="p-2">
+        <SearchHistoryButtons />
+      </div>
     </div>
   );
 });
