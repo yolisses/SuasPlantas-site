@@ -11,7 +11,7 @@ interface HomeScreenProps {
 
 export const HomeScreen = observer(({ data }: HomeScreenProps) => {
   return (
-    <div className="w-full">
+    <>
       <Header />
       <SelectLocationLink />
       <div className="p-1 flex flex-col gap-1">
@@ -22,6 +22,6 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
       <div className=" z-20 fixed bottom-6 right-6">
         <AddButton />
       </div>
-    </div>
+    </>
   );
 });

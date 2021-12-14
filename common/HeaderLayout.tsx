@@ -16,7 +16,7 @@ export function HeaderLayout({
     <>
       <div
         className={
-          "absolute flex flex-row h-12 items-center w-full gap-2 px-2 z-50 bg-white " +
+          "fixed flex flex-row h-12 items-center w-full gap-2 px-2 z-50 bg-white " +
           (className || "")
         }
       >

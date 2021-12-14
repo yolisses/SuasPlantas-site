@@ -9,7 +9,7 @@ import { FaviconTags } from "../common/FaviconTags";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <DataContextProvider>
-      <div className="flex flex-col flex-1 flex-wrap overflow-x-hidden">
+      <>
         <Head>
           <meta
             name="google-site-verification"
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
-      </div>
+      </>
     </DataContextProvider>
   );
 }

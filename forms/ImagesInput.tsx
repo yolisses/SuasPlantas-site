@@ -26,7 +26,7 @@ export function ImagesInput() {
     <div className="rounded-xl overflow-hidden">
       <div
         className={
-          "overflow-x-auto gap-1 p-1 " +
+          "overflow-x-auto gap-1 " +
           (!isEmpty(files) ? " grid grid-cols-3 sm:grid-cols-4" : "")
         }
       >

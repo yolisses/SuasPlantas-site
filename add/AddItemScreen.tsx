@@ -36,10 +36,10 @@ export function AddScreen() {
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="flex flex-col items-center">
-        <div className="flex flex-col flex-1 items-stretch p-2 max-w-lg gap-2">
+      <div className="flex flex-col p-2 items-center">
+        <div className="flex flex-col items-stretch max-w-lg gap-2">
           <ImagesInput />
           <TextInput
             label="Nome"
@@ -110,6 +110,6 @@ export function AddScreen() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
