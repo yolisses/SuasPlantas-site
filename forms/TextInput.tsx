@@ -66,7 +66,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               onBeforeInput={handleBeforeInput}
               onChange={resize}
               placeholder={optional ? "opcional" : undefined}
-              className=" self-stretch flex flex-1 outline-none resize-none"
+              className=" self-stretch flex flex-1 outline-none resize-none bg-transparent"
               {...rest}
             />
           ) : (
@@ -74,7 +74,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               ref={handleRef}
               onBeforeInput={handleBeforeInput}
               placeholder={optional ? "opcional" : undefined}
-              className=" self-stretch flex flex-1 outline-none resize-none"
+              className=" self-stretch flex flex-1 outline-none resize-none bg-transparent"
               {...rest}
             />
           )}

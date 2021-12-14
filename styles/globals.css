@@ -4,9 +4,16 @@
 
 html,
 body {
+  display: flex;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  flex: 1;
 }
+
+input {
+  width: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
