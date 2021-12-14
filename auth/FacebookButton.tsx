@@ -19,20 +19,36 @@ export class FacebookButton extends Component {
     signIn("facebook", e.authResponse.accessToken);
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { loader: "start", script: "" };
+  }
+
   componentDidMount() {
     window.handleFacebookResponse = this.handleFacebookResponse;
+    this.setState({ loader: "did mount" });
+  }
+
+  componentDidUpdate() {
+    if (this.state.loader === "did mount")
+      this.setState({
+        loader: "done",
+        script: (
+          <>
+            <script
+              async
+              src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
+            ></script>
+            <script>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
+          </>
+        ),
+      });
   }
 
   render() {
     return (
       <div>
-        <Head>
-          <script
-            async
-            src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
-          ></script>
-          <script async>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
-        </Head>
+        <Head>{this.state.script}</Head>
         <div
           className="fb-login-button"
           data-width="240"
