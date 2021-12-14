@@ -23,7 +23,7 @@ export const SearchScreen = observer(() => {
           />
           <FaTimesCircle size={18} color="#aaa" />
         </div>
-        <Link href={"/s?q=" + query}>
+        <Link href={"/search/" + query}>
           <FaSearch
             size={20}
             color="gray"
