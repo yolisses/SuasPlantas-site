@@ -14,12 +14,12 @@ declare global {
   }
 }
 
-export class FacebookButton extends Component {
+export class FacebookButton extends Component<any, any> {
   async handleFacebookResponse(e: FacebookResponse) {
     signIn("facebook", e.authResponse.accessToken);
   }
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { loader: "start", script: "" };
   }
