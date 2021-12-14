@@ -14,6 +14,7 @@ declare global {
 
 export class GoogleButton extends Component {
   async handleGoogleResponse(e: GoogleResponse) {
+    console.log(e.credential);
     signIn("google", e.credential);
   }
 

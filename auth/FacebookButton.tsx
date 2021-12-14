@@ -16,6 +16,7 @@ declare global {
 
 export class FacebookButton extends Component<any, any> {
   async handleFacebookResponse(e: FacebookResponse) {
+    console.log(e.authResponse.accessToken);
     signIn("facebook", e.authResponse.accessToken);
   }
 
