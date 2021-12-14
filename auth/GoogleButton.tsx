@@ -35,7 +35,7 @@ export class GoogleButton extends Component {
         />
 
         <div
-          data-width="300"
+          data-width="240"
           data-shape="pill"
           data-size="large"
           data-text="signin"
