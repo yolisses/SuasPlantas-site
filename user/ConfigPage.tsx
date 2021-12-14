@@ -1,21 +1,7 @@
-import { gql, useMutation } from "@apollo/client";
 import { Header } from "../common/Header";
 
 export function ConfigPage() {
-  const [logOut] = useMutation(
-    gql`
-      mutation {
-        logOut
-      }
-    `,
-    {
-      refetchQueries: ["me"],
-    }
-  );
-
-  function handleClick() {
-    logOut();
-  }
+  function handleClick() {}
 
   return (
     <div>

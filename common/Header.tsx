@@ -1,4 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import { MeButton } from "../user/MeButton";
 import { HeaderLayout } from "./HeaderLayout";
@@ -10,16 +9,6 @@ interface HeaderProps {
 }
 
 export function Header({ searchQuery }: HeaderProps) {
-  const ME = gql`
-    {
-      me {
-        id
-      }
-    }
-  `;
-
-  const { data } = useQuery(ME);
-
   return (
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
       <div className="mr-auto">
@@ -34,7 +23,7 @@ export function Header({ searchQuery }: HeaderProps) {
       </div>
       <SearchTop query={searchQuery} />
       <div className="ml-auto flex justify-center">
-        {data?.me ? (
+        {true ? (
           <MeButton />
         ) : (
           <Link href="/sign-in">
