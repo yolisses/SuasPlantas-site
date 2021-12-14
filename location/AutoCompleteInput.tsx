@@ -45,7 +45,7 @@ export function AutoCompleteInput<type>({
   }
 
   return (
-    <div className="group">
+    <div className="group relative">
       <div className="pt-0 relative z-40 group">
         <input
           type="text"
