@@ -14,9 +14,9 @@ export function Header({ searchQuery }: HeaderProps) {
       <div className="mr-auto">
         <Link href="/">
           <div className="flex flex-row items-center gap-1">
-            <div className="self-stretch hidden sm:inline-flex flex justify-center">
+            {/* <div className="self-stretch hidden sm:inline-flex flex justify-center">
               <Image src="/icon-white.png  " width={20} height={20} />
-            </div>
+            </div> */}
             <div className="text-lg cursor-pointer">SuasPlantas</div>
           </div>
         </Link>
