@@ -8,10 +8,11 @@ import { FaviconTags } from "../common/FaviconTags";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const googleAnalyticsScript = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BCW0VD90L1');`;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-215426535-1');`;
 
   return (
     <DataContextProvider>
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           {/* Global site tag (gtag.js) - Google Analytics */}
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-BCW0VD90L1"
+            src="https://www.googletagmanager.com/gtag/js?id=UA-215426535-1"
           />
           <script>{googleAnalyticsScript}</script>
           <title>SuasPlantas - Trocar mudas de plantas</title>
