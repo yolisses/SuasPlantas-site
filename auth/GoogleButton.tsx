@@ -34,7 +34,6 @@ export class GoogleButton extends Component {
           data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
           data-callback="handleGoogleResponse"
         />
-
         <div
           data-width="350"
           data-shape="pill"
