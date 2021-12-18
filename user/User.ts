@@ -6,7 +6,7 @@ export interface User {
   lastName: string;
   firstName: string;
   description: string;
-  plantSet: Plant[];
+  plants: Plant[];
   image: string;
   createdAt: string;
   updatedAt: string;
