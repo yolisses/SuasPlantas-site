@@ -1,18 +1,14 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
+import { api } from "../../api/api";
 import { ShowScreen } from "../../show/ShowScreen";
 
 export default ShowScreen;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  return {
-    props: { data: {} },
-    revalidate: 1,
-  };
-};
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const res = await api.get("plants/" + params!.id);
+  console.error("aqui", res);
 
-export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [],
-    fallback: "blocking",
+    props: { data: res.data },
   };
 };

@@ -7,8 +7,9 @@ export interface User {
   firstName: string;
   description: string;
   plantSet: Plant[];
-  picture: string;
-  dateJoined: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type UserId = number;

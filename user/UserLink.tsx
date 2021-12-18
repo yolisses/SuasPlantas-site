@@ -15,14 +15,14 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <Image
           width={imgSize}
           height={imgSize}
-          src={user.picture || someImage}
+          src={user.image || someImage}
           className="rounded-full bg-gray-300"
         />
         <div className="flex flex-col">
           <div className="font-semibold">{user.name}</div>
           <div className="text-gray-500 text-sm">
             Entrou no SuasPlantas em{" "}
-            <time>{new Date(user.dateJoined).getFullYear()}</time>
+            <time>{new Date(user.createdAt).getFullYear()}</time>
           </div>
         </div>
       </div>

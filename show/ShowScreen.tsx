@@ -19,6 +19,7 @@ export function ShowScreen({ data }: { data: Plant }) {
     owner,
     price,
     tags,
+    images,
     updatedAt: updatedAtString,
   } = data;
 
@@ -37,11 +38,14 @@ export function ShowScreen({ data }: { data: Plant }) {
           <div className="flex-1 sm:sticky top-0">
             <div className="sticky top-0 flex items-center">
               <Image
-                src={someImage}
+                src={
+                  "https://plantei-dev.s3.sa-east-1.amazonaws.com/compressed/02331924-3063-4d3c-87a7-b1206da19272.webp"
+                }
                 width={600}
                 height={700}
                 className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
               />
+              {JSON.stringify(data.images[0].uri)}
             </div>
           </div>
           <div className="flex-1">
@@ -61,7 +65,7 @@ export function ShowScreen({ data }: { data: Plant }) {
                   {/* <TagsInfo tags={tags} /> */}
                 </Session>
               )}
-              <UserLink user={owner as User} />
+              <UserLink user={data.user} />
               <div>
                 Última edição <time>{updatedAt.toLocaleDateString()}</time>
               </div>

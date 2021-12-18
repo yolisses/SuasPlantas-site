@@ -10,6 +10,16 @@ module.exports = {
       "plantes.s3.sa-east-1.amazonaws.com",
       "unsplash.it",
       "platform-lookaside.fbsbx.com",
+      "plantei-dev.s3.sa-east-1.amazonaws.com",
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/plants",
+        destination: "/",
+        permanent: true,
+      },
+    ];
   },
 };

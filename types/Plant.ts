@@ -1,4 +1,5 @@
 import { User } from "../user/User";
+import { Image } from "./Image";
 
 export interface Plant {
   id: PlantId;
@@ -11,7 +12,8 @@ export interface Plant {
   tags: string[];
   createdAt: string;
   updatedAt: string;
-  owner?: User;
+  user: User;
+  images: Image[];
 }
 
 export type PlantId = number;
