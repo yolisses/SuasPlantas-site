@@ -1,1 +1,2 @@
-export const devIndicator = process.env.NODE_ENV !== "production" ? "DEV " : "";
+export const devIndicator =
+  process.env.NEXT_PUBLIC_ENV === "development" ? "DEV " : "";
