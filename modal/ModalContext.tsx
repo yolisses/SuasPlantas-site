@@ -1,7 +1,17 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Modal } from "../common/Modal";
 
-const ModalContext = createContext({});
+interface IModalContext {
+  modal: ReactNode;
+  setModal: (modal?: ReactNode) => void;
+}
+
+const defaultState: IModalContext = {
+  modal: undefined,
+  setModal: () => {},
+};
+
+const ModalContext = createContext<IModalContext>(defaultState);
 
 export interface ModalContextProviderProps {
   children: ReactNode;
@@ -19,5 +29,5 @@ export function ModalContextProvider({ children }: ModalContextProviderProps) {
 }
 
 export function useModal() {
-  return useContext(ModalContext);
+  return useContext<IModalContext>(ModalContext);
 }
