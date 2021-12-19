@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { HeaderLayout } from "../common/HeaderLayout";
-import { EmphasisButton } from "../forms/EmphasisButton";
-import { ListItem } from "../common/ListItem";
 import { loremIpsum } from "../mock/loremIpsum";
-import { someImage, someImageU } from "../mock/someImage";
+import { someImage } from "../mock/someImage";
 import { User } from "./User";
 import { GridItem } from "../common/GridItem";
+import { SignOutButton } from "./SignOutButton";
 
 interface UserScreenProps {
   user: User;
@@ -16,6 +15,7 @@ export function UserScreen({ user }: UserScreenProps) {
     <div className="flex">
       <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout>
       <div className="p-2">
+        <SignOutButton />
         <div className="flex flex-row gap-2">
           <Image
             className="rounded-full bg-cover w-24 h-24 object-cover"

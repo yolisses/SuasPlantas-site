@@ -5,12 +5,17 @@ import { FaRegUser } from "react-icons/fa";
 import { useModal } from "../modal/ModalContext";
 import { SignInBox } from "../auth/SignInBox";
 
+import Cookies from 'js-cookie';
+
 interface HeaderProps {
   searchQuery?: string;
 }
 
 export function Header({ searchQuery }: HeaderProps) {
   const { setModal } = useModal();
+
+  const authenticated = (Cookies.get('authenticated')) === "true"
+  console.log(authenticated)
 
   return (
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
@@ -26,7 +31,7 @@ export function Header({ searchQuery }: HeaderProps) {
       </div>
       {/* <SearchTop query={searchQuery} /> */}
       <div className="ml-auto flex justify-center">
-        {false ? (
+        {authenticated ? (
           <MeButton />
         ) : (
           // <Link href="/sign-in">

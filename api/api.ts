@@ -5,13 +5,10 @@ export const api = axios.create({
 });
 
 api.interceptors.response.use(undefined, (error) => {
-  console.error("macaxeira");
-  console.error(Object.keys(error));
-  console.error(Object.keys(error.response));
   throw new Error(
     JSON.stringify({
       status: error.response.status,
-      message: error.response,
+      message: error.response.data,
     })
   );
 });

@@ -5,7 +5,7 @@ import Link from "next/link";
 export function MeButton() {
   const size = 36;
   return (
-    <Link href="config">
+    <Link href="users/me">
       <Image
         width={size}
         height={size}
