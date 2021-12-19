@@ -6,6 +6,7 @@ import { Session } from "./Session";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
+import { devIndicator } from "../utils/devIndicator";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -24,6 +25,7 @@ export function ShowScreen({ data }: { data: Plant }) {
     <div>
       <Head>
         <title>
+          {devIndicator}
           {name} - {availabilitiesToString({ price, swap, donate })}{" "}
         </title>
       </Head>

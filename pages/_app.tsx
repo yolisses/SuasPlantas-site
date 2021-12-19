@@ -6,6 +6,7 @@ import { DataContextProvider } from "../mobx/DataContext";
 import { observer } from "mobx-react-lite";
 import { FaviconTags } from "../common/FaviconTags";
 import { ModalContextProvider } from "../modal/ModalContext";
+import { devIndicator } from "../utils/devIndicator";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const googleAnalyticsScript = `
@@ -30,10 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             src="https://www.googletagmanager.com/gtag/js?id=UA-215426535-1"
           />
           <script>{googleAnalyticsScript}</script>
-          <title>
-            {process.env.NODE_ENV !== "production" ? "DEV " : ""}SuasPlantas -
-            Trocar mudas de plantas
-          </title>
+          <title>{devIndicator}SuasPlantas - Trocar mudas de plantas</title>
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
