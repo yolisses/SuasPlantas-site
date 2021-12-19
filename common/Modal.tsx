@@ -23,7 +23,7 @@ export function Modal({
     setModal(undefined);
   }
 
-  function stopPropagation(e) {
+  function stopPropagation(e: any) {
     e.stopPropagation();
   }
 
