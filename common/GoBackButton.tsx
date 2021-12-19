@@ -11,6 +11,11 @@ export function GoBackButton({ color }: GoBackButtonProps) {
   }
 
   return (
-    <FaChevronLeft onClick={handleClick} size={20} color={color || "gray"} />
+    <FaChevronLeft
+      onClick={handleClick}
+      size={20}
+      color={color || "gray"}
+      className="cursor-pointer"
+    />
   );
 }
