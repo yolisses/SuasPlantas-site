@@ -10,6 +10,7 @@ module.exports = {
       "plantes.s3.sa-east-1.amazonaws.com",
       "unsplash.it",
       "platform-lookaside.fbsbx.com",
+      "suasplantas.s3.sa-east-1.amazonaws.com",
       "plantei-dev.s3.sa-east-1.amazonaws.com",
     ],
   },

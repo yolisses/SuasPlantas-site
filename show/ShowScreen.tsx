@@ -38,14 +38,12 @@ export function ShowScreen({ data }: { data: Plant }) {
           <div className="flex-1 sm:sticky top-0">
             <div className="sticky top-0 flex items-center">
               <Image
-                src={
-                  "https://plantei-dev.s3.sa-east-1.amazonaws.com/compressed/02331924-3063-4d3c-87a7-b1206da19272.webp"
-                }
+                src={data.images[0].uri}
                 width={600}
                 height={700}
                 className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
               />
-              {JSON.stringify(data.images[0].uri)}
+              {/* {JSON.stringify(data.images[0].uri)} */}
             </div>
           </div>
           <div className="flex-1">
@@ -54,11 +52,6 @@ export function ShowScreen({ data }: { data: Plant }) {
                 <h1 className="text-2xl">{name}</h1>
                 <AvailabilityInfo {...{ swap, donate, price }} />
               </Session>
-              {!!description?.length && (
-                <Session label="Descrição">
-                  <div>{description}</div>
-                </Session>
-              )}
               {!!tags?.length && (
                 <Session label="Marcado como">
                   <div></div>
@@ -69,7 +62,13 @@ export function ShowScreen({ data }: { data: Plant }) {
               <div>
                 Última edição <time>{updatedAt.toLocaleDateString()}</time>
               </div>
-              {/* <div>{loremIpsum}</div> */}
+
+              {!!description?.length && (
+                <Session label="Descrição">
+                  <div>{description}</div>
+                  {/* <div>{loremIpsum}</div> */}
+                </Session>
+              )}
             </div>
           </div>
         </div>

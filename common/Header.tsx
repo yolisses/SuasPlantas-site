@@ -21,7 +21,7 @@ export function Header({ searchQuery }: HeaderProps) {
           </div>
         </Link>
       </div>
-      <SearchTop query={searchQuery} />
+      {/* <SearchTop query={searchQuery} /> */}
       <div className="ml-auto flex justify-center">
         {false ? (
           <MeButton />
