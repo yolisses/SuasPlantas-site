@@ -1,14 +1,11 @@
 import Image from "next/image";
 import { Header } from "../common/Header";
-import { someImage } from "../mock/someImage";
 import { Plant } from "../types/Plant";
 import { AvailabilityInfo } from "./AvailabilityInfo";
 import { Session } from "./Session";
 import Head from "next/head";
 import { availabilitiesToString } from "./availabilitiesToString";
 import { UserLink } from "../user/UserLink";
-import { User } from "../user/User";
-import { loremIpsum } from "../mock/loremIpsum";
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -16,10 +13,8 @@ export function ShowScreen({ data }: { data: Plant }) {
     description,
     swap,
     donate,
-    owner,
     price,
     tags,
-    images,
     updatedAt: updatedAtString,
   } = data;
 
