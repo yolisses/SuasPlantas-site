@@ -5,6 +5,8 @@ import Head from "next/head";
 import { DataContextProvider } from "../mobx/DataContext";
 import { observer } from "mobx-react-lite";
 import { FaviconTags } from "../common/FaviconTags";
+import { Modal } from "../common/Modal";
+import { SignInBox } from "../auth/SignInBox";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const googleAnalyticsScript = `
@@ -33,6 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
+        <Modal>
+          <SignInBox />
+        </Modal>
       </>
     </DataContextProvider>
   );

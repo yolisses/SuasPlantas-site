@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { MeButton } from "../user/MeButton";
 import { HeaderLayout } from "./HeaderLayout";
-import { SearchTop } from "./SearchTop";
-import Image from "next/image";
-import { FaRegUser, FaUser, FaUserAlt } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 
 interface HeaderProps {
   searchQuery?: string;
