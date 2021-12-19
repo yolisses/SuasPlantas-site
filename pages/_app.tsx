@@ -5,8 +5,6 @@ import Head from "next/head";
 import { DataContextProvider } from "../mobx/DataContext";
 import { observer } from "mobx-react-lite";
 import { FaviconTags } from "../common/FaviconTags";
-import { Modal } from "../common/Modal";
-import { SignInBox } from "../auth/SignInBox";
 import { ModalContextProvider } from "../modal/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -32,7 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             src="https://www.googletagmanager.com/gtag/js?id=UA-215426535-1"
           />
           <script>{googleAnalyticsScript}</script>
-          <title>SuasPlantas - Trocar mudas de plantas</title>
+          <title>
+            {process.env.NODE_ENV !== "production" ? "DEV " : ""}SuasPlantas -
+            Trocar mudas de plantas
+          </title>
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
