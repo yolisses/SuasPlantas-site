@@ -5,7 +5,7 @@ export default DevScreen;
 export function getStaticProps() {
   return {
     props: {
-      notFound: process.env.NEXT_PUBLIC_ENV === "development",
+      notFound: process.env.NEXT_PUBLIC_ENV !== "development",
     },
   };
 }
