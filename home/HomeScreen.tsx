@@ -13,7 +13,9 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
   return (
     <>
       <Header />
-      <SelectLocationLink />
+      <div className="flex flex-row justify-start">
+        <SelectLocationLink />
+      </div>
       <div className="p-1 flex flex-col gap-1">
         {data.map((item) => (
           <ListItem key={item.id} item={item} />

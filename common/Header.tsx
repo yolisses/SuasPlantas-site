@@ -32,7 +32,7 @@ export function Header({ searchQuery }: HeaderProps) {
           // <Link href="/sign-in">
           <div
             onClick={() => setModal(<SignInBox />)}
-            className="flex flex-row items-center gap-1"
+            className="flex flex-row items-center gap-1 cursor-pointer"
           >
             <FaRegUser size={18} />
             <div className="text-lg">Entrar</div>

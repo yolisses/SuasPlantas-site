@@ -12,7 +12,7 @@ export function ListItem({ item }: ListItemDTO) {
   const { name, description } = item;
   return (
     <Link href={"/plants/" + item.id}>
-      <ul className="flex flex-row">
+      <ul className="flex flex-row cursor-pointer">
         <Image
           src={item.card}
           width={140}
