@@ -52,7 +52,7 @@ export class FacebookButton extends Component<any, any> {
         <Head>{this.state.script}</Head>
         <div
           style={{ width: "350px" }}
-          className="fb-login-button"
+          className="fb-login-button h-10 bg-blue-500 rounded-full"
           data-width="350"
           data-size="large"
           data-button-type="continue_with"

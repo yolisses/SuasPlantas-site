@@ -41,7 +41,7 @@ export class GoogleButton extends Component {
           data-text="signin"
           data-type="standard"
           data-callback="mozao"
-          className="g_id_signin"
+          className="g_id_signin h-10 bg-white rounded-full"
           // data-theme="filled_blue"
           data-logo_alignment="left"
         />
