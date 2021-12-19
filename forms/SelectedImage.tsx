@@ -49,7 +49,7 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
         <img
           alt=""
           src={src}
-          className="flex-shrink-0 rounded-lg"
+          className="flex-shrink-0 rounded-lg shadow-md"
           style={{
             width: "100%",
             height: 0,
