@@ -11,7 +11,7 @@ interface UserLinkProps {
 export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
   return (
     <Link href={"/users/" + user.id}>
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex flex-row items-center gap-2 cursor-pointer">
         <Image
           width={imgSize}
           height={imgSize}
