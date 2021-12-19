@@ -29,7 +29,7 @@ export function Modal({
       onClick={handleClickOut}
       className="fixed top-0 z-50 w-full h-full bg-black bg-opacity-40 flex items-center justify-center p-2"
     >
-      <div className="bg-white p-2 rounded-xl pt-1 pb-8">
+      <div className="bg-white p-2 rounded-xl pb-8 shadow-lg">
         {showCloseButton && (
           <div className="flex flex-row justify-end w-full">
             <div className="cursor-pointer p-2 hover:bg-black hover:bg-opacity-10 rounded-full">
