@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { FaviconTags } from "../common/FaviconTags";
 import { Modal } from "../common/Modal";
 import { SignInBox } from "../auth/SignInBox";
+import { ModalContextProvider } from "../modal/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const googleAnalyticsScript = `
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <DataContextProvider>
-      <>
+      <ModalContextProvider>
         <Head>
           {/* google login */}
           <meta
@@ -35,10 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
-        <Modal>
-          <SignInBox />
-        </Modal>
-      </>
+      </ModalContextProvider>
     </DataContextProvider>
   );
 }

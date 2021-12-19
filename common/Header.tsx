@@ -2,12 +2,16 @@ import Link from "next/link";
 import { MeButton } from "../user/MeButton";
 import { HeaderLayout } from "./HeaderLayout";
 import { FaRegUser } from "react-icons/fa";
+import { useModal } from "../modal/ModalContext";
+import { SignInBox } from "../auth/SignInBox";
 
 interface HeaderProps {
   searchQuery?: string;
 }
 
 export function Header({ searchQuery }: HeaderProps) {
+  const { setModal } = useModal();
+
   return (
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
       <div className="mr-auto">
@@ -25,12 +29,15 @@ export function Header({ searchQuery }: HeaderProps) {
         {false ? (
           <MeButton />
         ) : (
-          <Link href="/sign-in">
-            <div className="flex flex-row items-center gap-1">
-              <FaRegUser size={18} />
-              <div className="text-lg">Entrar</div>
-            </div>
-          </Link>
+          // <Link href="/sign-in">
+          <div
+            onClick={() => setModal(<SignInBox />)}
+            className="flex flex-row items-center gap-1"
+          >
+            <FaRegUser size={18} />
+            <div className="text-lg">Entrar</div>
+          </div>
+          // </Link>
         )}
       </div>
     </HeaderLayout>
