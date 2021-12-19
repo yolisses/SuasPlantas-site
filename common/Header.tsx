@@ -3,6 +3,7 @@ import { MeButton } from "../user/MeButton";
 import { HeaderLayout } from "./HeaderLayout";
 import { SearchTop } from "./SearchTop";
 import Image from "next/image";
+import { FaRegUser, FaUser, FaUserAlt } from "react-icons/fa";
 
 interface HeaderProps {
   searchQuery?: string;
@@ -27,7 +28,10 @@ export function Header({ searchQuery }: HeaderProps) {
           <MeButton />
         ) : (
           <Link href="/sign-in">
-            <div className="text-lg">sign in</div>
+            <div className="flex flex-row items-center gap-1">
+              <FaRegUser size={18} />
+              <div className="text-lg">Entrar</div>
+            </div>
           </Link>
         )}
       </div>
