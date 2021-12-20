@@ -1,26 +1,26 @@
-import { ReactNode, useEffect } from "react";
-import { GrClose } from "react-icons/gr";
-import { useModal } from "../modal/ModalContext";
+import { ReactNode, useEffect } from 'react';
+import { GrClose } from 'react-icons/gr';
+import { useModal } from '../modal/ModalContext';
 
 export interface ModalProps {
   children: ReactNode;
-  hideOnClickOut?: boolean;
+  closeOnClickOut?: boolean;
   showCloseButton?: boolean;
 }
 
 export function Modal({
   children,
-  hideOnClickOut = true,
+  closeOnClickOut = true,
   showCloseButton = true,
 }: ModalProps) {
   const { setModal } = useModal();
 
-  function handleClickOut() {
-    if (hideOnClickOut) close();
-  }
-
   function close() {
     setModal(undefined);
+  }
+
+  function handleClickOut() {
+    if (closeOnClickOut) close();
   }
 
   function stopPropagation(e: any) {
@@ -28,14 +28,14 @@ export function Modal({
   }
 
   function handleEsc(e: KeyboardEvent) {
-    if (e.code === "Escape") close();
+    if (e.code === 'Escape') close();
   }
 
   useEffect(() => {
-    window.addEventListener("keydown", handleEsc);
+    window.addEventListener('keydown', handleEsc);
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener('keydown', handleEsc);
     };
   }, []);
 
@@ -50,8 +50,8 @@ export function Modal({
       >
         {showCloseButton && (
           <div className="flex flex-row justify-end w-full">
-            <div className="cursor-pointer p-2 hover:bg-black hover:bg-opacity-10 rounded-full">
-              <GrClose size={18} onClick={close} />
+            <div className="cursor-pointer p-2 hover:bg-black hover:bg-opacity-10 rounded-full" onClick={close}>
+              <GrClose size={18} />
             </div>
           </div>
         )}
