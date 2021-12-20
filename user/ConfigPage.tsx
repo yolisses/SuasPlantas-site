@@ -1,7 +1,7 @@
 import { Header } from "../common/Header";
 
 export function ConfigPage() {
-  function handleClick() {}
+  function handleClick() { }
 
   return (
     <div>

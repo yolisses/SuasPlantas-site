@@ -1,3 +1,3 @@
-import { AddScreen } from "../add/AddItemScreen";
+import { AddScreen } from '../add/AddItemScreen';
 
-export default AddScreen
+export default AddScreen;

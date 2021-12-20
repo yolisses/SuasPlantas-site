@@ -1,3 +1,3 @@
-import { SelectLocationScreenImport } from "../location/SelectLocationScreenImport";
+import { SelectLocationScreenImport } from '../location/SelectLocationScreenImport';
 
 export default SelectLocationScreenImport;

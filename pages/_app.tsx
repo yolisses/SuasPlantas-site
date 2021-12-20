@@ -1,14 +1,15 @@
-import "reflect-metadata";
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { DataContextProvider } from "../mobx/DataContext";
-import { observer } from "mobx-react-lite";
-import { FaviconTags } from "../common/FaviconTags";
-import { ModalContextProvider } from "../modal/ModalContext";
-import { devIndicator } from "../utils/devIndicator";
+/* eslint-disable react/jsx-props-no-spreading */
+import 'reflect-metadata';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { observer } from 'mobx-react-lite';
+import { DataContextProvider } from '../mobx/DataContext';
+import { FaviconTags } from '../common/FaviconTags';
+import { ModalContextProvider } from '../modal/ModalContext';
+import { devIndicator } from '../utils/devIndicator';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = function ({ Component, pageProps }: AppProps) {
   const googleAnalyticsScript = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -31,13 +32,16 @@ function MyApp({ Component, pageProps }: AppProps) {
             src="https://www.googletagmanager.com/gtag/js?id=UA-215426535-1"
           />
           <script>{googleAnalyticsScript}</script>
-          <title>{devIndicator}SuasPlantas - Trocar mudas de plantas</title>
+          <title>
+            {devIndicator}
+            SuasPlantas - Trocar mudas de plantas
+          </title>
           <FaviconTags />
         </Head>
         <Component {...pageProps} />
       </ModalContextProvider>
     </DataContextProvider>
   );
-}
+};
 
 export default observer(MyApp);

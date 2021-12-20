@@ -1,3 +1,3 @@
-import { ConfigPage } from "../user/ConfigPage";
+import { ConfigPage } from '../user/ConfigPage';
 
 export default ConfigPage;
