@@ -10,7 +10,7 @@ export function MeButton() {
         width={size}
         height={size}
         src={someImage}
-        className="bg-gray-300 rounded-full shadow-md"
+        className="bg-gray-300 rounded-full shadow-md cursor-pointer"
       />
     </Link>
   );

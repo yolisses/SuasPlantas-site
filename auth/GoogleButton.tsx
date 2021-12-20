@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Head from 'next/head';
 import { signIn } from './signIn';
+import { isDev } from '../utils/isDev';
 
 interface GoogleResponse {
   credential: string;
@@ -18,7 +19,7 @@ export class GoogleButton extends Component {
   }
 
   async handleGoogleResponse(e: GoogleResponse) {
-    console.log(e.credential);
+    if (isDev) console.log(e.credential);
     signIn('google', e.credential);
   }
 

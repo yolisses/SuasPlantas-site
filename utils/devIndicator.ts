@@ -1,2 +1,3 @@
-export const devIndicator =
-  process.env.NEXT_PUBLIC_ENV === "development" ? "DEV " : "";
+import { isDev } from './isDev';
+
+export const devIndicator = isDev ? 'DEV ' : '';

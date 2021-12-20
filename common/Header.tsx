@@ -29,20 +29,15 @@ export function Header({ searchQuery }: HeaderProps) {
         </Link>
       </div>
       {/* <SearchTop query={searchQuery} /> */}
-      <div className="ml-auto flex justify-center">
-        {false ? (
-          <MeButton />
-        ) : (
-          // <Link href="/sign-in">
-          <div
-            onClick={() => setModal(<SignInBox />)}
-            className="flex flex-row items-center gap-1 cursor-pointer"
-          >
-            <FaRegUser size={18} />
-            <div className="text-lg">Entrar</div>
-          </div>
-          // </Link>
-        )}
+      <div className="ml-auto flex justify-center flex-row gap-2">
+        <MeButton />
+        <div
+          onClick={() => setModal(<SignInBox />)}
+          className="flex flex-row items-center gap-1 cursor-pointer"
+        >
+          <FaRegUser size={18} />
+          <div className="text-lg">Entrar</div>
+        </div>
       </div>
     </HeaderLayout>
   );
