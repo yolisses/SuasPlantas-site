@@ -18,6 +18,7 @@ export function ListItem({ item }: ListItemDTO) {
           width={140}
           height={140}
           className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
+          alt={name}
         />
         <div className="mr-2" />
         <div className="flex flex-1 overflow-hidden">
