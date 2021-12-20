@@ -1,12 +1,12 @@
-import Image from "next/image";
-import { Header } from "../common/Header";
-import { Plant } from "../types/Plant";
-import { AvailabilityInfo } from "./AvailabilityInfo";
-import { Session } from "./Session";
-import Head from "next/head";
-import { availabilitiesToString } from "./availabilitiesToString";
-import { UserLink } from "../user/UserLink";
-import { devIndicator } from "../utils/devIndicator";
+import Image from 'next/image';
+import Head from 'next/head';
+import { Header } from '../common/Header';
+import { Plant } from '../types/Plant';
+import { AvailabilityInfo } from './AvailabilityInfo';
+import { Session } from './Session';
+import { availabilitiesToString } from './availabilitiesToString';
+import { UserLink } from '../user/UserLink';
+import { devIndicator } from '../utils/devIndicator';
 
 export function ShowScreen({ data }: { data: Plant }) {
   const {
@@ -15,19 +15,27 @@ export function ShowScreen({ data }: { data: Plant }) {
     swap,
     donate,
     price,
-    tags,
+    tags, user,
     updatedAt: updatedAtString,
   } = data;
 
   const updatedAt = new Date(updatedAtString);
 
+  const stringAvailability = availabilitiesToString({ price, swap, donate });
+
   return (
     <div>
       <Head>
         <title>
-          {devIndicator}
-          {name} - {availabilitiesToString({ price, swap, donate })}{" "}
+          {`${devIndicator} ${name} - ${stringAvailability}`}
         </title>
+
+        <Head>
+          <meta
+            name="description"
+            content={`Planta, Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}`}
+          />
+        </Head>
       </Head>
       <Header />
       <main>
@@ -38,6 +46,7 @@ export function ShowScreen({ data }: { data: Plant }) {
                 src={data.images[0].uri}
                 width={600}
                 height={700}
+                alt={name}
                 className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
               />
               {/* {JSON.stringify(data.images[0].uri)} */}
@@ -51,13 +60,15 @@ export function ShowScreen({ data }: { data: Plant }) {
               </Session>
               {!!tags?.length && (
                 <Session label="Marcado como">
-                  <div></div>
+                  <div />
                   {/* <TagsInfo tags={tags} /> */}
                 </Session>
               )}
               <UserLink user={data.user} />
               <div>
-                Última edição <time>{updatedAt.toLocaleDateString()}</time>
+                Última edição
+                {' '}
+                <time>{updatedAt.toLocaleDateString()}</time>
               </div>
 
               {!!description?.length && (

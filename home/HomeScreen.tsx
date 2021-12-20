@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Header } from '../common/Header';
 import { SelectLocationLink } from '../location/SelectLocationLink';
 import { Plant } from '../types/Plant';
@@ -11,6 +12,14 @@ interface HomeScreenProps {
 export function HomeScreen({ data }: HomeScreenProps) {
   return (
     <>
+      <Head>
+        <meta
+          name="description"
+          content="
+          Site para trocar mudas de plantas com vários outros usuários.
+          Super simples, seguro e com grande variedade."
+        />
+      </Head>
       <Header />
       <div className="flex flex-row justify-start">
         <SelectLocationLink />

@@ -1,7 +1,7 @@
-import { User } from "./User";
-import Image from "next/image";
-import Link from "next/link";
-import { someImage } from "../mock/someImage";
+import Image from 'next/image';
+import Link from 'next/link';
+import { User } from './User';
+import { someImage } from '../mock/someImage';
 
 interface UserLinkProps {
   user: User;
@@ -10,18 +10,20 @@ interface UserLinkProps {
 
 export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
   return (
-    <Link href={"/users/" + user.id}>
+    <Link href={`/users/${user.id}`}>
       <div className="flex flex-row items-center gap-2 cursor-pointer">
         <Image
           width={imgSize}
           height={imgSize}
           src={user.image || someImage}
+          alt={user.name}
           className="rounded-full bg-gray-300"
         />
         <div className="flex flex-col">
           <div className="font-semibold">{user.name}</div>
           <div className="text-gray-500 text-sm">
-            Entrou no SuasPlantas em{" "}
+            Entrou no SuasPlantas em
+            {' '}
             <time>{new Date(user.createdAt).getFullYear()}</time>
           </div>
         </div>
