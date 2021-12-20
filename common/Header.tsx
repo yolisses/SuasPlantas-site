@@ -1,11 +1,10 @@
-import Link from "next/link";
-import { MeButton } from "../user/MeButton";
-import { HeaderLayout } from "./HeaderLayout";
-import { FaRegUser } from "react-icons/fa";
-import { useModal } from "../modal/ModalContext";
-import { SignInBox } from "../auth/SignInBox";
-
+import Link from 'next/link';
+import { FaRegUser } from 'react-icons/fa';
 import Cookies from 'js-cookie';
+import { MeButton } from '../user/MeButton';
+import { SignInBox } from '../auth/SignInBox';
+import { HeaderLayout } from './HeaderLayout';
+import { useModal } from '../modal/ModalContext';
 
 interface HeaderProps {
   searchQuery?: string;
@@ -14,8 +13,8 @@ interface HeaderProps {
 export function Header({ searchQuery }: HeaderProps) {
   const { setModal } = useModal();
 
-  const authenticated = (Cookies.get('authenticated')) === "true"
-  console.log(authenticated)
+  const authenticated = (Cookies.get('authenticated')) === 'true';
+  console.log(authenticated);
 
   return (
     <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
@@ -31,7 +30,7 @@ export function Header({ searchQuery }: HeaderProps) {
       </div>
       {/* <SearchTop query={searchQuery} /> */}
       <div className="ml-auto flex justify-center">
-        {false ? (
+        {authenticated ? (
           <MeButton />
         ) : (
           // <Link href="/sign-in">

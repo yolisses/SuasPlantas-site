@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { someImage } from "../mock/someImage";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import { someImage } from '../mock/someImage';
 
 export function MeButton() {
   const size = 36;
   return (
-    <Link href="users/me">
+    <Link href="/users/me">
       <Image
         width={size}
         height={size}
