@@ -1,10 +1,9 @@
-import { observer } from "mobx-react";
-import Image from "next/image";
-import { FacebookButton } from "./FacebookButton";
-import { GoogleButton } from "./GoogleButton";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import { FacebookButton } from './FacebookButton';
+import { GoogleButton } from './GoogleButton';
 
-export const SignInScreen = observer(() => {
+export function SignInScreen() {
   return (
     <div className="h-full flex sm:flex-row">
       <div className="flex sm:w-1/4 h-36 sm:h-full">
@@ -25,7 +24,7 @@ export const SignInScreen = observer(() => {
             <div>Escolha uma conta para continuar</div>
             <GoogleButton />
             <FacebookButton />
-            <div className="pb-2 sm:pb-9"></div>
+            <div className="pb-2 sm:pb-9" />
             <div className="text-sm text-gray-600 px-6">
               Ao selecionar uma conta, você concorda com nossos Termos de Uso,
               Política de Privacidade e Política de Cookies.
@@ -36,4 +35,4 @@ export const SignInScreen = observer(() => {
       </div>
     </div>
   );
-});
+}

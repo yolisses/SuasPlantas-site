@@ -1,6 +1,6 @@
-import { Component } from "react";
-import Head from "next/head";
-import { signIn } from "./signIn";
+import { Component } from 'react';
+import Head from 'next/head';
+import { signIn } from './signIn';
 
 interface GoogleResponse {
   credential: string;
@@ -13,13 +13,13 @@ declare global {
 }
 
 export class GoogleButton extends Component {
-  async handleGoogleResponse(e: GoogleResponse) {
-    console.log(e.credential);
-    signIn("google", e.credential);
-  }
-
   componentDidMount() {
     window.handleGoogleResponse = this.handleGoogleResponse;
+  }
+
+  async handleGoogleResponse(e: GoogleResponse) {
+    console.log(e.credential);
+    signIn('google', e.credential);
   }
 
   render() {

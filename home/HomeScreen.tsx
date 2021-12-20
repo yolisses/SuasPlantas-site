@@ -1,15 +1,14 @@
-import { observer } from "mobx-react";
-import { Header } from "../common/Header";
-import { SelectLocationLink } from "../location/SelectLocationLink";
-import { Plant } from "../types/Plant";
-import { AddButton } from "./AddButton";
-import { ListItem } from "../common/ListItem";
+import { Header } from '../common/Header';
+import { SelectLocationLink } from '../location/SelectLocationLink';
+import { Plant } from '../types/Plant';
+import { AddButton } from './AddButton';
+import { ListItem } from '../common/ListItem';
 
 interface HomeScreenProps {
   data: Plant[];
 }
 
-export const HomeScreen = observer(({ data }: HomeScreenProps) => {
+export function HomeScreen({ data }: HomeScreenProps) {
   return (
     <>
       <Header />
@@ -26,4 +25,4 @@ export const HomeScreen = observer(({ data }: HomeScreenProps) => {
       </div>
     </>
   );
-});
+}

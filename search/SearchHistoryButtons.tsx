@@ -1,22 +1,20 @@
-import { observer } from "mobx-react";
-import { FaTrash } from "react-icons/fa";
-import { useData } from "../mobx/DataContext";
-import { SearchButtonsGroup } from "./SearchButtonsGroup";
+import { FaTrash } from 'react-icons/fa';
+import { SearchButtonsGroup } from './SearchButtonsGroup';
 
-export const SearchHistoryButtons = observer(() => {
-  const { searches } = useData();
+export function SearchHistoryButtons() {
+  let searches :any[] = [];
 
   function clearHistory() {
-    searches.searches = [];
+    searches = [];
   }
 
-  if (!searches.searches.length) return null;
+  if (!searches.length) return null;
 
   return (
     <SearchButtonsGroup
-      options={searches.searches}
+      options={searches}
       label="Histórico de busca"
       button={<FaTrash size={16} color="#aaa" onClick={clearHistory} />}
     />
   );
-});
+}

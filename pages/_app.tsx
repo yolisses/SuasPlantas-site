@@ -1,47 +1,31 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import 'reflect-metadata';
+
+import Head from 'next/head';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { observer } from 'mobx-react-lite';
-import { DataContextProvider } from '../mobx/DataContext';
 import { FaviconTags } from '../common/FaviconTags';
-import { ModalContextProvider } from '../modal/ModalContext';
 import { devIndicator } from '../utils/devIndicator';
+import { ModalContextProvider } from '../modal/ModalContext';
+import { GoogleAnalyticsTags } from '../config/GoogleAnalyticsTags';
 
-const MyApp = function ({ Component, pageProps }: AppProps) {
-  const googleAnalyticsScript = `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-215426535-1');`;
-
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <DataContextProvider>
-      <ModalContextProvider>
-        <Head>
-          {/* google login */}
-          <meta
-            name="google-site-verification"
-            content="XipRkG04zmk3gcBYI2q_HzJSU2F6BaT6jbz5N57ilZ8"
-          />
-          {/* Global site tag (gtag.js) - Google Analytics */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-215426535-1"
-          />
-          <script>{googleAnalyticsScript}</script>
-          <title>
-            {devIndicator}
-            SuasPlantas - Trocar mudas de plantas
-          </title>
-          <FaviconTags />
-        </Head>
-        <Component {...pageProps} />
-      </ModalContextProvider>
-    </DataContextProvider>
+    <ModalContextProvider>
+      <Head>
+        {/* google login */}
+        <meta
+          name="google-site-verification"
+          content="XipRkG04zmk3gcBYI2q_HzJSU2F6BaT6jbz5N57ilZ8"
+        />
+        <title>
+          {devIndicator}
+          SuasPlantas - Trocar mudas de plantas
+        </title>
+        <FaviconTags />
+        <GoogleAnalyticsTags />
+      </Head>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
+    </ModalContextProvider>
   );
-};
-
-export default observer(MyApp);
+}

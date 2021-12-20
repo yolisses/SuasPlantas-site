@@ -1,14 +1,12 @@
-import { observer } from "mobx-react";
-import { useState } from "react";
-import { FaSearch, FaTimesCircle } from "react-icons/fa";
-import { useData } from "../mobx/DataContext";
-import { SearchHistoryButtons } from "./SearchHistoryButtons";
-import Link from "next/link";
-import { HeaderLayout } from "../common/HeaderLayout";
+import { useState } from 'react';
+import { FaSearch, FaTimesCircle } from 'react-icons/fa';
+import Link from 'next/link';
+import { SearchHistoryButtons } from './SearchHistoryButtons';
+import { HeaderLayout } from '../common/HeaderLayout';
 
-export const SearchScreen = observer(() => {
-  const { searches } = useData();
-  const [query, setQuery] = useState<string>("");
+export function SearchScreen() {
+  let searches:any[] = [];
+  const [query, setQuery] = useState<string>('');
 
   return (
     <div className="flex gap-2">
@@ -17,18 +15,17 @@ export const SearchScreen = observer(() => {
           <input
             type="text"
             className="outline-none flex-1"
-            autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <FaTimesCircle size={18} color="#aaa" />
         </div>
-        <Link href={"/search/" + query}>
+        <Link href={`/search/${query}`}>
           <FaSearch
             size={20}
             color="gray"
             onClick={() => {
-              searches.searches = [...searches.searches, query];
+              searches = [...searches, query];
             }}
           />
         </Link>
@@ -38,4 +35,4 @@ export const SearchScreen = observer(() => {
       </div>
     </div>
   );
-});
+}

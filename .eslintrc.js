@@ -37,5 +37,8 @@ module.exports = {
     'no-unused-vars': 'warn',
     'comma-spacing': 'warn',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
+    'react/function-component-definition': 'off',
+    'react/jsx-no-bind': 'off',
+    'class-methods-use-this': 'off',
   },
 };

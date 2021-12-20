@@ -1,6 +1,6 @@
-import { Component } from "react";
-import Head from "next/head";
-import { signIn } from "./signIn";
+import { Component } from 'react';
+import Head from 'next/head';
+import { signIn } from './signIn';
 
 interface FacebookResponse {
   authResponse: {
@@ -15,35 +15,37 @@ declare global {
 }
 
 export class FacebookButton extends Component<any, any> {
-  async handleFacebookResponse(e: FacebookResponse) {
-    console.log(e.authResponse.accessToken);
-    signIn("facebook", e.authResponse.accessToken);
-  }
-
   constructor(props: any) {
     super(props);
-    this.state = { loader: "start", script: "" };
+    this.state = { loader: 'start', script: '' };
   }
 
   componentDidMount() {
     window.handleFacebookResponse = this.handleFacebookResponse;
-    this.setState({ loader: "did mount" });
+    this.setState({ loader: 'did mount' });
   }
 
   componentDidUpdate() {
-    if (this.state.loader === "did mount")
+    if (this.state.loader === 'did mount') {
       this.setState({
-        loader: "done",
+        loader: 'done',
         script: (
           <>
             <script
               async
               src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
-            ></script>
+            />
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             <script>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
           </>
         ),
       });
+    }
+  }
+
+  async handleFacebookResponse(e: FacebookResponse) {
+    console.log(e.authResponse.accessToken);
+    signIn('facebook', e.authResponse.accessToken);
   }
 
   render() {
@@ -51,7 +53,7 @@ export class FacebookButton extends Component<any, any> {
       <div>
         <Head>{this.state.script}</Head>
         <div
-          style={{ width: "350px" }}
+          style={{ width: '350px' }}
           className="fb-login-button h-10 bg-blue-500 rounded-full"
           data-width="350"
           data-size="large"
