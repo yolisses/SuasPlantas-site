@@ -50,12 +50,12 @@ export class FacebookButton extends Component<any, any> {
 
   render() {
     return (
-      <div>
+      <>
         <Head>{this.state.script}</Head>
         <div
-          style={{ width: '350px' }}
+          style={{ width: '300px' }}
           className="fb-login-button h-10 bg-blue-500 rounded-full"
-          data-width="350"
+          data-width="300"
           data-size="large"
           data-button-type="continue_with"
           data-layout="rounded"
@@ -63,7 +63,7 @@ export class FacebookButton extends Component<any, any> {
           data-use-continue-as="true"
           data-onlogin="handleFacebookResponse"
         />
-      </div>
+      </>
     );
   }
 }

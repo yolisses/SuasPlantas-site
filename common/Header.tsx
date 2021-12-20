@@ -30,7 +30,7 @@ export function Header({ searchQuery }: HeaderProps) {
       </div>
       {/* <SearchTop query={searchQuery} /> */}
       <div className="ml-auto flex justify-center">
-        {authenticated ? (
+        {false ? (
           <MeButton />
         ) : (
           // <Link href="/sign-in">

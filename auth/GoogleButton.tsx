@@ -24,7 +24,7 @@ export class GoogleButton extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Head>
           <script src="https://accounts.google.com/gsi/client" async />
         </Head>
@@ -35,17 +35,16 @@ export class GoogleButton extends Component {
           data-callback="handleGoogleResponse"
         />
         <div
-          data-width="350"
+          data-width="300"
           data-shape="pill"
           data-size="large"
           data-text="signin"
           data-type="standard"
-          data-callback="mozao"
           className="g_id_signin h-10 bg-white rounded-full"
           // data-theme="filled_blue"
           data-logo_alignment="left"
         />
-      </div>
+      </>
     );
   }
 }
