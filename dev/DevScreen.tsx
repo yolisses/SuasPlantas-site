@@ -1,9 +1,22 @@
+import { useEffect, useState } from 'react';
+import { api } from '../api/api';
+
 export function DevScreen() {
+  const [data, setData] = useState();
+  async function getPlants() {
+    const res = await api.get('plants');
+    setData(res.data);
+  }
+
+  useEffect(() => {
+    getPlants();
+    return [getPlants];
+  }, []);
+
   return (
-    <div>
-      {[...Array(100)].map((n, index) => (
-        <div className="bg-green-400 m-1"> {index} oi</div>
-      ))}
+    <div className="p-2">
+      hello
+      {JSON.stringify(data)}
     </div>
   );
 }
