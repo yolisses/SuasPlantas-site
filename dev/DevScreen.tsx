@@ -8,10 +8,7 @@ export function DevScreen() {
     setData(res.data);
   }
 
-  useEffect(() => {
-    getPlants();
-    return [getPlants];
-  }, []);
+  useEffect(() => { getPlants(); }, []);
 
   return (
     <div className="p-2">

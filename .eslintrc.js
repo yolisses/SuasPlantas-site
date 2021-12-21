@@ -40,5 +40,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/jsx-no-bind': 'off',
     'class-methods-use-this': 'off',
+    'implicit-arrow-linebreak': 'warn',
   },
 };
