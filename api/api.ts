@@ -14,10 +14,11 @@ export const api = axios.create({
 });
 
 api.interceptors.response.use(undefined, (error) => {
+  console.error(Object.keys(error));
   throw new Error(
     JSON.stringify({
       status: error?.response?.status,
-      message: error?.response?.data,
+      message: error?.response?.data || error?.reason,
     }),
   );
 });
