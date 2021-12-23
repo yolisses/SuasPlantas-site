@@ -1,12 +1,12 @@
-import { DevScreen } from '../dev/DevScreen';
-import { isDev } from '../utils/isDev';
+import { ErrorPage } from '../error/ErrorPage';
 
-export default DevScreen;
+export default ErrorPage;
 
 export function getStaticProps() {
   return {
     props: {
-      notFound: !isDev,
+      message: 'hello',
+      status: 300,
     },
   };
 }
