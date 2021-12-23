@@ -4,7 +4,7 @@ import { api } from '../api/api';
 export function DevScreen() {
   const [data, setData] = useState();
   async function getPlants() {
-    const res = await api.get('plants');
+    const res = await api.get('users/me');
     setData(res.data);
   }
 
