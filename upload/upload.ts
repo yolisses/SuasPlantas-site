@@ -1,4 +1,5 @@
 import { api } from '../api/api';
+import { authStore } from '../auth/authStore';
 
 export interface Progress {
   loaded: number;
@@ -29,9 +30,10 @@ export class Sending {
   }
 
   async getUploadLink() {
-    const res = await api.get('upload');
+    const res = await api.get('upload', { headers: { authorization: authStore.token } });
     this.uploadLink = res.data;
     this.callback();
+    console.log(this.uploadLink);
   }
 
   onUploadProgress = (progress: Progress) => {
@@ -52,7 +54,7 @@ export class Sending {
   }
 
   get getLinkPreview() {
-    return this.uploadLink?.slice(this.uploadLink.length - 10);
+    return this.uploadLink?.slice(-100, -70);
   }
 
   get progressPercentage() {
