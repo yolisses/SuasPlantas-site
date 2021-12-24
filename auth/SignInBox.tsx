@@ -5,7 +5,7 @@ export function SignInBox() {
   return (
     <div className="flex max-w-sm items-center gap-2 py-2">
       <div className="pb-5">Escolha uma conta para continuar</div>
-      <GoogleButton />
+      {/* <GoogleButton /> */}
       <FacebookButton />
       <div className="pb-2 sm:pb-5" />
       <div className="text-sm text-gray-600 px-6">
