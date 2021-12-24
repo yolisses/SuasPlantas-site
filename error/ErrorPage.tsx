@@ -5,10 +5,13 @@ interface ErrorPageProps{
     status:number
 }
 
-export function ErrorPage({ message, status }:ErrorPageProps) {
+export function ErrorPage({ message, status, ...coisas }:ErrorPageProps) {
   return (
     <div className="flex h-full w-full fixed">
       <Header />
+      <div>
+        {Object.keys(coisas)}
+      </div>
       <div className="flex flex-1 items-center justify-center pb-20 p-2">
         <div className="max-w-sm flex gap-2">
           <div className="text-3xl text-center pb-4">Ops!</div>
