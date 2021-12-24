@@ -40,7 +40,7 @@ export function ShowScreen({ data }: { data: Plant }) {
       <Header />
       <main>
         <div className="flex lg:flex-row lg:gap-2">
-          <div className="flex-1 sm:sticky top-0">
+          <div className="flex-1 lg:sticky top-0">
             <div className="sticky top-0 flex items-center">
               <Image
                 src={data.images[0].uri}
