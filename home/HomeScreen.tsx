@@ -4,6 +4,7 @@ import { SelectLocationLink } from '../location/SelectLocationLink';
 import { Plant } from '../types/Plant';
 import { AddButton } from './AddButton';
 import { ListItem } from '../common/ListItem';
+import { authStore } from '../auth/authStore';
 
 interface HomeScreenProps {
   data: Plant[];
@@ -21,6 +22,7 @@ export function HomeScreen({ data }: HomeScreenProps) {
         />
       </Head>
       <Header />
+      <div>{authStore.token}</div>
       <div className="flex flex-row justify-start">
         <SelectLocationLink />
       </div>

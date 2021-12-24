@@ -22,7 +22,7 @@ export function SignInScreen() {
         <div className="flex flex-1 items-center pt-24 sm:pt-0 sm:justify-center">
           <div className="flex max-w-sm items-center gap-2">
             <div>Escolha uma conta para continuar</div>
-            {/* <GoogleButton /> */}
+            <GoogleButton />
             <FacebookButton />
             <div className="pb-2 sm:pb-9" />
             <div className="text-sm text-gray-600 px-6">
