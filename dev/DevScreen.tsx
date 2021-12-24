@@ -10,16 +10,16 @@ function Nested({ children }:any) {
   );
 }
 
-export function DevScreen({ timer }:any) {
+export function DevScreen({ timerStore }:any) {
   return (
     <div>
       <Nested>
         <Nested>
-          <TimerView timer={timer} />
+          <TimerView timer={timerStore} />
         </Nested>
       </Nested>
-      <TimerView timer={timer} />
-      <TimerView timer={timer} />
+      <TimerView timer={timerStore} />
+      <TimerView timer={timerStore} />
     </div>
   );
 }

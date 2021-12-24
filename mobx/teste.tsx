@@ -1,12 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import { observer } from 'mobx-react';
-import { persist, create } from 'mobx-persist';
+import { persist } from 'mobx-persist';
 import { RerenderTest } from '../utils/RerenderTest';
-import { isBrowser } from '../utils/isBrowser';
 
-// Model the application state.
-class Timer {
-    @persist secondsPassed = 0
+class TimerStore {
+    @persist secondsPassed:number = 0
 
     constructor() {
       makeAutoObservable(this);
@@ -21,14 +19,10 @@ class Timer {
     }
 }
 
-export const myTimer = new Timer();
-
-export function Re() {
-
-}
+export const timerStore = new TimerStore();
 
 // Build a "user interface" that uses the observable state.
-export const TimerView = observer(({ timer }:{timer:Timer}) => (
+export const TimerView = observer(({ timer }:{timer:TimerStore}) => (
   <button onClick={() => timer.increase()}>
     Seconds passed:
     {' '}
@@ -36,8 +30,3 @@ export const TimerView = observer(({ timer }:{timer:Timer}) => (
     <RerenderTest />
   </button>
 ));
-
-if (isBrowser) {
-  const hydrate = create();
-  hydrate('some', myTimer);
-}
