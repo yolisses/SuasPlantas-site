@@ -8,6 +8,7 @@ import { devIndicator } from '../utils/devIndicator';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { GoogleAnalyticsTags } from '../config/GoogleAnalyticsTags';
 import { AuthContextProvider } from '../auth/AuthContext';
+import { myTimer } from '../mobx/teste';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -27,7 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <GoogleAnalyticsTags />
         </Head>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
+        <Component timer={myTimer} {...pageProps} />
       </ModalContextProvider>
     </AuthContextProvider>
   );

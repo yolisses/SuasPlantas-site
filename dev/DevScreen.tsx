@@ -1,30 +1,25 @@
-import { useEffect, useState } from 'react';
-import { api } from '../api/api';
-import { useAuth } from '../auth/AuthContext';
-import { Header } from '../common/Header';
+import { TimerView } from '../mobx/teste';
+import { RerenderTest } from '../utils/RerenderTest';
 
-export function DevScreen() {
-  const [data, setData] = useState();
-  async function getMe() {
-    const res = await api.get('users/me');
-    setData(res.data);
-  }
-
-  const { token } = useAuth();
-
-  useEffect(() => {
-    if (token) { getMe(); }
-  }, [token]);
-
+function Nested({ children }) {
   return (
-    <>
-      <Header />
-      <div className="p-2">
-        hello
-        {JSON.stringify(data)}
-        {token}
-      </div>
-    </>
+    <div>
+      <RerenderTest />
+      {children}
+    </div>
+  );
+}
 
+export function DevScreen({ timer }) {
+  return (
+    <div>
+      <Nested>
+        <Nested>
+          <TimerView timer={timer} />
+        </Nested>
+      </Nested>
+      <TimerView timer={timer} />
+      <TimerView timer={timer} />
+    </div>
   );
 }
