@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import { observer } from 'mobx-react';
 import { persist, create } from 'mobx-persist';
 import { RerenderTest } from '../utils/RerenderTest';
+import { isBrowser } from '../utils/isBrowser';
 
 // Model the application state.
 class Timer {
@@ -36,6 +37,7 @@ export const TimerView = observer(({ timer }:{timer:Timer}) => (
   </button>
 ));
 
-const hydrate = create();
-
-hydrate('some', myTimer);
+if (isBrowser) {
+  const hydrate = create();
+  hydrate('some', myTimer);
+}
