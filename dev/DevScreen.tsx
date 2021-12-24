@@ -1,3 +1,4 @@
+import { stores } from '../mobx/storesConfig';
 import { TimerView } from '../mobx/teste';
 import { RerenderTest } from '../utils/RerenderTest';
 
@@ -10,16 +11,16 @@ function Nested({ children }:any) {
   );
 }
 
-export function DevScreen({ timerStore }:any) {
+export function DevScreen() {
   return (
     <div>
       <Nested>
         <Nested>
-          <TimerView timer={timerStore} />
+          <TimerView timer={stores.timerStore} />
         </Nested>
       </Nested>
-      <TimerView timer={timerStore} />
-      <TimerView timer={timerStore} />
+      <TimerView timer={stores.timerStore} />
+      <TimerView timer={stores.timerStore} />
     </div>
   );
 }
