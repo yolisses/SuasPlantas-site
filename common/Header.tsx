@@ -30,7 +30,7 @@ export function Header({ searchQuery }: HeaderProps) {
       </div>
       {/* <SearchTop query={searchQuery} /> */}
       <div className="ml-auto flex justify-center flex-row gap-2">
-        {/* <MeButton /> */}
+        <MeButton />
         <div
           onClick={() => setModal(<SignInBox />)}
           className="flex flex-row items-center gap-1 cursor-pointer"
