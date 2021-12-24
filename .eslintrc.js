@@ -41,5 +41,7 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'class-methods-use-this': 'off',
     'implicit-arrow-linebreak': 'warn',
+    'react/jsx-props-no-spreading': 'off',
+    'no-useless-constructor': 'off',
   },
 };

@@ -1,9 +1,4 @@
-// file
-// upload link
-// sending (progress)
-// sent
-
-import { api } from "../api/api";
+import { api } from '../api/api';
 
 export interface Progress {
   loaded: number;
@@ -12,8 +7,11 @@ export interface Progress {
 
 export class Sending {
   sent: boolean = false;
+
   progress?: Progress;
+
   uploadLink?: string;
+
   private abortController?: AbortController;
 
   constructor(public file: File, public onUpdate?: () => void) {}
@@ -22,7 +20,7 @@ export class Sending {
     await this.getUploadLink();
     await this.uploadImage();
     this.sent = true;
-    console.log("foi");
+    console.log('foi');
     this.callback();
   }
 
@@ -31,8 +29,8 @@ export class Sending {
   }
 
   async getUploadLink() {
-    const query = `{uploadLink}`;
-    const res = await api.post("/", { query });
+    const query = '{uploadLink}';
+    const res = await api.post('/', { query });
     this.uploadLink = res.data.data.uploadLink;
     this.callback();
   }
@@ -61,10 +59,10 @@ export class Sending {
   get progressPercentage() {
     if (!this.progress) return null;
     return (
-      ((100 * this.progress.loaded) / this.progress.total)
+      `${((100 * this.progress.loaded) / this.progress.total)
         .toFixed(2)
-        .replace(".00", "")
-        .replace(".", ",") + "%"
+        .replace('.00', '')
+        .replace('.', ',')}%`
     );
   }
 }

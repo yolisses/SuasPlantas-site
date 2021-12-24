@@ -1,17 +1,18 @@
-import { EmphasisButton } from "../forms/EmphasisButton";
-import { TextInput } from "../forms/TextInput";
-import { tags } from "./tags";
-import { TagsSelector } from "../forms/TagsSelector";
-import { useForm } from "react-hook-form";
-import { FieldBox } from "../forms/FieldBox";
-import { ToggleButton } from "../forms/ToggleButton";
-import { MoneySign } from "../forms/MoneySign";
-import { allowNumbersRegex } from "../forms/allowNumbersRegex";
-import { Header } from "../common/Header";
-import { getTrueValuedKeys } from "../utils/getTrueValuedKeys";
-import { useState } from "react";
-import { ImagesInput } from "../forms/ImagesInput";
-import { api } from "../api/api";
+/* eslint-disable no-param-reassign */
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { tags } from './tags';
+import { api } from '../api/api';
+import { Header } from '../common/Header';
+import { FieldBox } from '../forms/FieldBox';
+import { MoneySign } from '../forms/MoneySign';
+import { TextInput } from '../forms/TextInput';
+import { ImagesInput } from '../forms/ImagesInput';
+import { TagsSelector } from '../forms/TagsSelector';
+import { ToggleButton } from '../forms/ToggleButton';
+import { EmphasisButton } from '../forms/EmphasisButton';
+import { allowNumbersRegex } from '../forms/allowNumbersRegex';
+import { getTrueValuedKeys } from '../utils/getTrueValuedKeys';
 
 export function AddScreen() {
   const {
@@ -22,12 +23,12 @@ export function AddScreen() {
 
   async function onSubmit(data: any) {
     data.tags = getTrueValuedKeys(data.tags);
-    data.amount = data.amount === "" ? null : parseInt(data.amount);
+    data.amount = data.amount === '' ? null : parseInt(data.amount, 10);
     delete data.tags;
-    await api.post("plants", data);
+    await api.post('plants', data);
   }
 
-  const required = { value: true, message: "Esse campo é obrigatório" };
+  const required = { value: true, message: 'Esse campo é obrigatório' };
 
   const [sell, setSell] = useState<boolean>(false);
 
@@ -43,7 +44,7 @@ export function AddScreen() {
           <ImagesInput />
           <TextInput
             label="Nome"
-            {...register("name", { required })}
+            {...register('name', { required })}
             error={errors?.name?.message}
             maxLength={128}
           />
@@ -52,7 +53,7 @@ export function AddScreen() {
             optional
             maxLength={2048}
             label="Descrição"
-            {...register("description")}
+            {...register('description')}
           />
           <TagsSelector
             label="Marcar como"
@@ -63,7 +64,7 @@ export function AddScreen() {
           <TextInput
             label="Quantidade"
             optional
-            {...register("amount")}
+            {...register('amount')}
             type="number"
             min={1}
             max={9999}
@@ -76,12 +77,12 @@ export function AddScreen() {
                 <ToggleButton
                   text="Doação"
                   className="flex flex-1"
-                  {...register("donate")}
+                  {...register('donate')}
                 />
                 <ToggleButton
                   text="Troca"
                   className="flex flex-1"
-                  {...register("swap")}
+                  {...register('swap')}
                 />
                 <ToggleButton
                   text="Venda"
