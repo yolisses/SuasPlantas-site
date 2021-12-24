@@ -29,9 +29,8 @@ export class Sending {
   }
 
   async getUploadLink() {
-    const query = '{uploadLink}';
-    const res = await api.post('/', { query });
-    this.uploadLink = res.data.data.uploadLink;
+    const res = await api.get('upload');
+    this.uploadLink = res.data;
     this.callback();
   }
 

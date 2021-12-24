@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { authStore } from '../auth/authStore';
 import { isDev } from '../utils/isDev';
 
 const useDevApi = true;
@@ -11,6 +12,13 @@ console.log(baseUrl);
 export const api = axios.create({
   baseURL: `${baseUrl}/`,
   withCredentials: true,
+});
+
+api.interceptors.request.use((req) => {
+  if (authStore.token) {
+    req.headers!.authorization = authStore.token;
+  }
+  return req;
 });
 
 api.interceptors.response.use(undefined, (error) => {

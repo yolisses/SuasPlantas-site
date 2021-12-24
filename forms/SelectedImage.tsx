@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { FaTimes } from "react-icons/fa";
-import { Sending } from "../upload/upload";
+import { useEffect, useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import { Sending } from '../upload/upload';
 
 interface SelectedImageProps {
   id: any;
@@ -32,7 +32,7 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
 
   useEffect(() => {
     getImageSrc();
-    // if (!sending.sent) sending.send();
+    if (!sending.sent) sending.send();
   }, [file]);
 
   return (
@@ -51,19 +51,19 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
           src={src}
           className="flex-shrink-0 rounded-lg shadow-md"
           style={{
-            width: "100%",
+            width: '100%',
             height: 0,
-            paddingBottom: "100%",
-            backgroundColor: "gray",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
+            paddingBottom: '100%',
+            backgroundColor: 'gray',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
             backgroundImage: `url(${src})`,
           }}
         />
       </div>
       <div className="overflow-hidden">{sending.getLinkPreview}</div>
       <div>{sending.progressPercentage}</div>
-      <div>{"" + sending.sent}</div>
+      <div>{`${sending.sent}`}</div>
     </div>
   );
 }

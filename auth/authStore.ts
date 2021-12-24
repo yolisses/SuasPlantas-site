@@ -1,6 +1,5 @@
-import { autorun, makeAutoObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { persist } from 'mobx-persist';
-import { api } from '../api/api';
 import { User } from '../user/User';
 
 class AuthStore {
@@ -10,9 +9,6 @@ class AuthStore {
 
     constructor() {
       makeAutoObservable(this);
-      autorun(() => {
-        api.defaults.headers.common.Authorization = this.token || '';
-      });
     }
 
     setToken(token:string) {
