@@ -1,22 +1,24 @@
-import Image from "next/image";
-import { someImage } from "../mock/someImage";
-import { Plant } from "../types/Plant";
-import Link from "next/link";
-import { AvailabilityInfo } from "../show/AvailabilityInfo";
+import Image from 'next/image';
+import Link from 'next/link';
+import { someImage } from '../mock/someImage';
+import { Plant } from '../types/Plant';
+import { AvailabilityInfo } from '../show/AvailabilityInfo';
 
 interface GridItemDTO {
   item: Plant;
 }
 
 export function GridItem({ item }: GridItemDTO) {
-  const { name, description, swap, donate, price } = item;
+  const {
+    name, description, swap, donate, price, card,
+  } = item;
   return (
-    <Link href={"/plants/" + item.id}>
+    <Link href={`/plants/${item.id}`}>
       <div className="flex flex-col">
         <Image
           width={400}
           height={400}
-          src={someImage}
+          src={card}
           objectFit="cover"
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />

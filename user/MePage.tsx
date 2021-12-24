@@ -3,7 +3,7 @@ import { api } from '../api/api';
 import { useAuth } from '../auth/AuthContext';
 import { Header } from '../common/Header';
 
-export function DevScreen() {
+export function MePage() {
   const [data, setData] = useState();
   async function getMe() {
     const res = await api.get('users/me');
@@ -25,6 +25,5 @@ export function DevScreen() {
         {token}
       </div>
     </>
-
   );
 }

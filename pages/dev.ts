@@ -1,12 +1,4 @@
-import { ErrorPage } from '../error/ErrorPage';
+import { DevScreen } from '../dev/DevScreen';
+import MePage from './me';
 
-export default ErrorPage;
-
-export function getStaticProps() {
-  return {
-    props: {
-      message: 'hello',
-      status: 300,
-    },
-  };
-}
+export default MePage;

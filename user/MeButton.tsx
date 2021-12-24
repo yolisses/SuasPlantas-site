@@ -5,7 +5,7 @@ import { someImage } from '../mock/someImage';
 export function MeButton() {
   const size = 36;
   return (
-    <Link href="/users/me">
+    <Link href="/dev">
       <Image
         width={size}
         height={size}
