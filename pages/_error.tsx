@@ -1,13 +1,21 @@
-import ErrorPage from './dev';
+function Error({ status, message }:any) {
+  return (
+    <div>
+      {status
+        ? `An error ${status} occurred on server`
+        : 'An error occurred on client'}
+      <div>
+        {message}
+      </div>
+    </div>
+  );
+}
 
-export default ErrorPage;
-
-(ErrorPage as any).getInitialProps = ({ err }:any) => {
-  console.error(err);
-  if (err) {
-    const { message: errJson } = err;
-    const { message, status } = JSON.parse(errJson);
-    return { err, message, status };
-  }
-  return { err };
+Error.getInitialProps = ({ res, err }:any) => {
+  // eslint-disable-next-line no-nested-ternary
+  const { message: errJSON } = err;
+  const { status, message } = JSON.parse(errJSON);
+  return { status, message };
 };
+
+export default Error;
