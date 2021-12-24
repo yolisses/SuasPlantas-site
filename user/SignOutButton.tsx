@@ -1,7 +1,9 @@
 import { api } from '../api/api';
+import { authStore } from '../auth/authStore';
 
 export const SignOutButton = function () {
   async function handleClick() {
+    authStore.user = undefined;
     return api.post('users/logout');
   }
 

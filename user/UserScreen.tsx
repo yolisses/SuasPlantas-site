@@ -1,10 +1,11 @@
-import Image from "next/image";
-import { HeaderLayout } from "../common/HeaderLayout";
-import { loremIpsum } from "../mock/loremIpsum";
-import { someImage } from "../mock/someImage";
-import { User } from "./User";
-import { GridItem } from "../common/GridItem";
-import { SignOutButton } from "./SignOutButton";
+import Image from 'next/image';
+import { HeaderLayout } from '../common/HeaderLayout';
+import { loremIpsum } from '../mock/loremIpsum';
+import { someImage } from '../mock/someImage';
+import { User } from './User';
+import { GridItem } from '../common/GridItem';
+import { SignOutButton } from './SignOutButton';
+import { authStore } from '../auth/authStore';
 
 interface UserScreenProps {
   user: User;
@@ -15,7 +16,7 @@ export function UserScreen({ user }: UserScreenProps) {
     <div className="flex">
       <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout>
       <div className="p-2">
-        <SignOutButton />
+        {authStore.user?.id === user.id && <SignOutButton />}
         <div className="flex flex-row gap-2">
           <Image
             className="rounded-full bg-cover w-24 h-24 object-cover"

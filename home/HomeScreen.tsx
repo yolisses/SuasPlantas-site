@@ -22,7 +22,6 @@ export function HomeScreen({ data }: HomeScreenProps) {
         />
       </Head>
       <Header />
-      <div>{authStore.token}</div>
       <div className="flex flex-row justify-start">
         <SelectLocationLink />
       </div>

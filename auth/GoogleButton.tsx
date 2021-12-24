@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { signIn } from './signIn';
 import { isDev } from '../utils/isDev';
-import { useAuth } from './AuthContext';
 
 interface GoogleResponse {
   credential: string;
@@ -15,12 +14,9 @@ declare global {
 }
 
 export function GoogleButton() {
-  const { setToken } = useAuth();
-
   async function handleGoogleResponse(e: GoogleResponse) {
     if (isDev) console.log(e.credential);
-    const token = await signIn('google', e.credential);
-    setToken(token);
+    await signIn('google', e.credential);
   }
 
   useEffect(() => {

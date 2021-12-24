@@ -1,26 +1,9 @@
-import { stores } from '../mobx/storesConfig';
-import { TimerView } from '../mobx/teste';
-import { RerenderTest } from '../utils/RerenderTest';
-
-function Nested({ children }:any) {
-  return (
-    <div>
-      <RerenderTest />
-      {children}
-    </div>
-  );
-}
+import { authStore } from '../auth/authStore';
 
 export function DevScreen() {
   return (
     <div>
-      <Nested>
-        <Nested>
-          <TimerView timer={stores.timerStore} />
-        </Nested>
-      </Nested>
-      <TimerView timer={stores.timerStore} />
-      <TimerView timer={stores.timerStore} />
+      {JSON.stringify(authStore.user) || 'sem user'}
     </div>
   );
 }
