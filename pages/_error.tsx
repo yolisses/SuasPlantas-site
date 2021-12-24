@@ -13,9 +13,12 @@ function Error({ status, message }:any) {
 
 Error.getInitialProps = ({ res, err }:any) => {
   // eslint-disable-next-line no-nested-ternary
-  const { message: errJSON } = err;
-  const { status, message } = JSON.parse(errJSON);
-  return { status, message };
+  if (err) {
+    const { message: errJSON } = err;
+    const { status, message } = JSON.parse(errJSON);
+    return { status, message };
+  }
+  return {};
 };
 
 export default Error;
