@@ -25,7 +25,10 @@ export class GoogleButton extends Component {
 
   render() {
     return (
-      <>
+      <div
+        style={{ width: '300px' }}
+        className="rounded-full h-10 bg-gray-100"
+      >
         <Head>
           <script src="https://accounts.google.com/gsi/client" async />
         </Head>
@@ -41,11 +44,11 @@ export class GoogleButton extends Component {
           data-size="large"
           data-text="signin"
           data-type="standard"
-          className="g_id_signin h-10 bg-white rounded-full"
+          className="g_id_signin"
           // data-theme="filled_blue"
           data-logo_alignment="left"
         />
-      </>
+      </div>
     );
   }
 }
