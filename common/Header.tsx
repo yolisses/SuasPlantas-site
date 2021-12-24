@@ -24,9 +24,8 @@ export function Header({ searchQuery }: HeaderProps) {
         </Link>
       </div>
       {/* <SearchTop query={searchQuery} /> */}
-      <div className="ml-auto flex justify-center flex-row gap-2">
-        <MeButton />
-      </div>
+      <div className="ml-auto" />
+      <MeButton />
     </HeaderLayout>
   );
 }
