@@ -4,6 +4,7 @@ import { authStore } from '../auth/authStore';
 export const SignOutButton = function () {
   async function handleClick() {
     authStore.user = undefined;
+    authStore.token = undefined;
     return api.post('users/logout');
   }
 
