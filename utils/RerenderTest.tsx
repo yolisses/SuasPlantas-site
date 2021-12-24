@@ -1,7 +1,7 @@
 import { isDev } from './isDev';
 
 export function RerenderTest() {
-  if (!isDev) return false;
+  if (!isDev) return null;
 
   return (
     <div className="text-purple-800">

@@ -27,7 +27,7 @@ export function Re() {
 }
 
 // Build a "user interface" that uses the observable state.
-export const TimerView = observer(({ timer }) => (
+export const TimerView = observer(({ timer }:{timer:Timer}) => (
   <button onClick={() => timer.increase()}>
     Seconds passed:
     {' '}

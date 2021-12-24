@@ -1,7 +1,7 @@
 import { TimerView } from '../mobx/teste';
 import { RerenderTest } from '../utils/RerenderTest';
 
-function Nested({ children }) {
+function Nested({ children }:any) {
   return (
     <div>
       <RerenderTest />
@@ -10,7 +10,7 @@ function Nested({ children }) {
   );
 }
 
-export function DevScreen({ timer }) {
+export function DevScreen({ timer }:any) {
   return (
     <div>
       <Nested>
