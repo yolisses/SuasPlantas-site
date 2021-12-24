@@ -16,9 +16,7 @@ export function HomeScreen({ data }: HomeScreenProps) {
       <Head>
         <meta
           name="description"
-          content="
-          Site para trocar mudas de plantas com vários outros usuários.
-          Super simples, seguro e com grande variedade."
+          content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
         />
       </Head>
       <Header />

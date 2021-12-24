@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { someImage } from '../mock/someImage';
 import { Plant } from '../types/Plant';
-import { AvailabilityInfo } from '../show/AvailabilityInfo';
+import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 
 interface GridItemDTO {
   item: Plant;

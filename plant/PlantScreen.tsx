@@ -8,7 +8,7 @@ import { availabilitiesToString } from './availabilitiesToString';
 import { UserLink } from '../user/UserLink';
 import { devIndicator } from '../utils/devIndicator';
 
-export function ShowScreen({ data }: { data: Plant }) {
+export function PlantScreen({ data }: { data: Plant }) {
   const {
     name,
     description,
