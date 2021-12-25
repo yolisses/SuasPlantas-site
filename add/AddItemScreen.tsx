@@ -22,10 +22,11 @@ export function AddScreen() {
   } = useForm();
 
   async function onSubmit(data: any) {
+    console.log(data);
     data.tags = getTrueValuedKeys(data.tags);
     data.amount = data.amount === '' ? null : parseInt(data.amount, 10);
     delete data.tags;
-    await api.post('plants', data);
+    // await api.post('plants', data);
   }
 
   const required = { value: true, message: 'Esse campo é obrigatório' };
@@ -44,9 +45,9 @@ export function AddScreen() {
           <ImagesInput />
           <TextInput
             label="Nome"
-            {...register('name', { required })}
-            error={errors?.name?.message}
             maxLength={128}
+            error={errors?.name?.message}
+            {...register('name', { required })}
           />
           <TextInput
             multiple
@@ -56,19 +57,19 @@ export function AddScreen() {
             {...register('description')}
           />
           <TagsSelector
-            label="Marcar como"
             id="tags"
             options={tags}
+            label="Marcar como"
             register={register}
           />
           <TextInput
-            label="Quantidade"
-            optional
-            {...register('amount')}
-            type="number"
             min={1}
+            optional
             max={9999}
+            type="number"
             maxLength={4}
+            label="Quantidade"
+            {...register('amount')}
             mask={allowNumbersRegex}
           />
           <FieldBox label="Disponível para" labelActive={false}>
@@ -76,33 +77,34 @@ export function AddScreen() {
               <div className="flex flex-row gap-2 pt-1 ">
                 <ToggleButton
                   text="Doação"
-                  className="flex flex-1"
                   {...register('donate')}
+                  className="flex flex-1"
                 />
                 <ToggleButton
                   text="Troca"
-                  className="flex flex-1"
                   {...register('swap')}
+                  className="flex flex-1"
                 />
                 <ToggleButton
                   text="Venda"
+                  onChange={onSellPress}
                   className="flex flex-1"
                   value={sell as unknown as string}
-                  onChange={onSellPress}
                 />
               </div>
             </div>
           </FieldBox>
           {sell && (
-            <TextInput
-              label="Preço"
-              type="number"
-              mask={allowNumbersRegex}
-              min={0}
-              max={9999}
-              maxLength={4}
-              leftChild={<MoneySign />}
-            />
+          <TextInput
+            min={0}
+            max={9999}
+            type="number"
+            label="Preço"
+            maxLength={4}
+            {...register('price')}
+            mask={allowNumbersRegex}
+            leftChild={<MoneySign />}
+          />
           )}
           <EmphasisButton
             text="Adicionar"

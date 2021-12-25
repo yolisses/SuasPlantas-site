@@ -1,25 +1,27 @@
-import { FormEvent, forwardRef, HTMLProps, useEffect, useRef } from "react";
-import { FieldBox } from "./FieldBox";
+import {
+  FormEvent, forwardRef, HTMLProps, ReactNode, useEffect, useRef,
+} from 'react';
+import { FieldBox } from './FieldBox';
 
 interface TextInputProps extends HTMLProps<HTMLInputElement> {
   mask?: RegExp;
   label: string;
   error?: string;
   optional?: boolean;
-  leftChild?: JSX.Element;
   multiple?: boolean;
+  leftChild?: ReactNode;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (props, fRef) => {
     const {
-      label,
-      optional,
-      leftChild,
-      error,
       mask,
+      error,
+      label,
       onChange,
+      optional,
       multiple,
+      leftChild,
       ...rest
     } = props;
 
@@ -38,9 +40,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     function resize() {
       if (multiple) {
-        ref.current!.style!.height = "0px";
-        ref.current!.style!.height =
-          Math.max(ref.current!.scrollHeight, 48) + "px";
+        ref.current!.style!.height = '0px';
+        ref.current!.style!.height = `${Math.max(ref.current!.scrollHeight, 48)}px`;
       }
     }
 
@@ -53,9 +54,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         labelClassName="transform translate-y-2 bg-white px-1"
       >
         <div
-          className={
-            "flex flex-1 self-stretch flex-row border-2 border-gray-300 rounded-lg p-2 focus:border-black focus-within:border-gray-800"
-          }
+          className="flex flex-1 self-stretch flex-row border-2 border-gray-300 rounded-lg p-2 focus:border-black focus-within:border-gray-800"
         >
           {leftChild}
           {multiple ? (
@@ -65,7 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               // @ts-ignore
               onBeforeInput={handleBeforeInput}
               onChange={resize}
-              placeholder={optional ? "opcional" : undefined}
+              placeholder={optional ? 'opcional' : undefined}
               className=" self-stretch flex flex-1 outline-none resize-none bg-transparent"
               {...rest}
             />
@@ -73,7 +72,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             <input
               ref={handleRef}
               onBeforeInput={handleBeforeInput}
-              placeholder={optional ? "opcional" : undefined}
+              placeholder={optional ? 'opcional' : undefined}
               className=" self-stretch flex flex-1 outline-none resize-none bg-transparent"
               {...rest}
             />
@@ -81,5 +80,5 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         </div>
       </FieldBox>
     );
-  }
+  },
 );

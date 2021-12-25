@@ -43,5 +43,6 @@ module.exports = {
     'implicit-arrow-linebreak': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'no-useless-constructor': 'off',
+    'react/require-default-props': 'warn',
   },
 };

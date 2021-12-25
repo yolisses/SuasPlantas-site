@@ -1,18 +1,18 @@
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import { FieldBox } from "./FieldBox";
-import { ToggleButton } from "./ToggleButton";
+import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldBox } from './FieldBox';
+import { ToggleButton } from './ToggleButton';
 
 interface TagsSelectorProps {
-  options: string[];
-  label: string;
   id: string;
+  label: string;
+  options: string[];
   register: UseFormRegister<FieldValues>;
 }
 
 export function TagsSelector({
-  options,
-  label,
   id,
+  label,
+  options,
   register,
 }: TagsSelectorProps) {
   return (
@@ -26,7 +26,7 @@ export function TagsSelector({
           <ToggleButton
             text={option}
             key={option}
-            {...register(id + "." + option)}
+            {...register(`${id}.${option}`)}
           />
         ))}
       </div>
