@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { api } from '../api/api';
 import { authStore } from '../auth/authStore';
 
@@ -43,10 +44,9 @@ export class Sending {
 
   async uploadImage() {
     this.abortController = new AbortController();
-    await api.put(this.uploadLink!, this.file, {
+    await axios.put(this.uploadLink!, this.file, {
       onUploadProgress: this.onUploadProgress,
       signal: this.abortController.signal,
-      headers: {},
     });
   }
 
