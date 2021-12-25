@@ -16,7 +16,7 @@ export const api = axios.create({
 
 api.interceptors.request.use((req) => {
   if (authStore.token) {
-    // req.headers!.authorization = authStore.token;
+    req.headers!.authorization = authStore.token;
   }
   return req;
 });

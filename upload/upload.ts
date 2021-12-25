@@ -30,7 +30,7 @@ export class Sending {
   }
 
   async getUploadLink() {
-    const res = await api.get('upload', { headers: { authorization: authStore.token } });
+    const res = await api.get('upload');
     this.uploadLink = res.data;
     this.callback();
     console.log(this.uploadLink);
@@ -46,6 +46,7 @@ export class Sending {
     await api.put(this.uploadLink!, this.file, {
       onUploadProgress: this.onUploadProgress,
       signal: this.abortController.signal,
+      headers: {},
     });
   }
 
