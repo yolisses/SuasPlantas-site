@@ -12,7 +12,7 @@ export function Header({ searchQuery }: HeaderProps) {
   console.log(authenticated);
 
   return (
-    <HeaderLayout className="bg-green-700 text-white" goBackButton={false}>
+    <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
       <div className="mr-auto">
         <Link href="/">
           <div className="flex flex-row items-center gap-1">
