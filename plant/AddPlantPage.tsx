@@ -1,5 +1,6 @@
 import {
-  Checkbox, CircularProgress, FormControlLabel, FormGroup, FormLabel, InputAdornment, TextField,
+  Alert,
+  Checkbox, CircularProgress, FormControlLabel, FormGroup, FormLabel, InputAdornment, Snackbar, TextField,
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -11,10 +12,16 @@ import { tags } from './tags';
 import { api } from '../api/api';
 import { Sending } from '../upload/Sending';
 
+interface Snack{
+  severity?:'error'|'info'|'success'|'warning'
+  text:string
+}
+
 export function AddPlantPage() {
   const [sell, setSell] = useState(false);
   const { register, handleSubmit, control } = useForm();
   const [loading, setLoading] = useState(false);
+  const [snack, setSnack] = useState<Snack>();
 
   async function allImagesSent(images: SendingsCollection) {
     const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
@@ -35,12 +42,24 @@ export function AddPlantPage() {
       throw err;
     }
     setLoading(false);
+    setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
     console.log('tudo');
+  }
+
+  function handleSnackClose() {
+    setSnack(undefined);
   }
 
   return (
     <>
       <Header />
+      {snack && (
+      <Snackbar open autoHideDuration={6000} onClose={handleSnackClose}>
+        <Alert severity={snack.severity} className="w-full" variant="filled">
+          {snack.text}
+        </Alert>
+      </Snackbar>
+      )}
       <div className="w-full flex-1 flex flex-col justify-center items-center">
         <div className="flex flex-col p-2 gap-4 max-w-lg w-full pb-8">
           <Controller
