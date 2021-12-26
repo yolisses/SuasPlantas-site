@@ -13,7 +13,7 @@ export function ListItem({ item }: ListItemDTO) {
   return (
     <Link href={`/plants/${item.id}`}>
       <CardActionArea className="rounded-xl">
-        <ul className="flex flex-row cursor-pointer hover:bg-black hover:bg-opacity-5 rounded-xl">
+        <ul className="flex flex-row cursor-pointer rounded-xl">
           <Image
             src={item.card}
             width={140}
