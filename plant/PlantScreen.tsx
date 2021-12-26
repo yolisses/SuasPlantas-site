@@ -1,13 +1,13 @@
-import Image from 'next/image';
 import Head from 'next/head';
-import { Header } from '../common/Header';
-import { Plant } from '../types/Plant';
-import { AvailabilityInfo } from './AvailabilityInfo';
+import Image from 'next/image';
 import { Session } from './Session';
-import { availabilitiesToString } from './availabilitiesToString';
+import { Plant } from '../types/Plant';
+import { Header } from '../common/Header';
 import { UserLink } from '../user/UserLink';
+import { someImage } from '../mock/someImage';
 import { devIndicator } from '../utils/devIndicator';
-import { loremIpsum } from '../mock/loremIpsum';
+import { AvailabilityInfo } from './AvailabilityInfo';
+import { availabilitiesToString } from './availabilitiesToString';
 
 export function PlantScreen({ data }: { data: Plant }) {
   const {
@@ -44,7 +44,7 @@ export function PlantScreen({ data }: { data: Plant }) {
           <div className="flex-1 lg:sticky top-0">
             <div className="sticky top-0 flex flex-col items-center">
               <Image
-                src={data.images[0].uri}
+                src={data.images[0]?.uri || someImage}
                 width={600}
                 height={600}
                 alt={name}

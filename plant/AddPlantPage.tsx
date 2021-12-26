@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
 import { Header } from '../common/Header';
 import { tags } from './tags';
+import { api } from '../api/api';
+import { Sending } from '../upload/Sending';
 
 export function AddPlantPage() {
   const [sell, setSell] = useState(false);
@@ -19,9 +21,19 @@ export function AddPlantPage() {
     await Promise.all(imagesPromisses);
   }
 
-  async function submit(data:{images:SendingsCollection}) {
+  async function submit(data:any) {
     setLoading(true);
-    await allImagesSent(data.images);
+    try {
+      await allImagesSent(data.images);
+      await api.post('plants', {
+        ...data,
+        images: Object.values(data.images).map((value) => (value as Sending).key),
+        amount: parseInt(data.amount, 10),
+      });
+    } catch (err) {
+      setLoading(false);
+      throw err;
+    }
     setLoading(false);
     console.log('tudo');
   }

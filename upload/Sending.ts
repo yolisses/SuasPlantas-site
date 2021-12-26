@@ -21,6 +21,8 @@ export class Sending {
 
   sendPromise?:Promise<void>
 
+  key?:string
+
   constructor(file:File, onUpdate?: () => void) {
     this.file = file;
     this.onUpdate = onUpdate;
@@ -45,7 +47,9 @@ export class Sending {
 
   async getUploadLink() {
     const res = await api.get('upload');
-    this.uploadLink = res.data;
+    const { uploadLink, key } = res.data;
+    this.uploadLink = uploadLink;
+    this.key = key;
     this.callback();
   }
 
