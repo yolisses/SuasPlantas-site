@@ -13,11 +13,24 @@ export class Sending {
 
   uploadLink?: string;
 
+  file: File
+
+  onUpdate?:()=>void
+
   private abortController?: AbortController;
 
-  constructor(public file: File, public onUpdate?: () => void) {}
+  sendPromise?:Promise<void>
+
+  constructor(file:File, onUpdate?: () => void) {
+    this.file = file;
+    this.onUpdate = onUpdate;
+  }
 
   async send() {
+    this.sendPromise = this.doSend();
+  }
+
+  async doSend() {
     await this.getUploadLink();
     await this.uploadImage();
     this.sent = true;
@@ -33,7 +46,6 @@ export class Sending {
     const res = await api.get('upload');
     this.uploadLink = res.data;
     this.callback();
-    console.log(this.uploadLink);
   }
 
   onUploadProgress = (progress: Progress) => {
@@ -62,8 +74,7 @@ export class Sending {
     return (
       `${((100 * this.progress.loaded) / this.progress.total)
         .toFixed(2)
-        .replace('.00', '')
-        .replace('.', ',')}%`
+        .replace('.00', '')}%`
     );
   }
 }

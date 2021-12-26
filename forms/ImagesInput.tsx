@@ -1,41 +1,55 @@
-import { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { ChangeEvent, useEffect, useState } from 'react';
 import { FaImage } from 'react-icons/fa';
+import { Sending } from '../upload/Sending';
 import { isEmpty } from '../utils/isEmpty';
 import { SelectedImage } from './SelectedImage';
 
-type filesCollection = { [key: number]: File };
+interface ImagesInputProps{
+  onChange:(value:any)=>void
+}
 
-export function ImagesInput() {
-  const [files, setFiles] = useState<filesCollection>({});
+type sendingsCollection = { [key: number]: Sending };
 
-  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const newFiles: filesCollection = {};
-    Array.from(e.target.files!).map((file) => (newFiles[Math.random()] = file));
-    setFiles((old) => ({ ...old, ...newFiles }));
+export function ImagesInput({ onChange }:ImagesInputProps) {
+  const [sendings, setSendings] = useState<sendingsCollection>({});
+  const [_, setRefreshValue] = useState(0);
+  function refresh() {
+    setRefreshValue(Math.random());
+  }
+
+  const handleFilesSelected = (e: ChangeEvent<HTMLInputElement>): void => {
+    const newFiles: sendingsCollection = {};
+    Array.from(e.target.files!).forEach((file) => {
+      newFiles[Math.random()] = new Sending(file, refresh);
+    });
+    setSendings((old) => ({ ...old, ...newFiles }));
   };
 
   function handleRemoveFile(key: number) {
-    setFiles((old) => {
+    setSendings((old) => {
       const newFiles = { ...old };
       delete newFiles[key];
       return newFiles;
     });
   }
 
+  useEffect(() => { onChange(sendings); }, [sendings]);
+
   return (
     <div className="rounded-xl overflow-hidden">
       <div
         className={
           `overflow-x-auto gap-1 ${
-            !isEmpty(files) ? ' grid grid-cols-3 sm:grid-cols-4' : ''}`
+            !isEmpty(sendings) ? ' grid grid-cols-3 sm:grid-cols-4' : ''}`
         }
       >
-        {!isEmpty(files)
-          && Object.entries(files).map(([key, file]) => (
+        {!isEmpty(sendings)
+          && Object.entries(sendings).map(([key, sending]) => (
             <SelectedImage
               id={key}
               key={key}
-              file={file}
+              sending={sending}
               onRemoveClick={handleRemoveFile}
             />
           ))}
@@ -43,7 +57,7 @@ export function ImagesInput() {
           <div
             className={
               `bg-gray-300 px-2 flex gap-2 items-center justify-center cursor-pointer select-none rounded-lg ${
-                !isEmpty(files) ? ' flex-row gap-1 py-3 h-full' : 'py-14'}`
+                !isEmpty(sendings) ? ' flex-row gap-1 py-3 h-full' : 'py-14'}`
             }
           >
             <FaImage size={25} />
@@ -51,7 +65,7 @@ export function ImagesInput() {
           </div>
           <input
             type="file"
-            onChange={handleFileSelected}
+            onChange={handleFilesSelected}
             accept=".jpg, .jpeg, .png, .webp"
             hidden
             multiple

@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { Sending } from '../upload/upload';
+import { Sending } from '../upload/Sending';
 
 interface SelectedImageProps {
   id: any;
-  file: File;
-  onRemoveClick: (id: any) => void;
+  sending:Sending
+  onRemoveClick: (id:any) => void;
 }
 
-export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
+export function SelectedImage({
+  id, onRemoveClick, sending,
+}: SelectedImageProps) {
   const [src, setSrc] = useState<string>();
-  const [_, setRefreshValue] = useState(0);
-  function refresh() {
-    setRefreshValue(Math.random());
-  }
-  const [sending] = useState<Sending>(new Sending(file, refresh));
 
   function handleRemoveClick() {
     sending.cancel();
@@ -23,17 +20,17 @@ export function SelectedImage({ id, file, onRemoveClick }: SelectedImageProps) {
 
   function getImageSrc() {
     const reader = new FileReader();
-    reader.onload = function (e) {
-      const src = e.target!.result;
-      setSrc(src as string);
+    reader.onload = (e) => {
+      const newSrc = e.target!.result;
+      setSrc(newSrc as string);
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(sending.file);
   }
 
   useEffect(() => {
     getImageSrc();
     if (!sending.sent) sending.send();
-  }, [file]);
+  }, [sending.file]);
 
   return (
     <div className="flex-shrink-0">
