@@ -7,7 +7,7 @@ export function AddButton() {
   return (
     <Link href="/add">
       <RequireLogin>
-        <Fab color="primary" aria-label="add" className="absolute right-10 bottom-10">
+        <Fab color="primary" aria-label="add">
           <FaPlus size={24} color="white" />
         </Fab>
       </RequireLogin>
