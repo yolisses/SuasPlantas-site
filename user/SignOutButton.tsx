@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { api } from '../api/api';
 import { authStore } from '../auth/authStore';
 
@@ -9,11 +10,8 @@ export const SignOutButton = function () {
   }
 
   return (
-    <div
-      onClick={handleClick}
-      className="bg-white p-2 rounded-lg text-red hover:bg-black hover:bg-opacity-5 m-2 cursor-pointer select-none"
-    >
+    <Button onClick={handleClick}>
       Sign out
-    </div>
+    </Button>
   );
 };

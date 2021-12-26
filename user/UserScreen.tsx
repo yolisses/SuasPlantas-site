@@ -13,7 +13,7 @@ interface UserScreenProps {
 
 export function UserScreen({ user }: UserScreenProps) {
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout>
       <div className="p-2">
         {authStore.user?.id === user.id && <SignOutButton />}

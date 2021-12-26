@@ -39,9 +39,9 @@ export function PlantScreen({ data }: { data: Plant }) {
       </Head>
       <Header />
       <main>
-        <div className="flex lg:flex-row lg:gap-2">
+        <div className="flex flex-col lg:flex-row lg:gap-2">
           <div className="flex-1 lg:sticky top-0">
-            <div className="sticky top-0 flex items-center">
+            <div className="sticky top-0 flex flex-col items-center">
               <Image
                 src={data.images[0].uri}
                 width={600}
@@ -53,7 +53,7 @@ export function PlantScreen({ data }: { data: Plant }) {
             </div>
           </div>
           <div className="flex-1">
-            <div className="p-2 gap-4 flex">
+            <div className="p-2 gap-4 flex flex-col">
               <Session>
                 <h1 className="text-2xl">{name}</h1>
                 <AvailabilityInfo {...{ swap, donate, price }} />

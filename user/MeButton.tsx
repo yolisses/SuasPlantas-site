@@ -8,7 +8,7 @@ import { someImage } from '../mock/someImage';
 
 export const MeButton = observer(() => {
   const size = 36;
-  return authStore.user ? (
+  return authStore.user && authStore.token ? (
     <Link href={`/users/${authStore.user?.id}`}>
       <Image
         width={size}

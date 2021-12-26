@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import { Fab } from '@mui/material';
+import { FaPlus } from 'react-icons/fa';
 import { Header } from '../common/Header';
 import { SelectLocationLink } from '../location/SelectLocationLink';
 import { Plant } from '../types/Plant';
 import { AddButton } from './AddButton';
 import { ListItem } from '../common/ListItem';
-import { authStore } from '../auth/authStore';
 
 interface HomeScreenProps {
   data: Plant[];
@@ -28,9 +29,7 @@ export function HomeScreen({ data }: HomeScreenProps) {
           <ListItem key={item.id} item={item} />
         ))}
       </div>
-      <div className=" z-20 fixed bottom-6 right-6">
-        <AddButton />
-      </div>
+      <AddButton />
     </>
   );
 }

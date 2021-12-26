@@ -1,13 +1,13 @@
-import "leaflet/dist/leaflet.css";
-import { EmphasisButton } from "../forms/EmphasisButton";
-import { HeaderLayout } from "../common/HeaderLayout";
-import Image from "next/image";
-import { useState } from "react";
-import { Feature } from "./Feature";
-import axios from "axios";
-import { AutoCompleteInput } from "./AutoCompleteInput";
-import Map from "./Map";
-import { LatLngTuple } from "leaflet";
+import 'leaflet/dist/leaflet.css';
+import Image from 'next/image';
+import { useState } from 'react';
+import axios from 'axios';
+import { LatLngTuple } from 'leaflet';
+import { EmphasisButton } from '../forms/EmphasisButton';
+import { HeaderLayout } from '../common/HeaderLayout';
+import { Feature } from './Feature';
+import { AutoCompleteInput } from './AutoCompleteInput';
+import Map from './Map';
 
 function SelectLocationScreen() {
   const centerSize = 40;
@@ -15,7 +15,7 @@ function SelectLocationScreen() {
   console.log({ center });
 
   function handleChange(value: Feature) {
-    console.log("handle select", value);
+    console.log('handle select', value);
     setCenter(value.center.reverse() as LatLngTuple);
     console.log(value);
   }
@@ -29,7 +29,7 @@ function SelectLocationScreen() {
   }
 
   function getText(value: Feature) {
-    return value.place_name.replace("Brazil", "Brasil");
+    return value.place_name.replace('Brazil', 'Brasil');
   }
 
   function keyExtractor(value: Feature) {
@@ -37,7 +37,7 @@ function SelectLocationScreen() {
   }
 
   return (
-    <div className="flex flex-1 min-h-screen">
+    <div className="flex flex-col flex-1 min-h-screen">
       <HeaderLayout>
         <div>Sua localização</div>
       </HeaderLayout>
@@ -49,11 +49,11 @@ function SelectLocationScreen() {
           onChange={handleChange}
         />
       </div>
-      <div className="flex flex-1 relative">
-        <div className="flex-1 bg-green-300 flex relative z-0">
+      <div className="flex flex-col flex-1 relative">
+        <div className="flex-1 bg-green-300 flex flex-col relative z-0">
           <Map center={center} />
         </div>
-        <div className="absolute z-20 w-full select-none flex justify-center items-center top-0 bottom-0 pointer-events-none">
+        <div className="absolute z-20 w-full select-none flex flex-col justify-center items-center top-0 bottom-0 pointer-events-none">
           <Image src="/map_center.png" width={centerSize} height={centerSize} />
         </div>
       </div>

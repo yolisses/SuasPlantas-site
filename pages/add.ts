@@ -1,3 +1,3 @@
-import { AddScreen } from '../add/AddItemScreen';
+import AddPlantPage from './dev';
 
-export default AddScreen;
+export default AddPlantPage;
