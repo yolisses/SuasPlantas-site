@@ -29,7 +29,6 @@ export function SelectedImage({
 
   useEffect(() => {
     getImageSrc();
-    if (!sending.sent) sending.send();
   }, [sending.file]);
 
   return (
@@ -46,7 +45,7 @@ export function SelectedImage({
         <img
           alt=""
           src={src}
-          className="flex-shrink-0 rounded-lg shadow-md"
+          className="flex-shrink-0 rounded-lg"
           style={{
             width: '100%',
             height: 0,

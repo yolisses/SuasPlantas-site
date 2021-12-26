@@ -9,17 +9,17 @@ interface ImagesInputProps{
   onChange:(value:any)=>void
 }
 
-type sendingsCollection = { [key: number]: Sending };
+export type SendingsCollection = { [key: number]: Sending };
 
 export function ImagesInput({ onChange }:ImagesInputProps) {
-  const [sendings, setSendings] = useState<sendingsCollection>({});
+  const [sendings, setSendings] = useState<SendingsCollection>({});
   const [_, setRefreshValue] = useState(0);
   function refresh() {
     setRefreshValue(Math.random());
   }
 
   const handleFilesSelected = (e: ChangeEvent<HTMLInputElement>): void => {
-    const newFiles: sendingsCollection = {};
+    const newFiles: SendingsCollection = {};
     Array.from(e.target.files!).forEach((file) => {
       newFiles[Math.random()] = new Sending(file, refresh);
     });
@@ -37,10 +37,10 @@ export function ImagesInput({ onChange }:ImagesInputProps) {
   useEffect(() => { onChange(sendings); }, [sendings]);
 
   return (
-    <div className="rounded-xl overflow-hidden">
+    <div>
       <div
         className={
-          `overflow-x-auto gap-1 ${
+          `gap-1 ${
             !isEmpty(sendings) ? ' grid grid-cols-3 sm:grid-cols-4' : ''}`
         }
       >
@@ -57,7 +57,7 @@ export function ImagesInput({ onChange }:ImagesInputProps) {
           <div
             className={
               `bg-gray-300 px-2 flex gap-2 items-center justify-center cursor-pointer select-none rounded-lg ${
-                !isEmpty(sendings) ? ' flex-row gap-1 py-3 h-full' : 'py-14'}`
+                !isEmpty(sendings) ? ' flex-row gap-1 py-3 h-full mb-2' : 'py-14'}`
             }
           >
             <FaImage size={25} />

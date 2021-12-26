@@ -1,7 +1,7 @@
 export const tags = [
   '🍎frutífera',
   '🥦comestível',
-  '🌹ornamental',
+  '🌷ornamental',
   '🌿medicinal',
   '🌑de sombra',
   '⛅meia sombra',

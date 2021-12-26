@@ -1,20 +1,29 @@
 import {
-  Checkbox, FormControlLabel, FormGroup, FormLabel, InputAdornment, TextField,
+  Checkbox, CircularProgress, FormControlLabel, FormGroup, FormLabel, InputAdornment, TextField,
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { ImagesInput } from '../forms/ImagesInput';
+import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
 import { Header } from '../common/Header';
 import { tags } from './tags';
 
 export function AddPlantPage() {
   const [sell, setSell] = useState(false);
   const { register, handleSubmit, control } = useForm();
+  const [loading, setLoading] = useState(false);
 
-  function submit(data) {
-    console.log(data);
+  async function allImagesSent(images: SendingsCollection) {
+    const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
+    await Promise.all(imagesPromisses);
+  }
+
+  async function submit(data:{images:SendingsCollection}) {
+    setLoading(true);
+    await allImagesSent(data.images);
+    setLoading(false);
+    console.log('tudo');
   }
 
   return (
@@ -91,8 +100,8 @@ export function AddPlantPage() {
             />
             )}
           </div>
-          <Button variant="contained" className="h-12" onClick={handleSubmit(submit)}>
-            {/* <CircularProgress size={20} className="mr-2" /> */}
+          <Button variant="contained" className="h-12" onClick={handleSubmit(submit)} disabled={loading}>
+            {loading && <CircularProgress size={20} className="mr-2" />}
             Adicionar
           </Button>
         </div>

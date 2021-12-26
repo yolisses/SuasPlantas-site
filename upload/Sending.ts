@@ -24,6 +24,7 @@ export class Sending {
   constructor(file:File, onUpdate?: () => void) {
     this.file = file;
     this.onUpdate = onUpdate;
+    this.send();
   }
 
   async send() {
