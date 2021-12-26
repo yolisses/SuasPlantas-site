@@ -29,7 +29,7 @@ export function HomeScreen({ data }: HomeScreenProps) {
           <ListItem key={item.id} item={item} />
         ))}
       </div>
-      <div className="absolute right-10 bottom-10">
+      <div className="fixed right-10 bottom-10">
         <AddButton />
       </div>
     </>
