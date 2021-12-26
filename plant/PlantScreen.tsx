@@ -7,6 +7,7 @@ import { Session } from './Session';
 import { availabilitiesToString } from './availabilitiesToString';
 import { UserLink } from '../user/UserLink';
 import { devIndicator } from '../utils/devIndicator';
+import { loremIpsum } from '../mock/loremIpsum';
 
 export function PlantScreen({ data }: { data: Plant }) {
   const {
@@ -45,7 +46,7 @@ export function PlantScreen({ data }: { data: Plant }) {
               <Image
                 src={data.images[0].uri}
                 width={600}
-                height={700}
+                height={600}
                 alt={name}
                 className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
               />
