@@ -1,15 +1,27 @@
-import Head from 'next/head';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
-import { Session } from './Session';
-import { Plant } from '../types/Plant';
+import Head from 'next/head';
+import { loremIpsum } from '../mock/loremIpsum';
+import { someImage, someImageH, someImageU } from '../mock/someImage';
 import { Header } from '../common/Header';
-import { UserLink } from '../user/UserLink';
-import { someImage } from '../mock/someImage';
-import { devIndicator } from '../utils/devIndicator';
+import { Session } from './Session';
 import { AvailabilityInfo } from './AvailabilityInfo';
 import { availabilitiesToString } from './availabilitiesToString';
+import { UserLink } from '../user/UserLink';
+import { Plant } from '../types/Plant';
+import { devIndicator } from '../utils/devIndicator';
 
-export function PlantScreen({ data }: { data: Plant }) {
+export function PlantScreen({ data }:{data:Plant}) {
+  const images = [
+    someImage,
+    someImageH,
+    someImageU,
+    someImage,
+    someImage,
+    someImageH,
+  ];
+
   const {
     name,
     description,
@@ -24,14 +36,14 @@ export function PlantScreen({ data }: { data: Plant }) {
 
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
-  console.log(data);
+  const multipleImages = data.images.length > 1;
+
   return (
     <div>
       <Head>
         <title>
-          {`${devIndicator} ${name} - ${stringAvailability}`}
+          {`${devIndicator}${name} - ${stringAvailability}`}
         </title>
-
         <Head>
           <meta
             name="description"
@@ -40,27 +52,35 @@ export function PlantScreen({ data }: { data: Plant }) {
         </Head>
       </Head>
       <Header />
-      <main>
-        <div className="flex flex-col lg:flex-row lg:gap-2">
-          <div className="flex-1 lg:sticky top-0">
-            <div className="sticky top-0 flex flex-col items-center">
-              <Image
-                src={data.images[0]?.uri || someImage}
-                width={600}
-                height={600}
-                alt={name}
-                className="bg-fixed w-full rounded-b-lg object-cover sm:object-contain block"
-              />
-              {/* {JSON.stringify(data.images[0].uri)} */}
-            </div>
+      <div className="flex flex-col md:flex-row md:gap-4">
+        <div className="md:w-1/2 flex-1 md:pt-10">
+          <div className="sticky top-12">
+            <Carousel
+              emulateTouch
+              showStatus={false}
+              showArrows={multipleImages}
+              showThumbs={multipleImages}
+              showIndicators={multipleImages}
+              renderThumbs={() => {
+                const SIZE = 70;
+                return images.map((src) => <Image src={src} width={SIZE} height={SIZE} />);
+              }}
+            >
+              {images.map((src) => (
+                <div className="flex flex-col h-full justify-center flex-1">
+                  <Image src={src} width={500} height={500} objectFit="contain" />
+                </div>
+              ))}
+            </Carousel>
           </div>
-          <div className="flex-1">
-            <div className="p-2 gap-4 flex flex-col">
-              <Session>
-                <h1 className="text-2xl">{name}</h1>
-                <AvailabilityInfo {...{ swap, donate, price }} />
-              </Session>
-              {!!data.amount
+        </div>
+        <div className="md:w-1/2">
+          <div className="p-2 gap-4 flex flex-col">
+            <Session>
+              <h1 className="text-2xl">{name}</h1>
+              <AvailabilityInfo {...{ swap, donate, price }} />
+            </Session>
+            {!!data.amount
                 && (
                 <div>
                   {data.amount}
@@ -68,29 +88,28 @@ export function PlantScreen({ data }: { data: Plant }) {
                   {data.amount === 1 ? 'disponível' : 'disponíves'}
                 </div>
                 )}
-              {!!tags?.length && (
-                <Session label="Marcado como">
-                  <div />
-                  {/* <TagsInfo tags={tags} /> */}
-                </Session>
-              )}
-              <UserLink user={data.user} />
-              <div>
-                Última edição
-                {' '}
-                <time>{updatedAt.toLocaleDateString()}</time>
-              </div>
-              {!!description?.length && (
-                <Session label="Descrição">
-                  <div>{description}</div>
-                  {/* <div>{loremIpsum}</div> */}
-                </Session>
-              )}
+            {!!tags?.length && (
+            <Session label="Marcado como">
+              <div />
+              {/* <TagsInfo tags={tags} /> */}
+            </Session>
+            )}
+            <UserLink user={data.user} />
+            <div>
+              Última edição
+              {' '}
+              <time>{updatedAt.toLocaleDateString()}</time>
             </div>
+            {!!description?.length && (
+            <Session label="Descrição">
+              <div>{description}</div>
+              {/* <div>{loremIpsum}</div> */}
+            </Session>
+            )}
           </div>
         </div>
-      </main>
-      {/* <div>{loremIpsum}</div> */}
+      </div>
+      {/* {loremIpsum} */}
     </div>
   );
 }

@@ -9,21 +9,21 @@ export function availabilitiesToString({
   swap,
   donate,
 }: Availabilities) {
-  let result = "";
+  let result = '';
   const translate: { [key: string]: string } = {
-    donate: "Doação",
-    swap: "Troca",
+    donate: 'Doação',
+    swap: 'Troca',
   };
   Object.entries({ donate, swap, price })
     .filter((entry) => entry[1])
     .map(([key, value], index, array) => {
       if (value) {
-        result += key === "price" ? "R$" + value : translate[key];
+        result += key === 'price' ? `Venda por R$${value}` : translate[key];
 
         if (index === array.length - 2) {
-          result += " ou ";
+          result += ' ou ';
         } else if (index < array.length - 2) {
-          result += ", ";
+          result += ', ';
         }
       }
       return value;

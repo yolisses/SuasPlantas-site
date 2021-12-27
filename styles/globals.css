@@ -22,3 +22,14 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.carousel .thumb {
+  display: inline-flex !important;
+  margin-right: 4px !important;
+}
+.carousel .thumb.selected, .carousel .thumb:hover {
+  border: 3px solid #0a0d !important;
+}
+.carousel .thumbs-wrapper {
+  margin: 10px !important;
+}
