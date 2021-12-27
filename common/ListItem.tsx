@@ -15,11 +15,12 @@ export function ListItem({ item }: ListItemDTO) {
       <CardActionArea className="rounded-xl">
         <ul className="flex flex-row cursor-pointer rounded-xl">
           <Image
-            src={item.card}
+            alt={name}
             width={140}
             height={140}
-            className="bg-gray-200 flex-shrink-0 bg-cover rounded-xl"
-            alt={name}
+            src={item.card}
+            objectFit="cover"
+            className="bg-gray-200 flex-shrink-0 rounded-xl"
           />
           <div className="mr-2" />
           <div className="flex flex-col flex-1 overflow-hidden">

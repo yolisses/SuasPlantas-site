@@ -17,11 +17,11 @@ export function GridItem({ item }: GridItemDTO) {
       <CardActionArea className="rounded-xl">
         <div className="flex flex-col">
           <Image
+            src={card}
             width={400}
             height={400}
-            src={card}
-            objectFit="cover"
             alt={item.name}
+            objectFit="cover"
             className="bg-gray-200 flex-shrink-0 rounded-xl"
           />
           <div>{item.name}</div>
