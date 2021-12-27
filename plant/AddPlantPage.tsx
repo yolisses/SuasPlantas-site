@@ -103,7 +103,7 @@ export function AddPlantPage() {
           />
           <div>
             <FormLabel component="legend">Disponível para</FormLabel>
-            <FormGroup className="flex-row justify-between">
+            <FormGroup>
               <FormControlLabel
                 label="Doação"
                 control={(<Checkbox {...register('donate')} />)}
