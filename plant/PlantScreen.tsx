@@ -24,6 +24,7 @@ export function PlantScreen({ data }: { data: Plant }) {
 
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
+  console.log(data);
   return (
     <div>
       <Head>
@@ -59,6 +60,14 @@ export function PlantScreen({ data }: { data: Plant }) {
                 <h1 className="text-2xl">{name}</h1>
                 <AvailabilityInfo {...{ swap, donate, price }} />
               </Session>
+              {!!data.amount
+                && (
+                <div>
+                  {data.amount}
+                  {' '}
+                  {data.amount === 1 ? 'disponível' : 'disponíves'}
+                </div>
+                )}
               {!!tags?.length && (
                 <Session label="Marcado como">
                   <div />
@@ -71,7 +80,6 @@ export function PlantScreen({ data }: { data: Plant }) {
                 {' '}
                 <time>{updatedAt.toLocaleDateString()}</time>
               </div>
-
               {!!description?.length && (
                 <Session label="Descrição">
                   <div>{description}</div>

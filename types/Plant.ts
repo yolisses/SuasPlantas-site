@@ -1,19 +1,20 @@
-import { User } from "../user/User";
-import { Image } from "./Image";
+import { User } from '../user/User';
+import { Image } from './Image';
 
 export interface Plant {
   id: PlantId;
   name: string;
+  amount:number;
   description: string;
+  user: User;
   card: string;
-  swap: boolean;
-  donate: boolean;
-  price: string | null;
   tags: string[];
+  images: Image[];
+  donate: boolean;
+  swap: boolean;
+  price: string | null;
   createdAt: string;
   updatedAt: string;
-  user: User;
-  images: Image[];
 }
 
 export type PlantId = number;

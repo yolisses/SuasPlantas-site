@@ -35,7 +35,8 @@ export function AddPlantPage() {
       await api.post('plants', {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
-        amount: parseInt(data.amount, 10),
+        amount: parseInt(data.amount, 10) || null,
+        price: parseFloat(data.price) || null,
       });
     } catch (err) {
       setLoading(false);
