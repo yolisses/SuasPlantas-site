@@ -16,6 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <ModalContextProvider>
         <Head>
+          <FaviconTags />
           {/* google login */}
           <meta
             name="google-site-verification"
@@ -33,7 +34,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             {devIndicator}
             SuasPlantas - Trocar mudas de plantas
           </title>
-          <FaviconTags />
           <GoogleAnalyticsTags />
         </Head>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
