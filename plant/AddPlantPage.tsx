@@ -44,7 +44,6 @@ export function AddPlantPage() {
     }
     setLoading(false);
     setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
-    console.log('tudo');
   }
 
   function handleSnackClose() {
