@@ -64,7 +64,9 @@ export function PlantScreen({ data }:{data:Plant}) {
               showThumbs={multipleImages}
               renderThumbs={() => {
                 const SIZE = 70;
-                return data.images.map(({ uri }) => <Image src={uri} width={SIZE} height={SIZE} objectFit="cover" />);
+                return data.images.map(({ uri }) => (
+                  <Image src={uri} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
+                ));
               }}
             >
               {data.images.map(({ uri }) => (
@@ -123,7 +125,6 @@ export function PlantScreen({ data }:{data:Plant}) {
                 <TelegramIcon {...socialButtonsProps} />
               </div>
             </div>
-
           </div>
         </div>
       </div>
