@@ -21,7 +21,7 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
-class BasicError {
+export class BasicError {
   constructor(public status:Number, public message:string) {}
 }
 

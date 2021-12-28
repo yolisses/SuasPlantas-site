@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
 import { Header } from '../common/Header';
 import { tags } from './tags';
-import { api } from '../api/api';
+import { api, BasicError } from '../api/api';
 import { Sending } from '../upload/Sending';
 
 interface Snack{
@@ -45,7 +45,7 @@ export function AddPlantPage() {
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
       });
-    } catch (err) {
+    } catch (err:any) {
       setLoading(false);
       setSnack({ severity: 'error', text: err.message });
       throw err;

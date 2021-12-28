@@ -44,5 +44,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-useless-constructor': 'off',
     'react/require-default-props': 'warn',
+    'no-empty-function': 'warn',
   },
 };
