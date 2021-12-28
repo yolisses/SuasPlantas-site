@@ -16,6 +16,7 @@ export const MeButton = observer(() => {
           width={size}
           height={size}
           src={authStore.user?.image || someImage}
+          alt={authStore.user?.name}
           className="bg-gray-300 rounded-full shadow-md cursor-pointer"
         />
       </Button>

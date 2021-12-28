@@ -52,12 +52,10 @@ export function PlantScreen({ data }:{data:Plant}) {
         <title>
           {`${devIndicator}${name} - ${stringAvailability}`}
         </title>
-        <Head>
-          <meta
-            name="description"
-            content={`Planta, Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}`}
-          />
-        </Head>
+        <meta
+          name="description"
+          content={`Planta, Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}`}
+        />
       </Head>
       <Header />
       <div className="flex flex-col md:flex-row md:gap-4">
@@ -72,15 +70,18 @@ export function PlantScreen({ data }:{data:Plant}) {
               renderThumbs={() => {
                 const SIZE = 70;
                 return data.images.map(({ uri }) => (
-                  <Image src={uri} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
+                  <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
                 ));
               }}
             >
-              {data.images.map(({ uri }) => (
-                <div className="flex flex-col h-full justify-center flex-1">
-                  <Image src={uri} width={500} height={500} objectFit="contain" />
-                </div>
-              ))}
+              {data.images.map(({ uri }) => {
+                const SIZE = 500;
+                return (
+                  <div className="flex flex-col h-full justify-center flex-1">
+                    <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="contain" />
+                  </div>
+                );
+              })}
             </Carousel>
           </div>
         </div>
