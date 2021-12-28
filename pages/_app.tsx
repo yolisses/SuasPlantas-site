@@ -5,13 +5,10 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material';
-import ReactGA from 'react-ga';
 import { FaviconTags } from '../common/FaviconTags';
 import { devIndicator } from '../utils/devIndicator';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { theme } from '../mui/theme';
-
-ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID as string);
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -36,6 +33,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             {devIndicator}
             SuasPlantas - Trocar mudas de plantas
           </title>
+          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LMJZFRM76" />
+          <script>
+            {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3LMJZFRM76');`}
+          </script>
         </Head>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
