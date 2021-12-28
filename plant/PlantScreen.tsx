@@ -47,9 +47,9 @@ export function PlantScreen({ data }:{data:Plant}) {
             <Carousel
               emulateTouch
               showStatus={false}
+              showIndicators={false}
               showArrows={multipleImages}
               showThumbs={multipleImages}
-              showIndicators={multipleImages}
               renderThumbs={() => {
                 const SIZE = 70;
                 return data.images.map(({ uri }) => <Image src={uri} width={SIZE} height={SIZE} objectFit="cover" />);
