@@ -47,7 +47,7 @@ export function AddPlantPage() {
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
-        tags: data.tags.map((tag) => tag.text),
+        tags: data.tags.map((tag:any) => tag.text),
       });
     } catch (err:any) {
       setLoading(false);

@@ -3,6 +3,10 @@ import { Image } from './Image';
 
 export type PlantId = number;
 
+export interface Tag{
+  name:string
+}
+
 export interface Plant {
   id: PlantId;
   name: string;
@@ -10,7 +14,7 @@ export interface Plant {
   description: string;
   user: User;
   card: string;
-  tags: string[];
+  tags: Tag[];
   images: Image[];
   donate: boolean;
   swap: boolean;
