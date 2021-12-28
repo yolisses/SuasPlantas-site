@@ -1,17 +1,23 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { ChangeEvent, useEffect, useState } from 'react';
 import { FaImage } from 'react-icons/fa';
+import { FormHelperText } from '@mui/material';
 import { Sending } from '../upload/Sending';
 import { isEmpty } from '../utils/isEmpty';
 import { SelectedImage } from './SelectedImage';
 
 interface ImagesInputProps{
   onChange:(value:any)=>void
+  onBlur:(value:any)=>void
+  error?:boolean
+  helperText?:string
 }
 
 export type SendingsCollection = { [key: number]: Sending };
 
-export function ImagesInput({ onChange }:ImagesInputProps) {
+export function ImagesInput({
+  onChange, onBlur, helperText, error,
+}:ImagesInputProps) {
   const [sendings, setSendings] = useState<SendingsCollection>({});
   const [_, setRefreshValue] = useState(0);
   function refresh() {
@@ -69,9 +75,13 @@ export function ImagesInput({ onChange }:ImagesInputProps) {
             accept=".jpg, .jpeg, .png, .webp"
             hidden
             multiple
+            onBlur={onBlur}
           />
         </label>
       </div>
+      <FormHelperText error={error}>
+        {helperText}
+      </FormHelperText>
     </div>
   );
 }

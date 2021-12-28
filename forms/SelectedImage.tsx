@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { Sending } from '../upload/Sending';
+import { isDev } from '../utils/isDev';
 
 interface SelectedImageProps {
   id: any;
@@ -57,9 +58,13 @@ export function SelectedImage({
           }}
         />
       </div>
-      <div className="overflow-hidden">{sending.getLinkPreview}</div>
-      <div>{sending.progressPercentage}</div>
-      <div>{`${sending.sent}`}</div>
+      {false && (
+      <>
+        <div className="overflow-hidden">{sending.getLinkPreview}</div>
+        <div>{sending.progressPercentage}</div>
+        <div>{`${sending.sent}`}</div>
+      </>
+      )}
     </div>
   );
 }

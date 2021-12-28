@@ -21,12 +21,14 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
+class BasicError {
+  constructor(public status:Number, public message:string) {}
+}
+
 api.interceptors.response.use(undefined, (error) => {
   console.error(Object.keys(error));
-  throw new Error(
-    JSON.stringify({
-      status: error?.response?.status,
-      message: error?.response?.data || error?.reason || error?.message,
-    }),
+  throw new BasicError(
+    error?.response?.status,
+    error?.response?.data || error?.reason || error?.message,
   );
 });

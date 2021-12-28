@@ -1,6 +1,13 @@
 import {
   Alert,
-  Checkbox, CircularProgress, FormControlLabel, FormGroup, FormLabel, InputAdornment, Snackbar, TextField,
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  InputAdornment,
+  Snackbar,
+  TextField,
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -36,10 +43,11 @@ export function AddPlantPage() {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
-        price: parseFloat(data.price) || null,
+        price: (sell && parseFloat(data.price)) || null,
       });
     } catch (err) {
       setLoading(false);
+      setSnack({ severity: 'error', text: err.message });
       throw err;
     }
     setLoading(false);
@@ -65,11 +73,43 @@ export function AddPlantPage() {
           <Controller
             name="images"
             control={control}
+            rules={{
+              validate: (coisas) => {
+                if (Object.keys(coisas).length < 1) {
+                  return 'Selecione pelo menos 1 imagem';
+                }
+                if (Object.keys(coisas).length > 10) {
+                  return 'Selecione no máximo 10 imagens';
+                }
+              },
+            }}
             render={
-            ({ field: { onChange } }) => <ImagesInput onChange={onChange} />
+            ({ field: { onChange, onBlur }, fieldState: { error } }) => (
+              <ImagesInput
+                onChange={onChange}
+                onBlur={onBlur}
+                error={!!error}
+                helperText={error?.message}
+              />
+            )
           }
           />
-          <TextField label="Nome" {...register('name')} />
+          <Controller
+            name="name"
+            control={control}
+            rules={{ required: true, min: 3 }}
+            render={({ field, fieldState: { error } }) => {
+              console.log(error);
+              return (
+                <TextField
+                  label="Nome"
+                  helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
+                  error={!!error}
+                  {...field}
+                />
+              );
+            }}
+          />
           <TextField label="Descrição" multiline minRows={2} {...register('description')} />
           <Controller
             name="tags"
@@ -117,17 +157,25 @@ export function AddPlantPage() {
                 control={(<Checkbox onChange={(e, checked) => setSell(checked)} />)}
               />
             </FormGroup>
-            {sell
-            && (
-            <TextField
-              label="Preço"
-              type="number"
-              className="w-full mt-2"
-              {...register('price')}
-              InputProps={{
-                inputProps: { min: 0, max: 100, pattern: '[0-9]*' },
-                startAdornment: <InputAdornment position="start">R$</InputAdornment>,
-              }}
+            {sell && (
+            <Controller
+              name="price"
+              control={control}
+              rules={{ required: true }}
+              render={({ field, fieldState: { error } }) => (
+                <TextField
+                  label="Preço"
+                  type="number"
+                  className="w-full mt-2"
+                  helperText={(error?.type === 'required') ? 'Informe o preço ou desmarque venda' : error?.message}
+                  error={!!error}
+                  {...field}
+                  InputProps={{
+                    inputProps: { min: 0, max: 100, pattern: '[0-9]*' },
+                    startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+                  }}
+                />
+              )}
             />
             )}
           </div>
