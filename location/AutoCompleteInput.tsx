@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { AutocompleteOption } from "./AutocompleteOption";
+import { ChangeEvent, useState } from 'react';
+import { AutocompleteOption } from './AutocompleteOption';
 
 interface AutoCompleteInputProps<type> {
   getOptions: (text: string) => Promise<type[]>;
@@ -15,19 +15,20 @@ export function AutoCompleteInput<type>({
   onChange,
 }: AutoCompleteInputProps<type>) {
   const [options, setOptions] = useState<type[]>([]);
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
   const [focused, setFocused] = useState(false);
 
   async function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const text = e.target.value;
     setText(text);
-    if (text && text.length)
+    if (text && text.length) {
       try {
         const options = await getOptions(text);
         setOptions(options);
       } catch (err) {
         console.error(err);
       }
+    }
   }
 
   function handleSelect(value: type) {
@@ -58,7 +59,7 @@ export function AutoCompleteInput<type>({
         />
       </div>
       {focused && !!options.length && (
-        <div className="absolute z-30 w-full flex bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
+        <div className="absolute z-30 w-full flex flex-col bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
           {options?.map((option) => (
             <AutocompleteOption
               value={option as type}
