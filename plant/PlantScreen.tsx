@@ -2,6 +2,12 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
 import Head from 'next/head';
+import {
+  FacebookIcon,
+  FacebookMessengerIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from 'react-share';
 import { Header } from '../common/Header';
 import { Session } from './Session';
 import { AvailabilityInfo } from './AvailabilityInfo';
@@ -27,6 +33,11 @@ export function PlantScreen({ data }:{data:Plant}) {
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   const multipleImages = data.images.length > 1;
+
+  const socialButtonsProps = {
+    size: 35,
+    borderRadius: 100,
+  };
 
   return (
     <div>
@@ -103,6 +114,16 @@ export function PlantScreen({ data }:{data:Plant}) {
               {/* <div>{loremIpsum}</div> */}
             </Session>
             )}
+            <div className="mt-4">
+              <div className="text-sm text-gray-500">Compartilhar</div>
+              <div className="flex flex-row gap-1">
+                <FacebookIcon {...socialButtonsProps} />
+                <WhatsappIcon {...socialButtonsProps} />
+                <FacebookMessengerIcon {...socialButtonsProps} />
+                <TelegramIcon {...socialButtonsProps} />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

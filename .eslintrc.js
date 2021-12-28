@@ -45,5 +45,6 @@ module.exports = {
     'no-useless-constructor': 'off',
     'react/require-default-props': 'warn',
     'no-empty-function': 'warn',
+    'no-shadow': 'warn',
   },
 };
