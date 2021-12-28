@@ -134,7 +134,7 @@ export function PlantScreen({ data }:{data:Plant}) {
                 </WhatsappShareButton>
                 <FacebookMessengerShareButton
                   url={shareUrl}
-                  appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
+                  appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID as string}
                 >
                   <FacebookMessengerIcon {...socialIconProps} />
                 </FacebookMessengerShareButton>
