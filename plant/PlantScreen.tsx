@@ -3,10 +3,14 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
 import Head from 'next/head';
 import {
+  FacebookShareButton,
+  FacebookMessengerShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
   FacebookIcon,
   FacebookMessengerIcon,
   TelegramIcon,
-  WhatsappIcon,
 } from 'react-share';
 import { Header } from '../common/Header';
 import { Session } from './Session';
@@ -25,6 +29,7 @@ export function PlantScreen({ data }:{data:Plant}) {
     donate,
     price,
     user,
+    id,
     updatedAt: updatedAtString,
   } = data;
 
@@ -34,10 +39,12 @@ export function PlantScreen({ data }:{data:Plant}) {
 
   const multipleImages = data.images.length > 1;
 
-  const socialButtonsProps = {
-    size: 35,
+  const socialIconProps = {
+    size: 36,
     borderRadius: 100,
   };
+
+  const shareUrl = `https://suasplantas.com/plants/${id}`;
 
   return (
     <div>
@@ -119,10 +126,21 @@ export function PlantScreen({ data }:{data:Plant}) {
             <div className="mt-4">
               <div className="text-sm text-gray-500">Compartilhar</div>
               <div className="flex flex-row gap-1">
-                <FacebookIcon {...socialButtonsProps} />
-                <WhatsappIcon {...socialButtonsProps} />
-                <FacebookMessengerIcon {...socialButtonsProps} />
-                <TelegramIcon {...socialButtonsProps} />
+                <FacebookShareButton url={shareUrl}>
+                  <FacebookIcon {...socialIconProps} />
+                </FacebookShareButton>
+                <WhatsappShareButton url={shareUrl}>
+                  <WhatsappIcon {...socialIconProps} />
+                </WhatsappShareButton>
+                <FacebookMessengerShareButton
+                  url={shareUrl}
+                  appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
+                >
+                  <FacebookMessengerIcon {...socialIconProps} />
+                </FacebookMessengerShareButton>
+                <TelegramShareButton url={shareUrl}>
+                  <TelegramIcon {...socialIconProps} />
+                </TelegramShareButton>
               </div>
             </div>
           </div>
