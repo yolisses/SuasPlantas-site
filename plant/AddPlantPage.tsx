@@ -4,6 +4,7 @@ import {
   CircularProgress,
   FormControlLabel,
   FormGroup,
+  FormHelperText,
   FormLabel,
   InputAdornment,
   Snackbar,
@@ -26,7 +27,9 @@ interface Snack{
 
 export function AddPlantPage() {
   const [sell, setSell] = useState(false);
-  const { register, handleSubmit, control } = useForm();
+  const {
+    register, handleSubmit, control, getValues, formState: { errors },
+  } = useForm();
   const [loading, setLoading] = useState(false);
   const [snack, setSnack] = useState<Snack>();
 
@@ -58,6 +61,11 @@ export function AddPlantPage() {
     setSnack(undefined);
   }
 
+  function validateAvailabilities() {
+    if (!getValues('donate') && !getValues('swap') && !getValues('sell')) { return 'Por favor informe a disponibilidade'; }
+    return undefined;
+  }
+
   return (
     <>
       <Header />
@@ -81,6 +89,7 @@ export function AddPlantPage() {
                 if (Object.keys(coisas).length > 10) {
                   return 'Selecione no máximo 10 imagens';
                 }
+                return undefined;
               },
             }}
             render={
@@ -146,17 +155,22 @@ export function AddPlantPage() {
             <FormGroup>
               <FormControlLabel
                 label="Doação"
-                control={(<Checkbox {...register('donate')} />)}
+                control={(<Checkbox {...register('donate', { validate: validateAvailabilities })} />)}
               />
               <FormControlLabel
                 label="Troca"
-                control={(<Checkbox {...register('swap')} />)}
+                control={(<Checkbox {...register('swap', { validate: validateAvailabilities })} />)}
               />
               <FormControlLabel
                 label="Venda"
-                control={(<Checkbox onChange={(e, checked) => setSell(checked)} />)}
+                control={(<Checkbox {...register('sell', { validate: validateAvailabilities })} onChange={(e, checked) => setSell(checked)} />)}
               />
             </FormGroup>
+            {(errors.swap && errors.donate && !sell) && (
+            <FormHelperText error>
+              Por favor informe uma disponibilidade
+            </FormHelperText>
+            )}
             {sell && (
             <Controller
               name="price"
