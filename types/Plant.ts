@@ -1,6 +1,8 @@
 import { User } from '../user/User';
 import { Image } from './Image';
 
+export type PlantId = number;
+
 export interface Plant {
   id: PlantId;
   name: string;
@@ -16,5 +18,3 @@ export interface Plant {
   createdAt: string;
   updatedAt: string;
 }
-
-export type PlantId = number;

@@ -9,6 +9,7 @@ import { availabilitiesToString } from './availabilitiesToString';
 import { UserLink } from '../user/UserLink';
 import { Plant } from '../types/Plant';
 import { devIndicator } from '../utils/devIndicator';
+import { tags } from './tags';
 
 export function PlantScreen({ data }:{data:Plant}) {
   const {
@@ -17,7 +18,7 @@ export function PlantScreen({ data }:{data:Plant}) {
     swap,
     donate,
     price,
-    tags, user,
+    user,
     updatedAt: updatedAtString,
   } = data;
 
@@ -77,18 +78,25 @@ export function PlantScreen({ data }:{data:Plant}) {
                   {data.amount === 1 ? 'disponível' : 'disponíves'}
                 </div>
                 )}
-            {!!tags?.length && (
-            <Session label="Marcado como">
-              <div />
-              {/* <TagsInfo tags={tags} /> */}
-            </Session>
-            )}
             <UserLink user={data.user} />
             <div>
               Última edição
               {' '}
               <time>{updatedAt.toLocaleDateString()}</time>
             </div>
+            {!!data?.tags?.length && (
+            <Session>
+              <div className="flex flex-row flex-wrap gap-2">
+                {data.tags.map(({ name }) => (
+                  <div>
+                    {tags.find((value) => value.text === name)?.emoji}
+                    {' '}
+                    {name}
+                  </div>
+                ))}
+              </div>
+            </Session>
+            )}
             {!!description?.length && (
             <Session label="Descrição">
               <div>{description}</div>

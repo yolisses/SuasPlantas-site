@@ -1,9 +1,9 @@
 export const tags = [
-  '🍎frutífera',
-  '🥦comestível',
-  '🌷ornamental',
-  '🌿medicinal',
-  '🌑de sombra',
-  '⛅meia sombra',
-  '☀️sol pleno',
+  { text: 'frutífera', emoji: '🍎' },
+  { text: 'comestível', emoji: '🥦' },
+  { text: 'ornamental', emoji: '🌷' },
+  { text: 'medicinal', emoji: '🌿' },
+  { text: 'de sombra', emoji: '🌑' },
+  { text: 'meia sombra', emoji: '⛅' },
+  { text: 'sol pleno', emoji: '☀️' },
 ];

@@ -47,6 +47,7 @@ export function AddPlantPage() {
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
+        tags: data.tags.map((tag) => tag.text),
       });
     } catch (err:any) {
       setLoading(false);
@@ -129,13 +130,15 @@ export function AddPlantPage() {
                 options={tags}
                 disableCloseOnSelect
                 onChange={(_, value) => onChange(value)}
+                getOptionLabel={(option) => option.emoji + option.text}
                 renderOption={(props, option, { selected }) => (
                   <li {...props}>
                     <Checkbox
                       style={{ marginRight: 8 }}
                       checked={selected}
                     />
-                    {option}
+                    {option.emoji}
+                    {option.text}
                   </li>
                 )}
                 renderInput={(params) => (<TextField label="Marcar como" {...params} />)}
