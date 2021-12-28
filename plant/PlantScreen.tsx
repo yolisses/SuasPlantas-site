@@ -2,8 +2,6 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
 import Head from 'next/head';
-import { loremIpsum } from '../mock/loremIpsum';
-import { someImage, someImageH, someImageU } from '../mock/someImage';
 import { Header } from '../common/Header';
 import { Session } from './Session';
 import { AvailabilityInfo } from './AvailabilityInfo';
@@ -13,15 +11,6 @@ import { Plant } from '../types/Plant';
 import { devIndicator } from '../utils/devIndicator';
 
 export function PlantScreen({ data }:{data:Plant}) {
-  const images = [
-    someImage,
-    someImageH,
-    someImageU,
-    someImage,
-    someImage,
-    someImageH,
-  ];
-
   const {
     name,
     description,
@@ -63,10 +52,10 @@ export function PlantScreen({ data }:{data:Plant}) {
               showIndicators={multipleImages}
               renderThumbs={() => {
                 const SIZE = 70;
-                return images.map((src) => <Image src={src} width={SIZE} height={SIZE} />);
+                return data.images.map((src) => <Image src={src} width={SIZE} height={SIZE} />);
               }}
             >
-              {images.map((src) => (
+              {data.images.map((src) => (
                 <div className="flex flex-col h-full justify-center flex-1">
                   <Image src={src} width={500} height={500} objectFit="contain" />
                 </div>
