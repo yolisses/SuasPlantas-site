@@ -5,11 +5,13 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material';
+import ReactGA from 'react-ga';
 import { FaviconTags } from '../common/FaviconTags';
 import { devIndicator } from '../utils/devIndicator';
 import { ModalContextProvider } from '../modal/ModalContext';
-import { GoogleAnalyticsTags } from '../config/GoogleAnalyticsTags';
 import { theme } from '../mui/theme';
+
+ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID as string);
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -34,7 +36,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             {devIndicator}
             SuasPlantas - Trocar mudas de plantas
           </title>
-          <GoogleAnalyticsTags />
         </Head>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
