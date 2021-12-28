@@ -52,12 +52,12 @@ export function PlantScreen({ data }:{data:Plant}) {
               showIndicators={multipleImages}
               renderThumbs={() => {
                 const SIZE = 70;
-                return data.images.map((src) => <Image src={src} width={SIZE} height={SIZE} />);
+                return data.images.map(({ uri }) => <Image src={uri} width={SIZE} height={SIZE} objectFit="cover" />);
               }}
             >
-              {data.images.map((src) => (
+              {data.images.map(({ uri }) => (
                 <div className="flex flex-col h-full justify-center flex-1">
-                  <Image src={src} width={500} height={500} objectFit="contain" />
+                  <Image src={uri} width={500} height={500} objectFit="contain" />
                 </div>
               ))}
             </Carousel>
