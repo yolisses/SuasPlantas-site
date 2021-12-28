@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 import { MeButton } from '../user/MeButton';
 import { HeaderLayout } from './HeaderLayout';
 
@@ -8,9 +7,6 @@ interface HeaderProps {
 }
 
 export function Header({ searchQuery }: HeaderProps) {
-  const authenticated = (Cookies.get('authenticated')) === 'true';
-  console.log(authenticated);
-
   return (
     <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
       <div className="mr-auto">
