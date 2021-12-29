@@ -24,7 +24,7 @@ export function EditProfileScreen() {
 
   const [loading, setLoading] = useState(false);
 
-  async function submit(data) {
+  async function submit(data:any) {
     console.log(data);
     setLoading(true);
     try {
