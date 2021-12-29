@@ -9,6 +9,7 @@ import { FaviconTags } from '../common/FaviconTags';
 import { devIndicator } from '../utils/devIndicator';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { theme } from '../mui/theme';
+import { SnackView } from '../snack/SnackView';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -44,6 +45,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </Head>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
+        <SnackView />
       </ModalContextProvider>
     </ThemeProvider>
   );

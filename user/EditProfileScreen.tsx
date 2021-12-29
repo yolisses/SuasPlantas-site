@@ -1,20 +1,43 @@
-import { Instagram } from '@material-ui/icons';
 import {
-  Button, FormHelperText, FormLabel, InputAdornment, Link, TextField,
+  Button, CircularProgress, FormHelperText, FormLabel, InputAdornment, TextField,
 } from '@mui/material';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { authStore } from '../auth/authStore';
 import { Header } from '../common/Header';
 import { userImage } from '../images/user';
+import { snackStore } from '../snack/snackStore';
 
 export function EditProfileScreen() {
   const imageSize = 80;
+
+  const { register, handleSubmit } = useForm();
+
+  const [loading, setLoading] = useState(false);
+
+  async function submit(data) {
+    console.log(data);
+    snackStore.setSnack({
+      text: 'Dados salvos com sucesso',
+      severity: 'success',
+    });
+
+    // setLoading(true);
+    try {
+      // const res = await api.patch('users', data);
+    } catch (err) {
+      setLoading(false);
+    }
+    // setLoading(false);
+  }
 
   return (
     <>
       <Header />
       <div className="flex flex-col items-center">
+        {JSON.stringify(snackStore.snack)}
         <div className="flex flex-col gap-4 w-full max-w-xl p-2 pt-4">
           <div className="flex flex-row items-center justify-center gap-4">
             <Image src={authStore.user?.image || userImage} width={imageSize} height={imageSize} className="rounded-full" />
@@ -25,11 +48,14 @@ export function EditProfileScreen() {
           </div>
           <TextField
             label="Nome"
+            {...register('name')}
           />
-          <TextField label="Bio" multiline minRows={2} />
+          {/* ignore the label */}
+          <TextField label="Bio" multiline minRows={2} {...register('description')} />
           <div className="flex flex-col">
             <TextField
               label="Instagram"
+              {...register('instagramUsername')}
               InputProps={{
                 startAdornment:
   <InputAdornment position="start">
@@ -46,9 +72,13 @@ export function EditProfileScreen() {
               </a>
             </Button>
           </div>
+          {' '}
+          atualizadas com sucesso
           <div className="flex flex-col">
             <TextField
               label="Whatsapp"
+              type="number"
+              {...register('whatsappNumber')}
               InputProps={{
                 startAdornment:
   <InputAdornment position="start">
@@ -65,10 +95,12 @@ export function EditProfileScreen() {
           <FormHelperText>
             Essas informações ficam visíveis para as outras pessoas
           </FormHelperText>
-          <Button variant="contained">Salvar</Button>
+          <Button variant="contained" onClick={handleSubmit(submit)} disabled={loading} className="h-11 flex gap-2">
+            {loading && <CircularProgress size={20} />}
+            Salvar
+          </Button>
         </div>
       </div>
-
     </>
   );
 }

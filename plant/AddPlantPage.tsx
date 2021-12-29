@@ -58,10 +58,6 @@ export function AddPlantPage() {
     setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
   }
 
-  function handleSnackClose() {
-    setSnack(undefined);
-  }
-
   function validateAvailabilities() {
     if (!getValues('donate') && !getValues('swap') && !getValues('sell')) { return 'Por favor informe a disponibilidade'; }
     return undefined;
