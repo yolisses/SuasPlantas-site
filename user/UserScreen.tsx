@@ -1,16 +1,41 @@
 import Image from 'next/image';
-import { Button, Link } from '@mui/material';
-import { FaRegUser } from 'react-icons/fa';
+import { Button, createTheme, Link } from '@mui/material';
+import { FaInstagram, FaRegUser, FaWhatsapp } from 'react-icons/fa';
+import { ThemeProvider } from '@mui/system';
 import { HeaderLayout } from '../common/HeaderLayout';
 import { loremIpsum } from '../mock/loremIpsum';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
 import { userImage } from '../images/user';
+import { theme } from '../mui/theme';
 
 interface UserScreenProps {
   user: User;
 }
+
+const instagramColors = [
+  '#405DE6',
+  // '#5B51D8',
+  '#833AB4',
+  '#C13584',
+  '#E1306C',
+  // '#FD1D1D',
+  // '#F56040',
+  '#F77737',
+  // '#FCAF45',
+  '#FFDC80',
+];
+
+const whatsappColors = [
+  // '#00E065',
+  '#00D15e',
+  '#00a74b',
+  '#00a43c',
+];
+
+const instagramGradient = `linear-gradient(to left bottom${instagramColors.reduce((previous, current) => `${previous}, ${current}`, '')})`;
+const whatsappGradient = `linear-gradient(to bottom left${whatsappColors.reduce((previous, current) => `${previous}, ${current}`, '')})`;
 
 export function UserScreen({ user }: UserScreenProps) {
   return (
@@ -41,8 +66,44 @@ export function UserScreen({ user }: UserScreenProps) {
             </div>
           </div>
         </div>
-        <div className="py-3">
-          {user.description || loremIpsum}
+        {!!user.whatsappNumber && (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://api.whatsapp.com/send?phone=${user.whatsappNumber}`}
+        >
+          <Button
+            variant="contained"
+            className="py-2 w-full flex flex-row gap-1"
+            style={{
+              background: whatsappGradient,
+            }}
+          >
+            <FaWhatsapp size={28} />
+            Whatsapp
+          </Button>
+        </a>
+        )}
+        {!!user.instagramUsername && (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://instagram.com/${user.instagramUsername}`}
+        >
+          <Button
+            variant="contained"
+            className="py-2 w-full flex flex-row gap-1"
+            style={{
+              background: instagramGradient,
+            }}
+          >
+            <FaInstagram size={28} />
+            Instagram
+          </Button>
+        </a>
+        )}
+        <div>
+          { user.description || loremIpsum.slice(0, 1000)}
         </div>
         <div className="flex flex-row flex-1 items-center gap-2 justify-between p-2 max-w-sm">
           <div>

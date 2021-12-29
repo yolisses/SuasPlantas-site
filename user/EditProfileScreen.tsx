@@ -26,25 +26,26 @@ export function EditProfileScreen() {
 
   async function submit(data) {
     console.log(data);
-    snackStore.setSnack({
-      text: 'Dados salvos com sucesso',
-      severity: 'success',
-    });
-
     setLoading(true);
     try {
-      const res = await api.patch('users', data);
+      const res = await api.patch('users', {
+        ...data,
+        whatsappNumber: parseInt(data.whatsappNumber, 10),
+      });
     } catch (err) {
       setLoading(false);
     }
     setLoading(false);
+    snackStore.setSnack({
+      text: 'Dados salvos com sucesso',
+      severity: 'success',
+    });
   }
 
   return (
     <>
       <Header />
       <div className="flex flex-col items-center">
-        {JSON.stringify(snackStore.snack)}
         <div className="flex flex-col gap-4 w-full max-w-xl p-2 pt-4">
           <div className="flex flex-row items-center justify-center gap-4">
             <Image src={authStore.user?.image || userImage} width={imageSize} height={imageSize} className="rounded-full" />
