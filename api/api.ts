@@ -26,9 +26,14 @@ export class BasicError {
 }
 
 api.interceptors.response.use(undefined, (error) => {
-  console.error(Object.keys(error));
-  throw new BasicError(
+  const basicError = new BasicError(
     error?.response?.status,
     error?.response?.data || error?.reason || error?.message,
   );
+  try {
+    console.log(JSON.stringify(basicError));
+  } catch (err) {
+    console.error(basicError);
+  }
+  throw basicError;
 });
