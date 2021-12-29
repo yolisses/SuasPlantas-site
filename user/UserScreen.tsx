@@ -9,14 +9,15 @@ import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
 import { userImage } from '../images/user';
 import { theme } from '../mui/theme';
+import { ContactButton } from './ContactButton';
 
 interface UserScreenProps {
   user: User;
 }
 
 const instagramColors = [
-  '#405DE6',
-  // '#5B51D8',
+  // '#405DE6',
+  '#5B51D8',
   '#833AB4',
   '#C13584',
   '#E1306C',
@@ -51,13 +52,10 @@ export function UserScreen({ user }: UserScreenProps) {
           />
           <div className="flex-1 flex-wrap flex overflow-ellipsis">
             <div className="flex flex-col w-full">
-              <div className="flex flex-row">
-                <div className="overflow-ellipsis text-lg">{user.name}</div>
-              </div>
-              <div>@ulissespegador</div>
+              <div className="overflow-ellipsis text-lg">{user.name}</div>
               {authStore.user?.id === user.id && (
                 <Link href="/account/edit">
-                  <Button variant="outlined" className="flex flex-row gap-1 w-full">
+                  <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
                     <FaRegUser size={18} />
                     Editar perfil
                   </Button>
@@ -66,42 +64,24 @@ export function UserScreen({ user }: UserScreenProps) {
             </div>
           </div>
         </div>
-        {!!user.whatsappNumber && (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://api.whatsapp.com/send?phone=${user.whatsappNumber}`}
-        >
-          <Button
-            variant="contained"
-            className="py-2 w-full flex flex-row gap-1"
-            style={{
-              background: whatsappGradient,
-            }}
-          >
-            <FaWhatsapp size={28} />
-            Whatsapp
-          </Button>
-        </a>
-        )}
-        {!!user.instagramUsername && (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://instagram.com/${user.instagramUsername}`}
-        >
-          <Button
-            variant="contained"
-            className="py-2 w-full flex flex-row gap-1"
-            style={{
-              background: instagramGradient,
-            }}
-          >
-            <FaInstagram size={28} />
-            Instagram
-          </Button>
-        </a>
-        )}
+        <div className="flex flex-row w-full justify-center gap-2">
+          {!!user.whatsappNumber && (
+          <ContactButton
+            gradient={whatsappGradient}
+            Icon={FaWhatsapp}
+            text="Whatsapp"
+            href={`https://api.whatsapp.com/send?phone=${user.whatsappNumber}`}
+          />
+          )}
+          {!!user.instagramUsername && (
+          <ContactButton
+            gradient={instagramGradient}
+            Icon={FaInstagram}
+            text="Instagram"
+            href={`https://instagram.com/${user.instagramUsername}`}
+          />
+          )}
+        </div>
         <div>
           { user.description || loremIpsum.slice(0, 1000)}
         </div>
