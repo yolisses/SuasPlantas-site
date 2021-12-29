@@ -1,15 +1,13 @@
 import Image from 'next/image';
-import { Button, createTheme, Link } from '@mui/material';
+import { Button, Link } from '@mui/material';
 import { FaInstagram, FaRegUser, FaWhatsapp } from 'react-icons/fa';
-import { ThemeProvider } from '@mui/system';
 import { HeaderLayout } from '../common/HeaderLayout';
 import { loremIpsum } from '../mock/loremIpsum';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
 import { userImage } from '../images/user';
-import { theme } from '../mui/theme';
-import { ContactButton } from './ContactButton';
+import { ContactButton } from '../contact/ContactButton';
 
 interface UserScreenProps {
   user: User;
