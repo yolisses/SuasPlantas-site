@@ -3,10 +3,10 @@ import { Button, Link } from '@mui/material';
 import { FaRegUser } from 'react-icons/fa';
 import { HeaderLayout } from '../common/HeaderLayout';
 import { loremIpsum } from '../mock/loremIpsum';
-import { someImage } from '../mock/someImage';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
+import { userImage } from '../images/user';
 
 interface UserScreenProps {
   user: User;
@@ -20,7 +20,7 @@ export function UserScreen({ user }: UserScreenProps) {
         <div className="flex flex-row gap-2 items-center">
           <Image
             className="rounded-full bg-cover w-24 h-24 object-cover"
-            src={user.image || someImage}
+            src={user.image || userImage}
             height={100}
             width={100}
           />

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { User } from './User';
-import { someImage } from '../mock/someImage';
+import { userImage } from '../images/user';
 
 interface UserLinkProps {
   user: User;
@@ -15,7 +15,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <Image
           width={imgSize}
           height={imgSize}
-          src={user.image || someImage}
+          src={user.image || userImage}
           alt={user.name}
           className="rounded-full bg-gray-300"
         />

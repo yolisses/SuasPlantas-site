@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
 import { authStore } from '../auth/authStore';
 import { RequireLogin } from '../auth/RequireLogin';
-import { someImage } from '../mock/someImage';
+import { userImage } from '../images/user';
 
 export const MeButton = observer(() => {
   const size = 36;
@@ -15,7 +15,7 @@ export const MeButton = observer(() => {
         <Image
           width={size}
           height={size}
-          src={authStore.user?.image || someImage}
+          src={authStore.user?.image || userImage}
           alt={authStore.user?.name}
           className="bg-gray-300 rounded-full shadow-md cursor-pointer"
         />
