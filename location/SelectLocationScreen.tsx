@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import axios from 'axios';
 import { LatLngTuple } from 'leaflet';
+import { Button } from '@mui/material';
 import { EmphasisButton } from '../forms/EmphasisButton';
 import { HeaderLayout } from '../common/HeaderLayout';
 import { Feature } from './Feature';
@@ -57,8 +58,10 @@ function SelectLocationScreen() {
           <Image src="/map_center.png" width={centerSize} height={centerSize} />
         </div>
       </div>
-      <div className="p-1">
-        <EmphasisButton text="Salvar" />
+      <div className="p-1 flex flex-col items-center">
+        <Button className="w-full h-11 max-w-sm" variant="contained">
+          Salvar
+        </Button>
       </div>
     </div>
   );

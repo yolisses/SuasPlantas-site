@@ -1,5 +1,6 @@
-import Router from "next/router";
-import { FaChevronLeft } from "react-icons/fa";
+import { Button } from '@mui/material';
+import Router from 'next/router';
+import { FaChevronLeft } from 'react-icons/fa';
 
 interface GoBackButtonProps {
   color?: string;
@@ -11,11 +12,14 @@ export function GoBackButton({ color }: GoBackButtonProps) {
   }
 
   return (
-    <FaChevronLeft
+    <Button
       onClick={handleClick}
-      size={20}
-      color={color || "gray"}
-      className="cursor-pointer"
-    />
+    >
+      <FaChevronLeft
+        size={20}
+        color={color || 'gray'}
+        className="cursor-pointer"
+      />
+    </Button>
   );
 }
