@@ -1,29 +1,23 @@
-import {
-  Alert,
-  Checkbox,
-  CircularProgress,
-  FormControlLabel,
-  FormGroup,
-  FormHelperText,
-  FormLabel,
-  InputAdornment,
-  Snackbar,
-  TextField,
-} from '@mui/material';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
-import { Header } from '../common/Header';
+import {
+  Checkbox,
+  FormLabel,
+  FormGroup,
+  TextField,
+  FormHelperText,
+  InputAdornment,
+  FormControlLabel,
+  CircularProgress,
+} from '@mui/material';
 import { tags } from './tags';
-import { api, BasicError } from '../api/api';
+import { api } from '../api/api';
+import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';
-
-interface Snack{
-  severity?:'error'|'info'|'success'|'warning'
-  text:string
-}
+import { snackStore } from '../snack/snackStore';
+import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
 
 export function AddPlantPage() {
   const [sell, setSell] = useState(false);
@@ -31,7 +25,6 @@ export function AddPlantPage() {
     register, handleSubmit, control, getValues, formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
-  const [snack, setSnack] = useState<Snack>();
 
   async function allImagesSent(images: SendingsCollection) {
     const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
@@ -51,28 +44,26 @@ export function AddPlantPage() {
       });
     } catch (err:any) {
       setLoading(false);
-      setSnack({ severity: 'error', text: err.message });
+      snackStore.setSnack({ severity: 'error', text: err.message });
       throw err;
     }
     setLoading(false);
-    setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
+    snackStore.setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
   }
 
   function validateAvailabilities() {
-    if (!getValues('donate') && !getValues('swap') && !getValues('sell')) { return 'Por favor informe a disponibilidade'; }
+    if (
+      !getValues('donate')
+      && !getValues('swap')
+      && !getValues('sell')) {
+      return 'Por favor informe a disponibilidade';
+    }
     return undefined;
   }
 
   return (
     <>
       <Header />
-      {snack && (
-      <Snackbar open autoHideDuration={6000} onClose={handleSnackClose}>
-        <Alert severity={snack.severity} className="w-full" variant="filled">
-          {snack.text}
-        </Alert>
-      </Snackbar>
-      )}
       <div className="w-full flex-1 flex flex-col justify-center items-center">
         <div className="flex flex-col p-2 gap-4 max-w-lg w-full pb-8">
           <Controller
@@ -104,17 +95,14 @@ export function AddPlantPage() {
             name="name"
             control={control}
             rules={{ required: true, min: 3 }}
-            render={({ field, fieldState: { error } }) => {
-              console.log(error);
-              return (
-                <TextField
-                  label="Nome"
-                  helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
-                  error={!!error}
-                  {...field}
-                />
-              );
-            }}
+            render={({ field, fieldState: { error } }) => (
+              <TextField
+                label="Nome"
+                helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
+                error={!!error}
+                {...field}
+              />
+            )}
           />
           <TextField label="Descrição" multiline minRows={2} {...register('description')} />
           <Controller
@@ -199,6 +187,5 @@ export function AddPlantPage() {
         </div>
       </div>
     </>
-
   );
 }

@@ -1,13 +1,20 @@
 import {
-  Button, CircularProgress, FormHelperText, FormLabel, InputAdornment, TextField,
+  Button,
+  FormLabel,
+  TextField,
+  FormHelperText,
+  InputAdornment,
+  CircularProgress,
 } from '@mui/material';
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Image from 'next/image';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { authStore } from '../auth/authStore';
+import { useForm } from 'react-hook-form';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+
+import { api } from '../api/api';
 import { Header } from '../common/Header';
 import { userImage } from '../images/user';
+import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 
 export function EditProfileScreen() {
@@ -24,13 +31,13 @@ export function EditProfileScreen() {
       severity: 'success',
     });
 
-    // setLoading(true);
+    setLoading(true);
     try {
-      // const res = await api.patch('users', data);
+      const res = await api.patch('users', data);
     } catch (err) {
       setLoading(false);
     }
-    // setLoading(false);
+    setLoading(false);
   }
 
   return (
@@ -72,8 +79,6 @@ export function EditProfileScreen() {
               </a>
             </Button>
           </div>
-          {' '}
-          atualizadas com sucesso
           <div className="flex flex-col">
             <TextField
               label="Whatsapp"
