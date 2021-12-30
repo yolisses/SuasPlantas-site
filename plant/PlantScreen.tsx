@@ -87,7 +87,7 @@ export function PlantScreen({ data }:{data:Plant}) {
                 );
               })}
             </Carousel>
-            {data.images[0].uri}
+            {/* {data.images[0].uri} */}
           </div>
         </div>
         <div className="md:w-1/2">
@@ -153,7 +153,6 @@ export function PlantScreen({ data }:{data:Plant}) {
         </div>
       </div>
       {/* {loremIpsum} */}
-
       {authStore.user?.id === data.user.id
       && (
       <div className="fixed right-10 bottom-10">
