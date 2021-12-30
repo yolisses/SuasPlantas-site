@@ -33,7 +33,9 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   } = useForm({
     defaultValues: {
       ...data,
+      user: undefined,
       tags: data?.tags.map((tag) => tag.name),
+      images: {} as SendingsCollection,
     },
   });
   const [loading, setLoading] = useState(false);
@@ -62,16 +64,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     snackStore.setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
   }
 
-  function validateAvailabilities() {
-    if (
-      !getValues('donate')
-      && !getValues('swap')
-      && !sell) {
-      return 'Por favor informe a disponibilidade';
-    }
-    return undefined;
-  }
-
   return (
     <>
       <Header />
@@ -81,14 +73,13 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
             name="images"
             control={control}
             rules={{
-              validate: (coisas) => {
-                if (Object.keys(coisas).length < 1) {
+              validate: (selected) => {
+                if (Object.keys(selected).length < 1) {
                   return 'Selecione pelo menos 1 imagem';
                 }
-                if (Object.keys(coisas).length > 10) {
-                  return 'Selecione no máximo 10 imagens';
+                if (Object.keys(selected).length > 10) {
+                  return 'Selecione no máximo 10 imagine';
                 }
-                return undefined;
               },
             }}
             render={
@@ -157,7 +148,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 control={(
                   <Controller
                     name="donate"
-                    rules={{ validate: validateAvailabilities }}
                     control={control}
                     render={({ field: { onChange, value, ...field } }) => (
                       <Checkbox
@@ -174,7 +164,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 control={(
                   <Controller
                     name="swap"
-                    rules={{ validate: validateAvailabilities }}
                     control={control}
                     render={({ field: { onChange, value, ...field } }) => (
                       <Checkbox
