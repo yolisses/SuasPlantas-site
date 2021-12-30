@@ -50,7 +50,8 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     setLoading(true);
     try {
       await allImagesSent(data.images);
-      await api.patch('plants', {
+      const method = edit ? api.patch : api.post;
+      await method(`plants${edit}` ? `/${data.id}` : '', {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
