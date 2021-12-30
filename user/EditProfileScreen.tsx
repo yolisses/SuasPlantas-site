@@ -20,18 +20,25 @@ import { snackStore } from '../snack/snackStore';
 export function EditProfileScreen() {
   const imageSize = 80;
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: authStore.user?.name,
+      description: authStore.user?.description,
+      whatsappNumber: authStore.user?.whatsappNumber,
+      instagramUsername: authStore.user?.instagramUsername,
+    },
+  });
 
   const [loading, setLoading] = useState(false);
 
   async function submit(data:any) {
-    console.log(data);
     setLoading(true);
     try {
       const res = await api.patch('users', {
         ...data,
         whatsappNumber: parseInt(data.whatsappNumber, 10),
       });
+      authStore.setUser(res.data);
     } catch (err) {
       setLoading(false);
     }
