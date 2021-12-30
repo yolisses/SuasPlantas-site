@@ -37,7 +37,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       ...data,
       user: undefined,
       tags: data?.tags.map((tag) => tag.name),
-      images: imagesToSendings(data!.images),
+      images: data?.images || imagesToSendings(data.images),
     },
   });
 
