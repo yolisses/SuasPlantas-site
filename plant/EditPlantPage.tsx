@@ -50,7 +50,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     setLoading(true);
     try {
       await allImagesSent(data.images);
-      await api.post('plants', {
+      await api.patch('plants', {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
@@ -79,8 +79,8 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 error={!!error}
                 onBlur={onBlur}
                 onChange={onChange}
-                initialSendings={value}
                 helperText={error?.message}
+                initialSendings={value as SendingsCollection}
               />
             )
             }
