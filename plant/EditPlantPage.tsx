@@ -20,25 +20,40 @@ import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
 import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
 import { Plant } from '../types/Plant';
+import { Image } from '../types/Image';
 
 interface EditPlantProps{
   edit?:boolean
   data?:Plant
 }
 
+function imageKeyByUri(uri:string) {
+  console.log(uri);
+  return uri.split('https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/')[1];
+}
+
+function imagesToSendings(images:Image[]):SendingsCollection {
+  const result : SendingsCollection = {};
+  images.forEach(({ uri }) => {
+    result[Math.random()] = new Sending({ key: imageKeyByUri(uri) });
+  });
+  console.log(result);
+  return result;
+}
+
 export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [sell, setSell] = useState(!!data?.price);
+  const [loading, setLoading] = useState(false);
   const {
-    register, handleSubmit, control, getValues, formState: { errors },
+    register, handleSubmit, control, formState: { errors },
   } = useForm({
     defaultValues: {
       ...data,
       user: undefined,
       tags: data?.tags.map((tag) => tag.name),
-      images: {} as SendingsCollection,
+      images: imagesToSendings(data!.images),
     },
   });
-  const [loading, setLoading] = useState(false);
 
   async function allImagesSent(images: SendingsCollection) {
     const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
@@ -72,6 +87,17 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           <Controller
             name="images"
             control={control}
+            render={
+            ({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+              <ImagesInput
+                error={!!error}
+                onBlur={onBlur}
+                onChange={onChange}
+                initialSendings={value}
+                helperText={error?.message}
+              />
+            )
+            }
             rules={{
               validate: (selected) => {
                 if (Object.keys(selected).length < 1) {
@@ -82,16 +108,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 }
               },
             }}
-            render={
-            ({ field: { onChange, onBlur }, fieldState: { error } }) => (
-              <ImagesInput
-                onChange={onChange}
-                onBlur={onBlur}
-                error={!!error}
-                helperText={error?.message}
-              />
-            )
-          }
           />
           <Controller
             name="name"
@@ -157,7 +173,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                       />
                     )}
                   />
-)}
+                )}
               />
               <FormControlLabel
                 label="Troca"

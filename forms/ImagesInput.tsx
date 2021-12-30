@@ -6,28 +6,28 @@ import { Sending } from '../upload/Sending';
 import { isEmpty } from '../utils/isEmpty';
 import { SelectedImage } from './SelectedImage';
 
+export type SendingsCollection = { [key: number]: Sending };
+
 interface ImagesInputProps{
   onChange:(value:any)=>void
   onBlur:(value:any)=>void
   error?:boolean
   helperText?:string
+  initialSendings?:SendingsCollection
 }
 
-export type SendingsCollection = { [key: number]: Sending };
-
 export function ImagesInput({
-  onChange, onBlur, helperText, error,
+  onChange, onBlur, helperText, error, initialSendings,
 }:ImagesInputProps) {
-  const [sendings, setSendings] = useState<SendingsCollection>({});
   const [_, setRefreshValue] = useState(0);
   function refresh() {
     setRefreshValue(Math.random());
   }
-
+  const [sendings, setSendings] = useState<SendingsCollection>(initialSendings || {});
   const handleFilesSelected = (e: ChangeEvent<HTMLInputElement>): void => {
     const newFiles: SendingsCollection = {};
     Array.from(e.target.files!).forEach((file) => {
-      newFiles[Math.random()] = new Sending(file, refresh);
+      newFiles[Math.random()] = new Sending({ file, onUpdate: refresh });
     });
     setSendings((old) => ({ ...old, ...newFiles }));
   };
@@ -41,6 +41,8 @@ export function ImagesInput({
   }
 
   useEffect(() => { onChange(sendings); }, [sendings]);
+
+  console.log(sendings);
 
   return (
     <div>

@@ -87,6 +87,7 @@ export function PlantScreen({ data }:{data:Plant}) {
                 );
               })}
             </Carousel>
+            {data.images[0].uri}
           </div>
         </div>
         <div className="md:w-1/2">

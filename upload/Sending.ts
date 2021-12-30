@@ -6,27 +6,49 @@ export interface Progress {
   total: number;
 }
 
+interface SendingByFile{
+  file:File
+  onUpdate?:() => void
+  key?:never
+}
+
+interface SendingBySentFile{
+  file?:never
+  onUpdate?:never
+  key:string
+}
+
+type SendingContructorParams = SendingByFile|SendingBySentFile
+
 export class Sending {
-  sent: boolean = false;
+  key?:string
+
+  file: File|null
+
+  onUpdate?:()=>void
 
   progress?: Progress;
 
   uploadLink?: string;
 
-  file: File
-
-  onUpdate?:()=>void
-
-  private abortController?: AbortController;
+  sent: boolean = false;
 
   sendPromise?:Promise<void>
 
-  key?:string
+  private abortController?: AbortController;
 
-  constructor(file:File, onUpdate?: () => void) {
-    this.file = file;
-    this.onUpdate = onUpdate;
-    this.send();
+  constructor(params: SendingContructorParams) {
+    if (params.file) {
+      this.file = params.file;
+      this.onUpdate = params.onUpdate;
+      this.send();
+    } else {
+      this.key = params.key;
+      this.sent = true;
+      this.file = null;
+      this.progress = { loaded: 100, total: 100 };
+      this.sendPromise = new Promise((resolve) => { resolve(); });
+    }
   }
 
   async send() {

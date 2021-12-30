@@ -20,6 +20,11 @@ export function SelectedImage({
   }
 
   function getImageSrc() {
+    if (sending.sent) {
+      setSrc(`https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/${sending.key}`);
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = (e) => {
       const newSrc = e.target!.result;
@@ -60,9 +65,10 @@ export function SelectedImage({
       </div>
       {false && (
       <>
-        <div className="overflow-hidden">{sending.getLinkPreview}</div>
-        <div>{sending.progressPercentage}</div>
+        {/* <div className="overflow-hidden">{sending.getLinkPreview}</div> */}
+        {/* <div>{sending.progressPercentage}</div> */}
         <div>{`${sending.sent}`}</div>
+        <div>{sending.key}</div>
       </>
       )}
     </div>
