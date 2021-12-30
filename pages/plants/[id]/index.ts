@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-import { api } from '../../api/api';
-import { PlantScreen } from '../../plant/PlantScreen';
+import { api } from '../../../api/api';
+import { PlantScreen } from '../../../plant/PlantScreen';
 
 export default PlantScreen;
 

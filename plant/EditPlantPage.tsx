@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useForm } from 'react-hook-form';
+import Link from 'next/link';
 import {
   Checkbox,
   FormLabel,
@@ -12,18 +13,29 @@ import {
   FormControlLabel,
   CircularProgress,
 } from '@mui/material';
-import { tags } from './tags';
+import { tagEmoji, tags } from './tags';
 import { api } from '../api/api';
 import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
 import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
+import { Plant } from '../types/Plant';
 
-export function AddPlantPage() {
-  const [sell, setSell] = useState(false);
+interface EditPlantProps{
+  edit?:boolean
+  data?:Plant
+}
+
+export function EditPlantPage({ edit, data }:EditPlantProps) {
+  const [sell, setSell] = useState(!!data?.price);
   const {
     register, handleSubmit, control, getValues, formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      ...data,
+      tags: data?.tags.map((tag) => tag.name),
+    },
+  });
   const [loading, setLoading] = useState(false);
 
   async function allImagesSent(images: SendingsCollection) {
@@ -40,7 +52,6 @@ export function AddPlantPage() {
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
-        tags: data.tags.map((tag:any) => tag.text),
       });
     } catch (err:any) {
       setLoading(false);
@@ -55,7 +66,7 @@ export function AddPlantPage() {
     if (
       !getValues('donate')
       && !getValues('swap')
-      && !getValues('sell')) {
+      && !sell) {
       return 'Por favor informe a disponibilidade';
     }
     return undefined;
@@ -108,21 +119,22 @@ export function AddPlantPage() {
           <Controller
             name="tags"
             control={control}
-            render={({ field: { onChange } }) => (
+            render={({ field: { onChange, value } }) => (
               <Autocomplete
                 multiple
                 options={tags}
                 disableCloseOnSelect
+                value={value}
                 onChange={(_, value) => onChange(value)}
-                getOptionLabel={(option) => option.emoji + option.text}
+                getOptionLabel={(option) => tagEmoji[option] + option}
                 renderOption={(props, option, { selected }) => (
                   <li {...props}>
                     <Checkbox
                       style={{ marginRight: 8 }}
                       checked={selected}
                     />
-                    {option.emoji}
-                    {option.text}
+                    {tagEmoji[option]}
+                    {option}
                   </li>
                 )}
                 renderInput={(params) => (<TextField label="Marcar como" {...params} />)}
@@ -142,15 +154,46 @@ export function AddPlantPage() {
             <FormGroup>
               <FormControlLabel
                 label="Doação"
-                control={(<Checkbox {...register('donate', { validate: validateAvailabilities })} />)}
+                control={(
+                  <Controller
+                    name="donate"
+                    rules={{ validate: validateAvailabilities }}
+                    control={control}
+                    render={({ field: { onChange, value, ...field } }) => (
+                      <Checkbox
+                        {...field}
+                        onChange={(e) => onChange(e.target.checked)}
+                        checked={value}
+                      />
+                    )}
+                  />
+)}
               />
               <FormControlLabel
                 label="Troca"
-                control={(<Checkbox {...register('swap', { validate: validateAvailabilities })} />)}
+                control={(
+                  <Controller
+                    name="swap"
+                    rules={{ validate: validateAvailabilities }}
+                    control={control}
+                    render={({ field: { onChange, value, ...field } }) => (
+                      <Checkbox
+                        {...field}
+                        onChange={(e) => onChange(e.target.checked)}
+                        checked={value}
+                      />
+                    )}
+                  />
+                )}
               />
               <FormControlLabel
                 label="Venda"
-                control={(<Checkbox {...register('sell', { validate: validateAvailabilities })} onChange={(e, checked) => setSell(checked)} />)}
+                control={(
+                  <Checkbox
+                    onChange={(e) => setSell(e.target.checked)}
+                    checked={sell}
+                  />
+                )}
               />
             </FormGroup>
             {(errors.swap && errors.donate && !sell) && (
@@ -180,10 +223,19 @@ export function AddPlantPage() {
             />
             )}
           </div>
-          <Button variant="contained" className="h-12" onClick={handleSubmit(submit)} disabled={loading}>
-            {loading && <CircularProgress size={20} className="mr-2" />}
-            Adicionar
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button variant="contained" className="h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
+              {loading && <CircularProgress size={20} className="mr-2" />}
+              {edit ? 'Salvar' : 'Adicionar'}
+            </Button>
+            {edit && (
+            <Link href={`/plants/${data?.id}`}>
+              <Button className="h-12 flex-1" disabled={loading}>
+                Cancelar
+              </Button>
+            </Link>
+            )}
+          </div>
         </div>
       </div>
     </>

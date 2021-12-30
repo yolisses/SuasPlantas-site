@@ -12,6 +12,9 @@ import {
   FacebookMessengerIcon,
   TelegramIcon,
 } from 'react-share';
+import Link from 'next/link';
+import { Fab } from '@mui/material';
+import { FaEdit, FaPen } from 'react-icons/fa';
 import { Header } from '../common/Header';
 import { Session } from './Session';
 import { AvailabilityInfo } from './AvailabilityInfo';
@@ -19,7 +22,8 @@ import { availabilitiesToString } from './availabilitiesToString';
 import { UserLink } from '../user/UserLink';
 import { Plant } from '../types/Plant';
 import { devIndicator } from '../utils/devIndicator';
-import { tags } from './tags';
+import { tagEmoji, tags } from './tags';
+import { authStore } from '../auth/authStore';
 
 export function PlantScreen({ data }:{data:Plant}) {
   const {
@@ -110,7 +114,7 @@ export function PlantScreen({ data }:{data:Plant}) {
               <div className="flex flex-row flex-wrap gap-2">
                 {data.tags.map(({ name }) => (
                   <div>
-                    {tags.find((value) => value.text === name)?.emoji}
+                    {tagEmoji[name]}
                     {' '}
                     {name}
                   </div>
@@ -148,6 +152,17 @@ export function PlantScreen({ data }:{data:Plant}) {
         </div>
       </div>
       {/* {loremIpsum} */}
+
+      {authStore.user?.id === data.user.id
+      && (
+      <div className="fixed right-10 bottom-10">
+        <Link href={`/plants/${data.id}/edit`}>
+          <Fab color="primary" aria-label="add">
+            <FaPen size={22} color="white" />
+          </Fab>
+        </Link>
+      </div>
+      )}
     </div>
   );
 }

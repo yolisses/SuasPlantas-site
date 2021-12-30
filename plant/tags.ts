@@ -1,9 +1,11 @@
-export const tags = [
-  { text: 'frutífera', emoji: '🍎' },
-  { text: 'comestível', emoji: '🥦' },
-  { text: 'ornamental', emoji: '🌷' },
-  { text: 'medicinal', emoji: '🌿' },
-  { text: 'de sombra', emoji: '🌑' },
-  { text: 'meia sombra', emoji: '⛅' },
-  { text: 'sol pleno', emoji: '☀️' },
-];
+export const tagEmoji:{[key:string]:string} = {
+  frutífera: '🍎',
+  comestível: '🥦',
+  ornamental: '🌷',
+  medicinal: '🌿',
+  'de sombra': '🌑',
+  'meia sombra': '⛅',
+  'sol pleno': '☀️',
+};
+
+export const tags = Object.keys(tagEmoji);
