@@ -41,11 +41,12 @@ export class Sending {
     if (params.file) {
       this.file = params.file;
       this.onUpdate = params.onUpdate;
+
       this.send();
     } else {
-      this.key = params.key;
       this.sent = true;
       this.file = null;
+      this.key = params.key;
       this.progress = { loaded: 100, total: 100 };
       this.sendPromise = new Promise((resolve) => { resolve(); });
     }

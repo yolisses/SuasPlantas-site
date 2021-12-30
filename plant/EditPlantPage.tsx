@@ -13,32 +13,18 @@ import {
   FormControlLabel,
   CircularProgress,
 } from '@mui/material';
-import { tagEmoji, tags } from './tags';
 import { api } from '../api/api';
+import { Plant } from '../types/Plant';
+import { tagEmoji, tags } from './tags';
 import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
+import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
-import { Plant } from '../types/Plant';
-import { Image } from '../types/Image';
 
 interface EditPlantProps{
   edit?:boolean
   data?:Plant
-}
-
-function imageKeyByUri(uri:string) {
-  console.log(uri);
-  return uri.split('https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/')[1];
-}
-
-function imagesToSendings(images:Image[]):SendingsCollection {
-  const result : SendingsCollection = {};
-  images.forEach(({ uri }) => {
-    result[Math.random()] = new Sending({ key: imageKeyByUri(uri) });
-  });
-  console.log(result);
-  return result;
 }
 
 export function EditPlantPage({ edit, data }:EditPlantProps) {

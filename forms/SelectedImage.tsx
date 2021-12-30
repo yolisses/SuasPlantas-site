@@ -20,17 +20,17 @@ export function SelectedImage({
   }
 
   function getImageSrc() {
-    if (sending.sent) {
-      setSrc(`https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/${sending.key}`);
+    if (sending.file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const newSrc = e.target!.result;
+        setSrc(newSrc as string);
+      };
+      reader.readAsDataURL(sending.file);
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const newSrc = e.target!.result;
-      setSrc(newSrc as string);
-    };
-    reader.readAsDataURL(sending.file);
+    setSrc(`https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/${sending.key}`);
   }
 
   useEffect(() => {
