@@ -11,7 +11,6 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { useState } from 'react';
-import { TextInput } from '../forms/TextInput';
 import { Header } from '../common/Header';
 
 export function ContactPage() {
