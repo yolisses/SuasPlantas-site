@@ -1,5 +1,5 @@
 import {
-  Button, CircularProgress, Link, Rating, TextField,
+  Button, CircularProgress, IconContainerProps, Link, Rating, TextField,
 } from '@mui/material';
 import { FaCheck, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { RiFacebookCircleLine } from 'react-icons/ri';
@@ -12,37 +12,23 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { SvgIconComponent } from '@material-ui/icons';
 import { Header } from '../common/Header';
 import { authStore } from '../auth/authStore';
 import { api } from '../api/api';
 import { snackStore } from '../snack/snackStore';
 
-const customIcons = {
-  1: {
-    icon: <SentimentVeryDissatisfiedIcon fontSize="large" />,
-    label: 'Very Dissatisfied',
-  },
-  2: {
-    icon: <SentimentDissatisfiedIcon fontSize="large" />,
-    label: 'Dissatisfied',
-  },
-  3: {
-    icon: <SentimentSatisfiedIcon fontSize="large" />,
-    label: 'Neutral',
-  },
-  4: {
-    icon: <SentimentSatisfiedAltIcon fontSize="large" />,
-    label: 'Satisfied',
-  },
-  5: {
-    icon: <SentimentVerySatisfiedIcon fontSize="large" />,
-    label: 'Very Satisfied',
-  },
+const customIcons:{[key:string]:SvgIconComponent} = {
+  1: <SentimentVeryDissatisfiedIcon fontSize="large" />,
+  2: <SentimentDissatisfiedIcon fontSize="large" />,
+  3: <SentimentSatisfiedIcon fontSize="large" />,
+  4: <SentimentSatisfiedAltIcon fontSize="large" />,
+  5: <SentimentVerySatisfiedIcon fontSize="large" />,
 };
 
-function IconContainer(props) {
+function IconContainer(props:IconContainerProps) {
   const { value, ...other } = props;
-  return <span {...other}>{customIcons[value].icon}</span>;
+  return <span {...other}>{customIcons[value]}</span>;
 }
 
 export function ContactPage() {
@@ -60,7 +46,7 @@ export function ContactPage() {
     },
   });
 
-  async function submit(data) {
+  async function submit(data:any) {
     setLoading(true);
     try {
       await api.post('feedback', {
@@ -68,7 +54,7 @@ export function ContactPage() {
         rating: parseInt(data.rating, 10),
       });
       setSent(true);
-    } catch (err) {
+    } catch (err:any) {
       snackStore.setSnack({ severity: 'error', text: err.message });
     }
     setLoading(false);

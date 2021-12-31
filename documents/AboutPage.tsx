@@ -6,7 +6,7 @@ export function AboutPage() {
     <>
       <Header />
       <div className="flex flex-col items-center gap-4">
-        <session className="flex flex-col sm:flex-row items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-center gap-2">
           <div className="h-32 sm:h-auto overflow-hidden flex flex-col justify-end">
             <Image
               src="/cover5.jpg"
@@ -21,11 +21,13 @@ export function AboutPage() {
               Nossa equipe trabalha todo dia para que você sempre tenha com quem trocar plantas.
             </p>
             <p>
-              Sabemos que plantas são uma das poucas coisas que se mutiplicam quando você entrega uma parte a alguém, e por isso queremos tornar super simples, fácil e rápido encontrá-las perto de você. Todos saem ganhando!
+              Sabemos que plantas são uma das poucas coisas que se mutiplicam quando você entrega
+              uma parte a alguém, e por isso queremos tornar super simples, fácil e rápido
+              encontrá-las perto de você. Todos saem ganhando!
             </p>
           </div>
-        </session>
-        <section>
+        </div>
+        <div>
           <h2 className="text-2xl text-center">
             Nossos valores
           </h2>
@@ -64,7 +66,7 @@ export function AboutPage() {
               ))
             }
           </div>
-        </section>
+        </div>
       </div>
     </>
   );
