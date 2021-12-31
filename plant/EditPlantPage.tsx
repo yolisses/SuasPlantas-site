@@ -31,7 +31,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [sell, setSell] = useState(!!data?.price);
   const [loading, setLoading] = useState(false);
   const {
-    register, handleSubmit, control, formState: { errors },
+    register, handleSubmit, control, formState: { errors }, getValues,
   } = useForm({
     defaultValues: {
       ...data,
@@ -64,6 +64,12 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     }
     setLoading(false);
     snackStore.setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
+  }
+
+  function validateAvailabilities() {
+    if (!getValues('swap') && !getValues('donate') && !sell) {
+      return 'Por favor informe marque uma das opções';
+    }
   }
 
   return (
@@ -152,6 +158,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                   <Controller
                     name="donate"
                     control={control}
+                    rules={{ validate: validateAvailabilities }}
                     render={({ field: { onChange, value, ...field } }) => (
                       <Checkbox
                         {...field}
@@ -168,6 +175,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                   <Controller
                     name="swap"
                     control={control}
+                    rules={{ validate: validateAvailabilities }}
                     render={({ field: { onChange, value, ...field } }) => (
                       <Checkbox
                         {...field}
