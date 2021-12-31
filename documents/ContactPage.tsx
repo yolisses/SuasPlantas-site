@@ -81,7 +81,16 @@ export function ContactPage() {
                 {' '}
                 Telefone/Whatsapp
               </h2>
-              +55 83 9345-0389
+              <Link href="https://api.whatsapp.com/send?phone=+55839345-0389">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://api.whatsapp.com/send?phone=+55839345-0389"
+                  className="w-full max-w-sm"
+                >
+                  +55 83 9345-0389
+                </a>
+              </Link>
             </div>
             <div>
               <h2 className="flex flex-row items-center gap-1">
