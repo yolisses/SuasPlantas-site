@@ -1,5 +1,5 @@
 import {
-  Button, Link, Rating, TextField,
+  Button, CircularProgress, Link, Rating, TextField,
 } from '@mui/material';
 import { FaCheck, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { RiFacebookCircleLine } from 'react-icons/ri';
@@ -11,39 +11,67 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { Header } from '../common/Header';
+import { authStore } from '../auth/authStore';
+import { api } from '../api/api';
+import { snackStore } from '../snack/snackStore';
+
+const customIcons = {
+  1: {
+    icon: <SentimentVeryDissatisfiedIcon fontSize="large" />,
+    label: 'Very Dissatisfied',
+  },
+  2: {
+    icon: <SentimentDissatisfiedIcon fontSize="large" />,
+    label: 'Dissatisfied',
+  },
+  3: {
+    icon: <SentimentSatisfiedIcon fontSize="large" />,
+    label: 'Neutral',
+  },
+  4: {
+    icon: <SentimentSatisfiedAltIcon fontSize="large" />,
+    label: 'Satisfied',
+  },
+  5: {
+    icon: <SentimentVerySatisfiedIcon fontSize="large" />,
+    label: 'Very Satisfied',
+  },
+};
+
+function IconContainer(props) {
+  const { value, ...other } = props;
+  return <span {...other}>{customIcons[value].icon}</span>;
+}
 
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(true);
-  const disabled = loading || sent;
+  const [sent, setSent] = useState<any>();
 
-  const customIcons = {
-    1: {
-      icon: <SentimentVeryDissatisfiedIcon fontSize="large" />,
-      label: 'Very Dissatisfied',
+  const {
+    watch, register, handleSubmit, control,
+  } = useForm({
+    defaultValues: {
+      name: authStore.user?.name || '',
+      email: authStore.user?.email || '',
+      rating: undefined,
+      message: '',
     },
-    2: {
-      icon: <SentimentDissatisfiedIcon fontSize="large" />,
-      label: 'Dissatisfied',
-    },
-    3: {
-      icon: <SentimentSatisfiedIcon fontSize="large" />,
-      label: 'Neutral',
-    },
-    4: {
-      icon: <SentimentSatisfiedAltIcon fontSize="large" />,
-      label: 'Satisfied',
-    },
-    5: {
-      icon: <SentimentVerySatisfiedIcon fontSize="large" />,
-      label: 'Very Satisfied',
-    },
-  };
+  });
 
-  function IconContainer(props) {
-    const { value, ...other } = props;
-    return <span {...other}>{customIcons[value].icon}</span>;
+  async function submit(data) {
+    setLoading(true);
+    try {
+      await api.post('feedback', {
+        ...data,
+        rating: parseInt(data.rating, 10),
+      });
+      setSent(true);
+    } catch (err) {
+      snackStore.setSnack({ severity: 'error', text: err.message });
+    }
+    setLoading(false);
   }
 
   return (
@@ -104,28 +132,41 @@ export function ContactPage() {
               </Link>
             </div>
           </address>
-          <div className="flex flex-col gap-3 items-stretch w-full max-w-md">
+          <fieldset className="flex flex-col gap-3 items-stretch w-full max-w-md">
             <div>Enviar feedback</div>
-            <TextField label="Nome (opcional)" className="w-full" />
-            <TextField label="Email (opcional)" />
-            <Rating
-              name="highlight-selected-only"
-              IconContainerComponent={IconContainer}
-              highlightSelectedOnly
+            <TextField label="Nome (opcional)" className="w-full" {...register('name')} />
+            <TextField label="Email (opcional)" {...register('email')} />
+            <Controller
+              name="rating"
+              control={control}
+              render={({ field }) => (
+                <Rating
+                  IconContainerComponent={IconContainer}
+                  highlightSelectedOnly
+                  {...field}
+                />
+              )}
             />
-            <TextField label="Mensagem" multiline minRows={2} />
-            {sent ? (
-              <div className="text-center flex flex-row items-center justify-center gap-2">
-                <FaCheck color="green" />
-                Enviado
-              </div>
-            )
+            <TextField label="Mensagem" multiline minRows={2} {...register('message')} />
+            {sent
+              ? (
+                <div className="flex flex-row justify-center items-center gap-2">
+                  <FaCheck color="green" />
+                  Enviado
+                </div>
+              )
               : (
-                <Button variant="contained">
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit(submit)}
+                  className="flex flex-row items-center gap-1"
+                  disabled={loading || (!watch('message') && !watch('rating'))}
+                >
+                  { loading && <CircularProgress size={20} />}
                   Enviar!
                 </Button>
               )}
-          </div>
+          </fieldset>
         </div>
       </div>
     </>

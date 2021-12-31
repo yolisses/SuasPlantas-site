@@ -64,7 +64,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       });
       Router.push(`/plants/${res.data.id}`);
     } catch (err:any) {
-      setLoading(false);
       snackStore.setSnack({ severity: 'error', text: err.message });
       throw err;
     }
