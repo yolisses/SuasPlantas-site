@@ -59,7 +59,7 @@ export function UserScreen({ user }: UserScreenProps) {
         <div>
           { user.description}
         </div>
-        <div className="flex flex-row flex-1 items-center gap-2 justify-between p-2 max-w-sm">
+        {/* <div className="flex flex-row flex-1 items-center gap-2 justify-between p-2 max-w-sm">
           <div>
             <strong>12</strong>
             {' '}
@@ -75,7 +75,7 @@ export function UserScreen({ user }: UserScreenProps) {
             {' '}
             seguidores
           </div>
-        </div>
+        </div> */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
           {user.plants?.map((plant) => (
             <GridItem item={plant} />
