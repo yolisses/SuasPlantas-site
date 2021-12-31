@@ -26,7 +26,7 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
     changefreq: 'daily',
     priority: 0.9,
   }));
-  const result = coisa(links);
+  const result = await coisa(links);
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(result);
