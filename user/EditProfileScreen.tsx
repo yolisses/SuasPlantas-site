@@ -72,13 +72,14 @@ export function EditProfileScreen() {
               label="Instagram"
               {...register('instagramUsername')}
               InputProps={{
-                startAdornment:
-  <InputAdornment position="start">
-    <FaInstagram size={25} />
-    <span className="pl-2">
-      @
-    </span>
-  </InputAdornment>,
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FaInstagram size={25} />
+                    <span className="pl-2">
+                      @
+                    </span>
+                  </InputAdornment>
+                ),
               }}
             />
             <Button className="self-start px-5">
@@ -93,10 +94,11 @@ export function EditProfileScreen() {
               type="number"
               {...register('whatsappNumber')}
               InputProps={{
-                startAdornment:
-  <InputAdornment position="start">
-    <FaWhatsapp size={25} />
-  </InputAdornment>,
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FaWhatsapp size={25} />
+                  </InputAdornment>
+                ),
               }}
             />
             <Button className="self-start px-5">
