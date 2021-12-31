@@ -37,6 +37,7 @@
     "react-responsive-carousel": "^3.2.22",
     "react-share": "^4.4.0",
     "reflect-metadata": "^0.1.13",
+    "sitemap": "^7.1.0",
     "spinners-react": "^1.0.6"
   },
   "devDependencies": {

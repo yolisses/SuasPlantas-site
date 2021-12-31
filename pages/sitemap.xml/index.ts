@@ -1,20 +1,35 @@
 import { GetServerSideProps } from 'next';
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'stream';
 
 export default function Sitemap() {}
+
+interface SitemapUrl{
+ url:string
+ changefreq:'daily'|'monthly'
+ priority:number
+}
+
+function coisa(links:SitemapUrl[]) {
+  const stream = new SitemapStream({ hostname: 'https://susplantas.com' });
+
+  return streamToPromise(
+    Readable.from(links).pipe(stream),
+  ).then((data) => data.toString());
+}
 
 export const getServerSideProps:GetServerSideProps = async ({ res }) => {
   const coisas = [70, 71];
 
-  const final = coisas.map((coisa) => `<url><loc>https://www.suasplantas.com/plants/${coisa}</loc><lastmod>2021-12-31T19:53:39+00:00</lastmod></url>`);
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-      ${final}
-    </urlset>
-  `;
+  const links = coisas.map((id) :SitemapUrl => ({
+    url: `/plants/${id}`,
+    changefreq: 'daily',
+    priority: 0.9,
+  }));
+  const result = coisa(links);
 
   res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
+  res.write(result);
   res.end();
 
   return { props: {} };
