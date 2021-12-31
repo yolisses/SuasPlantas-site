@@ -4,7 +4,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { LatLngTuple } from 'leaflet';
 import { Button } from '@mui/material';
-import { EmphasisButton } from '../forms/EmphasisButton';
 import { HeaderLayout } from '../common/HeaderLayout';
 import { Feature } from './Feature';
 import { AutoCompleteInput } from './AutoCompleteInput';
