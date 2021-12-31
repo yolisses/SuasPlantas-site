@@ -1,6 +1,8 @@
+import { GetServerSideProps } from 'next';
+
 export default function Sitemap() {}
 
-export const getServerSideProps = ({ res }) => {
+export const getServerSideProps:GetServerSideProps = async ({ res }) => {
   const coisas = [70, 71];
 
   const final = coisas.map((coisa) => `<url><loc>https://www.suasplantas.com/plants/${coisa}</loc><lastmod>2021-12-31T19:53:39+00:00</lastmod></url>`);
@@ -15,5 +17,5 @@ export const getServerSideProps = ({ res }) => {
   res.write(sitemap);
   res.end();
 
-  return { };
+  return { props: {} };
 };
