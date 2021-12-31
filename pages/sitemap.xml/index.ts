@@ -11,7 +11,7 @@ interface SitemapUrl{
 }
 
 function coisa(links:SitemapUrl[]) {
-  const stream = new SitemapStream({ hostname: 'https://susplantas.com' });
+  const stream = new SitemapStream({ hostname: 'https://suasplantas.com' });
 
   return streamToPromise(
     Readable.from(links).pipe(stream),
