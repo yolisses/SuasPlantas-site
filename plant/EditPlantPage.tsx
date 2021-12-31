@@ -21,7 +21,7 @@ import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
 import { imagesToSendings } from '../images/imagesToSendings';
-import { ImagesInput, SendingsCollection } from '../forms/ImagesInput';
+import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
 
 interface EditPlantProps{
   edit?:boolean
@@ -75,6 +75,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     if (!getValues('swap') && !getValues('donate') && !sell) {
       return 'Por favor informe marque uma das opções';
     }
+    return undefined;
   }
 
   return (
@@ -104,6 +105,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 if (Object.keys(selected).length > 10) {
                   return 'Selecione no máximo 10 imagine';
                 }
+                return undefined;
               },
             }}
           />
