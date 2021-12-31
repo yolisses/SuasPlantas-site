@@ -5,13 +5,13 @@ import { GoogleButton } from './GoogleButton';
 
 export function SignInScreen() {
   return (
-    <div className="h-full flex sm:flex-row">
-      <div className="flex sm:w-1/4 h-36 sm:h-full">
+    <div className="h-full flex flex-col sm:flex-row">
+      <div className="flex flex-col sm:w-1/4 h-36 sm:h-full">
         <Image src="/cover4.jpg" width={1000} height={2000} objectFit="cover" />
       </div>
-      <div className="flex flex-1">
+      <div className="flex flex-col flex-1">
         <div className="h-4 bg-white absolute w-full top-32 rounded-t-full sm:hidden" />
-        <div className="gap-3 px-4 sm:py-3 flex items-start">
+        <div className="flex flex-col gap-3 px-4 sm:py-3 items-start">
           <Link href="/">
             <h1 className="text-4xl text-green-600 cursor-pointer">
               SuasPlantas
@@ -19,8 +19,8 @@ export function SignInScreen() {
           </Link>
           <h2 className="text-2xl text-gray-700">Trocar mudas de plantas</h2>
         </div>
-        <div className="flex flex-1 items-center pt-24 sm:pt-0 sm:justify-center">
-          <div className="flex max-w-sm items-center gap-2">
+        <div className="flex flex-col flex-1 items-center pt-24 sm:pt-0 sm:justify-center">
+          <div className="flex flex-col max-w-sm items-center gap-2">
             <div>Escolha uma conta para continuar</div>
             <GoogleButton />
             <FacebookButton />
