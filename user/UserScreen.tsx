@@ -47,6 +47,14 @@ export function UserScreen({ user }: UserScreenProps) {
           {!!user.instagramUsername && (
           <InstagramButton instagramUsername={user.instagramUsername} />
           )}
+          {(!user.whatsappNumber && !user.instagramUsername)
+          && (
+          <div>
+            <Link href="/account/edit">
+              Adicionar uma forma de contato para poder receber mensagens
+            </Link>
+          </div>
+          )}
         </div>
         <div>
           { user.description}

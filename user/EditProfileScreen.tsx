@@ -20,7 +20,7 @@ import { snackStore } from '../snack/snackStore';
 export function EditProfileScreen() {
   const imageSize = 80;
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, watch } = useForm({
     defaultValues: {
       name: authStore.user?.name,
       description: authStore.user?.description,
@@ -82,11 +82,17 @@ export function EditProfileScreen() {
                 ),
               }}
             />
+            {!!watch('instagramUsername') && (
             <Button className="self-start px-5">
-              <a target="_blank" href="https://instagram.com/yowlisses" rel="noopener noreferrer">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://instagram.com/${watch('instagramUsername')}`}
+              >
                 Testar
               </a>
             </Button>
+            )}
           </div>
           <div className="flex flex-col">
             <TextField
@@ -101,11 +107,17 @@ export function EditProfileScreen() {
                 ),
               }}
             />
-            <Button className="self-start px-5">
-              <a target="_blank" href="https://instagram.com/yowlisses" rel="noopener noreferrer">
-                Testar
-              </a>
-            </Button>
+            {!!watch('whatsappNumber') && (
+              <Button className="self-start px-5">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
+                >
+                  Testar
+                </a>
+              </Button>
+            )}
           </div>
           <FormHelperText>
             Essas informações ficam visíveis para as outras pessoas
