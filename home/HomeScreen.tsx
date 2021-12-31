@@ -21,9 +21,9 @@ export function HomeScreen({ data }: HomeScreenProps) {
         />
       </Head>
       <Header />
-      <div className="flex flex-row justify-start">
+      {/* <div className="flex flex-row justify-start">
         <SelectLocationLink />
-      </div>
+      </div> */}
       <div className="p-2 flex flex-col gap-1">
         {data.map((item) => (
           <ListItem key={item.id} item={item} />
