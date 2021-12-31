@@ -13,6 +13,7 @@ import {
   FormControlLabel,
   CircularProgress,
 } from '@mui/material';
+import Router from 'next/router';
 import { api } from '../api/api';
 import { Plant } from '../types/Plant';
 import { tagEmoji, tags } from './tags';
@@ -51,19 +52,23 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     try {
       await allImagesSent(data.images);
       const method = edit ? api.patch : api.post;
-      await method('plants', {
+      const res = await method('plants', {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
       });
+      snackStore.setSnack({
+        severity: 'success',
+        text: edit ? 'Planta alterada com sucesso' : 'Sua planta foi adicionada!',
+      });
+      Router.push(`/plants/${res.data.id}`);
     } catch (err:any) {
       setLoading(false);
       snackStore.setSnack({ severity: 'error', text: err.message });
       throw err;
     }
     setLoading(false);
-    snackStore.setSnack({ severity: 'success', text: 'Sua planta foi adicionada!' });
   }
 
   function validateAvailabilities() {

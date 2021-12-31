@@ -28,7 +28,7 @@ export class BasicError {
 api.interceptors.response.use(undefined, (error) => {
   const basicError = new BasicError(
     error?.response?.status,
-    error?.response?.data || error?.reason || error?.message,
+    error?.response?.data || error?.reason || error?.message || 'Erro desconhecido',
   );
   try {
     console.log(JSON.stringify(basicError));
