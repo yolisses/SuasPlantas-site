@@ -1,10 +1,7 @@
 import Head from 'next/head';
-import { Fab } from '@mui/material';
-import { FaPlus } from 'react-icons/fa';
-import { Header } from '../common/Header';
-import { SelectLocationLink } from '../location/SelectLocationLink';
 import { Plant } from '../types/Plant';
 import { AddButton } from './AddButton';
+import { Header } from '../common/Header';
 import { ListItem } from '../common/ListItem';
 
 interface HomeScreenProps {
@@ -24,11 +21,11 @@ export function HomeScreen({ data }: HomeScreenProps) {
       {/* <div className="flex flex-row justify-start">
         <SelectLocationLink />
       </div> */}
-      <div className="p-2 flex flex-col gap-1">
+      <ul className="p-2 flex flex-col gap-1">
         {data.map((item) => (
           <ListItem key={item.id} item={item} />
         ))}
-      </div>
+      </ul>
       <div className="fixed right-10 bottom-10">
         <AddButton />
       </div>

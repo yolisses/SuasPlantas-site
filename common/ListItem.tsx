@@ -13,7 +13,7 @@ export function ListItem({ item }: ListItemDTO) {
   return (
     <Link href={`/plants/${item.id}`}>
       <CardActionArea className="rounded-xl">
-        <ul className="flex flex-row cursor-pointer rounded-xl">
+        <li className="flex flex-row cursor-pointer rounded-xl">
           <Image
             alt={name}
             width={140}
@@ -29,7 +29,7 @@ export function ListItem({ item }: ListItemDTO) {
             <div className="pb-2" />
             <div className="text-gray-700 text-sm">{description}</div>
           </div>
-        </ul>
+        </li>
       </CardActionArea>
     </Link>
   );

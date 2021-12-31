@@ -16,6 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <ModalContextProvider>
         <Head>
+          <html lang="pt-BR" />
           <FaviconTags />
           {/* google login */}
           <meta
