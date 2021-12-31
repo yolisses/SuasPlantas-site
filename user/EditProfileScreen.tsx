@@ -90,6 +90,9 @@ export function EditProfileScreen() {
                 href={`https://instagram.com/${watch('instagramUsername')}`}
               >
                 Testar
+                {' '}
+                @
+                {watch('instagramUsername')}
               </a>
             </Button>
             )}
@@ -115,6 +118,8 @@ export function EditProfileScreen() {
                   href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
                 >
                   Testar
+                  {' '}
+                  {watch('whatsappNumber')}
                 </a>
               </Button>
             )}
