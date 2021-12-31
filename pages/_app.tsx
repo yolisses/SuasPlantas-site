@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <ModalContextProvider>
         <Head>
-          <html lang="pt-BR" />
+          {/* must be the first */}
           <FaviconTags />
           {/* google login */}
           <meta
@@ -31,6 +31,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
+          <html lang="pt-BR" />
           <title>
             {devIndicator}
             SuasPlantas - Trocar mudas de plantas
