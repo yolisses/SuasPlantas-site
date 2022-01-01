@@ -13,7 +13,7 @@ interface SitemapUrl{
  lastmod:string
 }
 
-function coisa(links:SitemapUrl[]) {
+function getSitemapXml(links:SitemapUrl[]) {
   const stream = new SitemapStream({ hostname: 'https://suasplantas.com' });
 
   return streamToPromise(
@@ -22,10 +22,7 @@ function coisa(links:SitemapUrl[]) {
 }
 
 export const getServerSideProps:GetServerSideProps = async ({ res }) => {
-  const coisas = [70, 71];
-
   const response :any = await api.get('plants/sitemap');
-  console.log(response);
 
   const links = response.data.map((plant:Plant) :SitemapUrl => ({
     url: `/plants/${plant.id}`,
@@ -33,7 +30,7 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
     priority: 0.9,
     lastmod: plant.updatedAt,
   }));
-  const result = await coisa(links);
+  const result = await getSitemapXml(links);
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(result);
