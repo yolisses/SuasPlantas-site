@@ -26,7 +26,7 @@ export function GoogleButton() {
   return (
     <div
       style={{ width: '300px' }}
-      className="rounded-full h-10 bg-gray-100"
+      className="flex rounded-full h-10 bg-gray-100"
     >
       <Head>
         <script src="https://accounts.google.com/gsi/client" async />
@@ -45,7 +45,7 @@ export function GoogleButton() {
         data-text="signin"
         data-type="standard"
         className="g_id_signin"
-          // data-theme="filled_blue"
+        // data-theme="filled_blue"
         data-logo_alignment="left"
       />
     </div>

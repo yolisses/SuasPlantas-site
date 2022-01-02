@@ -1,15 +1,15 @@
-import { Button, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { observer } from 'mobx-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
+import { userImage } from '../images/user';
 import { authStore } from '../auth/authStore';
 import { RequireLogin } from '../auth/RequireLogin';
-import { userImage } from '../images/user';
 
 export const MeButton = observer(() => {
   const size = 36;
-  return authStore.user && authStore.token ? (
+  return authStore.user ? (
     <Link href={`/users/${authStore.user?.id}`}>
       <IconButton>
         <Image
@@ -30,6 +30,5 @@ export const MeButton = observer(() => {
         <div className="text-lg">Entrar</div>
       </div>
     </RequireLogin>
-
   );
 });

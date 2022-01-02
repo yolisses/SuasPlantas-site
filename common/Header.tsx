@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { FaBars, FaRegFile, FaSeedling } from 'react-icons/fa';
 import Image from 'next/image';
 import { FiLogOut } from 'react-icons/fi';
-import { Logout } from '@mui/icons-material';
 import { authStore } from '../auth/authStore';
 import { MeButton } from '../user/MeButton';
 import { HeaderLayout } from './HeaderLayout';
@@ -104,11 +103,13 @@ export function Header({ searchQuery }: HeaderProps) {
               Sobre
             </MenuItem>
           </Link>
-          <MenuItem onClick={logOut}>
+          {!!authStore.user && (
+          <MenuItem onClick={() => { logOut(); handleClose(); }}>
             <FiLogOut size={20} color="gray" />
             <Space />
             Sair
           </MenuItem>
+          )}
         </Menu>
       </div>
     </HeaderLayout>
