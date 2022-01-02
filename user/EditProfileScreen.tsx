@@ -7,6 +7,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import Image from 'next/image';
+import Router from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
@@ -39,6 +40,7 @@ export function EditProfileScreen() {
         whatsappNumber: parseInt(data.whatsappNumber, 10),
       });
       authStore.setUser(res.data);
+      Router.push(`/users/${res.data.id}`);
     } catch (err) {
       setLoading(false);
     }
