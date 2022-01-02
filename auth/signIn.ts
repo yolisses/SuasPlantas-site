@@ -5,7 +5,7 @@ export async function signIn(
   provider: 'google' | 'facebook',
   accessToken: string,
 ) {
-  const res = await api.post('users', { accessToken });
+  const res = await api.post('users', { provider, accessToken });
   const token = res.headers.authorization;
   authStore.setUser(res.data);
   authStore.setToken(token);

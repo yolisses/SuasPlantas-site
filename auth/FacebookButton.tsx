@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Head from 'next/head';
 import { signIn } from './signIn';
+import { isDev } from '../utils/isDev';
 
 interface FacebookResponse {
   authResponse: {
@@ -44,8 +45,8 @@ export class FacebookButton extends Component<any, any> {
   }
 
   async handleFacebookResponse(e: FacebookResponse) {
-    console.log(e.authResponse.accessToken);
-    signIn('facebook', e.authResponse.accessToken);
+    if (isDev) console.log(e.authResponse.accessToken);
+    await signIn('facebook', e.authResponse.accessToken);
   }
 
   render() {
