@@ -1,5 +1,5 @@
-import { Link } from '@mui/material';
 import { Header } from '../common/Header';
+import { TextLink } from '../common/TextLink';
 import styles from './PrivacyPolicyPage.module.css';
 
 export function PrivacyPolicyPage() {
@@ -18,9 +18,10 @@ export function PrivacyPolicyPage() {
             ou mesmo sugestão de melhoria, pedimos que entre em contato conosco, através de um
             de nossos meios de comunicação disponíveis em
             {' '}
-            <Link href="https://suasplantas.com/contact">
-              nossa página de contato.
-            </Link>
+            <TextLink href="https://suasplantas.com/contact">
+              nossa página de contato
+            </TextLink>
+            .
           </p>
           <p>
             Através de nossos serviços é possível acessar serviços de terceiros, por exemplo,

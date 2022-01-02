@@ -1,3 +1,4 @@
+import { TextLink } from '../common/TextLink';
 import { FacebookButton } from './FacebookButton';
 import { GoogleButton } from './GoogleButton';
 
@@ -10,7 +11,12 @@ export function SignInBox() {
       <div className="pb-2 sm:pb-5" />
       <div className="text-sm text-gray-600 px-6">
         Ao selecionar uma conta, você concorda com nossos Termos de Uso,
-        Política de Privacidade e Política de Cookies.
+        {' '}
+        <TextLink href="/privacy-policy" defaultAElement target="_blank">
+          Política de Privacidade
+        </TextLink>
+        {' '}
+        e Política de Cookies.
       </div>
     </div>
   );

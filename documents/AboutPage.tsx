@@ -1,7 +1,6 @@
-import { Link } from '@mui/material';
 import Image from 'next/image';
-import NextLink from 'next/link';
 import { Header } from '../common/Header';
+import { TextLink } from '../common/TextLink';
 
 export function AboutPage() {
   return (
@@ -72,12 +71,9 @@ export function AboutPage() {
                 Somos facinados em testar novas ideias e procurar funcionalidades
                 inovadoras. Se pensar em uma,
                 {' '}
-                <NextLink href="/contact">
-                  <Link href="/contact">
-                    envia pra gente!
-                  </Link>
-                </NextLink>
-
+                <TextLink href="/contact">
+                  envia pra gente!
+                </TextLink>
               </p>
             </div>
           </div>
