@@ -1,18 +1,18 @@
 import {
-  Button, ButtonBase, IconButton, Menu, MenuItem,
+  Button, IconButton, Menu, MenuItem,
 } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
-import {
-  FaApper, FaBars, FaFile, FaHamburger, FaPage4, FaRegFile, FaSeedling,
-} from 'react-icons/fa';
+import { FaBars, FaRegFile, FaSeedling } from 'react-icons/fa';
 import Image from 'next/image';
-import { RiLogoutBoxRLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
+import { Logout } from '@mui/icons-material';
 import { authStore } from '../auth/authStore';
 import { MeButton } from '../user/MeButton';
 import { HeaderLayout } from './HeaderLayout';
 import { userImage } from '../images/user';
+import { logOut } from '../user/logOut';
+import { RequireLogin } from '../auth/RequireLogin';
 
 interface HeaderProps {
   searchQuery?: string;
@@ -71,17 +71,19 @@ export function Header({ searchQuery }: HeaderProps) {
           }}
         >
           <Link href={`/users/${authStore.user?.id}`}>
-            <MenuItem onClick={handleClose}>
-              <Image
-                width={20}
-                height={20}
-                src={authStore.user?.image || userImage}
-                alt={authStore.user?.name}
-                className="bg-gray-300 rounded-full cursor-pointer"
-              />
-              <Space />
-              Perfil
-            </MenuItem>
+            <RequireLogin>
+              <MenuItem onClick={handleClose}>
+                <Image
+                  width={20}
+                  height={20}
+                  src={authStore.user?.image || userImage}
+                  alt={authStore.user?.name}
+                  className="bg-gray-300 rounded-full cursor-pointer"
+                />
+                <Space />
+                Perfil
+              </MenuItem>
+            </RequireLogin>
           </Link>
           <Link href="/privacy-policy">
             <MenuItem onClick={handleClose}>
@@ -102,7 +104,7 @@ export function Header({ searchQuery }: HeaderProps) {
               Sobre
             </MenuItem>
           </Link>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={logOut}>
             <FiLogOut size={20} color="gray" />
             <Space />
             Sair
