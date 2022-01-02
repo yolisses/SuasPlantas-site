@@ -24,7 +24,7 @@ function Space() {
 export function Header({ searchQuery }: HeaderProps) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
