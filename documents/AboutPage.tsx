@@ -1,4 +1,6 @@
+import { Link } from '@mui/material';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { Header } from '../common/Header';
 
 export function AboutPage() {
@@ -32,39 +34,52 @@ export function AboutPage() {
             Nossos valores
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 p-4">
-            {
-              ([
-                {
-                  emoji: '🙂',
-                  title: 'Foco no usuário',
-                  description: 'Estamos sempre de portas abertas para críticas, sugestões e ideas. Queremos entregar a melhor experiência possível.',
-                },
-                {
-                  emoji: '🤝',
-                  title: 'Honestidade',
-                  description: 'Damos muito valor a confiança. Para nós, nada pode comprar a sensação agir corretamente, sempre com muita transparência e empatia.',
-                },
-                {
-                  emoji: '✨',
-                  title: 'Curiosidade',
-                  description: 'Acreditamos que sempre existirão infinitas funcionalidades melhores que podem se tornar realidade, por isso nunca deixamos de procurá-las',
-                },
+            <div className="flex-1 sm:max-w-sm">
+              <h3 className="text-xl text-center">
+                <span className="text-2xl text-center">
+                  🙂
+                  {' '}
+                </span>
+                Foco no usuário
+              </h3>
+              <p>
+                Estamos sempre de portas abertas para críticas, sugestões e ideas.
+                Queremos entregar a melhor experiência possível.
+              </p>
+            </div>
+            <div className="flex-1 sm:max-w-sm">
+              <h3 className="text-xl text-center">
+                <span className="text-2xl text-center">
+                  🤝
+                  {' '}
+                </span>
+                Honestidade
+              </h3>
+              <p>
+                Damos muito valor a confiança. Para nós, nada pode comprar a
+                sensação agir corretamente, sempre com muita transparência e empatia.
+              </p>
+            </div>
+            <div className="flex-1 sm:max-w-sm">
+              <h3 className="text-xl text-center">
+                <span className="text-2xl text-center">
+                  ✨
+                  {' '}
+                </span>
+                Curiosidade
+              </h3>
+              <p>
+                Somos facinados em testar novas ideias e procurar funcionalidades
+                inovadoras. Se pensar em uma,
+                {' '}
+                <NextLink href="/contact">
+                  <Link href="/contact">
+                    envia pra gente!
+                  </Link>
+                </NextLink>
 
-              ]).map((topic) => (
-                <div className="flex-1 sm:max-w-sm">
-                  <h3 className="text-xl text-center">
-                    <span className="text-2xl text-center">
-                      {topic.emoji}
-                      {' '}
-                    </span>
-                    {topic.title}
-                  </h3>
-                  <p>
-                    {topic.description}
-                  </p>
-                </div>
-              ))
-            }
+              </p>
+            </div>
           </div>
         </div>
       </div>
