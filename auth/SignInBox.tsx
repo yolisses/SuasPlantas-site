@@ -10,13 +10,12 @@ export function SignInBox() {
       <FacebookButton />
       <div className="pb-2 sm:pb-5" />
       <div className="text-sm text-gray-600 px-6">
-        Ao selecionar uma conta, você concorda com nossos Termos de Uso,
+        Ao selecionar uma conta, você concorda com nossa
         {' '}
         <TextLink href="/privacy-policy" defaultAElement target="_blank">
           Política de Privacidade
         </TextLink>
-        {' '}
-        e Política de Cookies.
+        .
       </div>
     </div>
   );

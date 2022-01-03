@@ -3,7 +3,9 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaBars, FaRegFile, FaSeedling } from 'react-icons/fa';
+import {
+  FaBars, FaRegCommentAlt, FaRegFile, FaSeedling,
+} from 'react-icons/fa';
 import Image from 'next/image';
 import { FiLogOut } from 'react-icons/fi';
 import { authStore } from '../auth/authStore';
@@ -91,11 +93,13 @@ export function Header({ searchQuery }: HeaderProps) {
               Política de privacidade
             </MenuItem>
           </Link>
-          <MenuItem onClick={handleClose}>
-            <FaRegFile size={20} color="gray" />
-            <Space />
-            Termos de uso
-          </MenuItem>
+          <Link href="/contact">
+            <MenuItem onClick={handleClose}>
+              <FaRegCommentAlt size={20} color="gray" />
+              <Space />
+              Contato
+            </MenuItem>
+          </Link>
           <Link href="/about">
             <MenuItem onClick={handleClose}>
               <FaSeedling size={20} color="gray" />
