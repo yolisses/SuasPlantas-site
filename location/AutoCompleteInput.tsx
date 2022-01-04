@@ -46,20 +46,21 @@ export function AutoCompleteInput<type>({
   }
 
   return (
-    <div className="group relative">
-      <div className="pt-0 relative z-40 group">
-        <input
-          type="text"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Pesquisar local"
-          onChange={handleChange}
-          value={text}
-          className="rounded-full p-2 px-3 shadow-md ring-1 ring-gray-300"
-        />
-      </div>
-      {focused && !!options.length && (
-        <div className="absolute z-30 w-full flex flex-col bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
+    <div className="w-full">
+      <div className="group relative">
+        <div className="pt-0 relative z-40 group">
+          <input
+            type="text"
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder="Pesquisar local"
+            onChange={handleChange}
+            value={text}
+            className="rounded-full p-2 px-3 shadow-md ring-1 ring-gray-300"
+          />
+        </div>
+        {focused && !!options.length && (
+        <div className="absolute z-30 flex flex-col bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
           {options?.map((option) => (
             <AutocompleteOption
               value={option as type}
@@ -70,7 +71,8 @@ export function AutoCompleteInput<type>({
             </AutocompleteOption>
           ))}
         </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

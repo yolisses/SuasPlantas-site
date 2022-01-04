@@ -1,11 +1,16 @@
-import { Modal } from '@mui/material';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('../location/Map'), { ssr: false });
 
 export function DevScreen() {
   return (
-    <div>
-      <Modal open>
-        <div className="bg-red-500 w-20">oie</div>
-      </Modal>
-    </div>
+    <>
+      <div className="h-96 flex flex-col">
+        <Map />
+      </div>
+      <div className="h-24 flex flex-col">
+        <Map />
+      </div>
+    </>
   );
 }

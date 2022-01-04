@@ -1,11 +1,12 @@
-import { Button, IconButton, Modal } from '@mui/material';
 import axios from 'axios';
-import { FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
-import { LatLngTuple } from 'leaflet';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { LatLngTuple } from 'leaflet';
 import { GrClose } from 'react-icons/gr';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { Button, IconButton } from '@mui/material';
+
 import { Feature } from './Feature';
 import { AutoCompleteInput } from './AutoCompleteInput';
 
@@ -17,6 +18,7 @@ interface LocationFieldProps{
 
 export function LocationField({ text }:LocationFieldProps) {
   const centerSize = 40;
+  const [active, setActive] = useState(false);
   const [center, setCenter] = useState<LatLngTuple>([-69.761008, -26.783346]);
   console.log({ center });
 
@@ -42,9 +44,17 @@ export function LocationField({ text }:LocationFieldProps) {
     return value.id;
   }
 
+  function handleButtonClick() {
+    setActive(true);
+  }
+
+  function hancleCloseClick() {
+    setActive(false);
+  }
+
   return (
     <div>
-      <Button>
+      <Button onClick={handleButtonClick}>
         <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
           <FaMapMarkerAlt size={20} color="#080" />
           <div className="font-semibold" style={{ color: '#080' }}>
@@ -52,34 +62,38 @@ export function LocationField({ text }:LocationFieldProps) {
           </div>
         </div>
       </Button>
-      <div className="fixed top-0 bottom-0 left-0 right-0 lg:p-10 flex flex-col justify-center items-center bg-black bg-opacity-50" style={{ zIndex: 10000 }}>
-        <div className="flex flex-col flex-1 bg-white w-full max-w-3xl rounded-none md:rounded-lg shadow-xl">
-          <div className="px-2 h-12 flex flex-row items-center">
-            <div className="pl-1">
-              Sua localização
+      {active && (
+      <div
+        className="fixed top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center bg-black bg-opacity-50"
+        style={{ zIndex: 1000 }}
+      >
+        <div className="flex flex-col max-h-screen bg-white w-full max-w-3xl rounded-none md:rounded-lg shadow-xl">
+          <div className="px-2 pb-2">
+            <div className="h-12 flex flex-row items-center">
+              <span className="pl-1">Sua localização</span>
+              <IconButton className="ml-auto" onClick={hancleCloseClick}>
+                <GrClose size={18} />
+              </IconButton>
             </div>
-            <IconButton className="ml-auto">
-              <GrClose size={18} />
-            </IconButton>
-          </div>
-          <div className="p-2">
             <AutoCompleteInput
-              ketExtractor={keyExtractor}
               getText={getText}
-              getOptions={getFeaturesByText}
               onChange={handleChange}
+              ketExtractor={keyExtractor}
+              getOptions={getFeaturesByText}
             />
           </div>
-          <div className="flex flex-col flex-1 relative">
-            <div className="flex-1 bg-green-300 flex flex-col relative z-0">
-              <Map center={center} />
-            </div>
-            <div className="absolute z-20 w-full select-none flex flex-col justify-center items-center top-0 bottom-0 pointer-events-none">
+          <div className="h-screen flex flex-col relative">
+            <div
+              className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
+              style={{ zIndex: 500 }}
+            >
               <Image src="/map_center.png" width={centerSize} height={centerSize} />
             </div>
+            <Map />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
-            <Button className="h-12 flex-1 sm:flex-none px-5">
+
+            <Button className="h-12 flex-1 sm:flex-none px-5" onClick={hancleCloseClick}>
               Cancelar
             </Button>
             <Button className="h-12 flex-1 sm:flex-none px-5" variant="contained">
@@ -88,6 +102,7 @@ export function LocationField({ text }:LocationFieldProps) {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }

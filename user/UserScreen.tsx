@@ -29,14 +29,7 @@ export function UserScreen({ user }: UserScreenProps) {
           <div className="flex-1 flex-wrap flex overflow-ellipsis">
             <div className="flex flex-col w-full">
               <div className="overflow-ellipsis text-lg">{user.name}</div>
-              {authStore.user?.id === user.id && (
-                <Link href="/account/edit">
-                  <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
-                    <FaRegUser size={18} />
-                    Editar perfil
-                  </Button>
-                </Link>
-              )}
+              <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
             </div>
           </div>
         </div>
@@ -59,6 +52,14 @@ export function UserScreen({ user }: UserScreenProps) {
         <div>
           { user.description}
         </div>
+        {authStore.user?.id === user.id && (
+        <Link href="/account/edit">
+          <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
+            <FaRegUser size={18} />
+            Editar perfil
+          </Button>
+        </Link>
+        )}
         {/* <div className="flex flex-row flex-1 items-center gap-2 justify-between p-2 max-w-sm">
           <div>
             <strong>12</strong>

@@ -5,7 +5,6 @@ import {
   FormHelperText,
   InputAdornment,
   CircularProgress,
-  Modal,
 } from '@mui/material';
 import Image from 'next/image';
 import Router from 'next/router';
