@@ -58,7 +58,7 @@ export function PlantScreen({ data }:{data:Plant}) {
         </title>
         <meta
           name="description"
-          content={`Planta, Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}`}
+          content={`Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}${description ? `, Descrição: ${description}` : ''}`}
         />
       </Head>
       <Header />
