@@ -5,6 +5,7 @@ import {
   FormHelperText,
   InputAdornment,
   CircularProgress,
+  Modal,
 } from '@mui/material';
 import Image from 'next/image';
 import Router from 'next/router';
@@ -17,7 +18,7 @@ import { Header } from '../common/Header';
 import { userImage } from '../images/user';
 import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
-import { SelectLocationLink } from '../location/SelectLocationLink';
+import { LocationField } from '../location/LocationField';
 
 export function EditProfileScreen() {
   const imageSize = 80;
@@ -71,7 +72,7 @@ export function EditProfileScreen() {
           {/* ignore the label */}
           <TextField label="Bio" multiline minRows={2} {...register('description')} />
           <div className="self-start">
-            <SelectLocationLink text={`${authStore.user?.city}, ${authStore.user?.state}`} />
+            <LocationField text={`${authStore.user?.city}, ${authStore.user?.state}`} />
           </div>
           <div className="flex flex-col">
             <TextField

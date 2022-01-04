@@ -55,7 +55,7 @@ export function AutoCompleteInput<type>({
           placeholder="Pesquisar local"
           onChange={handleChange}
           value={text}
-          className="rounded-full p-2 px-3 shadow-lg ring-1 ring-gray-300"
+          className="rounded-full p-2 px-3 shadow-md ring-1 ring-gray-300"
         />
       </div>
       {focused && !!options.length && (

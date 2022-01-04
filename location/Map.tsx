@@ -1,6 +1,6 @@
-import * as L from "leaflet";
-import { useEffect, useRef, useState } from "react";
-import "leaflet/dist/leaflet.css";
+import * as L from 'leaflet';
+import { useEffect, useRef, useState } from 'react';
+import 'leaflet/dist/leaflet.css';
 
 interface MapProps {
   center: L.LatLngTuple;
@@ -14,11 +14,9 @@ export default function Map({ center }: MapProps) {
     if (ref.current && !map) {
       const map = L.map(ref.current.id).setView(center, 13);
       setMap(map);
-      const teste = 1;
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          '&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
     }
   }, []);
@@ -27,5 +25,5 @@ export default function Map({ center }: MapProps) {
     if (map) map.panTo(center);
   }, [center]);
 
-  return <div ref={ref} id="leaflet-map" className="flex-1"></div>;
+  return <div ref={ref} id="leaflet-map" className="flex-1" />;
 }

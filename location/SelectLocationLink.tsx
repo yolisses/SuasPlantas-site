@@ -8,15 +8,13 @@ export interface SelectLocationLinkProps{
 
 export function SelectLocationLink({ text }:SelectLocationLinkProps) {
   return (
-    <Link href="/select-location">
-      <Button>
-        <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
-          <FaMapMarkerAlt size={20} color="#080" />
-          <div className="font-semibold" style={{ color: '#080' }}>
-            {text || 'Selecionar local'}
-          </div>
+    <Button>
+      <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
+        <FaMapMarkerAlt size={20} color="#080" />
+        <div className="font-semibold" style={{ color: '#080' }}>
+          {text || 'Selecionar local'}
         </div>
-      </Button>
-    </Link>
+      </div>
+    </Button>
   );
 }
