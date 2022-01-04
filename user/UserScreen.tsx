@@ -79,7 +79,7 @@ export function UserScreen({ user }: UserScreenProps) {
         </div> */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
           {user.plants?.map((plant) => (
-            <GridItem item={plant} />
+            <GridItem item={plant} key={plant.id} />
           ))}
         </div>
       </div>

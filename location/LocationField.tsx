@@ -2,13 +2,15 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { LatLngTuple } from 'leaflet';
+import { LatLng, LatLngTuple } from 'leaflet';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Button, IconButton } from '@mui/material';
 
 import { Feature } from './Feature';
+import { authStore } from '../auth/authStore';
 import { AutoCompleteInput } from './AutoCompleteInput';
+import { getFeaturesByText } from './getFeaturesByText';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -19,41 +21,44 @@ interface LocationFieldProps{
 export function LocationField({ text }:LocationFieldProps) {
   const centerSize = 40;
   const [active, setActive] = useState(false);
-  const [center, setCenter] = useState<LatLngTuple>([-69.761008, -26.783346]);
-  console.log({ center });
+  console.log(authStore.user);
+  const [center, setCenter] = useState<LatLng>({
+    lat: authStore.user?.location?.coordinates[0],
+    lng: authStore.user?.location?.coordinates[1],
+  }as LatLng);
 
   function handleChange(value: Feature) {
     console.log('handle select', value);
-    setCenter(value.center.reverse() as LatLngTuple);
+    setCenter({
+      lat: value.center[1],
+      lng: value.center[0],
+    }as LatLng);
     console.log(value);
   }
 
-  async function getFeaturesByText(text: string) {
-    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${text}.json`;
-    const res = await axios.get(url, {
-      params: { access_token: process.env.NEXT_PUBLIC_MAP_BOX_ACCESS_TOKEN },
-    });
-    return res.data.features as Feature[];
-  }
+  function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
 
-  function getText(value: Feature) {
-    return value.place_name.replace('Brazil', 'Brasil');
-  }
-
-  function keyExtractor(value: Feature) {
-    return value.id;
-  }
+  function keyExtractor(value: Feature) { return value.id; }
 
   function handleButtonClick() {
+    setCenter({
+      lat: authStore.user?.location?.coordinates[0],
+      lng: authStore.user?.location?.coordinates[1],
+    }as LatLng);
     setActive(true);
   }
 
-  function hancleCloseClick() {
-    setActive(false);
-  }
+  function hancleCloseClick() { setActive(false); }
 
   return (
     <div>
+      {/* <Button onClick={() => setCenter({
+        lat: -23.5489,
+        lng: -46.6388,
+      })}
+      >
+        teste
+      </Button> */}
       <Button onClick={handleButtonClick}>
         <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
           <FaMapMarkerAlt size={20} color="#080" />
@@ -93,10 +98,9 @@ export function LocationField({ text }:LocationFieldProps) {
                 src="/map_center.png"
               />
             </div>
-            <Map />
+            <Map center={center} />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
-
             <Button
               onClick={hancleCloseClick}
               className="h-12 flex-1 sm:flex-none px-5"
