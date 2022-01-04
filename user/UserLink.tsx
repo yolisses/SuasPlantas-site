@@ -22,9 +22,13 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <div className="flex flex-col">
           <div className="font-semibold hover:underline">{user.name}</div>
           <div className="text-gray-500 text-sm">
-            Entrou no SuasPlantas em
+            {/* Entrou no SuasPlantas em
             {' '}
-            <time>{new Date(user.createdAt).getFullYear()}</time>
+            <time>{new Date(user.createdAt).getFullYear()}</time> */}
+            {user.city}
+            ,
+            {' '}
+            {user.state}
           </div>
         </div>
       </div>
