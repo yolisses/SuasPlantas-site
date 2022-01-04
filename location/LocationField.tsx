@@ -87,16 +87,26 @@ export function LocationField({ text }:LocationFieldProps) {
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
               style={{ zIndex: 500 }}
             >
-              <Image src="/map_center.png" width={centerSize} height={centerSize} />
+              <Image
+                width={centerSize}
+                height={centerSize}
+                src="/map_center.png"
+              />
             </div>
             <Map />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
 
-            <Button className="h-12 flex-1 sm:flex-none px-5" onClick={hancleCloseClick}>
+            <Button
+              onClick={hancleCloseClick}
+              className="h-12 flex-1 sm:flex-none px-5"
+            >
               Cancelar
             </Button>
-            <Button className="h-12 flex-1 sm:flex-none px-5" variant="contained">
+            <Button
+              variant="contained"
+              className="h-12 flex-1 sm:flex-none px-5"
+            >
               Selecionar
             </Button>
           </div>
