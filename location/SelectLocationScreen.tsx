@@ -38,7 +38,7 @@ function SelectLocationScreen() {
 
   return (
     <div className="flex flex-col flex-1 min-h-screen">
-      <HeaderLayout>
+      <HeaderLayout className="shadow-none">
         <div>Sua localização</div>
       </HeaderLayout>
       <div className="p-2">
