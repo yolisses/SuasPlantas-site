@@ -1,8 +1,6 @@
-import axios from 'axios';
 import Image from 'next/image';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { LatLng, LatLngTuple } from 'leaflet';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Button, IconButton } from '@mui/material';
@@ -19,32 +17,18 @@ interface LocationFieldProps{
 }
 
 export function LocationField({ text }:LocationFieldProps) {
-  const centerSize = 40;
   const [active, setActive] = useState(false);
-  console.log(authStore.user);
-  const [center, setCenter] = useState<LatLng>({
-    lat: authStore.user?.location?.coordinates[0],
-    lng: authStore.user?.location?.coordinates[1],
-  }as LatLng);
+  const [center, setCenter] = useState<[number, number]>([0, 0]);
 
-  function handleChange(value: Feature) {
-    console.log('handle select', value);
-    setCenter({
-      lat: value.center[1],
-      lng: value.center[0],
-    }as LatLng);
-    console.log(value);
-  }
+  function handleChange(value: Feature) { setCenter(value.center); }
 
   function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
 
   function keyExtractor(value: Feature) { return value.id; }
 
   function handleButtonClick() {
-    setCenter({
-      lat: authStore.user?.location?.coordinates[0],
-      lng: authStore.user?.location?.coordinates[1],
-    }as LatLng);
+    center[0] = authStore.user.location.coordinates[0];
+    center[1] = authStore.user.location.coordinates[1];
     setActive(true);
   }
 
@@ -52,13 +36,6 @@ export function LocationField({ text }:LocationFieldProps) {
 
   return (
     <div>
-      {/* <Button onClick={() => setCenter({
-        lat: -23.5489,
-        lng: -46.6388,
-      })}
-      >
-        teste
-      </Button> */}
       <Button onClick={handleButtonClick}>
         <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
           <FaMapMarkerAlt size={20} color="#080" />
@@ -92,13 +69,9 @@ export function LocationField({ text }:LocationFieldProps) {
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
               style={{ zIndex: 500 }}
             >
-              <Image
-                width={centerSize}
-                height={centerSize}
-                src="/map_center.png"
-              />
+              <Image width={40} height={40} src="/map_center.png" />
             </div>
-            <Map center={center} />
+            <Map center={center!} />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <Button

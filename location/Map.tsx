@@ -1,14 +1,13 @@
 import {
-  MapContainer, Marker, Popup, TileLayer, useMapEvents,
+  MapContainer, TileLayer, useMapEvents,
 } from 'react-leaflet';
 import Head from 'next/head';
-import { LatLng } from 'leaflet';
 
-function EventHandler({ center }:{center:LatLng}) {
+function EventHandler({ center }:{center:[number, number]}) {
   function updateCenter(e) {
     const newCenter = e.target.getCenter();
-    center.lat = newCenter.lat;
-    center.lng = newCenter.lng;
+    center[0] = newCenter.lat;
+    center[1] = newCenter.lng;
   }
   useMapEvents({
     moveend: updateCenter,
@@ -19,7 +18,7 @@ function EventHandler({ center }:{center:LatLng}) {
 }
 
 interface MapProps{
-  center:LatLng
+  center:[number, number]
 }
 
 export function Map({ center }:MapProps) {
