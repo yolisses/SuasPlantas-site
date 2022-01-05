@@ -40,7 +40,7 @@ export function UserScreen({ user }: UserScreenProps) {
           {!!user.instagramUsername && (
           <InstagramButton instagramUsername={user.instagramUsername} />
           )}
-          {(!user.whatsappNumber && !user.instagramUsername)
+          {(!user.whatsappNumber && !user.instagramUsername && authStore.user?.id === user.id)
           && (
           <div>
             <Link href="/account/edit">
