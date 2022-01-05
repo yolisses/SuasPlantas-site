@@ -90,18 +90,18 @@ export const EditProfileScreen = observer(() => {
               }}
             />
             {!!watch('instagramUsername') && (
-            <Button className="self-start px-5">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://instagram.com/${watch('instagramUsername')}`}
               >
-                Testar
-                {' '}
-                @
-                {watch('instagramUsername')}
+                <Button className="self-start px-5">
+                  Testar
+                  {' '}
+                  @
+                  {watch('instagramUsername')}
+                </Button>
               </a>
-            </Button>
             )}
           </div>
           <div className="flex flex-col">
@@ -118,17 +118,17 @@ export const EditProfileScreen = observer(() => {
               }}
             />
             {!!watch('whatsappNumber') && (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
+            >
               <Button className="self-start px-5">
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
-                >
-                  Testar
-                  {' '}
-                  {watch('whatsappNumber')}
-                </a>
+                Testar
+                {' '}
+                {watch('whatsappNumber')}
               </Button>
+            </a>
             )}
           </div>
           <FormHelperText>
