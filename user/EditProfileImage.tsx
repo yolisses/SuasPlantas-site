@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Button, CircularProgress, FormLabel } from '@mui/material';
-import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
+import Image from 'next/image';
 import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { Sending } from '../upload/Sending';
@@ -17,7 +17,7 @@ export function EditProfileImage() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleFilesSelected = async (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleFilesSelected = async (e: ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     if (!e.target.files) return;
     const file = e.target.files[0];
@@ -40,7 +40,12 @@ export function EditProfileImage() {
 
   return (
     <div className="flex flex-row items-center justify-center gap-4">
-      <Image src={sending?.src || authStore.user?.image || userImage} width={imageSize} height={imageSize} className="rounded-full" />
+      <Image
+        width={imageSize}
+        height={imageSize}
+        className="rounded-full"
+        src={sending?.src || authStore.user?.image || userImage}
+      />
       <div className="flex flex-col">
         <FormLabel component="legend" className="text-center">Foto de perfil</FormLabel>
         <label className="flex flex-row items-center gap-1">
