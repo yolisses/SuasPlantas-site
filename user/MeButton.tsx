@@ -15,8 +15,9 @@ export const MeButton = observer(() => {
         <Image
           width={size}
           height={size}
-          src={authStore.user?.image || userImage}
+          objectFit="cover"
           alt={authStore.user?.name}
+          src={authStore.user?.image || userImage}
           className="bg-gray-300 rounded-full shadow-md cursor-pointer"
         />
       </IconButton>

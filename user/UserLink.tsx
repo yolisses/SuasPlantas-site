@@ -13,10 +13,11 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
     <Link href={`/users/${user.id}`}>
       <div className="flex flex-row items-center gap-2 cursor-pointer">
         <Image
+          alt={user.name}
           width={imgSize}
           height={imgSize}
+          objectFit="cover"
           src={user.image || userImage}
-          alt={user.name}
           className="rounded-full bg-gray-300"
         />
         <div className="flex flex-col">

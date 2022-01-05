@@ -44,6 +44,7 @@ export function EditProfileImage() {
         width={imageSize}
         height={imageSize}
         className="rounded-full"
+        objectFit="cover"
         src={sending?.src || authStore.user?.image || userImage}
       />
       <div className="flex flex-col">
