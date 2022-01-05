@@ -90,11 +90,10 @@ export function LocationField({ text }:LocationFieldProps) {
       >
         <div className="flex flex-col max-h-screen bg-white w-full max-w-3xl rounded-none md:rounded-lg shadow-xl">
           <div className="px-2 pb-2">
-            <div className="h-12 flex flex-row items-center">
+            <div className="h-12 flex flex-row items-center justify-between">
               <div className="pl-1">Sua localização</div>
               <IconButton
                 disabled={loading}
-                className="ml-auto"
                 onClick={hancleCloseClick}
               >
                 <GrClose size={18} />
