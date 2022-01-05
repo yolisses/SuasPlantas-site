@@ -16,6 +16,14 @@ setSnack(snack :Snack) {
   this.snack = snack;
 }
 
+error(text:string) {
+  this.snack = { severity: 'error', text };
+}
+
+success(text:string) {
+  this.snack = { severity: 'success', text };
+}
+
 close() {
   this.snack = undefined;
 }

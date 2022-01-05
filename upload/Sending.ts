@@ -37,6 +37,8 @@ export class Sending {
 
   private abortController?: AbortController;
 
+  private srcValue?:string
+
   constructor(params: SendingContructorParams) {
     if (params.file) {
       this.file = params.file;
@@ -104,5 +106,16 @@ export class Sending {
         .toFixed(2)
         .replace('.00', '')}%`
     );
+  }
+
+  get src() {
+    if (this.file && this.srcValue) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.srcValue = e.target!.result as string;
+      };
+      reader.readAsDataURL(this.file);
+    }
+    return this.srcValue;
   }
 }

@@ -1,12 +1,10 @@
 import {
   Button,
-  FormLabel,
   TextField,
   FormHelperText,
   InputAdornment,
   CircularProgress,
 } from '@mui/material';
-import Image from 'next/image';
 import Router from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -15,14 +13,12 @@ import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { observer } from 'mobx-react';
 import { api } from '../api/api';
 import { Header } from '../common/Header';
-import { userImage } from '../images/user';
 import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
+import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
 
 export const EditProfileScreen = observer(() => {
-  const imageSize = 80;
-
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
       name: authStore.user?.name,
@@ -37,10 +33,7 @@ export const EditProfileScreen = observer(() => {
   async function submit(data:any) {
     setLoading(true);
     try {
-      const res = await api.patch('users', {
-        ...data,
-        whatsappNumber: parseInt(data.whatsappNumber, 10),
-      });
+      const res = await api.patch('users', { ...data });
       authStore.setUser(res.data);
       Router.push(`/users/${res.data.id}`);
     } catch (err) {
@@ -58,13 +51,7 @@ export const EditProfileScreen = observer(() => {
       <Header />
       <div className="flex flex-col items-center">
         <div className="flex flex-col gap-4 w-full max-w-xl p-2 pt-4">
-          <div className="flex flex-row items-center justify-center gap-4">
-            <Image src={authStore.user?.image || userImage} width={imageSize} height={imageSize} className="rounded-full" />
-            <div className="flex flex-col">
-              <FormLabel component="legend" className="text-center">Foto de perfil</FormLabel>
-              <Button>Alterar</Button>
-            </div>
-          </div>
+          <EditProfileImage />
           <TextField
             label="Nome"
             {...register('name')}
