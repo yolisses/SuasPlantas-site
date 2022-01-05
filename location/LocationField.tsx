@@ -23,11 +23,11 @@ export function LocationField({ text }:LocationFieldProps) {
   const [active, setActive] = useState(false);
   const [loading, setLoading] = useState(false);
   // this variable is mutable, to support fast changes on map move
-  const [center] = useState<[number, number]>([0, 0]);
+  const [center, setCenter] = useState<[number, number]>([0, 0]);
 
   function handleChange(value: Feature) {
-    center[0] = value.center[0];
-    center[1] = value.center[1];
+    setCenter([value.center[1], value.center[0]]);
+    console.log('coisa', value);
   }
 
   function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
@@ -107,7 +107,7 @@ export function LocationField({ text }:LocationFieldProps) {
               getOptions={getFeaturesByText}
             />
           </div>
-          <div className="h-screen flex flex-col relative">
+          <div className="h-screen flex flex-col relative z-10">
             <div
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
               style={{ zIndex: 500 }}

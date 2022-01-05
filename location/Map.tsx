@@ -3,6 +3,7 @@ import {
   MapContainer, TileLayer, useMapEvents,
 } from 'react-leaflet';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 function EventHandler({ center }:{center:[number, number]}) {
   function updateCenter(e:any) {
@@ -10,10 +11,14 @@ function EventHandler({ center }:{center:[number, number]}) {
     center[0] = newCenter.lat;
     center[1] = newCenter.lng;
   }
-  useMapEvents({
+  const map = useMapEvents({
     moveend: updateCenter,
     dragend: updateCenter,
   });
+
+  useEffect(() => {
+    map.setView(center);
+  }, [center]);
 
   return null;
 }

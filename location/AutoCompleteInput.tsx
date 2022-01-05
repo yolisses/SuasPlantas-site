@@ -60,7 +60,7 @@ export function AutoCompleteInput<type>({
           />
         </div>
         {focused && !!options.length && (
-        <div className="absolute z-30 flex flex-col bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-scroll max-h-screen">
+        <div className="absolute z-30 flex flex-col bg-white group-hocus:text-gray-500 shadow-lg rounded-b-2xl overflow-auto max-h-screen">
           {options?.map((option) => (
             <AutocompleteOption
               value={option as type}
