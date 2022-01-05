@@ -10,6 +10,10 @@ export interface User {
     description?: string;
     instagramUsername?: string;
     whatsappNumber?: number;
+    location:{
+        type:'Point'
+        coordinates:[number, number]
+    }
     state: string;
     city: string;
     plants: Plant[];

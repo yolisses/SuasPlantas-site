@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import Image from 'next/image';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -34,8 +35,8 @@ export function LocationField({ text }:LocationFieldProps) {
   function keyExtractor(value: Feature) { return value.id; }
 
   function handleButtonClick() {
-    center[0] = authStore.user.location.coordinates[0];
-    center[1] = authStore.user.location.coordinates[1];
+    center[0] = authStore.user!.location.coordinates[0];
+    center[1] = authStore.user!.location.coordinates[1];
     setActive(true);
   }
 

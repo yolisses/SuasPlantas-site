@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import {
   MapContainer, TileLayer, useMapEvents,
 } from 'react-leaflet';
 import Head from 'next/head';
 
 function EventHandler({ center }:{center:[number, number]}) {
-  function updateCenter(e) {
+  function updateCenter(e:any) {
     const newCenter = e.target.getCenter();
     center[0] = newCenter.lat;
     center[1] = newCenter.lng;
