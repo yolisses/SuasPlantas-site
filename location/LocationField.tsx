@@ -3,12 +3,14 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { Button, IconButton } from '@mui/material';
+import { Button, CircularProgress, IconButton } from '@mui/material';
 
 import { Feature } from './Feature';
 import { authStore } from '../auth/authStore';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
+import { api } from '../api/api';
+import { snackStore } from '../snack/snackStore';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -18,9 +20,14 @@ interface LocationFieldProps{
 
 export function LocationField({ text }:LocationFieldProps) {
   const [active, setActive] = useState(false);
-  const [center, setCenter] = useState<[number, number]>([0, 0]);
+  const [loading, setLoading] = useState(false);
+  // this variable is mutable, to support fast changes on map move
+  const [center] = useState<[number, number]>([0, 0]);
 
-  function handleChange(value: Feature) { setCenter(value.center); }
+  function handleChange(value: Feature) {
+    center[0] = value.center[0];
+    center[1] = value.center[1];
+  }
 
   function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
 
@@ -33,6 +40,37 @@ export function LocationField({ text }:LocationFieldProps) {
   }
 
   function hancleCloseClick() { setActive(false); }
+
+  async function submit() {
+    setLoading(true);
+    try {
+      const res = await api.patch('users/edit-location', {
+        latitude: center[0],
+        longitude: center[1],
+      });
+
+      if (res.data.locationFound) {
+        snackStore.setSnack({
+          severity: 'success',
+          text: 'Localização alterada com sucesso',
+        });
+        setActive(false);
+      } else {
+        snackStore.setSnack({
+          severity: 'error',
+          text: 'Desculpe, mas não oferecemos suporte a esse local',
+        });
+      }
+
+      authStore.user = res.data.user;
+    } catch (err) {
+      snackStore.setSnack({
+        severity: 'error',
+        text: 'Erro ao mudar localicação',
+      });
+    }
+    setLoading(false);
+  }
 
   return (
     <div>
@@ -53,8 +91,13 @@ export function LocationField({ text }:LocationFieldProps) {
           <div className="px-2 pb-2">
             <div className="h-12 flex flex-row items-center">
               <span className="pl-1">Sua localização</span>
-              <IconButton className="ml-auto" onClick={hancleCloseClick}>
+              <IconButton
+                disabled={loading}
+                className="ml-auto"
+                onClick={hancleCloseClick}
+              >
                 <GrClose size={18} />
+
               </IconButton>
             </div>
             <AutoCompleteInput
@@ -75,16 +118,20 @@ export function LocationField({ text }:LocationFieldProps) {
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <Button
+              disabled={loading}
               onClick={hancleCloseClick}
               className="h-12 flex-1 sm:flex-none px-5"
             >
               Cancelar
             </Button>
             <Button
+              disabled={loading}
               variant="contained"
-              className="h-12 flex-1 sm:flex-none px-5"
+              onClick={submit}
+              className="h-12 flex-1 sm:flex-none px-5 flex flex-row gap-1"
             >
-              Selecionar
+              {loading && <CircularProgress size={20} />}
+              Salvar
             </Button>
           </div>
         </div>

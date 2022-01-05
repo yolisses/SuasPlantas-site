@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
+import { observer } from 'mobx-react';
 import { api } from '../api/api';
 import { Header } from '../common/Header';
 import { userImage } from '../images/user';
@@ -19,7 +20,7 @@ import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 import { LocationField } from '../location/LocationField';
 
-export function EditProfileScreen() {
+export const EditProfileScreen = observer(() => {
   const imageSize = 80;
 
   const { register, handleSubmit, watch } = useForm({
@@ -141,4 +142,4 @@ export function EditProfileScreen() {
       </div>
     </>
   );
-}
+});
