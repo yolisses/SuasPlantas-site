@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { ChangeEvent, useEffect, useState } from 'react';
+import {
+  ChangeEvent, DragEvent, useEffect, useState,
+} from 'react';
 import { FaImage } from 'react-icons/fa';
 import { FormHelperText } from '@mui/material';
 import { Sending } from '../upload/Sending';
 import { isEmpty } from '../utils/isEmpty';
 import { SelectedImage } from './SelectedImage';
+import { useRefresh } from '../utils/useRefresh';
 
 export type SendingsCollection = { [key: number]: Sending };
 
@@ -16,21 +19,26 @@ interface ImagesInputProps{
   initialSendings?:SendingsCollection
 }
 
+type IgnoreType = () => any
+
 export function ImagesInput({
   onChange, onBlur, helperText, error, initialSendings,
 }:ImagesInputProps) {
-  const [_, setRefreshValue] = useState(0);
-  function refresh() {
-    setRefreshValue(Math.random());
-  }
+  const refresh = useRefresh();
+  const [dragging, setDragging] = useState(false);
   const [sendings, setSendings] = useState<SendingsCollection>(initialSendings || {});
-  const handleFilesSelected = (e: ChangeEvent<HTMLInputElement>): void => {
+
+  function addFiles(files: File[]) {
     const newFiles: SendingsCollection = {};
-    Array.from(e.target.files!).forEach((file) => {
+    files.forEach((file) => {
       newFiles[Math.random()] = new Sending({ file, onUpdate: refresh });
     });
     setSendings((old) => ({ ...old, ...newFiles }));
-  };
+  }
+
+  function handleFilesSelected(e: ChangeEvent<HTMLInputElement>) {
+    addFiles(Array.from(e.target.files!));
+  }
 
   function handleRemoveFile(key: number) {
     setSendings((old) => {
@@ -40,9 +48,44 @@ export function ImagesInput({
     });
   }
 
-  useEffect(() => { onChange(sendings); }, [sendings]);
+  function isImage(file:File) {
+    return file.type.startsWith('image/');
+  }
 
-  console.log(sendings);
+  function handleDrop(e:DragEvent):void {
+    setDragging(false);
+    const files = Array.from(e!.dataTransfer!.files!);
+    addFiles(files.filter(isImage));
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function handleDragOver(e:DragEvent):void {
+    if (!dragging) {
+      setDragging(true);
+    }
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function handleDragLeave() {
+    setDragging(false);
+  }
+
+  useEffect(() => {
+    onChange(sendings);
+  }, [sendings]);
+
+  useEffect(() => {
+    window.addEventListener('drop', handleDrop as IgnoreType);
+    window.addEventListener('dragover', handleDragOver as IgnoreType);
+    window.addEventListener('dragleave', handleDragLeave);
+    return () => {
+      window.removeEventListener('drop', handleDrop as IgnoreType);
+      window.removeEventListener('dragover', handleDragOver as IgnoreType);
+      window.removeEventListener('dragover', handleDragLeave);
+    };
+  });
 
   return (
     <div>
@@ -68,8 +111,12 @@ export function ImagesInput({
                 !isEmpty(sendings) ? ' flex-row gap-1 py-3 h-full mb-2' : 'py-14'}`
             }
           >
-            <FaImage size={25} />
-            <div>Adicionar imagens</div>
+            <FaImage size={25} className={dragging ? 'animate-bounce' : ''} />
+            <div>
+              {dragging
+                ? 'Solte as imagens para adicionar'
+                : 'Adicionar imagens'}
+            </div>
           </div>
           <input
             type="file"
