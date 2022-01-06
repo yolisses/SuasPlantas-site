@@ -109,7 +109,7 @@ export class Sending {
   }
 
   get src() {
-    if (this.file && this.srcValue) {
+    if (this.file && !this.srcValue) {
       const reader = new FileReader();
       reader.onload = (e) => {
         this.srcValue = e.target!.result as string;
