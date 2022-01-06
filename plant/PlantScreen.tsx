@@ -14,16 +14,16 @@ import {
 } from 'react-share';
 import Link from 'next/link';
 import { Fab } from '@mui/material';
-import { FaEdit, FaPen } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa';
+
+import { tagEmoji } from './tags';
+import { Plant } from '../types/Plant';
 import { Header } from '../common/Header';
-import { Session } from './Session';
+import { UserLink } from '../user/UserLink';
+import { authStore } from '../auth/authStore';
+import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
 import { availabilitiesToString } from './availabilitiesToString';
-import { UserLink } from '../user/UserLink';
-import { Plant } from '../types/Plant';
-import { devIndicator } from '../utils/devIndicator';
-import { tagEmoji, tags } from './tags';
-import { authStore } from '../auth/authStore';
 
 export function PlantScreen({ data }:{data:Plant}) {
   const {
@@ -92,10 +92,8 @@ export function PlantScreen({ data }:{data:Plant}) {
         </div>
         <div className="md:w-1/2">
           <div className="p-2 gap-4 flex flex-col">
-            <Session>
-              <h1 className="text-2xl">{name}</h1>
-              <AvailabilityInfo {...{ swap, donate, price }} />
-            </Session>
+            <h1 className="text-2xl">{name}</h1>
+            <AvailabilityInfo {...{ swap, donate, price }} />
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">
               Última edição
@@ -111,7 +109,6 @@ export function PlantScreen({ data }:{data:Plant}) {
                 </div>
                 )}
             {!!data?.tags?.length && (
-            <Session>
               <div className="flex flex-row flex-wrap gap-2">
                 {data.tags.map(({ name }) => (
                   <div>
@@ -121,13 +118,14 @@ export function PlantScreen({ data }:{data:Plant}) {
                   </div>
                 ))}
               </div>
-            </Session>
             )}
             {!!description?.length && (
-            <Session label="Descrição">
-              <div>{description}</div>
-              {/* <div>{loremIpsum}</div> */}
-            </Session>
+              <div>
+                Descrição
+                <div>
+                  {description}
+                </div>
+              </div>
             )}
             <div className="mt-4">
               <div className="text-sm text-gray-500">Compartilhar</div>
