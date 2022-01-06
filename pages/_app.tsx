@@ -5,6 +5,8 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material';
+import { observe } from 'mobx';
+import { observer } from 'mobx-react';
 import { theme } from '../mui/theme';
 import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
@@ -13,7 +15,7 @@ import { devIndicator } from '../utils/devIndicator';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <ModalContextProvider>
@@ -32,3 +34,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
+
+export default observer(MyApp);
