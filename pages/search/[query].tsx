@@ -1,7 +1,7 @@
 // pages/qs-test/[...paths].tsx
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { api } from '../../api/api';
-import { SearchResultsScreen } from '../../search/SearchResultsScreen';
+import { SearchResultsPage } from '../../search/SearchResultsPage';
 
 export const getStaticPaths: GetStaticPaths = () => ({
   paths: [],
@@ -21,4 +21,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default SearchResultsScreen;
+export default SearchResultsPage;

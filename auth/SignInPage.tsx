@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FacebookButton } from './FacebookButton';
 import { GoogleButton } from './GoogleButton';
 
-export function SignInScreen() {
+export function SignInPage() {
   return (
     <div className="h-full flex flex-col sm:flex-row">
       <div className="flex flex-col sm:w-1/4 h-36 sm:h-full">

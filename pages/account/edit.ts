@@ -1,3 +1,3 @@
-import { EditProfileScreen } from '../../user/EditProfileScreen';
+import { EditProfilePage } from '../../user/EditProfilePage';
 
-export default EditProfileScreen;
+export default EditProfilePage;

@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { api } from '../api/api';
-import { HomeScreen } from '../home/HomeScreen';
+import { HomePage } from '../home/HomePage';
 
-export default HomeScreen;
+export default HomePage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await api.get('plants');

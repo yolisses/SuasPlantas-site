@@ -9,11 +9,11 @@ import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { Header } from '../common/Header';
 
-interface UserScreenProps {
+interface UserPageProps {
   user: User;
 }
 
-export function UserScreen({ user }: UserScreenProps) {
+export function UserPage({ user }: UserPageProps) {
   return (
     <div className="flex flex-col items-center w-full">
       {/* <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout> */}

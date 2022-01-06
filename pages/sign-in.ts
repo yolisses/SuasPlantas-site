@@ -1,3 +1,3 @@
-import { SignInScreen } from '../auth/SignInScreen';
+import { SignInPage } from '../auth/SignInPage';
 
-export default SignInScreen;
+export default SignInPage;

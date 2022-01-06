@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { api } from '../../api/api';
-import { UserScreen } from '../../user/UserScreen';
+import { UserPage } from '../../user/UserPage';
 
-export default UserScreen;
+export default UserPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await api.get(`users/${params!.id}`);

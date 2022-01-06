@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { SearchHistoryButtons } from './SearchHistoryButtons';
 import { HeaderLayout } from '../common/HeaderLayout';
 
-export function SearchScreen() {
+export function SearchPage() {
   let searches:any[] = [];
   const [query, setQuery] = useState<string>('');
 

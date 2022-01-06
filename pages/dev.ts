@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
-import { DevScreen } from '../dev/DevScreen';
+import { DevPage } from '../dev/DevPage';
 import { isDev } from '../utils/isDev';
 
-export default DevScreen;
+export default DevPage;
 
 export const getServerSideProps : GetServerSideProps = async function () {
   return {

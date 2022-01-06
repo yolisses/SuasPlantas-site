@@ -1,3 +1,3 @@
-import { SearchScreen } from '../search/SearchScreen';
+import { SearchPage } from '../search/SearchPage';
 
-export default SearchScreen;
+export default SearchPage;

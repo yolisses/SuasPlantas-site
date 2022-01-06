@@ -17,7 +17,7 @@ import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
 import { availabilitiesToString } from './availabilitiesToString';
 
-export function PlantScreen({ data }:{data:Plant}) {
+export function PlantPage({ data }:{data:Plant}) {
   const {
     name,
     description,

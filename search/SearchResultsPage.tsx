@@ -4,11 +4,11 @@ import { Header } from '../common/Header';
 import { ListItem } from '../common/ListItem';
 import { Plant } from '../types/Plant';
 
-interface SearchResultsScreenProps {
+interface SearchResultsPageProps {
   data: Plant[];
 }
 
-export function SearchResultsScreen({ data }: SearchResultsScreenProps) {
+export function SearchResultsPage({ data }: SearchResultsPageProps) {
   const { query } = useRouter();
 
   return (

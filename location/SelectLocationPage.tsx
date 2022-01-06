@@ -9,7 +9,7 @@ import { Feature } from './Feature';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import Map from './Map';
 
-function SelectLocationScreen() {
+function SelectLocationPage() {
   const centerSize = 40;
   const [center, setCenter] = useState<LatLngTuple>([-69.761008, -26.783346]);
   console.log({ center });
@@ -66,4 +66,4 @@ function SelectLocationScreen() {
   );
 }
 
-export default SelectLocationScreen;
+export default SelectLocationPage;

@@ -18,7 +18,7 @@ import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
 
-export const EditProfileScreen = observer(() => {
+export const EditProfilePage = observer(() => {
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
       name: authStore.user?.name,

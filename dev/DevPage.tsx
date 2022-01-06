@@ -1,4 +1,4 @@
-export function DevScreen() {
+export function DevPage() {
   return (
     <div>
       oi

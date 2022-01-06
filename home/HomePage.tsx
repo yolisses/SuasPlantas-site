@@ -4,11 +4,11 @@ import { AddButton } from './AddButton';
 import { Header } from '../common/Header';
 import { ListItem } from '../common/ListItem';
 
-interface HomeScreenProps {
+interface HomePageProps {
   data: Plant[];
 }
 
-export function HomeScreen({ data }: HomeScreenProps) {
+export function HomePage({ data }: HomePageProps) {
   return (
     <>
       <Head>
