@@ -96,6 +96,12 @@ export function PlantScreen({ data }:{data:Plant}) {
               <h1 className="text-2xl">{name}</h1>
               <AvailabilityInfo {...{ swap, donate, price }} />
             </Session>
+            <UserLink user={data.user} />
+            <div className="text-sm text-gray-500">
+              Última edição
+              {' '}
+              <time>{updatedAt.toLocaleDateString()}</time>
+            </div>
             {!!data.amount
                 && (
                 <div>
@@ -104,12 +110,6 @@ export function PlantScreen({ data }:{data:Plant}) {
                   {data.amount === 1 ? 'disponível' : 'disponíves'}
                 </div>
                 )}
-            <UserLink user={data.user} />
-            <div>
-              Última edição
-              {' '}
-              <time>{updatedAt.toLocaleDateString()}</time>
-            </div>
             {!!data?.tags?.length && (
             <Session>
               <div className="flex flex-row flex-wrap gap-2">
