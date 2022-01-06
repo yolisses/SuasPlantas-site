@@ -2,16 +2,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
 import Head from 'next/head';
-import {
-  FacebookShareButton,
-  FacebookMessengerShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  WhatsappIcon,
-  FacebookIcon,
-  FacebookMessengerIcon,
-  TelegramIcon,
-} from 'react-share';
+
 import Link from 'next/link';
 import { Fab } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
@@ -21,6 +12,7 @@ import { Plant } from '../types/Plant';
 import { Header } from '../common/Header';
 import { UserLink } from '../user/UserLink';
 import { authStore } from '../auth/authStore';
+import { ShareButtons } from './ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
 import { availabilitiesToString } from './availabilitiesToString';
@@ -42,13 +34,6 @@ export function PlantScreen({ data }:{data:Plant}) {
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   const multipleImages = data.images.length > 1;
-
-  const socialIconProps = {
-    size: 36,
-    borderRadius: 100,
-  };
-
-  const shareUrl = `https://suasplantas.com/plants/${id}`;
 
   return (
     <div>
@@ -127,26 +112,10 @@ export function PlantScreen({ data }:{data:Plant}) {
                 </div>
               </div>
             )}
-            <div className="mt-4">
-              <div className="text-sm text-gray-500">Compartilhar</div>
-              <div className="flex flex-row gap-1">
-                <FacebookShareButton url={shareUrl}>
-                  <FacebookIcon {...socialIconProps} />
-                </FacebookShareButton>
-                <WhatsappShareButton url={shareUrl}>
-                  <WhatsappIcon {...socialIconProps} />
-                </WhatsappShareButton>
-                <FacebookMessengerShareButton
-                  url={shareUrl}
-                  appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID as string}
-                >
-                  <FacebookMessengerIcon {...socialIconProps} />
-                </FacebookMessengerShareButton>
-                <TelegramShareButton url={shareUrl}>
-                  <TelegramIcon {...socialIconProps} />
-                </TelegramShareButton>
-              </div>
-            </div>
+            <ShareButtons
+              socialIconProps={{ size: 36, borderRadius: 100 }}
+              shareUrl={`https://suasplantas.com/plants/${id}`}
+            />
           </div>
         </div>
       </div>
