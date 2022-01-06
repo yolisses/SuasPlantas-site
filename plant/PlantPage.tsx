@@ -16,6 +16,9 @@ import { ShareButtons } from './ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
 import { availabilitiesToString } from './availabilitiesToString';
+import { WhatsappButton } from '../contact/WhatsappButton';
+import { InstagramButton } from '../contact/InstagramButton';
+import { TextLink } from '../common/TextLink';
 
 export function PlantPage({ data }:{data:Plant}) {
   const {
@@ -79,6 +82,26 @@ export function PlantPage({ data }:{data:Plant}) {
           <div className="p-2 gap-4 flex flex-col">
             <h1 className="text-2xl">{name}</h1>
             <AvailabilityInfo {...{ swap, donate, price }} />
+            <div className="flex flex-row w-full justify-center gap-2 max-w-md">
+              {!!user.whatsappNumber && (
+              <WhatsappButton whatsappNumber={user.whatsappNumber} />
+              )}
+              {!!user.instagramUsername && (
+              <InstagramButton instagramUsername={user.instagramUsername} />
+              )}
+              {(!user.whatsappNumber && !user.instagramUsername && authStore.user?.id === user.id)
+                ? (
+                  <div>
+                    <TextLink href="/account/edit">
+                      Adicionar uma forma de contato para poder receber mensagens
+                    </TextLink>
+                  </div>
+                ) : (
+                  <div className="text-gray-500 text-sm">
+                    Sem número de contato
+                  </div>
+                )}
+            </div>
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">
               Última edição
