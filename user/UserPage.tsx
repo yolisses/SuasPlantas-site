@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Button, Link } from '@mui/material';
 import { FaRegUser } from 'react-icons/fa';
+import { useEffect } from 'react';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
@@ -8,12 +9,22 @@ import { userImage } from '../images/user';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { Header } from '../common/Header';
+import { api } from '../api/api';
 
 interface UserPageProps {
   user: User;
 }
 
 export function UserPage({ user }: UserPageProps) {
+  async function refreshUser() {
+    const res = await api.get(`users/${user.id}`);
+    authStore.user = res.data;
+  }
+
+  useEffect(() => {
+    refreshUser();
+  }, []);
+
   return (
     <div className="flex flex-col items-center w-full">
       {/* <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout> */}
