@@ -19,6 +19,8 @@ import { availabilitiesToString } from './availabilitiesToString';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { TextLink } from '../common/TextLink';
+import { hasContact } from '../utils/hasContact';
+import { isSelfUser } from '../utils/isSelfUser';
 
 export function PlantPage({ data }:{data:Plant}) {
   const {
@@ -89,8 +91,8 @@ export function PlantPage({ data }:{data:Plant}) {
               {!!user.instagramUsername && (
               <InstagramButton instagramUsername={user.instagramUsername} />
               )}
-              {(!user.whatsappNumber && !user.instagramUsername && authStore.user?.id === user.id)
-                ? (
+              {!hasContact(user) && (
+                isSelfUser(user) ? (
                   <div>
                     <TextLink href="/account/edit">
                       Adicionar uma forma de contato para poder receber mensagens
@@ -98,9 +100,9 @@ export function PlantPage({ data }:{data:Plant}) {
                   </div>
                 ) : (
                   <div className="text-gray-500 text-sm">
-                    Sem número de contato
+                    Sem meios de contato
                   </div>
-                )}
+                ))}
             </div>
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">

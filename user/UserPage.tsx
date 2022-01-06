@@ -10,6 +10,9 @@ import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { Header } from '../common/Header';
 import { api } from '../api/api';
+import { hasContact } from '../utils/hasContact';
+import { isSelfUser } from '../utils/isSelfUser';
+import { TextLink } from '../common/TextLink';
 
 interface UserPageProps {
   user: User;
@@ -52,14 +55,18 @@ export function UserPage({ user }: UserPageProps) {
           {!!user.instagramUsername && (
           <InstagramButton instagramUsername={user.instagramUsername} />
           )}
-          {(!user.whatsappNumber && !user.instagramUsername && authStore.user?.id === user.id)
-          && (
-          <div>
-            <Link href="/account/edit">
-              Adicionar uma forma de contato para poder receber mensagens
-            </Link>
-          </div>
-          )}
+          {!hasContact(user) && (
+            isSelfUser(user) ? (
+              <div>
+                <TextLink href="/account/edit">
+                  Adicionar uma forma de contato para poder receber mensagens
+                </TextLink>
+              </div>
+            ) : (
+              <div className="text-gray-500 text-sm">
+                Sem meios de contato
+              </div>
+            ))}
         </div>
         <div>
           { user.description}
