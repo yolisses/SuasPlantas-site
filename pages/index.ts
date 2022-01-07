@@ -7,6 +7,6 @@ export default HomePage;
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await api.get('plants');
   return {
-    props: { data: res.data.content },
+    props: { data: res.data },
   };
 };
