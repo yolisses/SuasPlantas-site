@@ -5,8 +5,14 @@ import { HomePage } from '../home/HomePage';
 export default HomePage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await api.get('plants');
+  const props:any = {};
+  try {
+    const res = await api.get('plants');
+    props.data = res.data;
+  } catch (err) {
+    props.err = err;
+  }
   return {
-    props: { data: res.data },
+    props,
   };
 };

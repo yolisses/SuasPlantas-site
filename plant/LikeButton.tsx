@@ -1,13 +1,23 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
+import { api } from '../api/api';
 
-export function LikeButton() {
+interface LikeButtonProps{
+  url:string
+}
+
+export function LikeButton({ url }:LikeButtonProps) {
   const [isActive, setIsActive] = useState(false);
   const size = 20;
 
-  function handleClick() {
+  async function handleClick() {
     setIsActive((value) => !value);
+    if (!isActive) {
+      await api.post(url);
+    } else {
+      await api.delete(url);
+    }
   }
 
   return (

@@ -108,7 +108,7 @@ export function PlantPage({ data }:{data:Plant}) {
                 ))}
             </div>
             <div>
-              <LikeButton />
+              <LikeButton url={`plants/${id}/like`} />
             </div>
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">
