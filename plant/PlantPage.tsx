@@ -21,6 +21,7 @@ import { InstagramButton } from '../contact/InstagramButton';
 import { TextLink } from '../common/TextLink';
 import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
+import { LikeButton } from './LikeButton';
 
 export function PlantPage({ data }:{data:Plant}) {
   const {
@@ -53,7 +54,7 @@ export function PlantPage({ data }:{data:Plant}) {
       </Head>
       <Header />
       <div className="flex flex-col md:flex-row md:gap-4">
-        <div className="md:w-1/2 flex-1 md:pt-10">
+        <div className="md:w-1/2 flex-1 md:pt-2">
           <div className="sticky top-12">
             <Carousel
               emulateTouch
@@ -82,8 +83,10 @@ export function PlantPage({ data }:{data:Plant}) {
         </div>
         <div className="md:w-1/2">
           <div className="p-2 gap-4 flex flex-col">
-            <h1 className="text-2xl">{name}</h1>
-            <AvailabilityInfo {...{ swap, donate, price }} />
+            <div>
+              <h1 className="text-2xl">{name}</h1>
+              <AvailabilityInfo {...{ swap, donate, price }} />
+            </div>
             <div className="flex flex-row w-full justify-center gap-2 max-w-md">
               {!!user.whatsappNumber && (
               <WhatsappButton whatsappNumber={user.whatsappNumber} />
@@ -103,6 +106,9 @@ export function PlantPage({ data }:{data:Plant}) {
                     Sem meios de contato
                   </div>
                 ))}
+            </div>
+            <div>
+              <LikeButton />
             </div>
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">
