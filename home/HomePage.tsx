@@ -13,8 +13,8 @@ interface HomePageProps {
 }
 
 export function HomePage({ data }: HomePageProps) {
-  const [items, setItems] = useState(data.content);
-  const [lastData, setLastData] = useState(data);
+  const [items, setItems] = useState(data?.content || []);
+  const [lastData, setLastData] = useState(data || {});
 
   async function fetchItems() {
     const res = await api.get('plants', { params: { page: lastData.nextPage } });
