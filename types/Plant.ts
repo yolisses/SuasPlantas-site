@@ -21,4 +21,5 @@ export interface Plant {
   price: string | null;
   createdAt: string;
   updatedAt: string;
+  liked?:boolean
 }

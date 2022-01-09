@@ -2,7 +2,7 @@ import axios from 'axios';
 import { authStore } from '../auth/authStore';
 import { isDev } from '../utils/isDev';
 
-const useDevApi = true;
+const useDevApi = false;
 const baseUrl = isDev && useDevApi
   ? process.env.NEXT_PUBLIC_DEV_API_URL
   : process.env.NEXT_PUBLIC_API_URL;

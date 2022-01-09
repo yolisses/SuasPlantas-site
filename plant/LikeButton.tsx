@@ -5,10 +5,11 @@ import { api } from '../api/api';
 
 interface LikeButtonProps{
   url:string
+  active:boolean
 }
 
-export function LikeButton({ url }:LikeButtonProps) {
-  const [isActive, setIsActive] = useState(false);
+export function LikeButton({ url, active }:LikeButtonProps) {
+  const [isActive, setIsActive] = useState(active);
   const size = 20;
 
   async function handleClick() {
