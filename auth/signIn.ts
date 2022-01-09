@@ -9,7 +9,7 @@ export async function signIn(
   const token = res.headers.authorization;
   authStore.setUser(res.data);
   authStore.setToken(token);
-  document.cookie = `connectSid=${token};domain=suasplantas.com`;
+  document.cookie = `connectSid=${token};domain=www.suasplantas.com`;
   document.cookie = `connectSid=${token};domain=suasplantas.herokuapp.com`;
   return token;
 }
