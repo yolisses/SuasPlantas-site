@@ -73,7 +73,7 @@ export function PlantPage({ data }:{data:Plant}) {
                 const SIZE = 500;
                 return (
                   <div className="flex flex-col h-full justify-center flex-1">
-                    <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="contain" />
+                    <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="contain" key={uri} />
                   </div>
                 );
               })}
@@ -108,7 +108,7 @@ export function PlantPage({ data }:{data:Plant}) {
                 ))}
             </div>
             <div>
-              <LikeButton url={`plants/${id}/like`} />
+              <LikeButton url={`plants/${id}/like`} active={data.liked} />
             </div>
             <UserLink user={data.user} />
             <div className="text-sm text-gray-500">
