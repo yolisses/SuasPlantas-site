@@ -25,7 +25,7 @@ export function UserPage({ user }: UserPageProps) {
   }
 
   useEffect(() => {
-    refreshUser();
+    if (user.id === authStore.user?.id) { refreshUser(); }
   }, []);
 
   return (
@@ -84,6 +84,11 @@ export function UserPage({ user }: UserPageProps) {
             <GridItem item={plant} key={plant.id} />
           ))}
         </div>
+        {/* <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
+          {user.likedPlants?.map((plant) => (
+            <GridItem item={plant} key={plant.id} />
+          ))}
+        </div> */}
       </div>
     </div>
   );

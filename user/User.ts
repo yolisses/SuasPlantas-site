@@ -17,6 +17,7 @@ export interface User {
     state: string;
     city: string;
     plants: Plant[];
+    likedPlants: Plant[];
     createdAt: string;
     updatedAt: string;
 }
