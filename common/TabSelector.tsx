@@ -15,17 +15,18 @@ export function TabSelector({
     setTab(index);
   }
 
-  const selected = tab !== index;
+  const selected = tab === index;
   return (
     <Button
       className="flex flex-row items-center h-11 px-8 justify-center gap-1"
-      style={!selected ? {
+      style={selected ? {
         borderStyle: 'solid',
         borderBottomWidth: 2,
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
+      } : {
         color: 'gray',
-      } : undefined}
+      }}
       onClick={handleClick}
     >
       {children}
