@@ -1,0 +1,32 @@
+{
+    "theme_color": "#00815b",
+    "background_color": "#00815b",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "SuasPlantas - Conseguir mudas de plantas",
+    "short_name": "SuasPlantas",
+    "description": "Venha fazer parte do maior site de feira de mudas de plantas. Super simples, f\u00e1cil e r\u00e1pido.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
