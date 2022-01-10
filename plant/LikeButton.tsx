@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
-import { requireLogin } from '../auth/requireLogin';
+import { loginBefore } from '../auth/loginBefore';
 
 interface LikeButtonProps{
   url:string
@@ -27,7 +27,7 @@ export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
     <Button
       variant="contained"
       className="flex flex-row items-center gap-2"
-      onClick={requireLogin(handleClick)}
+      onClick={loginBefore(handleClick)}
     >
       {!isActive
         ? <FaRegThumbsUp size={size} color="white" />
