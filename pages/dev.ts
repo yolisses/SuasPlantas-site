@@ -4,9 +4,7 @@ import { isDev } from '../utils/isDev';
 
 export default DevPage;
 
-export const getServerSideProps : GetServerSideProps = async function () {
-  return {
-    props: {},
-    notFound: !isDev,
-  };
-};
+export const getServerSideProps : GetServerSideProps = async () => ({
+  props: {},
+  notFound: !isDev,
+});

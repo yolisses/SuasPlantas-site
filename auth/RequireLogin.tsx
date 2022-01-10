@@ -7,7 +7,7 @@ export function RequireLogin({ children, onClick, ...rest }:any) {
   const { setModal } = useModal();
 
   function handleClick(e:MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (!authStore.token || !authStore.user) {
+    if (!authStore.user) {
       setModal(<SignInBox />);
       e.stopPropagation();
       e.preventDefault();
