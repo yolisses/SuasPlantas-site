@@ -96,13 +96,6 @@ export function UserPage({ user }: UserPageProps) {
             Curtidas
           </TabSelector>
         </div>
-        {
-          !user.plants.length && (
-            <div className="text-gray-600">
-              Sem nenhuma planta por enquanto
-            </div>
-          )
-        }
         <Grid
           container
           columns={{ xs: 2, sm: 4, md: 5 }}
@@ -111,14 +104,14 @@ export function UserPage({ user }: UserPageProps) {
           {user.plants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
-        </Grid>
-        {
-          !user.likedPlants?.length && (
+          {
+          !user.plants.length && (
             <div className="text-gray-600">
-              Sem nenhuma curtida por enquanto
+              Sem nenhuma planta por enquanto
             </div>
           )
         }
+        </Grid>
         <Grid
           container
           columns={{ xs: 2, sm: 4, md: 5 }}
@@ -127,6 +120,13 @@ export function UserPage({ user }: UserPageProps) {
           { user.likedPlants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
+          {
+          !user.likedPlants?.length && (
+            <div className="text-gray-600">
+              Sem nenhuma curtida por enquanto
+            </div>
+          )
+        }
         </Grid>
       </div>
     </div>
