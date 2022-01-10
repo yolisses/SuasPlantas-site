@@ -47,6 +47,7 @@
     "@babel/plugin-proposal-class-properties": "^7.16.0",
     "@babel/plugin-proposal-decorators": "^7.16.0",
     "@svgr/webpack": "^6.1.2",
+    "@types/cookies": "^0.7.7",
     "@types/js-cookie": "^3.0.1",
     "@types/leaflet": "^1.7.8",
     "@types/node": "16.11.6",
