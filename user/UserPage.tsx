@@ -1,7 +1,9 @@
 import Image from 'next/image';
-import { Button, Link } from '@mui/material';
-import { FaRegUser } from 'react-icons/fa';
-import { useEffect } from 'react';
+import {
+  Button, Grid, Link, Tab, Tabs,
+} from '@mui/material';
+import { FaRegUser, FaSeedling, FaThumbsUp } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
@@ -19,6 +21,8 @@ interface UserPageProps {
 }
 
 export function UserPage({ user }: UserPageProps) {
+  const [tab, setTab] = useState(0);
+
   async function refreshUser() {
     const res = await api.get(`users/${user.id}`);
     authStore.user = res.data;
@@ -32,8 +36,8 @@ export function UserPage({ user }: UserPageProps) {
     <div className="flex flex-col items-center w-full">
       {/* <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout> */}
       <Header />
-      <div className="p-2 flex flex-col gap-4 max-w-4xl">
-        <div className="flex flex-row gap-2 items-center pt-4">
+      <div className="p-2 flex flex-col gap-4 max-w-4xl w-full">
+        <div className="flex flex-row gap-2 items-center pt-4 w-full">
           <Image
             width={100}
             height={100}
@@ -72,23 +76,43 @@ export function UserPage({ user }: UserPageProps) {
           { user.description}
         </div>
         {authStore.user?.id === user.id && (
-        <Link href="/account/edit">
-          <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
-            <FaRegUser size={18} />
-            Editar perfil
-          </Button>
-        </Link>
+          <div className="flex flex-row justify-start">
+            <Link href="/account/edit">
+              <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
+                <FaRegUser size={18} />
+                Editar perfil
+              </Button>
+            </Link>
+          </div>
         )}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
+        <Tabs value={tab} onChange={(e, value) => setTab(value)}>
+          <Tab label="Plantas" icon={<FaSeedling />} iconPosition="start" />
+          <Tab label="Curtidas" icon={<FaThumbsUp />} iconPosition="start" />
+        </Tabs>
+        <Grid container columns={{ xs: 2, sm: 4, md: 5 }} hidden={tab !== 0}>
+          {
+            !user.plants.length && (
+            <div className="text-gray-600">
+              Sem nenhuma planta por enquanto
+            </div>
+            )
+          }
           {user.plants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
-        </div>
-        {/* <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
-          {user.likedPlants?.map((plant) => (
+        </Grid>
+        <Grid container columns={{ xs: 2, sm: 4, md: 5 }} hidden={tab !== 1}>
+          {
+            !user.likedPlants?.length && (
+            <div className="text-gray-600">
+              Sem nenhuma curtida por enquanto
+            </div>
+            )
+          }
+          { user.likedPlants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
-        </div> */}
+        </Grid>
       </div>
     </div>
   );

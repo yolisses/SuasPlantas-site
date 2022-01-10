@@ -1,6 +1,6 @@
 import { isDev } from '../utils/isDev';
 
-const useDevApi = true;
+const useDevApi = false;
 
 export const baseURL = useDevApi && isDev
   ? process.env.NEXT_PUBLIC_DEV_API_URL
