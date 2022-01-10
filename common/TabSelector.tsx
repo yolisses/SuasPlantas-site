@@ -18,11 +18,13 @@ export function TabSelector({
   const selected = tab !== index;
   return (
     <Button
-      className={`flex flex-row items-center h-11 px-8 justify-center gap-1 ${
-        selected ? 'text-gray-400 border-b-0' : ''
-      }`}
+      className="flex flex-row items-center h-11 px-8 justify-center gap-1"
       style={!selected ? {
-        borderStyle: 'solid', borderBottomWidth: 2, borderBottomLeftRadius: 0, borderBottomRightRadius: 0,
+        borderStyle: 'solid',
+        borderBottomWidth: 2,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+        color: 'gray',
       } : undefined}
       onClick={handleClick}
     >
