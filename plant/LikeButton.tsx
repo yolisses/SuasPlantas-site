@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import { useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
+import { requireLogin } from '../auth/requireLogin';
 
 interface LikeButtonProps{
   url:string
@@ -22,7 +23,11 @@ export function LikeButton({ url, active }:LikeButtonProps) {
   }
 
   return (
-    <Button onClick={handleClick} variant="contained" className="flex flex-row items-center gap-2">
+    <Button
+      variant="contained"
+      className="flex flex-row items-center gap-2"
+      onClick={requireLogin(handleClick)}
+    >
       {!isActive
         ? <FaRegThumbsUp size={size} color="white" />
         : (

@@ -17,7 +17,10 @@ export function RequireLogin({ children, onClick, ...rest }:any) {
   }
 
   return (
-    <div {...rest} onClick={handleClick}>
+    <div
+      {...rest}
+      onClick={handleClick}
+    >
       {children}
     </div>
   );
