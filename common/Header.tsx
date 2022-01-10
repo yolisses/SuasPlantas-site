@@ -34,7 +34,7 @@ export function Header({ searchQuery }: HeaderProps) {
   };
 
   return (
-    <HeaderLayout className="bg-emerald-700 text-white shadow-md" goBackButton={false}>
+    <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
       <div className="mr-auto">
         <Link href="/">
           <Button>
