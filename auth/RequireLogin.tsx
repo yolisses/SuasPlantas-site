@@ -1,14 +1,12 @@
 import { MouseEvent } from 'react';
-import { useModal } from '../modal/ModalContext';
+import { modalStore } from '../modal/modalStore';
 import { authStore } from './authStore';
 import { SignInBox } from './SignInBox';
 
 export function RequireLogin({ children, onClick, ...rest }:any) {
-  const { setModal } = useModal();
-
   function handleClick(e:MouseEvent<HTMLDivElement, MouseEvent>) {
     if (!authStore.user) {
-      setModal(<SignInBox />);
+      modalStore.setModal(<SignInBox />);
       e.stopPropagation();
       e.preventDefault();
     } else {

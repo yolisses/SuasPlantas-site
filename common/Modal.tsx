@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from 'react';
 import { GrClose } from 'react-icons/gr';
-import { useModal } from '../modal/ModalContext';
+import { modalStore } from '../modal/modalStore';
 
 export interface ModalProps {
   children: ReactNode;
@@ -13,10 +13,8 @@ export function Modal({
   closeOnClickOut = true,
   showCloseButton = true,
 }: ModalProps) {
-  const { setModal } = useModal();
-
   function close() {
-    setModal(undefined);
+    modalStore.close();
   }
 
   function handleClickOut() {

@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
@@ -9,7 +10,7 @@ interface LikeButtonProps{
   active?:boolean
 }
 
-export function LikeButton({ url, active }:LikeButtonProps) {
+export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
   const [isActive, setIsActive] = useState(active || false);
   const size = 20;
 
@@ -39,4 +40,4 @@ export function LikeButton({ url, active }:LikeButtonProps) {
       {isActive ? 'Curtido' : 'Curtir'}
     </Button>
   );
-}
+});

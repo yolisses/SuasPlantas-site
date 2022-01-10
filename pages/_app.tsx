@@ -11,25 +11,24 @@ import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
-import { ModalContextProvider } from '../modal/ModalContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
+import { ModalView } from '../modal/ModalView';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <ModalContextProvider>
-        <Head>
-          <FaviconTags />
-          <MuiFontsTags />
-          <GoogleAnalyticsTags />
-          <title>
-            {devIndicator}
-            SuasPlantas - Trocar mudas de plantas
-          </title>
-        </Head>
-        <Component {...pageProps} />
-        <SnackView />
-      </ModalContextProvider>
+      <Head>
+        <FaviconTags />
+        <MuiFontsTags />
+        <GoogleAnalyticsTags />
+        <title>
+          {devIndicator}
+          SuasPlantas - Trocar mudas de plantas
+        </title>
+      </Head>
+      <Component {...pageProps} />
+      <SnackView />
+      <ModalView />
     </ThemeProvider>
   );
 }
