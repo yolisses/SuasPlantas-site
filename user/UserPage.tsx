@@ -79,23 +79,6 @@ export function UserPage({ user }: UserPageProps) {
           </Button>
         </Link>
         )}
-        {/* <div className="flex flex-row flex-1 items-center gap-2 justify-between p-2 max-w-sm">
-          <div>
-            <strong>12</strong>
-            {' '}
-            postagens
-          </div>
-          <div>
-            <strong>10</strong>
-            {' '}
-            seguindo
-          </div>
-          <div>
-            <strong>10</strong>
-            {' '}
-            seguidores
-          </div>
-        </div> */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2 items-start">
           {user.plants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
