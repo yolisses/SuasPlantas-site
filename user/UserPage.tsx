@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import {
-  Button, Grid, Link, Tab, Tabs,
+  Button, Grid, Link,
 } from '@mui/material';
 import { FaRegUser, FaSeedling, FaThumbsUp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
@@ -20,11 +20,34 @@ interface UserPageProps {
   user: User;
 }
 
+function TabSelector({
+  children, index, tab, setTab,
+}) {
+  function handleClick() {
+    setTab(index);
+  }
+
+  const selected = tab !== index;
+  return (
+    <Button
+      className={`flex flex-row items-center h-11 px-8 justify-center gap-1 ${
+        selected ? 'text-gray-400 border-b-0' : ''
+      }`}
+      style={!selected ? {
+        borderStyle: 'solid', borderBottomWidth: 2, borderBottomLeftRadius: 0, borderBottomRightRadius: 0,
+      } : undefined}
+      onClick={handleClick}
+    >
+      {children}
+    </Button>
+  );
+}
+
 export function UserPage({ user }: UserPageProps) {
   const [tab, setTab] = useState(0);
 
   async function refreshUser() {
-    const res = await api.get(`users/${user.id}`);
+    const res = await api.get(`users/${authStore.user?.id}`);
     authStore.user = res.data;
   }
 
@@ -85,30 +108,44 @@ export function UserPage({ user }: UserPageProps) {
             </Link>
           </div>
         )}
-        <Tabs value={tab} onChange={(e, value) => setTab(value)}>
-          <Tab label="Plantas" icon={<FaSeedling />} iconPosition="start" />
-          <Tab label="Curtidas" icon={<FaThumbsUp />} iconPosition="start" />
-        </Tabs>
-        <Grid container columns={{ xs: 2, sm: 4, md: 5 }} hidden={tab !== 0}>
-          {
-            !user.plants.length && (
+        <div className="flex flex-row justify-center items-center">
+          <TabSelector index={0} tab={tab} setTab={setTab}>
+            <FaSeedling />
+            Plantas
+          </TabSelector>
+          <TabSelector index={1} tab={tab} setTab={setTab}>
+            <FaThumbsUp />
+            Curtidas
+          </TabSelector>
+        </div>
+        {
+          !user.plants.length && (
             <div className="text-gray-600">
               Sem nenhuma planta por enquanto
             </div>
-            )
-          }
+          )
+        }
+        <Grid
+          container
+          columns={{ xs: 2, sm: 4, md: 5 }}
+          style={{ display: tab !== 0 ? 'none' : undefined }}
+        >
           {user.plants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
         </Grid>
-        <Grid container columns={{ xs: 2, sm: 4, md: 5 }} hidden={tab !== 1}>
-          {
-            !user.likedPlants?.length && (
+        {
+          !user.likedPlants?.length && (
             <div className="text-gray-600">
               Sem nenhuma curtida por enquanto
             </div>
-            )
-          }
+          )
+        }
+        <Grid
+          container
+          columns={{ xs: 2, sm: 4, md: 5 }}
+          style={{ display: tab !== 1 ? 'none' : undefined }}
+        >
           { user.likedPlants?.map((plant) => (
             <GridItem item={plant} key={plant.id} />
           ))}
