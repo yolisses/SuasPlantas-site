@@ -17,14 +17,15 @@ import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
+import { User } from './User';
 
-export const EditProfilePage = observer(() => {
+export const EditProfilePage = observer(({ user }:{user:User}) => {
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
-      name: authStore.user?.name,
-      description: authStore.user?.description,
-      whatsappNumber: authStore.user?.whatsappNumber,
-      instagramUsername: authStore.user?.instagramUsername,
+      name: user?.name,
+      description: user?.description,
+      whatsappNumber: user?.whatsappNumber,
+      instagramUsername: user?.instagramUsername,
     },
   });
 
