@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { api } from '../api/api';
 import { Header } from '../common/Header';
 import { authStore } from '../auth/authStore';

@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from '@mui/material';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { snackStore } from './snackStore';
 
 function ImplSnackView() {

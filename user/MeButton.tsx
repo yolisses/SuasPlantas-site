@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';

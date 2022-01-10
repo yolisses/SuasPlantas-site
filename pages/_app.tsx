@@ -5,7 +5,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { theme } from '../mui/theme';
 import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
