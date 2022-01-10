@@ -6,7 +6,6 @@ import { HomePage } from '../home/HomePage';
 export default HomePage;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  authenticate(ctx);
   const props:any = {};
   try {
     const res = await api.get('plants');
