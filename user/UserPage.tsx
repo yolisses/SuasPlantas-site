@@ -15,32 +15,10 @@ import { api } from '../api/api';
 import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
 import { TextLink } from '../common/TextLink';
+import { TabSelector } from '../common/TabSelector';
 
 interface UserPageProps {
   user: User;
-}
-
-function TabSelector({
-  children, index, tab, setTab,
-}) {
-  function handleClick() {
-    setTab(index);
-  }
-
-  const selected = tab !== index;
-  return (
-    <Button
-      className={`flex flex-row items-center h-11 px-8 justify-center gap-1 ${
-        selected ? 'text-gray-400 border-b-0' : ''
-      }`}
-      style={!selected ? {
-        borderStyle: 'solid', borderBottomWidth: 2, borderBottomLeftRadius: 0, borderBottomRightRadius: 0,
-      } : undefined}
-      onClick={handleClick}
-    >
-      {children}
-    </Button>
-  );
 }
 
 export function UserPage({ user }: UserPageProps) {
