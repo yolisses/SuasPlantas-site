@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 export function SearchField() {
   const { register, handleSubmit } = useForm();
 
-  function submit(data) {
+  function submit(data:any) {
     console.log(data);
   }
 
