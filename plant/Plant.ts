@@ -1,5 +1,5 @@
 import { User } from '../user/User';
-import { Image } from './Image';
+import { Image } from '../upload/Image';
 
 export type PlantId = number;
 

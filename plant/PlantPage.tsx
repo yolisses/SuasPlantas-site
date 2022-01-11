@@ -8,7 +8,7 @@ import { Fab } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
 
 import { tagEmoji } from './tags';
-import { Plant } from '../types/Plant';
+import { Plant } from './Plant';
 import { Header } from '../common/Header';
 import { UserLink } from '../user/UserLink';
 import { authStore } from '../auth/authStore';
@@ -22,8 +22,13 @@ import { TextLink } from '../common/TextLink';
 import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
 import { LikeButton } from './LikeButton';
+import { PlantStructuredData } from './PlantStructuredData';
 
-export function PlantPage({ data }:{data:Plant}) {
+interface PlantPageProps{
+  data:Plant
+}
+
+export function PlantPage({ data }:PlantPageProps) {
   const {
     name,
     description,
@@ -52,6 +57,7 @@ export function PlantPage({ data }:{data:Plant}) {
           content={`Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}${description ? `, Descrição: ${description}` : ''}`}
         />
       </Head>
+      <PlantStructuredData plant={data} />
       <Header />
       <div className="flex flex-col md:flex-row md:gap-4">
         <div className="md:w-1/2 flex-1 md:pt-2">
@@ -78,7 +84,7 @@ export function PlantPage({ data }:{data:Plant}) {
                 );
               })}
             </Carousel>
-            {/* {data.images[0].uri} */}
+            {/* {JSON.stringify(data.images)} */}
           </div>
         </div>
         <div className="md:w-1/2">

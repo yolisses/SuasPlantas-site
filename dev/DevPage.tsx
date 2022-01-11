@@ -1,13 +1,10 @@
 import { Button } from '@mui/material';
+import { Fragment } from 'react';
 
 export function DevPage() {
   return (
     <div>
-      <input type="button" value="quale" />
-      oi
-
-      <Button>coisado</Button>
-      <Button variant="contained">coisado</Button>
+      <div>massa</div>
     </div>
   );
 }

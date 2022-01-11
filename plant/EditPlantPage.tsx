@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import Router from 'next/router';
 import { api } from '../api/api';
-import { Plant } from '../types/Plant';
+import { Plant } from './Plant';
 import { tagEmoji, tags } from './tags';
 import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';

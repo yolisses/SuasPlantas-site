@@ -1,4 +1,4 @@
-import { Image } from '../types/Image';
+import { Image } from '../upload/Image';
 import { Sending } from '../upload/Sending';
 import { imageKeyByUri } from './imageKeyByUri';
 import { SendingsCollection } from './ImagesInput';

@@ -2,11 +2,12 @@ import Head from 'next/head';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
-import { Plant } from '../types/Plant';
+import { Plant } from '../plant/Plant';
 import { Header } from '../common/Header';
 import { ListItem } from '../common/ListItem';
 import { api } from '../api/api';
 import { AddButton } from './AddButton';
+import { TextLink } from '../common/TextLink';
 
 interface HomePageProps {
   data: any;
@@ -32,6 +33,7 @@ export function HomePage({ data, query }: HomePageProps) {
         />
       </Head>
       <Header />
+      <TextLink href="/?sell=true">sell</TextLink>
       <InfiniteScroll
         next={fetchItems}
         dataLength={items.length}

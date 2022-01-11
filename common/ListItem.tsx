@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CardActionArea } from '@mui/material';
-import { Plant } from '../types/Plant';
+import { Plant } from '../plant/Plant';
 import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 
 interface ListItemDTO {

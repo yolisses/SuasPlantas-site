@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
 import { api } from '../../api/api';
-import { Plant } from '../../types/Plant';
+import { Plant } from '../../plant/Plant';
 
 export default function Sitemap() {}
 

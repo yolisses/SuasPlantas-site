@@ -1,4 +1,4 @@
-import { Plant } from '../types/Plant';
+import { Plant } from '../plant/Plant';
 
 export type UserId = number;
 
