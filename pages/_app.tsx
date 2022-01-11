@@ -13,7 +13,6 @@ import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { ModalView } from '../modal/ModalView';
-import { NotificationTags } from '../notifications/NotificationsTags';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,7 +21,6 @@ export function MyApp({ Component, pageProps }: AppProps) {
         <FaviconTags />
         <MuiFontsTags />
         <GoogleAnalyticsTags />
-        <NotificationTags />
         <title>
           {devIndicator}
           SuasPlantas - Trocar mudas de plantas
