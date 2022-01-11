@@ -12,6 +12,8 @@ export function GridItem({ item }: GridItemDTO) {
   const {
     swap, donate, price, card,
   } = item;
+
+  const size = 200;
   return (
     <Grid item xs={1}>
       <Link href={`/plants/${item.id}`}>
@@ -19,8 +21,8 @@ export function GridItem({ item }: GridItemDTO) {
           <div className="flex flex-col p-2">
             <Image
               src={card}
-              width={300}
-              height={300}
+              width={size}
+              height={size}
               alt={item.name}
               objectFit="cover"
               className="bg-gray-200 flex-shrink-0 rounded-xl"
