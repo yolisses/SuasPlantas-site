@@ -11,6 +11,7 @@ export async function signIn(
   api.defaults.headers.common.Authorization = token;
   setCookie(undefined, 'suasplantas.token', token, {
     path: '/',
+    maxAge: 1000 * 60 * 60 * 24 * 7, // one week
   });
   authStore.setUser(res.data);
 }
