@@ -1,6 +1,8 @@
+import Head from 'next/head';
+
 export function FaviconTags() {
   return (
-    <>
+    <Head>
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -26,6 +28,6 @@ export function FaviconTags() {
       />
       <meta name="msapplication-TileColor" content="#00a300" />
       <meta name="theme-color" content="#ffffff" />
-    </>
+    </Head>
   );
 }
