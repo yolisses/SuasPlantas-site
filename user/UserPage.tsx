@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { FaRegUser, FaSeedling, FaThumbsUp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
@@ -36,6 +37,12 @@ export function UserPage({ user }: UserPageProps) {
   return (
     <div className="flex flex-col items-center w-full">
       {/* <HeaderLayout className="shadow-sm">{user.name}</HeaderLayout> */}
+      <Head>
+        <meta
+          name="description"
+          content={`Usuário ${user.name}. ${user.city}, ${user.state}. ${user.description}`}
+        />
+      </Head>
       <Header />
       <div className="p-2 flex flex-col gap-4 max-w-4xl w-full">
         <div className="flex flex-row gap-2 items-center pt-4 w-full">
@@ -43,6 +50,7 @@ export function UserPage({ user }: UserPageProps) {
             width={100}
             height={100}
             objectFit="cover"
+            alt={user.name}
             src={user.image || userImage}
             className="rounded-full bg-cover w-24 h-24"
           />
