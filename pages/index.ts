@@ -1,17 +1,17 @@
 import { GetServerSideProps } from 'next';
 import { api } from '../api/api';
-import { authenticate } from '../auth/authenticate';
 import { HomePage } from '../home/HomePage';
 
 export default HomePage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  authenticate(ctx);
-  const props:any = {};
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const props:any = {
+    query,
+  };
   try {
     const res = await api.get(
       'plants',
-      // { params: { text: 'cacto' } },
+      { params: { text: query.q, ...query } },
     );
     props.data = res.data;
   } catch (err) {

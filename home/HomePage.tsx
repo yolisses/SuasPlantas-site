@@ -10,14 +10,15 @@ import { AddButton } from './AddButton';
 
 interface HomePageProps {
   data: any;
+  query:{[key:string]:string}
 }
 
-export function HomePage({ data }: HomePageProps) {
+export function HomePage({ data, query }: HomePageProps) {
   const [items, setItems] = useState(data?.content || []);
   const [lastData, setLastData] = useState(data || {});
 
   async function fetchItems() {
-    const res = await api.get('plants', { params: { page: lastData.nextPage } });
+    const res = await api.get('plants', { params: { page: lastData.nextPage, text: query.q, ...query } });
     setLastData(res.data);
     setItems((items:Plant[]) => items.concat(res.data.content));
   }
