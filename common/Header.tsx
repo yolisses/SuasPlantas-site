@@ -48,7 +48,7 @@ export function Header({ searchQuery }: HeaderProps) {
           </Button>
         </Link>
       </div>
-      <SearchField />
+      {/* <SearchField /> */}
       <div className="ml-auto" />
       <MeButton />
       <IconButton
