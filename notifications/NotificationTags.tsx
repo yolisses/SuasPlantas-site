@@ -20,6 +20,10 @@ export function NotificationTags() {
         notifyButton: {
           enable: true,
         },
+        welcomeNotification: {
+          title: 'Obrigado por ligar as notificações',
+          message: 'É assim que elas aparecem',
+        },
         allowLocalhostAsSecureOrigin: true,
       });
     });
