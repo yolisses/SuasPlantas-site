@@ -14,6 +14,7 @@ import { HeaderLayout } from './HeaderLayout';
 import { userImage } from '../images/user';
 import { logOut } from '../user/logOut';
 import { RequireLogin } from '../auth/RequireLogin';
+import { SearchField } from '../search/SearchField';
 
 interface HeaderProps {
   searchQuery?: string;
@@ -47,7 +48,7 @@ export function Header({ searchQuery }: HeaderProps) {
           </Button>
         </Link>
       </div>
-      {/* <SearchTop query={searchQuery} /> */}
+      <SearchField />
       <div className="ml-auto" />
       <MeButton />
       <IconButton

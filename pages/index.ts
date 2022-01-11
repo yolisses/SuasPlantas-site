@@ -9,7 +9,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   authenticate(ctx);
   const props:any = {};
   try {
-    const res = await api.get('plants');
+    const res = await api.get(
+      'plants',
+      // { params: { text: 'cacto' } },
+    );
     props.data = res.data;
   } catch (err) {
     props.err = err;
