@@ -49,9 +49,9 @@ export function HomePage({ data }: HomePageProps) {
           ))}
         </ul>
       </InfiniteScroll>
-      <div className="fixed right-10 bottom-10">
+      {/* <div className="fixed right-10 bottom-10">
         <AddButton />
-      </div>
+      </div> */}
     </>
   );
 }
