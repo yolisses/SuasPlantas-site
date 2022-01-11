@@ -3,10 +3,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { Plant } from '../types/Plant';
-import { AddButton } from './AddButton';
 import { Header } from '../common/Header';
 import { ListItem } from '../common/ListItem';
 import { api } from '../api/api';
+import { AddButton } from './AddButton';
 
 interface HomePageProps {
   data: any;
@@ -49,9 +49,9 @@ export function HomePage({ data }: HomePageProps) {
           ))}
         </ul>
       </InfiniteScroll>
-      {/* <div className="fixed right-10 bottom-10">
+      <div className="fixed right-10 bottom-10">
         <AddButton />
-      </div> */}
+      </div>
     </>
   );
 }
