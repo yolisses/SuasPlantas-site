@@ -46,5 +46,6 @@ module.exports = {
     'react/require-default-props': 'warn',
     'no-empty-function': 'warn',
     'no-shadow': 'warn',
+    'jsx-a11y/anchor-is-valid': 'off',
   },
 };
