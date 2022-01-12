@@ -38,14 +38,16 @@ export function Header({ searchQuery }: HeaderProps) {
     <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
       <div className="mr-auto">
         <Link href="/">
-          <Button>
-            <div className="flex flex-row items-center gap-1">
-              {/* <div className="self-stretch hidden sm:inline-flex flex justify-center">
+          <a>
+            <Button>
+              <div className="flex flex-row items-center gap-1">
+                {/* <div className="self-stretch hidden sm:inline-flex flex justify-center">
               <Image src="/icon-white.png  " width={20} height={20} />
             </div> */}
-              <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
-            </div>
-          </Button>
+                <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
+              </div>
+            </Button>
+          </a>
         </Link>
       </div>
       {/* <SearchField /> */}
@@ -73,40 +75,48 @@ export function Header({ searchQuery }: HeaderProps) {
           }}
         >
           <Link href={`/users/${authStore.user?.id}`}>
-            <RequireLogin>
-              <MenuItem onClick={handleClose}>
-                <Image
-                  width={20}
-                  height={20}
-                  src={authStore.user?.image || userImage}
-                  alt={authStore.user?.name}
-                  className="bg-gray-300 rounded-full cursor-pointer"
-                />
-                <Space />
-                Perfil
-              </MenuItem>
-            </RequireLogin>
+            <a>
+              <RequireLogin>
+                <MenuItem onClick={handleClose}>
+                  <Image
+                    width={20}
+                    height={20}
+                    src={authStore.user?.image || userImage}
+                    alt={authStore.user?.name}
+                    className="bg-gray-300 rounded-full cursor-pointer"
+                  />
+                  <Space />
+                  Perfil
+                </MenuItem>
+              </RequireLogin>
+            </a>
           </Link>
           <Link href="/privacy-policy">
-            <MenuItem onClick={handleClose}>
-              <FaRegFile size={20} color="gray" />
-              <Space />
-              Política de privacidade
-            </MenuItem>
+            <a>
+              <MenuItem onClick={handleClose}>
+                <FaRegFile size={20} color="gray" />
+                <Space />
+                Política de privacidade
+              </MenuItem>
+            </a>
           </Link>
           <Link href="/contact">
-            <MenuItem onClick={handleClose}>
-              <FaRegCommentAlt size={20} color="gray" />
-              <Space />
-              Contato
-            </MenuItem>
+            <a>
+              <MenuItem onClick={handleClose}>
+                <FaRegCommentAlt size={20} color="gray" />
+                <Space />
+                Contato
+              </MenuItem>
+            </a>
           </Link>
           <Link href="/about">
-            <MenuItem onClick={handleClose}>
-              <FaSeedling size={20} color="gray" />
-              <Space />
-              Sobre
-            </MenuItem>
+            <a>
+              <MenuItem onClick={handleClose}>
+                <FaSeedling size={20} color="gray" />
+                <Space />
+                Sobre
+              </MenuItem>
+            </a>
           </Link>
           {!!authStore.user && (
           <MenuItem onClick={() => { logOut(); handleClose(); }}>

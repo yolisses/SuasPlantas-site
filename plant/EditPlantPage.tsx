@@ -236,9 +236,11 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
             </Button>
             {edit && (
             <Link href={`/plants/${data?.id}`}>
-              <Button className="h-12 flex-1" disabled={loading}>
-                Cancelar
-              </Button>
+              <a>
+                <Button className="h-12 flex-1" disabled={loading}>
+                  Cancelar
+                </Button>
+              </a>
             </Link>
             )}
           </div>

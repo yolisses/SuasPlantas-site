@@ -11,16 +11,18 @@ export const MeButton = observer(() => {
   const size = 36;
   return authStore.user ? (
     <Link href={`/users/${authStore.user?.id}`}>
-      <IconButton>
-        <Image
-          width={size}
-          height={size}
-          objectFit="cover"
-          alt={authStore.user?.name}
-          src={authStore.user?.image || userImage}
-          className="bg-gray-300 rounded-full shadow-md cursor-pointer"
-        />
-      </IconButton>
+      <a>
+        <IconButton>
+          <Image
+            width={size}
+            height={size}
+            objectFit="cover"
+            alt={authStore.user?.name}
+            src={authStore.user?.image || userImage}
+            className="bg-gray-300 rounded-full shadow-md cursor-pointer"
+          />
+        </IconButton>
+      </a>
     </Link>
   ) : (
     <RequireLogin>

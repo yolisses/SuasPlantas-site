@@ -6,11 +6,13 @@ import { RequireLogin } from '../auth/RequireLogin';
 export function AddButton() {
   return (
     <Link href="plants/add">
-      <RequireLogin>
-        <Fab color="primary" aria-label="add">
-          <FaPlus size={24} color="white" />
-        </Fab>
-      </RequireLogin>
+      <a>
+        <RequireLogin>
+          <Fab color="primary" aria-label="add">
+            <FaPlus size={24} color="white" />
+          </Fab>
+        </RequireLogin>
+      </a>
     </Link>
   );
 }

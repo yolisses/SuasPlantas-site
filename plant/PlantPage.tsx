@@ -161,9 +161,11 @@ export function PlantPage({ data }:PlantPageProps) {
       && (
       <div className="fixed right-10 bottom-10">
         <Link href={`/plants/${data.id}/edit`}>
-          <Fab color="primary" aria-label="add">
-            <FaPen size={22} color="white" />
-          </Fab>
+          <a>
+            <Fab color="primary" aria-label="add">
+              <FaPen size={22} color="white" />
+            </Fab>
+          </a>
         </Link>
       </div>
       )}
