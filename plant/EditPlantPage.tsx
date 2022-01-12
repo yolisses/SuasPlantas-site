@@ -37,6 +37,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     defaultValues: {
       ...data,
       user: undefined,
+      alsoSaw: undefined,
       tags: data?.tags.map((tag) => tag.name),
       images: data?.images ? imagesToSendings(data.images) : {},
     },
