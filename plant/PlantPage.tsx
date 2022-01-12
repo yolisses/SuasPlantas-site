@@ -176,7 +176,7 @@ export function PlantPage({ data }:PlantPageProps) {
       {!!(data.alsoSaw && data.alsoSaw.length)
       && (
         <div className="p-2">
-          <h2 className="pl-2 text-lg">Outras plantas legais</h2>
+          <h2 className="pl-2 text-lg">Outras pessoas também viram</h2>
           <Grid
             container
             columns={{ xs: 2, sm: 6, md: 8 }}
