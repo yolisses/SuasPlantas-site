@@ -24,6 +24,7 @@ import { isSelfUser } from '../utils/isSelfUser';
 import { LikeButton } from './LikeButton';
 import { PlantStructuredData } from './PlantStructuredData';
 import { GridItem } from '../common/GridItem';
+import { loremIpsum } from '../mock/loremIpsum';
 
 interface PlantPageProps{
   data:Plant
@@ -147,6 +148,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 Descrição
                 <div>
                   {description}
+                  {/* {loremIpsum} */}
                 </div>
               </div>
             )}
@@ -155,6 +157,20 @@ export function PlantPage({ data }:PlantPageProps) {
               shareUrl={`https://suasplantas.com/plants/${id}`}
             />
           </div>
+          {authStore.user?.id === data.user.id
+            && (
+            <div className="sticky bottom-0">
+              <div className="absolute bottom-10 right-10">
+                <Link href={`/plants/${data.id}/edit`}>
+                  <a className="flex flex-row justify-end">
+                    <Fab color="primary" aria-label="add">
+                      <FaPen size={22} color="white" />
+                    </Fab>
+                  </a>
+                </Link>
+              </div>
+            </div>
+            )}
         </div>
       </div>
       {!!(data.alsoSaw && data.alsoSaw.length)
@@ -170,18 +186,6 @@ export function PlantPage({ data }:PlantPageProps) {
         </div>
       )}
       {/* {loremIpsum} */}
-      {authStore.user?.id === data.user.id
-      && (
-      <div className="fixed right-10 bottom-10">
-        <Link href={`/plants/${data.id}/edit`}>
-          <a>
-            <Fab color="primary" aria-label="add">
-              <FaPen size={22} color="white" />
-            </Fab>
-          </a>
-        </Link>
-      </div>
-      )}
     </div>
   );
 }
