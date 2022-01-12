@@ -22,4 +22,5 @@ export interface Plant {
   createdAt: string;
   updatedAt: string;
   liked?:boolean
+  alsoSaw?:Plant[]
 }

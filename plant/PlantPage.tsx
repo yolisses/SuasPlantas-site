@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import Link from 'next/link';
-import { Fab } from '@mui/material';
+import { Fab, Grid } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
 
 import { tagEmoji } from './tags';
@@ -23,6 +23,7 @@ import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
 import { LikeButton } from './LikeButton';
 import { PlantStructuredData } from './PlantStructuredData';
+import { GridItem } from '../common/GridItem';
 
 interface PlantPageProps{
   data:Plant
@@ -47,7 +48,7 @@ export function PlantPage({ data }:PlantPageProps) {
   const multipleImages = data.images.length > 1;
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <Head>
         <title>
           {`${devIndicator}${name} - ${stringAvailability}`}
@@ -156,6 +157,18 @@ export function PlantPage({ data }:PlantPageProps) {
           </div>
         </div>
       </div>
+      {!!(data.alsoSaw && data.alsoSaw.length)
+      && (
+        <div className="p-2">
+          <h2 className="pl-2 text-lg">Outras plantas legais</h2>
+          <Grid
+            container
+            columns={{ xs: 2, sm: 6, md: 8 }}
+          >
+            {data.alsoSaw.map((plant:Plant) => <GridItem key={plant.id} item={plant} />)}
+          </Grid>
+        </div>
+      )}
       {/* {loremIpsum} */}
       {authStore.user?.id === data.user.id
       && (
