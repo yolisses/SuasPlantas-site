@@ -6,14 +6,16 @@ import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 
 interface GridItemDTO {
   item: Plant;
+  size?:number
+  showLocation?:boolean
 }
 
-export function GridItem({ item }: GridItemDTO) {
+export function GridItem({ item, size: sizeParam, showLocation = true }: GridItemDTO) {
   const {
     swap, donate, price, card,
   } = item;
 
-  const size = 200;
+  const size = sizeParam || 200;
   return (
     <Grid item xs={1}>
       <Link href={`/plants/${item.id}`}>
@@ -30,6 +32,14 @@ export function GridItem({ item }: GridItemDTO) {
               />
               <div>{item.name}</div>
               <AvailabilityInfo {...{ swap, donate, price }} />
+              {showLocation && (
+              <div className="text-sm">
+                {item.city}
+                ,
+                {' '}
+                {item.state}
+              </div>
+              )}
             </div>
           </CardActionArea>
         </a>

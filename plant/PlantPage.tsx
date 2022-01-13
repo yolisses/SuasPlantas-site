@@ -179,7 +179,7 @@ export function PlantPage({ data }:PlantPageProps) {
           <h2 className="pl-2 text-lg">Outras pessoas também viram</h2>
           <Grid
             container
-            columns={{ xs: 2, sm: 6, md: 8 }}
+            columns={{ xs: 2, sm: 6, md: 7 }}
           >
             {data.alsoSaw.map((plant:Plant) => <GridItem key={plant.id} item={plant} />)}
           </Grid>

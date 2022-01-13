@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { Header } from '../common/Header';
-import { ListItem } from '../common/ListItem';
+import { GridItem } from '../common/GridItem';
 
 interface HomePageProps {
   data: any;
@@ -44,11 +44,16 @@ export function HomePage({ data, query }: HomePageProps) {
         )}
         endMessage={<div className="p-10" />}
       >
-        <ul className="p-2 flex flex-col gap-1">
-          {items.map((item: Plant) => (
-            <ListItem key={item.id} item={item} />
-          ))}
-        </ul>
+        <div className="md:px-10">
+          <Grid
+            container
+            columns={{ xs: 2, sm: 4, md: 5 }}
+          >
+            {items.map((item: Plant) => (
+              <GridItem key={item.id} item={item} size={300} />
+            ))}
+          </Grid>
+        </div>
       </InfiniteScroll>
       <div className="fixed right-10 bottom-10">
         <AddButton />

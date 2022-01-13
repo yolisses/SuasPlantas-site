@@ -23,4 +23,6 @@ export interface Plant {
   updatedAt: string;
   liked?:boolean
   alsoSaw?:Plant[]
+  state: string;
+  city: string;
 }

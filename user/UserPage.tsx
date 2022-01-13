@@ -112,7 +112,7 @@ export function UserPage({ user }: UserPageProps) {
           style={{ display: tab !== 0 ? 'none' : undefined }}
         >
           {user.plants?.map((plant) => (
-            <GridItem item={plant} key={plant.id} />
+            <GridItem item={plant} key={plant.id} showLocation={false} />
           ))}
           {
           !user.plants.length && (
