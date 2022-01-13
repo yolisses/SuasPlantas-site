@@ -24,8 +24,8 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
               className="rounded-full bg-gray-300"
             />
             <div className="flex flex-col">
-              <div className="font-semibold hover:underline">{user.name}</div>
-              <div className="text-gray-500 text-sm">
+              <div className="font-semibold text-black">{user.name}</div>
+              <div className="text-gray-700 text-sm">
                 {/* Entrou no SuasPlantas em
             {' '}
             <time>{new Date(user.createdAt).getFullYear()}</time> */}
