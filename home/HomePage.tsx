@@ -1,19 +1,20 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CircularProgress, Grid } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { observer } from 'mobx-react-lite';
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { Header } from '../common/Header';
 import { GridItem } from '../common/GridItem';
+import { filterStore } from '../search/filtersStore';
 
 interface HomePageProps {
   data: any;
-  query:{[key:string]:string}
 }
 
-export function HomePage({ data, query }: HomePageProps) {
+export const HomePage = observer(({ data }: HomePageProps) => {
   const [items, setItems] = useState(data?.content || []);
   const [lastData, setLastData] = useState(data || {});
 
@@ -21,13 +22,20 @@ export function HomePage({ data, query }: HomePageProps) {
     const res = await api.get('plants', {
       params: {
         page: lastData.nextPage,
-        text: query.q,
-        ...query,
+        ...filterStore.query,
       },
     });
     setLastData(res.data);
     setItems((items:Plant[]) => items.concat(res.data.content));
   }
+
+  function refresh() {
+    setItems([]);
+    setLastData({ });
+    fetchItems();
+  }
+
+  useEffect(() => { if (filterStore.query)refresh(); }, [filterStore.query]);
 
   return (
     <>
@@ -38,6 +46,7 @@ export function HomePage({ data, query }: HomePageProps) {
         />
       </Head>
       <Header />
+      {/* {JSON.stringify(filterStore.query)} */}
       <InfiniteScroll
         next={fetchItems}
         dataLength={items.length}
@@ -50,7 +59,7 @@ export function HomePage({ data, query }: HomePageProps) {
         )}
         endMessage={<div className="p-10" />}
       >
-        <div className="md:px-10">
+        <div className="md:px-10 py-4">
           <Grid
             container
             columns={{ xs: 2, sm: 4, md: 5 }}
@@ -66,4 +75,4 @@ export function HomePage({ data, query }: HomePageProps) {
       </div>
     </>
   );
-}
+});

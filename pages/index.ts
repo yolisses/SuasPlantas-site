@@ -9,10 +9,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     query,
   };
   try {
-    const res = await api.get(
-      'plants',
-      { params: { text: query.q, ...query } },
-    );
+    const res = await api.get('plants');
     props.data = res.data;
   } catch (err) {
     props.err = err;

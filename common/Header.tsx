@@ -15,16 +15,13 @@ import { userImage } from '../images/user';
 import { logOut } from '../user/logOut';
 import { RequireLogin } from '../auth/RequireLogin';
 import { SearchField } from '../search/SearchField';
-
-interface HeaderProps {
-  searchQuery?: string;
-}
+import { filterStore } from '../search/filtersStore';
 
 function Space() {
   return <div className="pl-2" />;
 }
 
-export function Header({ searchQuery }: HeaderProps) {
+export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event:any) => {
@@ -39,7 +36,7 @@ export function Header({ searchQuery }: HeaderProps) {
       <div className="mr-auto">
         <Link href="/">
           <a>
-            <Button>
+            <Button onClick={() => { filterStore.query = {}; }}>
               <div className="flex flex-row items-center gap-1">
                 {/* <div className="self-stretch hidden sm:inline-flex flex justify-center">
               <Image src="/icon-white.png  " width={20} height={20} />
@@ -50,7 +47,7 @@ export function Header({ searchQuery }: HeaderProps) {
           </a>
         </Link>
       </div>
-      {/* <SearchField /> */}
+      <SearchField />
       <div className="ml-auto" />
       <MeButton />
       <IconButton
