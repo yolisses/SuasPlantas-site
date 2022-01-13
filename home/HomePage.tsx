@@ -18,7 +18,13 @@ export function HomePage({ data, query }: HomePageProps) {
   const [lastData, setLastData] = useState(data || {});
 
   async function fetchItems() {
-    const res = await api.get('plants', { params: { page: lastData.nextPage, text: query.q, ...query } });
+    const res = await api.get('plants', {
+      params: {
+        page: lastData.nextPage,
+        text: query.q,
+        ...query,
+      },
+    });
     setLastData(res.data);
     setItems((items:Plant[]) => items.concat(res.data.content));
   }
