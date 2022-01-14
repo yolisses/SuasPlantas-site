@@ -1,7 +1,7 @@
 import { Button, CircularProgress } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { delay } from './utils/delay';
-import { generateRandomColors } from './utils/generateRandomColors';
+import { delay } from '../utils/delay';
+import { generateRandomColors } from '../utils/generateRandomColors';
 
 const savedItems = generateRandomColors(34);
 
