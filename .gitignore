@@ -381,9 +381,5 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/yarn,visualstudiocode,react,node,nextjs,linux,intellij,dotenv,webstorm
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
-.env.local
-public/sw.js.map
-public/sw.js
-public/workbox-*
 api/baseURL.ts
 esboço.txt
