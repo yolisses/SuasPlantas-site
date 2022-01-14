@@ -1,3 +1,3 @@
 export interface loginButtonProps{
-    callback:()=>void
+    callback?:()=>void
 }

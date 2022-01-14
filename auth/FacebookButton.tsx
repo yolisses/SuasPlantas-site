@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import { signIn } from './signIn';
 import { isDev } from '../utils/isDev';
@@ -25,7 +25,7 @@ export function FacebookButton({ callback } : loginButtonProps) {
 
   useState(() => {
     window.handleFacebookResponse = handleFacebookResponse;
-  }, []);
+  });
 
   return (
     <>
