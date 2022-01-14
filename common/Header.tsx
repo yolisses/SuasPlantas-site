@@ -43,7 +43,7 @@ export function Header() {
   const [searching, setSearching] = useState(false);
 
   return (
-    <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
+    <HeaderLayout className="bg-emerald-700 text-white shadow-md" goBackButton={false}>
       {!searching ? (
         <>
           <Link href="/">

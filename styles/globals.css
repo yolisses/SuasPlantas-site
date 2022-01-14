@@ -34,6 +34,14 @@ a {
   margin: 10px !important;
 }
 
-button{
-  background-color: unset;
+button, [type='button'], [type='reset'], [type='submit'] {
+  background-color:inherit;
+}
+
+.MuiFab-primary{
+  background-color: #16A34A; 
+}
+
+.MuiButton-containedPrimary{  
+  background-color: #16A34A; 
 }

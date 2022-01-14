@@ -1,10 +1,9 @@
 module.exports = {
-  purge: ["./**/*.tsx"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './**/*.{ts,tsx}',
+  ],
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
+  plugins: [],
 };

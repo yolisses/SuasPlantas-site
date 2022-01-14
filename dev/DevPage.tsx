@@ -1,3 +1,3 @@
 export function DevPage() {
-  return <div>oi</div>;
+  return <button>oi</button>;
 }
