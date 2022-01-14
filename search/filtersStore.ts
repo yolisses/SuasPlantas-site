@@ -13,10 +13,6 @@ class FilterStore {
     constructor() {
       makeAutoObservable(this);
     }
-
-    reset() {
-      this.query = undefined;
-    }
 }
 
 export const filterStore = new FilterStore();

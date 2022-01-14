@@ -9,6 +9,7 @@ import { AddButton } from './AddButton';
 import { Header } from '../common/Header';
 import { GridItem } from '../common/GridItem';
 import { filterStore } from '../search/filtersStore';
+import { WithoutResultsWarn } from './WithoutResultsWarn';
 
 interface HomePageProps {
   data: any;
@@ -69,7 +70,16 @@ export const HomePage = observer(({ data }: HomePageProps) => {
             ))}
           </Grid>
         </div>
+        {!!(!items.length
+          && filterStore.query
+          && Object.keys(filterStore.query).length)
+      && (
+      <div className="flex flex-col items-center pt-20">
+        <WithoutResultsWarn />
+      </div>
+      )}
       </InfiniteScroll>
+
       <div className="fixed right-10 bottom-10">
         <AddButton />
       </div>
