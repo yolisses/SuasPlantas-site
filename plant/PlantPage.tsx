@@ -4,27 +4,26 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import Link from 'next/link';
-import { Fab, Grid } from '@mui/material';
+import { Fab } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
 
 import { tagEmoji } from './tags';
 import { Plant } from './Plant';
 import { Header } from '../common/Header';
+import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
+import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
+import { TextLink } from '../common/TextLink';
 import { ShareButtons } from './ShareButtons';
+import { isSelfUser } from '../utils/isSelfUser';
+import { hasContact } from '../utils/hasContact';
 import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
-import { availabilitiesToString } from './availabilitiesToString';
 import { WhatsappButton } from '../contact/WhatsappButton';
-import { InstagramButton } from '../contact/InstagramButton';
-import { TextLink } from '../common/TextLink';
-import { hasContact } from '../utils/hasContact';
-import { isSelfUser } from '../utils/isSelfUser';
-import { LikeButton } from './LikeButton';
 import { PlantStructuredData } from './PlantStructuredData';
-import { GridItem } from '../common/GridItem';
-import { loremIpsum } from '../mock/loremIpsum';
+import { InstagramButton } from '../contact/InstagramButton';
+import { availabilitiesToString } from './availabilitiesToString';
 
 interface PlantPageProps{
   data:Plant
@@ -175,15 +174,12 @@ export function PlantPage({ data }:PlantPageProps) {
       </div>
       {!!(data.alsoSaw && data.alsoSaw.length)
       && (
-        <div className="p-2">
+        <>
           <h2 className="pl-2 text-lg">Outras pessoas também viram</h2>
-          <Grid
-            container
-            columns={{ xs: 2, sm: 6, md: 7 }}
-          >
+          <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5 xl:grid-cols-7">
             {data.alsoSaw.map((plant:Plant) => <GridItem key={plant.id} item={plant} />)}
-          </Grid>
-        </div>
+          </div>
+        </>
       )}
       {/* {loremIpsum} */}
     </div>

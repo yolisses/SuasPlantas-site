@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { CircularProgress, Grid } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { observer } from 'mobx-react-lite';
 import { api } from '../api/api';
@@ -60,15 +60,10 @@ export const HomePage = observer(({ data }: HomePageProps) => {
         )}
         endMessage={<div className="p-10" />}
       >
-        <div className="md:px-10 py-4">
-          <Grid
-            container
-            columns={{ xs: 2, sm: 4, md: 5 }}
-          >
-            {items.map((item: Plant) => (
-              <GridItem key={item.id} item={item} size={300} />
-            ))}
-          </Grid>
+        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+          {items.map((item: Plant) => (
+            <GridItem key={item.id} item={item} size={300} />
+          ))}
         </div>
         {!!(!items.length
           && filterStore.query
