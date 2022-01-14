@@ -55,18 +55,17 @@ export function Header() {
               </Button>
             </a>
           </Link>
-          <div
-            className="hidden md:flex flex-row justify-center w-full"
-          >
+          <div className="hidden md:flex flex-row justify-center w-full">
             <SearchField />
           </div>
           <IconButton
-            className="md:hidden ml-auto"
+            className="ml-auto md:hidden"
             onClick={() => setSearching(true)}
           >
             <FaSearch
-              size={23}
+              size={22}
               color="white"
+              className="md:hidden ml-auto"
             />
           </IconButton>
           <MeButton />
@@ -84,14 +83,14 @@ export function Header() {
         </>
       )
         : (
-          <>
+          <div className="flex flex-row justify-center w-full items-center ">
             <SearchField />
             <IconButton
               onClick={() => setSearching(false)}
             >
               <FaTimes color="white" size={25} />
             </IconButton>
-          </>
+          </div>
         )}
       <div>
         <Menu
