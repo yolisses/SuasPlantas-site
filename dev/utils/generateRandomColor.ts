@@ -1,7 +1,5 @@
 import { generateRandomInt } from './generateRandomInt';
 
 export function generateRandomColor() {
-  const min = 128;
-  const max = 255;
-  return `rgb(${generateRandomInt(min, max)},${generateRandomInt(min, max)},${generateRandomInt(min, max)})`;
+  return `hsl(${generateRandomInt(0, 360)},${generateRandomInt(50, 100)}%,${generateRandomInt(50, 100)}%)`;
 }

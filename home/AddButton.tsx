@@ -6,7 +6,7 @@ import { RequireLogin } from '../auth/RequireLogin';
 export function AddButton() {
   return (
     <Link href="plants/add">
-      <a>
+      <a tabIndex={-1}>
         <RequireLogin>
           <Fab color="primary" aria-label="add">
             <FaPlus size={24} color="white" />
