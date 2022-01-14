@@ -1,20 +1,29 @@
 import {
-  Button, IconButton, Menu, MenuItem,
+  Menu,
+  Button,
+  MenuItem,
+  IconButton,
 } from '@mui/material';
-import Link from 'next/link';
-import { useState } from 'react';
 import {
-  FaBars, FaRegCommentAlt, FaRegFile, FaSeedling,
+  FaBars,
+  FaTimes,
+  FaSearch,
+  FaRegFile,
+  FaSeedling,
+  FaRegCommentAlt,
 } from 'react-icons/fa';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
-import { authStore } from '../auth/authStore';
-import { MeButton } from '../user/MeButton';
-import { HeaderLayout } from './HeaderLayout';
-import { userImage } from '../images/user';
+
 import { logOut } from '../user/logOut';
-import { RequireLogin } from '../auth/RequireLogin';
+import { userImage } from '../images/user';
+import { MeButton } from '../user/MeButton';
+import { authStore } from '../auth/authStore';
+import { HeaderLayout } from './HeaderLayout';
 import { SearchField } from '../search/SearchField';
+import { RequireLogin } from '../auth/RequireLogin';
 import { filterStore } from '../search/filtersStore';
 
 function Space() {
@@ -31,36 +40,59 @@ export function Header() {
     setAnchorEl(null);
   };
 
+  const [searching, setSearching] = useState(false);
+
   return (
     <HeaderLayout className="bg-green-700 text-white shadow-md" goBackButton={false}>
-      <div className="mr-auto">
-        <Link href="/">
-          <a>
-            <Button onClick={() => { filterStore.query = {}; }}>
-              <div className="flex flex-row items-center gap-1">
-                {/* <div className="self-stretch hidden sm:inline-flex flex justify-center">
-              <Image src="/icon-white.png  " width={20} height={20} />
-            </div> */}
-                <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
-              </div>
-            </Button>
-          </a>
-        </Link>
-      </div>
-      <SearchField />
-      <div className="ml-auto" />
-      <MeButton />
-      <IconButton
-        id="basic-button"
-        aria-haspopup="true"
-        onClick={handleClick}
-        aria-expanded={open ? 'true' : undefined}
-        aria-controls={open ? 'basic-menu' : undefined}
-      >
-        <div className="p-1">
-          <FaBars size={25} color="white" />
-        </div>
-      </IconButton>
+      {!searching ? (
+        <>
+          <Link href="/">
+            <a>
+              <Button onClick={() => { filterStore.query = {}; }}>
+                <div className="flex flex-row items-center gap-1">
+                  <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
+                </div>
+              </Button>
+            </a>
+          </Link>
+          <div
+            className="hidden md:flex flex-row justify-center w-full"
+          >
+            <SearchField />
+          </div>
+          <IconButton
+            className="md:hidden ml-auto"
+            onClick={() => setSearching(true)}
+          >
+            <FaSearch
+              size={23}
+              color="white"
+            />
+          </IconButton>
+          <MeButton />
+          <IconButton
+            id="basic-button"
+            aria-haspopup="true"
+            onClick={handleClick}
+            aria-expanded={open ? 'true' : undefined}
+            aria-controls={open ? 'basic-menu' : undefined}
+          >
+            <div className="p-1">
+              <FaBars size={25} color="white" />
+            </div>
+          </IconButton>
+        </>
+      )
+        : (
+          <>
+            <SearchField />
+            <IconButton
+              onClick={() => setSearching(false)}
+            >
+              <FaTimes color="white" size={25} />
+            </IconButton>
+          </>
+        )}
       <div>
         <Menu
           open={open}
@@ -116,11 +148,11 @@ export function Header() {
             </a>
           </Link>
           {!!authStore.user && (
-          <MenuItem onClick={() => { logOut(); handleClose(); }}>
-            <FiLogOut size={20} color="gray" />
-            <Space />
-            Sair
-          </MenuItem>
+            <MenuItem onClick={() => { logOut(); handleClose(); }}>
+              <FiLogOut size={20} color="gray" />
+              <Space />
+              Sair
+            </MenuItem>
           )}
         </Menu>
       </div>
