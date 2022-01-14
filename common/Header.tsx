@@ -58,16 +58,16 @@ export function Header() {
           <div className="hidden md:flex flex-row justify-center w-full">
             <SearchField />
           </div>
-          <IconButton
-            className="ml-auto md:hidden"
-            onClick={() => setSearching(true)}
-          >
-            <FaSearch
-              size={22}
-              color="white"
-              className="md:hidden ml-auto"
-            />
-          </IconButton>
+          <div className="ml-auto md:hidden">
+            <IconButton
+              onClick={() => setSearching(true)}
+            >
+              <FaSearch
+                size={22}
+                color="white"
+              />
+            </IconButton>
+          </div>
           <MeButton />
           <IconButton
             id="basic-button"
