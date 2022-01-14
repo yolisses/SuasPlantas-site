@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { signIn } from './signIn';
 import { isDev } from '../utils/isDev';
+import { loginButtonProps } from './loginButtonProps';
 
 interface GoogleResponse {
   credential: string;
@@ -13,10 +14,11 @@ declare global {
   }
 }
 
-export function GoogleButton() {
+export function GoogleButton({ callback }:loginButtonProps) {
   async function handleGoogleResponse(e: GoogleResponse) {
     if (isDev) console.log(e.credential);
     await signIn('google', e.credential);
+    if (callback) callback();
   }
 
   useEffect(() => {
