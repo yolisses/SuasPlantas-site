@@ -16,7 +16,6 @@ import { Header } from '../common/Header';
 import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
-import { LocationField } from '../location/LocationField';
 import { User } from './User';
 
 export const EditProfilePage = observer(({ user }:{user:User}) => {
@@ -59,9 +58,9 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
           />
           {/* ignore the label */}
           <TextField label="Bio" multiline minRows={2} {...register('description')} />
-          <div className="self-start">
+          {/* <div className="self-start">
             <LocationField text={`${authStore.user?.city}, ${authStore.user?.state}`} />
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <TextField
               label="Instagram"
