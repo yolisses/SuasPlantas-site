@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
-import {
-  MapContainer, TileLayer, useMapEvents,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import Head from 'next/head';
 import { useEffect } from 'react';
 
