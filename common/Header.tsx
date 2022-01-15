@@ -76,9 +76,7 @@ export function Header() {
             aria-expanded={open ? 'true' : undefined}
             aria-controls={open ? 'basic-menu' : undefined}
           >
-            <div className="p-1">
-              <FaBars size={25} color="white" />
-            </div>
+            <FaBars size={25} color="white" />
           </IconButton>
         </>
       )
