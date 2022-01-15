@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite';
 import {
   FaMap, FaSearch, FaSeedling, FaUser,
 } from 'react-icons/fa';
+import Link from 'next/link';
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
@@ -60,10 +61,14 @@ export const HomePage = observer(({ data }: HomePageProps) => {
           <FaSeedling />
           Plantas
         </TabSelector>
-        <TabSelector>
-          <FaSearch />
-          Procurando
-        </TabSelector>
+        <Link href="/looking_for">
+          <a tabIndex={-1}>
+            <TabSelector>
+              <FaSearch />
+              Procurando
+            </TabSelector>
+          </a>
+        </Link>
         <TabSelector>
           <FaUser />
           Pessoas
