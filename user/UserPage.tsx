@@ -3,7 +3,9 @@ import { Button, Link } from '@mui/material';
 import {
   FaRegUser, FaSearch, FaSeedling, FaThumbsUp,
 } from 'react-icons/fa';
-import { ReactNode, useEffect, useState } from 'react';
+import {
+  ReactElement, ReactNode, useEffect, useState,
+} from 'react';
 import Head from 'next/head';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
@@ -17,6 +19,7 @@ import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
 import { TextLink } from '../common/TextLink';
 import { TabSelector } from '../common/TabSelector';
+import { LookingForItem } from '../lookingFor/LookingForItem';
 
 interface UserPageProps {
   user: User;
@@ -96,77 +99,97 @@ export function UserPage({ user }: UserPageProps) {
             </Link>
           </div>
           )}
-          <div className="flex flex-row justify-center items-center">
+          <div className="flex flex-row justify-center items-center max-w-sm md:max-w-md">
             <TabSelector value="plants" tab={tab} setTab={setTab}>
               <FaSeedling />
               Plantas
-            </TabSelector>
-            <TabSelector value="likes" tab={tab} setTab={setTab}>
-              <FaThumbsUp />
-              Curtidas
             </TabSelector>
             <TabSelector value="lookingFors" tab={tab} setTab={setTab}>
               <FaSearch />
               Procurando
             </TabSelector>
+            <TabSelector value="likes" tab={tab} setTab={setTab}>
+              <FaThumbsUp />
+              Curtidas
+            </TabSelector>
           </div>
-          <ItemsDrawer
-            tab="plants"
-            currentTab={tab}
-            withoutResultsMessage="Nenhuma planta por enquanto"
-            items={user.plants}
-          />
-          <ItemsDrawer
-            tab="likes"
-            currentTab={tab}
-            withoutResultsMessage="Nenhuma curtida por enquanto"
-            items={user.likedPlants}
-          />
-          <ItemsDrawer
-            tab="lookingFors"
-            currentTab={tab}
-            withoutResultsMessage="Nenhum procurando por enquanto"
-            items={user.lookingFors}
-            component={(item: LookingFor) => (<div>{ item.name}</div>)}
-          />
+          <Tab tab="plants" currentTab={tab}>
+            <ItemsDrawer
+              items={user.plants}
+              withoutItemsMessage="Nenhuma planta por enquanto"
+            />
+          </Tab>
+          <Tab tab="likes" currentTab={tab}>
+            <ItemsDrawer
+              items={user.likedPlants}
+              withoutItemsMessage="Nenhuma curtida por enquanto"
+            />
+          </Tab>
+          <Tab tab="lookingFors" currentTab={tab}>
+            <LookingForsDrawert
+              items={user.lookingFors}
+              withoutItemsMessage="Nenhum procurando por enquanto"
+            />
+          </Tab>
         </div>
       </div>
     </>
   );
 }
 
-interface ItemsDrawerProps{
-  tab:string
-  currentTab:string
-  withoutResultsMessage:string
-  items:any[]
-  component?:(item:any, index:number, array:any[])=>ReactNode
-}
+interface ItemsDrawerProps{ items:any[] }
 
-function ItemsDrawer({
-  tab, currentTab, withoutResultsMessage, items, component,
-}:ItemsDrawerProps) {
+function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div
         className="grid gap-2 grid-cols-2 md:grid-cols-5"
-        style={{ display: tab !== currentTab ? 'none' : undefined }}
       >
-        { items.map(
-          component || ((item) => (
-            <GridItem item={item} key={item.id} />
-          )),
-        )}
+        { items.map((item) => (
+          <GridItem item={item} key={item.id} />
+        ))}
       </div>
     );
   }
+  return (
+    <div className="text-gray-600 p-10">
+      {withoutItemsMessage}
+    </div>
+  );
+}
 
+function LookingForsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
+  if (items && items.length) {
+    return (
+      <div
+        className="flex flex-row flex-wrap gap-2"
+      >
+        { items.map((item) => (
+          <LookingForItem item={item} key={item.id} />
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="text-gray-600 p-10">
+      {withoutItemsMessage}
+    </div>
+  );
+}
+
+interface TabProps{
+  tab:string
+  currentTab:string
+  children:ReactNode
+}
+
+function Tab({ tab, currentTab, children }:TabProps) {
   return (
     <div
-      className="text-gray-600 p-10"
+      className="flex flex-col items-center"
       style={{ display: tab !== currentTab ? 'none' : undefined }}
     >
-      {withoutResultsMessage}
+      {children}
     </div>
   );
 }

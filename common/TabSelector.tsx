@@ -18,7 +18,7 @@ export function TabSelector({
   const selected = tab === value;
   return (
     <Button
-      className="flex flex-row items-center h-11 px-8 justify-center gap-1"
+      className="flex flex-row items-center h-11 px-4 justify-center gap-1"
       style={selected ? {
         borderStyle: 'solid',
         borderBottomWidth: 2,
