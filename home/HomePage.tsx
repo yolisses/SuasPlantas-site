@@ -17,25 +17,25 @@ interface HomePageProps {
 
 export const HomePage = observer(({ data }: HomePageProps) => {
   const [items, setItems] = useState(data?.content || []);
-  const [lastData, setLastData] = useState(data || {});
+  const [pageData, setPageData] = useState(data?.pageData || {});
   const [loading, setLoading] = useState(false);
 
   async function fetchItems() {
     setLoading(true);
     const res = await api.get('plants', {
       params: {
-        page: lastData.nextPage,
+        page: pageData.nextPage,
         ...filterStore.query,
       },
     });
-    setLastData(res.data);
+    setPageData(res.data.pageData);
     setItems((items:Plant[]) => items.concat(res.data.content));
     setLoading(false);
   }
 
   function refresh() {
     setItems([]);
-    setLastData({ });
+    setPageData({ });
     fetchItems();
   }
 
@@ -54,7 +54,7 @@ export const HomePage = observer(({ data }: HomePageProps) => {
       <InfiniteScroll
         next={fetchItems}
         dataLength={items.length}
-        hasMore={!!lastData.nextPage}
+        hasMore={!!pageData.nextPage}
         scrollThreshold={0.8}
         loader={(<div />)}
       >
