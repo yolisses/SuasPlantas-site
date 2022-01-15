@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { observer } from 'mobx-react-lite';
+import {
+  FaMap, FaSearch, FaSeedling, FaUser,
+} from 'react-icons/fa';
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
@@ -10,6 +13,7 @@ import { Header } from '../common/Header';
 import { GridItem } from '../common/GridItem';
 import { filterStore } from '../search/filtersStore';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
+import { TabSelector } from '../common/TabSelector';
 
 interface HomePageProps {
   data: any;
@@ -51,6 +55,24 @@ export const HomePage = observer(({ data }: HomePageProps) => {
       </Head>
       <Header />
       {/* {JSON.stringify(filterStore.query)} */}
+      <div className="flex flex-row flex-wrap">
+        <TabSelector>
+          <FaSeedling />
+          Plantas
+        </TabSelector>
+        <TabSelector>
+          <FaSearch />
+          Procurando
+        </TabSelector>
+        <TabSelector>
+          <FaUser />
+          Pessoas
+        </TabSelector>
+        <TabSelector>
+          <FaMap />
+          Mapa
+        </TabSelector>
+      </div>
       <InfiniteScroll
         next={fetchItems}
         dataLength={items.length}

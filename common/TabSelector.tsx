@@ -3,16 +3,16 @@ import { ReactNode } from 'react';
 
 interface TabSelectorProps{
     children:ReactNode,
-    value:string
-    tab:string
-    setTab:(tab:string)=>void
+    value?:string
+    tab?:string
+    setTab?:(tab:string)=>void
 }
 
 export function TabSelector({
   children, value, tab, setTab,
 }:TabSelectorProps) {
   function handleClick() {
-    setTab(value);
+    if (setTab) { setTab(value); }
   }
 
   const selected = tab === value;
