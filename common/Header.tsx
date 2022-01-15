@@ -47,7 +47,7 @@ export function Header() {
       {!searching ? (
         <>
           <Link href="/">
-            <a>
+            <a tabIndex={-1}>
               <Button onClick={() => { filterStore.query = {}; }}>
                 <div className="flex flex-row items-center gap-1">
                   <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
