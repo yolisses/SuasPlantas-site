@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { Button, Link } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import {
-  FaRegUser,
   FaSearch,
+  FaRegUser,
   FaSeedling,
   FaThumbsUp,
 } from 'react-icons/fa';
