@@ -137,7 +137,7 @@ export function UserPage({ user }: UserPageProps) {
   );
 }
 
-interface ItemsDrawerProps{ items:any[] }
+interface ItemsDrawerProps{ items:any[]; withoutItemsMessage:string }
 
 function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
