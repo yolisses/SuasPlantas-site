@@ -12,7 +12,7 @@ export function TabSelector({
   children, value, tab, setTab,
 }:TabSelectorProps) {
   function handleClick() {
-    if (setTab) { setTab(value); }
+    if (setTab && value) { setTab(value); }
   }
 
   const selected = tab === value;
