@@ -51,7 +51,7 @@ export const HomePage = observer(({ data }: HomePageProps) => {
         />
       </Head>
       {/* {JSON.stringify(filterStore.query)} */}
-      <TopTabs tab="plants" />
+      {/* <TopTabs tab="plants" /> */}
       <InfiniteScroll
         next={fetchItems}
         dataLength={items.length}
