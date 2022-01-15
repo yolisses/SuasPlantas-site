@@ -1,24 +1,24 @@
 import Image from 'next/image';
 import { Button, Link } from '@mui/material';
+import { ReactNode, useEffect, useState } from 'react';
 import {
-  FaRegUser, FaSearch, FaSeedling, FaThumbsUp,
+  FaRegUser,
+  FaSearch,
+  FaSeedling,
+  FaThumbsUp,
 } from 'react-icons/fa';
-import {
-  ReactElement, ReactNode, useEffect, useState,
-} from 'react';
 import Head from 'next/head';
 import { User } from './User';
+import { api } from '../api/api';
+import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
 import { authStore } from '../auth/authStore';
-import { userImage } from '../images/user';
-import { WhatsappButton } from '../contact/WhatsappButton';
-import { InstagramButton } from '../contact/InstagramButton';
-import { Header } from '../common/Header';
-import { api } from '../api/api';
+import { TextLink } from '../common/TextLink';
 import { hasContact } from '../utils/hasContact';
 import { isSelfUser } from '../utils/isSelfUser';
-import { TextLink } from '../common/TextLink';
 import { TabSelector } from '../common/TabSelector';
+import { WhatsappButton } from '../contact/WhatsappButton';
+import { InstagramButton } from '../contact/InstagramButton';
 import { LookingForItem } from '../lookingFor/LookingForItem';
 
 interface UserPageProps {
@@ -46,7 +46,6 @@ export function UserPage({ user }: UserPageProps) {
         />
       </Head>
       <div className="flex flex-col items-center w-full">
-        <Header />
         <div className="p-2 flex flex-col gap-4 max-w-5xl w-full items-center">
           <div className="flex flex-row gap-2 items-center pt-4 w-full max-w-4xl">
             <Image

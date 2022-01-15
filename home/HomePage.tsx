@@ -10,11 +10,10 @@ import Link from 'next/link';
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
-import { Header } from '../common/Header';
 import { GridItem } from '../common/GridItem';
+import { TabSelector } from '../common/TabSelector';
 import { filterStore } from '../search/filtersStore';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
-import { TabSelector } from '../common/TabSelector';
 
 interface HomePageProps {
   data: any;
@@ -54,7 +53,6 @@ export const HomePage = observer(({ data }: HomePageProps) => {
           content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
         />
       </Head>
-      <Header />
       {/* {JSON.stringify(filterStore.query)} */}
       <div className="flex flex-row flex-wrap">
         <TabSelector>

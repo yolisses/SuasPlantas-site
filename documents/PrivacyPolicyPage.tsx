@@ -1,11 +1,9 @@
-import { Header } from '../common/Header';
 import { TextLink } from '../common/TextLink';
 import styles from './PrivacyPolicyPage.module.css';
 
 export function PrivacyPolicyPage() {
   return (
     <>
-      <Header />
       <div className="p-4 flex flex-col items-center">
         <div className="max-w-3xl">
           <h1 className={styles.title}>

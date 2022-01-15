@@ -1,5 +1,3 @@
-import { Header } from '../common/Header';
-
 interface ErrorPageProps{
     message:string,
     status:number
@@ -8,7 +6,6 @@ interface ErrorPageProps{
 export function ErrorPage({ message, status, ...coisas }:ErrorPageProps) {
   return (
     <div className="flex h-full w-full fixed">
-      <Header />
       <div>
         {Object.keys(coisas)}
       </div>
