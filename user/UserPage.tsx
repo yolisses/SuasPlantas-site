@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { Button, Link } from '@mui/material';
-import { FaRegUser, FaSeedling, FaThumbsUp } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import {
+  FaRegUser, FaSearch, FaSeedling, FaThumbsUp,
+} from 'react-icons/fa';
+import { ReactNode, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { User } from './User';
 import { GridItem } from '../common/GridItem';
@@ -21,7 +23,7 @@ interface UserPageProps {
 }
 
 export function UserPage({ user }: UserPageProps) {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState('plants');
 
   async function refreshUser() {
     const res = await api.get(`users/${authStore.user?.id}`);
@@ -95,47 +97,76 @@ export function UserPage({ user }: UserPageProps) {
           </div>
           )}
           <div className="flex flex-row justify-center items-center">
-            <TabSelector index={0} tab={tab} setTab={setTab}>
+            <TabSelector value="plants" tab={tab} setTab={setTab}>
               <FaSeedling />
               Plantas
             </TabSelector>
-            <TabSelector index={1} tab={tab} setTab={setTab}>
+            <TabSelector value="likes" tab={tab} setTab={setTab}>
               <FaThumbsUp />
               Curtidas
             </TabSelector>
+            <TabSelector value="lookingFors" tab={tab} setTab={setTab}>
+              <FaSearch />
+              Procurando
+            </TabSelector>
           </div>
-          <div
-            className="grid gap-2 grid-cols-2 md:grid-cols-5"
-            style={{ display: tab !== 0 ? 'none' : undefined }}
-          >
-            { user.plants?.map((plant) => (
-              <GridItem item={plant} key={plant.id} />
-            ))}
-            {
-          !user.plants?.length && (
-            <div className="text-gray-600">
-              Sem nenhuma planta por enquanto
-            </div>
-          )
-        }
-          </div>
-          <div
-            className="grid gap-2 grid-cols-2 md:grid-cols-5"
-            style={{ display: tab !== 1 ? 'none' : undefined }}
-          >
-            { user.likedPlants?.map((plant) => (
-              <GridItem item={plant} key={plant.id} />
-            ))}
-            {
-          !user.likedPlants?.length && (
-            <div className="text-gray-600">
-              Sem nenhuma curtida por enquanto
-            </div>
-          )
-        }
-          </div>
+          <ItemsDrawer
+            tab="plants"
+            currentTab={tab}
+            withoutResultsMessage="Nenhuma planta por enquanto"
+            items={user.plants}
+          />
+          <ItemsDrawer
+            tab="likes"
+            currentTab={tab}
+            withoutResultsMessage="Nenhuma curtida por enquanto"
+            items={user.likedPlants}
+          />
+          <ItemsDrawer
+            tab="lookingFors"
+            currentTab={tab}
+            withoutResultsMessage="Nenhum procurando por enquanto"
+            items={user.lookingFors}
+            component={(item: LookingFor) => (<div>{ item.name}</div>)}
+          />
         </div>
       </div>
     </>
+  );
+}
+
+interface ItemsDrawerProps{
+  tab:string
+  currentTab:string
+  withoutResultsMessage:string
+  items:any[]
+  component?:(item:any, index:number, array:any[])=>ReactNode
+}
+
+function ItemsDrawer({
+  tab, currentTab, withoutResultsMessage, items, component,
+}:ItemsDrawerProps) {
+  if (items && items.length) {
+    return (
+      <div
+        className="grid gap-2 grid-cols-2 md:grid-cols-5"
+        style={{ display: tab !== currentTab ? 'none' : undefined }}
+      >
+        { items.map(
+          component || ((item) => (
+            <GridItem item={item} key={item.id} />
+          )),
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="text-gray-600 p-10"
+      style={{ display: tab !== currentTab ? 'none' : undefined }}
+    >
+      {withoutResultsMessage}
+    </div>
   );
 }

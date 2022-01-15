@@ -3,19 +3,19 @@ import { ReactNode } from 'react';
 
 interface TabSelectorProps{
     children:ReactNode,
-    index:number
-    tab:number
-    setTab:(tab:number)=>void
+    value:string
+    tab:string
+    setTab:(tab:string)=>void
 }
 
 export function TabSelector({
-  children, index, tab, setTab,
+  children, value, tab, setTab,
 }:TabSelectorProps) {
   function handleClick() {
-    setTab(index);
+    setTab(value);
   }
 
-  const selected = tab === index;
+  const selected = tab === value;
   return (
     <Button
       className="flex flex-row items-center h-11 px-8 justify-center gap-1"

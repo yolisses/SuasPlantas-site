@@ -1,3 +1,4 @@
+import { LookingFor } from '../lookingFor/LookingFor';
 import { Plant } from '../plant/Plant';
 
 export type UserId = number;
@@ -20,4 +21,5 @@ export interface User {
     likedPlants: Plant[];
     createdAt: string;
     updatedAt: string;
+    lookingFors: LookingFor[]
 }
