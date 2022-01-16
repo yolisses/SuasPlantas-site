@@ -1,35 +1,29 @@
 import { IconButton } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
 import { FaSearch } from 'react-icons/fa';
-import { filterStore } from './filtersStore';
+import { useState } from 'react';
+import { useFilters } from './FiltersContext';
 
 export function SearchField() {
-  const {
-    register, handleSubmit,
-  } = useForm({
-    defaultValues: {
-      text: filterStore.query?.text,
-    },
-  });
-  const router = useRouter();
+  const { filters, setFilters } = useFilters();
+  const [text, setText] = useState(filters?.text);
 
-  function submit(data:any) {
-    router.push('/');
-    filterStore.query = { ...filterStore.query, ...data };
+  function submit(e) {
+    e.preventDefault();
+    setFilters((filters) => ({ ...filters, text: text || undefined }));
   }
 
   return (
     <form
-      onSubmit={handleSubmit(submit)}
+      onSubmit={submit}
       className="max-w-md bg-white rounded-full text-black h-9 flex flex-row items-center overflow-hidden w-full flex-1 pl-3"
     >
       <input
         type="text"
+        value={text}
         className="w-full outline-none"
-        {...register('text')}
+        onChange={(e) => setText(e.target.value)}
       />
-      <IconButton onClick={handleSubmit(submit)} className="h-9">
+      <IconButton type="submit" className="h-9">
         <FaSearch size={20} color="#999" />
       </IconButton>
     </form>

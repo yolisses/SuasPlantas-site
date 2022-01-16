@@ -8,8 +8,8 @@ import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
-import { filterStore } from '../search/filtersStore';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
+import { useFilters } from '../search/FiltersContext';
 
 interface HomePageProps {
   data: any;
@@ -19,13 +19,14 @@ export const HomePage = observer(({ data }: HomePageProps) => {
   const [items, setItems] = useState(data?.content || []);
   const [pageData, setPageData] = useState(data?.pageData || {});
   const [loading, setLoading] = useState(false);
+  const { filters } = useFilters();
 
   async function fetchItems() {
     setLoading(true);
     const res = await api.get('plants', {
       params: {
         page: pageData.nextPage,
-        ...filterStore.query,
+        ...filters,
       },
     });
     setPageData(res.data.pageData);
@@ -39,7 +40,7 @@ export const HomePage = observer(({ data }: HomePageProps) => {
     fetchItems();
   }
 
-  useEffect(() => { if (filterStore.query)refresh(); }, [filterStore.query]);
+  useEffect(() => { if (filters)refresh(); }, [filters]);
 
   return (
     <>
@@ -64,12 +65,7 @@ export const HomePage = observer(({ data }: HomePageProps) => {
           ))}
         </div>
       </InfiniteScroll>
-      {!!(
-        !loading
-          && !items.length
-          && filterStore.query
-          && Object.keys(filterStore.query).length)
-      && (
+      { (!loading && !items.length) && (
       <div className="flex flex-col items-center pt-20">
         <WithoutResultsWarn />
       </div>

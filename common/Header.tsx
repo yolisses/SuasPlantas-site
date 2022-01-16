@@ -24,7 +24,7 @@ import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
 import { SearchField } from '../search/SearchField';
 import { RequireLogin } from '../auth/RequireLogin';
-import { filterStore } from '../search/filtersStore';
+import { useFilters } from '../search/FiltersContext';
 
 function Space() {
   return <div className="pl-2" />;
@@ -41,6 +41,7 @@ export function Header() {
   };
 
   const [searching, setSearching] = useState(false);
+  const { setFilters } = useFilters();
 
   return (
     <HeaderLayout className="bg-emerald-700 text-white shadow-md">
@@ -48,7 +49,7 @@ export function Header() {
         <>
           <Link href="/">
             <a tabIndex={-1}>
-              <Button onClick={() => { filterStore.query = {}; }}>
+              <Button onClick={() => { setFilters({}); }}>
                 <div className="flex flex-row items-center gap-1">
                   <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
                 </div>

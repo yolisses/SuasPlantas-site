@@ -15,6 +15,7 @@ import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { ModalView } from '../modal/ModalView';
 import { NotificationTags } from '../notifications/NotificationTags';
 import { Header } from '../common/Header';
+import { FiltersContextProvider } from '../search/FiltersContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -29,8 +30,10 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <MuiFontsTags />
       <GoogleAnalyticsTags />
       <NotificationTags />
-      <Header />
-      <Component {...pageProps} />
+      <FiltersContextProvider>
+        <Header />
+        <Component {...pageProps} />
+      </FiltersContextProvider>
       <SnackView />
       <ModalView />
     </ThemeProvider>
