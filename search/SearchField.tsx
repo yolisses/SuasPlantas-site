@@ -1,13 +1,13 @@
 import { IconButton } from '@mui/material';
 import { FaSearch } from 'react-icons/fa';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useFilters } from './FiltersContext';
 
 export function SearchField() {
   const { filters, setFilters } = useFilters();
   const [text, setText] = useState(filters?.text);
 
-  function submit(e) {
+  function submit(e:FormEvent) {
     e.preventDefault();
     setFilters((filters) => ({ ...filters, text: text || undefined }));
   }

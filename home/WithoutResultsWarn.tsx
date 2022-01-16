@@ -16,7 +16,7 @@ export function WithoutResultsWarn() {
           ? 'Verifique a ortografia, altere os filtros ou tente usar um termo de pesquisa menos específico.'
           : 'Você pode tentar mudar os filtros de pesquisa.'}
       </div>
-      <Button onClick={() => { setFilters(); }}>Página inicial</Button>
+      <Button onClick={() => { setFilters(undefined); }}>Página inicial</Button>
     </div>
   );
 }
