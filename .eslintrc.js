@@ -25,7 +25,6 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
-    'unused-imports',
   ],
   rules: {
     'import/prefer-default-export': 'off',
@@ -47,11 +46,6 @@ module.exports = {
     'no-empty-function': 'warn',
     'no-shadow': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
-    ]
+    "no-unused-vars": "warn",
   },
 };
