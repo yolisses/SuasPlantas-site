@@ -5,7 +5,8 @@ import { UserPage } from '../../user/UserPage';
 export default UserPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const res = await api.get(`users/${params!.id}`);
+  const { id } = params!;
+  const res = await api.get(`users/${id}`);
   return {
     props: { user: res.data },
   };

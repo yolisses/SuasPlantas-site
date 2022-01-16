@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Fab } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
 
+import { useEffect, useRef } from 'react';
 import { tagEmoji } from './tags';
 import { Plant } from './Plant';
 import { LikeButton } from './LikeButton';
@@ -45,6 +46,11 @@ export function PlantPage({ data }:PlantPageProps) {
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   const multipleImages = data.images.length > 1;
+  const carousel = useRef();
+
+  useEffect(() => {
+    if (carousel && carousel.current) { carousel.current?.moveTo(0); }
+  }, [data.images]);
 
   return (
     <>
@@ -65,6 +71,7 @@ export function PlantPage({ data }:PlantPageProps) {
               <Carousel
                 emulateTouch
                 showStatus={false}
+                ref={carousel as any}
                 showIndicators={false}
                 showArrows={multipleImages}
                 showThumbs={multipleImages}

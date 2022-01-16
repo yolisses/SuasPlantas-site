@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
 import { loginBefore } from '../auth/loginBefore';
@@ -22,6 +22,10 @@ export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
       await api.delete(url);
     }
   }
+
+  useEffect(() => {
+    setIsActive(!!active);
+  }, [active]);
 
   return (
     <Button
