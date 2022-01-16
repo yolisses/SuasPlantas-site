@@ -46,10 +46,12 @@ export function PlantPage({ data }:PlantPageProps) {
   const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   const multipleImages = data.images.length > 1;
-  const carousel = useRef();
+  const carousel = useRef<Carousel>();
 
   useEffect(() => {
-    if (carousel && carousel.current) { carousel.current?.moveTo(0); }
+    if (carousel && carousel.current) {
+      carousel.current.moveTo(0);
+    }
   }, [data.images]);
 
   return (
