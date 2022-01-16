@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CardActionArea, Grid } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 import { Plant } from '../plant/Plant';
 import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 

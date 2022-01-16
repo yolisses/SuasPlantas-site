@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
-import { GoBackButton } from './GoBackButton';
 
 interface HeaderLayoutProps {
-  goBackButton?: boolean;
   className?: string;
   children?: ReactNode;
 }
@@ -10,7 +8,6 @@ interface HeaderLayoutProps {
 export function HeaderLayout({
   children,
   className,
-  goBackButton = true,
 }: HeaderLayoutProps) {
   return (
     <>
@@ -20,7 +17,6 @@ export function HeaderLayout({
             className || ''}`
         }
       >
-        {goBackButton && <GoBackButton />}
         {children}
       </div>
       <div className="h-12" />

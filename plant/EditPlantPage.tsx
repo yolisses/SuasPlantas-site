@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import {
+  Button,
   Checkbox,
   FormLabel,
   FormGroup,
@@ -17,7 +17,6 @@ import Router from 'next/router';
 import { api } from '../api/api';
 import { Plant } from './Plant';
 import { tagEmoji, tags } from './tags';
-import { Header } from '../common/Header';
 import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
 import { imagesToSendings } from '../images/imagesToSendings';

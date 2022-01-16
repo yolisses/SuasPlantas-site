@@ -17,7 +17,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 
-import { useRouter } from 'next/router';
 import { logOut } from '../user/logOut';
 import { userImage } from '../images/user';
 import { MeButton } from '../user/MeButton';
@@ -26,14 +25,12 @@ import { HeaderLayout } from './HeaderLayout';
 import { SearchField } from '../search/SearchField';
 import { RequireLogin } from '../auth/RequireLogin';
 import { filterStore } from '../search/filtersStore';
-import { disableHeader } from './disableHeader';
 
 function Space() {
   return <div className="pl-2" />;
 }
 
 export function Header() {
-  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event:any) => {
@@ -45,10 +42,8 @@ export function Header() {
 
   const [searching, setSearching] = useState(false);
 
-  if (router.pathname in disableHeader) return null;
-
   return (
-    <HeaderLayout className="bg-emerald-700 text-white shadow-md" goBackButton={false}>
+    <HeaderLayout className="bg-emerald-700 text-white shadow-md">
       {!searching ? (
         <>
           <Link href="/">

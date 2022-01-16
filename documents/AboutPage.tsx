@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Header } from '../common/Header';
 import { TextLink } from '../common/TextLink';
 
 export function AboutPage() {

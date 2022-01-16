@@ -1,4 +1,4 @@
-import { Button, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import Router from 'next/router';
 import { FaChevronLeft } from 'react-icons/fa';
 

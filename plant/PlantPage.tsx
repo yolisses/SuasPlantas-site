@@ -9,7 +9,6 @@ import { FaPen } from 'react-icons/fa';
 
 import { tagEmoji } from './tags';
 import { Plant } from './Plant';
-import { Header } from '../common/Header';
 import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { GridItem } from '../common/GridItem';

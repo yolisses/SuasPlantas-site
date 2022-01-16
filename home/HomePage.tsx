@@ -1,8 +1,8 @@
 import Head from 'next/head';
+import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { observer } from 'mobx-react-lite';
 
 import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
@@ -10,7 +10,6 @@ import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
 import { filterStore } from '../search/filtersStore';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
-import { TopTabs } from '../common/TopTabs';
 
 interface HomePageProps {
   data: any;
