@@ -1,15 +1,18 @@
 import { IconButton } from '@mui/material';
 import { FaSearch } from 'react-icons/fa';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useFilters } from './FiltersContext';
 
 export function SearchField() {
   const { filters, setFilters } = useFilters();
   const [text, setText] = useState(filters?.text);
+  const router = useRouter();
 
   function submit(e:FormEvent) {
     e.preventDefault();
     setFilters((filters) => ({ ...filters, text: text || undefined }));
+    router.push('/');
   }
 
   return (
