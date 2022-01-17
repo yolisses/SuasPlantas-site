@@ -26,7 +26,7 @@ export const HomePage = observer(() => {
           content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
         />
       </Head>
-      <div className="flex flex-row ">
+      <div className="flex flex-row">
         {/* <TopTabs tab="plants" /> */}
       </div>
       <InfiniteScroll

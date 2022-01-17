@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import { IconType } from 'react-icons';
-import { FaInstagram } from 'react-icons/fa';
 
 interface ContactButtonProps{
     href:string
