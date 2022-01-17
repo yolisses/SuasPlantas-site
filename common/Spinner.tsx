@@ -8,7 +8,7 @@ interface SpinnerProps {
 }
 
 export function Spinner({
-  radius = 20, stroke = 4, color = '#16A34A', ...rest
+  radius = 40, stroke = 3.8, color = '#16A34A', ...rest
 }:SpinnerProps) {
   return <SpinnerMaterial visible radius={radius} stroke={stroke} color={color} {...rest} />;
 }

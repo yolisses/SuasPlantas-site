@@ -1,9 +1,9 @@
+import { Spinner } from '../common/Spinner';
+
 export function DevPage() {
   return (
-    <div>
-      <button
-        className="icon-button"
-      />
+    <div className="flex flex-row">
+      <Spinner />
     </div>
   );
 }
