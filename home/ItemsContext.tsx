@@ -1,19 +1,40 @@
 import {
-  createContext, ReactNode, useContext, useEffect, useState,
+  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
+import { Plant } from '../plant/Plant';
 
-  interface Items{
-      text?:string
-      swap?:boolean
-      sell?:boolean
-  }
+interface Filters{
+  text?:string
+  swap?:boolean
+  sell?:boolean
+}
 
-export const itemsContext = createContext();
+interface PageData{
+  page:number
+  nextPage:number|null
+  totalCount:number
+  totalPages:number
+}
+
+interface IItemsContext{
+  items:Plant[]
+  loading?:boolean
+  filters?:Filters
+  pageData?:PageData
+  setItems: Dispatch<SetStateAction<Plant[]>>
+  setLoading: Dispatch<SetStateAction<boolean>>
+  setFilters: Dispatch<SetStateAction<Filters|undefined>>
+  setPageData: Dispatch<SetStateAction<PageData|undefined>>
+  loadMore:()=>void
+  reset:()=>void
+}
+
+export const itemsContext = createContext({} as IItemsContext);
 
 export function ItemsContextProvider({ children }:{children:ReactNode}) {
-  const [items, setItems] = useState([]);
-  const [pageData, setPageData] = useState();
+  const [items, setItems] = useState<Plant[]>([]);
+  const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
 
@@ -32,9 +53,9 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
     setLoading(false);
   }
 
-  async function reset() {
+  function reset() {
     setItems([]);
-    setPageData();
+    setPageData(undefined);
   }
 
   useEffect(() => {
@@ -48,17 +69,18 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
   }, [pageData]);
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <itemsContext.Provider value={{
-      filters,
-      setFilters,
       items,
+      reset,
+      filters,
+      loading,
       setItems,
       pageData,
-      setPageData,
-      loading,
-      setLoading,
       loadMore,
-      reset,
+      setFilters,
+      setLoading,
+      setPageData,
     }}
     >
       {children}

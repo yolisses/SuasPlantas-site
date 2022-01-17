@@ -31,12 +31,13 @@ export const HomePage = observer(() => {
         hasMore={!!pageData?.nextPage}
         scrollThreshold={0.8}
         loader={(<div />)}
-      />
-      <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
-        {!!items && items.map((item: Plant) => (
-          <GridItem key={item.id} item={item} size={300} />
-        ))}
-      </div>
+      >
+        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+          {!!items && items.map((item: Plant) => (
+            <GridItem key={item.id} item={item} size={300} />
+          ))}
+        </div>
+      </InfiniteScroll>
       { loading && (
       <div className="flex flex-col items-center pt-20 pb-10">
         <CircularProgress />
