@@ -4,7 +4,8 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { Button, CircularProgress, IconButton } from '@mui/material';
+import Spinner from 'react-spinner-material';
+import { Button, IconButton } from '@mui/material';
 
 import { Feature } from './Feature';
 import { authStore } from '../auth/authStore';
@@ -129,7 +130,7 @@ export function LocationField({ text }:LocationFieldProps) {
               onClick={submit}
               className="h-12 flex-1 sm:flex-none px-5 flex flex-row gap-1"
             >
-              {loading && <CircularProgress size={20} />}
+              {loading && <Spinner stroke={4} color="#16A34A" />}
               Salvar
             </Button>
           </div>

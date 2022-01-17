@@ -11,9 +11,9 @@ import {
   FormHelperText,
   InputAdornment,
   FormControlLabel,
-  CircularProgress,
 } from '@mui/material';
 import Router from 'next/router';
+import Spinner from 'react-spinner-material';
 import { api } from '../api/api';
 import { Plant } from './Plant';
 import { tagEmoji, tags } from './tags';
@@ -229,7 +229,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
           <Button variant="contained" className="h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
-            {loading && <CircularProgress size={20} className="mr-2" />}
+            {loading && <Spinner stroke={4} color="#16A34A" /> }
             {edit ? 'Salvar' : 'Adicionar'}
           </Button>
           {edit && (

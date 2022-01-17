@@ -1,5 +1,6 @@
-import { Button, CircularProgress } from '@mui/material';
+import { Button } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
+import Spinner from 'react-spinner-material';
 import { delay } from '../utils/delay';
 import { generateRandomColors } from '../utils/generateRandomColors';
 
@@ -91,7 +92,7 @@ export function DevPage() {
       {JSON.stringify(pageData)}
       <Button onClick={reset}>Reset</Button>
       <Button onClick={loadMore} disabled={!hasMore}>Load more</Button>
-      {loading && <CircularProgress />}
+      {loading && <Spinner />}
       {!!(items && !items.length) && (<div>Nenhum resultado encontrado</div>)}
       <div className="flex flex-col flex-wrap">
         {!!items && items?.map((item, index) => (
@@ -103,7 +104,7 @@ export function DevPage() {
         ))}
       </div>
       <Observer callback={loadMore} loading={loading} />
-      {loading && <CircularProgress />}
+      {loading && <Spinner stroke={4} color="#16A34A" />}
     </div>
   );
 }

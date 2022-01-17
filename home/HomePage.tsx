@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { observer } from 'mobx-react-lite';
-import { CircularProgress } from '@mui/material';
+import Spinner from 'react-spinner-material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Plant } from '../plant/Plant';
@@ -43,7 +43,7 @@ export const HomePage = observer(() => {
       </InfiniteScroll>
       { loading && (
       <div className="flex flex-col items-center pt-20 pb-10">
-        <CircularProgress />
+        <Spinner stroke={4} color="#16A34A" />
       </div>
       )}
       { (!loading && !!items && !items?.length) && (

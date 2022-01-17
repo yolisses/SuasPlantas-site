@@ -1,5 +1,5 @@
 import {
-  Button, CircularProgress, IconContainerProps, Link, Rating, TextField,
+  Button, IconContainerProps, Link, Rating, TextField,
 } from '@mui/material';
 import { FaCheck, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { RiFacebookCircleLine } from 'react-icons/ri';
@@ -13,6 +13,7 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { SvgIconComponent } from '@material-ui/icons';
+import { Spinner } from 'react-spinner-material';
 import { authStore } from '../auth/authStore';
 import { api } from '../api/api';
 import { snackStore } from '../snack/snackStore';
@@ -154,7 +155,7 @@ export function ContactPage() {
                 className="flex flex-row items-center gap-1"
                 disabled={loading || (!watch('message') && !watch('rating'))}
               >
-                { loading && <CircularProgress size={20} />}
+                { loading && <Spinner stroke={4} color="#16A34A" />}
                 Enviar!
               </Button>
             )}

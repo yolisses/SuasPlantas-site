@@ -3,8 +3,8 @@ import {
   TextField,
   FormHelperText,
   InputAdornment,
-  CircularProgress,
 } from '@mui/material';
+import Spinner from 'react-spinner-material';
 import Router from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -120,7 +120,7 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
           Essas informações ficam visíveis para as outras pessoas
         </FormHelperText>
         <Button variant="contained" onClick={handleSubmit(submit)} disabled={loading} className="h-11 flex gap-2">
-          {loading && <CircularProgress size={20} />}
+          {loading && <Spinner stroke={4} color="#16A34A" />}
           Salvar
         </Button>
       </div>
