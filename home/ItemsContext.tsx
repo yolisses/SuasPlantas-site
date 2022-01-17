@@ -18,12 +18,12 @@ interface PageData{
 }
 
 interface IItemsContext{
-  items:Plant[]
-  loading?:boolean
+  items?:Plant[]
+  loading:boolean
   filters?:Filters
   pageData?:PageData
-  setItems: Dispatch<SetStateAction<Plant[]>>
   setLoading: Dispatch<SetStateAction<boolean>>
+  setItems: Dispatch<SetStateAction<Plant[]|undefined>>
   setFilters: Dispatch<SetStateAction<Filters|undefined>>
   setPageData: Dispatch<SetStateAction<PageData|undefined>>
   loadMore:()=>void
@@ -33,7 +33,7 @@ interface IItemsContext{
 export const itemsContext = createContext({} as IItemsContext);
 
 export function ItemsContextProvider({ children }:{children:ReactNode}) {
-  const [items, setItems] = useState<Plant[]>([]);
+  const [items, setItems] = useState<Plant[]>();
   const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
@@ -49,7 +49,7 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
       },
     });
     setPageData(res.data.pageData);
-    setItems((items:Plant[]) => items.concat(res.data.content));
+    setItems((items?:Plant[]) => (items || []).concat(res.data.content));
     setLoading(false);
   }
 

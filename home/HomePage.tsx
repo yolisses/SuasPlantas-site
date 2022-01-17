@@ -43,7 +43,7 @@ export const HomePage = observer(() => {
         <CircularProgress />
       </div>
       )}
-      { (!loading && !items?.length) && (
+      { (!loading && !!items && !items?.length) && (
       <div className="flex flex-col items-center pt-20">
         <WithoutResultsWarn />
       </div>
