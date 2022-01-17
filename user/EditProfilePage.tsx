@@ -4,7 +4,6 @@ import {
   FormHelperText,
   InputAdornment,
 } from '@mui/material';
-import Spinner from 'react-spinner-material';
 import Router from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -17,6 +16,7 @@ import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
 import { User } from './User';
 import { LocationField } from '../location/LocationField';
+import { Spinner } from '../common/Spinner';
 
 export const EditProfilePage = observer(({ user }:{user:User}) => {
   const { register, handleSubmit, watch } = useForm({
@@ -120,7 +120,7 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
           Essas informações ficam visíveis para as outras pessoas
         </FormHelperText>
         <Button variant="contained" onClick={handleSubmit(submit)} disabled={loading} className="h-11 flex gap-2">
-          {loading && <Spinner stroke={4} color="#16A34A" />}
+          {loading && <Spinner />}
           Salvar
         </Button>
       </div>

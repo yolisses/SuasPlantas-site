@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Button, FormLabel } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
-import Spinner from 'react-spinner-material';
 import Image from 'next/image';
 import { api } from '../api/api';
 import { userImage } from '../images/user';
@@ -9,6 +8,7 @@ import { Sending } from '../upload/Sending';
 import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 import { useRefresh } from '../utils/useRefresh';
+import { Spinner } from '../common/Spinner';
 
 export function EditProfileImage() {
   const imageSize = 80;
@@ -58,7 +58,7 @@ export function EditProfileImage() {
             hidden
           />
           <Button disabled={loading} component="span" className="flex flex-row items-center gap-1">
-            {loading && <Spinner stroke={4} color="#16A34A" />}
+            {loading && <Spinner />}
             Alterar foto
           </Button>
         </label>

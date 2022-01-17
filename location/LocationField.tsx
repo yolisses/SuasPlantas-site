@@ -4,7 +4,6 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import Spinner from 'react-spinner-material';
 import { Button, IconButton } from '@mui/material';
 
 import { Feature } from './Feature';
@@ -13,6 +12,7 @@ import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 import { api } from '../api/api';
 import { snackStore } from '../snack/snackStore';
+import { Spinner } from '../common/Spinner';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -130,7 +130,7 @@ export function LocationField({ text }:LocationFieldProps) {
               onClick={submit}
               className="h-12 flex-1 sm:flex-none px-5 flex flex-row gap-1"
             >
-              {loading && <Spinner stroke={4} color="#16A34A" />}
+              {loading && <Spinner />}
               Salvar
             </Button>
           </div>

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { observer } from 'mobx-react-lite';
-import Spinner from 'react-spinner-material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Plant } from '../plant/Plant';
@@ -8,6 +7,7 @@ import { AddButton } from './AddButton';
 import { useItems } from './ItemsContext';
 import { GridItem } from '../common/GridItem';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
+import { Spinner } from '../common/Spinner';
 
 export const HomePage = observer(() => {
   const {
@@ -43,7 +43,7 @@ export const HomePage = observer(() => {
       </InfiniteScroll>
       { loading && (
       <div className="flex flex-col items-center pt-20 pb-10">
-        <Spinner stroke={4} color="#16A34A" />
+        <Spinner />
       </div>
       )}
       { (!loading && !!items && !items?.length) && (

@@ -13,7 +13,6 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import Router from 'next/router';
-import Spinner from 'react-spinner-material';
 import { api } from '../api/api';
 import { Plant } from './Plant';
 import { tagEmoji, tags } from './tags';
@@ -21,6 +20,7 @@ import { Sending } from '../upload/Sending';
 import { snackStore } from '../snack/snackStore';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { Spinner } from '../common/Spinner';
 
 interface EditPlantProps{
   edit?:boolean
@@ -229,7 +229,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
           <Button variant="contained" className="h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
-            {loading && <Spinner stroke={4} color="#16A34A" /> }
+            {loading && <Spinner /> }
             {edit ? 'Salvar' : 'Adicionar'}
           </Button>
           {edit && (

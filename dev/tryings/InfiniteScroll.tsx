@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import Spinner from 'react-spinner-material';
+import { Spinner } from '../../common/Spinner';
 import { delay } from '../utils/delay';
 import { generateRandomColors } from '../utils/generateRandomColors';
 
@@ -104,7 +104,7 @@ export function DevPage() {
         ))}
       </div>
       <Observer callback={loadMore} loading={loading} />
-      {loading && <Spinner stroke={4} color="#16A34A" />}
+      {loading && <Spinner />}
     </div>
   );
 }
