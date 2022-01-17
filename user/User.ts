@@ -1,4 +1,4 @@
-import { LookingFor } from '../lookingFor/LookingFor';
+import { Quest } from '../quest/Quest';
 import { Plant } from '../plant/Plant';
 
 export type UserId = number;
@@ -21,5 +21,5 @@ export interface User {
     likedPlants: Plant[];
     createdAt: string;
     updatedAt: string;
-    lookingFors: LookingFor[]
+    quests: Quest[]
 }

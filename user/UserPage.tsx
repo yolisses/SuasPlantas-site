@@ -19,7 +19,7 @@ import { isSelfUser } from '../utils/isSelfUser';
 import { TabSelector } from '../common/TabSelector';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
-import { LookingForItem } from '../lookingFor/LookingForItem';
+import { QuestItem } from '../quest/QuestItem';
 
 interface UserPageProps {
   user: User;
@@ -103,7 +103,7 @@ export function UserPage({ user }: UserPageProps) {
               <FaSeedling />
               Plantas
             </TabSelector>
-            <TabSelector value="lookingFors" tab={tab} setTab={setTab}>
+            <TabSelector value="quests" tab={tab} setTab={setTab}>
               <FaSearch />
               Procurando
             </TabSelector>
@@ -124,9 +124,9 @@ export function UserPage({ user }: UserPageProps) {
               withoutItemsMessage="Nenhuma curtida por enquanto"
             />
           </Tab>
-          <Tab tab="lookingFors" currentTab={tab}>
-            <LookingForsDrawert
-              items={user.lookingFors}
+          <Tab tab="quests" currentTab={tab}>
+            <QuestsDrawert
+              items={user.quests}
               withoutItemsMessage="Nenhum procurando por enquanto"
             />
           </Tab>
@@ -157,14 +157,14 @@ function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
   );
 }
 
-function LookingForsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
+function QuestsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div
         className="flex flex-row flex-wrap gap-2"
       >
         { items.map((item) => (
-          <LookingForItem item={item} key={item.id} />
+          <QuestItem item={item} key={item.id} />
         ))}
       </div>
     );

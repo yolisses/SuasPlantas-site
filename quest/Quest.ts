@@ -1,6 +1,6 @@
 import { User, UserId } from '../user/User';
 
-export interface LookingFor{
+export interface Quest{
     id:number
     name:string
     user:User

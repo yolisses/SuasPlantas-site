@@ -1,3 +1,3 @@
-import { LookingForPage } from '../../lookingFor/LookingForPage';
+import { QuestPage } from '../../quest/QuestPage';
 
-export default LookingForPage;
+export default QuestPage;
