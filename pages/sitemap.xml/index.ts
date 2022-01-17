@@ -30,6 +30,14 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
     priority: 0.9,
     lastmod: plant.updatedAt,
   }));
+
+  links.push({
+    url: '/',
+    changefreq: 'daily',
+    priority: 1,
+    lastmod: new Date().toISOString(),
+  });
+
   const result = await getSitemapXml(links);
 
   res.setHeader('Content-Type', 'text/xml');
