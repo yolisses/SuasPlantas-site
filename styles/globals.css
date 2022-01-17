@@ -15,6 +15,10 @@ body {
 }
 
 @layer components {
+  button {
+    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 focus:bg-black focus:bg-opacity-10 active:bg-black active:bg-opacity-20 flex items-center justify-center text-left;
+  }
+
   .icon-button {
     @apply aspect-square rounded-full cursor-pointer hover:bg-black active:bg-black hover:bg-opacity-10 active:bg-opacity-20 flex items-center justify-center p-3 active:transform active:scale-95;
   }

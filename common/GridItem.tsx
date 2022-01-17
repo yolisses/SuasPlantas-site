@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { CardActionArea } from '@mui/material';
+import Image from 'next/image';
 import { Plant } from '../plant/Plant';
 import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 
@@ -19,7 +18,7 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
   return (
     <Link href={`/plants/${item.id}`}>
       <a tabIndex={-1}>
-        <CardActionArea className="rounded-xl">
+        <button className="rounded-xl">
           <div className="flex flex-col">
             <Image
               src={card}
@@ -42,7 +41,7 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
               )}
             </div>
           </div>
-        </CardActionArea>
+        </button>
       </a>
     </Link>
   );

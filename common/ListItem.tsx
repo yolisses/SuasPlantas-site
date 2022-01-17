@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CardActionArea } from '@mui/material';
 import { Plant } from '../plant/Plant';
 import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 
@@ -13,7 +12,7 @@ export function ListItem({ item }: ListItemDTO) {
   return (
     <Link href={`/plants/${item.id}`}>
       <a>
-        <CardActionArea className="rounded-xl">
+        <button className="rounded-xl">
           <li className="flex flex-row cursor-pointer rounded-xl">
             <Image
               alt={name}
@@ -31,7 +30,7 @@ export function ListItem({ item }: ListItemDTO) {
               <div className="text-gray-700 text-sm">{description}</div>
             </div>
           </li>
-        </CardActionArea>
+        </button>
       </a>
     </Link>
   );
