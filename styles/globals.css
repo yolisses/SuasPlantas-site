@@ -14,6 +14,12 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@layer components {
+  .icon-button {
+    @apply aspect-square rounded-full cursor-pointer hover:bg-black active:bg-black hover:bg-opacity-10 active:bg-opacity-20 flex items-center justify-center p-3;
+  }
+}
+
 input {
   width: 100%;
 }

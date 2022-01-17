@@ -1,4 +1,3 @@
-import { IconButton } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,7 +11,9 @@ export const MeButton = observer(() => {
   return authStore.user ? (
     <Link href={`/users/${authStore.user?.id}`}>
       <a>
-        <IconButton>
+        <button
+          className="icon-button p-2"
+        >
           <Image
             width={size}
             height={size}
@@ -21,7 +22,7 @@ export const MeButton = observer(() => {
             src={authStore.user?.image || userImage}
             className="bg-gray-300 rounded-full shadow-md cursor-pointer"
           />
-        </IconButton>
+        </button>
       </a>
     </Link>
   ) : (

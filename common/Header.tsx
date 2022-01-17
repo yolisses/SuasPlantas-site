@@ -1,9 +1,4 @@
 import {
-  Menu,
-  MenuItem,
-  IconButton,
-} from '@mui/material';
-import {
   FaBars,
   FaTimes,
   FaSearch,
@@ -16,6 +11,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 
+import { Menu, MenuItem } from '@mui/material';
 import { logOut } from '../user/logOut';
 import { userImage } from '../images/user';
 import { MeButton } from '../user/MeButton';
@@ -49,7 +45,7 @@ export function Header() {
           <Link href="/">
             <a>
               <div
-                className="text-lg cursor-pointer text-white select-none"
+                className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
                 onClick={() => {
                   if (window.location.pathname === '/') {
                     reset();
@@ -65,35 +61,38 @@ export function Header() {
             <SearchField />
           </div>
           <div className="ml-auto md:hidden">
-            <IconButton
+            <button
+              className="icon-button"
               onClick={() => setSearching(true)}
             >
               <FaSearch
                 size={22}
                 color="white"
               />
-            </IconButton>
+            </button>
           </div>
           <MeButton />
-          <IconButton
+          <button
+            className="icon-button"
             id="basic-button"
             aria-haspopup="true"
             onClick={handleClick}
             aria-expanded={open ? 'true' : undefined}
             aria-controls={open ? 'basic-menu' : undefined}
           >
-            <FaBars size={25} color="white" />
-          </IconButton>
+            <FaBars size={22} color="white" />
+          </button>
         </>
       )
         : (
-          <div className="flex flex-row justify-center w-full items-center ">
+          <div className="flex flex-row justify-center w-full items-center gap-1">
             <SearchField />
-            <IconButton
+            <button
+              className="icon-button h-9 p-0"
               onClick={() => setSearching(false)}
             >
               <FaTimes color="white" size={25} />
-            </IconButton>
+            </button>
           </div>
         )}
       <div>

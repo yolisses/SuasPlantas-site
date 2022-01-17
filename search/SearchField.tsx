@@ -1,4 +1,3 @@
-import { IconButton } from '@mui/material';
 import { FaSearch } from 'react-icons/fa';
 import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -31,9 +30,12 @@ export function SearchField() {
         className="w-full outline-none"
         onChange={(e) => setText(e.target.value)}
       />
-      <IconButton type="submit" className="h-9">
+      <button
+        type="submit"
+        className="icon-button h-9 p-0"
+      >
         <FaSearch size={20} color="#999" />
-      </IconButton>
+      </button>
     </form>
   );
 }

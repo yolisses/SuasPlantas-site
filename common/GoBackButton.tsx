@@ -1,4 +1,3 @@
-import { IconButton } from '@mui/material';
 import Router from 'next/router';
 import { FaChevronLeft } from 'react-icons/fa';
 
@@ -12,7 +11,8 @@ export function GoBackButton({ color }: GoBackButtonProps) {
   }
 
   return (
-    <IconButton
+    <button
+      className="icon-button"
       onClick={handleClick}
     >
       <div className="p-1">
@@ -22,6 +22,6 @@ export function GoBackButton({ color }: GoBackButtonProps) {
           className="transform"
         />
       </div>
-    </IconButton>
+    </button>
   );
 }
