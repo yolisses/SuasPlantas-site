@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
-import { useFilters } from '../search/FiltersContext';
+import { useItems } from './ItemsContext';
 
 export function WithoutResultsWarn() {
-  const { filters, setFilters } = useFilters();
+  const { filters, setFilters } = useItems();
   const text = filters?.text;
 
   return (

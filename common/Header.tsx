@@ -1,6 +1,5 @@
 import {
   Menu,
-  Button,
   MenuItem,
   IconButton,
 } from '@mui/material';
@@ -22,9 +21,9 @@ import { userImage } from '../images/user';
 import { MeButton } from '../user/MeButton';
 import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
+import { useItems } from '../home/ItemsContext';
 import { SearchField } from '../search/SearchField';
 import { RequireLogin } from '../auth/RequireLogin';
-import { useFilters } from '../search/FiltersContext';
 
 function Space() {
   return <div className="pl-2" />;
@@ -32,6 +31,7 @@ function Space() {
 
 export function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { reset, setFilters } = useItems();
   const open = Boolean(anchorEl);
   const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
@@ -41,19 +41,24 @@ export function Header() {
   };
 
   const [searching, setSearching] = useState(false);
-  const { setFilters } = useFilters();
 
   return (
     <HeaderLayout className="bg-emerald-700 text-white shadow-md">
       {!searching ? (
         <>
           <Link href="/">
-            <a tabIndex={-1}>
-              <Button onClick={() => { setFilters({}); }}>
-                <div className="flex flex-row items-center gap-1">
-                  <div className="text-lg cursor-pointer text-white">SuasPlantas</div>
-                </div>
-              </Button>
+            <a>
+              <div
+                className="text-lg cursor-pointer text-white select-none"
+                onClick={() => {
+                  if (window.location.pathname === '/') {
+                    reset();
+                    setFilters({});
+                  }
+                }}
+              >
+                SuasPlantas
+              </div>
             </a>
           </Link>
           <div className="hidden md:flex flex-row justify-center w-full">
@@ -101,50 +106,42 @@ export function Header() {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <Link href={`/users/${authStore.user?.id}`}>
-            <a>
-              <RequireLogin>
-                <MenuItem onClick={handleClose}>
-                  <Image
-                    width={20}
-                    height={20}
-                    src={authStore.user?.image || userImage}
-                    alt={authStore.user?.name}
-                    className="bg-gray-300 rounded-full cursor-pointer"
-                  />
-                  <Space />
-                  Perfil
-                </MenuItem>
-              </RequireLogin>
-            </a>
-          </Link>
-          <Link href="/privacy-policy">
-            <a>
+          <a href={`/users/${authStore.user?.id}`}>
+            <RequireLogin>
               <MenuItem onClick={handleClose}>
-                <FaRegFile size={20} color="gray" />
+                <Image
+                  width={20}
+                  height={20}
+                  src={authStore.user?.image || userImage}
+                  alt={authStore.user?.name}
+                  className="bg-gray-300 rounded-full cursor-pointer"
+                />
                 <Space />
-                Política de privacidade
+                Perfil
               </MenuItem>
-            </a>
-          </Link>
-          <Link href="/contact">
-            <a>
-              <MenuItem onClick={handleClose}>
-                <FaRegCommentAlt size={20} color="gray" />
-                <Space />
-                Contato
-              </MenuItem>
-            </a>
-          </Link>
-          <Link href="/about">
-            <a>
-              <MenuItem onClick={handleClose}>
-                <FaSeedling size={20} color="gray" />
-                <Space />
-                Sobre
-              </MenuItem>
-            </a>
-          </Link>
+            </RequireLogin>
+          </a>
+          <a href="/privacy-policy">
+            <MenuItem onClick={handleClose}>
+              <FaRegFile size={20} color="gray" />
+              <Space />
+              Política de privacidade
+            </MenuItem>
+          </a>
+          <a href="/contact">
+            <MenuItem onClick={handleClose}>
+              <FaRegCommentAlt size={20} color="gray" />
+              <Space />
+              Contato
+            </MenuItem>
+          </a>
+          <a href="/about">
+            <MenuItem onClick={handleClose}>
+              <FaSeedling size={20} color="gray" />
+              <Space />
+              Sobre
+            </MenuItem>
+          </a>
           {!!authStore.user && (
             <MenuItem onClick={() => { logOut(); handleClose(); }}>
               <FiLogOut size={20} color="gray" />

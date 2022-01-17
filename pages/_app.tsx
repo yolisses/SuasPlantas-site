@@ -4,18 +4,18 @@ import '../styles/globals.css';
 
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+import { ThemeProvider } from '@mui/material';
 import { theme } from '../mui/theme';
+import { Header } from '../common/Header';
+import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
+import { ItemsContextProvider } from '../home/ItemsContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
-import { ModalView } from '../modal/ModalView';
 import { NotificationTags } from '../notifications/NotificationTags';
-import { Header } from '../common/Header';
-import { FiltersContextProvider } from '../search/FiltersContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -30,10 +30,10 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <MuiFontsTags />
       <GoogleAnalyticsTags />
       <NotificationTags />
-      <FiltersContextProvider>
+      <ItemsContextProvider>
         <Header />
         <Component {...pageProps} />
-      </FiltersContextProvider>
+      </ItemsContextProvider>
       <SnackView />
       <ModalView />
     </ThemeProvider>

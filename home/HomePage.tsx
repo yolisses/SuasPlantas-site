@@ -1,46 +1,21 @@
 import Head from 'next/head';
 import { observer } from 'mobx-react-lite';
-import { useEffect, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { api } from '../api/api';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
-import { useFilters } from '../search/FiltersContext';
+import { useItems } from './ItemsContext';
 
-interface HomePageProps {
-  data: any;
-}
-
-export const HomePage = observer(({ data }: HomePageProps) => {
-  const [items, setItems] = useState(data?.content || []);
-  const [pageData, setPageData] = useState(data?.pageData || {});
-  const [loading, setLoading] = useState(false);
-  const { filters } = useFilters();
-
-  async function fetchItems() {
-    setLoading(true);
-    const res = await api.get('plants', {
-      params: {
-        page: pageData.nextPage,
-        ...filters,
-      },
-    });
-    setPageData(res.data.pageData);
-    setItems((items:Plant[]) => items.concat(res.data.content));
-    setLoading(false);
-  }
-
-  function refresh() {
-    setItems([]);
-    setPageData({ });
-    fetchItems();
-  }
-
-  useEffect(() => { if (filters)refresh(); }, [filters]);
+export const HomePage = observer(() => {
+  const {
+    items,
+    pageData,
+    loading,
+    loadMore,
+  } = useItems();
 
   return (
     <>
@@ -50,29 +25,26 @@ export const HomePage = observer(({ data }: HomePageProps) => {
           content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
         />
       </Head>
-      {/* {JSON.stringify(filterStore.query)} */}
-      {/* <TopTabs tab="plants" /> */}
       <InfiniteScroll
-        next={fetchItems}
-        dataLength={items.length}
-        hasMore={!!pageData.nextPage}
+        next={loadMore}
+        dataLength={items?.length || 0}
+        hasMore={!!pageData?.nextPage}
         scrollThreshold={0.8}
         loader={(<div />)}
-      >
-        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
-          {items.map((item: Plant) => (
-            <GridItem key={item.id} item={item} size={300} />
-          ))}
-        </div>
-      </InfiniteScroll>
-      { (!loading && !items.length) && (
-      <div className="flex flex-col items-center pt-20">
-        <WithoutResultsWarn />
+      />
+      <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+        {!!items && items.map((item: Plant) => (
+          <GridItem key={item.id} item={item} size={300} />
+        ))}
       </div>
-      )}
       { loading && (
       <div className="flex flex-col items-center pt-20 pb-10">
         <CircularProgress />
+      </div>
+      )}
+      { (!loading && !items?.length) && (
+      <div className="flex flex-col items-center pt-20">
+        <WithoutResultsWarn />
       </div>
       )}
       <div className="fixed right-10 bottom-10">
