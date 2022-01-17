@@ -27,7 +27,7 @@ export const HomePage = observer(() => {
         />
       </Head>
       <div className="flex flex-row ">
-        <TopTabs tab="plants" />
+        {/* <TopTabs tab="plants" /> */}
       </div>
       <InfiniteScroll
         next={loadMore}
