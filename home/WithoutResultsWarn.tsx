@@ -1,7 +1,7 @@
-import { useItems } from '../pagination/ItemsContext';
+import { usePlants } from '../plant/plantsContext';
 
 export function WithoutResultsWarn() {
-  const { filters, setFilters } = useItems();
+  const { filters, setFilters } = usePlants();
   const text = filters?.text;
 
   return (

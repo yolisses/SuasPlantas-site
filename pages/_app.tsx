@@ -16,7 +16,8 @@ import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
-import { ItemsContextProvider } from '../pagination/ItemsContext';
+import { plantsContext } from '../plant/plantsContext';
+import { PaginationProvider } from '../pagination/ItemsContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
 
@@ -38,10 +39,10 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalyticsTags />
       <NotificationTags />
       <Twemoji options={{ className: 'twemoji' }}>
-        <ItemsContextProvider>
+        <PaginationProvider Context={plantsContext}>
           <Header />
           <Component {...pageProps} />
-        </ItemsContextProvider>
+        </PaginationProvider>
         <SnackView />
         <ModalView />
       </Twemoji>

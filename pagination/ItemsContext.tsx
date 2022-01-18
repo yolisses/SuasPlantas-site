@@ -1,8 +1,7 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
+  Context, Dispatch, ReactNode, SetStateAction, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
-import { Plant } from '../plant/Plant';
 
 interface Filters{
   text?:string
@@ -17,23 +16,26 @@ interface PageData{
   totalPages:number
 }
 
-interface IItemsContext{
-  items?:Plant[]
+export interface IItemsContext<T>{
+  items?:T[]
   loading:boolean
   filters?:Filters
   pageData?:PageData
   setLoading: Dispatch<SetStateAction<boolean>>
-  setItems: Dispatch<SetStateAction<Plant[]|undefined>>
+  setItems: Dispatch<SetStateAction<T[]|undefined>>
   setFilters: Dispatch<SetStateAction<Filters|undefined>>
   setPageData: Dispatch<SetStateAction<PageData|undefined>>
   loadMore:()=>void
   reset:()=>void
 }
 
-export const itemsContext = createContext({} as IItemsContext);
+interface PaginationProviderProps<T>{
+  children:ReactNode
+  Context:Context<IItemsContext<T>>
+}
 
-export function ItemsContextProvider({ children }:{children:ReactNode}) {
-  const [items, setItems] = useState<Plant[]>();
+export function PaginationProvider<T>({ children, Context }:PaginationProviderProps<T>) {
+  const [items, setItems] = useState<T[]>();
   const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
@@ -48,7 +50,7 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
       },
     });
     setPageData(res.data.pageData);
-    setItems((items?:Plant[]) => (items || []).concat(res.data.content));
+    setItems((items?:T[]) => (items || []).concat(res.data.content));
     setLoading(false);
   }
 
@@ -69,7 +71,7 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <itemsContext.Provider value={{
+    <Context.Provider value={{
       items,
       reset,
       filters,
@@ -83,10 +85,6 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
     }}
     >
       {children}
-    </itemsContext.Provider>
+    </Context.Provider>
   );
-}
-
-export function useItems() {
-  return useContext(itemsContext);
 }

@@ -1,10 +1,10 @@
 import { FaSearch } from 'react-icons/fa';
 import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useItems } from '../pagination/ItemsContext';
+import { usePlants } from '../plant/plantsContext';
 
 export function SearchField() {
-  const { filters, setFilters } = useItems();
+  const { filters, setFilters } = usePlants();
   const [text, setText] = useState(filters?.text);
   const router = useRouter();
 

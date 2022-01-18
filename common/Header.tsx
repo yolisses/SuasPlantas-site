@@ -14,13 +14,13 @@ import { userImage } from '../images/user';
 import { MeButton } from '../user/MeButton';
 import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
-import { useItems } from '../pagination/ItemsContext';
 import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
 import { RequireLogin } from '../auth/RequireLogin';
+import { usePlants } from '../plant/plantsContext';
 
 export function Header() {
-  const { reset, setFilters } = useItems();
+  const { reset, setFilters } = usePlants();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
