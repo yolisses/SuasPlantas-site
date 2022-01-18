@@ -1,5 +1,9 @@
+import { TopTabs } from '../common/TopTabs';
+
 export function QuestPage() {
   return (
-    <div />
+    <div>
+      <TopTabs tab="quests" />
+    </div>
   );
 }
