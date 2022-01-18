@@ -1,9 +1,40 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { userImage } from '../images/user';
 import { Quest } from './Quest';
 
 export function QuestItem({ item }:{item:Quest}) {
+  const user = item?.user;
   return (
-    <div className="p-4 md:px-10 rounded-full bg-gray-300 text-center shadow-md">
-      {item.name}
-    </div>
+    <Link href={`users/${user?.id}`}>
+      <a tabIndex={-1}>
+        <button className="w-full rounded-lg text-black bg-gray-300 hover:bg-gray-400 text-center shadow-md flex flex-col gap-2 highlight">
+          <div className="text-lg">
+            {item.name}
+          </div>
+          {!!user && (
+          <div className="flex flex-row gap-2 items-center">
+            <Image
+              width={30}
+              height={30}
+              objectFit="cover"
+              layout="intrinsic"
+              src={user.image || userImage}
+              className="rounded-full flex-nowrap shrink-0"
+            />
+            <div className="flex-1 overflow-x-hidden text-sm">
+              <div className="overflow-ellipsis  text-left whitespace-nowrap font-semibold">{user.name}</div>
+              <div className="overflow-ellipsis text-left">
+                {user.city}
+                ,
+                {' '}
+                {user.state}
+              </div>
+            </div>
+          </div>
+          )}
+        </button>
+      </a>
+    </Link>
   );
 }

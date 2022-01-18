@@ -1,7 +1,4 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-
-import { Plant } from '../plant/Plant';
-import { GridItem } from '../common/GridItem';
 import { Spinner } from '../common/Spinner';
 import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
@@ -35,7 +32,7 @@ export function QuestsPage() {
         scrollThreshold={0.8}
         loader={(<div />)}
       >
-        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-4 xl:grid-cols-5 xl:px-20">
           {!!items && items.map((item: Quest) => (
             <QuestItem item={item} key={item.id} />
           ))}

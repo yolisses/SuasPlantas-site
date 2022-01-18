@@ -64,7 +64,7 @@ export function UserPage({ user }: UserPageProps) {
       </Head>
       <div className="flex flex-col items-center w-full">
         <div className="p-2 flex flex-col gap-4 max-w-5xl w-full items-center">
-          <div className="flex flex-row gap-2 items-center pt-4 w-full max-w-4xl">
+          <div className="flex flex-row gap-2 items-center w-full max-w-4xl">
             <Image
               width={100}
               height={100}
@@ -181,7 +181,9 @@ function QuestsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
         className="flex flex-row flex-wrap gap-2"
       >
         { items.map((item) => (
-          <QuestItem item={item} key={item.id} />
+          <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">
+            {item.name}
+          </div>
         ))}
       </div>
     );
