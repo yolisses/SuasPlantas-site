@@ -20,7 +20,7 @@ body {
   }
 
   .icon-button {
-    @apply aspect-square rounded-full cursor-pointer hover:bg-black active:bg-black hover:bg-opacity-10 active:bg-opacity-20 flex items-center justify-center p-3 active:transform active:scale-95;
+    @apply aspect-square rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10 flex items-center justify-center p-3 active:transform active:scale-95;
   }
 }
 
