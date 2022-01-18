@@ -228,16 +228,16 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           )}
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
-          <Button variant="contained" className="h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
+          <button className="main-button h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
             {loading && <Spinner /> }
             {edit ? 'Salvar' : 'Adicionar'}
-          </Button>
+          </button>
           {edit && (
             <Link href={`/plants/${data?.id}`}>
               <a>
-                <Button className="h-12 flex-1" disabled={loading}>
+                <button className="h-12 flex-1 p-2 rounded-lg" disabled={loading}>
                   Cancelar
-                </Button>
+                </button>
               </a>
             </Link>
           )}

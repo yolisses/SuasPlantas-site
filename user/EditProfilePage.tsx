@@ -119,10 +119,10 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
         <FormHelperText>
           Essas informações ficam visíveis para as outras pessoas
         </FormHelperText>
-        <Button variant="contained" onClick={handleSubmit(submit)} disabled={loading} className="h-11 flex gap-2">
-          {loading && <Spinner />}
+        <button onClick={handleSubmit(submit)} disabled={loading} className="h-11 main-button">
+          {loading && <Spinner radius={20} />}
           Salvar
-        </Button>
+        </button>
       </div>
     </div>
   );

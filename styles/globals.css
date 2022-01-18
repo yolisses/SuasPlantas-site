@@ -27,6 +27,14 @@ body {
     @apply center cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10 text-left;
   }
 
+  .main-button{
+    @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-lg shadow-xl
+  }
+
+  .main-button:disabled{
+    @apply cursor-default text-gray-500 hover:bg-auto bg-gray-300
+  }
+
   button {
     @apply custom-button
   }

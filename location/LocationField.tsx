@@ -124,15 +124,14 @@ export function LocationField({ text }:LocationFieldProps) {
             >
               Cancelar
             </Button>
-            <Button
+            <button
               disabled={loading}
-              variant="contained"
               onClick={submit}
-              className="h-12 flex-1 sm:flex-none px-5 flex flex-row gap-1"
+              className="h-12 flex-1 sm:flex-none px-5 main-button"
             >
-              {loading && <Spinner />}
+              {loading && <Spinner radius={20} />}
               Salvar
-            </Button>
+            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,3 @@
-import { Button } from '@mui/material';
-import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
@@ -10,7 +8,7 @@ interface LikeButtonProps{
   active?:boolean
 }
 
-export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
+export function LikeButton({ url, active }:LikeButtonProps) {
   const [isActive, setIsActive] = useState(active || false);
   const size = 20;
 
@@ -28,9 +26,8 @@ export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
   }, [active]);
 
   return (
-    <Button
-      variant="contained"
-      className="flex flex-row items-center gap-2"
+    <button
+      className="main-button"
       onClick={loginBefore(handleClick)}
     >
       {!isActive
@@ -42,6 +39,6 @@ export const LikeButton = observer(({ url, active }:LikeButtonProps) => {
           />
         )}
       {isActive ? 'Curtido' : 'Curtir'}
-    </Button>
+    </button>
   );
-});
+}

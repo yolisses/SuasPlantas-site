@@ -1,5 +1,5 @@
 import {
-  Button, IconContainerProps, Link, Rating, TextField,
+  IconContainerProps, Link, Rating, TextField,
 } from '@mui/material';
 import { FaCheck, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { RiFacebookCircleLine } from 'react-icons/ri';
@@ -149,15 +149,14 @@ export function ContactPage() {
               </div>
             )
             : (
-              <Button
-                variant="contained"
+              <button
                 onClick={handleSubmit(submit)}
-                className="flex flex-row items-center gap-1"
+                className="main-button"
                 disabled={loading || (!watch('message') && !watch('rating'))}
               >
-                { loading && <Spinner />}
+                { loading && <Spinner radius={20} />}
                 Enviar!
-              </Button>
+              </button>
             )}
         </fieldset>
       </div>

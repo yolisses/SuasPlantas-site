@@ -1,10 +1,9 @@
-import { Spinner } from '../common/Spinner';
 import { AddButton } from '../home/AddButton';
 
 export function DevPage() {
   return (
     <div className="flex flex-row">
-      <AddButton />
+      <button className="main-button" disabled>oi</button>
     </div>
   );
 }
