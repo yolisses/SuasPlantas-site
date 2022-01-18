@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Plant } from '../plant/Plant';
@@ -11,7 +10,7 @@ import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
 import { SearchField } from '../search/SearchField';
 
-export const PlantsPage = observer(() => {
+export function PlantsPage() {
   const {
     items,
     pageData,
@@ -55,4 +54,4 @@ export const PlantsPage = observer(() => {
       </div>
     </>
   );
-});
+}
