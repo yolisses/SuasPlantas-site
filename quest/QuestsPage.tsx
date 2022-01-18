@@ -19,12 +19,10 @@ export function QuestsPage() {
 
   return (
     <>
-      {isDev && (
       <div className="md:pl-2 flex flex-col-reverse md:flex-row items-center justify-between">
         <SearchField />
         <TopTabs tab="quests" />
       </div>
-      )}
       <InfiniteScroll
         next={loadMore}
         dataLength={items?.length || 0}
