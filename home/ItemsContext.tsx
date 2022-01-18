@@ -39,7 +39,6 @@ export function ItemsContextProvider({ children }:{children:ReactNode}) {
   const [filters, setFilters] = useState<Filters>();
 
   async function loadMore() {
-    console.log('aqui');
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
     const res = await api.get('plants', {
