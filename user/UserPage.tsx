@@ -25,6 +25,23 @@ interface UserPageProps {
   user: User;
 }
 
+interface TabProps{
+  tab:string
+  currentTab:string
+  children:ReactNode
+}
+
+function Tab({ tab, currentTab, children }:TabProps) {
+  return (
+    <div
+      className="flex flex-col items-center"
+      style={{ display: tab !== currentTab ? 'none' : undefined }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function UserPage({ user }: UserPageProps) {
   const [tab, setTab] = useState('plants');
 
@@ -90,7 +107,7 @@ export function UserPage({ user }: UserPageProps) {
           <div className="flex flex-row justify-start">
             <Link href="/account/edit">
               <a tabIndex={-1}>
-                <button variant="outlined" className="p-2 rounded-lg border border-green-500">
+                <button className="p-2 rounded-lg border border-green-500">
                   <FaRegUser size={18} />
                   Editar perfil
                 </button>
@@ -172,23 +189,6 @@ function QuestsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
   return (
     <div className="text-gray-600 p-10">
       {withoutItemsMessage}
-    </div>
-  );
-}
-
-interface TabProps{
-  tab:string
-  currentTab:string
-  children:ReactNode
-}
-
-function Tab({ tab, currentTab, children }:TabProps) {
-  return (
-    <div
-      className="flex flex-col items-center"
-      style={{ display: tab !== currentTab ? 'none' : undefined }}
-    >
-      {children}
     </div>
   );
 }

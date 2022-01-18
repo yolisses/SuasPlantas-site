@@ -46,6 +46,7 @@ module.exports = {
     'no-empty-function': 'warn',
     'no-shadow': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
-    "no-unused-vars": "warn",
+    'no-unused-vars': 'warn',
+    'react/button-has-type': 'off',
   },
 };
