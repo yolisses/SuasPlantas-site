@@ -22,7 +22,7 @@ export function SearchField() {
   return (
     <form
       onSubmit={submit}
-      className="max-w-md bg-white rounded-full text-black h-9 flex flex-row items-center overflow-hidden w-full flex-1 pl-3"
+      className="max-w-md bg-white rounded-full text-black h-9 flex flex-row items-center overflow-hidden w-full flex-1 pl-3 border border-gray-300"
     >
       <input
         type="text"

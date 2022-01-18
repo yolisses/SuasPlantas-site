@@ -1,7 +1,5 @@
 import {
   FaBars,
-  FaTimes,
-  FaSearch,
   FaRegFile,
   FaSeedling,
   FaRegCommentAlt,
@@ -18,10 +16,10 @@ import { MeButton } from '../user/MeButton';
 import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
 import { useItems } from '../home/ItemsContext';
-import { SearchField } from '../search/SearchField';
 import { RequireLogin } from '../auth/RequireLogin';
+import { Spacer } from './Spacer';
 
-function Space() {
+function MenuSpacer() {
   return <div className="pl-2" />;
 }
 
@@ -36,65 +34,35 @@ export function Header() {
     setAnchorEl(null);
   };
 
-  const [searching, setSearching] = useState(false);
-
   return (
     <HeaderLayout className="bg-emerald-700 text-white shadow-md">
-      {!searching ? (
-        <>
-          <Link href="/">
-            <a>
-              <div
-                className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
-                onClick={() => {
-                  if (window.location.pathname === '/') {
-                    reset();
-                    setFilters({});
-                  }
-                }}
-              >
-                SuasPlantas
-              </div>
-            </a>
-          </Link>
-          <div className="hidden md:flex flex-row justify-center w-full">
-            <SearchField />
-          </div>
-          <div className="ml-auto md:hidden">
-            <button
-              className="icon-button"
-              onClick={() => setSearching(true)}
-            >
-              <FaSearch
-                size={22}
-                color="white"
-              />
-            </button>
-          </div>
-          <MeButton />
-          <button
-            className="icon-button"
-            id="basic-button"
-            aria-haspopup="true"
-            onClick={handleClick}
-            aria-expanded={open ? 'true' : undefined}
-            aria-controls={open ? 'basic-menu' : undefined}
+      <Link href="/">
+        <a>
+          <div
+            className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
+            onClick={() => {
+              if (window.location.pathname === '/') {
+                reset();
+                setFilters({});
+              }
+            }}
           >
-            <FaBars size={22} color="white" />
-          </button>
-        </>
-      )
-        : (
-          <div className="flex flex-row justify-center w-full items-center gap-1">
-            <SearchField />
-            <button
-              className="icon-button h-9 p-0"
-              onClick={() => setSearching(false)}
-            >
-              <FaTimes color="white" size={25} />
-            </button>
+            SuasPlantas
           </div>
-        )}
+        </a>
+      </Link>
+      <Spacer />
+      <MeButton />
+      <button
+        className="icon-button"
+        id="basic-button"
+        aria-haspopup="true"
+        onClick={handleClick}
+        aria-expanded={open ? 'true' : undefined}
+        aria-controls={open ? 'basic-menu' : undefined}
+      >
+        <FaBars size={22} color="white" />
+      </button>
       <div>
         <Menu
           open={open}
@@ -115,7 +83,7 @@ export function Header() {
                   alt={authStore.user?.name}
                   className="bg-gray-300 rounded-full cursor-pointer"
                 />
-                <Space />
+                <MenuSpacer />
                 Perfil
               </MenuItem>
             </RequireLogin>
@@ -123,28 +91,28 @@ export function Header() {
           <a href="/privacy-policy">
             <MenuItem onClick={handleClose}>
               <FaRegFile size={20} color="gray" />
-              <Space />
+              <MenuSpacer />
               Política de privacidade
             </MenuItem>
           </a>
           <a href="/contact">
             <MenuItem onClick={handleClose}>
               <FaRegCommentAlt size={20} color="gray" />
-              <Space />
+              <MenuSpacer />
               Contato
             </MenuItem>
           </a>
           <a href="/about">
             <MenuItem onClick={handleClose}>
               <FaSeedling size={20} color="gray" />
-              <Space />
+              <MenuSpacer />
               Sobre
             </MenuItem>
           </a>
           {!!authStore.user && (
             <MenuItem onClick={() => { logOut(); handleClose(); }}>
               <FiLogOut size={20} color="gray" />
-              <Space />
+              <MenuSpacer />
               Sair
             </MenuItem>
           )}

@@ -31,8 +31,10 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalyticsTags />
       <NotificationTags />
       <ItemsContextProvider>
-        <Header />
-        <Component {...pageProps} />
+        <>
+          <Header />
+          <Component {...pageProps} />
+        </>
       </ItemsContextProvider>
       <SnackView />
       <ModalView />

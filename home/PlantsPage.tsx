@@ -10,6 +10,7 @@ import { WithoutResultsWarn } from './WithoutResultsWarn';
 import { Spinner } from '../common/Spinner';
 import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
+import { SearchField } from '../search/SearchField';
 
 export const PlantsPage = observer(() => {
   const {
@@ -28,7 +29,8 @@ export const PlantsPage = observer(() => {
         />
       </Head>
       {isDev && (
-      <div className="flex flex-row">
+      <div className="md:pl-2 flex flex-col-reverse md:flex-row items-center justify-between">
+        <SearchField />
         <TopTabs tab="plants" />
       </div>
       )}

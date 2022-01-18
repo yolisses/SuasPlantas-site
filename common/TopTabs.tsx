@@ -5,7 +5,7 @@ import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
 interface TopTabsProps{
-    tab:string
+    tab: 'plants'|'quests'|'users'|'map'
 }
 
 export function TopTabs({ tab }: TopTabsProps) {
