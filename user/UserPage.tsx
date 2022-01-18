@@ -6,6 +6,7 @@ import {
   FaRegUser,
   FaSeedling,
   FaThumbsUp,
+  FaQuestion,
 } from 'react-icons/fa';
 import Head from 'next/head';
 import { User } from './User';
@@ -104,7 +105,7 @@ export function UserPage({ user }: UserPageProps) {
               Plantas
             </TabSelector>
             <TabSelector value="quests" tab={tab} setTab={setTab}>
-              <FaSearch />
+              <FaQuestion />
               Procurando
             </TabSelector>
             <TabSelector value="likes" tab={tab} setTab={setTab}>

@@ -16,6 +16,7 @@ import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
 import { useItems } from '../home/ItemsContext';
 import { Spacer } from './Spacer';
+import { Menu } from './Menu';
 
 export function Header() {
   const { reset, setFilters } = useItems();
@@ -40,56 +41,51 @@ export function Header() {
       </Link>
       <Spacer />
       <MeButton />
-      <div onBlur={() => setMenuOpen(false)}>
+      <div>
         <button
           className="icon-button"
-          onClick={() => setMenuOpen(true)}
+          onClick={(e) => { setMenuOpen(true); e.stopPropagation(); }}
         >
           <FaBars size={22} color="white" />
         </button>
-        {menuOpen
-        && (
-        <div className="relative right-0">
-          <div className="absolute right-0 bg-white p-2 rounded-lg shadow-lg">
-            <a href={`/users/${authStore.user?.id}`}>
-              <MenuItem>
-                <Image
-                  width={20}
-                  height={20}
-                  src={authStore.user?.image || userImage}
-                  alt={authStore.user?.name}
-                  className="bg-gray-300 rounded-full cursor-pointer"
-                />
-                Perfil
-              </MenuItem>
-            </a>
-            <a href="/privacy-policy">
-              <MenuItem>
-                <FaRegFile size={20} color="gray" />
-                Política de privacidade
-              </MenuItem>
-            </a>
-            <a href="/contact">
-              <MenuItem>
-                <FaRegCommentAlt size={20} color="gray" />
-                Contato
-              </MenuItem>
-            </a>
-            <a href="/about">
-              <MenuItem>
-                <FaSeedling size={20} color="gray" />
-                Sobre
-              </MenuItem>
-            </a>
-            {!!authStore.user && (
-            <MenuItem onClick={logOut}>
+        <Menu open={menuOpen} onClose={() => setMenuOpen(false)}>
+          <a href={`/users/${authStore.user?.id}`}>
+            <MenuItem>
+              <Image
+                width={20}
+                height={20}
+                src={authStore.user?.image || userImage}
+                alt={authStore.user?.name}
+                className="bg-gray-300 rounded-full cursor-pointer"
+              />
+              Perfil
+            </MenuItem>
+          </a>
+          <a href="/privacy-policy">
+            <MenuItem>
+              <FaRegFile size={20} color="gray" />
+              Política de privacidade
+            </MenuItem>
+          </a>
+          <a href="/contact">
+            <MenuItem>
+              <FaRegCommentAlt size={20} color="gray" />
+              Contato
+            </MenuItem>
+          </a>
+          <a href="/about">
+            <MenuItem>
+              <FaSeedling size={20} color="gray" />
+              Sobre
+            </MenuItem>
+          </a>
+          {!!authStore.user && (
+            <MenuItem onClick={() => logOut()}>
               <FiLogOut size={20} color="gray" />
               Sair
             </MenuItem>
-            )}
-          </div>
-        </div>
-        )}
+          )}
+        </Menu>
       </div>
     </HeaderLayout>
   );
