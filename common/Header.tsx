@@ -17,6 +17,7 @@ import { HeaderLayout } from './HeaderLayout';
 import { useItems } from '../home/ItemsContext';
 import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
+import { RequireLogin } from '../auth/RequireLogin';
 
 export function Header() {
   const { reset, setFilters } = useItems();
@@ -49,16 +50,18 @@ export function Header() {
           <FaBars size={22} color="white" />
         </button>
         <Menu open={menuOpen} onClose={() => setMenuOpen(false)}>
-          <a href={`/users/${authStore.user?.id}`} className="menu-button">
-            <Image
-              width={20}
-              height={20}
-              src={authStore.user?.image || userImage}
-              alt={authStore.user?.name}
-              className="bg-gray-300 rounded-full cursor-pointer"
-            />
-            Perfil
-          </a>
+          <RequireLogin>
+            <a href={`/users/${authStore.user?.id}`} className="menu-button">
+              <Image
+                width={20}
+                height={20}
+                src={authStore.user?.image || userImage}
+                alt={authStore.user?.name}
+                className="bg-gray-300 rounded-full cursor-pointer"
+              />
+              Perfil
+            </a>
+          </RequireLogin>
           <a href="/privacy-policy" className="menu-button">
             <FaRegFile size={20} color="gray" />
             Política de privacidade
