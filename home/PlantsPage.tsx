@@ -9,7 +9,7 @@ import { GridItem } from '../common/GridItem';
 import { WithoutResultsWarn } from './WithoutResultsWarn';
 import { Spinner } from '../common/Spinner';
 
-export const HomePage = observer(() => {
+export const PlantsPage = observer(() => {
   const {
     items,
     pageData,
