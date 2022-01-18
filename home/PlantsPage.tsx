@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { observer } from 'mobx-react-lite';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -22,12 +21,6 @@ export const PlantsPage = observer(() => {
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
-        />
-      </Head>
       {isDev && (
       <div className="md:pl-2 flex flex-col-reverse md:flex-row items-center justify-between">
         <SearchField />

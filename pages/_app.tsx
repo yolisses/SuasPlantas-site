@@ -28,6 +28,10 @@ export function MyApp({ Component, pageProps }: AppProps) {
           {devIndicator}
           SuasPlantas - Trocar mudas de plantas
         </title>
+        <meta
+          name="description"
+          content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
+        />
       </Head>
       <FaviconTags />
       <MuiFontsTags />
