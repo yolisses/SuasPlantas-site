@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import Link from 'next/link';
-import { Fab } from '@mui/material';
 import { FaPen } from 'react-icons/fa';
 
 import { useEffect, useRef } from 'react';
@@ -170,9 +169,9 @@ export function PlantPage({ data }:PlantPageProps) {
               <div className="absolute bottom-10 right-10">
                 <Link href={`/plants/${data.id}/edit`}>
                   <a className="flex flex-row justify-end">
-                    <Fab color="primary" aria-label="add">
+                    <button className="fab">
                       <FaPen size={22} color="white" />
-                    </Fab>
+                    </button>
                   </a>
                 </Link>
               </div>

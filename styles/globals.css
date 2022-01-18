@@ -15,8 +15,16 @@ body {
 }
 
 @layer components {
+  .center{
+    @apply flex items-center justify-center
+  }
+
+  .scale-active{
+    @apply active:transform active:scale-95
+  }
+
   .custom-button{
-    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10 flex items-center justify-center text-left;
+    @apply center cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10 text-left;
   }
 
   button {
@@ -24,11 +32,15 @@ body {
   }
 
   .icon-button {
-    @apply custom-button aspect-square rounded-full flex items-center justify-center p-3 active:transform active:scale-95;
+    @apply custom-button aspect-square rounded-full flex items-center justify-center p-3 scale-active;
   }
 
   .menu-button {
     @apply custom-button text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2
+  }
+
+  .fab{
+    @apply aspect-square h-14 transition-all scale-active hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-full shadow-xl
   }
 }
 
@@ -50,10 +62,6 @@ a {
 }
 .carousel .thumbs-wrapper {
   margin: 10px !important;
-}
-
-button, [type='button'], [type='reset'], [type='submit'] {
-  background-color:inherit;
 }
 
 .MuiFab-primary{
