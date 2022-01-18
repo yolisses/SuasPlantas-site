@@ -16,7 +16,7 @@ body {
 
 @layer components {
   button {
-    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 focus:bg-black focus:bg-opacity-10 active:bg-black active:bg-opacity-20 flex items-center justify-center text-left;
+    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 focus:bg-black focus:bg-opacity-10 flex items-center justify-center text-left;
   }
 
   .icon-button {
