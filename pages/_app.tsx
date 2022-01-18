@@ -17,7 +17,7 @@ import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
-import { PaginationProvider } from '../pagination/ItemsContext';
+import { PaginationProvider } from '../pagination/PaginationProvider';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
 
