@@ -32,11 +32,7 @@ export function AboutPage() {
         <div className="flex flex-col sm:flex-row gap-4 p-4">
           <div className="flex-1 sm:max-w-sm">
             <h3 className="text-xl text-center">
-              <span className="text-2xl text-center">
-                🙂
-                {' '}
-              </span>
-              Foco no usuário
+              🙂 Foco no usuário
             </h3>
             <p>
               Estamos sempre de portas abertas para críticas, sugestões e ideas.
@@ -45,11 +41,7 @@ export function AboutPage() {
           </div>
           <div className="flex-1 sm:max-w-sm">
             <h3 className="text-xl text-center">
-              <span className="text-2xl text-center">
-                🤝
-                {' '}
-              </span>
-              Honestidade
+              ✌️ Honestidade
             </h3>
             <p>
               Damos muito valor a confiança. Para nós, nada pode comprar a
@@ -58,11 +50,7 @@ export function AboutPage() {
           </div>
           <div className="flex-1 sm:max-w-sm">
             <h3 className="text-xl text-center">
-              <span className="text-2xl text-center">
-                ✨
-                {' '}
-              </span>
-              Curiosidade
+              ✨ Curiosidade
             </h3>
             <p>
               Somos facinados em testar novas ideias e procurar funcionalidades

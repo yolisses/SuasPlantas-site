@@ -1,6 +1,3 @@
-import {
-  FaMap, FaSearch, FaSeedling, FaUser,
-} from 'react-icons/fa';
 import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
@@ -13,14 +10,12 @@ export function TopTabs({ tab }: TopTabsProps) {
     <div className="flex flex-row flex-wrap">
       <Link href="/">
         <TabSelector tab="plants" value={tab}>
-          <FaSeedling />
-          Plantas
+          🪴 Plantas
         </TabSelector>
       </Link>
       <Link href="/quest">
         <TabSelector tab="quests" value={tab}>
-          <FaSearch />
-          Procurando
+          👋 Procurando
         </TabSelector>
       </Link>
       {/* <Link href="/users">

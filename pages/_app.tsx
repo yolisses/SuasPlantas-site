@@ -3,6 +3,7 @@ import '../mobx/storesConfig';
 import '../styles/globals.css';
 
 import Head from 'next/head';
+import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider } from '@mui/material';
@@ -30,14 +31,16 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <MuiFontsTags />
       <GoogleAnalyticsTags />
       <NotificationTags />
-      <ItemsContextProvider>
-        <>
-          <Header />
-          <Component {...pageProps} />
-        </>
-      </ItemsContextProvider>
-      <SnackView />
-      <ModalView />
+      <Twemoji options={{ className: 'twemoji' }}>
+        <ItemsContextProvider>
+          <>
+            <Header />
+            <Component {...pageProps} />
+          </>
+        </ItemsContextProvider>
+        <SnackView />
+        <ModalView />
+      </Twemoji>
     </ThemeProvider>
   );
 }

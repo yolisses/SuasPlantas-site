@@ -94,7 +94,7 @@ export function PrivacyPolicyPage() {
         </div>
       </div>
       <div className="mt-16 p-2">
-        Tenha um ótimo dia 👋
+        👋 Tenha um ótimo dia
       </div>
     </>
   );
