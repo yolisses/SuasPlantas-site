@@ -70,9 +70,11 @@ export function Header() {
             <FaRegCommentAlt size={20} color="gray" />
             Contato
           </a>
-          <a href="/about" className="menu-button">
-            <FaSeedling size={20} color="gray" />
-            Sobre
+          <a href="/about">
+            <div className="menu-button">
+              <FaSeedling size={20} color="gray" />
+              Sobre
+            </div>
           </a>
           {!!authStore.user && (
             <button className="menu-button" onClick={() => logOut()}>

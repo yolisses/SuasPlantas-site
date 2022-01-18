@@ -7,7 +7,7 @@ import { authStore } from '../auth/authStore';
 import { RequireLogin } from '../auth/RequireLogin';
 
 export const MeButton = observer(() => {
-  const size = 40;
+  const size = 30;
   return authStore.user ? (
     <Link href={`/users/${authStore.user?.id}`}>
       <a>
