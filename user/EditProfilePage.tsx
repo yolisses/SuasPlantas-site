@@ -1,5 +1,4 @@
 import {
-  Button,
   TextField,
   FormHelperText,
   InputAdornment,
@@ -80,12 +79,12 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
             rel="noopener noreferrer"
             href={`https://instagram.com/${watch('instagramUsername')}`}
           >
-            <Button className="self-start px-5">
+            <button className="px-5">
               Testar
               {' '}
               @
               {watch('instagramUsername')}
-            </Button>
+            </button>
           </a>
           )}
         </div>
@@ -108,11 +107,11 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
               rel="noopener noreferrer"
               href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
             >
-              <Button className="self-start px-5">
+              <button className="px-5">
                 Testar
                 {' '}
                 {watch('whatsappNumber')}
-              </Button>
+              </button>
             </a>
           )}
         </div>

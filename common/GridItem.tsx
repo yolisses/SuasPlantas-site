@@ -17,8 +17,8 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
   const size = sizeParam || 200;
   return (
     <Link href={`/plants/${item.id}`}>
-      <a tabIndex={-1}>
-        <button className="rounded-xl">
+      <a>
+        <div className="highlight rounded-xl">
           <div className="flex flex-col">
             <Image
               src={card}
@@ -41,7 +41,7 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
               )}
             </div>
           </div>
-        </button>
+        </div>
       </a>
     </Link>
   );

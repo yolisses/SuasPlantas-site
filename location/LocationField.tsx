@@ -4,7 +4,6 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { Button, IconButton } from '@mui/material';
 
 import { Feature } from './Feature';
 import { authStore } from '../auth/authStore';
@@ -76,14 +75,12 @@ export function LocationField({ text }:LocationFieldProps) {
 
   return (
     <div>
-      <Button onClick={handleButtonClick}>
+      <button onClick={handleButtonClick}>
         <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
           <FaMapMarkerAlt size={20} color="#080" />
-          <div className="font-semibold" style={{ color: '#080' }}>
-            {text || 'Selecionar local'}
-          </div>
+          {text || 'Selecionar local'}
         </div>
-      </Button>
+      </button>
       {active && (
       <div
         className="fixed top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center bg-black bg-opacity-50"
@@ -93,12 +90,13 @@ export function LocationField({ text }:LocationFieldProps) {
           <div className="px-2 pb-2">
             <div className="h-12 flex flex-row items-center justify-between">
               <div className="pl-1">Sua localização</div>
-              <IconButton
+              <button
+                className="icon-button"
                 disabled={loading}
                 onClick={hancleCloseClick}
               >
                 <GrClose size={18} />
-              </IconButton>
+              </button>
             </div>
             <AutoCompleteInput
               getText={getText}
@@ -117,13 +115,13 @@ export function LocationField({ text }:LocationFieldProps) {
             <Map center={center!} />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
-            <Button
+            <button
               disabled={loading}
               onClick={hancleCloseClick}
               className="h-12 flex-1 sm:flex-none px-5"
             >
               Cancelar
-            </Button>
+            </button>
             <button
               disabled={loading}
               onClick={submit}

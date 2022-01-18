@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@mui/material';
 import { User } from './User';
 import { userImage } from '../images/user';
 
@@ -13,8 +12,8 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
   return (
     <Link href={`/users/${user.id}`}>
       <a>
-        <Button className="flex flex-row self-start text-current text-left">
-          <div className="flex flex-row items-center gap-2 cursor-pointer">
+        <div className="flex items-start">
+          <div className="secondary-button ">
             <Image
               alt={user.name}
               width={imgSize}
@@ -36,7 +35,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
               </div>
             </div>
           </div>
-        </Button>
+        </div>
       </a>
     </Link>
   );

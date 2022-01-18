@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { useItems } from './ItemsContext';
 
 export function WithoutResultsWarn() {
@@ -16,7 +15,7 @@ export function WithoutResultsWarn() {
           ? 'Verifique a ortografia, altere os filtros ou tente usar um termo de pesquisa menos específico.'
           : 'Você pode tentar mudar os filtros de pesquisa.'}
       </div>
-      <Button onClick={() => { setFilters({}); }}>Página inicial</Button>
+      <button onClick={() => { setFilters({}); }}>Página inicial</button>
     </div>
   );
 }

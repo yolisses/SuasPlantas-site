@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import {
-  Button,
   Checkbox,
   FormLabel,
   FormGroup,

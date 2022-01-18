@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Button, FormLabel } from '@mui/material';
+import { FormLabel } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 import { api } from '../api/api';
@@ -57,10 +57,10 @@ export function EditProfileImage() {
             accept=".jpg, .jpeg, .png, .webp"
             hidden
           />
-          <Button disabled={loading} component="span" className="flex flex-row items-center gap-1">
+          <div className={loading ? 'disabled-button' : 'secondary-button'}>
             {loading && <Spinner />}
             Alterar foto
-          </Button>
+          </div>
         </label>
       </div>
     </div>

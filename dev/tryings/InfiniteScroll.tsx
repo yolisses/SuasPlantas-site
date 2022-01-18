@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { Spinner } from '../../common/Spinner';
 import { delay } from '../utils/delay';
@@ -90,8 +89,8 @@ export function DevPage() {
   return (
     <div>
       {JSON.stringify(pageData)}
-      <Button onClick={reset}>Reset</Button>
-      <Button onClick={loadMore} disabled={!hasMore}>Load more</Button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={loadMore} disabled={!hasMore}>Load more</button>
       {loading && <Spinner />}
       {!!(items && !items.length) && (<div>Nenhum resultado encontrado</div>)}
       <div className="flex flex-col flex-wrap">

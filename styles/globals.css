@@ -23,28 +23,36 @@ body {
     @apply active:transform active:scale-95
   }
 
-  .custom-button{
-    @apply center cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10 text-left;
-  }
-
   .main-button{
     @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-lg shadow-xl
   }
 
-  .main-button:disabled{
+  .secondary-button{
+    @apply highlight center text-green-700 rounded-lg gap-2 p-2
+  }
+
+  .disabled-button{
     @apply cursor-default text-gray-500 hover:bg-auto bg-gray-300
   }
 
   button {
-    @apply custom-button
+    @apply secondary-button
+  }
+
+  button:disabled {
+    @apply disabled-button
+  }
+
+  .highlight{
+    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10
   }
 
   .icon-button {
-    @apply custom-button aspect-square rounded-full flex items-center justify-center p-3 scale-active;
+    @apply center highlight aspect-square rounded-full flex items-center justify-center p-3 scale-active;
   }
 
   .menu-button {
-    @apply custom-button text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2
+    @apply highlight text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2
   }
 
   .fab{

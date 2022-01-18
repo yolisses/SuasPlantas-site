@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import { Button, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import {
-  FaSearch,
   FaRegUser,
   FaSeedling,
   FaThumbsUp,
@@ -90,11 +89,11 @@ export function UserPage({ user }: UserPageProps) {
           {authStore.user?.id === user.id && (
           <div className="flex flex-row justify-start">
             <Link href="/account/edit">
-              <a>
-                <Button variant="outlined" className="flex flex-row gap-1 w-full max-w-sm">
+              <a tabIndex={-1}>
+                <button variant="outlined" className="p-2 rounded-lg border border-green-500">
                   <FaRegUser size={18} />
                   Editar perfil
-                </Button>
+                </button>
               </a>
             </Link>
           </div>
