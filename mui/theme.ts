@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { mainColor } from '../common/mainColor';
 
 export const theme = createTheme({
   typography: {
@@ -8,7 +9,7 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#16A34A',
+      main: mainColor,
     },
   },
   shape: {
