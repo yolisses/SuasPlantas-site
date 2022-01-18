@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import { ReactNode } from 'react';
+import { mainColor } from './mainColor';
 
 interface TabSelectorProps{
     children:ReactNode,
@@ -17,9 +17,11 @@ export function TabSelector({
 
   const selected = tab === value;
   return (
-    <Button
+    <button
       className="flex flex-row items-center h-11 px-4 justify-center gap-1"
       style={selected ? {
+        color: mainColor,
+        borderColor: mainColor,
         borderStyle: 'solid',
         borderBottomWidth: 2,
         borderBottomLeftRadius: 0,
@@ -30,6 +32,6 @@ export function TabSelector({
       onClick={handleClick}
     >
       {children}
-    </Button>
+    </button>
   );
 }
