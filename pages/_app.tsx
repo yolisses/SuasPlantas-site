@@ -16,7 +16,7 @@ import { SnackView } from '../snack/SnackView';
 import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
-import { ItemsContextProvider } from '../home/ItemsContext';
+import { ItemsContextProvider } from '../pagination/ItemsContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
 

@@ -1,4 +1,4 @@
-import { useItems } from './ItemsContext';
+import { useItems } from '../pagination/ItemsContext';
 
 export function WithoutResultsWarn() {
   const { filters, setFilters } = useItems();

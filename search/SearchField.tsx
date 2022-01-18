@@ -1,7 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useItems } from '../home/ItemsContext';
+import { useItems } from '../pagination/ItemsContext';
 
 export function SearchField() {
   const { filters, setFilters } = useItems();
