@@ -20,6 +20,7 @@ import { plantsContext } from '../plant/plantsContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
+import { questsContext } from '../quest/questsContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -39,9 +40,11 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalyticsTags />
       <NotificationTags />
       <Twemoji options={{ className: 'twemoji' }}>
-        <PaginationProvider Context={plantsContext}>
-          <Header />
-          <Component {...pageProps} />
+        <PaginationProvider Context={plantsContext} apiRoute="plants">
+          <PaginationProvider Context={questsContext} apiRoute="quests">
+            <Header />
+            <Component {...pageProps} />
+          </PaginationProvider>
         </PaginationProvider>
         <SnackView />
         <ModalView />

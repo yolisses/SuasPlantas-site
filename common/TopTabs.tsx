@@ -16,7 +16,7 @@ export function TopTabs({ tab }: TopTabsProps) {
           Plantas
         </TabSelector>
       </Link>
-      <Link href="/quest">
+      <Link href="/quests">
         <TabSelector tab="quests" value={tab}>
           <FaQuestion />
           Procurando

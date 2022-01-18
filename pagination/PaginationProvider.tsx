@@ -31,10 +31,11 @@ export interface IItemsContext<T>{
 
 interface PaginationProviderProps<T>{
   children:ReactNode
+  apiRoute:string
   Context:Context<IItemsContext<T>>
 }
 
-export function PaginationProvider<T>({ children, Context }:PaginationProviderProps<T>) {
+export function PaginationProvider<T>({ children, Context, apiRoute }:PaginationProviderProps<T>) {
   const [items, setItems] = useState<T[]>();
   const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ export function PaginationProvider<T>({ children, Context }:PaginationProviderPr
   async function loadMore() {
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
-    const res = await api.get('plants', {
+    const res = await api.get(apiRoute, {
       params: {
         page: pageData?.nextPage,
         ...filters,

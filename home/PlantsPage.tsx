@@ -3,12 +3,12 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
-import { WithoutResultsWarn } from './WithoutResultsWarn';
 import { Spinner } from '../common/Spinner';
 import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
 import { SearchField } from '../search/SearchField';
 import { usePlants } from '../plant/plantsContext';
+import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
 export function PlantsPage() {
   const {
