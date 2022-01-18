@@ -1,6 +1,12 @@
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
-export function Menu({ children, open, onClose }) {
+interface MenuProps{
+  children:ReactNode
+  open:boolean
+  onClose:()=>void
+}
+
+export function Menu({ children, open, onClose }:MenuProps) {
   useEffect(() => {
     window.addEventListener('click', onClose);
     return () => window.removeEventListener('click', onClose);

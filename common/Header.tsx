@@ -16,7 +16,7 @@ import { authStore } from '../auth/authStore';
 import { HeaderLayout } from './HeaderLayout';
 import { useItems } from '../home/ItemsContext';
 import { Spacer } from './Spacer';
-import { Menu } from './Menu';
+import { Menu } from './menu/Menu';
 
 export function Header() {
   const { reset, setFilters } = useItems();
@@ -49,52 +49,36 @@ export function Header() {
           <FaBars size={22} color="white" />
         </button>
         <Menu open={menuOpen} onClose={() => setMenuOpen(false)}>
-          <a href={`/users/${authStore.user?.id}`}>
-            <MenuItem>
-              <Image
-                width={20}
-                height={20}
-                src={authStore.user?.image || userImage}
-                alt={authStore.user?.name}
-                className="bg-gray-300 rounded-full cursor-pointer"
-              />
-              Perfil
-            </MenuItem>
+          <a href={`/users/${authStore.user?.id}`} className="menu-button">
+            <Image
+              width={20}
+              height={20}
+              src={authStore.user?.image || userImage}
+              alt={authStore.user?.name}
+              className="bg-gray-300 rounded-full cursor-pointer"
+            />
+            Perfil
           </a>
-          <a href="/privacy-policy">
-            <MenuItem>
-              <FaRegFile size={20} color="gray" />
-              Política de privacidade
-            </MenuItem>
+          <a href="/privacy-policy" className="menu-button">
+            <FaRegFile size={20} color="gray" />
+            Política de privacidade
           </a>
-          <a href="/contact">
-            <MenuItem>
-              <FaRegCommentAlt size={20} color="gray" />
-              Contato
-            </MenuItem>
+          <a href="/contact" className="menu-button">
+            <FaRegCommentAlt size={20} color="gray" />
+            Contato
           </a>
-          <a href="/about">
-            <MenuItem>
-              <FaSeedling size={20} color="gray" />
-              Sobre
-            </MenuItem>
+          <a href="/about" className="menu-button">
+            <FaSeedling size={20} color="gray" />
+            Sobre
           </a>
           {!!authStore.user && (
-            <MenuItem onClick={() => logOut()}>
+            <button className="menu-button" onClick={() => logOut()}>
               <FiLogOut size={20} color="gray" />
               Sair
-            </MenuItem>
+            </button>
           )}
         </Menu>
       </div>
     </HeaderLayout>
-  );
-}
-
-function MenuItem({ children }) {
-  return (
-    <button className="text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2">
-      {children}
-    </button>
   );
 }

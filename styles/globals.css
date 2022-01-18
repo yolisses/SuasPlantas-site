@@ -15,12 +15,20 @@ body {
 }
 
 @layer components {
+  .custom-button{
+    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10 flex items-center justify-center text-left;
+  }
+
   button {
-    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 focus:bg-black focus:bg-opacity-10 flex items-center justify-center text-left;
+    @apply custom-button
   }
 
   .icon-button {
-    @apply aspect-square rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10 flex items-center justify-center p-3 active:transform active:scale-95;
+    @apply custom-button aspect-square rounded-full flex items-center justify-center p-3 active:transform active:scale-95;
+  }
+
+  .menu-button {
+    @apply custom-button text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2
   }
 }
 
