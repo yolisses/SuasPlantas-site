@@ -2,8 +2,10 @@ import { FaQuestion, FaSeedling } from 'react-icons/fa';
 import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
+export type TopTab = 'plants'|'quests'|'users'|'map'
+
 interface TopTabsProps{
-    tab: 'plants'|'quests'|'users'|'map'
+    tab: TopTab
 }
 
 export function TopTabs({ tab }: TopTabsProps) {

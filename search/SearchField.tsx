@@ -2,7 +2,6 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 import {
   Dispatch, FormEvent, SetStateAction, useEffect, useState,
 } from 'react';
-import { useRouter } from 'next/router';
 import { Filters } from '../pagination/PaginationProvider';
 
 interface SearchFieldProps{
@@ -13,12 +12,11 @@ interface SearchFieldProps{
 
 export function SearchField({ filters, setFilters, path }:SearchFieldProps) {
   const [text, setText] = useState(filters?.text);
-  const router = useRouter();
 
   function submit(e:FormEvent) {
     e.preventDefault();
     setFilters((filters) => ({ ...filters, text: text || undefined }));
-    router.push(path);
+    // router.push(path);
   }
 
   function handleReset() {
