@@ -19,10 +19,12 @@ import { Menu } from './menu/Menu';
 import { RequireLogin } from '../auth/RequireLogin';
 import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
+import { useTextSearchContext } from '../search/TextSearchContext';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
   const { reset: resetQuests, setFilters: setQuestsFilters } = usePlants();
+  const { setText } = useTextSearchContext();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -40,6 +42,7 @@ export function Header() {
                 resetQuests();
                 setQuestsFilters({});
               }
+              setText(undefined);
             }}
           >
             SuasPlantas
