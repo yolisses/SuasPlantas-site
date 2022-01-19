@@ -47,7 +47,7 @@ export function PlantsPage() {
       </div>
       )}
       <div className="fixed right-10 bottom-10">
-        <AddButton />
+        <AddButton url="plants/add" />
       </div>
     </>
   );

@@ -2,9 +2,12 @@ import { FaPlus } from 'react-icons/fa';
 import Link from 'next/link';
 import { RequireLogin } from '../auth/RequireLogin';
 
-export function AddButton() {
+interface AddButtonProps{
+  url:string
+}
+export function AddButton({ url }:AddButtonProps) {
   return (
-    <Link href="plants/add">
+    <Link href={url}>
       <a tabIndex={-1}>
         <RequireLogin>
           <button className="fab">

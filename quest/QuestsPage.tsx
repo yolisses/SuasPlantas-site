@@ -47,7 +47,7 @@ export function QuestsPage() {
       </div>
       )}
       <div className="fixed right-10 bottom-10">
-        <AddButton />
+        <AddButton url="quests/edit" />
       </div>
     </>
   );
