@@ -20,7 +20,8 @@ import { RequireLogin } from '../auth/RequireLogin';
 import { usePlants } from '../plant/plantsContext';
 
 export function Header() {
-  const { reset, setFilters } = usePlants();
+  const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
+  const { reset: resetQuests, setFilters: setQuestsFilters } = usePlants();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -31,8 +32,12 @@ export function Header() {
             className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
             onClick={() => {
               if (window.location.pathname === '/') {
-                reset();
-                setFilters({});
+                resetPlants();
+                setPlantsFilters({});
+              }
+              if (window.location.pathname === '/quests') {
+                resetQuests();
+                setQuestsFilters({});
               }
             }}
           >

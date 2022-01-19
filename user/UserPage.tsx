@@ -178,7 +178,7 @@ function QuestsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div
-        className="flex flex-row flex-wrap gap-2"
+        className="flex flex-row flex-wrap gap-1 max-w-2xl"
       >
         { items.map((item) => (
           <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">

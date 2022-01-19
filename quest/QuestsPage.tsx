@@ -1,6 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from '../common/Spinner';
-import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
 import { SearchField } from '../search/SearchField';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
