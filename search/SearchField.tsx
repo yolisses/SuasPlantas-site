@@ -3,7 +3,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTextSearchContext } from './TextSearchContext';
 
-export function SearchField() {
+export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
   const { text: searchText, setText: setSearchText } = useTextSearchContext();
   const [text, setText] = useState(searchText);
   const router = useRouter();
@@ -27,10 +27,10 @@ export function SearchField() {
   }, [searchText]);
 
   return (
-    <div className="flex flex-row items-center w-full max-w-md">
+    <div className="flex flex-row flex-1">
       <form
         onSubmit={submit}
-        className="w-full bg-white rounded-full text-black h-9 flex flex-row items-center overflow-hidden flex-1 pl-3 border border-gray-300"
+        className="flex flex-row flex-1 bg-white rounded-full text-black h-9 items-center overflow-hidden pl-3 border border-gray-300"
       >
         <input
           type="text"
@@ -48,7 +48,7 @@ export function SearchField() {
       {!!text
       && (
       <button className="icon-button p-2" onClick={handleReset}>
-        <FaTimes color="white" size={20} />
+        <FaTimes color={resetButtonColor} size={20} />
       </button>
       )}
     </div>

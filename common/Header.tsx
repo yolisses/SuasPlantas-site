@@ -47,7 +47,9 @@ export function Header() {
         </a>
       </Link>
       <Spacer />
-      <SearchField />
+      <div className="hidden md:inline-block flex-1 max-w-sm">
+        <SearchField resetButtonColor="white" />
+      </div>
       <Spacer />
       <MeButton />
       <div>
