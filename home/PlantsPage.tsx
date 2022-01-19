@@ -4,7 +4,6 @@ import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
 import { Spinner } from '../common/Spinner';
-import { isDev } from '../utils/isDev';
 import { TopTabs } from '../common/TopTabs';
 import { SearchField } from '../search/SearchField';
 import { usePlants } from '../plant/plantsContext';
