@@ -53,7 +53,7 @@ export function Header() {
       <div>
         <button
           className="icon-button"
-          onClick={(e) => { setMenuOpen(true); e.stopPropagation(); }}
+          onClick={(e) => { setMenuOpen((value) => !value); e.stopPropagation(); }}
         >
           <FaBars size={22} color="white" />
         </button>
