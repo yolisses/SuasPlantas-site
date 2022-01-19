@@ -13,7 +13,7 @@ export const MeButton = observer(() => {
     <>
       { authStore.user ? (
         <Link href={`/users/${authStore.user?.id}`}>
-          <a>
+          <a tabIndex={-1}>
             <button
               className="icon-button p-2"
             >
