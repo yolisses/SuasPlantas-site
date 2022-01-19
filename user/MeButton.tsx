@@ -27,9 +27,7 @@ export const MeButton = observer(() => {
     </Link>
   ) : (
     <RequireLogin>
-      <button
-        className="flex flex-row items-center gap-1 cursor-pointer text-white"
-      >
+      <button className="flex flex-row items-center gap-1 cursor-pointer text-white">
         <FaRegUser size={18} />
         <div className="text-lg">Entrar</div>
       </button>

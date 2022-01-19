@@ -48,7 +48,7 @@ body {
   }
 
   .icon-button {
-    @apply center highlight aspect-square rounded-full flex items-center justify-center p-3 scale-active;
+    @apply center aspect-square highlight rounded-full flex items-center justify-center p-3 scale-active;
   }
 
   .menu-button {
