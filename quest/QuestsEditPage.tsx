@@ -82,7 +82,7 @@ export function QuestsEditPage() {
       <div className="w-full flex flex-col items-center gap-2">
         <div className="w-full max-w-lg flex flex-col items-center" style={{ minHeight: '25vh' }}>
           {loading && <Spinner />}
-          {quests.length ? (
+          {quests.length && !loading ? (
             <div className="flex flex-row flex-wrap gap-1 justify-center">
               {quests.map((item) => (
                 <button
