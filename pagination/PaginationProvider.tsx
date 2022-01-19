@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { api } from '../api/api';
 
-interface Filters{
+export interface Filters{
   text?:string
   swap?:boolean
   sell?:boolean

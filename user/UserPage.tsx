@@ -62,7 +62,7 @@ export function UserPage({ user }: UserPageProps) {
           content={`Usuário ${user.name}. ${user.city}, ${user.state}. ${user.description}`}
         />
       </Head>
-      <div className="flex flex-col items-center w-full">
+      <div className="flex pt-2 flex-col items-center w-full">
         <div className="p-2 flex flex-col gap-4 max-w-5xl w-full items-center">
           <div className="flex flex-row gap-2 items-center w-full max-w-4xl">
             <Image

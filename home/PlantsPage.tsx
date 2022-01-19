@@ -2,11 +2,11 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Plant } from '../plant/Plant';
 import { AddButton } from './AddButton';
-import { GridItem } from '../common/GridItem';
 import { Spinner } from '../common/Spinner';
 import { TopTabs } from '../common/TopTabs';
-import { SearchField } from '../search/SearchField';
+import { GridItem } from '../common/GridItem';
 import { usePlants } from '../plant/plantsContext';
+import { SearchField } from '../search/SearchField';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
 export function PlantsPage() {
@@ -15,13 +15,15 @@ export function PlantsPage() {
     pageData,
     loading,
     loadMore,
+    filters,
+    setFilters,
   } = usePlants();
 
   return (
     <>
-      <div className="md:pl-2 flex flex-col-reverse md:flex-row items-center justify-between">
-        <SearchField />
+      <div className=" flex flex-col md:flex-row p-2 md:pl-0 items-center justify-between">
         <TopTabs tab="plants" />
+        <SearchField filters={filters} setFilters={setFilters} path="/" />
       </div>
       <InfiniteScroll
         next={loadMore}

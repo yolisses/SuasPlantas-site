@@ -11,16 +11,18 @@ import { QuestItem } from './QuestItem';
 export function QuestsPage() {
   const {
     items,
-    pageData,
     loading,
+    filters,
+    pageData,
     loadMore,
+    setFilters,
   } = useQuests();
 
   return (
     <>
-      <div className="md:pl-2 flex flex-col-reverse md:flex-row items-center justify-between">
-        <SearchField />
+      <div className=" flex flex-col md:flex-row p-2 md:pl-0 items-center justify-between">
         <TopTabs tab="quests" />
+        <SearchField filters={filters} setFilters={setFilters} path="/quests" />
       </div>
       <InfiniteScroll
         next={loadMore}
