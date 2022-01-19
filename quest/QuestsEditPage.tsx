@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import Link from 'next/link';
 import { api } from '../api/api';
@@ -16,7 +16,7 @@ export function QuestsEditPage() {
 
   const { reset } = useQuests();
 
-  function handleSubmit(e) {
+  function handleSubmit(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!valid) return;
 
@@ -44,7 +44,7 @@ export function QuestsEditPage() {
     }
   }
 
-  function handleRemove(e) {
+  function handleRemove() {
     api.delete(`/quests/${selected?.id}`);
     setQuests(quests.filter((quest:Quest) => quest !== selected));
     setSelected(undefined);
