@@ -1,4 +1,5 @@
 import { GridItem } from '../common/GridItem';
+import { Plant } from '../plant/Plant';
 import { plantsContext } from '../plant/plantsContext';
 import { HomePage } from './HomePage';
 

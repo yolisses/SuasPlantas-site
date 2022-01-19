@@ -1,5 +1,5 @@
 import {
-  createContext, Dispatch, SetStateAction, useContext, useState,
+  createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
 } from 'react';
 
 interface ITextSearchContext{
@@ -9,7 +9,7 @@ interface ITextSearchContext{
 
 export const textSearchContext = createContext({} as ITextSearchContext);
 
-export function TextSearchContextProvider({ children }) {
+export function TextSearchContextProvider({ children }:{children:ReactNode}) {
   const [text, setText] = useState<string>();
   return (
     <textSearchContext.Provider value={{ text, setText }}>

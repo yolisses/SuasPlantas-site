@@ -47,7 +47,7 @@ export function Header() {
         </a>
       </Link>
       <Spacer />
-      <SearchField path="/" />
+      <SearchField />
       <Spacer />
       <MeButton />
       <div>
