@@ -17,10 +17,11 @@ import { FaviconTags } from '../app/FaviconTags';
 import { MuiFontsTags } from '../app/MuiFontsTags';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
-import { PaginationProvider } from '../pagination/PaginationProvider';
+import { questsContext } from '../quest/questsContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
-import { questsContext } from '../quest/questsContext';
+import { PaginationProvider } from '../pagination/PaginationProvider';
+import { TextSearchContextProvider } from '../search/TextSearchContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -40,12 +41,14 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalyticsTags />
       <NotificationTags />
       <Twemoji options={{ className: 'twemoji' }}>
-        <PaginationProvider Context={plantsContext} apiRoute="plants">
-          <PaginationProvider Context={questsContext} apiRoute="quests">
-            <Header />
-            <Component {...pageProps} />
+        <TextSearchContextProvider>
+          <PaginationProvider Context={plantsContext} apiRoute="plants">
+            <PaginationProvider Context={questsContext} apiRoute="quests">
+              <Header />
+              <Component {...pageProps} />
+            </PaginationProvider>
           </PaginationProvider>
-        </PaginationProvider>
+        </TextSearchContextProvider>
         <SnackView />
         <ModalView />
       </Twemoji>

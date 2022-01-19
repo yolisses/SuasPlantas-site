@@ -18,6 +18,7 @@ import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
 import { RequireLogin } from '../auth/RequireLogin';
 import { usePlants } from '../plant/plantsContext';
+import { SearchField } from '../search/SearchField';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
@@ -45,6 +46,8 @@ export function Header() {
           </div>
         </a>
       </Link>
+      <Spacer />
+      <SearchField path="/" />
       <Spacer />
       <MeButton />
       <div>

@@ -2,6 +2,7 @@ import {
   Context, Dispatch, ReactNode, SetStateAction, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
+import { useTextSearchContext } from '../search/TextSearchContext';
 
 export interface Filters{
   text?:string
@@ -36,6 +37,7 @@ interface PaginationProviderProps<T>{
 }
 
 export function PaginationProvider<T>({ children, Context, apiRoute }:PaginationProviderProps<T>) {
+  const { text } = useTextSearchContext();
   const [items, setItems] = useState<T[]>();
   const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
@@ -69,6 +71,10 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
       loadMore();
     }
   }, [pageData]);
+
+  useEffect(() => {
+    setFilters((filters) => ({ ...filters, text }));
+  }, [text]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

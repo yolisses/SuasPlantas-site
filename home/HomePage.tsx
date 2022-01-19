@@ -4,7 +4,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { AddButton } from './AddButton';
 import { Spinner } from '../common/Spinner';
 import { TopTab, TopTabs } from '../common/TopTabs';
-import { SearchField } from '../search/SearchField';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
@@ -23,15 +22,12 @@ export function HomePage<T>({
     pageData,
     loading,
     loadMore,
-    filters,
-    setFilters,
   } = useContext(context);
 
   return (
     <>
-      <div className=" flex flex-col md:flex-row p-2 md:pl-0 items-center justify-between">
+      <div className=" flex flex-col md:flex-row items-center justify-between">
         <TopTabs tab={tab} />
-        <SearchField filters={filters} setFilters={setFilters} path="/" />
       </div>
       <InfiniteScroll
         next={loadMore}

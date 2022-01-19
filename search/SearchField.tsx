@@ -1,31 +1,30 @@
 import { FaSearch, FaTimes } from 'react-icons/fa';
-import {
-  Dispatch, FormEvent, SetStateAction, useEffect, useState,
-} from 'react';
-import { Filters } from '../pagination/PaginationProvider';
+import { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useTextSearchContext } from './TextSearchContext';
 
-interface SearchFieldProps{
-  filters?:Filters
-  setFilters:Dispatch<SetStateAction<Filters|undefined>>
-  path:string
-}
-
-export function SearchField({ filters, setFilters, path }:SearchFieldProps) {
-  const [text, setText] = useState(filters?.text);
+export function SearchField() {
+  const { text: searchText, setText: setSearchText } = useTextSearchContext();
+  const [text, setText] = useState(searchText);
+  const router = useRouter();
 
   function submit(e:FormEvent) {
     e.preventDefault();
-    setFilters((filters) => ({ ...filters, text: text || undefined }));
-    // router.push(path);
+    setSearchText(text || undefined);
+    const path = window.location.pathname;
+    if (path !== '/' && path !== '/quests') {
+      router.push('/');
+    }
   }
 
   function handleReset() {
-    setFilters((filters) => ({ ...filters, text: undefined }));
+    setText(undefined);
+    setSearchText(undefined);
   }
 
   useEffect(() => {
-    setText(() => filters?.text);
-  }, [filters]);
+    setText(searchText);
+  }, [searchText]);
 
   return (
     <div className="flex flex-row items-center w-full max-w-md">
@@ -49,7 +48,7 @@ export function SearchField({ filters, setFilters, path }:SearchFieldProps) {
       {!!text
       && (
       <button className="icon-button p-2" onClick={handleReset}>
-        <FaTimes color="black" />
+        <FaTimes color="white" size={20} />
       </button>
       )}
     </div>
