@@ -115,14 +115,14 @@ export function ContactPage() {
               {' '}
               Facebook
             </h2>
-            <Link href="https://www.facebook.com/suasplantasoficial">
+            <Link href="https://www.facebook.com/suasplantas.com.br">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.facebook.com/suasplantasoficial"
+                href="https://www.facebook.com/suasplantas.com.br"
                 className="w-full max-w-sm"
               >
-                facebook.com/suasplantasoficial
+                facebook.com/suasplantas.com.br
               </a>
             </Link>
           </div>
