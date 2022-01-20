@@ -30,23 +30,21 @@ export function Header() {
   return (
     <HeaderLayout className="bg-emerald-700 text-white shadow-md">
       <Link href="/">
-        <a>
-          <div
-            className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
-            onClick={() => {
-              if (window.location.pathname === '/') {
-                resetPlants();
-                setPlantsFilters({});
-              }
-              if (window.location.pathname === '/quests') {
-                resetQuests();
-                setQuestsFilters({});
-              }
-              setText(undefined);
-            }}
-          >
-            SuasPlantas
-          </div>
+        <a
+          className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
+          onClick={() => {
+            if (window.location.pathname === '/') {
+              resetPlants();
+              setPlantsFilters({});
+            }
+            if (window.location.pathname === '/quests') {
+              resetQuests();
+              setQuestsFilters({});
+            }
+            setText(undefined);
+          }}
+        >
+          SuasPlantas
         </a>
       </Link>
       <Spacer />

@@ -106,11 +106,9 @@ export function UserPage({ user }: UserPageProps) {
           {authStore.user?.id === user.id && (
           <div className="flex flex-row justify-start">
             <Link href="/account/edit">
-              <a tabIndex={-1}>
-                <button className="p-2 rounded-lg border border-green-500">
-                  <FaRegUser size={18} />
-                  Editar perfil
-                </button>
+              <a className="secondary-button p-2 rounded-lg border border-green-500">
+                <FaRegUser size={18} />
+                Editar perfil
               </a>
             </Link>
           </div>
