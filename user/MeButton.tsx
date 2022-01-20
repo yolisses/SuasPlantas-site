@@ -13,19 +13,15 @@ export const MeButton = observer(() => {
     <>
       { authStore.user ? (
         <Link href={`/users/${authStore.user?.id}`}>
-          <a tabIndex={-1}>
-            <button
-              className="icon-button p-2"
-            >
-              <Image
-                width={size}
-                height={size}
-                objectFit="cover"
-                alt={authStore.user?.name}
-                src={authStore.user?.image || userImage}
-                className="bg-gray-300 rounded-full shadow-md cursor-pointer"
-              />
-            </button>
+          <a className="icon-button p-2">
+            <Image
+              width={size}
+              height={size}
+              objectFit="cover"
+              alt={authStore.user?.name}
+              src={authStore.user?.image || userImage}
+              className="bg-gray-300 rounded-full shadow-md cursor-pointer"
+            />
           </a>
         </Link>
       ) : (
