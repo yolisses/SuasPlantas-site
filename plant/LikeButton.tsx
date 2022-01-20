@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
-import { loginBefore } from '../auth/loginBefore';
+import { SignInBox } from '../auth/SignInBox';
+import { useUser } from '../auth/userContext';
+import { useModal } from '../modal/ModalContext';
 
 interface LikeButtonProps{
   url:string
@@ -10,10 +12,15 @@ interface LikeButtonProps{
 
 export function LikeButton({ url, active }:LikeButtonProps) {
   const [isActive, setIsActive] = useState(active || false);
+  const { user } = useUser();
+  const { setModal } = useModal();
   const size = 20;
 
   async function handleClick() {
-    setIsActive((value) => !value);
+    if (!user) {
+      setModal(<SignInBox />);
+      return;
+    }
     if (!isActive) {
       await api.post(url);
     } else {
@@ -27,18 +34,20 @@ export function LikeButton({ url, active }:LikeButtonProps) {
 
   return (
     <button
+      onClick={handleClick}
       className="main-button"
-      onClick={loginBefore(handleClick)}
     >
-      {!isActive
-        ? <FaRegThumbsUp size={size} color="white" />
-        : (
+      {user && isActive
+        ? (
           <FaThumbsUp
             size={size}
             color="white"
           />
+        )
+        : (
+          <FaRegThumbsUp size={size} color="white" />
         )}
-      {isActive ? 'Curtido' : 'Curtir'}
+      {user && isActive ? 'Curtido' : 'Curtir'}
     </button>
   );
 }

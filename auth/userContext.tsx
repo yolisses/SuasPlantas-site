@@ -24,8 +24,14 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
   async function logOut() {
     setUser(undefined);
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
+    await api.post('users/logout');
     delete api.defaults.headers.common.Authorization;
-    return api.post('users/logout');
+    try {
+      const user = JSON.stringify(null);
+      localStorage.setItem('user', user);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async function signIn({ provider, accessToken }:ISignIn) {

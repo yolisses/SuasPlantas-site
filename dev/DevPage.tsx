@@ -1,9 +1,12 @@
+import { useModal } from '../modal/ModalContext';
+
 export function DevPage() {
+  const { setModal } = useModal();
+
   return (
-    <div className="flex flex-row">
-      <button className="main-button" disabled>oi</button>
-      <button className="main-button">oi</button>
-      <button>coisa</button>
+    <div>
+      <button onClick={() => setModal(<div>madelline</div>)}>open</button>
+      <button onClick={() => setModal(false)}>close</button>
     </div>
   );
 }
