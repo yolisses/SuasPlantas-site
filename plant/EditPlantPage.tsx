@@ -16,10 +16,10 @@ import { api } from '../api/api';
 import { Plant } from './Plant';
 import { tagEmoji, tags } from './tags';
 import { Sending } from '../upload/Sending';
-import { snackStore } from '../snack/snackStore';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
 import { Spinner } from '../common/Spinner';
+import { useSnack } from '../snack/SnackContext';
 
 interface EditPlantProps{
   edit?:boolean
@@ -29,6 +29,7 @@ interface EditPlantProps{
 export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [sell, setSell] = useState(!!data?.price);
   const [loading, setLoading] = useState(false);
+  const { setSnack } = useSnack();
   const {
     register, handleSubmit, control, formState: { errors }, getValues,
   } = useForm({
@@ -57,13 +58,13 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         amount: parseInt(data.amount, 10) || null,
         price: (sell && parseFloat(data.price)) || null,
       });
-      snackStore.setSnack({
+      setSnack({
         severity: 'success',
         text: edit ? 'Planta alterada com sucesso' : 'Sua planta foi adicionada!',
       });
       Router.push(`/plants/${res.data.id}`);
     } catch (err:any) {
-      snackStore.setSnack({ severity: 'error', text: err.message });
+      setSnack({ severity: 'error', text: err.message });
       throw err;
     }
     setLoading(false);

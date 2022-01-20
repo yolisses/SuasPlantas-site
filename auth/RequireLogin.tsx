@@ -5,12 +5,10 @@ import { useUser } from './userContext';
 
 export function RequireLogin({ children, ...rest }:any) {
   const { user } = useUser();
-  const { modal, setModal } = useModal();
+  const { setModal } = useModal();
 
   function handleClick(e:MouseEvent<HTMLDivElement, MouseEvent>) {
     if (!user) {
-      console.log('user', user);
-      console.log('modal', modal);
       setModal(<SignInBox />);
       e.stopPropagation();
       e.preventDefault();

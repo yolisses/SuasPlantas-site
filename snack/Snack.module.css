@@ -1,0 +1,14 @@
+@keyframes rollout {
+    0% { 
+        transform: translateY(30px) scale(50%);
+        opacity: 0;
+     }
+    100% { 
+        transform: none;;
+        opacity: 100%;
+     }
+}
+.rollout {
+  animation: rollout 0.1s;
+}
+  

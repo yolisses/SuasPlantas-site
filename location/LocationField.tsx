@@ -9,9 +9,9 @@ import { Feature } from './Feature';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 import { api } from '../api/api';
-import { snackStore } from '../snack/snackStore';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { useSnack } from '../snack/SnackContext';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -25,6 +25,7 @@ export function LocationField({ text }:LocationFieldProps) {
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
   const { user, setUser } = useUser();
+  const { setSnack } = useSnack();
 
   function handleChange(value: Feature) {
     setCenter([value.center[1], value.center[0]]);
@@ -52,13 +53,13 @@ export function LocationField({ text }:LocationFieldProps) {
       });
 
       if (res.data.locationFound) {
-        snackStore.setSnack({
+        setSnack({
           severity: 'success',
           text: 'Localização alterada com sucesso',
         });
         setActive(false);
       } else {
-        snackStore.setSnack({
+        setSnack({
           severity: 'error',
           text: 'Desculpe, mas não oferecemos suporte a esse local',
         });
@@ -66,7 +67,7 @@ export function LocationField({ text }:LocationFieldProps) {
 
       setUser(res.data.user);
     } catch (err) {
-      snackStore.setSnack({
+      setSnack({
         severity: 'error',
         text: 'Erro ao mudar localicação',
       });

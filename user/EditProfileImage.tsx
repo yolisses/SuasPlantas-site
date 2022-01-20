@@ -5,13 +5,15 @@ import Image from 'next/image';
 import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { Sending } from '../upload/Sending';
-import { snackStore } from '../snack/snackStore';
 import { useRefresh } from '../utils/useRefresh';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { useSnack } from '../snack/SnackContext';
 
 export function EditProfileImage() {
   const imageSize = 80;
+
+  const { setSnack } = useSnack();
 
   const [sending, setSending] = useState<Sending>();
   const refresh = useRefresh();
@@ -33,9 +35,9 @@ export function EditProfileImage() {
     try {
       const res = await api.patch('users', { image: sending.key });
       user!.image = res.data.image;
-      snackStore.success('Foto de perfil alterada com sucesso');
+      setSnack({ severity: 'success', text: 'Foto de perfil alterada com sucesso' });
     } catch (err:any) {
-      snackStore.error('Não foi possível alterar a foto de perfil');
+      setSnack({ severity: 'error', text: 'Não foi possível alterar a foto de perfil' });
     }
     setLoading(false);
   };

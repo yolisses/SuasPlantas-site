@@ -14,7 +14,6 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { SvgIconComponent } from '@material-ui/icons';
 import { api } from '../api/api';
-import { snackStore } from '../snack/snackStore';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 
@@ -56,7 +55,7 @@ export function ContactPage() {
       });
       setSent(true);
     } catch (err:any) {
-      snackStore.setSnack({ severity: 'error', text: err.message });
+      setSnack({ severity: 'error', text: err.message });
     }
     setLoading(false);
   }

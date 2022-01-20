@@ -12,12 +12,12 @@ import { User } from './User';
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
-import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
 
 export const EditProfilePage = ({ user }:{user:User}) => {
   const { setUser } = useUser();
+  const { setSnack } = useSnack();
 
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
@@ -40,9 +40,9 @@ export const EditProfilePage = ({ user }:{user:User}) => {
       setLoading(false);
     }
     setLoading(false);
-    snackStore.setSnack({
-      text: 'Dados salvos com sucesso',
+    setSnack({
       severity: 'success',
+      text: 'Dados salvos com sucesso',
     });
   }
 

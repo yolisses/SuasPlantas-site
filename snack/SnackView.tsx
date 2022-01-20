@@ -1,25 +1,11 @@
-import { Alert, Snackbar } from '@mui/material';
-import { observer } from 'mobx-react-lite';
-import { snackStore } from './snackStore';
+import { useSnack } from './SnackContext';
+import { Snack } from './Snack';
 
-function ImplSnackView() {
+export function SnackView() {
+  const { snack } = useSnack();
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {snackStore.snack
-        ? (
-          <Snackbar
-            open
-            autoHideDuration={snackStore.snack.text.length * 300}
-            onClose={() => snackStore.close()}
-          >
-            <Alert severity={snackStore?.snack?.severity} className="w-full" variant="filled">
-              {snackStore?.snack?.text}
-            </Alert>
-          </Snackbar>
-        ) : undefined}
+      {!!snack && (<Snack snack={snack} />)}
     </>
   );
 }
-
-export const SnackView = observer(ImplSnackView);
