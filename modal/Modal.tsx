@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from 'react';
 import { GrClose } from 'react-icons/gr';
-import { useModal } from '../modal/ModalContext';
+import { useModal } from './ModalContext';
 
 export interface ModalProps {
   children: ReactNode;

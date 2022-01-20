@@ -1,4 +1,4 @@
-import { useModal } from '../modal/ModalContext';
+import { useModal } from './ModalContext';
 import { Modal } from './Modal';
 
 export function ModalView() {

@@ -5,7 +5,6 @@ import Head from 'next/head';
 // @ts-ignore
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
-import { observer } from 'mobx-react-lite';
 import { ThemeProvider } from '@mui/material';
 
 import { theme } from '../mui/theme';
@@ -18,17 +17,14 @@ import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/userContext';
-import { ModalContextProvider, useModal } from '../modal/ModalContext';
+import { ModalContextProvider } from '../modal/ModalContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
-import { Modal } from '../common/Modal';
-import { ModalView } from '../common/ModalView';
+import { ModalView } from '../modal/ModalView';
 
-export function MyApp({ Component, pageProps }: AppProps) {
-  const { modal } = useModal();
-
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -66,5 +62,3 @@ export function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-
-export default observer(MyApp);
