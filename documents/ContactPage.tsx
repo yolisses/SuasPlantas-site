@@ -98,14 +98,14 @@ export function ContactPage() {
               {' '}
               Instagram
             </h2>
-            <Link href="https://www.instagram.com/suasplantasoficial">
+            <Link href="https://www.instagram.com/suasplantas.com.br/">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.instagram.com/suasplantasoficial"
+                href="https://www.instagram.com/suasplantas.com.br/"
                 className="w-full max-w-sm"
               >
-                @suasplantasoficial
+                @suasplantas.com.br
               </a>
             </Link>
           </div>
