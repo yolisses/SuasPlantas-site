@@ -6,12 +6,12 @@ import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
-import { authStore } from '../auth/authStore';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 import { api } from '../api/api';
 import { snackStore } from '../snack/snackStore';
 import { Spinner } from '../common/Spinner';
+import { useUser } from '../auth/userContext';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -24,6 +24,7 @@ export function LocationField({ text }:LocationFieldProps) {
   const [loading, setLoading] = useState(false);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
+  const { user, setUser } = useUser();
 
   function handleChange(value: Feature) {
     setCenter([value.center[1], value.center[0]]);
@@ -35,8 +36,8 @@ export function LocationField({ text }:LocationFieldProps) {
   function keyExtractor(value: Feature) { return value.id; }
 
   function handleButtonClick() {
-    center[0] = authStore.user!.location.coordinates[0];
-    center[1] = authStore.user!.location.coordinates[1];
+    center[0] = user!.location.coordinates[0];
+    center[1] = user!.location.coordinates[1];
     setActive(true);
   }
 
@@ -63,7 +64,7 @@ export function LocationField({ text }:LocationFieldProps) {
         });
       }
 
-      authStore.user = res.data.user;
+      setUser(res.data.user);
     } catch (err) {
       snackStore.setSnack({
         severity: 'error',

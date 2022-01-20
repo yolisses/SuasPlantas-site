@@ -1,21 +1,19 @@
+import Link from 'next/link';
+import Head from 'next/head';
+import Image from 'next/image';
+import { FaPen } from 'react-icons/fa';
+import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Image from 'next/image';
-import Head from 'next/head';
 
-import Link from 'next/link';
-import { FaPen } from 'react-icons/fa';
-
-import { useEffect, useRef } from 'react';
-import { tagEmoji } from './tags';
 import { Plant } from './Plant';
+import { tagEmoji } from './tags';
 import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
+import { useUser } from '../auth/userContext';
 import { GridItem } from '../common/GridItem';
-import { authStore } from '../auth/authStore';
 import { TextLink } from '../common/TextLink';
 import { ShareButtons } from './ShareButtons';
-import { isSelfUser } from '../utils/isSelfUser';
 import { hasContact } from '../utils/hasContact';
 import { devIndicator } from '../utils/devIndicator';
 import { AvailabilityInfo } from './AvailabilityInfo';
@@ -29,6 +27,8 @@ interface PlantPageProps{
 }
 
 export function PlantPage({ data }:PlantPageProps) {
+  const { user: currentUser } = useUser();
+
   const {
     name,
     description,
@@ -39,6 +39,8 @@ export function PlantPage({ data }:PlantPageProps) {
     id,
     updatedAt: updatedAtString,
   } = data;
+
+  const selfUser = user.id === currentUser?.id;
 
   const updatedAt = new Date(updatedAtString);
 
@@ -108,18 +110,17 @@ export function PlantPage({ data }:PlantPageProps) {
                 {!!user.instagramUsername && (
                 <InstagramButton instagramUsername={user.instagramUsername} />
                 )}
-                {!hasContact(user) && (
-                  isSelfUser(user) ? (
-                    <div>
-                      <TextLink href="/account/edit">
-                        Adicionar uma forma de contato para poder receber mensagens
-                      </TextLink>
-                    </div>
-                  ) : (
-                    <div className="text-gray-500 text-sm">
-                      Sem meios de contato
-                    </div>
-                  ))}
+                {!hasContact(user) && (selfUser ? (
+                  <div>
+                    <TextLink href="/account/edit">
+                      Adicionar uma forma de contato para poder receber mensagens
+                    </TextLink>
+                  </div>
+                ) : (
+                  <div className="text-gray-500 text-sm">
+                    Sem meios de contato
+                  </div>
+                ))}
               </div>
               <div>
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
@@ -165,7 +166,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 shareUrl={`https://suasplantas.com/plants/${id}`}
               />
             </div>
-            {authStore.user?.id === data.user.id
+            {currentUser?.id === data.user.id
             && (
             <div className="sticky bottom-0">
               <div className="absolute bottom-10 right-10">

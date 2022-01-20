@@ -8,16 +8,17 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
-import { observer } from 'mobx-react-lite';
+import { User } from './User';
 import { api } from '../api/api';
-import { authStore } from '../auth/authStore';
+import { Spinner } from '../common/Spinner';
+import { useUser } from '../auth/userContext';
 import { snackStore } from '../snack/snackStore';
 import { EditProfileImage } from './EditProfileImage';
-import { User } from './User';
 import { LocationField } from '../location/LocationField';
-import { Spinner } from '../common/Spinner';
 
-export const EditProfilePage = observer(({ user }:{user:User}) => {
+export const EditProfilePage = ({ user }:{user:User}) => {
+  const { setUser } = useUser();
+
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
       name: user?.name,
@@ -33,7 +34,7 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
     setLoading(true);
     try {
       const res = await api.patch('users', { ...data });
-      authStore.setUser(res.data);
+      setUser(res.data);
       Router.push(`/users/${res.data.id}`);
     } catch (err) {
       setLoading(false);
@@ -56,7 +57,7 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
         {/* ignore the label */}
         <TextField label="Bio" multiline minRows={2} {...register('description')} />
         <div className="self-start">
-          <LocationField text={`${authStore.user?.city}, ${authStore.user?.state}`} />
+          <LocationField text={`${user?.city}, ${user?.state}`} />
         </div>
         <div className="flex flex-col">
           <TextField
@@ -125,4 +126,4 @@ export const EditProfilePage = observer(({ user }:{user:User}) => {
       </div>
     </div>
   );
-});
+};

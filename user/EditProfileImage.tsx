@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { Sending } from '../upload/Sending';
-import { authStore } from '../auth/authStore';
 import { snackStore } from '../snack/snackStore';
 import { useRefresh } from '../utils/useRefresh';
 import { Spinner } from '../common/Spinner';
+import { useUser } from '../auth/userContext';
 
 export function EditProfileImage() {
   const imageSize = 80;
@@ -17,6 +17,7 @@ export function EditProfileImage() {
   const refresh = useRefresh();
 
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
 
   const handleFilesSelected = async (e: ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
@@ -31,7 +32,7 @@ export function EditProfileImage() {
     await sending!.sendPromise;
     try {
       const res = await api.patch('users', { image: sending.key });
-      authStore.user!.image = res.data.image;
+      user!.image = res.data.image;
       snackStore.success('Foto de perfil alterada com sucesso');
     } catch (err:any) {
       snackStore.error('Não foi possível alterar a foto de perfil');
@@ -46,7 +47,7 @@ export function EditProfileImage() {
         height={imageSize}
         className="rounded-full"
         objectFit="cover"
-        src={sending?.src || authStore.user?.image || userImage}
+        src={sending?.src || user?.image || userImage}
       />
       <div className="flex flex-col">
         <FormLabel component="legend" className="text-center">Foto de perfil</FormLabel>

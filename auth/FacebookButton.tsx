@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Head from 'next/head';
-import { signIn } from './signIn';
 import { isDev } from '../utils/isDev';
 import { loginButtonProps } from './loginButtonProps';
+import { useUser } from './userContext';
 
 interface FacebookResponse {
   authResponse: {
@@ -17,9 +17,12 @@ declare global {
 }
 
 export function FacebookButton({ callback } : loginButtonProps) {
+  const { signIn } = useUser();
+
   async function handleFacebookResponse(e: FacebookResponse) {
-    if (isDev) console.log(e.authResponse.accessToken);
-    await signIn('facebook', e.authResponse.accessToken);
+    const { accessToken } = e.authResponse;
+    if (isDev) console.log(accessToken);
+    await signIn({ provider: 'facebook', accessToken });
     if (callback) callback();
   }
 

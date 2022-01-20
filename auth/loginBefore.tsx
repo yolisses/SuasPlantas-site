@@ -1,11 +1,11 @@
 import { modalStore } from '../modal/modalStore';
-import { authStore } from './authStore';
 import { SignInBox } from './SignInBox';
+import { useUser } from './userContext';
 
 export function loginBefore(callback: ()=>any) {
-  if (authStore.user) { return callback; }
+  const { user } = useUser();
+  if (user) { return callback; }
   return () => {
     modalStore.setModal(<SignInBox />);
-    console.log('coisa required');
   };
 }

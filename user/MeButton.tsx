@@ -1,25 +1,26 @@
-import { observer } from 'mobx-react-lite';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
-import { authStore } from '../auth/authStore';
+import { useUser } from '../auth/userContext';
 import { RequireLogin } from '../auth/RequireLogin';
 
-export const MeButton = observer(() => {
+export function MeButton() {
+  const { user } = useUser();
   const size = 30;
+
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      { authStore.user ? (
-        <Link href={`/users/${authStore.user?.id}`}>
+      { user ? (
+        <Link href={`/users/${user?.id}`}>
           <a className="icon-button p-2">
             <Image
               width={size}
               height={size}
               objectFit="cover"
-              alt={authStore.user?.name}
-              src={authStore.user?.image || userImage}
+              alt={user?.name}
+              src={user?.image || userImage}
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
           </a>
@@ -34,4 +35,4 @@ export const MeButton = observer(() => {
       )}
     </>
   );
-});
+}

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import { signIn } from './signIn';
 import { isDev } from '../utils/isDev';
 import { loginButtonProps } from './loginButtonProps';
+import { useUser } from './userContext';
 
 interface GoogleResponse {
   credential: string;
@@ -15,11 +15,17 @@ declare global {
 }
 
 export function GoogleButton({ callback }:loginButtonProps) {
+  const { signIn } = useUser();
+
   async function handleGoogleResponse(e: GoogleResponse) {
-    if (isDev) console.log(e.credential);
-    await signIn('google', e.credential);
+    const accessToken = e.credential;
+    if (isDev) console.log(accessToken);
+    console.log(signIn);
+    await signIn({ provider: 'google', accessToken });
     if (callback) callback();
   }
+
+  console.log(signIn);
 
   useEffect(() => {
     window.handleGoogleResponse = handleGoogleResponse;

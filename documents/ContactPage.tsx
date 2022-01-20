@@ -13,10 +13,10 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { SvgIconComponent } from '@material-ui/icons';
-import { authStore } from '../auth/authStore';
 import { api } from '../api/api';
 import { snackStore } from '../snack/snackStore';
 import { Spinner } from '../common/Spinner';
+import { useUser } from '../auth/userContext';
 
 const customIcons:{[key:string]:SvgIconComponent} = {
   1: <SentimentVeryDissatisfiedIcon fontSize="large" />,
@@ -34,13 +34,14 @@ function IconContainer(props:IconContainerProps) {
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState<any>();
+  const { user } = useUser();
 
   const {
     watch, register, handleSubmit, control,
   } = useForm({
     defaultValues: {
-      name: authStore.user?.name || '',
-      email: authStore.user?.email || '',
+      name: user?.name || '',
+      email: user?.email || '',
       rating: undefined,
       message: '',
     },

@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import '../mobx/storesConfig';
 import '../styles/globals.css';
 
 import Head from 'next/head';
@@ -23,6 +22,7 @@ import { NotificationTags } from '../notifications/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { usersContext } from '../user/usersContext';
+import { UserContextProvider } from '../auth/userContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -41,20 +41,22 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <MuiFontsTags />
       <GoogleAnalyticsTags />
       <NotificationTags />
-      <Twemoji options={{ className: 'twemoji' }}>
+      <UserContextProvider>
         <TextSearchContextProvider>
           <PaginationProvider Context={plantsContext} apiRoute="plants">
             <PaginationProvider Context={usersContext} apiRoute="users">
               <PaginationProvider Context={questsContext} apiRoute="quests">
-                <Header />
-                <Component {...pageProps} />
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <Header />
+                  <Component {...pageProps} />
+                  <SnackView />
+                  <ModalView />
+                </Twemoji>
               </PaginationProvider>
             </PaginationProvider>
           </PaginationProvider>
         </TextSearchContextProvider>
-        <SnackView />
-        <ModalView />
-      </Twemoji>
+      </UserContextProvider>
     </ThemeProvider>
   );
 }

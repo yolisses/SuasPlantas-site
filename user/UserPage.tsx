@@ -12,14 +12,12 @@ import { User } from './User';
 import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
-import { authStore } from '../auth/authStore';
 import { TextLink } from '../common/TextLink';
+import { useUser } from '../auth/userContext';
 import { hasContact } from '../utils/hasContact';
-import { isSelfUser } from '../utils/isSelfUser';
 import { TabSelector } from '../common/TabSelector';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
-import { QuestItem } from '../quest/QuestItem';
 
 interface UserPageProps {
   user: User;
@@ -43,15 +41,17 @@ function Tab({ tab, currentTab, children }:TabProps) {
 }
 
 export function UserPage({ user }: UserPageProps) {
+  const { user: currentUser, setUser } = useUser();
   const [tab, setTab] = useState('plants');
+  const selfUser = user.id === currentUser?.id;
 
   async function refreshUser() {
-    const res = await api.get(`users/${authStore.user?.id}`);
-    authStore.user = res.data;
+    const res = await api.get('users/me');
+    setUser(res.data);
   }
 
   useEffect(() => {
-    if (user.id === authStore.user?.id) { refreshUser(); }
+    if (selfUser) { refreshUser(); }
   }, []);
 
   return (
@@ -88,7 +88,7 @@ export function UserPage({ user }: UserPageProps) {
             <InstagramButton instagramUsername={user.instagramUsername} />
             )}
             {!hasContact(user) && (
-              isSelfUser(user) ? (
+              selfUser ? (
                 <div>
                   <TextLink href="/account/edit">
                     Adicionar uma forma de contato para poder receber mensagens
@@ -103,7 +103,7 @@ export function UserPage({ user }: UserPageProps) {
           <div>
             { user.description}
           </div>
-          {authStore.user?.id === user.id && (
+          {selfUser && (
           <div className="flex flex-row justify-start">
             <Link href="/account/edit">
               <a className="secondary-button p-2 rounded-lg border border-green-500">
