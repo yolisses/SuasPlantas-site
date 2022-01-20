@@ -124,7 +124,9 @@ export function PlantPage({ data }:PlantPageProps) {
               <div>
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
               </div>
-              <UserLink user={data.user} />
+              <div className="flex flex-row justify-start">
+                <UserLink user={data.user} />
+              </div>
               <div className="text-sm text-gray-500">
                 Última edição
                 {' '}
@@ -168,10 +170,8 @@ export function PlantPage({ data }:PlantPageProps) {
             <div className="sticky bottom-0">
               <div className="absolute bottom-10 right-10">
                 <Link href={`/plants/${data.id}/edit`}>
-                  <a className="flex flex-row justify-end">
-                    <button className="fab">
-                      <FaPen size={22} color="white" />
-                    </button>
+                  <a className="fab">
+                    <FaPen size={22} color="white" />
                   </a>
                 </Link>
               </div>

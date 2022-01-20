@@ -12,7 +12,7 @@ export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
     e.preventDefault();
     setSearchText(text || undefined);
     const path = window.location.pathname;
-    if (path !== '/' && path !== '/quests') {
+    if (path !== '/' && path !== '/quests' && path !== '/users') {
       router.push('/');
     }
   }

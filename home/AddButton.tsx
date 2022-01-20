@@ -8,11 +8,9 @@ interface AddButtonProps{
 export function AddButton({ url }:AddButtonProps) {
   return (
     <Link href={url}>
-      <a tabIndex={-1}>
+      <a className="fab">
         <RequireLogin>
-          <button className="fab">
-            <FaPlus size={24} color="white" />
-          </button>
+          <FaPlus size={24} color="white" />
         </RequireLogin>
       </a>
     </Link>

@@ -12,7 +12,7 @@ interface HomePageProps<T>{
     context:Context<IItemsContext<T>>
     tab:TopTab
     children:(items?:T[])=>ReactNode
-    fabPath:string
+    fabPath?:string
 }
 
 export function HomePage<T>({
@@ -52,9 +52,11 @@ export function HomePage<T>({
         <WithoutResultsWarn />
       </div>
       )}
+      {!!fabPath && (
       <div className="fixed right-10 bottom-10">
         <AddButton url={fabPath} />
       </div>
+      )}
     </>
   );
 }

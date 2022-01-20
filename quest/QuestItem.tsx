@@ -8,7 +8,7 @@ export function QuestItem({ item }:{item:Quest}) {
   return (
     <Link href={`users/${user?.id}`}>
       <a tabIndex={-1}>
-        <button className="w-full rounded-lg text-black bg-gray-300 hover:bg-gray-400 text-center shadow-md flex flex-col gap-2 highlight">
+        <button className="w-full rounded-lg text-black bg-gray-200 hover:bg-gray-300 text-center shadow-md flex flex-col gap-2 highlight">
           <div className="text-lg">
             {item.name}
           </div>

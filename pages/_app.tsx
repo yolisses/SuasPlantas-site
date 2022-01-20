@@ -22,6 +22,7 @@ import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { NotificationTags } from '../notifications/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
+import { usersContext } from '../user/usersContext';
 
 export function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -43,9 +44,11 @@ export function MyApp({ Component, pageProps }: AppProps) {
       <Twemoji options={{ className: 'twemoji' }}>
         <TextSearchContextProvider>
           <PaginationProvider Context={plantsContext} apiRoute="plants">
-            <PaginationProvider Context={questsContext} apiRoute="quests">
-              <Header />
-              <Component {...pageProps} />
+            <PaginationProvider Context={usersContext} apiRoute="users">
+              <PaginationProvider Context={questsContext} apiRoute="quests">
+                <Header />
+                <Component {...pageProps} />
+              </PaginationProvider>
             </PaginationProvider>
           </PaginationProvider>
         </TextSearchContextProvider>

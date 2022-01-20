@@ -1,4 +1,6 @@
-import { FaQuestion, FaSeedling } from 'react-icons/fa';
+import {
+  FaQuestion, FaSeedling, FaUserFriends, FaUsers,
+} from 'react-icons/fa';
 import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
@@ -22,6 +24,12 @@ export function TopTabs({ tab }: TopTabsProps) {
         <TabSelector tab="quests" value={tab}>
           <FaQuestion />
           Procurando
+        </TabSelector>
+      </Link>
+      <Link href="/users">
+        <TabSelector tab="users" value={tab}>
+          <FaUserFriends />
+          Pessoas
         </TabSelector>
       </Link>
       {/* <Link href="/users">
