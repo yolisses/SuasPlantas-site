@@ -5,7 +5,7 @@ import { ISnack } from './Snack';
 
 interface ISnackContext{
     snack?:ISnack
-    setSnack:Dispatch<SetStateAction<ISnack>>
+    setSnack:Dispatch<SetStateAction<ISnack|undefined>>
     close:()=>void
 }
 

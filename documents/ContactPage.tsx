@@ -16,6 +16,7 @@ import { SvgIconComponent } from '@material-ui/icons';
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { useSnack } from '../snack/SnackContext';
 
 const customIcons:{[key:string]:SvgIconComponent} = {
   1: <SentimentVeryDissatisfiedIcon fontSize="large" />,
@@ -33,6 +34,7 @@ function IconContainer(props:IconContainerProps) {
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState<any>();
+  const { setSnack } = useSnack();
   const { user } = useUser();
 
   const {

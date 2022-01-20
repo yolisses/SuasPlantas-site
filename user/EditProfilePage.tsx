@@ -14,6 +14,7 @@ import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
+import { useSnack } from '../snack/SnackContext';
 
 export const EditProfilePage = ({ user }:{user:User}) => {
   const { setUser } = useUser();

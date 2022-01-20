@@ -9,7 +9,7 @@ export interface ISnack{
   text:string
 }
 
-export function Snack({ children, snack }:{children:ReactNode, snack:ISnack}) {
+export function Snack({ snack }:{ snack:ISnack}) {
   const { close } = useSnack();
 
   function handleClickOutside() {
