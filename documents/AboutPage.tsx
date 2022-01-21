@@ -35,7 +35,7 @@ export function AboutPage() {
               🙂 Foco no usuário
             </h3>
             <p>
-              Estamos sempre de portas abertas para críticas, sugestões e ideas.
+              Estamos sempre de portas abertas para críticas, sugestões e ideias.
               Queremos entregar a melhor experiência possível.
             </p>
           </div>
@@ -53,7 +53,7 @@ export function AboutPage() {
               ✨ Curiosidade
             </h3>
             <p>
-              Somos facinados em testar novas ideias e procurar funcionalidades
+              Somos fascinados em testar novas ideias e procurar funcionalidades
               inovadoras. Se pensar em uma,
               {' '}
               <TextLink href="/contact">
