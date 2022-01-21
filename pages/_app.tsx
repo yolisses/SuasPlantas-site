@@ -31,7 +31,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>
           {devIndicator}
-          SuasPlantas - Trocar mudas de plantas
+          SuasPlantas - Trocar e vender mudas de plantas
         </title>
         <meta
           name="description"
