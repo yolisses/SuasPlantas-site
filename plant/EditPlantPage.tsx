@@ -5,16 +5,13 @@ import Link from 'next/link';
 import {
   Checkbox,
   FormLabel,
-  FormGroup,
   TextField,
-  Autocomplete,
   FormHelperText,
   InputAdornment,
   FormControlLabel,
 } from '@mui/material';
 import { api } from '../api/api';
 import { Plant } from './Plant';
-import { tagEmoji, tags } from './tags';
 import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
 import { useSnack } from '../snack/SnackContext';
@@ -123,31 +120,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           )}
         />
         <TextField label="Descrição" multiline minRows={2} {...register('description')} />
-        <Controller
-          name="tags"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Autocomplete
-              multiple
-              options={tags}
-              disableCloseOnSelect
-              value={value}
-              onChange={(_, value) => onChange(value)}
-              getOptionLabel={(option) => tagEmoji[option] + option}
-              renderOption={(props, option, { selected }) => (
-                <li {...props}>
-                  <Checkbox
-                    style={{ marginRight: 8 }}
-                    checked={selected}
-                  />
-                  {tagEmoji[option]}
-                  {option}
-                </li>
-              )}
-              renderInput={(params) => (<TextField label="Marcar como" {...params} />)}
-            />
-          )}
-        />
         <TextField
           label="Quantidade (opcional)"
           type="number"
@@ -158,7 +130,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         />
         <div>
           <FormLabel component="legend">Disponível para</FormLabel>
-          <FormGroup>
+          <div className="flex flex-col pb-2">
             <FormControlLabel
               label="Doação"
               control={(
@@ -202,7 +174,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
                 />
                 )}
             />
-          </FormGroup>
+          </div>
           {(errors.swap && errors.donate && !sell) && (
             <FormHelperText error>
               Por favor informe uma disponibilidade

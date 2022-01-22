@@ -1,0 +1,25 @@
+<Controller
+  name="tags"
+  control={control}
+  render={({ field: { onChange, value } }) => (
+    <Autocomplete
+      multiple
+      options={tags}
+      disableCloseOnSelect
+      value={value}
+      onChange={(_, value) => onChange(value)}
+      getOptionLabel={(option) => tagEmoji[option] + option}
+      renderOption={(props, option, { selected }) => (
+        <li {...props}>
+          <Checkbox
+            style={{ marginRight: 8 }}
+            checked={selected}
+          />
+          {tagEmoji[option]}
+          {option}
+        </li>
+      )}
+      renderInput={(params) => (<TextField label="Marcar como" {...params} />)}
+    />
+  )}
+/>;
