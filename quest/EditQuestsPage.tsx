@@ -7,7 +7,7 @@ import { Quest } from './Quest';
 import { useQuests } from './questsContext';
 import { Spinner } from '../common/Spinner';
 
-export function QuestsEditPage() {
+export function EditQuestsPage() {
   const [quests, setQuests] = useState<Quest[]>([]);
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState('');

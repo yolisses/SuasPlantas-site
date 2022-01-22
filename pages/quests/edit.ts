@@ -1,3 +1,3 @@
-import { QuestsEditPage } from '../../quest/QuestsEditPage';
+import { EditQuestsPage } from '../../quest/EditQuestsPage';
 
-export default QuestsEditPage;
+export default EditQuestsPage;
