@@ -1,12 +1,13 @@
+import { MouseEvent } from 'react';
 import { SignInBox } from './SignInBox';
-import { useModal } from '../modal/ModalContext';
 import { useUser } from './userContext';
+import { useModal } from '../modal/ModalContext';
 
 export function useIsLogged() {
   const { user } = useUser();
   const { setModal } = useModal();
 
-  function isLogged(e) {
+  function isLogged(e:MouseEvent) {
     if (!user) {
       e.preventDefault();
       e.stopPropagation();
