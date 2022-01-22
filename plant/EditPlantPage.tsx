@@ -20,6 +20,7 @@ import { Spinner } from '../common/Spinner';
 import { useSnack } from '../snack/SnackContext';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { usePlants } from './plantsContext';
 
 interface EditPlantProps{
   edit?:boolean
@@ -30,6 +31,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [sell, setSell] = useState(!!data?.price);
   const [loading, setLoading] = useState(false);
   const { setSnack } = useSnack();
+  const { reset } = usePlants();
   const {
     register, handleSubmit, control, formState: { errors }, getValues,
   } = useForm({
@@ -68,6 +70,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       throw err;
     }
     setLoading(false);
+    reset();
   }
 
   function validateAvailabilities() {
