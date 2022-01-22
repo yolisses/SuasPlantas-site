@@ -14,18 +14,19 @@ import { MeButton } from '../user/MeButton';
 import { HeaderLayout } from './HeaderLayout';
 import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
-import { RequireLogin } from '../auth/RequireLogin';
 import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
 import { useTextSearchContext } from '../search/TextSearchContext';
 import { useUser } from '../auth/userContext';
+import { useIsLogged } from '../auth/useIsLogged';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
   const { reset: resetQuests, setFilters: setQuestsFilters } = usePlants();
+  const { user, logOut } = useUser();
   const { setText } = useTextSearchContext();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, logOut } = useUser();
+  const { isLogged } = useIsLogged();
 
   return (
     <HeaderLayout className="bg-emerald-700 text-white shadow-md">
@@ -61,18 +62,16 @@ export function Header() {
           <FaBars size={22} color="white" />
         </button>
         <Menu open={menuOpen} onClose={() => setMenuOpen(false)}>
-          <RequireLogin>
-            <a href={`/users/${user?.id}`} className="menu-button">
-              <Image
-                width={20}
-                height={20}
-                src={user?.image || userImage}
-                alt={user?.name}
-                className="bg-gray-300 rounded-full cursor-pointer"
-              />
-              Perfil
-            </a>
-          </RequireLogin>
+          <a href={`/users/${user?.id}`} className="menu-button" onClick={isLogged}>
+            <Image
+              width={20}
+              height={20}
+              src={user?.image || userImage}
+              alt={user?.name}
+              className="bg-gray-300 rounded-full cursor-pointer"
+            />
+            Perfil
+          </a>
           <a href="/privacy-policy" className="menu-button">
             <FaRegFile size={20} color="gray" />
             Política de privacidade

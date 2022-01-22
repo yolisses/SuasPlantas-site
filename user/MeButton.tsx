@@ -3,10 +3,11 @@ import Image from 'next/image';
 import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
-import { RequireLogin } from '../auth/RequireLogin';
+import { useIsLogged } from '../auth/useIsLogged';
 
 export function MeButton() {
   const { user } = useUser();
+  const { isLogged } = useIsLogged();
   const size = 30;
 
   return (
@@ -26,12 +27,13 @@ export function MeButton() {
           </a>
         </Link>
       ) : (
-        <RequireLogin>
-          <button className="flex flex-row items-center gap-1 cursor-pointer text-white">
-            <FaRegUser size={18} />
-            <div className="text-lg">Entrar</div>
-          </button>
-        </RequireLogin>
+        <button
+          onClick={isLogged}
+          className="flex flex-row items-center gap-1 cursor-pointer text-white"
+        >
+          <FaRegUser size={18} />
+          <div className="text-lg">Entrar</div>
+        </button>
       )}
     </>
   );
