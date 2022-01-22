@@ -13,7 +13,6 @@ export function EditQuestsPage() {
   const [text, setText] = useState('');
   const [selected, setSelected] = useState<Quest>();
   const valid = !!text.trim().length;
-
   const { reset } = useQuests();
 
   function handleSubmit(e:FormEvent<HTMLFormElement>) {
@@ -33,6 +32,7 @@ export function EditQuestsPage() {
       } as Quest));
     }
     setText('');
+    reset();
   }
 
   function handleSelect(value:Quest) {
@@ -48,6 +48,7 @@ export function EditQuestsPage() {
     api.delete(`/quests/${selected?.id}`);
     setQuests(quests.filter((quest:Quest) => quest !== selected));
     setSelected(undefined);
+    reset();
   }
 
   useEffect(() => {
