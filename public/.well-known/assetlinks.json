@@ -1,0 +1,5 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target" : { "namespace": "android_app", "package_name": "com.suasplantas",
+                 "sha256_cert_fingerprints": ["7E:85:E5:20:F2:7B:29:65:EF:08:2B:FC:0E:E6:56:50:EB:09:A9:11:FA:86:87:91:1F:0B:92:AD:F8:4E:7C:FA"] }
+}]
