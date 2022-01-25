@@ -14,9 +14,11 @@ export function Menu({ children, open, onClose }:MenuProps) {
 
   if (open) {
     return (
-      <div className="relative right-0">
-        <div className="absolute right-0 bg-white p-2 rounded-lg shadow-lg">
-          {children}
+      <div className="relative">
+        <div className="absolute right-0 w-screen sm:w-auto max-w-sm px-2">
+          <div className="bg-white p-2 rounded-lg shadow-md">
+            {children}
+          </div>
         </div>
       </div>
     );
