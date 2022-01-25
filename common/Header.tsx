@@ -3,6 +3,7 @@ import {
   FaRegFile,
   FaSeedling,
   FaRegCommentAlt,
+  FaRegBell,
 } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,14 +26,22 @@ export function Header() {
   const { reset: resetQuests, setFilters: setQuestsFilters } = usePlants();
   const { user, logOut } = useUser();
   const { setText } = useTextSearchContext();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menu, setMenu] = useState<string>();
   const { isLogged } = useIsLogged();
 
+  function toggleMenu(value:string) {
+    setMenu((v) => (v === value ? undefined : value));
+  }
+
+  function closeMenu() {
+    setMenu(undefined);
+  }
+
   return (
-    <HeaderLayout className="bg-emerald-700 text-white shadow-md">
+    <HeaderLayout className="bg-emerald-700 shadow-md">
       <Link href="/">
         <a
-          className="text-lg cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
+          className="text-lg text-white cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
           onClick={() => {
             if (window.location.pathname === '/') {
               resetPlants();
@@ -57,11 +66,23 @@ export function Header() {
       <div>
         <button
           className="icon-button"
-          onClick={(e) => { setMenuOpen((value) => !value); e.stopPropagation(); }}
+          onClick={(e) => { toggleMenu('notifications'); e.stopPropagation(); }}
+        >
+          <FaRegBell size={22} color="white" />
+        </button>
+        <Menu open={menu === 'notifications'} onClose={closeMenu}>
+          <div className="text-black">legendas nunca morrem</div>
+          <div>legendas nunca morrem</div>
+        </Menu>
+      </div>
+      <div>
+        <button
+          className="icon-button"
+          onClick={(e) => { toggleMenu('more'); e.stopPropagation(); }}
         >
           <FaBars size={22} color="white" />
         </button>
-        <Menu open={menuOpen} onClose={() => setMenuOpen(false)}>
+        <Menu open={menu === 'more'} onClose={closeMenu}>
           <a href={`/users/${user?.id}`} className="menu-button" onClick={isLogged}>
             <Image
               width={20}
