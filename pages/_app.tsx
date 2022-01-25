@@ -21,7 +21,7 @@ import { UserContextProvider } from '../auth/userContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
-import { NotificationTags } from '../notifications/NotificationTags';
+import { NotificationTags } from '../notification/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 
