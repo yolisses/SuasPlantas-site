@@ -12,7 +12,9 @@ export function useIsLogged() {
       e.preventDefault();
       e.stopPropagation();
       setModal(<SignInBox />);
+      return false;
     }
+    return true;
   }
 
   return { isLogged };

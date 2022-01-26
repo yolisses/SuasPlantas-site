@@ -17,6 +17,9 @@ export function NotificationTags() {
       OneSignal.init({
         appId: '71765db2-d95f-4240-9692-cea9d6f692eb',
         safari_web_id: '',
+        notifyButton: {
+          enable: false,
+        },
         welcomeNotification: {
           title: 'Obrigado por ligar as notificações',
           message: 'É assim que elas aparecem',

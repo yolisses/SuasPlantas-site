@@ -24,6 +24,7 @@ import { SearchField } from '../search/SearchField';
 import { useTextSearchContext } from '../search/TextSearchContext';
 import { NotificationsMenu } from '../notification/NotificationsMenu';
 import { useNotifications } from '../notification/notificationsContext';
+import { NotificationsToggleWarn } from '../notification/NotificationsToggleWarn';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
@@ -71,7 +72,12 @@ export function Header() {
         <MeButton />
         <button
           className="icon-button"
-          onClick={(e) => { toggleMenu('notifications'); e.stopPropagation(); }}
+          onClick={(e) => {
+            if (isLogged(e)) {
+              toggleMenu('notifications');
+              e.stopPropagation();
+            }
+          }}
         >
           <FaRegBell size={22} color="white" />
         </button>
@@ -91,6 +97,7 @@ export function Header() {
         <div className="relative z-40">
           <div className="h-12" />
           <Menu open={menu === 'notifications'} onClose={closeMenu}>
+            <NotificationsToggleWarn />
             <NotificationsMenu />
           </Menu>
           <Menu open={menu === 'more'} onClose={closeMenu}>

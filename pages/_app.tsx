@@ -25,6 +25,8 @@ import { NotificationTags } from '../notification/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
+import { NotificationPermissionContextProvider } from '../notification/NotificationPermissionContext';
+import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -51,12 +53,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <PaginationProvider Context={usersContext} apiRoute="users">
                   <PaginationProvider Context={questsContext} apiRoute="quests">
                     <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                      <Twemoji options={{ className: 'twemoji' }}>
-                        <Header />
-                        <Component {...pageProps} />
-                        <SnackView />
-                        <ModalView />
-                      </Twemoji>
+                      <NotificationPermissionContextProvider>
+                        <Twemoji options={{ className: 'twemoji' }}>
+                          <Header />
+                          <Component {...pageProps} />
+                          <SnackView />
+                          <ModalView />
+                          <ResetOnChangeUser />
+                        </Twemoji>
+                      </NotificationPermissionContextProvider>
                     </PaginationProvider>
                   </PaginationProvider>
                 </PaginationProvider>

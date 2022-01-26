@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import { useModal } from '../modal/ModalContext';
-import { useNotificationPermission } from '../notification/NotificationPermissionContext';
+import { useNotificationPermission } from './NotificationPermissionContext';
 
-export function DevPage() {
+export function NotificationsToggleWarn() {
   const {
     permission,
     subscribed,
@@ -10,15 +10,16 @@ export function DevPage() {
   } = useNotificationPermission();
   const { setModal } = useModal();
 
+  if (subscribed === true || subscribed === undefined) { return null; }
+
   return (
     <div>
       Notificações no dispositivo
       {' '}
       {permission === 'denied'
         ? 'bloqueadas'
-        : subscribed
-          ? 'ativadas'
-          : 'desativadas'}
+        : 'desativadas'}
+      .
       {(permission === 'denied')
         ? (
           <button
@@ -28,11 +29,11 @@ export function DevPage() {
               </div>,
             )}
           >
-            como desbloquear
+            Como desbloquear
           </button>
         ) : (
-          <button onClick={() => setSubscribed(!subscribed)}>
-            {!subscribed ? 'ativar' : 'desativar'}
+          <button onClick={() => setSubscribed(!subscribed)} className="inline-block align-text-top">
+            Ativar
           </button>
         )}
     </div>
