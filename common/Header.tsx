@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
   FaBars,
   FaRegFile,
@@ -10,21 +12,22 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 
-import { userImage } from '../images/user';
-import { MeButton } from '../user/MeButton';
 import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
-import { usePlants } from '../plant/plantsContext';
-import { SearchField } from '../search/SearchField';
-import { useTextSearchContext } from '../search/TextSearchContext';
+import { userImage } from '../images/user';
+import { MeButton } from '../user/MeButton';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { NotificationItem } from '../notification/NotificationItem';
+import { usePlants } from '../plant/plantsContext';
+import { useQuests } from '../quest/questsContext';
+import { SearchField } from '../search/SearchField';
+import { useTextSearchContext } from '../search/TextSearchContext';
+import { NotificationsMenu } from '../notification/NotificationsMenu';
 import { useNotifications } from '../notification/notificationsContext';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
-  const { reset: resetQuests, setFilters: setQuestsFilters } = usePlants();
+  const { reset: resetQuests, setFilters: setQuestsFilters } = useQuests();
   const { user, logOut } = useUser();
   const { setText } = useTextSearchContext();
   const [menu, setMenu] = useState<string>();
@@ -72,9 +75,11 @@ export function Header() {
         >
           <FaRegBell size={22} color="white" />
         </button>
+        {(notifications && notifications[0]?.viewed === false) && (
         <div className="relative bg-blue-500">
-          <div className="h-3 w-3 bg-red-500 -top-4 right-1 rounded-full absolute" />
+          <div className="h-3 w-3 bg-green-500 -top-4 right-1 rounded-full absolute" />
         </div>
+        )}
         <button
           className="icon-button"
           onTouchStart={(e) => e.stopPropagation()}
@@ -86,20 +91,7 @@ export function Header() {
         <div className="relative z-40">
           <div className="h-12" />
           <Menu open={menu === 'notifications'} onClose={closeMenu}>
-            {true
-              ? [1, 2, 3].map((notification) => (
-                <Link href={`/plants/${notification}`}>
-                  <a className="menu-button">
-                    <div className="aspect-square h-12">
-                      <Image width={64} height={64} src={userImage} className="rounded-full" />
-                    </div>
-                    <div className="w-screen max-w-sm whitespace-normal text-left">
-                      Uma nova planta que você pode estar procurando foi adicionada
-                    </div>
-                  </a>
-                </Link>
-              ))
-              : (<div>coisa</div>)}
+            <NotificationsMenu />
           </Menu>
           <Menu open={menu === 'more'} onClose={closeMenu}>
             <a href={`/users/${user?.id}`} className="menu-button" onClick={isLogged}>
