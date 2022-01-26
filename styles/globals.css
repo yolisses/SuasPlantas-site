@@ -80,14 +80,6 @@ a {
   margin: 10px !important;
 }
 
-.MuiFab-primary{
-  background-color: #16A34A; 
-}
-
-.MuiButton-containedPrimary{  
-  background-color: #16A34A; 
-}
-
 .twemoji{
   height: 1.2rem;
   margin-bottom: 0.2em;
