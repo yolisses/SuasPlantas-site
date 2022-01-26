@@ -45,7 +45,7 @@ export function Modal({
     >
       <div
         onClick={stopPropagation}
-        className="bg-white p-2 rounded-xl pb-8 shadow-lg"
+        className="bg-white p-2 rounded-xl pb-8 shadow-lg max-w-screen max-h-screen"
       >
         {showCloseButton && (
           <div className="flex flex-row justify-end w-full">

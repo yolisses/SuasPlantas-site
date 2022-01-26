@@ -15,15 +15,13 @@ export function NotificationTags() {
     window.OneSignal = window.OneSignal || [];
     OneSignal.push(() => {
       OneSignal.init({
-        appId: '1ac64e39-21a6-4059-9956-28075f3cb33b',
-        safari_web_id: 'web.onesignal.auto.4ed285de-faf5-4c6c-a346-3ff91e5aded6',
-        notifyButton: {
-          enable: false,
-        },
+        appId: '71765db2-d95f-4240-9692-cea9d6f692eb',
+        safari_web_id: '',
         welcomeNotification: {
           title: 'Obrigado por ligar as notificações',
           message: 'É assim que elas aparecem',
         },
+        allowLocalhostAsSecureOrigin: true,
       });
     });
 
