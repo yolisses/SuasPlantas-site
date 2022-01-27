@@ -4,11 +4,26 @@ import { usePushNotification } from './PushNotificationContext';
 
 export function NotificationsToggleWarn() {
   const {
-    permission,
     subscribed,
+    permission,
     setSubscribed,
   } = usePushNotification();
   const { setModal } = useModal();
+
+  function handleButtonClick() {
+    setSubscribed(true);
+    if (permission === 'denied') {
+      setModal(
+        <div>
+          <img
+            className="select-none"
+            src="/toggle_notification.png"
+            alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações"
+          />
+        </div>,
+      );
+    }
+  }
 
   if (subscribed === true || subscribed === undefined) { return null; }
 
@@ -20,26 +35,11 @@ export function NotificationsToggleWarn() {
         ? 'bloqueadas'
         : 'desativadas'}
       .
-      {(permission === 'denied')
-        ? (
-          <button
-            onClick={() => setModal(
-              <div>
-                <img
-                  className="select-none"
-                  src="/toggle_notification.png"
-                  alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações"
-                />
-              </div>,
-            )}
-          >
-            Como desbloquear
-          </button>
-        ) : (
-          <button onClick={() => setSubscribed(!subscribed)} className="inline-block align-text-top">
-            Ativar
-          </button>
-        )}
+      <button onClick={handleButtonClick}>
+        {permission === 'denied'
+          ? 'Como desbloquear'
+          : 'Ativar'}
+      </button>
     </div>
   );
 }
