@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { useSnack } from './SnackContext';
 import style from './Snack.module.css';

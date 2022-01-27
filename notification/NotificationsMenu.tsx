@@ -6,7 +6,7 @@ import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useNotifications } from './notificationsContext';
 
-export function NotificationsMenu() {
+export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
   const {
     items, reset, loadMore, pageData,
   } = useNotifications();
@@ -43,6 +43,7 @@ export function NotificationsMenu() {
             <a
               className="menu-button"
               onClick={async () => {
+                closeMenu();
                 if (notification.viewed === false) {
                   await api.patch(`notifications/${id}/viewed`);
                   reset();

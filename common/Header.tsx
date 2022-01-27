@@ -73,9 +73,9 @@ export function Header() {
         <button
           className="icon-button"
           onClick={(e) => {
-            if (isLogged(e)) {
+            e.stopPropagation();
+            if (isLogged()) {
               toggleMenu('notifications');
-              e.stopPropagation();
             }
           }}
         >
@@ -88,50 +88,60 @@ export function Header() {
         )}
         <button
           className="icon-button"
-          onTouchStart={(e) => e.stopPropagation()}
-          onMouseUp={(e) => e.stopPropagation()}
-          onClick={(e) => { toggleMenu('more'); e.stopPropagation(); }}
+          onClick={(e) => { e.stopPropagation(); toggleMenu('more'); }}
         >
           <FaBars size={22} color="white" />
         </button>
         <div className="relative z-40">
           <div className="h-12" />
-          <Menu open={menu === 'notifications'} onClose={closeMenu}>
+          {menu === 'notifications'
+          && (
+          <Menu onClose={closeMenu}>
             <NotificationsToggleWarn />
-            <NotificationsMenu />
+            <NotificationsMenu closeMenu={closeMenu} />
           </Menu>
-          <Menu open={menu === 'more'} onClose={closeMenu}>
-            <a href={`/users/${user?.id}`} className="menu-button" onClick={isLogged}>
-              <Image
-                width={20}
-                height={20}
-                src={user?.image || userImage}
-                alt={user?.name}
-                className="bg-gray-300 rounded-full cursor-pointer"
-              />
-              Perfil
-            </a>
-            <a href="/privacy-policy" className="menu-button">
-              <FaRegFile size={20} color="gray" />
-              Política de privacidade
-            </a>
-            <a href="/contact" className="menu-button">
-              <FaRegCommentAlt size={20} color="gray" />
-              Contato
-            </a>
-            <a href="/about">
-              <div className="menu-button">
-                <FaSeedling size={20} color="gray" />
-                Sobre
-              </div>
-            </a>
-            {!!user && (
-            <button className="menu-button" onClick={() => logOut()}>
-              <FiLogOut size={20} color="gray" />
-              Sair
-            </button>
-            )}
-          </Menu>
+          )}
+          {menu === 'more'
+&& (
+<Menu onClose={closeMenu}>
+  <Link href={`/users/${user?.id}`} prefetch={false}>
+    <a className="menu-button" onClick={() => { isLogged(); closeMenu(); }}>
+      <Image
+        width={20}
+        height={20}
+        src={user?.image || userImage}
+        alt={user?.name}
+        className="bg-gray-300 rounded-full cursor-pointer"
+      />
+      Perfil
+    </a>
+  </Link>
+  <Link href="/privacy-policy" prefetch={false}>
+    <a className="menu-button" onClick={closeMenu}>
+      <FaRegFile size={20} color="gray" />
+      Política de privacidade
+    </a>
+  </Link>
+  <Link href="/contact" prefetch={false}>
+    <a className="menu-button" onClick={closeMenu}>
+      <FaRegCommentAlt size={20} color="gray" />
+      Contato
+    </a>
+  </Link>
+  <Link href="/about" prefetch={false}>
+    <a className="menu-button" onClick={closeMenu}>
+      <FaSeedling size={20} color="gray" />
+      Sobre
+    </a>
+  </Link>
+  {!!user && (
+  <button className="menu-button" onClick={() => { logOut(); closeMenu(); }}>
+    <FiLogOut size={20} color="gray" />
+    Sair
+  </button>
+  )}
+</Menu>
+)}
         </div>
       </div>
       <div className="h-12" />
