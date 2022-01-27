@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { api } from '../api/api';
+import { OneSignal } from '../notification/OneSignal';
 import { useNotificationPermission } from '../notification/NotificationPermissionContext';
 
 export function DevPage() {

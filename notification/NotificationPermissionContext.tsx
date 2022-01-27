@@ -2,21 +2,14 @@ import {
   createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
 import Head from 'next/head';
+import { OneSignal } from './OneSignal';
 
 interface INotificationPermission{
     permission?:string
     subscribed?:boolean
+    setSubscribed:(value: boolean) => void
     setPermission:Dispatch<SetStateAction<string|undefined>>
-    setSubscribed:Dispatch<SetStateAction<boolean|undefined>>
 }
-
-declare global {
-  interface Window {
-      OneSignal: any;
-  }
-}
-
-declare let OneSignal: any;
 
 const notificationPermissionContext = createContext({} as INotificationPermission);
 
@@ -42,17 +35,17 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
     });
 
     OneSignal.push(() => {
-      window.OneSignal.isPushNotificationsEnabled(
+      OneSignal.isPushNotificationsEnabled(
         (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
       );
-      window.OneSignal.getNotificationPermission(
+      OneSignal.getNotificationPermission(
         (permission:string) => setPermission(permission),
       );
-      window.OneSignal.on(
+      OneSignal.on(
         'subscriptionChange',
         (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
       );
-      window.OneSignal.on(
+      OneSignal.on(
         'notificationPermissionChange',
         ({ to }:{to:string}) => setPermission(to),
       );
