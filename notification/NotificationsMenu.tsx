@@ -50,7 +50,13 @@ export function NotificationsMenu() {
               }}
             >
               <div className="aspect-square h-12">
-                <Image width={64} height={64} src={entity.card} className="rounded-lg" />
+                <Image
+                  width={128}
+                  height={128}
+                  src={entity.card}
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
               </div>
               <div className="w-screen max-w-sm whitespace-normal text-left">
                 Nova planta que você pode estar procurando:
