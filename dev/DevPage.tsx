@@ -1,5 +1,6 @@
+import OneSignal from 'react-onesignal';
+
 import { api } from '../api/api';
-import { OneSignal } from '../notification/OneSignal';
 import { usePushNotification } from '../notification/PushNotificationContext';
 
 export function DevPage() {
@@ -8,12 +9,10 @@ export function DevPage() {
       const res = await api.get('notifications/hash');
       const hash = res.data;
       console.log(hash);
-      OneSignal.push(() => {
-        OneSignal.setEmail(
-          'stunik@gmail.com',
-          { emailAuthHash: hash },
-        );
-      });
+      OneSignal.setEmail(
+        'stunik@gmail.com',
+        { emailAuthHash: hash },
+      );
     } catch (err) {
       console.error(err);
     }
@@ -24,6 +23,7 @@ export function DevPage() {
   return (
     <div>
       oie
+      {subscribed}
       <button onClick={getHash}>butao da alegria</button>
     </div>
   );
