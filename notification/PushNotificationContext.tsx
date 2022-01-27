@@ -1,12 +1,22 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
+  useState,
+  Dispatch,
+  useEffect,
+  ReactNode,
+  useContext,
+  createContext,
+  SetStateAction,
+
 } from 'react';
 import Head from 'next/head';
 import OneSignal from 'react-onesignal';
+import { api } from '../api/api';
+import { useUser } from '../auth/userContext';
 
 interface IPushNotification{
     permission?:string
     subscribed?:boolean
+    associateEmailAndUserId:()=>void
     setSubscribed:(value: boolean) => void
     setPermission:Dispatch<SetStateAction<string|undefined>>
 }
@@ -16,6 +26,7 @@ const pushNotificationContext = createContext({} as IPushNotification);
 export function PushNotificationContextProvider({ children }:{children:ReactNode}) {
   const [subscribed, setSubscribedValue] = useState<boolean>();
   const [permission, setPermission] = useState<string>();
+  const { user } = useUser();
 
   useEffect(() => {
     OneSignal.init({
@@ -51,11 +62,39 @@ export function PushNotificationContextProvider({ children }:{children:ReactNode
     OneSignal.setSubscription(value);
   }
 
+  async function associateEmailAndUserId() {
+    const res = await api.get('notifications/hash');
+    const {
+      id,
+      email,
+      idHash,
+      emailHash,
+    } = res.data;
+
+    try {
+      OneSignal.setEmail(email, { emailAuthHash: emailHash });
+    } catch (err) {
+      console.error(err);
+    }
+    try {
+      OneSignal.setExternalUserId(id, idHash);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    if (user) { associateEmailAndUserId(); }
+  }, [user]);
+
   return (
     <pushNotificationContext.Provider value={{
-      subscribed, permission, setSubscribed, setPermission,
+      subscribed,
+      permission,
+      setSubscribed,
+      setPermission,
+      associateEmailAndUserId,
     }}
-
     >
       <Head>
         <script

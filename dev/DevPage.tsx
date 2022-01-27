@@ -4,27 +4,21 @@ import { api } from '../api/api';
 import { usePushNotification } from '../notification/PushNotificationContext';
 
 export function DevPage() {
-  async function getHash() {
+  const { subscribed, associateEmailAndUserId } = usePushNotification();
+
+  async function handleClick() {
     try {
-      const res = await api.get('notifications/hash');
-      const hash = res.data;
-      console.log(hash);
-      OneSignal.setEmail(
-        'stunik@gmail.com',
-        { emailAuthHash: hash },
-      );
+      await associateEmailAndUserId();
     } catch (err) {
       console.error(err);
     }
   }
 
-  const { subscribed } = usePushNotification();
-
   return (
     <div>
       oie
       {subscribed}
-      <button onClick={getHash}>butao da alegria</button>
+      <button onClick={handleClick}>butao da alegria</button>
     </div>
   );
 }
