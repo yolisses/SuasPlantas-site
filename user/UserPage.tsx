@@ -41,14 +41,9 @@ function Tab({ tab, currentTab, children }:TabProps) {
 }
 
 export function UserPage({ user }: UserPageProps) {
-  const { user: currentUser, setUser } = useUser();
+  const { user: currentUser, refreshUser } = useUser();
   const [tab, setTab] = useState('plants');
   const selfUser = user.id === currentUser?.id;
-
-  async function refreshUser() {
-    const res = await api.get('users/me');
-    setUser(res.data);
-  }
 
   useEffect(() => {
     if (selfUser) { refreshUser(); }

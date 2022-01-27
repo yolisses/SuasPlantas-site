@@ -1,6 +1,15 @@
-import { destroyCookie, setCookie } from 'nookies';
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
+  setCookie,
+  destroyCookie,
+} from 'nookies';
+import {
+  useState,
+  Dispatch,
+  ReactNode,
+  useEffect,
+  useContext,
+  createContext,
+  SetStateAction,
 } from 'react';
 import { api } from '../api/api';
 import { User } from '../user/User';
@@ -11,9 +20,10 @@ interface ISignIn{
 }
 interface IUserContextProvider{
     user?:User
-    setUser:Dispatch<SetStateAction<User|undefined>>
     logOut:()=>void
+    refreshUser:()=>void
     signIn:(params:ISignIn)=>Promise<void>
+    setUser:Dispatch<SetStateAction<User|undefined>>
 }
 
 export const userContext = createContext({} as IUserContextProvider);
@@ -25,12 +35,6 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
     await api.post('users/logout');
     delete api.defaults.headers.common.Authorization;
-    try {
-      const user = JSON.stringify(null);
-      localStorage.setItem('user', user);
-    } catch (err) {
-      console.error(err);
-    }
     setUser(undefined);
   }
 
@@ -43,19 +47,24 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       maxAge: 1000 * 60 * 60 * 24 * 7, // one week
     });
     setUser(res.data);
+  }
+
+  async function refreshUser() {
     try {
-      const user = JSON.stringify(res.data);
-      localStorage.setItem('user', user);
-    } catch (err) {
-      console.error(err);
+      const res = await api.get('users/me');
+      setUser(res.data);
+    } catch (err:any) {
+      if (err?.response?.status === 403) {
+        setUser(undefined);
+      } else {
+        throw err;
+      }
     }
   }
 
   useEffect(() => {
     try {
-      const savedUserJson = localStorage.getItem('user');
-      const user = JSON.parse(savedUserJson || '');
-      setUser(user);
+      refreshUser();
     } catch (err:any) {
       console.log(err);
     }
@@ -63,7 +72,11 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
 
   return (
     <userContext.Provider value={{
-      user, setUser, logOut, signIn,
+      user,
+      logOut,
+      signIn,
+      setUser,
+      refreshUser,
     }}
     >
       {children}
