@@ -1,6 +1,6 @@
 import { api } from '../api/api';
 import { OneSignal } from '../notification/OneSignal';
-import { useNotificationPermission } from '../notification/NotificationPermissionContext';
+import { usePushNotification } from '../notification/PushNotificationContext';
 
 export function DevPage() {
   async function getHash() {
@@ -19,7 +19,7 @@ export function DevPage() {
     }
   }
 
-  const { subscribed } = useNotificationPermission();
+  const { subscribed } = usePushNotification();
 
   return (
     <div>

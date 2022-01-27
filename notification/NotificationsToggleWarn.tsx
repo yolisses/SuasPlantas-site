@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import { useModal } from '../modal/ModalContext';
-import { useNotificationPermission } from './NotificationPermissionContext';
+import { usePushNotification } from './PushNotificationContext';
 
 export function NotificationsToggleWarn() {
   const {
     permission,
     subscribed,
     setSubscribed,
-  } = useNotificationPermission();
+  } = usePushNotification();
   const { setModal } = useModal();
 
   if (subscribed === true || subscribed === undefined) { return null; }

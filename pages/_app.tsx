@@ -24,7 +24,7 @@ import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
-import { NotificationPermissionContextProvider } from '../notification/NotificationPermissionContext';
+import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -51,7 +51,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <PaginationProvider Context={usersContext} apiRoute="users">
                   <PaginationProvider Context={questsContext} apiRoute="quests">
                     <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                      <NotificationPermissionContextProvider>
+                      <PushNotificationContextProvider>
                         <Twemoji options={{ className: 'twemoji' }}>
                           <Header />
                           <Component {...pageProps} />
@@ -59,7 +59,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                           <ModalView />
                           <ResetOnChangeUser />
                         </Twemoji>
-                      </NotificationPermissionContextProvider>
+                      </PushNotificationContextProvider>
                     </PaginationProvider>
                   </PaginationProvider>
                 </PaginationProvider>

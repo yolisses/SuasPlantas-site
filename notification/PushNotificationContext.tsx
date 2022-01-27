@@ -4,16 +4,16 @@ import {
 import Head from 'next/head';
 import { OneSignal } from './OneSignal';
 
-interface INotificationPermission{
+interface IPushNotification{
     permission?:string
     subscribed?:boolean
     setSubscribed:(value: boolean) => void
     setPermission:Dispatch<SetStateAction<string|undefined>>
 }
 
-const notificationPermissionContext = createContext({} as INotificationPermission);
+const pushNotificationContext = createContext({} as IPushNotification);
 
-export function NotificationPermissionContextProvider({ children }:{children:ReactNode}) {
+export function PushNotificationContextProvider({ children }:{children:ReactNode}) {
   const [subscribed, setSubscribedValue] = useState<boolean>();
   const [permission, setPermission] = useState<string>();
 
@@ -38,7 +38,7 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
       OneSignal.isPushNotificationsEnabled(
         (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
       );
-      OneSignal.getNotificationPermission(
+      OneSignal.getPushNotification(
         (permission:string) => setPermission(permission),
       );
       OneSignal.on(
@@ -46,7 +46,7 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
         (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
       );
       OneSignal.on(
-        'notificationPermissionChange',
+        'pushNotificationChange',
         ({ to }:{to:string}) => setPermission(to),
       );
     });
@@ -64,7 +64,7 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
   }
 
   return (
-    <notificationPermissionContext.Provider value={{
+    <pushNotificationContext.Provider value={{
       subscribed, permission, setSubscribed, setPermission,
     }}
 
@@ -76,10 +76,10 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
         />
       </Head>
       {children}
-    </notificationPermissionContext.Provider>
+    </pushNotificationContext.Provider>
   );
 }
 
-export function useNotificationPermission() {
-  return useContext(notificationPermissionContext);
+export function usePushNotification() {
+  return useContext(pushNotificationContext);
 }
