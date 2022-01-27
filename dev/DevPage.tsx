@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import OneSignal from 'react-onesignal';
 
 import { api } from '../api/api';
 import { usePushNotification } from '../notification/PushNotificationContext';
