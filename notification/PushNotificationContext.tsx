@@ -63,6 +63,7 @@ export function PushNotificationContextProvider({ children }:{children:ReactNode
   }
 
   async function associateEmailAndUserId() {
+    await OneSignal.showNativePrompt();
     const res = await api.get('notifications/hash');
     const {
       id,
@@ -84,7 +85,9 @@ export function PushNotificationContextProvider({ children }:{children:ReactNode
   }
 
   useEffect(() => {
-    if (user) { associateEmailAndUserId(); }
+    if (user) {
+      associateEmailAndUserId();
+    }
   }, [user]);
 
   return (
