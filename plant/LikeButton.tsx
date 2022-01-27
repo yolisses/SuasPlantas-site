@@ -21,10 +21,15 @@ export function LikeButton({ url, active }:LikeButtonProps) {
       setModal(<SignInBox />);
       return;
     }
-    if (!isActive) {
-      await api.post(url);
-    } else {
-      await api.delete(url);
+    setIsActive((value) => !value);
+    try {
+      if (!isActive) {
+        await api.post(url);
+      } else {
+        await api.delete(url);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -43,9 +48,11 @@ export function LikeButton({ url, active }:LikeButtonProps) {
             size={size}
             color="white"
           />
-        )
-        : (
-          <FaRegThumbsUp size={size} color="white" />
+        ) : (
+          <FaRegThumbsUp
+            size={size}
+            color="white"
+          />
         )}
       {user && isActive ? 'Curtido' : 'Curtir'}
     </button>
