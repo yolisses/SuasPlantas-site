@@ -1,40 +1,30 @@
-/* eslint-disable no-nested-ternary */
-import { useModal } from '../modal/ModalContext';
+import { useEffect } from 'react';
+import { api } from '../api/api';
 import { useNotificationPermission } from '../notification/NotificationPermissionContext';
 
 export function DevPage() {
-  const {
-    permission,
-    subscribed,
-    setSubscribed,
-  } = useNotificationPermission();
-  const { setModal } = useModal();
+  async function getHash() {
+    try {
+      const res = await api.get('notifications/hash');
+      const hash = res.data;
+      console.log(hash);
+      OneSignal.push(() => {
+        OneSignal.setEmail(
+          'stunik@gmail.com',
+          { emailAuthHash: hash },
+        );
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  const { subscribed } = useNotificationPermission();
 
   return (
     <div>
-      Notificações no dispositivo
-      {' '}
-      {permission === 'denied'
-        ? 'bloqueadas'
-        : subscribed
-          ? 'ativadas'
-          : 'desativadas'}
-      {(permission === 'denied')
-        ? (
-          <button
-            onClick={() => setModal(
-              <div>
-                <img src="/toggle_notification.png" alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações" />
-              </div>,
-            )}
-          >
-            como desbloquear
-          </button>
-        ) : (
-          <button onClick={() => setSubscribed(!subscribed)}>
-            {!subscribed ? 'ativar' : 'desativar'}
-          </button>
-        )}
+      oie
+      <button onClick={getHash}>butao da alegria</button>
     </div>
   );
 }

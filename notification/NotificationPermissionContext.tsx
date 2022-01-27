@@ -11,9 +11,9 @@ interface INotificationPermission{
 }
 
 declare global {
-    interface Window {
-        OneSignal: any;
-    }
+  interface Window {
+      OneSignal: any;
+  }
 }
 
 declare let OneSignal: any;
@@ -41,7 +41,7 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
       });
     });
 
-    window.OneSignal.push(() => {
+    OneSignal.push(() => {
       window.OneSignal.isPushNotificationsEnabled(
         (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
       );
@@ -64,9 +64,9 @@ export function NotificationPermissionContextProvider({ children }:{children:Rea
   }, []);
 
   function setSubscribed(value:boolean) {
-    window.OneSignal.push(() => {
-      window.OneSignal.showNativePrompt();
-      window.OneSignal.setSubscription(value);
+    OneSignal.push(() => {
+      OneSignal.showNativePrompt();
+      OneSignal.setSubscription(value);
     });
   }
 
