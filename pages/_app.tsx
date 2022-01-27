@@ -21,7 +21,6 @@ import { UserContextProvider } from '../auth/userContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
-import { NotificationTags } from '../notification/NotificationTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
@@ -44,7 +43,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <FaviconTags />
       <MuiFontsTags />
       <GoogleAnalyticsTags />
-      <NotificationTags />
       <UserContextProvider>
         <SnackContextProvider>
           <ModalContextProvider>
