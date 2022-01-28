@@ -26,19 +26,13 @@ export function TopTabs({ tab }: TopTabsProps) {
           Procurando
         </TabSelector>
       </Link>
-      {/* <Link href="/users">
+      <Link href="/users">
         <TabSelector tab="users" value={tab}>
           <FaUserFriends />
           Pessoas
         </TabSelector>
-      </Link> */}
-      {/* <Link href="/users">
-        <TabSelector tab="users" value={tab}>
-          <FaUser />
-          Pessoas
-        </TabSelector>
       </Link>
-      <Link href="/map">
+      {/* <Link href="/map">
         <TabSelector tab="map" value={tab}>
           <FaMap />
           Mapa

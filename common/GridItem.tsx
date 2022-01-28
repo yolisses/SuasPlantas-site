@@ -27,7 +27,7 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         <div className="px-2 pb-1">
-          <div>{item.name}</div>
+          <div className="text-lg">{item.name}</div>
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
           {showLocation && (
             <div className="text-sm">
