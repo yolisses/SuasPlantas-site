@@ -1,23 +1,16 @@
+import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
+import { TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
-import Link from 'next/link';
-import {
-  Checkbox,
-  FormLabel,
-  TextField,
-  FormHelperText,
-  InputAdornment,
-  FormControlLabel,
-} from '@mui/material';
-import { api } from '../api/api';
 import { Plant } from './Plant';
+import { api } from '../api/api';
 import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
+import { usePlants } from './plantsContext';
 import { useSnack } from '../snack/SnackContext';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
-import { usePlants } from './plantsContext';
 
 interface EditPlantProps{
   edit?:boolean
@@ -25,12 +18,11 @@ interface EditPlantProps{
 }
 
 export function EditPlantPage({ edit, data }:EditPlantProps) {
-  const [sell, setSell] = useState(!!data?.price);
   const [loading, setLoading] = useState(false);
   const { setSnack } = useSnack();
   const { reset } = usePlants();
   const {
-    register, handleSubmit, control, formState: { errors }, getValues,
+    register, handleSubmit, control,
   } = useForm({
     defaultValues: {
       ...data,
@@ -55,7 +47,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         ...data,
         images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
-        price: (sell && parseFloat(data.price)) || null,
       });
       setSnack({
         severity: 'success',
@@ -68,13 +59,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
     }
     setLoading(false);
     reset();
-  }
-
-  function validateAvailabilities() {
-    if (!getValues('swap') && !getValues('donate') && !sell) {
-      return 'Por favor informe marque uma das opções';
-    }
-    return undefined;
   }
 
   return (
@@ -128,80 +112,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           }}
           {...register('amount')}
         />
-        <div>
-          <FormLabel component="legend">Disponível para</FormLabel>
-          <div className="flex flex-col pb-2">
-            <FormControlLabel
-              label="Doação"
-              control={(
-                <Controller
-                  name="donate"
-                  control={control}
-                  rules={{ validate: validateAvailabilities }}
-                  render={({ field: { onChange, value, ...field } }) => (
-                    <Checkbox
-                      {...field}
-                      onChange={(e) => onChange(e.target.checked)}
-                      checked={value}
-                    />
-                  )}
-                />
-                )}
-            />
-            <FormControlLabel
-              label="Troca"
-              control={(
-                <Controller
-                  name="swap"
-                  control={control}
-                  rules={{ validate: validateAvailabilities }}
-                  render={({ field: { onChange, value, ...field } }) => (
-                    <Checkbox
-                      {...field}
-                      onChange={(e) => onChange(e.target.checked)}
-                      checked={value}
-                    />
-                  )}
-                />
-                )}
-            />
-            <FormControlLabel
-              label="Venda"
-              control={(
-                <Checkbox
-                  onChange={(e) => setSell(e.target.checked)}
-                  checked={sell}
-                />
-                )}
-            />
-          </div>
-          {(errors.swap && errors.donate && !sell) && (
-            <FormHelperText error>
-              Por favor informe uma disponibilidade
-            </FormHelperText>
-          )}
-          {sell && (
-            <Controller
-              name="price"
-              control={control}
-              rules={{ required: true }}
-              render={({ field, fieldState: { error } }) => (
-                <TextField
-                  label="Preço"
-                  type="number"
-                  className="w-full mt-2"
-                  helperText={(error?.type === 'required') ? 'Informe o preço ou desmarque venda' : error?.message}
-                  error={!!error}
-                  {...field}
-                  InputProps={{
-                    inputProps: { min: 0, max: 100, pattern: '[0-9]*' },
-                    startAdornment: <InputAdornment position="start">R$</InputAdornment>,
-                  }}
-                />
-              )}
-            />
-          )}
-        </div>
         <div className="flex flex-col sm:flex-row gap-2">
           <button className="main-button h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
             {loading && <Spinner /> }
