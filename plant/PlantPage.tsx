@@ -101,7 +101,7 @@ export function PlantPage({ data }:PlantPageProps) {
             <div className="p-2 gap-4 flex flex-col">
               <div>
                 <h1 className="text-2xl">{name}</h1>
-                <AvailabilityInfo {...{ swap, donate, price }} />
+                {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row w-full justify-center gap-2 max-w-md">
                 {!!user.whatsappNumber && (
