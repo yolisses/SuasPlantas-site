@@ -10,7 +10,15 @@ export function AddButton({ url }:AddButtonProps) {
 
   return (
     <Link href={url}>
-      <a className="fab" onClick={isLogged}>
+      <a
+        className="fab"
+        onClick={(e) => {
+          if (!isLogged()) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }}
+      >
         <FaPlus size={24} color="white" />
       </a>
     </Link>
