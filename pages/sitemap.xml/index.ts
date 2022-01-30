@@ -38,6 +38,20 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
     lastmod: new Date().toISOString(),
   });
 
+  links.push({
+    url: '/about',
+    changefreq: 'monthly',
+    priority: 1,
+    lastmod: new Date().toISOString(),
+  });
+
+  links.push({
+    url: '/contact',
+    changefreq: 'monthly',
+    priority: 1,
+    lastmod: new Date().toISOString(),
+  });
+
   const result = await getSitemapXml(links);
 
   res.setHeader('Content-Type', 'text/xml');
