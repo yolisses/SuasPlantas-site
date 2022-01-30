@@ -1,0 +1,26 @@
+@keyframes rollout {
+  0% { 
+      transform: scale(90%);
+      opacity: 0;
+   }
+  100% { 
+      transform: none;
+      opacity: 100%;
+   }
+}
+.rollout {
+  transform-origin: bottom;
+  animation: rollout 0.2s;
+}
+
+@keyframes fade {
+  0% { 
+      opacity: 0;
+   }
+  100% { 
+      opacity: 100%;
+   }
+}
+.fade {
+animation: fade 0.2s;
+}

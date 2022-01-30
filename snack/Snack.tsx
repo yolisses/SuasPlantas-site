@@ -33,7 +33,10 @@ export function Snack({ snack }:{ snack:ISnack}) {
   }, []);
 
   return (
-    <div className={`fixed bottom-5 left-5 ${style.rollout}`} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`fixed bottom-5 left-5 ${style.rollout}`}
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className={`p-3 text-white rounded-lg flex flex-row gap-2 items-center shadow-lg ${
         {
           success: 'bg-green-600',

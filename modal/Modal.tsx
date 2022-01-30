@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { useModal } from './ModalContext';
+import style from './Modal.module.css';
 
 export interface ModalProps {
   children: ReactNode;
@@ -41,11 +42,11 @@ export function Modal({
   return (
     <div
       onClick={handleClickOut}
-      className="fixed top-0 z-50 w-full h-full bg-black bg-opacity-40 flex items-center justify-center p-2"
+      className={`fixed top-0 z-50 w-full h-full bg-black bg-opacity-40 flex items-center justify-center p-2 ${style.fade}`}
     >
       <div
         onClick={stopPropagation}
-        className="bg-white p-2 rounded-xl pb-8 shadow-lg max-w-screen max-h-screen"
+        className={`bg-white p-2 rounded-xl pb-8 shadow-lg max-w-screen max-h-screen ${style.rollout}`}
       >
         {showCloseButton && (
           <div className="flex flex-row justify-end w-full">
