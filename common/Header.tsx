@@ -61,7 +61,7 @@ export function Header() {
               setText(undefined);
             }}
           >
-            SuasPlantas
+            Suas Plantas
           </a>
         </Link>
         <Spacer />

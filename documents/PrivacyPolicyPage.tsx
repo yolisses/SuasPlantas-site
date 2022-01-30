@@ -10,7 +10,7 @@ export function PrivacyPolicyPage() {
             Política de Privacidade
           </h1>
           <p>
-            Nós do SuasPlantas valorizamos a privacidade e seu poder de decidir sobre seus dados.
+            Nós do Suas Plantas valorizamos a privacidade e seu poder de decidir sobre seus dados.
             Para que você possa fazer um uso mais consciente dos nossos serviços, esperamos que
             leia esse documento, que foi escrito focando em simplicidade. Se tiver alguma dúvida
             ou mesmo sugestão de melhoria, pedimos que entre em contato conosco, através de um

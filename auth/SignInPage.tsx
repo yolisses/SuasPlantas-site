@@ -15,7 +15,7 @@ export function SignInPage() {
           <Link href="/">
             <a>
               <h1 className="text-4xl text-green-600 cursor-pointer">
-                SuasPlantas
+                Suas Plantas
               </h1>
             </a>
           </Link>
