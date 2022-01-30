@@ -42,7 +42,7 @@ export function Modal({
   return (
     <div
       onClick={handleClickOut}
-      className={`fixed top-0 z-50 w-full h-full bg-black bg-opacity-40 flex items-center justify-center p-2 ${style.fade}`}
+      className={`fixed top-0 z-50 w-full h-full bg-black bg-opacity-50 flex items-center justify-center p-2 ${style.fade}`}
     >
       <div
         onClick={stopPropagation}
