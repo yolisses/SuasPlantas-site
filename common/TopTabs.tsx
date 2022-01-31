@@ -32,12 +32,6 @@ export function TopTabs({ tab }: TopTabsProps) {
           Pessoas
         </TabSelector>
       </Link>
-      {/* <Link href="/map">
-        <TabSelector tab="map" value={tab}>
-          <FaMap />
-          Mapa
-        </TabSelector>
-      </Link> */}
     </div>
   );
 }

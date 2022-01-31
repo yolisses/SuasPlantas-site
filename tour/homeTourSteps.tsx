@@ -24,9 +24,9 @@ export const homeTourSteps:Step[] = [
     target: '#tour_start',
     disableOverlay: true,
     floaterProps: { hideArrow: true },
-    locale: {
-      next: 'Sim',
-    },
+    showSkipButton: true,
+    hideCloseButton: true,
+    locale: { next: 'Sim', skip: 'Não' },
   },
   {
     disableBeacon: true,
@@ -36,7 +36,7 @@ export const homeTourSteps:Step[] = [
   },
   {
     disableBeacon: true,
-    content: 'Você pode conferir mais coisas aqui',
+    content: 'E pode conferir mais coisas aqui',
     target: '#tour_top_tabs',
   },
 ];

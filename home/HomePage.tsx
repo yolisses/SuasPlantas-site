@@ -90,6 +90,7 @@ export function HomePage<T>({
           },
           buttonSkip: {
             padding: '0.75rem',
+            color: mainColor,
           },
         }}
         locale={{
