@@ -17,7 +17,7 @@ export const homeTourSteps:Step[] = [
       {' '}
       você pode postar e encontrar plantas para trocar.
       {' '}
-      Gostaria de dar um passeio pelo site?
+      Gostaria de um passeio pelo site?
     </span>
   </div>,
     disableBeacon: true,

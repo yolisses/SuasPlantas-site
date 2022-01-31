@@ -13,11 +13,13 @@ import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
+import { TourName, useTour } from '../tour/TourContext';
 
 interface HomePageProps<T>{
   tab:TopTab
   fabPath?:string
   tourSteps?:Step[]
+  tourName?:TourName
   children:(items?:T[])=>ReactNode
   context:Context<IItemsContext<T>>
 }
@@ -27,6 +29,7 @@ export function HomePage<T>({
   fabPath,
   context,
   children,
+  tourName,
   tourSteps,
 }:HomePageProps<T>) {
   const {
@@ -35,6 +38,8 @@ export function HomePage<T>({
     loading,
     loadMore,
   } = useContext(context);
+
+  const { blockTour } = useTour();
 
   return (
     <>
@@ -79,6 +84,11 @@ export function HomePage<T>({
       <ReactJoyride
         steps={tourSteps}
         continuous
+        callback={(e) => {
+          if (tourName && e.action === 'reset') {
+            blockTour(tourName);
+          }
+        }}
         disableScrolling
         styles={{
           tooltipFooter: {

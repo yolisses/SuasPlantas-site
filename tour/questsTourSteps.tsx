@@ -18,8 +18,11 @@ export const questsTourSteps:Step[] = [
   <div>
     Você também pode adicionar as plantas que está procurando e receber uma
     {' '}
-    <FaRegBell className="inline" />
-    notificação automática quando a planta estiver disponível
+    <strong>
+      notificação automática
+    </strong>
+    {' '}
+    quando a planta estiver disponível
   </div>,
   },
   {

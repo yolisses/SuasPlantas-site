@@ -26,6 +26,7 @@ import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
+import { TourContextProvider } from '../tour/TourContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -43,31 +44,33 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <FaviconTags />
       <MuiFontsTags />
       <GoogleAnalyticsTags />
-      <UserContextProvider>
-        <SnackContextProvider>
-          <ModalContextProvider>
-            <TextSearchContextProvider>
-              <PaginationProvider Context={plantsContext} apiRoute="plants">
-                <PaginationProvider Context={usersContext} apiRoute="users">
-                  <PaginationProvider Context={questsContext} apiRoute="quests">
-                    <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                      <PushNotificationContextProvider>
-                        <Twemoji options={{ className: 'twemoji' }}>
-                          <Header />
-                          <Component {...pageProps} />
-                          <SnackView />
-                          <ModalView />
-                          <ResetOnChangeUser />
-                        </Twemoji>
-                      </PushNotificationContextProvider>
+      <TourContextProvider>
+        <UserContextProvider>
+          <SnackContextProvider>
+            <ModalContextProvider>
+              <TextSearchContextProvider>
+                <PaginationProvider Context={plantsContext} apiRoute="plants">
+                  <PaginationProvider Context={usersContext} apiRoute="users">
+                    <PaginationProvider Context={questsContext} apiRoute="quests">
+                      <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                        <PushNotificationContextProvider>
+                          <Twemoji options={{ className: 'twemoji' }}>
+                            <Header />
+                            <Component {...pageProps} />
+                            <SnackView />
+                            <ModalView />
+                            <ResetOnChangeUser />
+                          </Twemoji>
+                        </PushNotificationContextProvider>
+                      </PaginationProvider>
                     </PaginationProvider>
                   </PaginationProvider>
                 </PaginationProvider>
-              </PaginationProvider>
-            </TextSearchContextProvider>
-          </ModalContextProvider>
-        </SnackContextProvider>
-      </UserContextProvider>
+              </TextSearchContextProvider>
+            </ModalContextProvider>
+          </SnackContextProvider>
+        </UserContextProvider>
+      </TourContextProvider>
     </ThemeProvider>
   );
 }
