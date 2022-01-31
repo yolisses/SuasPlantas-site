@@ -1,23 +1,33 @@
-import { Context, ReactNode, useContext } from 'react';
+import {
+  Context,
+  ReactNode,
+  useContext,
+} from 'react';
+import ReactJoyride, { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AddButton } from './AddButton';
 import { Spinner } from '../common/Spinner';
+import { mainColor } from '../common/mainColor';
+import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
-import { SearchField } from '../search/SearchField';
-import { HomeTour } from '../tour/HomeTour';
 
 interface HomePageProps<T>{
-    context:Context<IItemsContext<T>>
-    tab:TopTab
-    children:(items?:T[])=>ReactNode
-    fabPath?:string
+  tab:TopTab
+  fabPath?:string
+  tourSteps?:Step[]
+  children:(items?:T[])=>ReactNode
+  context:Context<IItemsContext<T>>
 }
 
 export function HomePage<T>({
-  context, tab, children, fabPath,
+  tab,
+  fabPath,
+  context,
+  children,
+  tourSteps,
 }:HomePageProps<T>) {
   const {
     items,
@@ -61,7 +71,35 @@ export function HomePage<T>({
       </div>
       )}
       <div id="tour_start" className="fixed bottom-0 left-0" />
-      <HomeTour />
+      {!!tourSteps && (
+      <ReactJoyride
+        steps={tourSteps}
+        continuous
+        disableScrolling
+        styles={{
+          buttonNext: {
+            padding: '0.75rem',
+            backgroundColor: mainColor,
+          },
+          buttonBack: {
+            padding: '0.75rem',
+            color: mainColor,
+          },
+          buttonClose: {
+            padding: '0.75rem',
+          },
+          buttonSkip: {
+            padding: '0.75rem',
+          },
+        }}
+        locale={{
+          back: 'Voltar',
+          next: 'Próximo',
+          last: 'Entendi',
+          close: 'Fechar',
+        }}
+      />
+      )}
     </>
   );
 }
