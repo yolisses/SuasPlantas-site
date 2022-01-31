@@ -7,6 +7,7 @@ import { TopTab, TopTabs } from '../common/TopTabs';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 import { SearchField } from '../search/SearchField';
+import { HomeTour } from '../tour/HomeTour';
 
 interface HomePageProps<T>{
     context:Context<IItemsContext<T>>
@@ -27,7 +28,9 @@ export function HomePage<T>({
 
   return (
     <>
-      <div className=" flex flex-col md:flex-row items-center justify-between">
+      <div
+        className=" flex flex-col md:flex-row items-center justify-between"
+      >
         <TopTabs tab={tab} />
       </div>
       <div className="md:hidden">
@@ -53,10 +56,12 @@ export function HomePage<T>({
       </div>
       )}
       {!!fabPath && (
-      <div className="fixed right-10 bottom-10">
+      <div id="tour_add_button" className="fixed right-10 bottom-10">
         <AddButton url={fabPath} />
       </div>
       )}
+      <div id="tour_start" className="fixed bottom-0 left-0" />
+      <HomeTour />
     </>
   );
 }

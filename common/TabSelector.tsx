@@ -2,14 +2,15 @@ import { ReactNode } from 'react';
 import { mainColor } from './mainColor';
 
 interface TabSelectorProps{
-    children:ReactNode,
-    value?:string
-    tab?:string
-    setTab?:(tab:string)=>void
+  id?:string
+  tab?:string
+  value?:string
+  children:ReactNode,
+  setTab?:(tab:string)=>void
 }
 
 export function TabSelector({
-  children, value, tab, setTab,
+  children, value, tab, setTab, id,
 }:TabSelectorProps) {
   function handleClick() {
     if (setTab && value) { setTab(value); }
@@ -18,6 +19,8 @@ export function TabSelector({
   const selected = tab === value;
   return (
     <button
+      id={id}
+      onClick={handleClick}
       className="flex flex-row items-center h-11 px-4 justify-center gap-1"
       style={selected ? {
         color: mainColor,
@@ -29,7 +32,6 @@ export function TabSelector({
       } : {
         color: 'gray',
       }}
-      onClick={handleClick}
     >
       {children}
     </button>

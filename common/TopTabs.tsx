@@ -12,22 +12,22 @@ interface TopTabsProps{
 
 export function TopTabs({ tab }: TopTabsProps) {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className="flex flex-row flex-wrap bg-white" id="tour_top_tabs">
       <Link href="/">
-        <TabSelector tab="plants" value={tab}>
+        <TabSelector id="tour_tab_plants" tab="plants" value={tab}>
           <FaSeedling />
           {' '}
           Plantas
         </TabSelector>
       </Link>
       <Link href="/quests">
-        <TabSelector tab="quests" value={tab}>
+        <TabSelector id="tour_tab_quests" tab="quests" value={tab}>
           <FaQuestion />
           Procurando
         </TabSelector>
       </Link>
       <Link href="/users">
-        <TabSelector tab="users" value={tab}>
+        <TabSelector id="tour_tab_users" tab="users" value={tab}>
           <FaUserFriends />
           Pessoas
         </TabSelector>
