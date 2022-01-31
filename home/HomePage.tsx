@@ -70,13 +70,23 @@ export function HomePage<T>({
         <AddButton url={fabPath} />
       </div>
       )}
-      <div id="tour_start" className="fixed bottom-0 left-0" />
+      <div
+        className="fixed bottom-0 flex flex-col items-center md:items-start w-full"
+      >
+        <div id="tour_start" />
+      </div>
       {!!tourSteps && (
       <ReactJoyride
         steps={tourSteps}
         continuous
         disableScrolling
         styles={{
+          tooltipFooter: {
+            marginTop: 0,
+          },
+          tooltip: {
+            boxShadow: '0 0 30px #0001',
+          },
           buttonNext: {
             padding: '0.75rem',
             backgroundColor: mainColor,
