@@ -28,7 +28,7 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
     url: `/plants/${plant.id}`,
     changefreq: 'daily',
     priority: 0.9,
-    lastmod: plant.updatedAt,
+    lastmod: new Date().toISOString(),
   }));
 
   links.push({
@@ -47,6 +47,13 @@ export const getServerSideProps:GetServerSideProps = async ({ res }) => {
 
   links.push({
     url: '/contact',
+    changefreq: 'monthly',
+    priority: 1,
+    lastmod: new Date().toISOString(),
+  });
+
+  links.push({
+    url: '/privacy-policy',
     changefreq: 'monthly',
     priority: 1,
     lastmod: new Date().toISOString(),
