@@ -2,13 +2,14 @@
 import { FormLabel } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
+
 import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { Sending } from '../upload/Sending';
-import { useRefresh } from '../utils/useRefresh';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
+import { useRefresh } from '../utils/useRefresh';
 
 export function EditProfileImage() {
   const imageSize = 80;
