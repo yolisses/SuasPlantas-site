@@ -15,7 +15,9 @@ export function TourContextProvider({ children }:{children:ReactNode}) {
   const { blockHomeTour, blockQuestsTour } = parseCookies();
 
   function blockTour(name:TourName) {
-    setCookie(undefined, `block${name}Tour`, 'true');
+    setCookie(undefined, `block${name}Tour`, 'true', {
+      maxAge: 10 * 365 * 24 * 60 * 60, // ten years, cause I didn't find infinite option
+    });
   }
 
   return (
