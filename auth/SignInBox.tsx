@@ -1,4 +1,4 @@
-import { TextLink } from '../common/TextLink';
+import Link from 'next/link';
 import { useModal } from '../modal/ModalContext';
 import { FacebookButton } from './FacebookButton';
 import { GoogleButton } from './GoogleButton';
@@ -14,9 +14,11 @@ export function SignInBox() {
       <div className="text-sm text-gray-600 px-6">
         Ao selecionar uma conta, você concorda com nossa
         {' '}
-        <TextLink href="/privacy-policy" defaultAElement target="_blank">
-          Política de Privacidade
-        </TextLink>
+        <Link href="/privacy-policy">
+          <a className="link" target="_blank">
+            Política de Privacidade
+          </a>
+        </Link>
         .
       </div>
     </div>

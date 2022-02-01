@@ -1,10 +1,11 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import { FaPen } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { Plant } from './Plant';
 import { tagEmoji } from './tags';
@@ -12,11 +13,9 @@ import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
 import { GridItem } from '../common/GridItem';
-import { TextLink } from '../common/TextLink';
 import { ShareButtons } from './ShareButtons';
 import { hasContact } from '../utils/hasContact';
 import { devIndicator } from '../utils/devIndicator';
-import { AvailabilityInfo } from './AvailabilityInfo';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { PlantStructuredData } from './PlantStructuredData';
 import { InstagramButton } from '../contact/InstagramButton';
@@ -112,9 +111,11 @@ export function PlantPage({ data }:PlantPageProps) {
                 )}
                 {!hasContact(user) && (selfUser ? (
                   <div>
-                    <TextLink href="/account/edit">
-                      Adicionar uma forma de contato para poder receber mensagens
-                    </TextLink>
+                    <Link href="/account/edit">
+                      <a className="link">
+                        Adicionar uma forma de contato para poder receber mensagens
+                      </a>
+                    </Link>
                   </div>
                 ) : (
                   <div className="text-gray-500 text-sm">

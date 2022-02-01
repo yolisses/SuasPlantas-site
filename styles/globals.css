@@ -57,6 +57,10 @@ body {
   .fab{
     @apply aspect-square h-14 transition-all scale-active hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-full shadow-xl
   }
+  
+  .link{
+    @apply text-green-700 underline
+  }
 }
 
 input {

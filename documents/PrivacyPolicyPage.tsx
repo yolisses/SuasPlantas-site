@@ -1,4 +1,4 @@
-import { TextLink } from '../common/TextLink';
+import Link from 'next/link';
 import styles from './PrivacyPolicyPage.module.css';
 
 export function PrivacyPolicyPage() {
@@ -16,9 +16,11 @@ export function PrivacyPolicyPage() {
             ou mesmo sugestão de melhoria, pedimos que entre em contato conosco, através de um
             de nossos meios de comunicação disponíveis em
             {' '}
-            <TextLink href="https://suasplantas.com/contact">
-              nossa página de contato
-            </TextLink>
+            <Link href="https://suasplantas.com/contact">
+              <a className="link">
+                nossa página de contato
+              </a>
+            </Link>
             .
           </p>
           <p>

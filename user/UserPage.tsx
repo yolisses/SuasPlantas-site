@@ -1,6 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ReactNode, useEffect, useState } from 'react';
+import {
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import {
   FaRegUser,
   FaSeedling,
@@ -8,10 +10,12 @@ import {
   FaQuestion,
 } from 'react-icons/fa';
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import { User } from './User';
 import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
-import { TextLink } from '../common/TextLink';
 import { useUser } from '../auth/userContext';
 import { hasContact } from '../utils/hasContact';
 import { TabSelector } from '../common/TabSelector';
@@ -84,9 +88,11 @@ export function UserPage({ user }: UserPageProps) {
             {!hasContact(user) && (
               selfUser ? (
                 <div>
-                  <TextLink href="/account/edit">
-                    Adicionar uma forma de contato para poder receber mensagens
-                  </TextLink>
+                  <Link href="/account/edit">
+                    <a className="link">
+                      Adicionar uma forma de contato para poder receber mensagens
+                    </a>
+                  </Link>
                 </div>
               ) : (
                 <div className="text-gray-500 text-sm">

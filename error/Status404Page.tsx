@@ -1,4 +1,4 @@
-import { TextLink } from '../common/TextLink';
+import Link from 'next/link';
 
 export function Status404Page() {
   return (
@@ -9,8 +9,16 @@ export function Status404Page() {
         Ela pode não existir ou estar sob problemas técnicos temporários.
       </div>
       <div className="pt-4 flex flex-row gap-10">
-        <TextLink href="/">Página inicial</TextLink>
-        <TextLink href="/contact">Contato</TextLink>
+        <Link href="/">
+          <a href="link">
+            Página inicial
+          </a>
+        </Link>
+        <Link href="/contact">
+          <a href="link">
+            Contato
+          </a>
+        </Link>
       </div>
     </div>
   );

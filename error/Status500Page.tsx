@@ -1,4 +1,4 @@
-import { TextLink } from '../common/TextLink';
+import Link from 'next/link';
 
 export function Status500Page() {
   return (
@@ -9,8 +9,16 @@ export function Status500Page() {
         Ela pode estar sob problemas técnicos temporários.
       </div>
       <div className="pt-4 flex flex-row gap-10">
-        <TextLink href="/">Página inicial</TextLink>
-        <TextLink href="/contact">Contato</TextLink>
+        <Link href="/">
+          <a className="link">
+            Página inicial
+          </a>
+        </Link>
+        <Link href="/contact">
+          <a className="link">
+            Contato
+          </a>
+        </Link>
       </div>
     </div>
   );

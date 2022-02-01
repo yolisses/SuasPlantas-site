@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import Image from 'next/image';
-import { TextLink } from '../common/TextLink';
 
 export function AboutPage() {
   return (
@@ -56,9 +56,11 @@ export function AboutPage() {
               Somos fascinados em testar novas ideias e procurar funcionalidades
               inovadoras. Se pensar em uma,
               {' '}
-              <TextLink href="/contact">
-                envia pra gente!
-              </TextLink>
+              <Link href="/contact">
+                <a className="link">
+                  envia pra gente!
+                </a>
+              </Link>
             </p>
           </div>
         </div>
