@@ -87,8 +87,8 @@ export function ContactPage() {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://api.whatsapp.com/send?phone=+55839345-0389"
               className="link w-full max-w-sm"
+              href="https://api.whatsapp.com/send?phone=+55839345-0389"
             >
               +55 83 9345-0389
             </a>
@@ -102,10 +102,10 @@ export function ContactPage() {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.instagram.com/suasplantas.com.br/"
               className="link w-full max-w-sm"
+              href="https://www.instagram.com/suas_plantas/"
             >
-              @suasplantas.com.br
+              @suas_plantas
             </a>
           </div>
           <div>
@@ -117,8 +117,8 @@ export function ContactPage() {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.facebook.com/suasplantas.com.br"
               className="link w-full max-w-sm"
+              href="https://www.facebook.com/suasplantas.com.br"
             >
               facebook.com/suasplantas.com.br
             </a>
