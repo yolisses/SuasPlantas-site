@@ -1,5 +1,4 @@
 import {
-  Link,
   Rating,
   TextField,
   IconContainerProps,
@@ -85,16 +84,14 @@ export function ContactPage() {
               {' '}
               Telefone/Whatsapp
             </h2>
-            <Link href="https://api.whatsapp.com/send?phone=+55839345-0389">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://api.whatsapp.com/send?phone=+55839345-0389"
-                className="w-full max-w-sm"
-              >
-                +55 83 9345-0389
-              </a>
-            </Link>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://api.whatsapp.com/send?phone=+55839345-0389"
+              className="link w-full max-w-sm"
+            >
+              +55 83 9345-0389
+            </a>
           </div>
           <div>
             <h2 className="flex flex-row items-center gap-1">
@@ -102,16 +99,14 @@ export function ContactPage() {
               {' '}
               Instagram
             </h2>
-            <Link href="https://www.instagram.com/suasplantas.com.br/">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.instagram.com/suasplantas.com.br/"
-                className="w-full max-w-sm"
-              >
-                @suasplantas.com.br
-              </a>
-            </Link>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.instagram.com/suasplantas.com.br/"
+              className="link w-full max-w-sm"
+            >
+              @suasplantas.com.br
+            </a>
           </div>
           <div>
             <h2 className="flex flex-row items-center gap-1">
@@ -119,16 +114,14 @@ export function ContactPage() {
               {' '}
               Facebook
             </h2>
-            <Link href="https://www.facebook.com/suasplantas.com.br">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.facebook.com/suasplantas.com.br"
-                className="w-full max-w-sm"
-              >
-                facebook.com/suasplantas.com.br
-              </a>
-            </Link>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/suasplantas.com.br"
+              className="link w-full max-w-sm"
+            >
+              facebook.com/suasplantas.com.br
+            </a>
           </div>
         </address>
         <fieldset className="flex flex-col gap-3 items-stretch w-full max-w-md">
