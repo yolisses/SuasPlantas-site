@@ -1,11 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
-  ChangeEvent, DragEvent, useEffect, useState,
+  useState,
+  useEffect,
+  DragEvent,
+  ChangeEvent,
 } from 'react';
 import { FaImage } from 'react-icons/fa';
 import { FormHelperText } from '@mui/material';
-import { Sending } from '../upload/Sending';
+
 import { isEmpty } from '../utils/isEmpty';
+import { Sending } from '../upload/Sending';
 import { SelectedImage } from './SelectedImage';
 import { useRefresh } from '../utils/useRefresh';
 

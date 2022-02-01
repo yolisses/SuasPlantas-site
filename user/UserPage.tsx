@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Link } from '@mui/material';
+import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
 import {
   FaRegUser,
@@ -9,7 +9,6 @@ import {
 } from 'react-icons/fa';
 import Head from 'next/head';
 import { User } from './User';
-import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
 import { TextLink } from '../common/TextLink';

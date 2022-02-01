@@ -18,15 +18,15 @@ import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/userContext';
+import { TourContextProvider } from '../tour/TourContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
+import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
-import { TourContextProvider } from '../tour/TourContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
