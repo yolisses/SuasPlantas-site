@@ -1,9 +1,11 @@
 import { FaExclamationTriangle } from 'react-icons/fa';
 import { PreviewIndicator } from './PreviewIndicator';
 import { usePreview } from './PreviewContext';
+import { useIsLogged } from '../auth/useIsLogged';
 
 export function PreviewWarn() {
   const { user } = usePreview();
+  const { isLogged } = useIsLogged();
 
   if (!user) return null;
 
@@ -17,9 +19,12 @@ export function PreviewWarn() {
         <PreviewIndicator />
         ,
         {' '}
-        <span className="underline">
+        <button
+          onClick={isLogged}
+          className="underline inline text-white px-0"
+        >
           crie uma conta
-        </span>
+        </button>
       </div>
     </div>
   );
