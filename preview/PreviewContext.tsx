@@ -1,18 +1,16 @@
+/* eslint-disable no-param-reassign */
 import {
-  Dispatch,
   useState,
   ReactNode,
   useContext,
   createContext,
-  SetStateAction,
-  useEffect,
 } from 'react';
 import { api } from '../api/api';
 import { User } from '../user/User';
 
 interface PreviewContext{
     user?:User
-    setUser:Dispatch<SetStateAction<User|undefined>>
+    refresh:(code:string)=>void
 }
 
 const previewContext = createContext({} as PreviewContext);
@@ -22,16 +20,19 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
   if (user) {
     user.preview = true;
     user.id = 'preview';
-    user.plants.forEach((plant) => { plant.preview = true; });
+    user.plants.forEach((plant) => {
+      plant.preview = true;
+    });
     user.quests.forEach((quest) => {
       quest.preview = true;
       quest.user = user;
     });
   }
 
-  async function refreshUser() {
+  async function refresh(code:string) {
+    console.log(code);
     try {
-      const res = await api.get('preview');
+      const res = await api.get('preview', { params: { code } });
       setUser(res.data);
     } catch (err:any) {
       if (err?.response?.status === 403) {
@@ -42,16 +43,12 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
     }
   }
 
-  useEffect(() => {
-    try {
-      refreshUser();
-    } catch (err:any) {
-      console.log(err);
-    }
-  }, []);
-
   return (
-    <previewContext.Provider value={{ user, setUser }}>
+    <previewContext.Provider value={{
+      user,
+      refresh,
+    }}
+    >
       {children}
     </previewContext.Provider>
   );

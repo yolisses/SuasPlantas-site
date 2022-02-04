@@ -61,6 +61,10 @@ body {
   .link{
     @apply text-green-700 underline
   }
+
+  .h-screen-no-header{
+    height: calc(100vh - 3rem)
+  }
 }
 
 input {
