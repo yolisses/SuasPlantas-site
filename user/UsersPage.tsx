@@ -11,7 +11,7 @@ export function UsersPage() {
     <HomePage
       context={usersContext}
       tab="users"
-      aditionalItems={[user]}
+      aditionalItems={user && [user]}
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
