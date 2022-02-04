@@ -74,8 +74,9 @@ export function UserPage({ user }: UserPageProps) {
             />
             <div className="flex-1 flex-wrap flex overflow-ellipsis">
               <div className="flex flex-col w-full">
-                <div className="flex flex-row items-start gap-2">
-                  <div className="overflow-ellipsis text-lg">{user.name}</div>
+                <div>
+                  <span className="overflow-ellipsis text-lg">{user.name}</span>
+                  {' '}
                   <PreviewIndicator />
                 </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
