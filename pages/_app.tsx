@@ -28,6 +28,7 @@ import { PaginationProvider } from '../pagination/PaginationProvider';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
+import { PreviewWarn } from '../preview/PreviewWarn';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -59,6 +60,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                             <Twemoji options={{ className: 'twemoji' }}>
                               <Header />
                               <Component {...pageProps} />
+                              <PreviewWarn />
                               <SnackView />
                               <ModalView />
                               <ResetOnChangeUser />
