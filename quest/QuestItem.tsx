@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { userImage } from '../images/user';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { Quest } from './Quest';
 
 export function QuestItem({ item }:{item:Quest}) {
@@ -11,6 +12,8 @@ export function QuestItem({ item }:{item:Quest}) {
         <button className="w-full rounded-lg text-black bg-gray-200 hover:bg-gray-300 text-center shadow-md flex flex-col gap-2 highlight">
           <div className="text-lg">
             {item.name}
+            {' '}
+            <PreviewIndicator />
           </div>
           {!!user && (
           <div className="flex flex-row gap-2 items-center">

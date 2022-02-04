@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { User } from './User';
 import { userImage } from '../images/user';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface UserItemProps{
     item:User
@@ -21,6 +22,8 @@ export function UserItem({ item, size = 80 }:UserItemProps) {
         />
         <div className="text-lg pt-2">
           {item.name}
+          {' '}
+          <PreviewIndicator />
         </div>
         <div>
           {item.city}

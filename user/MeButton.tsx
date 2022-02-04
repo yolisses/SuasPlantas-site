@@ -4,8 +4,13 @@ import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
-export function MeButton() {
+interface MeButtonProps{
+  preview: boolean
+}
+
+export function MeButton({ preview }: MeButtonProps) {
   const { user } = useUser();
   const { isLogged } = useIsLogged();
   const size = 30;
@@ -24,6 +29,13 @@ export function MeButton() {
               src={user?.image || userImage}
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
+            {preview && (
+            <div className="relative">
+              <div className="absolute bottom-1 -left-4">
+                <PreviewIndicator />
+              </div>
+            </div>
+            )}
           </a>
         </Link>
       ) : (

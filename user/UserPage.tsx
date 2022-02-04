@@ -21,6 +21,7 @@ import { hasContact } from '../utils/hasContact';
 import { TabSelector } from '../common/TabSelector';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface UserPageProps {
   user: User;
@@ -73,7 +74,10 @@ export function UserPage({ user }: UserPageProps) {
             />
             <div className="flex-1 flex-wrap flex overflow-ellipsis">
               <div className="flex flex-col w-full">
-                <div className="overflow-ellipsis text-lg">{user.name}</div>
+                <div className="flex flex-row items-start gap-2">
+                  <div className="overflow-ellipsis text-lg">{user.name}</div>
+                  <PreviewIndicator />
+                </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
               </div>
             </div>

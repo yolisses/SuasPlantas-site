@@ -40,7 +40,7 @@ export function GoogleButton({ callback }:loginButtonProps) {
       </Head>
       <div
         id="g_id_onload"
-          // data-auto_prompt="false"
+        data-auto_prompt="false"
         data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
         data-callback="handleGoogleResponse"
       />

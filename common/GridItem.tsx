@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Plant } from '../plant/Plant';
 import { AvailabilityInfo } from '../plant/AvailabilityInfo';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface GridItemDTO {
   item: Plant;
@@ -27,7 +28,9 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         <div className="px-2 pb-1">
-          <div className="text-lg">{item.name}</div>
+          <span className="text-lg">{item.name}</span>
+          {' '}
+          <PreviewIndicator />
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
           {showLocation && (
             <div className="text-sm">

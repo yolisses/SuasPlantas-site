@@ -20,6 +20,7 @@ import { WhatsappButton } from '../contact/WhatsappButton';
 import { PlantStructuredData } from './PlantStructuredData';
 import { InstagramButton } from '../contact/InstagramButton';
 import { availabilitiesToString } from './availabilitiesToString';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface PlantPageProps{
   data:Plant
@@ -99,7 +100,9 @@ export function PlantPage({ data }:PlantPageProps) {
           <div className="md:w-1/2">
             <div className="p-2 gap-4 flex flex-col">
               <div>
-                <h1 className="text-2xl">{name}</h1>
+                <h1 className="text-2xl inline">{name}</h1>
+                {' '}
+                <PreviewIndicator />
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row w-full justify-center gap-2 max-w-md">
