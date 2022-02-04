@@ -69,7 +69,7 @@ export function Header() {
           <SearchField resetButtonColor="white" />
         </div>
         <Spacer />
-        <MeButton preview />
+        <MeButton />
         <button
           className="icon-button"
           onClick={(e) => {
