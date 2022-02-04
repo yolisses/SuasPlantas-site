@@ -82,7 +82,7 @@ export function UserPage({ user: paramUser, preview }: UserPageProps) {
                 <div>
                   <span className="overflow-ellipsis text-lg">{user.name}</span>
                   {' '}
-                  <PreviewIndicator />
+                  {user.preview && <PreviewIndicator />}
                 </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
               </div>

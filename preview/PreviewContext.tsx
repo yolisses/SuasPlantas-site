@@ -5,8 +5,9 @@ import {
   useContext,
   createContext,
   SetStateAction,
+  useEffect,
 } from 'react';
-import { mockUser } from '../mock/mockUser';
+import { api } from '../api/api';
 import { User } from '../user/User';
 
 interface PreviewContext{
@@ -17,7 +18,7 @@ interface PreviewContext{
 const previewContext = createContext({} as PreviewContext);
 
 export function PreviewProvider({ children }:{children:ReactNode}) {
-  const [user, setUser] = useState<User>(mockUser);
+  const [user, setUser] = useState<User>();
   if (user) {
     user.preview = true;
     user.id = 'preview';
@@ -27,6 +28,27 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
       quest.user = user;
     });
   }
+
+  async function refreshUser() {
+    try {
+      const res = await api.get('preview');
+      setUser(res.data);
+    } catch (err:any) {
+      if (err?.response?.status === 403) {
+        setUser(undefined);
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  useEffect(() => {
+    try {
+      refreshUser();
+    } catch (err:any) {
+      console.log(err);
+    }
+  }, []);
 
   return (
     <previewContext.Provider value={{ user, setUser }}>

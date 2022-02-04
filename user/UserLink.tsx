@@ -25,7 +25,7 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
           <div className="font-semibold text-black">
             {user.name}
             {' '}
-            <PreviewIndicator />
+            { user.preview && <PreviewIndicator />}
           </div>
           <div className="text-gray-700 text-sm">
             {/* Entrou no Suas Plantas em

@@ -30,13 +30,14 @@ export function PlantPage({ data }:PlantPageProps) {
   const { user: currentUser } = useUser();
 
   const {
-    name,
-    description,
-    swap,
-    donate,
-    price,
-    user,
     id,
+    user,
+    name,
+    swap,
+    price,
+    donate,
+    preview,
+    description,
     updatedAt: updatedAtString,
   } = data;
 
@@ -102,7 +103,7 @@ export function PlantPage({ data }:PlantPageProps) {
               <div>
                 <h1 className="text-2xl inline">{name}</h1>
                 {' '}
-                <PreviewIndicator />
+                {preview && <PreviewIndicator />}
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row w-full justify-center gap-2 max-w-md">
