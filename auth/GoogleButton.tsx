@@ -24,8 +24,6 @@ export function GoogleButton({ callback }:loginButtonProps) {
     if (callback) callback();
   }
 
-  console.log(signIn);
-
   useEffect(() => {
     window.handleGoogleResponse = handleGoogleResponse;
   }, []);
