@@ -159,7 +159,7 @@ export function UserPage({ user: paramUser, preview }: UserPageProps) {
             />
           </Tab>
           <Tab tab="quests" currentTab={tab}>
-            <QuestsDrawert
+            <QuestsDrawer
               items={user.quests}
               withoutItemsMessage="Nenhum procurando por enquanto"
             />
@@ -191,11 +191,11 @@ function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
   );
 }
 
-function QuestsDrawert({ items, withoutItemsMessage }:ItemsDrawerProps) {
+function QuestsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div
-        className="flex flex-row flex-wrap gap-1 max-w-2xl"
+        className="flex flex-row flex-wrap gap-1 max-w-2xl justify-center"
       >
         { items.map((item) => (
           <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">
