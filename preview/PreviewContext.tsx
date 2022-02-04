@@ -4,8 +4,10 @@ import {
   ReactNode,
   useContext,
   createContext,
+  useEffect,
 } from 'react';
 import { api } from '../api/api';
+import { useUser } from '../auth/userContext';
 import { User } from '../user/User';
 
 interface PreviewContext{
@@ -17,6 +19,7 @@ const previewContext = createContext({} as PreviewContext);
 
 export function PreviewProvider({ children }:{children:ReactNode}) {
   const [user, setUser] = useState<User>();
+  const { user: actualUser } = useUser();
   if (user) {
     user.preview = true;
     user.id = 'preview';
@@ -30,7 +33,6 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
   }
 
   async function refresh(code:string) {
-    console.log(code);
     try {
       const res = await api.get('preview', { params: { code } });
       setUser(res.data);
@@ -42,6 +44,12 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
       }
     }
   }
+
+  useEffect(() => {
+    if (actualUser) {
+      setUser(undefined);
+    }
+  }, [user, actualUser]);
 
   return (
     <previewContext.Provider value={{

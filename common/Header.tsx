@@ -25,11 +25,13 @@ import { useTextSearchContext } from '../search/TextSearchContext';
 import { NotificationsMenu } from '../notification/NotificationsMenu';
 import { useNotifications } from '../notification/notificationsContext';
 import { NotificationsToggleWarn } from '../notification/NotificationsToggleWarn';
+import { usePreview } from '../preview/PreviewContext';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
   const { reset: resetQuests, setFilters: setQuestsFilters } = useQuests();
   const { user, logOut } = useUser();
+  const { user: previewUser } = usePreview();
   const { setText } = useTextSearchContext();
   const [menu, setMenu] = useState<string>();
   const { isLogged } = useIsLogged();
@@ -104,7 +106,7 @@ export function Header() {
           {menu === 'more'
 && (
 <Menu onClose={closeMenu}>
-  <Link href={`/users/${user?.id}`} prefetch={false}>
+  <Link href={`/users/${previewUser?.id || user?.id}`} prefetch={false}>
     <a className="menu-button" onClick={() => { isLogged(); closeMenu(); }}>
       <Image
         width={20}

@@ -13,6 +13,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useRouter } from 'next/router';
 import { User } from './User';
 import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
@@ -25,8 +26,8 @@ import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { usePreview } from '../preview/PreviewContext';
 
 interface UserPageProps {
-  user?: User;
-  preview?:true
+  user: User;
+  preview?:boolean
 }
 
 interface TabProps{
@@ -47,16 +48,24 @@ function Tab({ tab, currentTab, children }:TabProps) {
 }
 
 export function UserPage({ user: paramUser, preview }: UserPageProps) {
-  const { user: currentUser, refreshUser } = useUser();
-  const { user: previewUser } = usePreview();
   const [tab, setTab] = useState('plants');
+  const { refreshUser } = useUser();
+  const { push } = useRouter();
+  const { user: actualUser } = useUser();
+  const { user: previewUser } = usePreview();
+  const user = preview ? previewUser : paramUser;
 
-  const user = preview ? previewUser! : paramUser!;
-  const selfUser = paramUser?.id === currentUser?.id;
+  const selfUser = actualUser?.id === user?.id;
 
   useEffect(() => {
-    if (selfUser) { refreshUser(); }
+    if (selfUser) refreshUser();
   }, []);
+
+  useEffect(() => {
+    if (!user) { push('/'); }
+  }, [user]);
+
+  if (!user) return null;
 
   return (
     <>
