@@ -2,15 +2,16 @@ import { HomePage } from '../home/HomePage';
 import { usersContext } from './usersContext';
 import { UserItem } from './UserItem';
 import { User } from './User';
-import { useUser } from '../auth/userContext';
+import { usePreview } from '../preview/PreviewContext';
 
 export function UsersPage() {
-  const { user } = useUser();
+  const { user } = usePreview();
 
   return (
     <HomePage
       context={usersContext}
       tab="users"
+      aditionalItems={[user]}
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">

@@ -19,6 +19,7 @@ import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
+import { PreviewProvider } from '../preview/PreviewContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
@@ -46,29 +47,31 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalyticsTags />
       <TourContextProvider>
         <UserContextProvider>
-          <SnackContextProvider>
-            <ModalContextProvider>
-              <TextSearchContextProvider>
-                <PaginationProvider Context={plantsContext} apiRoute="plants">
-                  <PaginationProvider Context={usersContext} apiRoute="users">
-                    <PaginationProvider Context={questsContext} apiRoute="quests">
-                      <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                        <PushNotificationContextProvider>
-                          <Twemoji options={{ className: 'twemoji' }}>
-                            <Header />
-                            <Component {...pageProps} />
-                            <SnackView />
-                            <ModalView />
-                            <ResetOnChangeUser />
-                          </Twemoji>
-                        </PushNotificationContextProvider>
+          <PreviewProvider>
+            <SnackContextProvider>
+              <ModalContextProvider>
+                <TextSearchContextProvider>
+                  <PaginationProvider Context={plantsContext} apiRoute="plants">
+                    <PaginationProvider Context={usersContext} apiRoute="users">
+                      <PaginationProvider Context={questsContext} apiRoute="quests">
+                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                          <PushNotificationContextProvider>
+                            <Twemoji options={{ className: 'twemoji' }}>
+                              <Header />
+                              <Component {...pageProps} />
+                              <SnackView />
+                              <ModalView />
+                              <ResetOnChangeUser />
+                            </Twemoji>
+                          </PushNotificationContextProvider>
+                        </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
                   </PaginationProvider>
-                </PaginationProvider>
-              </TextSearchContextProvider>
-            </ModalContextProvider>
-          </SnackContextProvider>
+                </TextSearchContextProvider>
+              </ModalContextProvider>
+            </SnackContextProvider>
+          </PreviewProvider>
         </UserContextProvider>
       </TourContextProvider>
     </ThemeProvider>

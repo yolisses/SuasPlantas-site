@@ -2,6 +2,7 @@ import {
   FaQuestion, FaSeedling, FaUserFriends, FaUsers,
 } from 'react-icons/fa';
 import { useIsLogged } from '../auth/useIsLogged';
+import { usePreview } from '../preview/PreviewContext';
 import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
@@ -13,6 +14,7 @@ interface TopTabsProps{
 
 export function TopTabs({ tab }: TopTabsProps) {
   const { isLogged } = useIsLogged();
+  const { user: previewUser } = usePreview();
 
   return (
     <div className="flex flex-row flex-wrap bg-white" id="tour_top_tabs">
@@ -40,7 +42,7 @@ export function TopTabs({ tab }: TopTabsProps) {
       <Link
         href="/users"
         onClick={(e) => {
-          if (!isLogged()) {
+          if (!previewUser && !isLogged()) {
             e.preventDefault();
             e.stopPropagation();
           }

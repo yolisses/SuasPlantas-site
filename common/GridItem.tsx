@@ -1,19 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plant } from '../plant/Plant';
-import { AvailabilityInfo } from '../plant/AvailabilityInfo';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface GridItemDTO {
-  item: Plant;
+  item: Plant
   size?:number
   showLocation?:boolean
 }
 
-export function GridItem({ item, size: sizeParam, showLocation = true }: GridItemDTO) {
-  const {
-    swap, donate, price, card,
-  } = item;
+export function GridItem({
+  item, size: sizeParam, showLocation = true,
+}: GridItemDTO) {
+  const { card, preview } = item;
 
   const size = sizeParam || 200;
   return (
@@ -30,7 +29,7 @@ export function GridItem({ item, size: sizeParam, showLocation = true }: GridIte
         <div className="px-2 pb-1">
           <span className="text-lg">{item.name}</span>
           {' '}
-          <PreviewIndicator />
+          {preview && <PreviewIndicator />}
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
           {showLocation && (
             <div className="text-sm">

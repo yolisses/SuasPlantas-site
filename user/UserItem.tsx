@@ -23,7 +23,7 @@ export function UserItem({ item, size = 80 }:UserItemProps) {
         <div className="text-lg pt-2">
           {item.name}
           {' '}
-          <PreviewIndicator />
+          {item.preview && <PreviewIndicator />}
         </div>
         <div>
           {item.city}

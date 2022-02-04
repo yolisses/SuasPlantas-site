@@ -5,15 +5,15 @@ import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
+import { usePreview } from '../preview/PreviewContext';
 
-interface MeButtonProps{
-  preview: boolean
-}
-
-export function MeButton({ preview }: MeButtonProps) {
-  const { user } = useUser();
+export function MeButton() {
+  const { user: actualUser } = useUser();
+  const { user: previewUser } = usePreview();
   const { isLogged } = useIsLogged();
   const size = 30;
+
+  const user = previewUser || actualUser;
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -29,7 +29,7 @@ export function MeButton({ preview }: MeButtonProps) {
               src={user?.image || userImage}
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
-            {preview && (
+            {user.preview && (
             <div className="relative">
               <div className="absolute bottom-1 -left-4">
                 <PreviewIndicator />

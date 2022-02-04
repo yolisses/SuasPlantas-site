@@ -22,9 +22,11 @@ import { TabSelector } from '../common/TabSelector';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
+import { usePreview } from '../preview/PreviewContext';
 
 interface UserPageProps {
-  user: User;
+  user?: User;
+  preview?:true
 }
 
 interface TabProps{
@@ -44,10 +46,13 @@ function Tab({ tab, currentTab, children }:TabProps) {
   );
 }
 
-export function UserPage({ user }: UserPageProps) {
+export function UserPage({ user: paramUser, preview }: UserPageProps) {
   const { user: currentUser, refreshUser } = useUser();
+  const { user: previewUser } = usePreview();
   const [tab, setTab] = useState('plants');
-  const selfUser = user.id === currentUser?.id;
+
+  const user = preview ? previewUser! : paramUser!;
+  const selfUser = paramUser?.id === currentUser?.id;
 
   useEffect(() => {
     if (selfUser) { refreshUser(); }

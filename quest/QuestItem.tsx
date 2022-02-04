@@ -13,7 +13,7 @@ export function QuestItem({ item }:{item:Quest}) {
           <div className="text-lg">
             {item.name}
             {' '}
-            <PreviewIndicator />
+            {item.preview && <PreviewIndicator />}
           </div>
           {!!user && (
           <div className="flex flex-row gap-2 items-center">

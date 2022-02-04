@@ -25,4 +25,5 @@ export interface Plant {
   alsoSaw?:Plant[]
   state: string;
   city: string;
+  preview?:true
 }

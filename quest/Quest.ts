@@ -5,4 +5,5 @@ export interface Quest{
     name:string
     user:User
     userId:UserId
+    preview?:true
 }

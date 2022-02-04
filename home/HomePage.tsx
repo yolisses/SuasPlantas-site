@@ -3,17 +3,17 @@ import {
   ReactNode,
   useContext,
 } from 'react';
-import ReactJoyride, { Step } from 'react-joyride';
+import { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AddButton } from './AddButton';
 import { Spinner } from '../common/Spinner';
-import { mainColor } from '../common/mainColor';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 import { TourName, useTour } from '../tour/TourContext';
+import { Tour } from '../tour/Tour';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -21,6 +21,7 @@ interface HomePageProps<T>{
   tourSteps?:Step[]
   tourName?:TourName
   children:(items?:T[])=>ReactNode
+  aditionalItems?:T[]
   context:Context<IItemsContext<T>>
 }
 
@@ -31,6 +32,7 @@ export function HomePage<T>({
   children,
   tourName,
   tourSteps,
+  aditionalItems,
 }:HomePageProps<T>) {
   const {
     items,
@@ -38,8 +40,6 @@ export function HomePage<T>({
     loading,
     loadMore,
   } = useContext(context);
-
-  const { blockTour } = useTour();
 
   return (
     <>
@@ -58,7 +58,7 @@ export function HomePage<T>({
         scrollThreshold={0.8}
         loader={(<div />)}
       >
-        {children(items)}
+        {children(aditionalItems ? aditionalItems.concat(items || []) : items)}
       </InfiniteScroll>
       { loading && (
       <div className="flex flex-col items-center pt-20 pb-10">
@@ -80,47 +80,7 @@ export function HomePage<T>({
       >
         <div id="tour_start" />
       </div>
-      {!!tourSteps && (
-      <ReactJoyride
-        steps={tourSteps}
-        continuous
-        callback={(e) => {
-          if (tourName && e.action === 'reset') {
-            blockTour(tourName);
-          }
-        }}
-        disableScrolling
-        styles={{
-          tooltipFooter: {
-            marginTop: 0,
-          },
-          tooltip: {
-            boxShadow: '0 0 30px #0001',
-          },
-          buttonNext: {
-            padding: '0.75rem',
-            backgroundColor: mainColor,
-          },
-          buttonBack: {
-            padding: '0.75rem',
-            color: mainColor,
-          },
-          buttonClose: {
-            padding: '0.75rem',
-          },
-          buttonSkip: {
-            padding: '0.75rem',
-            color: mainColor,
-          },
-        }}
-        locale={{
-          back: 'Voltar',
-          next: 'Próximo',
-          last: 'Entendi',
-          close: 'Fechar',
-        }}
-      />
-      )}
+      {!!tourSteps && (<Tour steps={tourSteps} tourName={tourName} />)}
     </>
   );
 }
