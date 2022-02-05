@@ -17,6 +17,10 @@ export const homeTourSteps:Step[] = [
       {' '}
       você pode postar e encontrar plantas para trocar.
       {' '}
+      <strong>
+        É grátis e sempre será.
+      </strong>
+      {' '}
       Gostaria de um passeio pelo site?
     </span>
   </div>,
