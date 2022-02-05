@@ -200,6 +200,9 @@ function QuestsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
         { items.map((item) => (
           <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">
             {item.name}
+            {' '}
+            {item.preview
+            && <PreviewIndicator />}
           </div>
         ))}
       </div>
