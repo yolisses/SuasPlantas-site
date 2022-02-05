@@ -16,7 +16,7 @@ export function GridItem({
   const size = sizeParam || 200;
   return (
     <Link href={`/plants/${item.id}`}>
-      <a className="highlight rounded-xl flex flex-col justify-center">
+      <a className={`highlight rounded-xl flex flex-col justify-center ${!card ? 'bg-gray-100' : ''}`}>
         {!!card && (
         <Image
           src={card}
@@ -27,10 +27,11 @@ export function GridItem({
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         )}
-        <div className="px-2 pb-1">
+        <div className="px-2 pb-1 text-center">
           <span className={`text-lg ${!card ? 'text-2xl' : ''}`}>{item.name}</span>
           {' '}
           {preview && <PreviewIndicator />}
+
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
           {(item.city || item.state) && (
             <div className="text-sm">
