@@ -21,7 +21,7 @@ export function PreviewWarn() {
         {' '}
         <button
           onClick={isLogged}
-          className="underline inline text-white px-0"
+          className="inline text-white border border-white"
         >
           crie uma conta
         </button>
