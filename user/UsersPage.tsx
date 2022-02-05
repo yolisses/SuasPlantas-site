@@ -20,6 +20,8 @@ export function UsersPage() {
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+          {!user
+          && (
           <button
             className="bg-gray-100 flex flex-col items-center p-2 rounded-lg hover:bg-gray-300 gap-0 text-black"
             onClick={(e) => {
@@ -44,6 +46,7 @@ export function UsersPage() {
             </div>
             <strong className="text-sm">É totalmente grátis</strong>
           </button>
+          )}
           {!!items && items
             // .filter((item:User) => item.id !== user?.id)
             .map((item: User) => (
