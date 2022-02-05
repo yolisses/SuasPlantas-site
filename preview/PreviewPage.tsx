@@ -4,14 +4,14 @@ import { Spinner } from '../common/Spinner';
 import { usePreview } from './PreviewContext';
 
 export function PreviewPage({ query }:any) {
-  const { code } = query!;
+  const { code, r: redirect } = query!;
   const [error, setError] = useState<any>();
   const { refresh } = usePreview();
 
   async function getPreview() {
     try {
       await refresh(code!);
-      Router.push('/');
+      Router.push(redirect ? `/${redirect}` : '/');
     } catch (err) {
       setError(err);
     }
