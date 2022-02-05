@@ -61,7 +61,7 @@ export function EditProfileImage() {
             accept=".jpg, .jpeg, .png, .webp"
             hidden
           />
-          <div className={loading ? 'disabled-button' : 'secondary-button'}>
+          <div className={`p-2 flex flex-row gap-2 items-center rounded-lg ${loading ? 'disabled-button' : 'secondary-button'}`}>
             {loading && <Spinner />}
             Alterar foto
           </div>
