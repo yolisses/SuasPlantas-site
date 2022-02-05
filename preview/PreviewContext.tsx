@@ -4,22 +4,21 @@ import {
   ReactNode,
   useContext,
   createContext,
-  useEffect,
 } from 'react';
 import { api } from '../api/api';
-import { useUser } from '../auth/userContext';
 import { User } from '../user/User';
 
 interface PreviewContext{
     user?:User
-    refresh:(code:string)=>void
+    code?:string
+    refresh:(code?:string)=>void
 }
 
 const previewContext = createContext({} as PreviewContext);
 
 export function PreviewProvider({ children }:{children:ReactNode}) {
   const [user, setUser] = useState<User>();
-  const { user: actualUser } = useUser();
+  const [code, setCode] = useState<string>();
   if (user) {
     user.preview = true;
     user.id = 'preview';
@@ -32,28 +31,27 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
     });
   }
 
-  async function refresh(code:string) {
-    try {
-      const res = await api.get('preview', { params: { code } });
-      setUser(res.data);
-    } catch (err:any) {
-      if (err?.response?.status === 403) {
-        setUser(undefined);
-      } else {
-        throw err;
+  async function refresh(code?:string) {
+    setCode(code);
+    if (!code) setUser(undefined);
+    else {
+      try {
+        const res = await api.get('preview', { params: { code } });
+        setUser(res.data);
+      } catch (err:any) {
+        if (err?.response?.status === 403) {
+          setUser(undefined);
+        } else {
+          throw err;
+        }
       }
     }
   }
 
-  useEffect(() => {
-    if (actualUser) {
-      setUser(undefined);
-    }
-  }, [user, actualUser]);
-
   return (
     <previewContext.Provider value={{
       user,
+      code,
       refresh,
     }}
     >

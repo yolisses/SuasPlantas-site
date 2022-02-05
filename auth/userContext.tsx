@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { api } from '../api/api';
 import { User } from '../user/User';
+import { usePreview } from '../preview/PreviewContext';
 
 interface ISignIn{
   provider: 'google' | 'facebook',
@@ -30,6 +31,7 @@ export const userContext = createContext({} as IUserContextProvider);
 
 export function UserContextProvider({ children }: {children:ReactNode}) {
   const [user, setUser] = useState<User>();
+  const { code: previewCode } = usePreview();
 
   async function logOut() {
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
@@ -39,7 +41,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
   }
 
   async function signIn({ provider, accessToken }:ISignIn) {
-    const res = await api.post('users', { provider, accessToken });
+    const res = await api.post('users', { provider, accessToken, previewCode });
     const token = res.headers.authorization;
     api.defaults.headers.common.Authorization = token;
     setCookie(undefined, 'suasplantas.token', token, {
@@ -69,6 +71,12 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       console.log(err);
     }
   }, []);
+
+  const { refresh: refreshPreview } = usePreview();
+
+  useEffect(() => {
+    if (user) refreshPreview(undefined);
+  }, [user]);
 
   return (
     <userContext.Provider value={{

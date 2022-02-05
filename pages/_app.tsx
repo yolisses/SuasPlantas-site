@@ -47,8 +47,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <MuiFontsTags />
       <GoogleAnalyticsTags />
       <TourContextProvider>
-        <UserContextProvider>
-          <PreviewProvider>
+        <PreviewProvider>
+          <UserContextProvider>
             <SnackContextProvider>
               <ModalContextProvider>
                 <TextSearchContextProvider>
@@ -73,8 +73,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </TextSearchContextProvider>
               </ModalContextProvider>
             </SnackContextProvider>
-          </PreviewProvider>
-        </UserContextProvider>
+          </UserContextProvider>
+        </PreviewProvider>
       </TourContextProvider>
     </ThemeProvider>
   );
