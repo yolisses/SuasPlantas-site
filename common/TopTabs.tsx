@@ -39,15 +39,7 @@ export function TopTabs({ tab }: TopTabsProps) {
           </div> */}
         </TabSelector>
       </Link>
-      <Link
-        href="/users"
-        onClick={(e) => {
-          if (!previewUser && !isLogged()) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-        }}
-      >
+      <Link href="/users">
         <TabSelector id="tour_tab_users" tab="users" value={tab}>
           <FaUserFriends />
           Pessoas

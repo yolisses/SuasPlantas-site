@@ -23,12 +23,12 @@ export function SignInPage() {
         </div>
         <div className="flex flex-col flex-1 items-center pt-24 sm:pt-0 sm:justify-center">
           <div className="flex flex-col max-w-sm items-center gap-2">
-            <div>Escolha uma conta para continuar</div>
+            <div>Escolha uma forma de continuar</div>
             <GoogleButton />
             <FacebookButton />
             <div className="pb-2 sm:pb-9" />
             <div className="text-sm text-gray-600 px-6">
-              Ao selecionar uma conta, você concorda com nossos Termos de Uso,
+              Ao continuar, você concorda com nossos Termos de Uso,
               Política de Privacidade e Política de Cookies.
             </div>
           </div>
