@@ -6,11 +6,10 @@ import { PreviewIndicator } from '../preview/PreviewIndicator';
 interface GridItemDTO {
   item: Plant
   size?:number
-  showLocation?:boolean
 }
 
 export function GridItem({
-  item, size: sizeParam, showLocation = true,
+  item, size: sizeParam,
 }: GridItemDTO) {
   const { card, preview } = item;
 
@@ -31,11 +30,10 @@ export function GridItem({
           {' '}
           {preview && <PreviewIndicator />}
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
-          {showLocation && (
+          {(item.city || item.state) && (
             <div className="text-sm">
               {item.city}
-              ,
-              {' '}
+              {!!item.city && ', '}
               {item.state}
             </div>
           )}
