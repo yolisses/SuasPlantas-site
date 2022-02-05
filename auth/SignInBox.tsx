@@ -7,7 +7,7 @@ export function SignInBox() {
   const { close } = useModal();
   return (
     <div className="flex flex-col max-w-sm items-center gap-2 py-2">
-      <div className="pb-5">Escolha um para continuar</div>
+      <div className="pb-5">Escolha uma forma de continuar</div>
       <GoogleButton callback={close} />
       <FacebookButton callback={close} />
       <div className="pb-2 sm:pb-5" />
