@@ -3,6 +3,6 @@ import { PreviewPage } from '../../preview/PreviewPage';
 
 export default PreviewPage;
 
-export const getServerSideProps:GetServerSideProps = ({ query }) => ({
+export const getServerSideProps:GetServerSideProps = async ({ query }) => ({
   props: { query },
 });
