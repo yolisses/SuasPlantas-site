@@ -13,7 +13,7 @@ export interface Plant {
   amount:number;
   description: string;
   user: User;
-  card: string;
+  card?: string;
   tags: Tag[];
   images: Image[];
   donate: boolean;

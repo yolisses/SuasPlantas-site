@@ -16,7 +16,8 @@ export function GridItem({
   const size = sizeParam || 200;
   return (
     <Link href={`/plants/${item.id}`}>
-      <a className="highlight rounded-xl flex flex-col">
+      <a className="highlight rounded-xl flex flex-col justify-center">
+        {!!card && (
         <Image
           src={card}
           width={size}
@@ -25,8 +26,9 @@ export function GridItem({
           objectFit="cover"
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
+        )}
         <div className="px-2 pb-1">
-          <span className="text-lg">{item.name}</span>
+          <span className={`text-lg ${!card ? 'text-2xl' : ''}`}>{item.name}</span>
           {' '}
           {preview && <PreviewIndicator />}
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
