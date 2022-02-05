@@ -12,18 +12,18 @@ import {
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import { useRouter } from 'next/router';
+
 import { User } from './User';
 import { userImage } from '../images/user';
 import { GridItem } from '../common/GridItem';
 import { useUser } from '../auth/userContext';
 import { hasContact } from '../utils/hasContact';
 import { TabSelector } from '../common/TabSelector';
+import { usePreview } from '../preview/PreviewContext';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { InstagramButton } from '../contact/InstagramButton';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
-import { usePreview } from '../preview/PreviewContext';
 
 interface UserPageProps {
   user: User;
