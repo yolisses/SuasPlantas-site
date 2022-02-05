@@ -8,13 +8,17 @@ export function PreviewPage({ query }:any) {
   const [error, setError] = useState<any>();
   const { refresh } = usePreview();
 
-  useEffect(() => {
+  async function getPreview() {
     try {
-      refresh(code!);
+      await refresh(code!);
       Router.push('/');
     } catch (err) {
       setError(err);
     }
+  }
+
+  useEffect(() => {
+    getPreview();
   }, []);
 
   return (
