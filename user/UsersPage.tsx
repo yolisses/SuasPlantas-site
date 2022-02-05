@@ -6,17 +6,20 @@ import { User } from './User';
 import { usePreview } from '../preview/PreviewContext';
 import { userImage } from '../images/user';
 import { useIsLogged } from '../auth/useIsLogged';
+import { useUser } from '../auth/userContext';
 
 export function UsersPage() {
   const size = 80;
-  const { user } = usePreview();
+
+  const { user: previewUser } = usePreview();
+  const { user } = useUser();
   const { isLogged } = useIsLogged();
 
   return (
     <HomePage
       context={usersContext}
       tab="users"
-      aditionalItems={user && [user]}
+      aditionalItems={previewUser && [previewUser]}
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
@@ -52,7 +55,6 @@ export function UsersPage() {
             .map((item: User) => (
               <UserItem key={item.id} item={item} />
             ))}
-
         </div>
       )}
     </HomePage>
