@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import { Plant } from './Plant';
 import { api } from '../api/api';
 import { Sending } from '../upload/Sending';
@@ -22,6 +23,8 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [loading, setLoading] = useState(false);
   const { setSnack } = useSnack();
   const { reset } = usePlants();
+  const [optional, setOptional] = useState(false);
+
   const {
     register, handleSubmit, control,
   } = useForm({
@@ -65,6 +68,24 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   return (
     <div className="w-full flex-1 flex flex-col justify-center items-center">
       <div className="flex flex-col p-2 gap-4 max-w-lg w-full pb-8">
+        <h1>
+          {edit ? 'Editar' : 'Adicionar'}
+          {' '}
+          planta
+        </h1>
+        <Controller
+          name="name"
+          control={control}
+          rules={{ required: true, min: 3 }}
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              label="Nome"
+              helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
+              error={!!error}
+              {...field}
+            />
+          )}
+        />
         <Controller
           name="images"
           control={control}
@@ -81,28 +102,37 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
             />
           )}
         />
-        <Controller
-          name="name"
-          control={control}
-          rules={{ required: true, min: 3 }}
-          render={({ field, fieldState: { error } }) => (
-            <TextField
-              label="Nome"
-              helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
-              error={!!error}
-              {...field}
-            />
-          )}
-        />
-        <TextField label="Descrição" multiline minRows={2} {...register('description')} />
-        <TextField
-          label="Quantidade (opcional)"
-          type="number"
-          InputProps={{
-            inputProps: { min: 1, max: 100, pattern: '[0-9]*' },
-          }}
-          {...register('amount')}
-        />
+        <button
+          onClick={() => setOptional((value) => !value)}
+          className="flex flex-row items-center justify-start gap-1"
+        >
+          {optional
+            ? <FaMinus color="gray" className="pb-1" />
+            : <FaPlus color="gray" className="pb-1" />}
+          Mostrar
+          {' '}
+          {optional ? 'menos' : 'mais'}
+          {' '}
+          opções
+        </button>
+        {optional && (
+        <>
+          <TextField
+            multiline
+            minRows={2}
+            label="Descrição"
+            {...register('description')}
+          />
+          <TextField
+            type="number"
+            {...register('amount')}
+            label="Quantidade (opcional)"
+            InputProps={{
+              inputProps: { min: 1, max: 100, pattern: '[0-9]*' },
+            }}
+          />
+        </>
+        )}
         <div className="flex flex-col sm:flex-row gap-2">
           <button className="main-button h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
             {loading && <Spinner /> }
