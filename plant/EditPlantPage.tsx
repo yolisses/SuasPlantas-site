@@ -126,7 +126,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           <TextField
             type="number"
             {...register('amount')}
-            label="Quantidade (opcional)"
+            label="Quantidade"
             InputProps={{
               inputProps: { min: 1, max: 100, pattern: '[0-9]*' },
             }}
