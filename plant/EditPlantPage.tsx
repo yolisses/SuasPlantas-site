@@ -68,28 +68,18 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         <Controller
           name="images"
           control={control}
-          render={
-            ({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-              <ImagesInput
-                error={!!error}
-                onBlur={onBlur}
-                onChange={onChange}
-                helperText={error?.message}
-                initialSendings={value as SendingsCollection}
-              />
-            )
-            }
-          rules={{
-            validate: (selected) => {
-              if (Object.keys(selected).length < 1) {
-                return 'Selecione pelo menos 1 imagem';
-              }
-              if (Object.keys(selected).length > 10) {
-                return 'Selecione no máximo 10 imagine';
-              }
-              return undefined;
-            },
-          }}
+          render={({
+            field: { onChange, onBlur, value },
+            fieldState: { error },
+          }) => (
+            <ImagesInput
+              error={!!error}
+              onBlur={onBlur}
+              onChange={onChange}
+              helperText={error?.message}
+              initialSendings={value as SendingsCollection}
+            />
+          )}
         />
         <Controller
           name="name"

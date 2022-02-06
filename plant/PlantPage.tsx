@@ -69,35 +69,38 @@ export function PlantPage({ data }:PlantPageProps) {
       </Head>
       <PlantStructuredData plant={data} />
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row md:gap-4">
-          <div className="md:w-1/2 flex-1 md:pt-2">
-            <div className="sticky top-12">
-              <Carousel
-                emulateTouch
-                showStatus={false}
-                ref={carousel as any}
-                showIndicators={false}
-                showArrows={multipleImages}
-                showThumbs={multipleImages}
-                renderThumbs={() => {
-                  const SIZE = 70;
-                  return data.images.map(({ uri }) => (
-                    <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
-                  ));
-                }}
-              >
-                {data.images.map(({ uri }) => {
-                  const SIZE = 500;
-                  return (
-                    <div className="flex flex-col h-full justify-center flex-1">
-                      <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="contain" key={uri} />
-                    </div>
-                  );
-                })}
-              </Carousel>
-              {/* {JSON.stringify(data.images)} */}
-            </div>
-          </div>
+        <div className="flex flex-col md:flex-row md:gap-4 justify-center">
+          {!!data.images.length
+            && (
+              <div className="md:w-1/2 flex-1 md:pt-2">
+                <div className="sticky top-12">
+                  <Carousel
+                    emulateTouch
+                    showStatus={false}
+                    ref={carousel as any}
+                    showIndicators={false}
+                    showArrows={multipleImages}
+                    showThumbs={multipleImages}
+                    renderThumbs={() => {
+                      const SIZE = 70;
+                      return data.images.map(({ uri }) => (
+                        <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
+                      ));
+                    }}
+                  >
+                    {data.images.map(({ uri }) => {
+                      const SIZE = 500;
+                      return (
+                        <div className="flex flex-col h-full justify-center flex-1">
+                          <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="contain" key={uri} />
+                        </div>
+                      );
+                    })}
+                  </Carousel>
+                  {/* {JSON.stringify(data.images)} */}
+                </div>
+              </div>
+            )}
           <div className="md:w-1/2">
             <div className="p-2 gap-4 flex flex-col">
               <div>
