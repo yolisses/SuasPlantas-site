@@ -6,6 +6,7 @@ export function DangerousPage() {
   const size = 800;
   return (
     <div>
+      teste
       <Image src={link} width={size} height={size} />
     </div>
   );
