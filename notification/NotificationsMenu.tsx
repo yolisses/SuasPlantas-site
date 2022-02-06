@@ -38,6 +38,7 @@ export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
     >
       {items.map((notification) => {
         const { entity, id } = notification;
+        if (!entity) return null;
         return (
           <Link href={`/plants/${notification.entityId}`}>
             <a

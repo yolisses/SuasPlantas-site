@@ -19,7 +19,7 @@ body {
   }
 
   .scale-active{
-    @apply active:transform active:scale-95
+    @apply active:transform active:scale-95 transition-transform duration-150
   }
 
   .main-button{
