@@ -13,6 +13,9 @@ import { usePlants } from './plantsContext';
 import { useSnack } from '../snack/SnackContext';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { generateArray } from '../dev/utils/generateArray';
+import { SelectedImageItem } from '../images/SelectedImageItem';
+import { someImage } from '../mock/someImage';
 
 interface EditPlantProps{
   edit?:boolean
@@ -86,6 +89,15 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
             />
           )}
         />
+        <div>
+          <div>Imagens sugeridas</div>
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-1">
+            <SelectedImageItem src={someImage} hideCloseButton />
+            <SelectedImageItem src={someImage} hideCloseButton />
+            <SelectedImageItem src={someImage} hideCloseButton />
+            <SelectedImageItem src={someImage} hideCloseButton />
+          </div>
+        </div>
         <Controller
           name="images"
           control={control}

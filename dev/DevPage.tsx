@@ -1,9 +1,11 @@
-import { Snack } from '../snack/Snack';
+import { SelectedImageItem } from '../images/SelectedImageItem';
+import { someImage } from '../mock/someImage';
 
 export function DevPage() {
   return (
     <div>
-      <Snack snack={{ text: 'adicionado com sucesso', severity: 'success' }} />
+
+      <SelectedImageItem src={someImage} />
     </div>
   );
 }
