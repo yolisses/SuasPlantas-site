@@ -37,13 +37,18 @@ export function SelectedImage({
   }, [sending.file]);
 
   return (
-    <>
+    <div>
       <SelectedImageItem src={src} handleRemoveClick={handleRemoveClick} />
       {false && (
-      <div>
+      <>
+        <div>
           {sending.progressPercentage}
-      </div>
+        </div>
+        <div>
+          {sending.key}
+        </div>
+      </>
       )}
-    </>
+    </div>
   );
 }

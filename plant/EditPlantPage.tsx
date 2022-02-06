@@ -13,7 +13,8 @@ import { usePlants } from './plantsContext';
 import { useSnack } from '../snack/SnackContext';
 import { ImagesSuggestions } from './ImagesSuggestions';
 import { imagesToSendings } from '../images/imagesToSendings';
-import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { ImageInputCustomRef, ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { getFileFromImageUrl } from '../upload/getFileFromImageUrl';
 
 interface EditPlantProps{
   edit?:boolean
@@ -26,6 +27,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   const [loading, setLoading] = useState(false);
   const [optional, setOptional] = useState(false);
   const [suggestText, setSuggestText] = useState<string>();
+  const customRef : ImageInputCustomRef = {};
 
   const {
     register, handleSubmit, control,
@@ -42,6 +44,12 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   async function allImagesSent(images: SendingsCollection) {
     const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
     await Promise.all(imagesPromisses);
+  }
+
+  async function handleSuggestionSelect(image:string) {
+    if (!customRef?.current) return;
+    const file = await getFileFromImageUrl(image);
+    customRef.current.addFile(file);
   }
 
   async function submit(data:any) {
@@ -92,7 +100,10 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
             />
           )}
         />
-        <ImagesSuggestions text={suggestText} />
+        <ImagesSuggestions
+          text={suggestText}
+          onSelect={handleSuggestionSelect}
+        />
         <Controller
           name="images"
           control={control}
@@ -104,6 +115,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
               error={!!error}
               onBlur={onBlur}
               onChange={onChange}
+              customRef={customRef}
               helperText={error?.message}
               initialSendings={value as SendingsCollection}
             />

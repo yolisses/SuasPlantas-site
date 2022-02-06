@@ -15,22 +15,42 @@ import { useRefresh } from '../utils/useRefresh';
 
 export type SendingsCollection = { [key: number]: Sending };
 
+export interface ImageInputCustomRef{
+  current?:{
+    addFile:(file:File)=>void
+    sendings:SendingsCollection
+  }
+}
+
 interface ImagesInputProps{
-  onChange:(value:any)=>void
+  onChange:(sendings:SendingsCollection)=>void
   onBlur:(value:any)=>void
   error?:boolean
   helperText?:string
   initialSendings?:SendingsCollection
+  customRef?:ImageInputCustomRef
 }
 
 type IgnoreType = () => any
 
 export function ImagesInput({
-  onChange, onBlur, helperText, error, initialSendings,
+  onChange, onBlur, helperText, error, initialSendings, customRef,
 }:ImagesInputProps) {
   const refresh = useRefresh();
   const [dragging, setDragging] = useState(false);
   const [sendings, setSendings] = useState<SendingsCollection>(initialSendings || {});
+
+  if (customRef) {
+    // eslint-disable-next-line no-param-reassign
+    customRef.current = {
+      addFile(file:File) {
+        const newFiles: SendingsCollection = {};
+        newFiles[Math.random()] = new Sending({ file, onUpdate: refresh });
+        setSendings((old) => ({ ...old, ...newFiles }));
+      },
+      sendings,
+    };
+  }
 
   function addFiles(files: File[]) {
     const newFiles: SendingsCollection = {};
