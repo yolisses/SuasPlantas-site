@@ -16,7 +16,7 @@ export function GridItem({
   const size = sizeParam || 200;
   return (
     <Link href={`/plants/${item.id}`}>
-      <a className={`highlight rounded-xl flex flex-col ${!card ? 'bg-gray-100 justify-center' : ''}`}>
+      <a className={`highlight rounded-xl flex flex-col ${!card ? 'bg-gray-100 justify-center py-3' : ''}`}>
         {!!card && (
         <Image
           src={card}
