@@ -1,9 +1,13 @@
 import { FaTimes } from 'react-icons/fa';
 
-export function SelectedImageItem({ handleRemoveClick, src, hideCloseButton }) {
+interface SelectedImageItemProps{
+  handleRemoveClick:()=>void
+  src?:string
+}
+
+export function SelectedImageItem({ handleRemoveClick, src }:SelectedImageItemProps) {
   return (
     <div>
-      {!hideCloseButton && (
       <div className="relative z-10">
         <FaTimes
           size={26}
@@ -12,7 +16,6 @@ export function SelectedImageItem({ handleRemoveClick, src, hideCloseButton }) {
           className="bg-white absolute right-1 top-1 rounded-full p-1 shadow-lg cursor-pointer hover:bg-gray-100"
         />
       </div>
-      )}
       <div>
         <img
           alt=""
