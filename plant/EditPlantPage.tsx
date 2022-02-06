@@ -11,11 +11,9 @@ import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
 import { usePlants } from './plantsContext';
 import { useSnack } from '../snack/SnackContext';
+import { ImagesSuggestions } from './ImagesSuggestions';
 import { imagesToSendings } from '../images/imagesToSendings';
 import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
-import { generateArray } from '../dev/utils/generateArray';
-import { SelectedImageItem } from '../images/SelectedImageItem';
-import { someImage } from '../mock/someImage';
 
 interface EditPlantProps{
   edit?:boolean
@@ -27,6 +25,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   const { setSnack } = useSnack();
   const [loading, setLoading] = useState(false);
   const [optional, setOptional] = useState(false);
+  const [suggestText, setSuggestText] = useState<string>();
 
   const {
     register, handleSubmit, control,
@@ -86,18 +85,14 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
               helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
               error={!!error}
               {...field}
+              onBlur={(e) => {
+                setSuggestText(e.target.value);
+                field.onBlur();
+              }}
             />
           )}
         />
-        <div>
-          <div>Imagens sugeridas</div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-1">
-            <SelectedImageItem src={someImage} hideCloseButton />
-            <SelectedImageItem src={someImage} hideCloseButton />
-            <SelectedImageItem src={someImage} hideCloseButton />
-            <SelectedImageItem src={someImage} hideCloseButton />
-          </div>
-        </div>
+        <ImagesSuggestions text={suggestText} />
         <Controller
           name="images"
           control={control}
