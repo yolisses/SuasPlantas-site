@@ -20,9 +20,9 @@ interface EditPlantProps{
 }
 
 export function EditPlantPage({ edit, data }:EditPlantProps) {
-  const [loading, setLoading] = useState(false);
-  const { setSnack } = useSnack();
   const { reset } = usePlants();
+  const { setSnack } = useSnack();
+  const [loading, setLoading] = useState(false);
   const [optional, setOptional] = useState(false);
 
   const {
@@ -133,9 +133,9 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           />
         </>
         )}
-        <div className="flex flex-col sm:flex-row gap-2">
-          <button className="main-button h-12 flex-1" onClick={handleSubmit(submit)} disabled={loading}>
-            {loading && <Spinner /> }
+        <div className="flex flex-row-reverse sm:flex-row gap-2">
+          <button className="main-button flex-1" onClick={handleSubmit(submit)} disabled={loading}>
+            {loading && <Spinner radius={25} /> }
             {edit ? 'Salvar' : 'Adicionar'}
           </button>
           {edit && (
