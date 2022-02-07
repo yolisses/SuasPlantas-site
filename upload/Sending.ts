@@ -62,7 +62,7 @@ export class Sending {
     await this.getUploadLink();
     await this.uploadImage();
     this.sent = true;
-    console.log('foi');
+    // console.log('foi');
     this.callback();
   }
 
