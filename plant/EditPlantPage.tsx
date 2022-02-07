@@ -54,6 +54,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
 
   async function submit(data:any) {
     setLoading(true);
+    console.log(data);
     try {
       await allImagesSent(data.images);
       const method = edit ? api.patch : api.post;
@@ -89,10 +90,10 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           rules={{ required: true, min: 3 }}
           render={({ field, fieldState: { error } }) => (
             <TextField
-              label="Nome"
-              helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
-              error={!!error}
               {...field}
+              label="Nome"
+              error={!!error}
+              helperText={error?.type === 'required' ? 'Por favor informe o nome' : error?.message}
               onBlur={(e) => {
                 setSuggestText(e.target.value);
                 field.onBlur();
@@ -144,11 +145,11 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           />
           <TextField
             type="number"
-            {...register('amount')}
             label="Quantidade"
-            InputProps={{
-              inputProps: { min: 1, max: 100, pattern: '[0-9]*' },
-            }}
+            min={1}
+            max={100}
+            patern="[0-9]*"
+            {...register('amount')}
           />
         </>
         )}

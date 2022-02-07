@@ -14,6 +14,7 @@ import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
+import { TextField } from '../common/TextField';
 
 export const EditProfilePage = ({ user }:{user:User}) => {
   const { setUser } = useUser();
@@ -63,16 +64,14 @@ export const EditProfilePage = ({ user }:{user:User}) => {
           <TextField
             label="Instagram"
             {...register('instagramUsername')}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FaInstagram size={25} />
-                  <span className="pl-2">
-                    @
-                  </span>
-                </InputAdornment>
-              ),
-            }}
+            startAdornment={(
+              <>
+                <FaInstagram size={25} color="gray" className="inline" />
+                <span className="text-gray-500">
+                  @
+                </span>
+              </>
+              )}
           />
           {!!watch('instagramUsername') && (
           <a
@@ -94,13 +93,7 @@ export const EditProfilePage = ({ user }:{user:User}) => {
             label="Whatsapp"
             type="number"
             {...register('whatsappNumber')}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FaWhatsapp size={25} />
-                </InputAdornment>
-              ),
-            }}
+            startAdornment={(<FaWhatsapp size={25} color="gray" />)}
           />
           {!!watch('whatsappNumber') && (
             <a
