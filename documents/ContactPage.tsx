@@ -1,6 +1,5 @@
 import {
   Rating,
-  TextField,
   IconContainerProps,
 } from '@mui/material';
 import { useState } from 'react';
@@ -19,6 +18,7 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
 
 const customIcons:{[key:string]:SvgIconComponent} = {
@@ -126,7 +126,7 @@ export function ContactPage() {
         </address>
         <fieldset className="flex flex-col gap-3 items-stretch w-full max-w-md">
           <div>Enviar feedback</div>
-          <TextField label="Nome (opcional)" className="w-full" {...register('name')} />
+          <TextField label="Nome (opcional)" {...register('name')} />
           <TextField label="Email (opcional)" {...register('email')} />
           <Controller
             name="rating"

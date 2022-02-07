@@ -1,5 +1,4 @@
 import {
-  TextField,
   FormHelperText,
   InputAdornment,
 } from '@mui/material';
@@ -12,9 +11,9 @@ import { User } from './User';
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { useSnack } from '../snack/SnackContext';
 import { EditProfileImage } from './EditProfileImage';
 import { LocationField } from '../location/LocationField';
-import { useSnack } from '../snack/SnackContext';
 
 export const EditProfilePage = ({ user }:{user:User}) => {
   const { setUser } = useUser();

@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
-import { TextField } from '@mui/material';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import { Controller, useForm } from 'react-hook-form';
 
-import { FaMinus, FaPlus } from 'react-icons/fa';
 import { Plant } from './Plant';
 import { api } from '../api/api';
 import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
 import { usePlants } from './plantsContext';
+import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
 import { ImagesSuggestions } from './ImagesSuggestions';
 import { imagesToSendings } from '../images/imagesToSendings';

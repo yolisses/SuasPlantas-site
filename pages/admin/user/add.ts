@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
-import { DevPage } from '../../dev/DevPage';
-import { isDev } from '../../utils/isDev';
+import { AddUserPage } from '../../../admin/AddUserPage';
+import { isDev } from '../../../utils/isDev';
 
-export default DevPage;
+export default AddUserPage;
 
 export const getServerSideProps : GetServerSideProps = async () => ({
   props: {},

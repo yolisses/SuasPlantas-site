@@ -65,6 +65,14 @@ body {
   .h-screen-no-header{
     height: calc(100vh - 3rem)
   }
+
+  .label-active{
+    @apply -top-2 left-2 text-xs px-1 text-gray-500 leading-none
+  }
+
+  .label-inactive{
+    @apply left-3 top-4 text-base px-0
+  }
 }
 
 input {
