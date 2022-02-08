@@ -36,7 +36,7 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
     if (!code) setUser(undefined);
     else {
       try {
-        const res = await api.get('preview', { params: { code } });
+        const res = await api.get(`users/preview/${code}`);
         setUser(res.data);
       } catch (err:any) {
         if (err?.response?.status === 403) {
