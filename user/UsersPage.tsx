@@ -4,10 +4,10 @@ import { User } from './User';
 import { UserItem } from './UserItem';
 import { userImage } from '../images/user';
 import { HomePage } from '../home/HomePage';
+import { ShareButton } from './ShareButton';
 import { usersContext } from './usersContext';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { ShareButtons } from '../share/ShareButtons';
 import { usePreview } from '../preview/PreviewContext';
 
 export function UsersPage() {
@@ -22,9 +22,7 @@ export function UsersPage() {
       context={usersContext}
       tab="users"
       firstActionButton={(
-        <div className="flex flex-col gap-1">
-          <ShareButtons shareUrl="suasplantas.com" socialIconProps={{ size: 45, borderRadius: 1000 }} />
-        </div>
+        <ShareButton />
     )}
       aditionalItems={previewUser && [previewUser]}
     >
