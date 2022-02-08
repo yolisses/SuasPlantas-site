@@ -1,5 +1,6 @@
 import { HomePage } from './HomePage';
 import { Plant } from '../plant/Plant';
+import { AddButton } from './AddButton';
 import { GridItem } from '../common/GridItem';
 import { useTour } from '../tour/TourContext';
 import { homeTourSteps } from '../tour/homeTourSteps';
@@ -14,10 +15,10 @@ export function PlantsPage() {
     <HomePage
       tab="plants"
       tourName="Home"
-      fabPath="plants/add"
       context={plantsContext}
-      tourSteps={!blockHomeTour ? homeTourSteps : undefined}
       aditionalItems={user?.plants}
+      firstActionButton={<AddButton url="plants/add" />}
+      tourSteps={!blockHomeTour ? homeTourSteps : undefined}
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">

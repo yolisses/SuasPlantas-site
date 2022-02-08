@@ -6,7 +6,6 @@ import {
 import { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { AddButton } from './AddButton';
 import { Spinner } from '../common/Spinner';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
@@ -17,22 +16,22 @@ import { Tour } from '../tour/Tour';
 
 interface HomePageProps<T>{
   tab:TopTab
-  fabPath?:string
   tourSteps?:Step[]
   tourName?:TourName
-  children:(items?:T[])=>ReactNode
   aditionalItems?:T[]
+  firstActionButton:ReactNode
+  children:(items?:T[])=>ReactNode
   context:Context<IItemsContext<T>>
 }
 
 export function HomePage<T>({
   tab,
-  fabPath,
   context,
   children,
   tourName,
   tourSteps,
   aditionalItems,
+  firstActionButton,
 }:HomePageProps<T>) {
   const {
     items,
@@ -70,11 +69,9 @@ export function HomePage<T>({
         <WithoutResultsWarn />
       </div>
       )}
-      {!!fabPath && (
       <div id="tour_add_button" className="fixed right-10 bottom-10">
-        <AddButton url={fabPath} />
+        {firstActionButton}
       </div>
-      )}
       <div
         className="fixed bottom-0 flex flex-col items-center md:items-start w-full"
       >

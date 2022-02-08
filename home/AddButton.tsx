@@ -1,7 +1,6 @@
-import { FaPlus } from 'react-icons/fa';
 import Link from 'next/link';
+import { FaPlus } from 'react-icons/fa';
 import { useIsLogged } from '../auth/useIsLogged';
-import style from './AddButton.module.css';
 
 interface AddButtonProps{
   url:string
@@ -12,7 +11,7 @@ export function AddButton({ url }:AddButtonProps) {
   return (
     <Link href={url}>
       <a
-        className={`fab ${style.rollout}`}
+        className="fab"
         onClick={(e) => {
           if (!isLogged()) {
             e.preventDefault();

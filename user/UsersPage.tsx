@@ -1,12 +1,14 @@
 import Image from 'next/image';
+
+import { User } from './User';
+import { UserItem } from './UserItem';
+import { userImage } from '../images/user';
 import { HomePage } from '../home/HomePage';
 import { usersContext } from './usersContext';
-import { UserItem } from './UserItem';
-import { User } from './User';
-import { usePreview } from '../preview/PreviewContext';
-import { userImage } from '../images/user';
-import { useIsLogged } from '../auth/useIsLogged';
 import { useUser } from '../auth/userContext';
+import { useIsLogged } from '../auth/useIsLogged';
+import { ShareButtons } from '../share/ShareButtons';
+import { usePreview } from '../preview/PreviewContext';
 
 export function UsersPage() {
   const size = 80;
@@ -19,6 +21,11 @@ export function UsersPage() {
     <HomePage
       context={usersContext}
       tab="users"
+      firstActionButton={(
+        <div className="flex flex-col gap-1">
+          <ShareButtons shareUrl="suasplantas.com" socialIconProps={{ size: 45, borderRadius: 1000 }} />
+        </div>
+    )}
       aditionalItems={previewUser && [previewUser]}
     >
       {(items) => (

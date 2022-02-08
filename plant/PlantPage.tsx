@@ -13,8 +13,8 @@ import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
 import { GridItem } from '../common/GridItem';
-import { ShareButtons } from './ShareButtons';
 import { hasContact } from '../utils/hasContact';
+import { ShareButtons } from '../share/ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
 import { WhatsappButton } from '../contact/WhatsappButton';
 import { PlantStructuredData } from './PlantStructuredData';
@@ -169,10 +169,15 @@ export function PlantPage({ data }:PlantPageProps) {
                 </div>
               </div>
               )}
-              <ShareButtons
-                socialIconProps={{ size: 36, borderRadius: 100 }}
-                shareUrl={`https://suasplantas.com/plants/${id}`}
-              />
+              <div className="mt-4">
+                <div className="text-sm text-gray-500">Compartilhar</div>
+                <div className="flex flex-row gap-1">
+                  <ShareButtons
+                    socialIconProps={{ size: 36, borderRadius: 100 }}
+                    shareUrl={`https://suasplantas.com/plants/${id}`}
+                  />
+                </div>
+              </div>
             </div>
             {currentUser?.id === data.user.id
             && (
