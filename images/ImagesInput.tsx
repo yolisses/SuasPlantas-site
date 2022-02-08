@@ -23,12 +23,12 @@ export interface ImageInputCustomRef{
 }
 
 interface ImagesInputProps{
-  onChange:(sendings:SendingsCollection)=>void
-  onBlur:(value:any)=>void
   error?:boolean
   helperText?:string
-  initialSendings?:SendingsCollection
+  onBlur?:(value:any)=>void
   customRef?:ImageInputCustomRef
+  initialSendings?:SendingsCollection
+  onChange:(sendings:SendingsCollection)=>void
 }
 
 type IgnoreType = () => any
