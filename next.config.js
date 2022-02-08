@@ -27,7 +27,6 @@ module.exports = withPlugins(
         'images.unsplash.com',
         'github.com',
         'lh3.googleusercontent.com',
-        'plantes.s3.sa-east-1.amazonaws.com',
         'unsplash.it',
         'platform-lookaside.fbsbx.com',
         'suasplantas.s3.sa-east-1.amazonaws.com',
