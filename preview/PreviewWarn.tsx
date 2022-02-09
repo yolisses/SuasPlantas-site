@@ -14,7 +14,7 @@ export function PreviewWarn() {
       <div className="bg-black text-white p-4 md:rounded-tr-2xl">
         <FaExclamationTriangle className="inline pb-1" size={20} />
         {' '}
-        Para salvar as coisas marcadas com
+        Para salvar os items marcados com
         {' '}
         <PreviewIndicator />
         ,
