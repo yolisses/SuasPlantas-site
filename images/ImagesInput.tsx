@@ -143,12 +143,12 @@ export function ImagesInput({
             </div>
           </div>
           <input
-            type="file"
-            onChange={handleFilesSelected}
-            accept=".jpg, .jpeg, .png, .webp"
             hidden
             multiple
+            type="file"
             onBlur={onBlur}
+            onChange={handleFilesSelected}
+            accept=".jpg, .jpeg, .png, .webp"
           />
         </label>
       </div>
