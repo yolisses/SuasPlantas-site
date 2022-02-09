@@ -1,6 +1,5 @@
 import {
   FormHelperText,
-  InputAdornment,
 } from '@mui/material';
 import Router from 'next/router';
 import { useState } from 'react';
@@ -113,7 +112,7 @@ export const EditProfilePage = ({ user }:{user:User}) => {
           Essas informações ficam visíveis para as outras pessoas
         </FormHelperText>
         <button onClick={handleSubmit(submit)} disabled={loading} className="h-11 main-button">
-          {loading && <Spinner radius={20} />}
+          {loading && <Spinner size={20} />}
           Salvar
         </button>
       </div>

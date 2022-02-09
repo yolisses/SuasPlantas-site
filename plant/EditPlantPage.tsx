@@ -11,10 +11,11 @@ import { Spinner } from '../common/Spinner';
 import { usePlants } from './plantsContext';
 import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
+import { allImagesSent } from '../images/allImagesSent';
 import { ImagesSuggestions } from './ImagesSuggestions';
 import { imagesToSendings } from '../images/imagesToSendings';
-import { ImageInputCustomRef, ImagesInput, SendingsCollection } from '../images/ImagesInput';
 import { getFileFromImageUrl } from '../upload/getFileFromImageUrl';
+import { ImageInputCustomRef, ImagesInput, SendingsCollection } from '../images/ImagesInput';
 
 interface EditPlantProps{
   edit?:boolean
@@ -40,11 +41,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       images: data?.images ? imagesToSendings(data.images) : {},
     },
   });
-
-  async function allImagesSent(images: SendingsCollection) {
-    const imagesPromisses = Object.values(images).map((image) => image.sendPromise);
-    await Promise.all(imagesPromisses);
-  }
 
   async function handleSuggestionSelect(image:string) {
     if (!customRef?.current) return;
@@ -155,7 +151,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         )}
         <div className="flex flex-row-reverse sm:flex-row gap-2">
           <button className="main-button flex-1" onClick={handleSubmit(submit)} disabled={loading}>
-            {loading && <Spinner radius={25} /> }
+            {loading && <Spinner size={25} /> }
             {edit ? 'Salvar' : 'Adicionar'}
           </button>
           {edit && (
