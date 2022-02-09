@@ -34,7 +34,7 @@ export function EditProfileImage() {
 
     await sending!.sendPromise;
     try {
-      const res = await api.patch('users', { image: sending.key });
+      const res = await api.patch('users', { image: sending.uri });
       user!.image = res.data.image;
       setSnack({ severity: 'success', text: 'Foto de perfil alterada com sucesso' });
     } catch (err:any) {

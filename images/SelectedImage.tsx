@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  useState,
+  useEffect,
+} from 'react';
 import { Sending } from '../upload/Sending';
 import { SelectedImageItem } from './SelectedImageItem';
 
@@ -29,7 +32,7 @@ export function SelectedImage({
       return;
     }
 
-    setSrc(`https://suasplantas.s3.sa-east-1.amazonaws.com/uploads/${sending.key}`);
+    setSrc(sending.uri);
   }
 
   useEffect(() => {
@@ -45,7 +48,7 @@ export function SelectedImage({
           {sending.progressPercentage}
         </div>
         <div>
-          {sending.key}
+          {sending.uri}
         </div>
       </>
       )}
