@@ -129,7 +129,7 @@ export function LocationField({ text }:LocationFieldProps) {
               onClick={submit}
               className="h-12 flex-1 sm:flex-none px-5 main-button"
             >
-              {loading && <Spinner radius={20} />}
+              {loading && <Spinner size={20} />}
               Salvar
             </button>
           </div>

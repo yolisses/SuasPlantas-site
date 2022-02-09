@@ -153,7 +153,7 @@ export function ContactPage() {
                 className="main-button"
                 disabled={loading || (!watch('message') && !watch('rating'))}
               >
-                { loading && <Spinner radius={20} />}
+                { loading && <Spinner size={20} />}
                 Enviar!
               </button>
             )}

@@ -14,7 +14,7 @@ export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
   if (!items) {
     return (
       <div className="flex flex-col gap-2 items-center whitespace-nowrap">
-        <Spinner radius={30} />
+        <Spinner size={30} />
         Carregando notificações
       </div>
     );

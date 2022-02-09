@@ -2,14 +2,13 @@ import SpinnerMaterial from 'react-spinner-material';
 import { mainColor } from './mainColor';
 
 interface SpinnerProps {
-    radius?: number | string;
-    color?: string;
-    stroke?: number | string;
-    [key: string]: any;
+  color?: string;
+  size?: number | string;
+  stroke?: number | string;
 }
 
 export function Spinner({
-  radius = 40, stroke = 3.8, color = mainColor, ...rest
+  size = 40, stroke = 3.8, color = mainColor,
 }:SpinnerProps) {
-  return <SpinnerMaterial visible radius={radius} stroke={stroke} color={color} {...rest} />;
+  return <SpinnerMaterial visible radius={size} stroke={stroke} color={color} />;
 }
