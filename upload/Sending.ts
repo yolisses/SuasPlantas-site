@@ -9,19 +9,19 @@ export interface Progress {
 interface SendingByFile{
   file:File
   onUpdate?:() => void
-  key?:never
+  uri?:never
 }
 
 interface SendingBySentFile{
   file?:never
   onUpdate?:never
-  key:string
+  uri:string
 }
 
 type SendingContructorParams = SendingByFile|SendingBySentFile
 
 export class Sending {
-  key?:string
+  uri?:string
 
   file: File|null
 
@@ -47,8 +47,8 @@ export class Sending {
     } else {
       this.sent = true;
       this.file = null;
+      this.uri = params.uri;
       this.onUpdate = undefined;
-      this.key = params.key;
       this.progress = { loaded: 100, total: 100 };
       this.sendPromise = new Promise((resolve) => { resolve(); });
     }
@@ -72,9 +72,9 @@ export class Sending {
 
   async getUploadLink() {
     const res = await api.get('upload');
-    const { uploadLink, key } = res.data;
+    const { uploadLink, uri } = res.data;
+    this.uri = uri;
     this.uploadLink = uploadLink;
-    this.key = key;
     this.callback();
   }
 

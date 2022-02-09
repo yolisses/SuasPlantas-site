@@ -38,7 +38,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       user: undefined,
       alsoSaw: undefined,
       tags: data?.tags.map((tag) => tag.name),
-      images: data?.images ? imagesToSendings(data.images) : {},
+      images: imagesToSendings(data?.images || []),
     },
   });
 
@@ -56,8 +56,8 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
       const method = edit ? api.patch : api.post;
       const res = await method('plants', {
         ...data,
-        images: Object.values(data.images).map((value) => (value as Sending).key),
         amount: parseInt(data.amount, 10) || null,
+        images: Object.values(data.images).map((value) => (value as Sending).uri),
       });
       setSnack({
         severity: 'success',
