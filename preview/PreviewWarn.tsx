@@ -23,7 +23,7 @@ export function PreviewWarn() {
           onClick={isLogged}
           className="inline text-white border border-white"
         >
-          crie um perfil
+          clique aqui
         </button>
       </div>
     </div>

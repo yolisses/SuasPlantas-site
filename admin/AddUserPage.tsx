@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
@@ -11,7 +11,7 @@ import { ImagesInput, SendingsCollection } from '../images/ImagesInput';
 export function AddUserPage() {
   const [loading, setLoading] = useState(false);
   const { setSnack } = useSnack();
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: '',
       images: {} as SendingsCollection,
@@ -22,7 +22,7 @@ export function AddUserPage() {
     const { name, images } = data;
     setLoading(true);
     await allImagesSent(images);
-    const image = Object.values(images as SendingsCollection)[0];
+    const image = Object.values(images as SendingsCollection)[0].uri;
     try {
       await api.post('users/by-profile', {
         name,
@@ -40,7 +40,22 @@ export function AddUserPage() {
       <h1>Adicionar usuário</h1>
       <div className="w-full max-w-md flex flex-col gap-4">
         <TextField label="nome" {...register('name')} />
-        <ImagesInput onChange={(e) => console.log(e)} />
+        <Controller
+          name="images"
+          control={control}
+          render={({
+            field: { onChange, onBlur, value },
+            fieldState: { error },
+          }) => (
+            <ImagesInput
+              error={!!error}
+              onBlur={onBlur}
+              onChange={onChange}
+              helperText={error?.message}
+              initialSendings={value as SendingsCollection}
+            />
+          )}
+        />
         <button
           onClick={handleSubmit(submit)}
           className="main-button"
