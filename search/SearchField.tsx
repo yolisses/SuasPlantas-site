@@ -35,7 +35,7 @@ export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
         <input
           type="text"
           value={text || ''}
-          className="w-full outline-none"
+          className="w-full outline-none bg-transparent"
           onChange={(e) => setText(e.target.value)}
         />
         <button
