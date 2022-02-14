@@ -14,12 +14,17 @@ export function AddUserPage() {
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: '',
+      city: '',
+      fbId: '',
+      state: '',
       images: {} as SendingsCollection,
     },
   });
 
   async function submit(data:any) {
-    const { name, images } = data;
+    const {
+      name, images, city, state,
+    } = data;
     setLoading(true);
     await allImagesSent(images);
     const image = Object.values(images as SendingsCollection)[0].uri;
@@ -27,6 +32,8 @@ export function AddUserPage() {
       await api.post('users/by-profile', {
         name,
         image,
+        city,
+        state,
       });
     } catch (err:any) {
       setSnack({ severity: 'error', text: JSON.stringify(err) });
@@ -40,6 +47,9 @@ export function AddUserPage() {
       <h1>Adicionar usuário</h1>
       <div className="w-full max-w-md flex flex-col gap-4">
         <TextField label="nome" {...register('name')} />
+        <TextField label="cidade" {...register('city')} />
+        <TextField label="estado" {...register('state')} />
+        <TextField label="fbId" {...register('fbId')} />
         <Controller
           name="images"
           control={control}
