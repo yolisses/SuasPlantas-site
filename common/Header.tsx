@@ -40,7 +40,7 @@ export function Header() {
 
   return (
     <>
-      <div className="fixed flex flex-row pl-2 h-12 items-center w-full gap-2 z-50 bg-emerald-700 shadow-md">
+      <div className="fixed flex flex-row pl-2 h-12 items-center w-full gap-2 z-50 bg-emerald-600 shadow-md">
         <Link href="/">
           <a
             className="text-lg text-white cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
