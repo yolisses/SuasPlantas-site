@@ -4,11 +4,7 @@ import {
 import { api } from '../api/api';
 import { useTextSearchContext } from '../search/TextSearchContext';
 
-export interface Filters{
-  text?:string
-  swap?:boolean
-  sell?:boolean
-}
+export type Filters = {[key:string]:any}
 
 interface PageData{
   page:number

@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { generateArray } from '../dev/utils/generateArray';
 import { useModal } from '../modal/ModalContext';
 import { ShareButton } from '../user/ShareButton';
 import { brazilianStates } from '../location/brazilianStates';
 import { UserModal } from './UserModal';
-
-const mockUsers = generateArray(30).map(() => ({
-  name: 'Muhammad Lee',
-  city: 'Serra Grande',
-  state: 'PB',
-}));
+import { useFusers } from '../fusers/fusersContext';
+import { Fuser } from '../fusers/Fuser';
 
 export function NewHomePage() {
   const none = 'none';
   const [cities, setCities] = useState();
-  const [city, setCity] = useState(none);
-  const [state, setState] = useState<string>(none);
+  const [city, setCity] = useState();
+  const [state, setState] = useState();
   const { setModal } = useModal();
+  const {
+    items, setFilters, filters, reset,
+  } = useFusers();
 
   async function getCities(state:string) {
     setCities(undefined);
@@ -26,28 +23,51 @@ export function NewHomePage() {
     setCities(cities);
   }
 
-  useEffect(() => {
-    if (state !== none) {
+  function changeState(state:string) {
+    setCity(undefined);
+    setState(state);
+    if (state) {
       getCities(state);
     } else {
       setCities(undefined);
     }
-  }, [state]);
+    setFilters({ state });
+    reset();
+  }
+
+  function changeCity(city:string) {
+    setCity(city);
+    setFilters({ state, city });
+    reset();
+  }
+
+  function discardNone(value:string) {
+    if (value === none) return undefined;
+    return value;
+  }
 
   return (
     <div className="p-2">
       <div className="pb-6 flex flex-col gap-2">
         <div>Filtrar por</div>
         <div className="flex flex-row gap-2 px-4 w-full max-w-md">
-          <select className="w-full p-2 rounded-lg" onChange={(e) => setState(e.target.value)}>
+          <select
+            className="w-full p-2 rounded-lg"
+            onChange={(e) => changeState(discardNone(e.target.value))}
+          >
             <option value={none}>qualquer estado</option>
             {
-              Object.entries(brazilianStates).map(([id, { name }]) => <option value={id}>{name}</option>)
+              Object.entries(brazilianStates).map(([id, { name }]) => (
+                <option value={id}>{name}</option>
+              ))
             }
           </select>
           {!!cities
           && (
-          <select className="w-full p-2 rounded-lg" onChange={(e) => setCity(e.target.value)}>
+          <select
+            className="w-full p-2 rounded-lg"
+            onChange={(e) => changeCity(discardNone(e.target.value))}
+          >
             <option value={none}>qualquer cidade</option>
             {
               Object.entries(cities).map(([id, { name }]) => <option value={id}>{name}</option>)
@@ -56,22 +76,21 @@ export function NewHomePage() {
           )}
         </div>
       </div>
-      <div className="pb-2">26 pessoas</div>
       <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
-        {mockUsers.map((user) => (
+        {!!items && items.map((user:Fuser) => (
           <button
-            onClick={() => setModal(<UserModal user={user} />)}
-            className="text-black flex flex-col gap-0 items-center bg-gray-100 shadow p-2 rounded-lg"
+            onClick={() => setModal(<UserModal fuser={user} />)}
+            className="text-black flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
           >
-            <div>
+            <div className="text-lg">
               {user.name}
             </div>
-            <div>
-              {user.city}
+            <div className="text-green-800">
+              {user.city?.name}
               {' '}
               -
               {' '}
-              {user.state}
+              {user.city?.stateId}
             </div>
           </button>
         ))}

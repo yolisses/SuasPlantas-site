@@ -11,16 +11,16 @@ const facebookColors = [
 ];
 
 interface FacebookButtonProps{
-    facebookUsername:string
+    facebookId:string
 }
 
-export function FacebookButton({ facebookUsername }:FacebookButtonProps) {
+export function FacebookButton({ facebookId }:FacebookButtonProps) {
   return (
     <ContactButton
       gradient={gradientByColors(facebookColors, ['left', 'bottom'])}
       Icon={FaFacebook}
       text="Facebook"
-      href={`https://facebook.com/${facebookUsername}`}
+      href={`https://facebook.com/profile?id=${facebookId}`}
     />
   );
 }
