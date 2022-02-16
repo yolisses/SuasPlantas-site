@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { useModal } from '../modal/ModalContext';
 import { ShareButton } from '../user/ShareButton';
 import { brazilianStates } from '../location/brazilianStates';
@@ -9,11 +10,14 @@ import { Fuser } from '../fusers/Fuser';
 export function NewHomePage() {
   const none = 'none';
   const [cities, setCities] = useState();
-  const [city, setCity] = useState();
   const [state, setState] = useState();
   const { setModal } = useModal();
   const {
-    items, setFilters, filters, reset,
+    items,
+    reset,
+    loadMore,
+    pageData,
+    setFilters,
   } = useFusers();
 
   async function getCities(state:string) {
@@ -24,7 +28,6 @@ export function NewHomePage() {
   }
 
   function changeState(state:string) {
-    setCity(undefined);
     setState(state);
     if (state) {
       getCities(state);
@@ -36,7 +39,6 @@ export function NewHomePage() {
   }
 
   function changeCity(city:string) {
-    setCity(city);
     setFilters({ state, city });
     reset();
   }
@@ -76,29 +78,45 @@ export function NewHomePage() {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
-        {!!items && items.map((user:Fuser) => (
-          <button
-            onClick={() => setModal(<UserModal fuser={user} />)}
-            className="text-black flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
-          >
-            <div className="text-lg">
-              {user.name}
-            </div>
-            <div className="text-green-800">
-              {user.city?.name}
-              {' '}
-              -
-              {' '}
-              {user.city?.stateId}
-            </div>
-          </button>
-        ))}
-      </div>
 
-      <div className="fixed right-10 bottom-10">
-        <ShareButton />
-      </div>
+      <InfiniteScroll
+        next={loadMore}
+        dataLength={items?.length || 0}
+        hasMore={!!pageData?.nextPage}
+        scrollThreshold={0.8}
+        loader={(<div />)}
+      >
+        <>
+          {!!pageData?.totalCount
+          && (
+          <div className="px-2 pb-2 text-gray-600">
+            {pageData?.totalCount}
+            {' '}
+            pessoas
+          </div>
+          )}
+          <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
+            {!!items && items.map((user:Fuser) => (
+              <button
+                onClick={() => setModal(<UserModal fuser={user} />)}
+                className="text-black flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
+              >
+                <div className="text-lg">
+                  {user.name}
+                </div>
+                <div className="text-green-800">
+                  {user.city?.name}
+                  {' '}
+                  -
+                  {' '}
+                  {user.city?.stateId}
+                </div>
+              </button>
+            ))}
+          </div>
+        </>
+      </InfiniteScroll>
+      <div className="pb-24" />
     </div>
 
   );
