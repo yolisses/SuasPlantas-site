@@ -1,0 +1,17 @@
+export const cities = {
+  'alto alegre': { name: 'Alto Alegre', state: 'RR' },
+  amajari: { name: 'Amajari', state: 'RR' },
+  'boa vista_': { name: 'Boa Vista', state: 'RR' },
+  bonfim_: { name: 'Bonfim', state: 'RR' },
+  canta: { name: 'Cantá', state: 'RR' },
+  caracarai: { name: 'Caracaraí', state: 'RR' },
+  caroebe: { name: 'Caroebe', state: 'RR' },
+  iracema_: { name: 'Iracema', state: 'RR' },
+  mucajai: { name: 'Mucajaí', state: 'RR' },
+  normandia: { name: 'Normandia', state: 'RR' },
+  pacaraima: { name: 'Pacaraima', state: 'RR' },
+  rorainopolis: { name: 'Rorainópolis', state: 'RR' },
+  'sao joao da baliza': { name: 'São João da Baliza', state: 'RR' },
+  'sao luiz': { name: 'São Luiz', state: 'RR' },
+  uiramuta: { name: 'Uiramutã', state: 'RR' },
+};

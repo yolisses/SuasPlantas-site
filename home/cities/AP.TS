@@ -1,0 +1,18 @@
+export const cities = {
+  amapa: { name: 'Amapá', state: 'AP' },
+  calcoene: { name: 'Calçoene', state: 'AP' },
+  cutias: { name: 'Cutias', state: 'AP' },
+  'ferreira gomes': { name: 'Ferreira Gomes', state: 'AP' },
+  itaubal: { name: 'Itaubal', state: 'AP' },
+  'laranjal do jari': { name: 'Laranjal do Jari', state: 'AP' },
+  macapa: { name: 'Macapá', state: 'AP' },
+  mazagao: { name: 'Mazagão', state: 'AP' },
+  oiapoque: { name: 'Oiapoque', state: 'AP' },
+  'pedra branca do amapari': { name: 'Pedra Branca do Amapari', state: 'AP' },
+  'porto grande': { name: 'Porto Grande', state: 'AP' },
+  pracuuba: { name: 'Pracuúba', state: 'AP' },
+  santana: { name: 'Santana', state: 'AP' },
+  'serra do navio': { name: 'Serra do Navio', state: 'AP' },
+  tartarugalzinho: { name: 'Tartarugalzinho', state: 'AP' },
+  'vitoria do jari': { name: 'Vitória do Jari', state: 'AP' },
+};

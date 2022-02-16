@@ -7,9 +7,9 @@ export function ShareButton() {
 
   return (
     <>
-      <div className="flex flex-col gap-1 pb-1">
+      <div className="flex flex-col gap-2 pb-2">
         {active
-      && <ShareButtons shareUrl="suasplantas.com" socialIconProps={{ size: 50, borderRadius: 1000 }} />}
+      && <ShareButtons shareUrl="suasplantas.com" socialIconProps={{ size: 45, borderRadius: 1000 }} />}
       </div>
       <button className="fab" onClick={() => setActive((value:boolean) => !value)}>
         <FaShareAlt size={24} color="white" />
