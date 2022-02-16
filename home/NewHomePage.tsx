@@ -6,6 +6,7 @@ import { brazilianStates } from '../location/brazilianStates';
 import { UserModal } from './UserModal';
 import { useFusers } from '../fusers/fusersContext';
 import { Fuser } from '../fusers/Fuser';
+import { Spinner } from '../common/Spinner';
 
 export function NewHomePage() {
   const none = 'none';
@@ -15,6 +16,7 @@ export function NewHomePage() {
   const {
     items,
     reset,
+    loading,
     loadMore,
     pageData,
     setFilters,
@@ -78,7 +80,6 @@ export function NewHomePage() {
           )}
         </div>
       </div>
-
       <InfiniteScroll
         next={loadMore}
         dataLength={items?.length || 0}
@@ -87,7 +88,7 @@ export function NewHomePage() {
         loader={(<div />)}
       >
         <>
-          {!!pageData?.totalCount
+          {!!pageData
           && (
           <div className="px-2 pb-2 text-gray-600">
             {pageData?.totalCount}
@@ -116,6 +117,11 @@ export function NewHomePage() {
           </div>
         </>
       </InfiniteScroll>
+      {loading && (
+      <div className="p-4 flex-1 flex flex-col items-center justify-center">
+        <Spinner />
+      </div>
+      )}
       <div className="pb-24" />
     </div>
 
