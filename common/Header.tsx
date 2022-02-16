@@ -20,7 +20,6 @@ import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
 import { usePlants } from '../plant/plantsContext';
 import { useQuests } from '../quest/questsContext';
-import { SearchField } from '../search/SearchField';
 import { useTextSearchContext } from '../search/TextSearchContext';
 import { NotificationsMenu } from '../notification/NotificationsMenu';
 import { NotificationsToggleWarn } from '../notification/NotificationsToggleWarn';
@@ -64,10 +63,6 @@ export function Header() {
             Suas Plantas
           </a>
         </Link>
-        <Spacer />
-        <div className="hidden md:inline-block flex-1 max-w-sm">
-          <SearchField resetButtonColor="white" />
-        </div>
         <Spacer />
         <MeButton />
         <button
