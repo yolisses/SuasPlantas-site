@@ -32,6 +32,7 @@ module.exports = withPlugins(
         'suasplantas.s3.sa-east-1.amazonaws.com',
         'plantei-dev.s3.sa-east-1.amazonaws.com',
         'scontent-for1-1.xx.fbcdn.net',
+        'maps.googleapis.com',
       ],
     },
     async redirects() {

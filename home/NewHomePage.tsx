@@ -1,5 +1,7 @@
 import { FaChevronDown } from 'react-icons/fa';
 import { generateArray } from '../dev/utils/generateArray';
+import { useModal } from '../modal/ModalContext';
+import { UserModal } from './UserModal';
 
 const mockUsers = generateArray(30).map(() => ({
   name: 'Muhammad Lee',
@@ -8,6 +10,8 @@ const mockUsers = generateArray(30).map(() => ({
 }));
 
 export function NewHomePage() {
+  const { setModal } = useModal();
+
   return (
     <div className="p-2">
       <div className="pb-6">
@@ -23,7 +27,10 @@ export function NewHomePage() {
       <div className="pb-2">26 pessoas</div>
       <div className="grid grid-cols-2 gap-2">
         {mockUsers.map((user) => (
-          <button className="text-black flex flex-col gap-0 items-center bg-gray-100 p-2 rounded-lg">
+          <button
+            onClick={() => setModal(<UserModal user={user} />)}
+            className="text-black flex flex-col gap-0 items-center bg-gray-100 p-2 rounded-lg"
+          >
             <div>
               {user.name}
             </div>
