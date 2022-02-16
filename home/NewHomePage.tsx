@@ -3,7 +3,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import { generateArray } from '../dev/utils/generateArray';
 import { useModal } from '../modal/ModalContext';
 import { ShareButton } from '../user/ShareButton';
-import { brazilianStates } from './brazilianStates';
+import { brazilianStates } from '../location/brazilianStates';
 import { UserModal } from './UserModal';
 
 const mockUsers = generateArray(30).map(() => ({
@@ -16,12 +16,13 @@ export function NewHomePage() {
   const none = 'none';
   const [cities, setCities] = useState();
   const [city, setCity] = useState(none);
-  const [state, setState] = useState(none);
+  const [state, setState] = useState<string>(none);
   const { setModal } = useModal();
 
   async function getCities(state:string) {
     setCities(undefined);
-    const { cities } = await import(`./cities/${state}.TS`);
+    const { cities } = await brazilianStates[state].cities;
+    console.log(cities);
     setCities(cities);
   }
 
