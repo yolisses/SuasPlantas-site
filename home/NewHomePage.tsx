@@ -56,7 +56,7 @@ export function NewHomePage() {
         </div>
       </div>
       <div className="pb-2">26 pessoas</div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 md:px-10 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
         {mockUsers.map((user) => (
           <button
             onClick={() => setModal(<UserModal user={user} />)}
