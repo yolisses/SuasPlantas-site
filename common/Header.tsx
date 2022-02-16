@@ -23,7 +23,6 @@ import { useQuests } from '../quest/questsContext';
 import { SearchField } from '../search/SearchField';
 import { useTextSearchContext } from '../search/TextSearchContext';
 import { NotificationsMenu } from '../notification/NotificationsMenu';
-import { useNotifications } from '../notification/notificationsContext';
 import { NotificationsToggleWarn } from '../notification/NotificationsToggleWarn';
 import { usePreview } from '../preview/PreviewContext';
 
@@ -35,7 +34,6 @@ export function Header() {
   const { setText } = useTextSearchContext();
   const [menu, setMenu] = useState<string>();
   const { isLogged } = useIsLogged();
-  const { items: notifications } = useNotifications();
 
   function toggleMenu(value:string) {
     setMenu((v) => (v === value ? undefined : value));
@@ -72,22 +70,6 @@ export function Header() {
         </div>
         <Spacer />
         <MeButton />
-        <button
-          className="icon-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            if (isLogged()) {
-              toggleMenu('notifications');
-            }
-          }}
-        >
-          <FaRegBell size={22} color="white" />
-        </button>
-        {(notifications && notifications[0]?.viewed === false) && (
-        <div className="relative bg-blue-500">
-          <div className="h-3 w-3 bg-green-500 -top-4 right-1 rounded-full absolute" />
-        </div>
-        )}
         <button
           className="icon-button"
           onClick={(e) => { e.stopPropagation(); toggleMenu('more'); }}
