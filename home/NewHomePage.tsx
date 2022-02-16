@@ -1,6 +1,7 @@
 import { FaChevronDown } from 'react-icons/fa';
 import { generateArray } from '../dev/utils/generateArray';
 import { useModal } from '../modal/ModalContext';
+import { brazilianStates } from './brazilianStates';
 import { UserModal } from './UserModal';
 
 const mockUsers = generateArray(30).map(() => ({
@@ -17,11 +18,14 @@ export function NewHomePage() {
       <div className="pb-6 flex flex-col gap-2">
         <div>Filtrar por</div>
         <div className="flex flex-row gap-2 px-4 w-full max-w-sm">
-          <button disabled className="w-full disabled:bg-transparent disabled:text-gray-400">Cidade</button>
-          <button className="w-full ring-1 ring-green-500">
+          <select className="w-full p-2 rounded-lg">
             Estado
             <FaChevronDown size={16} />
-          </button>
+            <option value="null">Estado</option>
+            {
+              Object.entries(brazilianStates).map(([id, name]) => <option value={id}>{name}</option>)
+            }
+          </select>
         </div>
       </div>
       <div className="pb-2">26 pessoas</div>
