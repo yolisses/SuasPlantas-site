@@ -15,7 +15,6 @@ import { FiLogOut } from 'react-icons/fi';
 import { Spacer } from './Spacer';
 import { Menu } from './menu/Menu';
 import { userImage } from '../images/user';
-import { MeButton } from '../user/MeButton';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
 import { usePlants } from '../plant/plantsContext';
@@ -23,16 +22,13 @@ import { useQuests } from '../quest/questsContext';
 import { useTextSearchContext } from '../search/TextSearchContext';
 import { NotificationsMenu } from '../notification/NotificationsMenu';
 import { NotificationsToggleWarn } from '../notification/NotificationsToggleWarn';
-import { usePreview } from '../preview/PreviewContext';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
   const { reset: resetQuests, setFilters: setQuestsFilters } = useQuests();
   const { user, logOut } = useUser();
-  const { user: previewUser } = usePreview();
   const { setText } = useTextSearchContext();
   const [menu, setMenu] = useState<string>();
-  const { isLogged } = useIsLogged();
 
   function toggleMenu(value:string) {
     setMenu((v) => (v === value ? undefined : value));
@@ -64,7 +60,6 @@ export function Header() {
           </a>
         </Link>
         <Spacer />
-        <MeButton />
         <button
           className="icon-button"
           onClick={(e) => { e.stopPropagation(); toggleMenu('more'); }}
@@ -83,18 +78,6 @@ export function Header() {
           {menu === 'more'
 && (
 <Menu onClose={closeMenu}>
-  <Link href={`/users/${previewUser?.id || user?.id}`} prefetch={false}>
-    <a className="menu-button" onClick={() => { isLogged(); closeMenu(); }}>
-      <Image
-        width={20}
-        height={20}
-        src={user?.image || userImage}
-        alt={user?.name}
-        className="bg-gray-300 rounded-full cursor-pointer"
-      />
-      Perfil
-    </a>
-  </Link>
   <Link href="/privacy-policy" prefetch={false}>
     <a className="menu-button" onClick={closeMenu}>
       <FaRegFile size={20} color="gray" />
@@ -113,18 +96,11 @@ export function Header() {
       Sobre
     </a>
   </Link>
-  {!!user && (
-  <button className="menu-button" onClick={() => { logOut(); closeMenu(); }}>
-    <FiLogOut size={20} color="gray" />
-    Sair
-  </button>
-  )}
 </Menu>
 )}
         </div>
       </div>
       <div className="h-12" />
     </>
-
   );
 }
