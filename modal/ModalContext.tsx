@@ -3,29 +3,26 @@ import {
   useState,
   ReactNode,
   useContext,
+  ReactChild,
   createContext,
   SetStateAction,
-  ReactChild,
 } from 'react';
 import { Modal } from './Modal';
 
 interface IModalContext{
-    modal?:ReactNode
-    setModal:Dispatch<SetStateAction<ReactChild>>
+    modal?:JSX.Element
+    setModal:Dispatch<SetStateAction<JSX.Element|undefined>>
     close:()=>void
 }
 
 export const modalContext = createContext({} as IModalContext);
 
 export function ModalContextProvider({ children }: {children:ReactNode}) {
-  const [modal, setModal] = useState<ReactChild>();
+  const [modal, setModal] = useState<JSX.Element>();
 
   function close() {
     setModal(undefined);
   }
-
-  console.log(modal?.props);
-  console.log(Object.keys(modal?.props || {}));
 
   return (
     <modalContext.Provider value={{ modal, setModal, close }}>

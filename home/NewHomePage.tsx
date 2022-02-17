@@ -8,11 +8,12 @@ import { UserModal } from './UserModal';
 import { useFusers } from '../fusers/fusersContext';
 import { Fuser } from '../fusers/Fuser';
 import { Spinner } from '../common/Spinner';
+import { Cities } from '../location/cities/Cities';
 
 export function NewHomePage() {
   const none = 'none';
-  const [cities, setCities] = useState();
-  const [state, setState] = useState();
+  const [cities, setCities] = useState<Cities>();
+  const [state, setState] = useState<string>();
   const { setModal } = useModal();
   const {
     items,
@@ -25,7 +26,8 @@ export function NewHomePage() {
 
   async function getCities(state:string) {
     setCities(undefined);
-    const { cities } = await brazilianStates[state].cities;
+    const { cities } = await brazilianStates[state as keyof typeof brazilianStates].cities;
+
     console.log(cities);
     setCities(cities);
   }
@@ -46,7 +48,7 @@ export function NewHomePage() {
     reset();
   }
 
-  function discardNone(value:string) {
+  function discardNone(value:any) {
     if (value === none) return undefined;
     return value;
   }
