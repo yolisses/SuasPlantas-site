@@ -21,10 +21,11 @@ export function ContactPage() {
     watch, register, handleSubmit, control,
   } = useForm({
     defaultValues: {
-      name: user?.name || '',
-      email: user?.email || '',
-      rating: undefined,
       message: '',
+      rating: undefined,
+      name: user?.name || '',
+      source: 'contact page',
+      email: user?.email || '',
     },
   });
 
@@ -33,7 +34,6 @@ export function ContactPage() {
     try {
       await api.post('feedback', {
         ...data,
-        rating: parseInt(data.rating, 10),
       });
       setSent(true);
     } catch (err:any) {

@@ -9,7 +9,7 @@ import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
 import { rateIcons } from '../common/rateIcons';
 
-export function FeedbackBox() {
+export function FeedbackBox({ source }:{source:string}) {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState<any>();
   const { setSnack } = useSnack();
@@ -19,10 +19,11 @@ export function FeedbackBox() {
     watch, register, handleSubmit, control,
   } = useForm({
     defaultValues: {
+      source,
+      message: '',
+      rating: undefined,
       name: user?.name || '',
       email: user?.email || '',
-      rating: undefined,
-      message: '',
     },
   });
 
