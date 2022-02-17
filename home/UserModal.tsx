@@ -40,7 +40,7 @@ export function UserModal({ fuser }:{fuser:Fuser}) {
   }
 
   return (
-    <div className="flex flex-col gap-2 px-2">
+    <div className="flex flex-col px-2">
       <div className="text-xl">
         {fuser.name}
       </div>
@@ -54,7 +54,7 @@ export function UserModal({ fuser }:{fuser:Fuser}) {
       <div className="px-40" />
       {(removeCount === undefined || (removeCount?.length < MAX_REMOVE_COUNT))
       && (
-      <div className="flex flex-row justify-end">
+      <div className="flex flex-row justify-start sm:justify-end my-2">
         <button
           onClick={() => removeSelf()}
           disabled={loading}

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { FaSmile } from 'react-icons/fa';
+import Link from 'next/link';
 import { useModal } from '../modal/ModalContext';
-import { ShareButton } from '../user/ShareButton';
 import { brazilianStates } from '../location/brazilianStates';
 import { UserModal } from './UserModal';
 import { useFusers } from '../fusers/fusersContext';
@@ -122,6 +123,14 @@ export function NewHomePage() {
         <Spinner />
       </div>
       )}
+      <div id="tour_add_button" className="fixed right-10 bottom-10">
+        <Link href="/contact">
+          <button className="main-button">
+            O que achou do site?
+            <FaSmile size={20} />
+          </button>
+        </Link>
+      </div>
       <div className="pb-24" />
     </div>
 
