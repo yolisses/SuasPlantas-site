@@ -58,7 +58,7 @@ export function UserModal({ fuser }:{fuser:Fuser}) {
         <button
           onClick={() => removeSelf()}
           disabled={loading}
-          className="text-red-800 inline text-sm flex flex-row items-center justify-center"
+          className="secondary-button text-red-800 inline text-sm flex flex-row items-center justify-center"
         >
           {loading && <Spinner size={20} />}
           <span>

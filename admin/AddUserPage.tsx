@@ -67,9 +67,9 @@ export function AddUserPage() {
           )}
         />
         <button
-          onClick={handleSubmit(submit)}
-          className="main-button"
           disabled={loading}
+          className="main-button"
+          onClick={handleSubmit(submit)}
         >
           {loading
           && <Spinner size={25} />}

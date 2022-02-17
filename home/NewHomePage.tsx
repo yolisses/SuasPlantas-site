@@ -101,7 +101,7 @@ export function NewHomePage() {
             {!!items && items.map((user:Fuser) => (
               <button
                 onClick={() => setModal(<UserModal fuser={user} />)}
-                className="text-black flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
+                className="flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
               >
                 <div className="text-lg">
                   {user.name}

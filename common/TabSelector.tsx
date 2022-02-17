@@ -21,7 +21,7 @@ export function TabSelector({
     <button
       id={id}
       onClick={handleClick}
-      className="flex flex-row items-center h-11 px-4 justify-center gap-1"
+      className="secondary-button flex flex-row items-center h-11 px-4 justify-center gap-1"
       style={selected ? {
         color: mainColor,
         borderColor: mainColor,
