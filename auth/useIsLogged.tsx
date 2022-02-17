@@ -1,6 +1,7 @@
 import { SignInBox } from './SignInBox';
 import { useUser } from './userContext';
 import { useModal } from '../modal/ModalContext';
+import { Modal } from '../modal/Modal';
 
 export function useIsLogged() {
   const { user } = useUser();
@@ -8,7 +9,11 @@ export function useIsLogged() {
 
   function isLogged() {
     if (!user) {
-      setModal(<SignInBox />);
+      setModal(
+        <Modal>
+          <SignInBox />
+        </Modal>,
+      );
       return false;
     }
     return true;

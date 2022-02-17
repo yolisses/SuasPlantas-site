@@ -7,6 +7,7 @@ export interface ModalProps {
   children: ReactNode;
   closeOnClickOut?: boolean;
   showCloseButton?: boolean;
+  onClose?:()=>void
 }
 
 export function Modal({

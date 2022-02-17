@@ -1,26 +1,31 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
+  Dispatch,
+  useState,
+  ReactNode,
+  useContext,
+  createContext,
+  SetStateAction,
+  ReactChild,
 } from 'react';
+import { Modal } from './Modal';
 
 interface IModalContext{
     modal?:ReactNode
-    setModal:(content:ReactNode, onClose:()=>void)=>void
+    setModal:Dispatch<SetStateAction<ReactChild>>
     close:()=>void
 }
 
 export const modalContext = createContext({} as IModalContext);
 
 export function ModalContextProvider({ children }: {children:ReactNode}) {
-  const [modal, _setModal] = useState<ReactNode>();
+  const [modal, setModal] = useState<ReactChild>();
 
   function close() {
-    _setModal(undefined);
+    setModal(undefined);
   }
 
-  function setModal(content:ReactNode, onClose?:()=>void) {
-    _setModal(content);
-    if (onClose) onClose();
-  }
+  console.log(modal?.props);
+  console.log(Object.keys(modal?.props || {}));
 
   return (
     <modalContext.Provider value={{ modal, setModal, close }}>

@@ -21,8 +21,9 @@ export function ExitIntent() {
         && e.clientY < 10) {
       const cookies = parseCookies(undefined);
       const exitModalClosed = cookies['exit-modal-closed'];
-      if (exitModalClosed) return;
-      setModal(<FeedbackModal />, onClose);
+      if (!exitModalClosed) {
+        setModal(<FeedbackModal />);
+      }
     }
   }
 
