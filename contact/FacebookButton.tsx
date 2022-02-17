@@ -20,7 +20,7 @@ export function FacebookButton({ facebookId }:FacebookButtonProps) {
       gradient={gradientByColors(facebookColors, ['left', 'bottom'])}
       Icon={FaFacebook}
       text="Facebook"
-      href={`https://facebook.com/profile?id=${facebookId}`}
+      href={`https://facebook.com/groups/221704719133593/user/${facebookId}`}
     />
   );
 }
