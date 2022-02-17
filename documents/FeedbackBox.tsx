@@ -1,22 +1,13 @@
 import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 import { Controller, useForm } from 'react-hook-form';
-import {
-  FaCheck, FaRegFrown, FaRegGrin, FaRegMeh, FaRegMehBlank, FaRegSmile,
-} from 'react-icons/fa';
 
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
-
-const rateIcons = [
-  FaRegFrown,
-  FaRegMeh,
-  FaRegMehBlank,
-  FaRegSmile,
-  FaRegGrin,
-];
+import { rateIcons } from '../common/rateIcons';
 
 export function FeedbackBox() {
   const [loading, setLoading] = useState(false);

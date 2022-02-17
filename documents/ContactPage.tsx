@@ -1,38 +1,15 @@
-import {
-  Rating,
-  IconContainerProps,
-} from '@mui/material';
 import { useState } from 'react';
 import { BiEnvelope } from 'react-icons/bi';
-import { SvgIconComponent } from '@material-ui/icons';
 import { Controller, useForm } from 'react-hook-form';
 import { RiFacebookCircleLine } from 'react-icons/ri';
 import { FaCheck, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-
-import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { TextField } from '../common/TextField';
+import { rateIcons } from '../common/rateIcons';
 import { useSnack } from '../snack/SnackContext';
-
-const customIcons:{[key:string]:SvgIconComponent} = {
-  1: <SentimentVeryDissatisfiedIcon fontSize="large" />,
-  2: <SentimentDissatisfiedIcon fontSize="large" />,
-  3: <SentimentSatisfiedIcon fontSize="large" />,
-  4: <SentimentSatisfiedAltIcon fontSize="large" />,
-  5: <SentimentVerySatisfiedIcon fontSize="large" />,
-};
-
-function IconContainer(props:IconContainerProps) {
-  const { value, ...other } = props;
-  return <span {...other}>{customIcons[value]}</span>;
-}
 
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -132,10 +109,29 @@ export function ContactPage() {
             name="rating"
             control={control}
             render={({ field }) => (
-              <Rating
-                IconContainerComponent={IconContainer}
-                highlightSelectedOnly
-                {...field}
+              <Controller
+                name="rating"
+                control={control}
+                render={({ field }) => (
+                  <div className="flex flex-row gap-1">
+                    {rateIcons.map((Icon, index) => (
+                      <button
+                      // eslint-disable-next-line react/no-array-index-key
+                        key={index}
+                        className="rounded-full"
+                        onClick={() => {
+                          field.onChange({ target: { value: index + 1 } });
+                        }}
+                      >
+                        <Icon
+                          className="hover:scale-125 transition-transform"
+                          size={32}
+                          color={(field.value === index + 1) ? '#ffb000' : '#999'}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               />
             )}
           />
