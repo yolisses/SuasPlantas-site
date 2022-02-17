@@ -31,6 +31,7 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 import { PreviewWarn } from '../preview/PreviewWarn';
 import { fusersContext } from '../fusers/fusersContext';
 import { ExitIntent } from '../intent/ExitIntent';
+import { HotjarTags } from '../app/HotjarTags';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -45,6 +46,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
         />
       </Head>
+      <HotjarTags />
       <FaviconTags />
       <MuiFontsTags />
       <GoogleAnalyticsTags />
