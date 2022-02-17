@@ -3,6 +3,7 @@ import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
 import { SignInBox } from '../auth/SignInBox';
 import { useUser } from '../auth/userContext';
+import { Modal } from '../modal/Modal';
 import { useModal } from '../modal/ModalContext';
 
 interface LikeButtonProps{
@@ -18,7 +19,11 @@ export function LikeButton({ url, active }:LikeButtonProps) {
 
   async function handleClick() {
     if (!user) {
-      setModal(<SignInBox />);
+      setModal(
+        <Modal>
+          <SignInBox />
+        </Modal>,
+      );
       return;
     }
     setIsActive((value) => !value);

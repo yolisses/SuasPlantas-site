@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+import { Modal } from '../modal/Modal';
 import { useModal } from '../modal/ModalContext';
 import { usePushNotification } from './PushNotificationContext';
 
@@ -14,13 +15,15 @@ export function NotificationsToggleWarn() {
     setSubscribed(true);
     if (permission === 'denied') {
       setModal(
-        <div>
-          <img
-            className="select-none"
-            src="/toggle_notification.png"
-            alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações"
-          />
-        </div>,
+        <Modal>
+          <div>
+            <img
+              className="select-none"
+              src="/toggle_notification.png"
+              alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações"
+            />
+          </div>
+        </Modal>,
       );
     }
   }

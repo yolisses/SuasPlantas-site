@@ -46,7 +46,7 @@ export function UserModal({ fuser }:{fuser:Fuser}) {
         <div className="text-xl">
           {fuser.name}
         </div>
-        <div className="text-lg">
+        <div className="text-lg text-green-800">
           {fuser.city.name}
           {' '}
           -

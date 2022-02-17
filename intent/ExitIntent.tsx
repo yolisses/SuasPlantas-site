@@ -1,15 +1,16 @@
-import { parseCookies, setCookie } from 'nookies';
 import { useEffect } from 'react';
-import { SignInBox } from '../auth/SignInBox';
-import { FeedbackModal } from '../documents/FeedBackModal';
+import { parseCookies, setCookie } from 'nookies';
+
+import { Modal } from '../modal/Modal';
 import { useModal } from '../modal/ModalContext';
+import { FeedbackBox } from '../documents/FeedbackBox';
 
 const MIN_TIME_IN_SITE = 5000; // 5 seconds
 
 export function ExitIntent() {
   const { setModal } = useModal();
 
-  function onClose() {
+  function handleClose() {
     setCookie(undefined, 'exit-modal-closed', 'true', {
       maxAge: 1000 * 60 * 60 * 24 * 7, // one week
     });
@@ -22,7 +23,15 @@ export function ExitIntent() {
       const cookies = parseCookies(undefined);
       const exitModalClosed = cookies['exit-modal-closed'];
       if (!exitModalClosed) {
-        setModal(<FeedbackModal />);
+        setModal(
+          <Modal closeOnClickOut={false} onClose={handleClose}>
+            <div className="px-2">
+              <h2 className="text-lg">Poderia nos contar o que achou do site?</h2>
+              <div>Sua opinião é muito importante para nós</div>
+              <FeedbackBox />
+            </div>
+          </Modal>,
+        );
       }
     }
   }

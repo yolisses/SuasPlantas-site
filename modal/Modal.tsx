@@ -11,6 +11,7 @@ export interface ModalProps {
 }
 
 export function Modal({
+  onClose,
   children,
   closeOnClickOut = true,
   showCloseButton = true,
@@ -39,6 +40,8 @@ export function Modal({
       window.removeEventListener('keydown', handleEsc);
     };
   }, []);
+
+  useEffect(() => onClose, []);
 
   return (
     <div
