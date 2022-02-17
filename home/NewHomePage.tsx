@@ -77,7 +77,7 @@ export function NewHomePage() {
           >
             <option value={none}>qualquer cidade</option>
             {
-              Object.entries(cities).map(([id, { name }]) => <option value={id}>{name}</option>)
+              Object.entries(cities).map(([id, name]) => <option value={id}>{name}</option>)
             }
           </select>
           )}

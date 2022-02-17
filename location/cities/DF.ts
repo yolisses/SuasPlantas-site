@@ -1,3 +1,3 @@
 export const cities = {
-  brasilia: { name: 'Brasília', state: 'DF' },
+  brasilia: 'Brasília',
 };
