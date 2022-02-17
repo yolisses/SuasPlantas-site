@@ -4,17 +4,22 @@ import {
 
 interface IModalContext{
     modal?:ReactNode
-    setModal:Dispatch<SetStateAction<ReactNode>>
+    setModal:(content:ReactNode, onClose:()=>void)=>void
     close:()=>void
 }
 
 export const modalContext = createContext({} as IModalContext);
 
 export function ModalContextProvider({ children }: {children:ReactNode}) {
-  const [modal, setModal] = useState<ReactNode>();
+  const [modal, _setModal] = useState<ReactNode>();
 
   function close() {
-    setModal(undefined);
+    _setModal(undefined);
+  }
+
+  function setModal(content:ReactNode, onClose?:()=>void) {
+    _setModal(content);
+    if (onClose) onClose();
   }
 
   return (

@@ -30,6 +30,7 @@ import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 import { PreviewWarn } from '../preview/PreviewWarn';
 import { fusersContext } from '../fusers/fusersContext';
+import { ExitIntent } from '../intent/ExitIntent';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -66,6 +67,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 <SnackView />
                                 <ModalView />
                                 <ResetOnChangeUser />
+                                <ExitIntent />
                               </Twemoji>
                             </PushNotificationContextProvider>
                           </PaginationProvider>
