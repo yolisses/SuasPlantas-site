@@ -32,6 +32,7 @@ import { PreviewWarn } from '../preview/PreviewWarn';
 import { fusersContext } from '../fusers/fusersContext';
 import { ExitIntent } from '../intent/ExitIntent';
 import { HotjarTags } from '../app/HotjarTags';
+import { SmartlookTag } from '../app/SmartlookTag';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -49,6 +50,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <HotjarTags />
       <FaviconTags />
       <MuiFontsTags />
+      <SmartlookTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
         <PreviewProvider>
