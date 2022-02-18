@@ -27,8 +27,6 @@ export function NewHomePage() {
   async function getCities(state:string) {
     setCities(undefined);
     const { cities } = await brazilianStates[state as keyof typeof brazilianStates].cities;
-
-    console.log(cities);
     setCities(cities);
   }
 
@@ -61,6 +59,7 @@ export function NewHomePage() {
           <select
             className="w-full p-2 rounded-lg"
             onChange={(e) => changeState(discardNone(e.target.value))}
+            defaultValue={state || none}
           >
             <option value={none}>qualquer estado</option>
             {

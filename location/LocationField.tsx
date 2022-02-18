@@ -29,7 +29,6 @@ export function LocationField({ text }:LocationFieldProps) {
 
   function handleChange(value: Feature) {
     setCenter([value.center[1], value.center[0]]);
-    console.log('coisa', value);
   }
 
   function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }

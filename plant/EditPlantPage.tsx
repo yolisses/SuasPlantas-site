@@ -50,7 +50,6 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
 
   async function submit(data:any) {
     setLoading(true);
-    console.log(data);
     try {
       await allImagesSent(data.images);
       const method = edit ? api.patch : api.post;

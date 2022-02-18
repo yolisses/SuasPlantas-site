@@ -21,7 +21,6 @@ export function FacebookButton({ callback } : loginButtonProps) {
 
   async function handleFacebookResponse(e: FacebookResponse) {
     const { accessToken } = e.authResponse;
-    if (isDev) console.log(accessToken);
     await signIn({ provider: 'facebook', accessToken });
     if (callback) callback();
   }

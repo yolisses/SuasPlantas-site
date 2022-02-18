@@ -8,12 +8,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const plugins = [];
 
 if (process.env.NEXT_PUBLIC_ENV !== 'development') {
-  console.log('using PWA');
   plugins.push(withPWA);
 }
 
 if (process.env.ANALYZE === 'true') {
-  console.log('using bundle analyzer');
   plugins.push(withBundleAnalyzer);
 }
 

@@ -19,7 +19,6 @@ export function GoogleButton({ callback }:loginButtonProps) {
 
   async function handleGoogleResponse(e: GoogleResponse) {
     const accessToken = e.credential;
-    if (isDev) console.log(accessToken);
     await signIn({ provider: 'google', accessToken });
     if (callback) callback();
   }

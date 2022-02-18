@@ -4,7 +4,6 @@ export function AdminPage() {
   async function setUserPreview() {
     try {
       const res = await api.post('users/preview');
-      console.log(res.data);
     } catch (err) {
       console.error(err);
     }

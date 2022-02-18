@@ -68,7 +68,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
     try {
       refreshUser();
     } catch (err:any) {
-      console.log(err);
+      console.error(err);
     }
   }, []);
 

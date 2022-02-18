@@ -28,7 +28,6 @@ export function Modal({
 
   function handleEsc(e: KeyboardEvent) {
     if (e.code === 'Escape') {
-      console.log('esc');
       close();
     }
   }
