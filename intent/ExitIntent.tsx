@@ -3,6 +3,7 @@ import { parseCookies, setCookie } from 'nookies';
 
 import { Modal } from '../modal/Modal';
 import { useModal } from '../modal/ModalContext';
+import { interact } from '../interactions/interact';
 import { FeedbackBox } from '../documents/FeedbackBox';
 
 const MIN_TIME_IN_SITE = 5000; // 5 seconds
@@ -11,6 +12,7 @@ export function ExitIntent() {
   const { setModal } = useModal();
 
   function handleClose() {
+    interact({ type: 'exit intent', modalType: 'feedback', action: 'close' });
     setCookie(undefined, 'exit-modal-closed', 'true', {
       maxAge: 1000 * 60 * 60 * 24 * 7, // one week
     });
@@ -23,6 +25,7 @@ export function ExitIntent() {
       const cookies = parseCookies(undefined);
       const exitModalClosed = cookies['exit-modal-closed'];
       if (!exitModalClosed) {
+        interact({ type: 'exit intent', modalType: 'feedback', action: 'open' });
         setModal(
           <Modal closeOnClickOut={false} onClose={handleClose}>
             <div className="px-2">

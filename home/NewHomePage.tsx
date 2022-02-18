@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { FaSmile } from 'react-icons/fa';
 import Link from 'next/link';
-import { useModal } from '../modal/ModalContext';
-import { brazilianStates } from '../location/brazilianStates';
-import { UserModal } from './UserModal';
-import { useFusers } from '../fusers/fusersContext';
+import { useState } from 'react';
+import { FaSmile } from 'react-icons/fa';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { Fuser } from '../fusers/Fuser';
+import { UserModal } from './UserModal';
 import { Spinner } from '../common/Spinner';
+import { useModal } from '../modal/ModalContext';
 import { Cities } from '../location/cities/Cities';
+import { interact } from '../interactions/interact';
+import { useFusers } from '../fusers/fusersContext';
+import { brazilianStates } from '../location/brazilianStates';
 
 export function NewHomePage() {
   const none = 'none';
@@ -58,7 +60,11 @@ export function NewHomePage() {
         <div className="flex flex-row gap-2 px-4 w-full max-w-md">
           <select
             className="w-full p-2 rounded-lg"
-            onChange={(e) => changeState(discardNone(e.target.value))}
+            onChange={(e) => {
+              const { value } = e.target;
+              interact({ type: 'set filter', filterType: 'state', value });
+              changeState(discardNone(value));
+            }}
             defaultValue={state || none}
           >
             <option value={none}>qualquer estado</option>
@@ -72,7 +78,11 @@ export function NewHomePage() {
           && (
           <select
             className="w-full p-2 rounded-lg"
-            onChange={(e) => changeCity(discardNone(e.target.value))}
+            onChange={(e) => {
+              const { value } = e.target;
+              interact({ type: 'set filter', filterType: 'state', value });
+              changeCity(discardNone(value));
+            }}
           >
             <option value={none}>qualquer cidade</option>
             {
@@ -101,7 +111,10 @@ export function NewHomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
             {!!items && items.map((user:Fuser) => (
               <button
-                onClick={() => setModal(<UserModal fuser={user} />)}
+                onClick={() => {
+                  interact({ type: 'show fuser', id: user.id });
+                  setModal(<UserModal fuser={user} />);
+                }}
                 className="flex flex-col gap-0 items-center bg-gray-100 shadow p-3 rounded-lg"
               >
                 <div className="text-lg">
