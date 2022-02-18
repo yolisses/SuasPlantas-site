@@ -22,7 +22,7 @@ export interface IItemsContext<T>{
   setItems: Dispatch<SetStateAction<T[]|undefined>>
   setFilters: Dispatch<SetStateAction<Filters|undefined>>
   setPageData: Dispatch<SetStateAction<PageData|undefined>>
-  loadMore:()=>void
+  loadMore:(callback?:(pageData:PageData)=>void)=>void
   reset:()=>void
 }
 
@@ -39,7 +39,7 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
 
-  async function loadMore() {
+  async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
     const res = await api.get(apiRoute, {
@@ -51,6 +51,9 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
     setPageData(res.data.pageData);
     setItems((items?:T[]) => (items || []).concat(res.data.content));
     setLoading(false);
+    if (callback) {
+      callback(res.data.pageData);
+    }
   }
 
   function reset() {

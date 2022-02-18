@@ -93,7 +93,11 @@ export function NewHomePage() {
         </div>
       </div>
       <InfiniteScroll
-        next={loadMore}
+        next={() => {
+          loadMore((pageData) => {
+            interact({ type: 'load more', dataType: 'fuser', page: pageData?.page });
+          });
+        }}
         dataLength={items?.length || 0}
         hasMore={!!pageData?.nextPage}
         scrollThreshold={0.8}
