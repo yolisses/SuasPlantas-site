@@ -115,6 +115,7 @@ export function NewHomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 md:px-10 gap-2">
             {!!items && items.map((user:Fuser) => (
               <button
+                key={user.id}
                 onClick={() => {
                   interact({ type: 'show fuser', id: user.id });
                   setModal(<UserModal fuser={user} />);
