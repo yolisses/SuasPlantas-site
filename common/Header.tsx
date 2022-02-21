@@ -4,6 +4,7 @@ import { Spacer } from './Spacer';
 import { usePlants } from '../plant/plantsContext';
 import { useQuests } from '../quest/questsContext';
 import { MeButton } from '../user/MeButton';
+import { SearchField } from '../search/SearchField';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
@@ -28,6 +29,10 @@ export function Header() {
             Suas Plantas
           </a>
         </Link>
+        <Spacer />
+        <div className="w-full max-w-sm">
+          <SearchField resetButtonColor="#fff" />
+        </div>
         <Spacer />
         <MeButton />
       </div>
