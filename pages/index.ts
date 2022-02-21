@@ -1,3 +1,3 @@
-import { ExplanationPage } from '../home/ExplanationPage';
+import { PlantsPage } from '../home/PlantsPage';
 
-export default ExplanationPage;
+export default PlantsPage;
