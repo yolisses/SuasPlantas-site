@@ -13,6 +13,7 @@ import { Header } from '../header/Header';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
 import { HotjarTags } from '../app/HotjarTags';
+import { AdSenseTags } from '../app/AdSenseTags';
 import { FaviconTags } from '../app/FaviconTags';
 import { ExitIntent } from '../intent/ExitIntent';
 import { SmartlookTag } from '../app/SmartlookTag';
@@ -56,6 +57,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <HotjarTags />
+      <AdSenseTags />
       <FaviconTags />
       <MuiFontsTags />
       <SmartlookTag />
