@@ -1,6 +1,9 @@
 import Head from 'next/head';
+import { isDev } from '../utils/isDev';
 
 export function HotjarTags() {
+  if (isDev) return null;
+
   //  Hotjar Tracking Code for https://suasplantas.com
   return (
     <Head>
