@@ -22,15 +22,13 @@ export function Menu({
   }, []);
 
   return (
-    <div className="relative">
-      <div className="absolute right-0 w-screen sm:w-auto max-w-sm px-2 pb-12">
-        <div
-          style={{ maxHeight: 'calc(100vh - 3.5rem)' }}
-          className="bg-white p-2 rounded-lg shadow-md overflow-y-auto"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {children}
-        </div>
+    <div className="w-screen sm:w-auto max-w-sm pb-12">
+      <div
+        style={{ maxHeight: 'calc(100vh - 3.5rem)' }}
+        className="bg-white p-2 rounded-lg shadow-md overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
       </div>
     </div>
   );
