@@ -1,11 +1,12 @@
 import Link from 'next/link';
 
+import { MeButton } from './MeButton';
 import { Spacer } from '../common/Spacer';
+import { MoreMenuButton } from './MoreMenuButton';
 import { usePlants } from '../plant/plantsContext';
 import { useQuests } from '../quest/questsContext';
-import { MeButton } from './MeButton';
 import { SearchField } from '../search/SearchField';
-import { MoreMenuButton } from './MoreMenuButton';
+import { NotificationMenuButton } from '../notification/NotificationMenuButton';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
@@ -39,6 +40,7 @@ export function Header() {
         </div>
         <Spacer />
         <MeButton />
+        <NotificationMenuButton />
         <MoreMenuButton />
       </div>
       <div className="h-12" />
