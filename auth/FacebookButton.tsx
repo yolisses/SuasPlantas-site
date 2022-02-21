@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
-import { isDev } from '../utils/isDev';
-import { loginButtonProps } from './loginButtonProps';
+import { useEffect } from 'react';
 import { useUser } from './userContext';
+import { loginButtonProps } from './loginButtonProps';
 
 interface FacebookResponse {
   authResponse: {
@@ -34,7 +33,7 @@ export function FacebookButton({ callback } : loginButtonProps) {
       <Head>
         <script
           async
-          src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=608961783650539&autoLogAppEvents=1"
+          src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=256482496640231&autoLogAppEvents=1"
         />
         <script>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
       </Head>
