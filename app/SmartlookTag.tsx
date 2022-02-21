@@ -1,6 +1,9 @@
 import Head from 'next/head';
+import { isDev } from '../utils/isDev';
 
 export function SmartlookTag() {
+  if (isDev) return null;
+
   return (
     <Head>
       <script type="text/javascript">
