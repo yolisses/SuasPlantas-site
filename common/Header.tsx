@@ -30,7 +30,7 @@ export function Header() {
           </a>
         </Link>
         <Spacer />
-        <div className="w-full max-w-sm">
+        <div className="w-full max-w-sm hidden sm:inline-flex">
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
