@@ -11,9 +11,11 @@ export function WithoutResultsWarn() {
     <div className="flex flex-col items-center max-w-sm">
       <div className="text-xl text-center">
         Nenhuma resultado encontrado
+        {' '}
         {!!text && (
         <>
           para
+          {' '}
           <strong>{text}</strong>
         </>
         )}
