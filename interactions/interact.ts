@@ -1,5 +1,6 @@
 import { api } from '../api/api';
 import { isDev } from '../utils/isDev';
+import { isBrowserByUA } from './isBrowserByUA';
 
 interface InteractData{
   type?:string
@@ -7,6 +8,7 @@ interface InteractData{
 }
 
 export async function interact(data:InteractData) {
-  if (isDev) return;
+  const ua = window.navigator.userAgent;
+  if (isDev && isBrowserByUA(ua)) return;
   return api.post('/interactions', data);
 }
