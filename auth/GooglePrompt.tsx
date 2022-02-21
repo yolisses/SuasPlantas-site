@@ -36,8 +36,9 @@ export function GooglePrompt({ callback }:loginButtonProps) {
       <div
         id="g_id_onload"
         data-auto_prompt="true"
-        data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
+        data-cancel_on_tap_outside="false"
         data-callback="handleGoogleResponse"
+        data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
       />
     </>
   );
