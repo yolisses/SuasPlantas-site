@@ -9,7 +9,7 @@ import { ThemeProvider } from '@mui/material';
 
 import { useEffect } from 'react';
 import { theme } from '../mui/theme';
-import { Header } from '../common/Header';
+import { Header } from '../header/Header';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
 import { HotjarTags } from '../app/HotjarTags';
