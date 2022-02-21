@@ -7,7 +7,7 @@ export function ShareButton() {
 
   return (
     <>
-      <div className="flex flex-col gap-2 pb-2">
+      <div className="flex flex-col gap-2 pb-2 items-center">
         {active
       && <ShareButtons shareUrl="suasplantas.com" socialIconProps={{ size: 45, borderRadius: 1000 }} />}
       </div>
