@@ -119,7 +119,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
         />
         <button
           onClick={() => setOptional((value) => !value)}
-          className="flex flex-row items-center justify-start gap-1"
+          className="secondary-button text-black self-start flex flex-row items-center justify-start gap-1"
         >
           {optional
             ? <FaMinus color="gray" className="pb-1" />
