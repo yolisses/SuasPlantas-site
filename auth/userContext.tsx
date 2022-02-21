@@ -23,6 +23,7 @@ interface IUserContextProvider{
     user?:User
     logOut:()=>void
     refreshUser:()=>void
+    loginResolved:boolean
     signIn:(params:ISignIn)=>Promise<void>
     setUser:Dispatch<SetStateAction<User|undefined>>
 }
@@ -32,6 +33,7 @@ export const userContext = createContext({} as IUserContextProvider);
 export function UserContextProvider({ children }: {children:ReactNode}) {
   const [user, setUser] = useState<User>();
   const { code: previewCode } = usePreview();
+  const [loginResolved, setLoginResolved] = useState(false);
 
   async function logOut() {
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
@@ -55,9 +57,11 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
     try {
       const res = await api.get('users/me');
       setUser(res.data);
+      setLoginResolved(true);
     } catch (err:any) {
       if (err?.response?.status === 403) {
         setUser(undefined);
+        setLoginResolved(true);
       } else {
         throw err;
       }
@@ -85,6 +89,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       signIn,
       setUser,
       refreshUser,
+      loginResolved,
     }}
     >
       {children}
