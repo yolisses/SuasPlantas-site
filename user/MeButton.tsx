@@ -41,7 +41,7 @@ export function MeButton() {
       ) : (
         <button
           onClick={isLogged}
-          className="flex flex-row items-center gap-1 cursor-pointer text-white"
+          className="secondary-button flex flex-row items-center gap-1 cursor-pointer text-white"
         >
           <FaRegUser size={18} />
           <div className="text-lg">Entrar</div>
