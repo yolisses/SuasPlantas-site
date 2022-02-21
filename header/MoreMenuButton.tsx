@@ -28,7 +28,6 @@ export function MoreMenuButton() {
       <div className="fixed right-0 sm:right-2">
         <div className="absolute right-0">
           {(menu === 'more') && (
-
           <Menu onClose={() => { setMenu(null); }}>
             <Link href="/about">
               <a className="menu-button" onClick={() => setMenu(null)}>
