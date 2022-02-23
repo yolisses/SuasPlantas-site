@@ -9,6 +9,6 @@ interface InteractData{
 
 export async function interact(data:InteractData) {
   const ua = window.navigator.userAgent;
-  if (isDev && isBrowserByUA(ua)) return;
+  if (isDev || !isBrowserByUA(ua)) return;
   return api.post('/interactions', data);
 }
