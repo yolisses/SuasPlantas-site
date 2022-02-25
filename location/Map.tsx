@@ -12,7 +12,7 @@ interface MapProps{
 export function Map({ center, circleRadius }:MapProps) {
   return (
     <MapContainer
-      zoom={5}
+      zoom={14}
       minZoom={3.5}
       center={center}
       scrollWheelZoom

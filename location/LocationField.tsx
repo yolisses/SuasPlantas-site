@@ -71,9 +71,9 @@ export function LocationField({
             <div className="h-12 flex flex-row items-center justify-between">
               <div className="pl-1">Sua localização</div>
               <button
-                className="icon-button"
                 disabled={loading}
                 onClick={hancleClose}
+                className="icon-button"
               >
                 <GrClose size={18} />
               </button>
@@ -92,8 +92,8 @@ export function LocationField({
             </span>
             <select
               value={radius}
-              onChange={(e) => setRadius(parseInt(e.target.value, 10))}
               className="secondary-button text-black bg-transparent"
+              onChange={(e) => setRadius(parseInt(e.target.value, 10))}
             >
               {radiusOptions?.map((value) => (
                 <option value={value}>
@@ -112,7 +112,10 @@ export function LocationField({
             >
               <Image width={40} height={40} src="/map_center.png" />
             </div>
-            <Map center={center!} />
+            <Map
+              center={center!}
+              circleRadius={radiusOptions ? radius : undefined}
+            />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <button

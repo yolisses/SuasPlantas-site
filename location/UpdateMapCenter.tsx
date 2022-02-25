@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { useEffect } from 'react';
 import { useMapEvents } from 'react-leaflet';
+import { LatLngBoundsExpression } from 'leaflet';
 
 interface UpdateMapProps{
   circleRadius?:number
@@ -25,11 +26,11 @@ export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
   useEffect(() => {
     if (circleRadius) {
       const offset = circleRadius / 100;
-      const bounds :[[number, number], [number, number]] = [
+      const bounds = [
         [center[0] - offset, center[1]],
         [center[0] + offset, center[1]],
       ];
-      map.fitBounds(bounds);
+      map.fitBounds(bounds as LatLngBoundsExpression);
     }
   }, [circleRadius, center]);
 
