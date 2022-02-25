@@ -2,17 +2,17 @@ import { ChangeEvent, useState } from 'react';
 import { AutocompleteOption } from './AutocompleteOption';
 
 interface AutoCompleteInputProps<type> {
+  onChange: (value: type) => void;
+  getText: (option: type) => string;
   getOptions: (text: string) => Promise<type[]>;
   ketExtractor: (option: type) => number | string;
-  getText: (option: type) => string;
-  onChange: (value: type) => void;
 }
 
 export function AutoCompleteInput<type>({
-  ketExtractor,
-  getOptions,
   getText,
   onChange,
+  getOptions,
+  ketExtractor,
 }: AutoCompleteInputProps<type>) {
   const [options, setOptions] = useState<type[]>([]);
   const [text, setText] = useState<string>('');
@@ -51,12 +51,12 @@ export function AutoCompleteInput<type>({
         <div className="pt-0 relative z-40 group">
           <input
             type="text"
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder="Pesquisar local"
-            onChange={handleChange}
             value={text}
-            className="rounded-full p-2 px-3 shadow-md ring-1 ring-gray-300"
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            onChange={handleChange}
+            placeholder="Pesquisar local"
+            className="rounded-full p-2 px-3 shadow-md ring-1 ring-gray-300 select-all"
           />
         </div>
         {focused && !!options.length && (
@@ -64,8 +64,8 @@ export function AutoCompleteInput<type>({
           {options?.map((option) => (
             <AutocompleteOption
               value={option as type}
-              key={ketExtractor(option)}
               onSelect={handleSelect}
+              key={ketExtractor(option)}
             >
               {getText(option)}
             </AutocompleteOption>
