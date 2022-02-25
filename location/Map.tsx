@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import {
-  MapContainer, TileLayer, useMapEvents, Circle,
+  MapContainer, TileLayer, useMapEvents,
 } from 'react-leaflet';
 import Head from 'next/head';
 import { useEffect } from 'react';
@@ -25,8 +25,8 @@ function EventHandler({ center }:{center:[number, number]}) {
 }
 
 interface MapProps{
-  center:[number, number]
   circleRadius?:number
+  center:[number, number]
 }
 
 export function Map({ center, circleRadius }:MapProps) {
@@ -34,8 +34,8 @@ export function Map({ center, circleRadius }:MapProps) {
     <>
       <MapContainer
         zoom={13}
-        scrollWheelZoom
         center={center}
+        scrollWheelZoom
         style={{ flex: 1 }}
       >
         <EventHandler center={center} />
@@ -43,7 +43,7 @@ export function Map({ center, circleRadius }:MapProps) {
           attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {!!circleRadius && <MovingCircle initialCenter={center} />}
+        {!!circleRadius && <MovingCircle initialCenter={center} radius={circleRadius} />}
       </MapContainer>
       <Head>
         <link

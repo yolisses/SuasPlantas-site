@@ -6,18 +6,14 @@ import {
 import { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import {
-  FaChevronDown, FaLocationArrow, FaMapMarker, FaMapMarkerAlt, FaMapPin,
-} from 'react-icons/fa';
+import { Tour } from '../tour/Tour';
 import { Spinner } from '../common/Spinner';
+import { TourName } from '../tour/TourContext';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
+import { LocationFilterInput } from './LocationFilterInput';
 import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
-import { TourName, useTour } from '../tour/TourContext';
-import { Tour } from '../tour/Tour';
-import { LocationField } from '../location/LocationField';
-import { useUser } from '../auth/userContext';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -45,15 +41,13 @@ export function HomePage<T>({
     loadMore,
   } = useContext(context);
 
-  const { user } = useUser();
-
   return (
     <>
       <div
         className=" flex flex-col md:flex-row-reverse items-center justify-between"
       >
         <div className="flex flex-row justify-center flex-1">
-          <LocationField text="Cajazeiras, Paraíba" initialLocation={user?.location.coordinates} />
+          <LocationFilterInput />
         </div>
         <TopTabs tab={tab} />
       </div>

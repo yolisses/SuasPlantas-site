@@ -17,14 +17,20 @@ interface LocationFieldProps{
     loading?:boolean
     initialLocation?:[number, number]
     submit:(location:[number, number])=>Promise<boolean>
+    radiusOptions?:number[]
 }
 
 export function LocationField({
-  text, loading, submit, initialLocation,
+  text,
+  submit,
+  loading,
+  radiusOptions,
+  initialLocation,
 }:LocationFieldProps) {
   const [active, setActive] = useState(false);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
+  const [radius, setRadius] = useState<number>();
 
   function handleChange(value: Feature) {
     setCenter([...value.center.reverse()]);
@@ -79,6 +85,20 @@ export function LocationField({
               getOptions={getFeaturesByText}
             />
           </div>
+          <div className="flex flex-row items-center px-2 gap-1">
+            <span>
+              Distância máxima
+            </span>
+            <select onChange={(e) => setRadius(parseInt(e.target.value, 10))} className="secondary-button text-black bg-transparent">
+              {radiusOptions?.map((value) => (
+                <option value={value}>
+                  {value}
+                  {' '}
+                  Km
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="h-screen flex flex-col relative z-10">
             <div
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
@@ -86,7 +106,7 @@ export function LocationField({
             >
               <Image width={40} height={40} src="/map_center.png" />
             </div>
-            <Map center={center!} />
+            <Map center={center!} circleRadius={radius} />
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <button
