@@ -6,77 +6,52 @@ import { GrClose } from 'react-icons/gr';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
+import { Spinner } from '../common/Spinner';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
-import { api } from '../api/api';
-import { Spinner } from '../common/Spinner';
-import { useUser } from '../auth/userContext';
-import { useSnack } from '../snack/SnackContext';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
 interface LocationFieldProps{
     text:string
+    loading?:boolean
+    initialLocation?:[number, number]
+    submit:(location:[number, number])=>Promise<boolean>
 }
 
-export function LocationField({ text }:LocationFieldProps) {
+export function LocationField({
+  text, loading, submit, initialLocation,
+}:LocationFieldProps) {
   const [active, setActive] = useState(false);
-  const [loading, setLoading] = useState(false);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
-  const { user, setUser } = useUser();
-  const { setSnack } = useSnack();
 
   function handleChange(value: Feature) {
-    setCenter([value.center[1], value.center[0]]);
+    setCenter([...value.center.reverse()]);
   }
 
   function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
 
   function keyExtractor(value: Feature) { return value.id; }
 
-  function handleButtonClick() {
-    center[0] = user!.location.coordinates[0];
-    center[1] = user!.location.coordinates[1];
+  function handleOpen() {
+    if (initialLocation) {
+      center[0] = initialLocation[0];
+      center[1] = initialLocation[1];
+    }
     setActive(true);
   }
 
-  function hancleCloseClick() { setActive(false); }
+  function hancleClose() { setActive(false); }
 
-  async function submit() {
-    setLoading(true);
-    try {
-      const res = await api.patch('users/edit-location', {
-        latitude: center[0],
-        longitude: center[1],
-      });
-
-      if (res.data.locationFound) {
-        setSnack({
-          severity: 'success',
-          text: 'Localização alterada com sucesso',
-        });
-        setActive(false);
-      } else {
-        setSnack({
-          severity: 'error',
-          text: 'Desculpe, mas não oferecemos suporte a esse local',
-        });
-      }
-
-      setUser(res.data.user);
-    } catch (err) {
-      setSnack({
-        severity: 'error',
-        text: 'Erro ao mudar localicação',
-      });
-    }
-    setLoading(false);
+  async function handleSubmit() {
+    const success = await submit([...center]);
+    setActive(!success);
   }
 
   return (
     <div>
-      <button onClick={handleButtonClick} className="secondary-button">
+      <button onClick={handleOpen} className="secondary-button">
         <FaMapMarkerAlt size={20} color="#080" />
         {text || 'Selecionar local'}
       </button>
@@ -92,7 +67,7 @@ export function LocationField({ text }:LocationFieldProps) {
               <button
                 className="icon-button"
                 disabled={loading}
-                onClick={hancleCloseClick}
+                onClick={hancleClose}
               >
                 <GrClose size={18} />
               </button>
@@ -116,14 +91,14 @@ export function LocationField({ text }:LocationFieldProps) {
           <div className="p-1 flex flex-row justify-end gap-4">
             <button
               disabled={loading}
-              onClick={hancleCloseClick}
+              onClick={hancleClose}
               className="secondary-button h-12 flex-1 sm:flex-none px-5"
             >
               Cancelar
             </button>
             <button
               disabled={loading}
-              onClick={submit}
+              onClick={handleSubmit}
               className="h-12 flex-1 sm:flex-none px-5 main-button"
             >
               {loading && <Spinner size={20} />}

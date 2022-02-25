@@ -6,17 +6,16 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
-import { User } from './User';
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
 import { EditProfileImage } from './EditProfileImage';
-import { LocationField } from '../location/LocationField';
 import { TextField } from '../common/TextField';
+import { EditUserLocation } from '../location/EditUserLocation';
 
-export const EditProfilePage = ({ user }:{user:User}) => {
-  const { setUser } = useUser();
+export const EditProfilePage = () => {
+  const { setUser, user } = useUser();
   const { setSnack } = useSnack();
 
   const { register, handleSubmit, watch } = useForm({
@@ -57,7 +56,7 @@ export const EditProfilePage = ({ user }:{user:User}) => {
         {/* ignore the label */}
         <TextField label="Bio" multiline minRows={2} {...register('description')} />
         <div className="self-start">
-          <LocationField text={`${user?.city}, ${user?.state}`} />
+          <EditUserLocation />
         </div>
         <div className="flex flex-col">
           <TextField

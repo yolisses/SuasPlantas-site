@@ -1,7 +1,7 @@
 export interface Feature {
   id: string;
-  type: "Feature";
-  place_type: ["country" | "place" | "region"];
+  type: 'Feature';
+  place_type: ['country' | 'place' | 'region'];
   relevance: number;
   properties: { wikidata: string; short_code: string };
   text: string;
@@ -9,9 +9,9 @@ export interface Feature {
   matching_text: string;
   matching_place_name: string;
   bbox: number[];
-  center: number[];
+  center: [number, number];
   geometry: {
-    type: "Point";
+    type: 'Point';
     coordinates: number[];
   };
 }
