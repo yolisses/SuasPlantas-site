@@ -17,6 +17,7 @@ import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 import { TourName, useTour } from '../tour/TourContext';
 import { Tour } from '../tour/Tour';
 import { LocationField } from '../location/LocationField';
+import { useUser } from '../auth/userContext';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -44,13 +45,15 @@ export function HomePage<T>({
     loadMore,
   } = useContext(context);
 
+  const { user } = useUser();
+
   return (
     <>
       <div
         className=" flex flex-col md:flex-row-reverse items-center justify-between"
       >
         <div className="flex flex-row justify-center flex-1">
-          <LocationField text="Cajazeiras, Paraíba" />
+          <LocationField text="Cajazeiras, Paraíba" initialLocation={user?.location.coordinates} />
         </div>
         <TopTabs tab={tab} />
       </div>
