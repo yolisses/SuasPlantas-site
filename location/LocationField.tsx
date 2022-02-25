@@ -83,7 +83,7 @@ export function LocationField({ text }:LocationFieldProps) {
       {active && (
       <div
         className="fixed top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center bg-black bg-opacity-50"
-        style={{ zIndex: 1000 }}
+        style={{ zIndex: 60 }}
       >
         <div className="flex flex-col max-h-screen bg-white w-full max-w-3xl rounded-none md:rounded-lg shadow-xl">
           <div className="px-2 pb-2">
