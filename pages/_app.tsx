@@ -36,6 +36,7 @@ import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
+import { LocationFIlterContext } from '../location/LocationFilterContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
@@ -75,29 +76,31 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <SnackContextProvider>
               <ModalContextProvider>
                 <TextSearchContextProvider>
-                  <PaginationProvider Context={plantsContext} apiRoute="plants">
-                    <PaginationProvider Context={usersContext} apiRoute="users">
-                      <PaginationProvider Context={questsContext} apiRoute="quests">
-                        <PaginationProvider Context={fusersContext} apiRoute="fusers">
-                          <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                            <PushNotificationContextProvider>
-                              <Twemoji options={{ className: 'twemoji' }}>
-                                <Header />
-                                <Component {...pageProps} />
-                                <PreviewWarn />
-                                <SnackView />
-                                <ModalView />
-                                <ResetOnChangeUser />
-                                <ExitIntent />
-                                <ChangePageInteract />
-                                <GooglePrompt />
-                              </Twemoji>
-                            </PushNotificationContextProvider>
+                  <LocationFIlterContext>
+                    <PaginationProvider Context={plantsContext} apiRoute="plants">
+                      <PaginationProvider Context={usersContext} apiRoute="users">
+                        <PaginationProvider Context={questsContext} apiRoute="quests">
+                          <PaginationProvider Context={fusersContext} apiRoute="fusers">
+                            <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                              <PushNotificationContextProvider>
+                                <Twemoji options={{ className: 'twemoji' }}>
+                                  <Header />
+                                  <Component {...pageProps} />
+                                  <PreviewWarn />
+                                  <SnackView />
+                                  <ModalView />
+                                  <ResetOnChangeUser />
+                                  <ExitIntent />
+                                  <ChangePageInteract />
+                                  <GooglePrompt />
+                                </Twemoji>
+                              </PushNotificationContextProvider>
+                            </PaginationProvider>
                           </PaginationProvider>
                         </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
-                  </PaginationProvider>
+                  </LocationFIlterContext>
                 </TextSearchContextProvider>
               </ModalContextProvider>
             </SnackContextProvider>
