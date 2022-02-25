@@ -45,6 +45,7 @@ export function EditUserLocation() {
     <LocationField
       submit={submit}
       loading={loading}
+      title="Sua localização"
       text={`${user?.city}, ${user?.state}`}
       initialLocation={user!.location.coordinates}
     />

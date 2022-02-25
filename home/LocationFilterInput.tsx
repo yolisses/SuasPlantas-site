@@ -8,6 +8,7 @@ export function LocationFilterInput() {
     <LocationField
       submit={async () => true}
       text="Cajazeiras, Paraíba"
+      title="Filtrar por distância"
       radiusOptions={radiusOptions}
       initialLocation={user?.location.coordinates}
     />
