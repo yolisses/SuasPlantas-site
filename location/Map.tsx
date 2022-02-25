@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { MapContainer, TileLayer } from 'react-leaflet';
+
 import { MovingCircle } from './MovingCircle';
 import { UpdateMapCenter } from './UpdateMapCenter';
 
@@ -8,18 +9,14 @@ interface MapProps{
   center:[number, number]
 }
 
-/*
-1km -> 15
-500 -> 6
-*/
-
 export function Map({ center, circleRadius }:MapProps) {
   return (
     <MapContainer
       zoom={5}
-      zoomControl={false}
+      minZoom={3.5}
       center={center}
       scrollWheelZoom
+      zoomControl={false}
       style={{ flex: 1 }}
     >
       <UpdateMapCenter center={center} circleRadius={circleRadius} />
