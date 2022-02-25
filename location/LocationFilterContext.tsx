@@ -3,40 +3,51 @@ import {
 } from 'react';
 import { api } from '../api/api';
 
-interface ILocationFilter{
-    location?:string
-    coordinates?: [number, number]
-    setLocation:Dispatch<SetStateAction<string|undefined>>
-    setCoordinates: Dispatch<SetStateAction<[number, number]|undefined>>
-
+interface Location{
+  city:string
+  state:string
+  coordinates:[number, number]
 }
 
-export const locationContext = createContext({} as ILocationFilter);
+interface LocationContext{
+  text:string|null
+  location?:Location
+  setLocation:Dispatch<SetStateAction<Location|undefined>>
+}
+
+export const locationContext = createContext({} as LocationContext);
 
 export function LocationFIlterContext({ children }:{children:ReactNode}) {
-  const [location, setLocation] = useState<string>();
-  const [coordinates, setCoordinates] = useState<[number, number]>([37.3931, -121.962]);
+  const [location, setLocation] = useState<Location>();
+  const text = location ? `${location.city}, ${location.state}` : null;
 
-  async function getLocationByIp() {
-    const ip = 2;
-    const res = await api.get('location');
-    const {
-      city, state, latitude, longitude,
-    } = res.data;
-    setLocation(`${city}, ${state}`);
-    setCoordinates([latitude, longitude]);
+  async function getLocation() {
+    const savedLocationString = localStorage.getItem('location');
+    if (savedLocationString) {
+      const savedLocation = JSON.parse(savedLocationString);
+      setLocation(savedLocation);
+    } else {
+      const res = await api.get('location');
+      const {
+        city, state, latitude, longitude,
+      } = res.data;
+      const location :Location = {
+        city, state, coordinates: [latitude, longitude],
+      };
+      setLocation(location);
+      localStorage.setItem('location', JSON.stringify(location));
+    }
   }
 
   useEffect(() => {
-    getLocationByIp();
-  });
+    getLocation();
+  }, []);
 
   return (
     <locationContext.Provider value={{
+      text,
       location,
       setLocation,
-      coordinates,
-      setCoordinates,
     }}
     >
       {children}

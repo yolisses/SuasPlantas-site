@@ -80,22 +80,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                     <PaginationProvider Context={plantsContext} apiRoute="plants">
                       <PaginationProvider Context={usersContext} apiRoute="users">
                         <PaginationProvider Context={questsContext} apiRoute="quests">
-                          <PaginationProvider Context={fusersContext} apiRoute="fusers">
-                            <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                              <PushNotificationContextProvider>
-                                <Twemoji options={{ className: 'twemoji' }}>
-                                  <Header />
-                                  <Component {...pageProps} />
-                                  <PreviewWarn />
-                                  <SnackView />
-                                  <ModalView />
-                                  <ResetOnChangeUser />
-                                  <ExitIntent />
-                                  <ChangePageInteract />
-                                  <GooglePrompt />
-                                </Twemoji>
-                              </PushNotificationContextProvider>
-                            </PaginationProvider>
+                          <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                            <PushNotificationContextProvider>
+                              <Twemoji options={{ className: 'twemoji' }}>
+                                <Header />
+                                <Component {...pageProps} />
+                                <PreviewWarn />
+                                <SnackView />
+                                <ModalView />
+                                <ResetOnChangeUser />
+                                <ExitIntent />
+                                <ChangePageInteract />
+                                <GooglePrompt />
+                              </Twemoji>
+                            </PushNotificationContextProvider>
                           </PaginationProvider>
                         </PaginationProvider>
                       </PaginationProvider>
