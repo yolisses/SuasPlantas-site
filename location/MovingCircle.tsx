@@ -17,5 +17,9 @@ export function MovingCircle({ initialCenter, radius }:{initialCenter:[number, n
     map.setView(center);
   }, [center]);
 
+  useEffect(() => {
+    setCenter(initialCenter);
+  }, [initialCenter]);
+
   return <Circle center={center} radius={radius * 1000} opacity={0.5} fillOpacity={0.075} />;
 }

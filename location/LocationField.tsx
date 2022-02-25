@@ -30,7 +30,7 @@ export function LocationField({
   const [active, setActive] = useState(false);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
-  const [radius, setRadius] = useState<number>();
+  const [radius, setRadius] = useState<number>(10);
 
   function handleChange(value: Feature) {
     setCenter([...value.center.reverse()]);
@@ -89,7 +89,11 @@ export function LocationField({
             <span>
               Distância máxima
             </span>
-            <select onChange={(e) => setRadius(parseInt(e.target.value, 10))} className="secondary-button text-black bg-transparent">
+            <select
+              value={radius}
+              onChange={(e) => setRadius(parseInt(e.target.value, 10))}
+              className="secondary-button text-black bg-transparent"
+            >
               {radiusOptions?.map((value) => (
                 <option value={value}>
                   {value}
