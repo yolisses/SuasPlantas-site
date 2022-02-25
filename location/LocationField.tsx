@@ -76,11 +76,9 @@ export function LocationField({ text }:LocationFieldProps) {
 
   return (
     <div>
-      <button onClick={handleButtonClick}>
-        <div className="flex flex-row items-center m-2 cursor-pointer gap-1">
-          <FaMapMarkerAlt size={20} color="#080" />
-          {text || 'Selecionar local'}
-        </div>
+      <button onClick={handleButtonClick} className="secondary-button">
+        <FaMapMarkerAlt size={20} color="#080" />
+        {text || 'Selecionar local'}
       </button>
       {active && (
       <div
@@ -119,7 +117,7 @@ export function LocationField({ text }:LocationFieldProps) {
             <button
               disabled={loading}
               onClick={hancleCloseClick}
-              className="h-12 flex-1 sm:flex-none px-5"
+              className="secondary-button h-12 flex-1 sm:flex-none px-5"
             >
               Cancelar
             </button>

@@ -16,6 +16,7 @@ import { IItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 import { TourName, useTour } from '../tour/TourContext';
 import { Tour } from '../tour/Tour';
+import { LocationField } from '../location/LocationField';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -46,15 +47,12 @@ export function HomePage<T>({
   return (
     <>
       <div
-        className=" flex flex-col md:flex-row items-center justify-between"
+        className=" flex flex-col md:flex-row-reverse items-center justify-between"
       >
-        <TopTabs tab={tab} />
         <div className="flex flex-row justify-center flex-1">
-          <button className="flex flex-row items-center secondary-button font-semibold">
-            <FaMapMarkerAlt />
-            Paraíba + 10km
-          </button>
+          <LocationField text="Cajazeiras, Paraíba" />
         </div>
+        <TopTabs tab={tab} />
       </div>
       <div className="md:hidden">
         <SearchField resetButtonColor="gray" />

@@ -78,7 +78,7 @@ export const EditProfilePage = ({ user }:{user:User}) => {
             rel="noopener noreferrer"
             href={`https://instagram.com/${watch('instagramUsername')}`}
           >
-            <button className="px-5">
+            <button className="secondary-button px-5">
               Testar
               {' '}
               @
@@ -100,7 +100,7 @@ export const EditProfilePage = ({ user }:{user:User}) => {
               rel="noopener noreferrer"
               href={`https://api.whatsapp.com/send?phone=${watch('whatsappNumber')}`}
             >
-              <button className="px-5">
+              <button className="secondary-button px-5">
                 Testar
                 {' '}
                 {watch('whatsappNumber')}
