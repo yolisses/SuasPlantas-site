@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
 import { useEffect } from 'react';
 import { useMapEvents } from 'react-leaflet';
 
 interface UpdateMapProps{
-  center:[number, number]
   circleRadius?:number
+  center:[number, number]
 }
 
 export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
@@ -22,13 +23,14 @@ export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
   }, [center]);
 
   useEffect(() => {
-    const offset = circleRadius / 100;
-    const bounds = [
-      [center[0] - offset, center[1]],
-      [center[0] + offset, center[1]],
-    ];
-    console.log(bounds);
-    map.fitBounds(bounds);
+    if (circleRadius) {
+      const offset = circleRadius / 100;
+      const bounds :[[number, number], [number, number]] = [
+        [center[0] - offset, center[1]],
+        [center[0] + offset, center[1]],
+      ];
+      map.fitBounds(bounds);
+    }
   }, [circleRadius, center]);
 
   return null;

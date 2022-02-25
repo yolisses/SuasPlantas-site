@@ -6,6 +6,7 @@ export function LocationFilterInput() {
   const radiusOptions = [1, 2, 5, 10, 20, 40, 60, 80, 100, 250, 500];
   return (
     <LocationField
+      submit={async () => true}
       text="Cajazeiras, Paraíba"
       radiusOptions={radiusOptions}
       initialLocation={user?.location.coordinates}
