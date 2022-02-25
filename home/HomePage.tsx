@@ -6,6 +6,9 @@ import {
 import { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import {
+  FaChevronDown, FaLocationArrow, FaMapMarker, FaMapMarkerAlt, FaMapPin,
+} from 'react-icons/fa';
 import { Spinner } from '../common/Spinner';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
@@ -46,6 +49,12 @@ export function HomePage<T>({
         className=" flex flex-col md:flex-row items-center justify-between"
       >
         <TopTabs tab={tab} />
+        <div className="flex flex-row justify-center flex-1">
+          <button className="flex flex-row items-center secondary-button font-semibold">
+            <FaMapMarkerAlt />
+            Paraíba + 10km
+          </button>
+        </div>
       </div>
       <div className="md:hidden">
         <SearchField resetButtonColor="gray" />
