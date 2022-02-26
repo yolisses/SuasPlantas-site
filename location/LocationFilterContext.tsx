@@ -6,7 +6,7 @@ import { api } from '../api/api';
 interface Location{
   city:string
   state:string
-  coordinates:[number, number]
+  position:[number, number]
 }
 
 interface LocationContext{
@@ -32,7 +32,7 @@ export function LocationFIlterContext({ children }:{children:ReactNode}) {
         city, state, latitude, longitude,
       } = res.data;
       const location :Location = {
-        city, state, coordinates: [latitude, longitude],
+        city, state, position: [latitude, longitude],
       };
       setLocation(location);
       localStorage.setItem('location', JSON.stringify(location));
