@@ -36,8 +36,8 @@ export function PlantItem({
           {(!!item.user) && (
             <div className="text-sm">
               {item.user.city}
-              {!!item.user.city && ', '}
-              {item.user.city}
+              {!!item.user.state && ', '}
+              {item.user.state}
             </div>
           )}
         </div>
