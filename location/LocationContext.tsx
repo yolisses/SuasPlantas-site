@@ -26,7 +26,9 @@ interface LocationContext{
 export const locationContext = createContext({} as LocationContext);
 
 export function LocationContextProvider({ children }:{children:ReactNode}) {
+  const defaultRadius = 500;
   const [location, setLocation] = useState<Location>();
+
   const text = location ? `${location.city}, ${location.state} ~ ${location.radius} Km` : null;
 
   async function getLocation() {
@@ -42,8 +44,8 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
       const newLocation :Location = {
         city,
         state,
-        radius: location?.radius || 10,
         position: [latitude, longitude],
+        radius: location?.radius || defaultRadius,
       };
       setLocation(newLocation);
     }
