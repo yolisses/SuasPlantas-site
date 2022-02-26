@@ -20,14 +20,14 @@ interface LocationContext{
   text:string|null
   location?:Location
   locationParams?:LocationParams
-  setLocation:Dispatch<SetStateAction<Location|undefined>>
+  setLocation:Dispatch<SetStateAction<Location>>
 }
 
 export const locationContext = createContext({} as LocationContext);
 
 export function LocationContextProvider({ children }:{children:ReactNode}) {
   const [location, setLocation] = useState<Location>();
-  const text = location ? `${location.city}, ${location.state}` : null;
+  const text = location ? `${location.city}, ${location.state} ~ ${location.radius} Km` : null;
 
   async function getLocation() {
     const savedLocationString = localStorage.getItem('location');
@@ -46,7 +46,6 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
         position: [latitude, longitude],
       };
       setLocation(newLocation);
-      localStorage.setItem('location', JSON.stringify(newLocation));
     }
   }
 
@@ -59,6 +58,12 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
   useEffect(() => {
     getLocation();
   }, []);
+
+  useEffect(() => {
+    if (location) {
+      localStorage.setItem('location', JSON.stringify(location));
+    }
+  }, [location]);
 
   return (
     <locationContext.Provider value={{

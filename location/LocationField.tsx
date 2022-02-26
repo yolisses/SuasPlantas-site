@@ -1,8 +1,8 @@
 /* eslint-disable prefer-destructuring */
 import Image from 'next/image';
-import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
@@ -12,13 +12,19 @@ import { getFeaturesByText } from './getFeaturesByText';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
+export interface SelectLocationResult{
+    radius?:number
+    position:[number, number]
+}
+
 interface LocationFieldProps{
     text:string
     title?:string
     loading?:boolean
+    initialRadius?:number
     radiusOptions?:number[]
     initialLocation?:[number, number]
-    submit:(location:[number, number])=>Promise<boolean>
+    submit:(result:SelectLocationResult)=>Promise<boolean>
 }
 
 export function LocationField({
@@ -26,13 +32,14 @@ export function LocationField({
   title,
   submit,
   loading,
+  initialRadius,
   radiusOptions,
   initialLocation,
 }:LocationFieldProps) {
   const [active, setActive] = useState(false);
+  const [radius, setRadius] = useState(initialRadius);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
-  const [radius, setRadius] = useState<number>(10);
 
   function handleChange(value: Feature) {
     setCenter([value.center[1], value.center[0]]);
@@ -50,13 +57,18 @@ export function LocationField({
     setActive(true);
   }
 
+  function handleChangeRadius(e:ChangeEvent<HTMLSelectElement>) {
+    setRadius(parseInt(e.target.value, 10));
+  }
+
   function hancleClose() { setActive(false); }
 
   async function handleSubmit() {
-    const success = await submit([...center]);
+    const success = await submit({ position: [...center], radius });
     setActive(!success);
   }
 
+  useEffect(() => { setRadius(initialRadius); }, [initialRadius]);
   return (
     <div>
       <button onClick={handleOpen} className="secondary-button">
@@ -93,12 +105,12 @@ export function LocationField({
               Distância máxima
             </span>
             <select
-              value={radius}
+              defaultChecked
+              onChange={handleChangeRadius}
               className="secondary-button text-black bg-transparent"
-              onChange={(e) => setRadius(parseInt(e.target.value, 10))}
             >
               {radiusOptions?.map((value) => (
-                <option value={value}>
+                <option value={value} selected={value === radius}>
                   {value}
                   {' '}
                   Km
