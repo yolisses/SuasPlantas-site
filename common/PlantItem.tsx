@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { Plant } from '../plant/Plant';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 
-interface GridItemDTO {
+interface PlantItemDTO {
   item: Plant
   size?:number
 }
 
-export function GridItem({
+export function PlantItem({
   item, size: sizeParam,
-}: GridItemDTO) {
+}: PlantItemDTO) {
   const { card, preview } = item;
 
   const size = sizeParam || 200;

@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 
 import { User } from './User';
 import { userImage } from '../images/user';
-import { GridItem } from '../common/GridItem';
+import { PlantItem } from '../common/PlantItem';
 import { useUser } from '../auth/userContext';
 import { hasContact } from '../utils/hasContact';
 import { TabSelector } from '../common/TabSelector';
@@ -179,7 +179,7 @@ function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
         className="grid gap-2 grid-cols-2 md:grid-cols-5"
       >
         { items.map((item) => (
-          <GridItem item={item} key={item.id} />
+          <PlantItem item={item} key={item.id} />
         ))}
       </div>
     );
