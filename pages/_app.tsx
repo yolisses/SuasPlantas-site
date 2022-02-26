@@ -76,8 +76,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               <ModalContextProvider>
                 <TextSearchContextProvider>
                   <LocationContextProvider>
-                    <PaginationProvider Context={plantsContext} apiRoute="plants">
-                      <PaginationProvider Context={usersContext} apiRoute="users">
+                    <PaginationProvider Context={usersContext} apiRoute="users">
+                      <PaginationProvider Context={plantsContext} apiRoute="plants">
                         <PaginationProvider Context={questsContext} apiRoute="quests">
                           <PaginationProvider Context={notificationsContext} apiRoute="notifications">
                             <PushNotificationContextProvider>
