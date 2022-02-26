@@ -9,9 +9,9 @@ import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
+import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
 import { EditProfileImage } from './EditProfileImage';
-import { TextField } from '../common/TextField';
 import { EditUserLocation } from '../location/EditUserLocation';
 
 export const EditProfilePage = () => {

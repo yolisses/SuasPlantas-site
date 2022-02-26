@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { api } from '../api/api';
 import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
+import { defaultPosition } from './defaultPosition';
 import { LocationField, SelectLocationResult } from './LocationField';
 
 export function EditUserLocation() {
@@ -47,7 +48,7 @@ export function EditUserLocation() {
       loading={loading}
       title="Sua localização"
       text={`${user?.city}, ${user?.state}`}
-      initialLocation={user!.location.coordinates}
+      initialLocation={user?.location.coordinates || defaultPosition}
     />
   );
 }
