@@ -8,9 +8,9 @@ export function WithoutResultsWarn() {
   const { text, setText } = useTextSearchContext();
 
   return (
-    <div className="flex flex-col items-center max-w-sm">
+    <div className="flex flex-col items-center max-w-md">
       <div className="text-xl text-center">
-        Nenhuma resultado encontrado
+        Nenhuma resultado encontrado nessa região
         {' '}
         {!!text && (
         <>
@@ -25,6 +25,7 @@ export function WithoutResultsWarn() {
           ? 'Verifique a ortografia, altere os filtros, ou tente usar um termo de pesquisa menos específico.'
           : 'Você pode tentar mudar os filtros de pesquisa.'}
       </div>
+      {!!text && (
       <button
         className="secondary-button"
         onClick={() => {
@@ -33,8 +34,9 @@ export function WithoutResultsWarn() {
           setText(undefined);
         }}
       >
-        Página inicial
+        Limpar pesquisa
       </button>
+      )}
     </div>
   );
 }
