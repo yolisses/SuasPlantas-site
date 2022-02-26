@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { api } from '../api/api';
 import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
-import { LocationField } from './LocationField';
+import { LocationField, SelectLocationResult } from './LocationField';
 
 export function EditUserLocation() {
   const { setSnack } = useSnack();
   const { user, setUser } = useUser();
   const [loading, setLoading] = useState(false);
 
-  async function submit(location:[number, number]) {
+  async function submit({ position }:SelectLocationResult) {
     setLoading(true);
     try {
       const res = await api.patch('users/edit-location', {
-        latitude: location[0],
-        longitude: location[1],
+        latitude: position[0],
+        longitude: position[1],
       });
       setUser(res.data.user);
 

@@ -13,7 +13,7 @@ interface Location{
 interface LocationContext{
   text:string|null
   location?:Location
-  setLocation:Dispatch<SetStateAction<Location>>
+  setLocation:Dispatch<SetStateAction<Location|undefined>>
 }
 
 export const locationContext = createContext({} as LocationContext);
