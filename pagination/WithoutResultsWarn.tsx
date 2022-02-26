@@ -25,11 +25,13 @@ export function WithoutResultsWarn() {
           ? 'Verifique a ortografia, altere os filtros ou tente usar um termo de pesquisa menos específico.'
           : 'Você pode tentar mudar os filtros de pesquisa.'}
       </div>
-      <button onClick={() => {
-        setPlantsFilters(undefined);
-        setQuestsFilters(undefined);
-        setText(undefined);
-      }}
+      <button
+        className="secondary-button"
+        onClick={() => {
+          setPlantsFilters(undefined);
+          setQuestsFilters(undefined);
+          setText(undefined);
+        }}
       >
         Página inicial
       </button>
