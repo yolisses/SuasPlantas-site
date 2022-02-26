@@ -3,6 +3,12 @@ import {
 } from 'react';
 import { api } from '../api/api';
 
+interface LocationParams{
+  latitude:number
+  longitude:number
+  radius:number
+}
+
 interface Location{
   city:string
   state:string
@@ -13,6 +19,7 @@ interface Location{
 interface LocationContext{
   text:string|null
   location?:Location
+  locationParams?:LocationParams
   setLocation:Dispatch<SetStateAction<Location|undefined>>
 }
 
@@ -43,6 +50,12 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
     }
   }
 
+  const locationParams = location ? {
+    radius: location.radius,
+    latitude: location.position[0],
+    longitude: location.position[1],
+  } : undefined;
+
   useEffect(() => {
     getLocation();
   }, []);
@@ -52,6 +65,7 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
       text,
       location,
       setLocation,
+      locationParams,
     }}
     >
       {children}

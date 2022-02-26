@@ -40,18 +40,15 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   const [filters, setFilters] = useState<Filters>();
   const [pageData, setPageData] = useState<PageData>();
 
-  const { location } = useLocation();
-  const radius = location?.radius;
-  const position = location?.position;
+  const { locationParams } = useLocation();
 
   async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
     const res = await api.get(apiRoute, {
-      params: {
+      data: {
         ...filters,
-        radius,
-        position,
+        ...locationParams,
         page: pageData?.nextPage,
       },
     });
