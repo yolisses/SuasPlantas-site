@@ -36,20 +36,23 @@ interface PaginationProviderProps<T>{
 export function PaginationProvider<T>({ children, Context, apiRoute }:PaginationProviderProps<T>) {
   const { text } = useTextSearchContext();
   const [items, setItems] = useState<T[]>();
-  const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
+  const [pageData, setPageData] = useState<PageData>();
+
   const { location } = useLocation();
-  const position = location;
+  const radius = location?.radius;
+  const position = location?.position;
 
   async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
     const res = await api.get(apiRoute, {
       params: {
-        page: pageData?.nextPage,
         ...filters,
+        radius,
         position,
+        page: pageData?.nextPage,
       },
     });
     setPageData(res.data.pageData);
