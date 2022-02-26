@@ -11,9 +11,9 @@ import { Spinner } from '../common/Spinner';
 import { TourName } from '../tour/TourContext';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
-import { LocationFilterInput } from './LocationFilterInput';
-import { IItemsContext } from '../pagination/PaginationProvider';
+import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
+import { LocationFilterInput } from './LocationFilterInput';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -22,7 +22,7 @@ interface HomePageProps<T>{
   aditionalItems?:T[]
   firstActionButton:ReactNode
   children:(items?:T[])=>ReactNode
-  context:Context<IItemsContext<T>>
+  context:Context<ItemsContext<T>>
 }
 
 export function HomePage<T>({

@@ -2,7 +2,7 @@ import {
   Context, Dispatch, ReactNode, SetStateAction, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
-import { useLocationFilter } from '../location/LocationContext';
+import { useLocation } from '../location/LocationContext';
 import { useTextSearchContext } from '../search/TextSearchContext';
 
 export type Filters = {[key:string]:any}
@@ -14,7 +14,7 @@ interface PageData{
   totalPages:number
 }
 
-export interface IItemsContext<T>{
+export interface ItemsContext<T>{
   items?:T[]
   reset:()=>void
   loading:boolean
@@ -30,7 +30,7 @@ export interface IItemsContext<T>{
 interface PaginationProviderProps<T>{
   children:ReactNode
   apiRoute:string
-  Context:Context<IItemsContext<T>>
+  Context:Context<ItemsContext<T>>
 }
 
 export function PaginationProvider<T>({ children, Context, apiRoute }:PaginationProviderProps<T>) {
@@ -39,7 +39,7 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   const [pageData, setPageData] = useState<PageData>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
-  const { location } = useLocationFilter();
+  const { location } = useLocation();
   const position = location;
 
   async function loadMore(callback?:(pageData:PageData)=>void) {

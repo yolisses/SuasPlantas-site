@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
-import { IItemsContext } from '../pagination/PaginationProvider';
+import { ItemsContext } from '../pagination/PaginationProvider';
 import { Quest } from './Quest';
 
-export const questsContext = createContext({} as IItemsContext<Quest>);
+export const questsContext = createContext({} as ItemsContext<Quest>);
 
 export function useQuests() {
   return useContext(questsContext);

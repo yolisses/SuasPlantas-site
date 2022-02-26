@@ -6,6 +6,7 @@ import { api } from '../api/api';
 interface Location{
   city:string
   state:string
+  radius:number
   position:[number, number]
 }
 
@@ -31,10 +32,10 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
       const {
         city, state, latitude, longitude,
       } = res.data;
-      const location :Location = {
-        city, state, position: [latitude, longitude],
+      const newLocation :Location = {
+        city, state, position: [latitude, longitude], radius: location?.radius || 10,
       };
-      setLocation(location);
+      setLocation(newLocation);
       localStorage.setItem('location', JSON.stringify(location));
     }
   }
@@ -55,6 +56,6 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
   );
 }
 
-export function useLocationFilter() {
+export function useLocation() {
   return useContext(locationContext);
 }

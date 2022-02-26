@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
-import { IItemsContext } from '../pagination/PaginationProvider';
+import { ItemsContext } from '../pagination/PaginationProvider';
 import { Fuser } from './Fuser';
 
-export const fusersContext = createContext({} as IItemsContext<Fuser>);
+export const fusersContext = createContext({} as ItemsContext<Fuser>);
 
 export function useFusers() {
   return useContext(fusersContext);
