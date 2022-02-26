@@ -56,12 +56,10 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
   } : undefined;
 
   useEffect(() => {
-    getLocation();
-  }, []);
-
-  useEffect(() => {
     if (location) {
       localStorage.setItem('location', JSON.stringify(location));
+    } else {
+      getLocation();
     }
   }, [location]);
 
