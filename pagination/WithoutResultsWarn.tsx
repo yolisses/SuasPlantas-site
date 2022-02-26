@@ -22,7 +22,7 @@ export function WithoutResultsWarn() {
       </div>
       <div className="text-center">
         {text
-          ? 'Verifique a ortografia, altere os filtros ou tente usar um termo de pesquisa menos específico.'
+          ? 'Verifique a ortografia, altere os filtros, ou tente usar um termo de pesquisa menos específico.'
           : 'Você pode tentar mudar os filtros de pesquisa.'}
       </div>
       <button

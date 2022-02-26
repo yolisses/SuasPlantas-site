@@ -49,6 +49,7 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
       params: {
         ...filters,
         ...locationParams,
+        text,
         page: pageData?.nextPage,
       },
     });
@@ -76,8 +77,8 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   }, [pageData]);
 
   useEffect(() => {
-    setFilters((filters) => ({ ...filters, text }));
-  }, [text]);
+    reset();
+  }, [text, locationParams]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
