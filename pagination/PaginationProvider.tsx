@@ -41,15 +41,15 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   const [pageData, setPageData] = useState<PageData>();
 
   const { location } = useLocation();
-  const locationParams = location ? {
-    radius: location.radius,
-    latitude: location.position[0],
-    longitude: location.position[1],
-  } : undefined;
 
   async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
+    const locationParams = location ? {
+      radius: location.radius,
+      latitude: location.position[0],
+      longitude: location.position[1],
+    } : undefined;
     const res = await api.get(apiRoute, {
       params: {
         text,
@@ -72,18 +72,18 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   }
 
   useEffect(() => {
-    if (!pageData) {
-      loadMore();
-    }
-  }, [pageData]);
-
-  useEffect(() => {
     reset();
   }, [
     text,
     filters,
     location,
   ]);
+
+  useEffect(() => {
+    if (!pageData && location) {
+      loadMore();
+    }
+  }, [pageData, location]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
