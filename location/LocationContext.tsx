@@ -33,10 +33,13 @@ export function LocationContextProvider({ children }:{children:ReactNode}) {
         city, state, latitude, longitude,
       } = res.data;
       const newLocation :Location = {
-        city, state, position: [latitude, longitude], radius: location?.radius || 10,
+        city,
+        state,
+        radius: location?.radius || 10,
+        position: [latitude, longitude],
       };
       setLocation(newLocation);
-      localStorage.setItem('location', JSON.stringify(location));
+      localStorage.setItem('location', JSON.stringify(newLocation));
     }
   }
 
