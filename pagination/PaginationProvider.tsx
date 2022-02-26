@@ -46,7 +46,7 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
     if (loading || pageData?.nextPage === null) return;
     setLoading(true);
     const res = await api.get(apiRoute, {
-      data: {
+      params: {
         ...filters,
         ...locationParams,
         page: pageData?.nextPage,
