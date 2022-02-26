@@ -17,7 +17,7 @@ interface LocationContext{
 
 export const locationContext = createContext({} as LocationContext);
 
-export function LocationFIlterContext({ children }:{children:ReactNode}) {
+export function LocationContextProvider({ children }:{children:ReactNode}) {
   const [location, setLocation] = useState<Location>();
   const text = location ? `${location.city}, ${location.state}` : null;
 

@@ -25,7 +25,6 @@ import { PreviewWarn } from '../preview/PreviewWarn';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
-import { fusersContext } from '../fusers/fusersContext';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
 import { PreviewProvider } from '../preview/PreviewContext';
@@ -33,10 +32,10 @@ import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
+import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
-import { LocationFIlterContext } from '../location/LocationFilterContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
@@ -76,7 +75,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <SnackContextProvider>
               <ModalContextProvider>
                 <TextSearchContextProvider>
-                  <LocationFIlterContext>
+                  <LocationContextProvider>
                     <PaginationProvider Context={plantsContext} apiRoute="plants">
                       <PaginationProvider Context={usersContext} apiRoute="users">
                         <PaginationProvider Context={questsContext} apiRoute="quests">
@@ -98,7 +97,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                         </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
-                  </LocationFIlterContext>
+                  </LocationContextProvider>
                 </TextSearchContextProvider>
               </ModalContextProvider>
             </SnackContextProvider>

@@ -1,5 +1,5 @@
 import { LocationField } from '../location/LocationField';
-import { useLocationFilter } from '../location/LocationFilterContext';
+import { useLocationFilter } from '../location/LocationContext';
 
 export function LocationFilterInput() {
   const { text, location } = useLocationFilter();

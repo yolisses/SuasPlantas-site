@@ -2,7 +2,7 @@ import {
   Context, Dispatch, ReactNode, SetStateAction, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
-import { useLocationFilter } from '../location/LocationFilterContext';
+import { useLocationFilter } from '../location/LocationContext';
 import { useTextSearchContext } from '../search/TextSearchContext';
 
 export type Filters = {[key:string]:any}

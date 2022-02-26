@@ -33,11 +33,11 @@ export function PlantItem({
           {preview && <PreviewIndicator />}
 
           {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
-          {(item.city || item.state) && (
+          {(!!item.user) && (
             <div className="text-sm">
-              {item.city}
-              {!!item.city && ', '}
-              {item.state}
+              {item.user.city}
+              {!!item.user.city && ', '}
+              {item.user.city}
             </div>
           )}
         </div>
