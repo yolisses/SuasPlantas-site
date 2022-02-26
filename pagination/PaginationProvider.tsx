@@ -40,7 +40,12 @@ export function PaginationProvider<T>({ children, Context, apiRoute }:Pagination
   const [filters, setFilters] = useState<Filters>();
   const [pageData, setPageData] = useState<PageData>();
 
-  const { locationParams, location } = useLocation();
+  const { location } = useLocation();
+  const locationParams = location ? {
+    radius: location.radius,
+    latitude: location.position[0],
+    longitude: location.position[1],
+  } : undefined;
 
   async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;
