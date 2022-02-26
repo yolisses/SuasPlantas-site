@@ -8,22 +8,20 @@ export interface Tag{
 }
 
 export interface Plant {
-  id: PlantId;
-  name: string;
-  amount:number;
-  description: string;
-  user: User;
-  card?: string;
-  tags: Tag[];
-  images: Image[];
-  donate: boolean;
-  swap: boolean;
-  price: string | null;
-  createdAt: string;
-  updatedAt: string;
-  liked?:boolean
-  alsoSaw?:Plant[]
-  state: string;
-  city: string;
+  user: User
+  tags: Tag[]
+  id: PlantId
+  name: string
+  amount:number
+  card?: string
   preview?:true
+  swap: boolean
+  liked?:boolean
+  images: Image[]
+  donate: boolean
+  alsoSaw?:Plant[]
+  createdAt: string
+  updatedAt: string
+  description: string
+  price: string | null
 }
