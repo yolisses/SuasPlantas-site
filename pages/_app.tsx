@@ -40,10 +40,6 @@ import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    interact({ type: 'start session', localTime: new Date() });
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <Head>

@@ -1,8 +1,16 @@
 import Document, {
-  Html, Head, Main, NextScript,
+  Html,
+  Head,
+  Main,
+  NextScript,
 } from 'next/document';
+import { interact } from '../interactions/interact';
 
 class MyDocument extends Document {
+  componentDidMount() {
+    interact({ type: 'start session', localTime: new Date() });
+  }
+
   render() {
     return (
       <Html>
