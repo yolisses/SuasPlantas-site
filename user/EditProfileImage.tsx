@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { FormLabel } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 
@@ -53,7 +52,7 @@ export function EditProfileImage() {
         src={sending?.src || user?.image || userImage}
       />
       <div className="flex flex-col">
-        <FormLabel component="legend" className="text-center">Foto de perfil</FormLabel>
+        <div className="text-center">Foto de perfil</div>
         <label className="flex flex-row items-center gap-1">
           <input
             type="file"

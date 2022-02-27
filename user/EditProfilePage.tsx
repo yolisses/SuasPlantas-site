@@ -1,6 +1,3 @@
-import {
-  FormHelperText,
-} from '@mui/material';
 import Router from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -107,9 +104,9 @@ export const EditProfilePage = () => {
             </a>
           )}
         </div>
-        <FormHelperText>
+        <div className="text-sm text-gray-500">
           Essas informações ficam visíveis para as outras pessoas
-        </FormHelperText>
+        </div>
         <button onClick={handleSubmit(submit)} disabled={loading} className="h-11 main-button">
           {loading && <Spinner size={20} />}
           Salvar

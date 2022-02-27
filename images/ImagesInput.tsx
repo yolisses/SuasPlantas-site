@@ -6,7 +6,6 @@ import {
   ChangeEvent,
 } from 'react';
 import { FaImage } from 'react-icons/fa';
-import { FormHelperText } from '@mui/material';
 
 import { isEmpty } from '../utils/isEmpty';
 import { Sending } from '../upload/Sending';
@@ -23,8 +22,6 @@ export interface ImageInputCustomRef{
 }
 
 interface ImagesInputProps{
-  error?:boolean
-  helperText?:string
   onBlur?:(value:any)=>void
   customRef?:ImageInputCustomRef
   initialSendings?:SendingsCollection
@@ -34,7 +31,7 @@ interface ImagesInputProps{
 type IgnoreType = () => any
 
 export function ImagesInput({
-  onChange, onBlur, helperText, error, initialSendings, customRef,
+  onChange, onBlur, initialSendings, customRef,
 }:ImagesInputProps) {
   const refresh = useRefresh();
   const [dragging, setDragging] = useState(false);
@@ -152,9 +149,6 @@ export function ImagesInput({
           />
         </label>
       </div>
-      <FormHelperText error={error}>
-        {helperText}
-      </FormHelperText>
     </div>
   );
 }

@@ -5,10 +5,7 @@ import Head from 'next/head';
 // @ts-ignore
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material';
 
-import { useEffect } from 'react';
-import { theme } from '../mui/theme';
 import { Header } from '../header/Header';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
@@ -41,7 +38,7 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Head>
         <title>
           {devIndicator}
@@ -100,6 +97,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           </UserContextProvider>
         </PreviewProvider>
       </TourContextProvider>
-    </ThemeProvider>
+    </>
   );
 }
