@@ -5,7 +5,7 @@ export function ChatHeader() {
   const imageSize = 40;
   const contact = mockContacts[0];
   return (
-    <div className="flex flex-row p-2 gap-2 shadow-md items-center">
+    <div className="flex flex-row p-2 gap-2 shadow items-center">
       <Image
         className="rounded-full"
         objectFit="cover"
