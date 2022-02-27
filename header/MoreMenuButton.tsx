@@ -10,6 +10,7 @@ import {
   RiLogoutBoxRLine,
 } from 'react-icons/ri';
 import { useState } from 'react';
+import Image from 'next/image';
 import { Menu } from '../common/menu/Menu';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
@@ -19,6 +20,7 @@ export function MoreMenuButton() {
   const { user, logOut } = useUser();
 
   const { isLogged } = useIsLogged();
+  const imageSize = 20;
 
   return (
     <div>
@@ -29,6 +31,20 @@ export function MoreMenuButton() {
         <div className="absolute right-0">
           {(menu === 'more') && (
           <Menu onClose={() => { setMenu(null); }}>
+            {!!user && (
+            <Link href={`/users/${user?.id}`}>
+              <a className="menu-button" onClick={() => setMenu(null)}>
+                <Image
+                  src={user?.image}
+                  width={imageSize}
+                  height={imageSize}
+                  className="rounded-full"
+                />
+                {' '}
+                Perfil
+              </a>
+            </Link>
+            )}
             <Link href="/about">
               <a className="menu-button" onClick={() => setMenu(null)}>
                 <FaSeedling size={18} color="gray" />
