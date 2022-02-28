@@ -12,7 +12,7 @@ export function ChatPage() {
       </div>
       <div className="flex-1 flex flex-col">
         <ChatHeader />
-        <div className="flex-1 flex flex-col gap-1 p-4">
+        <div className="flex-1 flex flex-col p-4">
           <MessagesList />
         </div>
         <div className="bg-gray-100 w-full p-3 flex flex-row gap-2">
