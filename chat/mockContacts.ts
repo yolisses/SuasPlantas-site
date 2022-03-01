@@ -2,7 +2,7 @@ import { someImage, someImageH, someImageU } from '../mock/someImage';
 
 export const mockContacts = [
   {
-    userId: 0,
+    otherUserId: 0,
     name: 'pessoa 1',
     image: someImage,
     lastMessage: {
@@ -12,7 +12,7 @@ export const mockContacts = [
     },
   },
   {
-    userId: 1,
+    otherUserId: 1,
     name: 'pessoa 2',
     image: someImageU,
     lastMessage: {
@@ -22,7 +22,7 @@ export const mockContacts = [
     },
   },
   {
-    userId: 2,
+    otherUserId: 2,
     name: 'pessoa 3',
     image: someImageH,
     lastMessage: {

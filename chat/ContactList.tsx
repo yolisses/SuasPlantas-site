@@ -6,7 +6,10 @@ export function ContactList() {
   return (
     <>
       { mockContacts.map((contact) => (
-        <button className="highlight flex flex-row items-center gap-2 p-2 w-full rounded-md">
+        <button
+          key={contact.otherUserId}
+          className="highlight flex flex-row items-center gap-2 p-2 w-full rounded-md"
+        >
           <Image
             className="rounded-full"
             objectFit="cover"
