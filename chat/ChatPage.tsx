@@ -6,7 +6,7 @@ import { MessagesList } from './MessagesList';
 export function ChatPage() {
   return (
     <div className="flex flex-row flex-1 h-screen-no-header">
-      <div className="max-w-md w-full p-2 flex flex-col gap-2 shadow-md">
+      <div className="max-w-md w-full p-2 flex flex-col shadow-md">
         <div className="text-lg">Conversas</div>
         <ContactList />
       </div>
