@@ -14,8 +14,8 @@ interface ChatsContext{
 export const chatsContext = createContext({} as ChatsContext);
 
 export function ChatsProvider({ children }:{children:ReactNode}) {
-  const [chats, setChats] = useState<Chat[]>();
   const [chat, setChat] = useState<Chat>();
+  const [chats, setChats] = useState<Chat[]>();
   const [loading, setLoading] = useState(false);
 
   async function getChats() {

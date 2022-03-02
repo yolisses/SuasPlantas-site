@@ -7,12 +7,25 @@ import { Message } from './Message';
 import { ChatItem } from './ChatItem';
 import { ChatHeader } from './ChatHeader';
 import { useChats } from './ChatsContext';
-import { MessageItem } from './MessageItem';
 import { MessageInput } from './MessageInput';
+import { useUser } from '../auth/userContext';
+import { MessagesList } from './MessagesList';
 
 export function ChatPage() {
+  const { user } = useUser();
   const { chat, chats } = useChats();
   const [messages, setMessages] = useState<Message[]>();
+
+  async function sendMessage(text:string) {
+    setMessages((old) => [{
+      text,
+      chatId: chat!.id,
+      id: Math.random(),
+      senderId: user!.id,
+      createdAt: Date.now().toString(),
+    }, ...old]);
+    await api.post('chat', { text, chatId: chat.id });
+  }
 
   async function getMessages(chatId:number) {
     const res = await api.get(`chat/${chatId}`);
@@ -35,16 +48,13 @@ export function ChatPage() {
         {chat ? (
           <>
             <ChatHeader chat={chat} />
-            <div className="overflow-y-auto flex-1">
-              <div className="flex flex-col-reverse justify-end p-2">
-                {!!messages && messages
-                  .map((item) => <MessageItem message={item} key={item.id} />)}
-              </div>
+            <div className="flex flex-1 flex-col overflow-hidden">
+              {!!messages && <MessagesList messages={messages} />}
             </div>
-            <MessageInput chatId={chat.id} />
+            <MessageInput onSubmit={sendMessage} />
           </>
         ) : (
-          <div className="flex-1 bg-slate-200 flex items-center justify-center text-slate-600">
+          <div className="flex-1 flex items-center justify-center text-slate-600">
             Selecione ou comece uma conversa
           </div>
         )}
