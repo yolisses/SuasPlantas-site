@@ -42,7 +42,11 @@ export function ChatPage() {
     <div className="h-screen-no-header flex flex-row overflow-hidden">
       <div className="hidden lg:inline-block w-full max-w-md overflow-y-auto shadow p-2 bg-white">
         <div className="mb-2 text-lg">Conversas</div>
-        {!!chats && chats.map((item) => <ChatItem chat={item} />)}
+        {chats ? chats.map((item) => <ChatItem chat={item} />) : (
+          <div className="flex-1 flex items-center justify-center text-slate-600">
+            Sem conversas por enquanto
+          </div>
+        )}
       </div>
       <div className="flex flex-col w-full">
         {chat ? (

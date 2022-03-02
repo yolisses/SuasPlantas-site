@@ -27,7 +27,7 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
       const chats = res.data;
       setChats(chats);
       if (!chat)setChat(chats[0]);
-    } catch (err) {
+    } catch (err:any) {
       console.error(err);
     }
     setLoading(false);
@@ -36,6 +36,7 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
   useEffect(() => {
     getChats();
     if (!user) {
+      setChats(undefined);
       setChat(undefined);
     }
   }, [user]);
