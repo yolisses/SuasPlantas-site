@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import {
+  useState,
+  useEffect,
+} from 'react';
+import { api } from '../api/api';
+import { Message } from './Message';
 import { ChatItem } from './ChatItem';
 import { ChatHeader } from './ChatHeader';
 import { useChats } from './ChatsContext';
-import { MessageInput } from './MessageInput';
-import { api } from '../api/api';
 import { MessageItem } from './MessageItem';
-import { Message } from './Message';
+import { MessageInput } from './MessageInput';
 
 export function ChatPage() {
   const { chat, chats } = useChats();
@@ -38,7 +41,7 @@ export function ChatPage() {
                   .map((item) => <MessageItem message={item} key={item.id} />)}
               </div>
             </div>
-            <MessageInput />
+            <MessageInput chatId={chat.id} />
           </>
         ) : (
           <div className="flex-1 bg-slate-200 flex items-center justify-center text-slate-600">

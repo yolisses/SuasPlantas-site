@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
+import { api } from '../api/api';
 
-export function MessageInput() {
+export function MessageInput({ chatId }:{chatId:number}) {
   const [text, setText] = useState<string>();
 
-  function sendMessage() {
+  async function sendMessage() {
+    const res = await api.post('chat', { text, chatId });
+    console.log(res.data);
   }
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(text);
+        sendMessage();
       }}
       className="bg-gray-100 w-full p-3 flex flex-row gap-2"
     >
