@@ -15,7 +15,6 @@ import { FaviconTags } from '../app/FaviconTags';
 import { ExitIntent } from '../intent/ExitIntent';
 import { SmartlookTag } from '../app/SmartlookTag';
 import { MuiFontsTags } from '../app/MuiFontsTags';
-import { interact } from '../interactions/interact';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
 import { PreviewWarn } from '../preview/PreviewWarn';
@@ -35,6 +34,7 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
+import { ChatsProvider } from '../chat/ChatsContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -69,27 +69,29 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               <ModalContextProvider>
                 <TextSearchContextProvider>
                   <LocationContextProvider>
-                    <PaginationProvider Context={usersContext} apiRoute="users">
-                      <PaginationProvider Context={plantsContext} apiRoute="plants">
-                        <PaginationProvider Context={questsContext} apiRoute="quests">
-                          <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                            <PushNotificationContextProvider>
-                              <Twemoji options={{ className: 'twemoji' }}>
-                                <Header />
-                                <Component {...pageProps} />
-                                <PreviewWarn />
-                                <SnackView />
-                                <ModalView />
-                                <ResetOnChangeUser />
-                                <ExitIntent />
-                                <ChangePageInteract />
-                                <GooglePrompt />
-                              </Twemoji>
-                            </PushNotificationContextProvider>
+                    <ChatsProvider>
+                      <PaginationProvider Context={usersContext} apiRoute="users">
+                        <PaginationProvider Context={plantsContext} apiRoute="plants">
+                          <PaginationProvider Context={questsContext} apiRoute="quests">
+                            <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                              <PushNotificationContextProvider>
+                                <Twemoji options={{ className: 'twemoji' }}>
+                                  <Header />
+                                  <Component {...pageProps} />
+                                  <PreviewWarn />
+                                  <SnackView />
+                                  <ModalView />
+                                  <ResetOnChangeUser />
+                                  <ExitIntent />
+                                  <ChangePageInteract />
+                                  <GooglePrompt />
+                                </Twemoji>
+                              </PushNotificationContextProvider>
+                            </PaginationProvider>
                           </PaginationProvider>
                         </PaginationProvider>
                       </PaginationProvider>
-                    </PaginationProvider>
+                    </ChatsProvider>
                   </LocationContextProvider>
                 </TextSearchContextProvider>
               </ModalContextProvider>
