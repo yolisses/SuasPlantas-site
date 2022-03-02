@@ -24,18 +24,27 @@ export function ChatPage() {
 
   return (
     <div className="h-screen-no-header flex flex-row overflow-hidden">
-      <div className="w-full max-w-md overflow-y-auto shadow-lg p-2 bg-white">
+      <div className="w-full max-w-md overflow-y-auto shadow p-2 bg-white">
         <div className="mb-2 text-lg">Conversas</div>
         {!!chats && chats.map((item) => <ChatItem chat={item} />)}
       </div>
       <div className="flex flex-col w-full">
-        {!!chat && (
-          <ChatHeader chat={chat} />
+        {chat ? (
+          <>
+            <ChatHeader chat={chat} />
+            <div className="overflow-y-auto flex-1">
+              <div className="flex flex-col-reverse justify-end p-2">
+                {!!messages && messages
+                  .map((item) => <MessageItem message={item} key={item.id} />)}
+              </div>
+            </div>
+            <MessageInput />
+          </>
+        ) : (
+          <div className="flex-1 bg-slate-200 flex items-center justify-center text-slate-600">
+            Selecione ou comece uma conversa
+          </div>
         )}
-        <div className="overflow-y-auto flex-1 flex flex-col p-2">
-          {!!messages && messages.map((item) => <MessageItem message={item} key={item.id} />)}
-        </div>
-        <MessageInput />
       </div>
     </div>
 
