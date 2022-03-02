@@ -3,6 +3,7 @@ import {
 } from 'react';
 import { api } from '../api/api';
 import { Chat } from './Chat';
+import { useUser } from '../auth/userContext';
 
 interface ChatsContext{
   chats?:Chat[]
@@ -17,6 +18,7 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
   const [chat, setChat] = useState<Chat>();
   const [chats, setChats] = useState<Chat[]>();
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
 
   async function getChats() {
     setLoading(true);
@@ -33,7 +35,10 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
 
   useEffect(() => {
     getChats();
-  }, []);
+    if (!user) {
+      setChat(undefined);
+    }
+  }, [user]);
 
   return (
     <chatsContext.Provider value={{
