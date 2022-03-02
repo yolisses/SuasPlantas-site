@@ -8,7 +8,7 @@ interface ChatButtonProps{
   chat:Chat
 }
 
-export function ChatsButton({ chat }:ChatButtonProps) {
+export function ChatItem({ chat }:ChatButtonProps) {
   const { setChat } = useChats();
   const imageSize = 60;
 
@@ -23,11 +23,11 @@ export function ChatsButton({ chat }:ChatButtonProps) {
       className="highlight flex flex-row items-center gap-2 p-2 w-full rounded-md"
     >
       <Image
-        className="rounded-full"
+        src={chat.image}
         objectFit="cover"
-        src={someImage}
         width={imageSize}
         height={imageSize}
+        className="rounded-full"
       />
       <div className="text-left">
         <div>

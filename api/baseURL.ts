@@ -11,7 +11,7 @@ export const baseURL = !isDev ? urls.prod
 // Change here to test in dev
 // ||||||||||||||||||||||
 // vvvvvvvvvvvvvvvvvvvvvv
-  : urls.prod;
+  : urls.dev;
 
 // ^^^^^^^^^^^^^^^^^^^^^^
 // ||||||||||||||||||||||

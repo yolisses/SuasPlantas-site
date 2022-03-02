@@ -3,7 +3,7 @@ import { mockMessages } from './mockMessages';
 export function MessagesList() {
   return (
     <>
-      {mockMessages.map((message) => (
+      {mockMessages.concat(mockMessages).concat(mockMessages).map((message) => (
         <div className={`py-1 px-2  rounded-lg ${
           message.userId === 0
             ? 'bg-green-100 self-end'

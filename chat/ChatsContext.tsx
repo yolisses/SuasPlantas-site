@@ -1,6 +1,7 @@
 import {
   createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
+import { api } from '../api/api';
 import { Chat } from './Chat';
 
 interface ChatsContext{
@@ -20,28 +21,9 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
   async function getChats() {
     setLoading(true);
     try {
-      setChats(
-        [
-          {
-            id: 2,
-            userId: 3,
-            name: 'user 3',
-            image: 'image 3',
-            lastText: '3 -> 1',
-            lastUserId: 3,
-            lastTime: Date.now().toString(),
-          },
-          {
-            id: 1,
-            userId: 2,
-            name: 'user 2',
-            image: 'image 2',
-            lastText: '2 -> 1',
-            lastUserId: 2,
-            lastTime: Date.now().toString(),
-          },
-        ],
-      );
+      const res = await api.get('chat/contacts');
+      console.log(res.data);
+      setChats(res.data);
     } catch (err) {
       console.error(err);
     }
@@ -50,7 +32,7 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
 
   useEffect(() => {
     getChats();
-  });
+  }, []);
 
   return (
     <chatsContext.Provider value={{

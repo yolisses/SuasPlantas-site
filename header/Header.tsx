@@ -7,6 +7,7 @@ import { usePlants } from '../plant/plantsContext';
 import { useQuests } from '../quest/questsContext';
 import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
+import { ChatButton } from './ChatButton';
 
 export function Header() {
   const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
@@ -40,6 +41,7 @@ export function Header() {
         </div>
         <Spacer />
         <MeButton />
+        <ChatButton />
         <NotificationMenuButton />
         <MoreMenuButton />
       </div>
