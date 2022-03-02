@@ -3,7 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import { FaPen } from 'react-icons/fa';
+import { FaPen, FaRegCommentAlt } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -13,12 +13,9 @@ import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
-import { hasContact } from '../utils/hasContact';
 import { ShareButtons } from '../share/ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
-import { WhatsappButton } from '../contact/WhatsappButton';
 import { PlantStructuredData } from './PlantStructuredData';
-import { InstagramButton } from '../contact/InstagramButton';
 import { availabilitiesToString } from './availabilitiesToString';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 
@@ -40,8 +37,6 @@ export function PlantPage({ data }:PlantPageProps) {
     description,
     updatedAt: updatedAtString,
   } = data;
-
-  const selfUser = user.id === currentUser?.id;
 
   const updatedAt = new Date(updatedAtString);
 
@@ -109,28 +104,11 @@ export function PlantPage({ data }:PlantPageProps) {
                 {preview && <PreviewIndicator />}
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
-              <div className="flex flex-row w-full justify-center gap-2 max-w-md">
-                {!!user.whatsappNumber && (
-                <WhatsappButton whatsappNumber={user.whatsappNumber} />
-                )}
-                {!!user.instagramUsername && (
-                <InstagramButton instagramUsername={user.instagramUsername} />
-                )}
-                {!hasContact(user) && (selfUser ? (
-                  <div>
-                    <Link href="/account/edit">
-                      <a className="link">
-                        Adicionar uma forma de contato para poder receber mensagens
-                      </a>
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="text-gray-500 text-sm">
-                    Sem meios de contato
-                  </div>
-                ))}
-              </div>
-              <div>
+              <div className="flex flex-row md:flex-row-reverse md:justify-end gap-2">
+                <button className="main-button">
+                  <FaRegCommentAlt />
+                  Mandar mensagem
+                </button>
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
               </div>
               <div className="flex flex-row justify-start">
