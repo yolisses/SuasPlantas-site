@@ -40,7 +40,7 @@ export function ChatPage() {
 
   return (
     <div className="h-screen-no-header flex flex-row overflow-hidden">
-      <div className="w-full max-w-md overflow-y-auto shadow p-2 bg-white">
+      <div className="hidden sm:inline-block w-full max-w-md overflow-y-auto shadow p-2 bg-white">
         <div className="mb-2 text-lg">Conversas</div>
         {!!chats && chats.map((item) => <ChatItem chat={item} />)}
       </div>
