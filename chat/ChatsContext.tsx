@@ -22,8 +22,9 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
     setLoading(true);
     try {
       const res = await api.get('chat/contacts');
-      console.log(res.data);
-      setChats(res.data);
+      const chats = res.data;
+      setChats(chats);
+      if (!chat)setChat(chats[0]);
     } catch (err) {
       console.error(err);
     }
