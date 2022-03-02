@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
-import { someImage } from '../mock/someImage';
 
 interface ChatButtonProps{
   chat:Chat
@@ -29,11 +28,11 @@ export function ChatItem({ chat }:ChatButtonProps) {
         height={imageSize}
         className="rounded-full"
       />
-      <div className="text-left">
-        <div>
+      <div className="text-left overflow-hidden flex-1">
+        <div className="overflow-hidden truncate">
           { chat.name}
         </div>
-        <div className="text-gray-500">
+        <div className="text-gray-500 overflow-hidden truncate">
           { chat.lastText}
         </div>
       </div>
