@@ -1,20 +1,20 @@
 import Image from 'next/image';
-import { mockContacts } from './mockContacts';
+import { Chat } from './Chat';
+import { someImage } from '../mock/someImage';
 
-export function ChatHeader() {
+export function ChatHeader({ chat }:{chat:Chat}) {
   const imageSize = 40;
-  const contact = mockContacts[0];
   return (
     <div className="flex flex-row p-2 gap-2 shadow items-center">
       <Image
         className="rounded-full"
         objectFit="cover"
-        src={contact.image}
+        src={someImage}
         width={imageSize}
         height={imageSize}
       />
       <div>
-        {contact.name}
+        {chat.name}
       </div>
     </div>
   );

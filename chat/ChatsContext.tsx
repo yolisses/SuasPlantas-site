@@ -1,26 +1,20 @@
 import {
-  createContext, ReactNode, useContext, useEffect, useState,
+  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
-
-interface Chat{
-  id: number,
-  userId: number,
-  name: string,
-  image: string,
-  lastText: string|null,
-  lastUserId: number,
-  lastTime:string,
-}
+import { Chat } from './Chat';
 
 interface ChatsContext{
   chats?:Chat[]
+  chat?:Chat
   loading:boolean
+  setChat: Dispatch<SetStateAction<Chat>>
 }
 
 export const chatsContext = createContext({} as ChatsContext);
 
 export function ChatsProvider({ children }:{children:ReactNode}) {
   const [chats, setChats] = useState<Chat[]>();
+  const [chat, setChat] = useState<Chat>();
   const [loading, setLoading] = useState(false);
 
   async function getChats() {
@@ -59,7 +53,10 @@ export function ChatsProvider({ children }:{children:ReactNode}) {
   });
 
   return (
-    <chatsContext.Provider value={{ chats, loading }}>
+    <chatsContext.Provider value={{
+      chat, chats, loading, setChat,
+    }}
+    >
       {children}
     </chatsContext.Provider>
   );
