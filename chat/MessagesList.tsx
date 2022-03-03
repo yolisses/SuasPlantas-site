@@ -14,7 +14,7 @@ export function MessagesList({ messages }:MessagesListProps) {
       const element = ref.current as Element;
       element.scrollTo(0, element.scrollHeight);
     }
-  }, [messages]);
+  }, [messages.length]);
 
   return (
     <div
