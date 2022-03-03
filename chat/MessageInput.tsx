@@ -1,26 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 
+import { Chat } from './Chat';
+import { useChats } from './ChatsContext';
+import { useUser } from '../auth/userContext';
+
 interface MessageInputProps{
-  userId:number
+  chat:Chat
 }
 
-export function MessageInput({ userId }:MessageInputProps) {
-  const [text, setText] = useState<string>();
+export function MessageInput({ chat }:MessageInputProps) {
+  const [text, setText] = useState<string>(chat.input);
+  const { user } = useUser();
+  const { userId } = chat;
 
-  function submit() {
+  const { addMessageOnChat } = useChats();
 
+  function sendMessage(text:string) {
+    addMessageOnChat(userId, {
+      text,
+      id: Math.random(),
+      receiverId: userId,
+      senderId: user!.id,
+      createdAt: Date.now().toString(),
+    });
   }
+
+  function handleSubmit(e:FormEvent) {
+    e.preventDefault();
+    if (text.trim()) {
+      chat.input = '';
+      sendMessage(text);
+      setText('');
+    }
+  }
+
+  useEffect(() => { setText(chat.input); }, [chat]);
+
+  useEffect(() => {
+    chat.input = text;
+  }, [text]);
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (text) {
-          submit();
-          setText(undefined);
-        }
-      }}
+      onSubmit={handleSubmit}
       className="bg-gray-100 w-full p-3 flex flex-row gap-2"
     >
       <input

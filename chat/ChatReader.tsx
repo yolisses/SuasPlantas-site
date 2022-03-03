@@ -15,7 +15,7 @@ export function ChatReader({ chat }:ChatReaderProps) {
       <div className="flex flex-1 flex-col overflow-hidden">
         {!!messages && <MessagesList messages={messages} />}
       </div>
-      <MessageInput userId={chat.userId} />
+      <MessageInput chat={chat} />
     </>
   );
 }
