@@ -18,6 +18,7 @@ import { devIndicator } from '../utils/devIndicator';
 import { PlantStructuredData } from './PlantStructuredData';
 import { availabilitiesToString } from './availabilitiesToString';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
+import { MessageButton } from './MessageButton';
 
 interface PlantPageProps{
   data:Plant
@@ -105,10 +106,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row md:flex-row-reverse md:justify-end gap-2">
-                <button className="main-button">
-                  <FaRegCommentAlt />
-                  Mandar mensagem
-                </button>
+                <MessageButton userId={user.id as number} />
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
               </div>
               <div className="flex flex-row justify-start">
