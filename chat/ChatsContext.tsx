@@ -12,7 +12,7 @@ interface ChatsContext{
   chats:ChatsGroup
   currentChat?:Chat
   setCurrentChat:Dispatch<SetStateAction<Chat|undefined>>
-  addChat:(chat:Chat)=>void
+  addChat:(chat:Chat)=>Chat
 }
 
 export const chatsContext = createContext({} as ChatsContext);
@@ -25,6 +25,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   function addChat(chat:Chat) {
     chats[chat.userId] = chat;
     refresh();
+    return chat;
   }
 
   return (

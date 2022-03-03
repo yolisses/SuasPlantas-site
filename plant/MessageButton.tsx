@@ -1,17 +1,24 @@
 import Link from 'next/link';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { useChats } from '../chat/ChatsContext';
+import { User } from '../user/User';
 
 interface MessageButtonProps{
-    userId:number
+    user:User
 }
 
-export function MessageButton({ userId }:MessageButtonProps) {
-  const { chats, setCurrentChat } = useChats();
+export function MessageButton({ user }:MessageButtonProps) {
+  const { chats, setCurrentChat, addChat } = useChats();
 
   function handleClick() {
-    const chat = chats[userId];
-    if (chat) setCurrentChat(chat);
+    let chat = chats[user.id];
+    if (!chat) {
+      const { name, id, image } = user;
+      chat = addChat({
+        userId: id, name, image, messages: [],
+      });
+    }
+    setCurrentChat(chat);
   }
 
   return (
