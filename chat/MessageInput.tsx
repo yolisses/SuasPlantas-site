@@ -2,18 +2,22 @@ import { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 
 interface MessageInputProps{
-  onSubmit:(text:string)=>void
+  userId:number
 }
 
-export function MessageInput({ onSubmit }:MessageInputProps) {
+export function MessageInput({ userId }:MessageInputProps) {
   const [text, setText] = useState<string>();
+
+  function submit() {
+
+  }
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         if (text) {
-          onSubmit(text);
+          submit();
           setText(undefined);
         }
       }}

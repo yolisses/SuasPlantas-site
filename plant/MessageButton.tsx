@@ -3,18 +3,15 @@ import { FaRegCommentAlt } from 'react-icons/fa';
 import { useChats } from '../chat/ChatsContext';
 
 interface MessageButtonProps{
-    userId?:number
+    userId:number
 }
 
 export function MessageButton({ userId }:MessageButtonProps) {
-  const { setChat, chats } = useChats();
+  const { chats, setCurrentChat } = useChats();
 
   function handleClick() {
-    const chat = chats?.filter((chat) => {
-      if (userId && chat.userId === userId) return true;
-      return false;
-    });
-    if (chat) setChat(chat[0]);
+    const chat = chats[userId];
+    if (chat) setCurrentChat(chat);
   }
 
   return (

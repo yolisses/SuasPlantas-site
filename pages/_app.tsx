@@ -34,7 +34,7 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { ChatsProvider } from '../chat/ChatsContext';
+import { ChatsContextProvider } from '../chat/ChatsContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -69,7 +69,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               <ModalContextProvider>
                 <TextSearchContextProvider>
                   <LocationContextProvider>
-                    <ChatsProvider>
+                    <ChatsContextProvider>
                       <PaginationProvider Context={usersContext} apiRoute="users">
                         <PaginationProvider Context={plantsContext} apiRoute="plants">
                           <PaginationProvider Context={questsContext} apiRoute="quests">
@@ -91,7 +91,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                           </PaginationProvider>
                         </PaginationProvider>
                       </PaginationProvider>
-                    </ChatsProvider>
+                    </ChatsContextProvider>
                   </LocationContextProvider>
                 </TextSearchContextProvider>
               </ModalContextProvider>

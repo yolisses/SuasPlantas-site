@@ -1,49 +1,35 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
+  createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
 } from 'react';
-import { api } from '../api/api';
+import { useRefresh } from '../utils/useRefresh';
 import { Chat } from './Chat';
-import { useUser } from '../auth/userContext';
+
+interface ChatsGroup{
+  [key:string]:Chat
+}
 
 interface ChatsContext{
-  chats?:Chat[]
-  chat?:Chat
-  loading:boolean
-  setChat: Dispatch<SetStateAction<Chat|undefined>>
+  chats:ChatsGroup
+  currentChat?:Chat
+  setCurrentChat:Dispatch<SetStateAction<Chat|undefined>>
+  addChat:(chat:Chat)=>void
 }
 
 export const chatsContext = createContext({} as ChatsContext);
 
-export function ChatsProvider({ children }:{children:ReactNode}) {
-  const [chat, setChat] = useState<Chat>();
-  const [chats, setChats] = useState<Chat[]>();
-  const [loading, setLoading] = useState(false);
-  const { user } = useUser();
+export function ChatsContextProvider({ children }:{children:ReactNode}) {
+  const [chats, setChats] = useState({} as ChatsGroup);
+  const [currentChat, setCurrentChat] = useState<Chat>();
+  const refresh = useRefresh();
 
-  async function getChats() {
-    setLoading(true);
-    try {
-      const res = await api.get('chat/contacts');
-      const chats = res.data;
-      setChats(chats);
-      if (!chat)setChat(chats[0]);
-    } catch (err:any) {
-      console.error(err);
-    }
-    setLoading(false);
+  function addChat(chat:Chat) {
+    chats[chat.userId] = chat;
+    refresh();
   }
-
-  useEffect(() => {
-    getChats();
-    if (!user) {
-      setChats(undefined);
-      setChat(undefined);
-    }
-  }, [user]);
 
   return (
     <chatsContext.Provider value={{
-      chat, chats, loading, setChat,
+      chats, addChat, currentChat, setCurrentChat,
     }}
     >
       {children}

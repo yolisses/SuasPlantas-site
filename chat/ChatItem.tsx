@@ -8,11 +8,12 @@ interface ChatButtonProps{
 }
 
 export function ChatItem({ chat }:ChatButtonProps) {
-  const { setChat } = useChats();
   const imageSize = 60;
 
+  const { setCurrentChat } = useChats();
+
   function handleClick() {
-    setChat(chat);
+    setCurrentChat(chat);
   }
 
   return (
