@@ -24,7 +24,7 @@ export function ChatPage() {
       receiverId: chat!.userId,
       createdAt: Date.now().toString(),
     }, ...(old || [])]);
-    await api.post('chat', { text, receiverId: chat!.userId });
+    await api.post('chat', { text, userId: chat!.userId });
   }
 
   async function getMessages(chatId:number) {
