@@ -10,16 +10,15 @@ export function MessagesList({ messages }:MessagesListProps) {
   const ref = useRef();
 
   useEffect(() => {
-    const element = ref.current as Element;
-    if (element) {
-      console.log(element);
+    if (ref.current) {
+      const element = ref.current as Element;
       element.scrollTo(0, element.scrollHeight);
     }
   }, [messages]);
 
   return (
     <div
-      ref={ref}
+      ref={ref as any}
       className="overflow-y-auto flex-1"
     >
       <div

@@ -9,7 +9,7 @@ interface ChatsContext{
   chats?:Chat[]
   chat?:Chat
   loading:boolean
-  setChat: Dispatch<SetStateAction<Chat>>
+  setChat: Dispatch<SetStateAction<Chat|undefined>>
 }
 
 export const chatsContext = createContext({} as ChatsContext);

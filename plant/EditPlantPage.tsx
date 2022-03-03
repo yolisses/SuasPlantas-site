@@ -105,14 +105,11 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           control={control}
           render={({
             field: { onChange, onBlur, value },
-            fieldState: { error },
           }) => (
             <ImagesInput
-              error={!!error}
               onBlur={onBlur}
               onChange={onChange}
               customRef={customRef}
-              helperText={error?.message}
               initialSendings={value as SendingsCollection}
             />
           )}

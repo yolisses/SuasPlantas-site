@@ -1,9 +1,10 @@
-export interface Chat{
-    id: number,
-    userId: number,
-    name: string,
-    image: string,
-    lastText: string|null,
-    lastUserId: number,
-    lastTime:string,
-  }
+export interface Chat
+{
+  text: string
+  name: string
+  image: string
+  userId: number
+  lastTime:string
+  senderId: number
+  receiverId: number
+}

@@ -1,18 +1,16 @@
-import { FaRegCommentAlt } from 'react-icons/fa';
 import Link from 'next/link';
+import { FaRegCommentAlt } from 'react-icons/fa';
 import { useChats } from '../chat/ChatsContext';
 
 interface MessageButtonProps{
-    chatId?:number
     userId?:number
 }
 
-export function MessageButton({ chatId, userId }:MessageButtonProps) {
+export function MessageButton({ userId }:MessageButtonProps) {
   const { setChat, chats } = useChats();
 
   function handleClick() {
     const chat = chats?.filter((chat) => {
-      if (chatId && chat.id === chatId) return true;
       if (userId && chat.userId === userId) return true;
       return false;
     });

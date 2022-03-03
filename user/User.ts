@@ -4,7 +4,7 @@ import { Plant } from '../plant/Plant';
 export type UserId = number;
 
 export interface User {
-    id: UserId|'preview';
+    id: UserId;
     name: string;
     email: string;
     image: string;

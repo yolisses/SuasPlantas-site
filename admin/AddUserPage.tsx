@@ -58,10 +58,8 @@ export function AddUserPage() {
             fieldState: { error },
           }) => (
             <ImagesInput
-              error={!!error}
               onBlur={onBlur}
               onChange={onChange}
-              helperText={error?.message}
               initialSendings={value as SendingsCollection}
             />
           )}

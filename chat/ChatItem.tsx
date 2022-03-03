@@ -33,7 +33,7 @@ export function ChatItem({ chat }:ChatButtonProps) {
           { chat.name}
         </div>
         <div className="text-gray-500 overflow-hidden truncate">
-          { chat.lastText}
+          { chat.text}
         </div>
       </div>
     </button>

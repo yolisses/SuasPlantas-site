@@ -19,12 +19,12 @@ export function ChatPage() {
   async function sendMessage(text:string) {
     setMessages((old) => [{
       text,
-      chatId: chat!.id,
       id: Math.random(),
       senderId: user!.id,
+      receiverId: chat!.userId,
       createdAt: Date.now().toString(),
-    }, ...old]);
-    await api.post('chat', { text, chatId: chat.id });
+    }, ...(old || [])]);
+    await api.post('chat', { text, receiverId: chat!.userId });
   }
 
   async function getMessages(chatId:number) {
@@ -34,7 +34,7 @@ export function ChatPage() {
 
   useEffect(() => {
     if (chat) {
-      getMessages(chat.id);
+      getMessages(chat.userId);
     }
   }, [chat]);
 

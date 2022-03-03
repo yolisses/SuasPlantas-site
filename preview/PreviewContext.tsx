@@ -21,7 +21,7 @@ export function PreviewProvider({ children }:{children:ReactNode}) {
   const [code, setCode] = useState<string>();
   if (user) {
     user.preview = true;
-    user.id = 'preview';
+    user.id = 666666666;
     user.plants.forEach((plant) => {
       plant.preview = true;
     });
