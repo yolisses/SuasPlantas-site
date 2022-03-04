@@ -1,6 +1,8 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
+  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
+import { api } from '../api/api';
+import { useUser } from '../auth/userContext';
 import { UserId } from '../user/User';
 import { useRefresh } from '../utils/useRefresh';
 import { Chat } from './Chat';
@@ -24,6 +26,38 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   const [chats, setChats] = useState({} as ChatsGroup);
   const [currentChat, setCurrentChat] = useState<Chat>();
   const refresh = useRefresh();
+  const { user } = useUser();
+
+  async function getChats() {
+    const res = await api.get('chat/contacts');
+    res.data.forEach((contact:any) => {
+      const {
+        userId, image, name, text, senderId, receiverId, lastTime,
+      } = contact;
+      if (!chats[userId]) {
+        chats[userId] = {
+          name,
+          image,
+          userId,
+          input: '',
+          messages: [],
+          lastMessage: {
+            text,
+            senderId,
+            id: 10000,
+            receiverId,
+            createdAt: lastTime,
+          },
+        };
+      }
+    });
+    if (!currentChat) {
+      const firstChat = Object.values(chats)[0];
+      console.log(currentChat);
+      setCurrentChat(firstChat);
+    }
+    refresh();
+  }
 
   function addChat(chat:Chat) {
     chats[chat.userId] = chat;
@@ -37,6 +71,14 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
     chat.lastMessage = message;
     refresh();
   }
+
+  useEffect(() => {
+    if (user) {
+      getChats();
+    } else {
+      setChats({});
+    }
+  }, [user]);
 
   return (
     <chatsContext.Provider value={{
