@@ -7,4 +7,6 @@ export interface Chat {
     userId: number
     messages:Message[]
     lastMessage?:Message
+    pendingMessages:Message[]
+    lastPendingMessage?:Message
 }

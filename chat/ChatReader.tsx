@@ -8,12 +8,12 @@ interface ChatReaderProps{
 }
 
 export function ChatReader({ chat }:ChatReaderProps) {
-  const { messages } = chat;
+  const { messages, pendingMessages } = chat;
   return (
     <>
       <ChatHeader chat={chat} />
       <div className="flex flex-1 flex-col overflow-hidden">
-        {!!messages && <MessagesList messages={messages} />}
+        <MessagesList messages={messages.concat(pendingMessages)} />
       </div>
       <MessageInput chat={chat} />
     </>

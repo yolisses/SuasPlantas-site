@@ -41,6 +41,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
           userId,
           input: '',
           messages: [],
+          pendingMessages: [],
           lastMessage: {
             text,
             senderId,
@@ -67,8 +68,8 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
 
   function addMessageOnChat(userId:UserId, message:Message) {
     const chat = chats[userId];
-    chat.messages.unshift(message);
-    chat.lastMessage = message;
+    chat.pendingMessages.unshift(message);
+    chat.lastPendingMessage = message;
     refresh();
   }
 

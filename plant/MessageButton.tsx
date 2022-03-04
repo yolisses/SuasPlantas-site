@@ -15,7 +15,7 @@ export function MessageButton({ user }:MessageButtonProps) {
     if (!chat) {
       const { name, id, image } = user;
       chat = addChat({
-        userId: id, name, image, messages: [], input: '',
+        userId: id, name, image, messages: [], pendingMessages: [], input: '',
       });
     }
     setCurrentChat(chat);

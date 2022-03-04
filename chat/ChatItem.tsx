@@ -35,9 +35,15 @@ export function ChatItem({ chat }:ChatButtonProps) {
           { chat.name}
         </div>
         <div className="text-gray-500 overflow-hidden truncate">
-          {!!chat.input && <span className="text-white bg-gray-500 rounded-lg p-1">falta enviar</span> }
-          {' '}
-          {chat.lastMessage?.text}
+          {chat.input
+            ? (
+              <>
+                <span className="text-white bg-gray-400 rounded-lg p-1">falta enviar</span>
+                {' '}
+                {chat.input}
+              </>
+            )
+            : chat.lastPendingMessage?.text || chat.lastMessage?.text}
         </div>
       </div>
     </button>
