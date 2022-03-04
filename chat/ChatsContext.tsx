@@ -17,6 +17,7 @@ interface ChatsContext{
   currentChat?:Chat
   setCurrentChat:Dispatch<SetStateAction<Chat|undefined>>
   addChat:(chat:Chat)=>Chat
+  getMessages:(chat:Chat)=>void
   addMessageOnChat:(userId:UserId, message:Message)=>void
 }
 
@@ -66,6 +67,13 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
     return chat;
   }
 
+  async function getMessages(chat:Chat) {
+    if (chat.messages.length) return;
+    const res = await api.get(`chat/${chat.userId}`);
+    chat.messages = res.data.content;
+    refresh();
+  }
+
   function addMessageOnChat(userId:UserId, message:Message) {
     const chat = chats[userId];
     chat.pendingMessages.unshift(message);
@@ -83,7 +91,12 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
 
   return (
     <chatsContext.Provider value={{
-      chats, addChat, currentChat, setCurrentChat, addMessageOnChat,
+      chats,
+      addChat,
+      getMessages,
+      currentChat,
+      setCurrentChat,
+      addMessageOnChat,
     }}
     >
       {children}

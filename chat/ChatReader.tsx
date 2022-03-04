@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Chat } from './Chat';
 import { ChatHeader } from './ChatHeader';
+import { useChats } from './ChatsContext';
 import { MessageInput } from './MessageInput';
 import { MessagesList } from './MessagesList';
 
@@ -9,11 +11,16 @@ interface ChatReaderProps{
 
 export function ChatReader({ chat }:ChatReaderProps) {
   const { messages, pendingMessages } = chat;
+  const { getMessages } = useChats();
+
+  useEffect(() => {
+    getMessages(chat);
+  }, []);
   return (
     <>
       <ChatHeader chat={chat} />
       <div className="flex flex-1 flex-col overflow-hidden">
-        <MessagesList messages={messages.concat(pendingMessages)} />
+        <MessagesList messages={pendingMessages.concat(messages)} />
       </div>
       <MessageInput chat={chat} />
     </>
