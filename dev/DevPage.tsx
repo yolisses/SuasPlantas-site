@@ -1,23 +1,34 @@
-import { generateArray } from './utils/generateArray';
+import { useEffect, useState } from 'react';
+import Client from 'socket.io-client';
 
-const items = generateArray(100);
+function getClient() {
+  const socket = Client('ws://localhost:3001');
+  socket.on('receive_message', (value) => {
+    console.log(value);
+  });
+  return socket;
+}
+
 export function DevPage() {
+  const [socket] = useState(() => getClient());
+  const [ping, setPing] = useState('ainda não');
+
+  function handleClick() {
+    socket.emit('ping');
+  }
+
+  useEffect(() => () => {
+    socket.disconnect();
+    socket.close();
+  }, []);
+
   return (
-    <div className="bg-red-100 p-2 gap-2 h-screen-no-header flex flex-row overflow-hidden">
-      <div className="bg-green-100 p-2 w-full max-w-md overflow-y-auto">
-        {items.map((value) => <div>{value}</div>)}
-      </div>
-      <div className="flex flex-col gap-2 w-full">
-        <div className="bg-emerald-100 p-3">
-          header
-        </div>
-        <div className="bg-blue-100 flex-1 overflow-y-auto">
-          {items.map((value) => <div>{value}</div>)}
-        </div>
-        <div className="bg-emerald-100 p-3">
-          header
-        </div>
-      </div>
+    <div>
+      <div>coisa</div>
+      <div>{ping}</div>
+      <button className="main-button" onClick={handleClick}>
+        enviar
+      </button>
     </div>
   );
 }

@@ -35,6 +35,7 @@ import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
+import { SocketContextProvider } from '../socket/SocketContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -65,6 +66,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <TourContextProvider>
         <PreviewProvider>
           <UserContextProvider>
+            {/* <SocketContextProvider> */}
             <SnackContextProvider>
               <ModalContextProvider>
                 <TextSearchContextProvider>
@@ -96,6 +98,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </TextSearchContextProvider>
               </ModalContextProvider>
             </SnackContextProvider>
+            {/* </SocketContextProvider> */}
           </UserContextProvider>
         </PreviewProvider>
       </TourContextProvider>

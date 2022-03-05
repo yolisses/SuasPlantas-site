@@ -1,12 +1,12 @@
 import {
   createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
-import { api } from '../api/api';
-import { useUser } from '../auth/userContext';
-import { UserId } from '../user/User';
-import { useRefresh } from '../utils/useRefresh';
 import { Chat } from './Chat';
+import { api } from '../api/api';
 import { Message } from './Message';
+import { UserId } from '../user/User';
+import { useUser } from '../auth/userContext';
+import { useRefresh } from '../utils/useRefresh';
 
 interface ChatsGroup{
   [key:string]:Chat
