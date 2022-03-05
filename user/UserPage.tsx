@@ -20,7 +20,7 @@ import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { usePreview } from '../preview/PreviewContext';
-import { MessageButton } from '../plant/MessageButton';
+import { MessageButton } from '../chat/MessageButton';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
 

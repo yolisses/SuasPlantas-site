@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaRegCommentAlt } from 'react-icons/fa';
-import { useChats } from '../chat/ChatsContext';
+import { useChats } from './ChatsContext';
 import { User } from '../user/User';
 
 interface MessageButtonProps{

@@ -18,7 +18,7 @@ import { devIndicator } from '../utils/devIndicator';
 import { PlantStructuredData } from './PlantStructuredData';
 import { availabilitiesToString } from './availabilitiesToString';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
-import { MessageButton } from './MessageButton';
+import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from './ContactsIndicator';
 
 interface PlantPageProps{
