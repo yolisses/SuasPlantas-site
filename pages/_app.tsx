@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import '../styles/globals.css';
 
 import Head from 'next/head';
-// @ts-ignore
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
 
@@ -23,10 +22,13 @@ import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
+import { SizeContextProvider } from '../size/SizeContext';
+import { ChatsContextProvider } from '../chat/ChatsContext';
 import { PreviewProvider } from '../preview/PreviewContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
+import { SocketContextProvider } from '../socket/SocketContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
@@ -34,8 +36,6 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { ChatsContextProvider } from '../chat/ChatsContext';
-import { SocketContextProvider } from '../socket/SocketContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -77,17 +77,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                             <PaginationProvider Context={questsContext} apiRoute="quests">
                               <PaginationProvider Context={notificationsContext} apiRoute="notifications">
                                 <PushNotificationContextProvider>
-                                  <Twemoji options={{ className: 'twemoji' }}>
-                                    <Header />
-                                    <Component {...pageProps} />
-                                    <PreviewWarn />
-                                    <SnackView />
-                                    <ModalView />
-                                    <ResetOnChangeUser />
-                                    <ExitIntent />
-                                    <ChangePageInteract />
-                                    <GooglePrompt />
-                                  </Twemoji>
+                                  <SizeContextProvider>
+                                    <Twemoji options={{ className: 'twemoji' }}>
+                                      <Header />
+                                      <Component {...pageProps} />
+                                      <PreviewWarn />
+                                      <SnackView />
+                                      <ModalView />
+                                      <ResetOnChangeUser />
+                                      <ExitIntent />
+                                      <ChangePageInteract />
+                                      <GooglePrompt />
+                                    </Twemoji>
+                                  </SizeContextProvider>
                                 </PushNotificationContextProvider>
                               </PaginationProvider>
                             </PaginationProvider>

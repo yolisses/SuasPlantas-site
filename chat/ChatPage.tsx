@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useSize } from '../size/SizeContext';
 import { Chat } from './Chat';
 import { ChatItem } from './ChatItem';
 import { ChatReader } from './ChatReader';
@@ -9,9 +10,13 @@ export function ChatPage() {
   const { id } = useRouter().query;
   const chat = chats[id as string];
 
+  const { lg } = useSize();
+
   return (
+
     <div className="h-screen-no-header flex flex-row overflow-hidden">
-      <div className="hidden lg:inline-block w-full max-w-md overflow-y-auto shadow p-2 bg-white">
+      {lg && (
+      <div className="w-full max-w-md overflow-y-auto shadow p-2 bg-white">
         <div className="mb-2 text-lg">Conversas</div>
         {chats ? Object
           .values(chats)
@@ -22,6 +27,7 @@ export function ChatPage() {
             </div>
           )}
       </div>
+      )}
       <div className="flex flex-col w-full">
         {chat ? (<ChatReader chat={chat} />) : (
           <div className="flex-1 flex items-center justify-center text-slate-600">
