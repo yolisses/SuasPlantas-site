@@ -7,6 +7,7 @@ import { Message } from './Message';
 import { UserId } from '../user/User';
 import { useUser } from '../auth/userContext';
 import { useRefresh } from '../utils/useRefresh';
+import { useSocket } from '../socket/SocketContext';
 
 interface ChatsGroup{
   [key:string]:Chat
@@ -24,7 +25,7 @@ interface ChatsContext{
 export const chatsContext = createContext({} as ChatsContext);
 
 export function ChatsContextProvider({ children }:{children:ReactNode}) {
-  const [chats, setChats] = useState({} as ChatsGroup);
+  const [chats] = useState({} as ChatsGroup);
   const [currentChat, setCurrentChat] = useState<Chat>();
   const refresh = useRefresh();
   const { user } = useUser();
@@ -76,18 +77,37 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
 
   function addMessageOnChat(userId:UserId, message:Message) {
     const chat = chats[userId];
-    chat.pendingMessages.unshift(message);
-    chat.lastPendingMessage = message;
-    refresh();
+    if (!chat) {
+      getChats();
+    } else {
+      chat.pendingMessages.unshift(message);
+      chat.lastPendingMessage = message;
+      refresh();
+    }
+  }
+
+  function reset() {
+    for (key in chats) {
+      delete chats[key];
+    }
   }
 
   useEffect(() => {
     if (user) {
       getChats();
     } else {
-      setChats({});
+      reset();
     }
   }, [user]);
+
+  const { socket } = useSocket();
+
+  useEffect(() => {
+    socket.on('receive_message', (message:Message) => {
+      console.log(message);
+      addMessageOnChat(message.senderId, message);
+    });
+  }, []);
 
   return (
     <chatsContext.Provider value={{

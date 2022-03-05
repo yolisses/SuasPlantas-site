@@ -38,7 +38,7 @@ animation: rollout 0.2s;
   }
 
   .main-button{
-    @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-lg shadow-lg
+    @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 center rounded-lg shadow-lg
   }
 
   .secondary-button{

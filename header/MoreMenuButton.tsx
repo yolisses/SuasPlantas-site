@@ -67,14 +67,14 @@ export function MoreMenuButton() {
               </a>
             </Link>
             {user ? (
-              <button className="menu-button" onClick={() => { logOut(); setMenu(null); }}>
+              <button className="menu-button text-red-900" onClick={() => { logOut(); setMenu(null); }}>
                 <RiLogoutBoxRLine size={20} color="gray" />
                 {' '}
                 Sair
               </button>
             ) : (
               <button className="menu-button" onClick={() => { isLogged(); setMenu(null); }}>
-                <RiLoginBoxLine size={20} color="gray" onClick={isLogged} />
+                <RiLoginBoxLine size={20} onClick={isLogged} />
                 {' '}
                 Entrar
               </button>

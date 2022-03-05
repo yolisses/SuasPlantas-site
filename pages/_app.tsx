@@ -66,39 +66,39 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <TourContextProvider>
         <PreviewProvider>
           <UserContextProvider>
-            {/* <SocketContextProvider> */}
-            <SnackContextProvider>
-              <ModalContextProvider>
-                <TextSearchContextProvider>
-                  <LocationContextProvider>
-                    <ChatsContextProvider>
-                      <PaginationProvider Context={usersContext} apiRoute="users">
-                        <PaginationProvider Context={plantsContext} apiRoute="plants">
-                          <PaginationProvider Context={questsContext} apiRoute="quests">
-                            <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                              <PushNotificationContextProvider>
-                                <Twemoji options={{ className: 'twemoji' }}>
-                                  <Header />
-                                  <Component {...pageProps} />
-                                  <PreviewWarn />
-                                  <SnackView />
-                                  <ModalView />
-                                  <ResetOnChangeUser />
-                                  <ExitIntent />
-                                  <ChangePageInteract />
-                                  <GooglePrompt />
-                                </Twemoji>
-                              </PushNotificationContextProvider>
+            <SocketContextProvider>
+              <SnackContextProvider>
+                <ModalContextProvider>
+                  <TextSearchContextProvider>
+                    <LocationContextProvider>
+                      <ChatsContextProvider>
+                        <PaginationProvider Context={usersContext} apiRoute="users">
+                          <PaginationProvider Context={plantsContext} apiRoute="plants">
+                            <PaginationProvider Context={questsContext} apiRoute="quests">
+                              <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                                <PushNotificationContextProvider>
+                                  <Twemoji options={{ className: 'twemoji' }}>
+                                    <Header />
+                                    <Component {...pageProps} />
+                                    <PreviewWarn />
+                                    <SnackView />
+                                    <ModalView />
+                                    <ResetOnChangeUser />
+                                    <ExitIntent />
+                                    <ChangePageInteract />
+                                    <GooglePrompt />
+                                  </Twemoji>
+                                </PushNotificationContextProvider>
+                              </PaginationProvider>
                             </PaginationProvider>
                           </PaginationProvider>
                         </PaginationProvider>
-                      </PaginationProvider>
-                    </ChatsContextProvider>
-                  </LocationContextProvider>
-                </TextSearchContextProvider>
-              </ModalContextProvider>
-            </SnackContextProvider>
-            {/* </SocketContextProvider> */}
+                      </ChatsContextProvider>
+                    </LocationContextProvider>
+                  </TextSearchContextProvider>
+                </ModalContextProvider>
+              </SnackContextProvider>
+            </SocketContextProvider>
           </UserContextProvider>
         </PreviewProvider>
       </TourContextProvider>

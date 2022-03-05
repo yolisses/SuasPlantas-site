@@ -15,7 +15,8 @@ export function ChatReader({ chat }:ChatReaderProps) {
 
   useEffect(() => {
     getMessages(chat);
-  }, []);
+  }, [chat]);
+
   return (
     <>
       <ChatHeader chat={chat} />

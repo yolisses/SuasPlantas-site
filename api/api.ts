@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { parseCookies } from 'nookies';
 import { baseURL } from './baseURL';
+import { getAuthToken } from './getAuthToken';
 
 export const api = axios.create({
   baseURL,
 });
 
-const { 'suasplantas.token': token } = parseCookies();
-
+const token = getAuthToken();
 if (token) {
   api.defaults.headers.common.Authorization = token;
 }
