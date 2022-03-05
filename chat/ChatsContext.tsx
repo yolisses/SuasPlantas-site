@@ -87,7 +87,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   }
 
   function reset() {
-    for (key in chats) {
+    for (const key in chats) {
       delete chats[key];
     }
   }
