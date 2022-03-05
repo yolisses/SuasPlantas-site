@@ -90,6 +90,8 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
     for (const key in chats) {
       delete chats[key];
     }
+    setCurrentChat(undefined);
+    refresh();
   }
 
   useEffect(() => {
