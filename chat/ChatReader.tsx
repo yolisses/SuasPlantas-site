@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Chat } from './Chat';
-import { ChatHeader } from './ChatHeader';
 import { useChats } from './ChatsContext';
+import { ChatHeader } from './ChatHeader';
+import { useUser } from '../auth/userContext';
 import { MessageInput } from './MessageInput';
 import { MessagesList } from './MessagesList';
 
@@ -12,9 +13,12 @@ interface ChatReaderProps{
 export function ChatReader({ chat }:ChatReaderProps) {
   const { messages, pendingMessages } = chat;
   const { getMessages } = useChats();
+  const { user } = useUser();
 
   useEffect(() => {
-    getMessages(chat);
+    if (user) {
+      getMessages(chat);
+    }
   }, [chat]);
 
   return (

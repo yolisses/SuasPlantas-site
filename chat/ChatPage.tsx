@@ -6,11 +6,12 @@ import { ChatReader } from './ChatReader';
 import { useChats } from './ChatsContext';
 
 export function ChatPage() {
+  const { lg } = useSize();
   const { chats } = useChats();
   const { id } = useRouter().query;
-  const chat = chats[id as string];
 
-  const { lg } = useSize();
+  const chat = chats[id as string];
+  const values = Object.values(chats);
 
   return (
 
@@ -18,11 +19,10 @@ export function ChatPage() {
       {lg && (
       <div className="w-full max-w-md overflow-y-auto shadow p-2 bg-white">
         <div className="mb-2 text-lg">Conversas</div>
-        {chats ? Object
-          .values(chats)
-          .map((item:Chat) => <ChatItem chat={item} />)
+        {values.length
+          ? values.map((item:Chat) => <ChatItem chat={item} />)
           : (
-            <div className="flex-1 flex items-center justify-center text-slate-600">
+            <div className="pt-6 flex-1 flex items-center justify-center text-slate-600">
               Sem conversas por enquanto
             </div>
           )}

@@ -106,7 +106,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row md:flex-row-reverse md:justify-end gap-2">
-                {selfUser && <MessageButton user={user} />}
+                {!selfUser && <MessageButton user={user} />}
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
               </div>
               <div className="flex flex-row justify-start">
