@@ -4,8 +4,8 @@ import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { usePreview } from '../preview/PreviewContext';
+import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 export function MeButton() {
   const { user: actualUser } = useUser();

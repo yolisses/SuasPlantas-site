@@ -1,8 +1,8 @@
 import {
-  FaQuestion, FaSeedling, FaUserFriends, FaUsers,
+  FaQuestion,
+  FaSeedling,
+  FaUserFriends,
 } from 'react-icons/fa';
-import { useIsLogged } from '../auth/useIsLogged';
-import { usePreview } from '../preview/PreviewContext';
 import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
@@ -13,9 +13,6 @@ interface TopTabsProps{
 }
 
 export function TopTabs({ tab }: TopTabsProps) {
-  const { isLogged } = useIsLogged();
-  const { user: previewUser } = usePreview();
-
   return (
     <div className="flex flex-row flex-wrap bg-white" id="tour_top_tabs">
       <Link href="/">
@@ -29,14 +26,6 @@ export function TopTabs({ tab }: TopTabsProps) {
         <TabSelector id="tour_tab_quests" tab="quests" value={tab}>
           <FaQuestion />
           Procurando
-          {/* <div className="relative">
-            <div
-              className="absolute -top-6 -right-6 text-white bg-emerald-500 px-1 rounded-md"
-              style={{ fontSize: '0.8rem' }}
-            >
-              novo
-            </div>
-          </div> */}
         </TabSelector>
       </Link>
       <Link href="/users">
