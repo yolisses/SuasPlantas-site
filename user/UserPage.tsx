@@ -16,14 +16,12 @@ import { useRouter } from 'next/router';
 
 import { User } from './User';
 import { userImage } from '../images/user';
-import { PlantItem } from '../common/PlantItem';
 import { useUser } from '../auth/userContext';
-import { hasContact } from '../utils/hasContact';
+import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { usePreview } from '../preview/PreviewContext';
-import { WhatsappButton } from '../contact/WhatsappButton';
-import { InstagramButton } from '../contact/InstagramButton';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
+import { ContactsIndicator } from '../plant/ContactsIndicator';
 
 interface UserPageProps {
   user: User;
@@ -98,26 +96,7 @@ export function UserPage({ user: paramUser, preview }: UserPageProps) {
             </div>
           </div>
           <div className="flex flex-row w-full justify-center gap-2">
-            {!!user.whatsappNumber && (
-            <WhatsappButton whatsappNumber={user.whatsappNumber} />
-            )}
-            {!!user.instagramUsername && (
-            <InstagramButton instagramUsername={user.instagramUsername} />
-            )}
-            {!hasContact(user) && (
-              selfUser ? (
-                <div>
-                  <Link href="/account/edit">
-                    <a className="link">
-                      Adicionar uma forma de contato para poder receber mensagens
-                    </a>
-                  </Link>
-                </div>
-              ) : (
-                <div className="text-gray-500 text-sm">
-                  Sem meios de contato
-                </div>
-              ))}
+            <ContactsIndicator user={user} />
           </div>
           <div>
             { user.description}
