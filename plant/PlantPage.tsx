@@ -3,7 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import { FaPen, FaRegCommentAlt } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -40,12 +40,11 @@ export function PlantPage({ data }:PlantPageProps) {
     updatedAt: updatedAtString,
   } = data;
 
-  const updatedAt = new Date(updatedAtString);
-
-  const stringAvailability = availabilitiesToString({ price, swap, donate });
-
-  const multipleImages = data.images.length > 1;
   const carousel = useRef<Carousel>();
+  const updatedAt = new Date(updatedAtString);
+  const multipleImages = data.images.length > 1;
+  const selfUser = currentUser?.id === data.user.id;
+  const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   useEffect(() => {
     if (carousel && carousel.current) {
@@ -107,7 +106,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row md:flex-row-reverse md:justify-end gap-2">
-                <MessageButton user={user} />
+                {!selfUser && <MessageButton user={user} />}
                 <LikeButton url={`plants/${id}/like`} active={data.liked} />
               </div>
               <div className="flex flex-row justify-start">
@@ -157,8 +156,7 @@ export function PlantPage({ data }:PlantPageProps) {
                 </div>
               </div>
             </div>
-            {currentUser?.id === data.user.id
-            && (
+            {selfUser && (
             <div className="sticky bottom-0">
               <div className="absolute bottom-10 right-10">
                 <Link href={`/plants/${data.id}/edit`}>
