@@ -10,12 +10,12 @@ export function Status500Page() {
       </div>
       <div className="pt-4 flex flex-row gap-10">
         <Link href="/">
-          <a className="link">
+          <a className="secondary-button">
             Página inicial
           </a>
         </Link>
         <Link href="/contact">
-          <a className="link">
+          <a className="secondary-button">
             Contato
           </a>
         </Link>

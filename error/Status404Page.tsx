@@ -10,12 +10,12 @@ export function Status404Page() {
       </div>
       <div className="pt-4 flex flex-row gap-10">
         <Link href="/">
-          <a href="link">
+          <a href="link" className="secondary-button">
             Página inicial
           </a>
         </Link>
         <Link href="/contact">
-          <a href="link">
+          <a href="link" className="secondary-button">
             Contato
           </a>
         </Link>
