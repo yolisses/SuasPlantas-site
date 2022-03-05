@@ -106,7 +106,6 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
 
   useEffect(() => {
     socket.on('receive_message', (message:Message) => {
-      console.log(message);
       addMessageOnChat(message.senderId, message);
     });
   }, []);
