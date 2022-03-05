@@ -1,5 +1,5 @@
 import {
-  createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
+  createContext, ReactNode, useContext, useEffect, useState,
 } from 'react';
 import { Chat } from './Chat';
 import { api } from '../api/api';
@@ -15,8 +15,6 @@ interface ChatsGroup{
 
 interface ChatsContext{
   chats:ChatsGroup
-  currentChat?:Chat
-  setCurrentChat:Dispatch<SetStateAction<Chat|undefined>>
   addChat:(chat:Chat)=>Chat
   getMessages:(chat:Chat)=>void
   addMessageOnChat:(userId:UserId, message:Message)=>void
@@ -26,7 +24,6 @@ export const chatsContext = createContext({} as ChatsContext);
 
 export function ChatsContextProvider({ children }:{children:ReactNode}) {
   const [chats] = useState({} as ChatsGroup);
-  const [currentChat, setCurrentChat] = useState<Chat>();
   const refresh = useRefresh();
   const { user } = useUser();
 
@@ -54,11 +51,6 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
         };
       }
     });
-    if (!currentChat) {
-      const firstChat = Object.values(chats)[0];
-      console.log(currentChat);
-      setCurrentChat(firstChat);
-    }
     refresh();
   }
 
@@ -90,7 +82,6 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
     for (const key in chats) {
       delete chats[key];
     }
-    setCurrentChat(undefined);
     refresh();
   }
 
@@ -115,8 +106,6 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
       chats,
       addChat,
       getMessages,
-      currentChat,
-      setCurrentChat,
       addMessageOnChat,
     }}
     >

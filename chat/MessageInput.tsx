@@ -25,7 +25,7 @@ export function MessageInput({ chat }:MessageInputProps) {
       id: Math.random(),
       receiverId: userId,
       senderId: user!.id,
-      createdAt: Date.now().toString(),
+      createdAt: (new Date()).toDateString(),
     });
     const token = getAuthToken();
     socket.emit('send_message', token, { text, userId });

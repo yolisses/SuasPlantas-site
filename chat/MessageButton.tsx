@@ -8,7 +8,7 @@ interface MessageButtonProps{
 }
 
 export function MessageButton({ user }:MessageButtonProps) {
-  const { chats, setCurrentChat, addChat } = useChats();
+  const { chats, addChat } = useChats();
 
   function handleClick() {
     let chat = chats[user.id];
@@ -18,11 +18,10 @@ export function MessageButton({ user }:MessageButtonProps) {
         userId: id, name, image, messages: [], pendingMessages: [], input: '',
       });
     }
-    setCurrentChat(chat);
   }
 
   return (
-    <Link href="/chat">
+    <Link href={`/chat/${user.id}`}>
       <button className="main-button" onClick={handleClick}>
         <FaRegCommentAlt />
         Mandar mensagem

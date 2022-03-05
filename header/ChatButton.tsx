@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaCommentAlt, FaRegCommentAlt } from 'react-icons/fa';
+import { FaRegCommentAlt } from 'react-icons/fa';
 
 export function ChatButton() {
   return (
