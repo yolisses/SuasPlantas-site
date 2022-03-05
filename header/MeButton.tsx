@@ -30,11 +30,11 @@ export function MeButton() {
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
             {user.preview && (
-            <div className="relative">
-              <div className="absolute bottom-1 -left-4">
-                <PreviewIndicator />
+              <div className="relative">
+                <div className="absolute bottom-1 -left-4">
+                  <PreviewIndicator />
+                </div>
               </div>
-            </div>
             )}
           </a>
         </Link>

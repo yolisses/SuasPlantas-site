@@ -4,6 +4,8 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
 import { useUser } from '../auth/userContext';
+import { useSocket } from '../socket/SocketContext';
+import { getAuthToken } from '../api/getAuthToken';
 
 interface MessageInputProps{
   chat:Chat
@@ -15,6 +17,7 @@ export function MessageInput({ chat }:MessageInputProps) {
   const { userId } = chat;
 
   const { addMessageOnChat } = useChats();
+  const { socket } = useSocket();
 
   function sendMessage(text:string) {
     addMessageOnChat(userId, {
@@ -24,6 +27,8 @@ export function MessageInput({ chat }:MessageInputProps) {
       senderId: user!.id,
       createdAt: Date.now().toString(),
     });
+    const token = getAuthToken();
+    socket.emit('send_message', token, { text, userId });
   }
 
   function handleSubmit(e:FormEvent) {
