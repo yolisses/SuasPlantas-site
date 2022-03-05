@@ -19,7 +19,7 @@ export function ContactButton({
       className="w-full max-w-sm"
     >
       <button
-        className="center hover:brightness-95 shadow-md rounded-lg text-white py-2 w-full flex flex-row gap-1 active:transform active:scale-[0.98] duration-75 transition-transform"
+        className="center hover:brightness-95 shadow-md rounded-lg text-white py-1.5 w-full flex flex-row gap-1 active:transform active:scale-[0.98] duration-75 transition-transform"
         style={{
           background: gradient,
         }}

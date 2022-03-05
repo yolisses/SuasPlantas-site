@@ -19,6 +19,7 @@ import { PlantStructuredData } from './PlantStructuredData';
 import { availabilitiesToString } from './availabilitiesToString';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { MessageButton } from './MessageButton';
+import { ContactsIndicator } from './ContactsIndicator';
 
 interface PlantPageProps{
   data:Plant
@@ -112,6 +113,7 @@ export function PlantPage({ data }:PlantPageProps) {
               <div className="flex flex-row justify-start">
                 <UserLink user={data.user} />
               </div>
+              <ContactsIndicator user={data.user} />
               <div className="text-sm text-gray-500">
                 Última edição
                 {' '}
