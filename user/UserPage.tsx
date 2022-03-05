@@ -20,6 +20,7 @@ import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { usePreview } from '../preview/PreviewContext';
+import { MessageButton } from '../plant/MessageButton';
 import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
 
@@ -95,6 +96,7 @@ export function UserPage({ user: paramUser, preview }: UserPageProps) {
               </div>
             </div>
           </div>
+          {!selfUser && <MessageButton user={user} />}
           <div className="flex flex-row w-full justify-center gap-2">
             <ContactsIndicator user={user} />
           </div>
