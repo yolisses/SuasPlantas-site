@@ -4,20 +4,21 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
 import { useUser } from '../auth/userContext';
-import { useSocket } from '../socket/SocketContext';
+import { useIsLogged } from '../auth/useIsLogged';
 import { getAuthToken } from '../api/getAuthToken';
+import { useSocket } from '../socket/SocketContext';
 
 interface MessageInputProps{
   chat:Chat
 }
 
 export function MessageInput({ chat }:MessageInputProps) {
-  const [text, setText] = useState<string>(chat.input);
-  const { user } = useUser();
   const { userId } = chat;
-
-  const { addMessageOnChat } = useChats();
+  const { user } = useUser();
   const { socket } = useSocket();
+  const { isLogged } = useIsLogged();
+  const { addMessageOnChat } = useChats();
+  const [text, setText] = useState<string>(chat.input);
 
   function sendMessage(text:string) {
     addMessageOnChat(userId, {
@@ -33,6 +34,7 @@ export function MessageInput({ chat }:MessageInputProps) {
 
   function handleSubmit(e:FormEvent) {
     e.preventDefault();
+    if (!isLogged()) return;
     if (text.trim()) {
       chat.input = '';
       sendMessage(text);
