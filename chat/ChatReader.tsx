@@ -19,7 +19,7 @@ export function ChatReader({ chat }:ChatReaderProps) {
     if (user) {
       getMessages(chat);
     }
-  }, [chat]);
+  }, [chat, user]);
 
   return (
     <>
