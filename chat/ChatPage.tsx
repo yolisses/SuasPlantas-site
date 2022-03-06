@@ -16,7 +16,7 @@ export function ChatPage() {
     <div className="h-screen-no-header flex flex-row overflow-hidden">
       {lg && (
       <div className="w-full max-w-md overflow-y-auto shadow">
-        <ContactsPage />
+        <ContactsPage current={chat} />
       </div>
       )}
       <div className="flex flex-col w-full">
