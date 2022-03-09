@@ -13,7 +13,6 @@ import { AdSenseTags } from '../app/AdSenseTags';
 import { FaviconTags } from '../app/FaviconTags';
 import { ExitIntent } from '../intent/ExitIntent';
 import { SmartlookTag } from '../app/SmartlookTag';
-import { MuiFontsTags } from '../app/MuiFontsTags';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
 import { PreviewWarn } from '../preview/PreviewWarn';
@@ -60,7 +59,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <HotjarTags />
       <AdSenseTags />
       <FaviconTags />
-      <MuiFontsTags />
       <SmartlookTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
