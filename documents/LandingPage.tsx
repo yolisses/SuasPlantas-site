@@ -1,12 +1,24 @@
+import Image from 'next/image';
+
 export function LandingPage() {
   return (
     <div>
       <div>
-        <h1>Bem vindo ao seu site de trocar plantas</h1>
-        <h1>Suas Plantas: um lugar para todos os amantes de plantas</h1>
-        <h1>Encontre pessoas que gostam de plantas perto de você</h1>
-        <h1>Encontre pessoas que gostam de plantas</h1>
-        <h1>Suas Plantas: a comunidade de quem gosta de plantas</h1>
+        <header className="h-12 z-50 w-full fixed flex flex-row items-center p-2 bg-gradient-to-b from-[#000b] to-transparent">
+          <div className="text-white text-lg">Suas Plantas</div>
+        </header>
+      </div>
+      <Image
+        src="/landing/hero1.jpg"
+        height={900}
+        width={2000}
+        objectFit="cover"
+      />
+      <div className="p-2 flex flex-col gap-3">
+        <h1 className="text-2xl">Encontre pessoas que gostam de plantas</h1>
+        <button className="main-button py-3 px-6 text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
+          Entrar
+        </button>
       </div>
     </div>
   );
