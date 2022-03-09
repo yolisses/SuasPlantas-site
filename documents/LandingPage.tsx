@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ShareButtons } from '../share/ShareButtons';
 
 export function LandingPage() {
   return (
@@ -19,6 +20,16 @@ export function LandingPage() {
         <button className="main-button py-3 px-6 text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
           Entrar
         </button>
+      </div>
+      <div>
+        <div>Compartilhe essa ideia</div>
+        <div className="flex flex-row gap-2">
+          <ShareButtons socialIconProps={{
+            size: 40,
+            borderRadius: 1000,
+          }}
+          />
+        </div>
       </div>
     </div>
   );
