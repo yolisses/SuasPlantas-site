@@ -124,7 +124,7 @@ export function LocationField({
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
               style={{ zIndex: 500 }}
             >
-              <Image width={40} height={40} src="/map_center.png" />
+              <Image width={40} height={40} src="/map/map_center.png" />
             </div>
             <Map
               center={center!}
