@@ -2,25 +2,18 @@ import Link from 'next/link';
 
 import { MeButton } from './MeButton';
 import { Spacer } from '../common/Spacer';
+import { ChatButton } from './ChatButton';
 import { MoreMenuButton } from './MoreMenuButton';
 import { usePlants } from '../plant/plantsContext';
-import { useQuests } from '../quest/questsContext';
 import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
-import { ChatButton } from './ChatButton';
 
 export function Header() {
-  const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
-  const { reset: resetQuests, setFilters: setQuestsFilters } = useQuests();
+  const { setFilters: setPlantsFilters } = usePlants();
 
   function handleHomeClick() {
     if (window.location.pathname === '/') {
-      resetPlants();
       setPlantsFilters({});
-    }
-    if (window.location.pathname === '/quests') {
-      resetQuests();
-      setQuestsFilters({});
     }
   }
 
