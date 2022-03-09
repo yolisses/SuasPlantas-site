@@ -27,7 +27,7 @@ export function Header() {
 
   return (
     <>
-      <div className="fixed flex flex-row px-2 h-12 items-center w-full gap-1 sm:gap-2 z-50 bg-emerald-700 shadow-md">
+      <header className="fixed flex flex-row px-2 h-12 items-center w-full gap-1 sm:gap-2 z-50 bg-emerald-700 shadow-md">
         <Link href="/">
           <a
             onClick={handleHomeClick}
@@ -45,7 +45,7 @@ export function Header() {
         <ChatButton />
         <NotificationMenuButton />
         <MoreMenuButton />
-      </div>
+      </header>
       <div className="h-12" />
     </>
   );
