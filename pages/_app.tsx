@@ -27,6 +27,7 @@ import { PreviewProvider } from '../preview/PreviewContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
+import { GoogleOptimizeTag } from '../app/GoogleOptimizeTags';
 import { SocketContextProvider } from '../socket/SocketContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 import { LocationContextProvider } from '../location/LocationContext';
@@ -60,6 +61,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AdSenseTags />
       <FaviconTags />
       <SmartlookTag />
+      <GoogleOptimizeTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
         <PreviewProvider>
