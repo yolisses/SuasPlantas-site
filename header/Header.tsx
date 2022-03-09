@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { useRouter } from 'next/router';
 import { MeButton } from './MeButton';
 import { Spacer } from '../common/Spacer';
 import { ChatButton } from './ChatButton';
@@ -8,14 +9,21 @@ import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
 
+const hideHeader = {
+  '/landing': true,
+};
+
 export function Header() {
   const { setFilters: setPlantsFilters } = usePlants();
+  const { asPath } = useRouter();
 
   function handleHomeClick() {
     if (window.location.pathname === '/') {
       setPlantsFilters({});
     }
   }
+
+  if (hideHeader[asPath]) return null;
 
   return (
     <>
