@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
-import { AdminPage } from '../../admin/AdminPage';
-import { isDev } from '../../utils/isDev';
+import { isDev } from '../utils/isDev';
+import { DevPage } from '../dev/DevPage';
 
-export default AdminPage;
+export default DevPage;
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {},
