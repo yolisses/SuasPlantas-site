@@ -1,1 +1,1 @@
-export const userImage = '/user.png';
+export const userImage = '/user/user.png';
