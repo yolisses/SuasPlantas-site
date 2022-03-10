@@ -33,6 +33,14 @@ export function FAQ() {
       >
         Mostramos apenas uma localização aproximada: cidade e estado. Mas caso queira é possível mostrar a localização real. Você também pode escrever o endereço na descrição do perfil.
       </FAQItem>
+      <FAQItem
+        id="4"
+        current={current}
+        setCurrent={setCurrent}
+        title="Como faço para receber as plantas?"
+      >
+        Basta pedir para ir buscar ou que seja enviado pelo correio. Quem pede o envio é quem paga o frete, adiantado.
+      </FAQItem>
     </dl>
   );
 }
