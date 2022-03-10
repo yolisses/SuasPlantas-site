@@ -95,8 +95,7 @@ export function LandingPage() {
 
       </div>
 
-      <div className="p-2 flex flex-col items-center">
-
+      <div className="p-2 flex flex-col items-center gap-16">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -104,7 +103,6 @@ export function LandingPage() {
         >
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
         </SessionWithExample>
-
         <SessionWithExample
           Icon={FaRegMap}
           title="Plantas perto de você"
@@ -113,15 +111,13 @@ export function LandingPage() {
         >
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar.
         </SessionWithExample>
-        <h2 className="text-2xl flex flex-row items-center gap-2">
-          <FaRegUser size={25} />
-          Faça parte da comunidade
-        </h2>
-        <p className="text-lg">
+        <SessionWithExample
+          Icon={FaRegUser}
+          title="Faça parte da comunidade"
+          Example={<NotificationsExample />}
+        >
           O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
-
-        </p>
-        <NotificationsExample />
+        </SessionWithExample>
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegQuestionCircle size={25} />
           Perguntas frequentes
