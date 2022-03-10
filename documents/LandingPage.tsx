@@ -17,13 +17,14 @@ interface SessionWithExampleProps{
   Icon:IconType
   children:ReactNode
   Example:ReactNode
+  reverse?:boolean
 }
 
 function SessionWithExample({
-  title, Icon, children, Example,
+  title, Icon, children, Example, reverse,
 }:SessionWithExampleProps) {
   return (
-    <div className="flex flex-col lg:flex-row lg:max-w-4xl">
+    <div className={`flex flex-col gap-2 items-center lg:max-w-4xl ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
         <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
           <Icon size={25} />
@@ -104,14 +105,14 @@ export function LandingPage() {
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
         </SessionWithExample>
 
-        <h2 className="text-2xl flex flex-row items-center gap-2">
-          <FaRegMap size={25} />
-          Plantas perto de você
-        </h2>
-        <p className="text-lg">
+        <SessionWithExample
+          Icon={FaRegMap}
+          title="Plantas perto de você"
+          Example={<LocationExample />}
+          reverse
+        >
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar.
-        </p>
-        <LocationExample />
+        </SessionWithExample>
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegUser size={25} />
           Faça parte da comunidade

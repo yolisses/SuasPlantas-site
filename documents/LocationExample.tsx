@@ -5,7 +5,7 @@ export function LocationExample() {
   const imageSize = 150;
 
   return (
-    <div className="center relative">
+    <div className="center relative px-3">
       <div className="transform -rotate-6 my-4 shadow-lg">
         <Image
           src="/landing/map.png"
