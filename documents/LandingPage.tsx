@@ -58,17 +58,18 @@ export function LandingPage() {
         </button>
       </div>
       <footer className="bg-slate-900 text-white flex flex-col gap-2 p-2">
-        <div>
+        <div className="flex flex-col gap-1">
           <div className="text-green-200">Links</div>
-          <Link href="/privacy-policy">
-            Política de privacidade
-          </Link>
+          <Link href="/privacy-policy">Política de privacidade</Link>
+          <Link href="/contact">Contato</Link>
           <div />
         </div>
         <div>
-          <div>Compartilhe essa ideia</div>
-          <div className="flex flex-row gap-2">
-            <ShareButtons socialIconProps={{ size: 35, borderRadius: 1000 }} />
+          <div className="text-green-200">
+            Compartilhe essa ideia
+          </div>
+          <div className="flex flex-row gap-2 pt-1">
+            <ShareButtons shareUrl="https://suasplantas.com" socialIconProps={{ size: 35, borderRadius: 1000 }} />
           </div>
         </div>
       </footer>
