@@ -38,17 +38,17 @@ export function LandingPage() {
           <FaRegCommentAlt size={25} />
           Envie mensagens
         </h2>
-        <div>
+        <p>
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
-        </div>
+        </p>
         <MessagesExample />
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegMap size={25} />
           Plantas perto de você
         </h2>
-        <div>
+        <p>
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
-        </div>
+        </p>
         <LocationExample />
       </div>
       <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
