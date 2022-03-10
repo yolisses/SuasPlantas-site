@@ -34,7 +34,7 @@ function SessionWithExample({
           {children}
         </p>
       </div>
-      <div className="">
+      <div className="flex-1">
         {Example}
       </div>
     </section>
@@ -93,7 +93,7 @@ export function LandingPage() {
         </div>
       </div>
 
-      <div className="w-full center-col gap-16 lg:gap-32 lg:max-w-4xl">
+      <div className="w-full p-2 center-col gap-16 lg:gap-32 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -147,8 +147,8 @@ export function LandingPage() {
       <footer className="bg-slate-900 w-full text-white flex flex-col gap-2 p-2 lg:flex-row lg:justify-center lg:gap-6 py-6">
         <div className="flex flex-col gap-1">
           <div className="text-green-200">Links</div>
-          <Link href="/privacy-policy">Política de privacidade</Link>
           <Link href="/contact">Contato</Link>
+          <Link href="/privacy-policy">Política de privacidade</Link>
           <Link href="/about">Sobre nós</Link>
           <div />
         </div>

@@ -17,7 +17,7 @@ function NotificationExampleItem({
 }:NotificationExampleItemProps) {
   const imageSize = 200;
   return (
-    <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-r-lg gap-2 pr-2">
+    <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-r-lg gap-2 pr-2 shadow-xl">
       <div className="aspect-square h-16 lg:h-24 relative">
         <Image
           src={image}
@@ -47,7 +47,7 @@ export function NotificationsExample() {
 
   return (
     <div className="my-6 flex flex-col-reverse mr-4">
-      <div className="transform scale-[80%] -rotate-3 shadow-lg translate-x-9">
+      <div className="transform scale-[80%] -rotate-3 translate-x-9">
         <NotificationExampleItem
           image="/landing/thumb4.jpg"
           Icon={FaRegThumbsUp}
@@ -60,7 +60,7 @@ export function NotificationsExample() {
         </NotificationExampleItem>
 
       </div>
-      <div className="transform rotate-6 shadow-lg">
+      <div className="transform rotate-6">
         <NotificationExampleItem
           image="/landing/thumb2.jpg"
           marked
