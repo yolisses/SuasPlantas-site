@@ -36,9 +36,7 @@ export function LandingPage() {
       <div className="p-2 flex flex-col items-center">
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegCommentAlt size={25} />
-          <span>
-            Envie mensagens
-          </span>
+          Envie mensagens
         </h2>
         <div>
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
@@ -46,9 +44,7 @@ export function LandingPage() {
         <MessagesExample />
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegMap size={25} />
-          <span>
-            Plantas perto de você
-          </span>
+          Plantas perto de você
         </h2>
         <div>
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
