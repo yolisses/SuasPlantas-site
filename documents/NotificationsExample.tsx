@@ -15,7 +15,7 @@ interface NotificationExampleItemProps{
 function NotificationExampleItem({
   image, marked, children, Icon,
 }:NotificationExampleItemProps) {
-  const imageSize = 150;
+  const imageSize = 200;
   return (
     <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-r-lg gap-2 pr-2">
       <div className="aspect-square h-16 lg:h-24 relative">

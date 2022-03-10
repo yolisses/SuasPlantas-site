@@ -26,7 +26,7 @@ export function FAQItem({
           aria-controls={id}
           aria-expanded={open}
           onClick={handleClick}
-          className="text-x l cursor-pointer center-row gap-1"
+          className="text-x highlight p-2 rounded-lg cursor-pointer center-row gap-1"
         >
           {open
             ? <FaChevronDown size={12} />

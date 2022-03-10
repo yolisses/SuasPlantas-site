@@ -6,7 +6,7 @@ export function LocationExample() {
 
   return (
     <div className="center relative px-3">
-      <div className="transform -rotate-6 my-4 shadow-lg aspect-square h-60">
+      <div className="transform -rotate-6 shadow-lg aspect-square h-36 lg:h-56">
         <Image
           src="/landing/map.png"
           height={imageSize}

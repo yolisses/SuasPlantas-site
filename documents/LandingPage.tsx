@@ -91,7 +91,7 @@ export function LandingPage() {
         </div>
       </div>
 
-      <div className="w-full p-2 center-col gap-32 lg:max-w-4xl">
+      <div className="w-full p-2 center-col gap-16 lg:gap-32 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
