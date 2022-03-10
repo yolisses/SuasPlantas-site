@@ -4,7 +4,7 @@ import styles from './PrivacyPolicyPage.module.css';
 export function PrivacyPolicyPage() {
   return (
     <>
-      <div className="p-4 flex flex-col items-center">
+      <div className="p-4 center-col">
         <div className="max-w-3xl">
           <h1 className={styles.title}>
             Política de Privacidade

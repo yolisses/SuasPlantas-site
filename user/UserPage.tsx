@@ -38,7 +38,7 @@ interface TabProps{
 function Tab({ tab, currentTab, children }:TabProps) {
   return (
     <div
-      className="flex flex-col items-center"
+      className="center-col"
       style={{ display: tab !== currentTab ? 'none' : undefined }}
     >
       {children}

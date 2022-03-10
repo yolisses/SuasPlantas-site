@@ -43,7 +43,7 @@ export const EditProfilePage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="center-col">
       <div className="flex flex-col gap-4 w-full max-w-xl p-2 pt-4">
         <EditProfileImage />
         <TextField

@@ -8,7 +8,7 @@ export function WithoutResultsWarn() {
   const { text, setText } = useTextSearchContext();
 
   return (
-    <div className="flex flex-col items-center max-w-md">
+    <div className="center-col max-w-md">
       <div className="text-xl text-center">
         Nenhuma resultado encontrado nessa região
         {' '}

@@ -43,7 +43,7 @@ export function AddUserPage() {
   }
 
   return (
-    <div className="p-2 flex flex-col items-center">
+    <div className="p-2 center-col">
       <h1>Adicionar usuário</h1>
       <div className="w-full max-w-md flex flex-col gap-4">
         <TextField label="nome" {...register('name')} />

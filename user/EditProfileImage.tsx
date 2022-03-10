@@ -43,7 +43,7 @@ export function EditProfileImage() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center gap-4">
+    <div className="center-row justify-center gap-4">
       <Image
         width={imageSize}
         height={imageSize}
@@ -53,7 +53,7 @@ export function EditProfileImage() {
       />
       <div className="flex flex-col">
         <div className="text-center">Foto de perfil</div>
-        <label className="flex flex-row items-center gap-1">
+        <label className="center-row gap-1">
           <input
             type="file"
             onChange={handleFilesSelected}

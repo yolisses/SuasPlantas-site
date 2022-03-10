@@ -64,12 +64,12 @@ export function HomePage<T>({
         {children(aditionalItems ? aditionalItems.concat(items || []) : items)}
       </InfiniteScroll>
       { loading && (
-      <div className="flex flex-col items-center pt-20 pb-10">
+      <div className="center-col pt-20 pb-10">
         <Spinner />
       </div>
       )}
       { (!loading && !!items && !items?.length) && (
-      <div className="flex flex-col items-center pt-20">
+      <div className="center-col pt-20">
         <WithoutResultsWarn />
       </div>
       )}
@@ -77,7 +77,7 @@ export function HomePage<T>({
         {firstActionButton}
       </div>
       <div
-        className="fixed bottom-0 flex flex-col items-center md:items-start w-full"
+        className="fixed bottom-0 center-col md:items-start w-full"
       >
         <div id="tour_start" />
       </div>

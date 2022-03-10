@@ -12,7 +12,7 @@ interface UserItemProps{
 export function UserItem({ item, size = 80 }:UserItemProps) {
   return (
     <Link href={`/users/${item.id}`}>
-      <a className="bg-gray-100 flex flex-col items-center p-2 rounded-lg hover:bg-gray-300">
+      <a className="bg-gray-100 center-col p-2 rounded-lg hover:bg-gray-300">
         <Image
           src={item.image || userImage}
           objectFit="cover"

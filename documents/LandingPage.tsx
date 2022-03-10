@@ -26,7 +26,7 @@ function SessionWithExample({
   return (
     <section className={`flex flex-col gap-2 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
-        <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
+        <h2 className="text-2xl lg:text-3xl center-row gap-2">
           <Icon size={25} />
           {title}
         </h2>
@@ -46,9 +46,9 @@ export function LandingPage() {
   const { lg } = useSize();
 
   return (
-    <div className="flex flex-col items-center">
-      <header className="h-14 z-50 w-full absolute flex flex-row items-center p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
-        <div className="flex flex-row items-center gap-1">
+    <div className="center-col">
+      <header className="h-14 z-50 w-full absolute center-row p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
+        <div className="center-row gap-1">
           <Image
             src="/landing/white.png"
             className="inline-flex"
@@ -91,7 +91,7 @@ export function LandingPage() {
         </div>
       </div>
 
-      <div className="w-full p-2 flex flex-col items-center gap-16 lg:max-w-4xl">
+      <div className="w-full p-2 center-col gap-16 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -115,7 +115,7 @@ export function LandingPage() {
           O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
         <section className="w-full">
-          <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2 mb-2">
+          <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
             <FaRegQuestionCircle size={25} />
             Perguntas frequentes
           </h2>

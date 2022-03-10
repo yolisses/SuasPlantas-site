@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function Status404Page() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-10">
+    <div className="flex-1 center-col justify-center px-10">
       <div className="text-6xl font-extralight mt-44">404</div>
       <div className="max-w-sm">
         Não foi possível encontrar essa página.
