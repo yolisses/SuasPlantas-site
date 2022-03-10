@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
-import { FaHandSparkles, FaRegThumbsUp } from 'react-icons/fa';
+import { FaRegThumbsUp } from 'react-icons/fa';
 import { HiOutlineSparkles } from 'react-icons/hi';
-import { someImage } from '../mock/someImage';
+import { useLocation } from '../location/LocationContext';
 
-interface NotificationExampleItem{
+interface NotificationExampleItemProps{
     image:string
     marked?:boolean
     children:ReactNode
@@ -14,7 +14,7 @@ interface NotificationExampleItem{
 
 function NotificationExampleItem({
   image, marked, children, Icon,
-}:NotificationExampleItem) {
+}:NotificationExampleItemProps) {
   const imageSize = 150;
   return (
     <div className="flex flex-row items-center w-72 bg-gray-200 rounded-r-lg gap-2 pr-2">
@@ -46,6 +46,7 @@ function NotificationExampleItem({
 }
 
 export function NotificationsExample() {
+  const { location: { city } } = useLocation();
   return (
     <div className="my-6 flex flex-col-reverse mr-4">
       <div className="transform scale-[80%] -rotate-3 shadow-lg translate-x-9">
@@ -67,12 +68,13 @@ export function NotificationsExample() {
           marked
           Icon={HiOutlineSparkles}
         >
-
           Nova planta que você pode estar procurando:
           {' '}
           <strong>
             Rosa do deserto
           </strong>
+          {' '}
+          {city ? `em ${city}` : ''}
         </NotificationExampleItem>
       </div>
 
