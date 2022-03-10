@@ -1,16 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ReactNode } from 'react';
+import { IconType } from 'react-icons';
 import {
   FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
 } from 'react-icons/fa';
 import { ShareButtons } from '../share/ShareButtons';
+import { useSize } from '../size/SizeContext';
 import { FAQ } from './FAQ';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
 import { NotificationsExample } from './NotificationsExample';
 
+interface SessionWithExampleProps{
+  title:string
+  Icon:IconType
+  children:ReactNode
+  Example:ReactNode
+}
+
+function SessionWithExample({
+  title, Icon, children, Example,
+}:SessionWithExampleProps) {
+  return (
+    <div className="flex flex-col lg:flex-row lg:max-w-4xl">
+      <div className="flex-1 flex flex-col gap-2">
+        <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
+          <Icon size={25} />
+          {title}
+        </h2>
+        <p className="text-lg lg:text-xl">
+          {children}
+        </p>
+      </div>
+      <div className="">
+        {Example}
+      </div>
+    </div>
+  );
+}
+
 export function LandingPage() {
   const iconSize = 20;
+  const { lg } = useSize();
 
   return (
     <div>
@@ -35,14 +67,16 @@ export function LandingPage() {
         </header>
       </div>
 
-      <div className="relative center">
-        <Image
-          src="/landing/resource.svg"
-          height={1200}
-          width={800}
-          className="brightness-75"
-          objectFit="cover"
-        />
+      <div className="relative center overflow-hidden">
+        <div style={{ maxHeight: 'calc(100vh - 4rem)' }}>
+          <Image
+            height={1200}
+            objectFit="cover"
+            width={lg ? 1800 : 1000}
+            className="brightness-75"
+            src="/landing/resource.svg"
+          />
+        </div>
 
         <div className="absolute flex flex-col p-6 gap-4">
           <h1
@@ -61,14 +95,15 @@ export function LandingPage() {
       </div>
 
       <div className="p-2 flex flex-col items-center">
-        <h2 className="text-2xl flex flex-row items-center gap-2">
-          <FaRegCommentAlt size={25} />
-          Envie mensagens
-        </h2>
-        <p className="text-lg">
+
+        <SessionWithExample
+          title="Envie mensagens"
+          Icon={FaRegCommentAlt}
+          Example={<MessagesExample />}
+        >
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
-        </p>
-        <MessagesExample />
+        </SessionWithExample>
+
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegMap size={25} />
           Plantas perto de você
@@ -93,7 +128,7 @@ export function LandingPage() {
         <div className="mb-2" />
         <FAQ />
         {' '}
-        <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
+        <div className="lg:hidden sticky bottom-0 flex flex-col p-2 w-full bg-white">
           <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
             <FaRegUser />
             Entrar
