@@ -73,7 +73,7 @@ export function LandingPage() {
             height={1200}
             objectFit="cover"
             width={lg ? 1800 : 1000}
-            className="brightness-75"
+            className="brightness-75 bg-green-600 bg-gradient-to-tr from-emerald-600 to-green-600"
             src="/landing/resource.svg"
           />
         </div>
@@ -138,7 +138,6 @@ export function LandingPage() {
           <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
             Então, que tal?
           </h2>
-          <p className="text-lg pb-5">É grátis, fácil e rápido.</p>
           <button className="main-button w-full max-w-md text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
             <FaRegUser />
             Entrar
