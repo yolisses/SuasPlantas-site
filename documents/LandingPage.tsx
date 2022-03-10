@@ -58,6 +58,7 @@ export function LandingPage() {
           <FaRegQuestionCircle size={25} />
           Perguntas frequentes
         </h2>
+        <div className="mb-2" />
         <FAQ />
       </div>
       <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">

@@ -29,12 +29,12 @@ export function FAQItem({
           aria-controls={id}
           aria-expanded={open}
           onClick={handleClick}
-          className="text-lg"
+          className="text-lg cursor-pointer"
         >
           {title}
         </button>
       </dt>
-      <dd className={`mb-5 ${open ? '' : 'hidden'}`}>
+      <dd className={`bg-gray-100 p-2 rounded-lg ${open ? '' : 'hidden'}`}>
         <p id={id}>
           {children}
         </p>
