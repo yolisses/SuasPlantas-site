@@ -55,13 +55,11 @@ export function LandingPage() {
         </div>
         <LocationExample />
       </div>
-      <div>
-        <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
-          <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
-            <FaRegUser />
-            Entrar
-          </button>
-        </div>
+      <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
+        <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
+          <FaRegUser />
+          Entrar
+        </button>
       </div>
       <footer className="bg-slate-900 text-white flex flex-col gap-2 p-2">
         <div>
