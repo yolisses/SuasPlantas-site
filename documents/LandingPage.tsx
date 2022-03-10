@@ -136,6 +136,7 @@ export function LandingPage() {
           <div className="text-green-200">Links</div>
           <Link href="/privacy-policy">Política de privacidade</Link>
           <Link href="/contact">Contato</Link>
+          <Link href="/about">Sobre nós</Link>
           <div />
         </div>
         <div>
