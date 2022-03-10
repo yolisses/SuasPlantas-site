@@ -114,12 +114,14 @@ export function LandingPage() {
         >
           O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
-        <section>
-          <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
+        <section className="w-full">
+          <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2 mb-2">
             <FaRegQuestionCircle size={25} />
             Perguntas frequentes
           </h2>
-          <FAQ />
+          <div className="flex flex-col gap-4 text-lg">
+            <FAQ />
+          </div>
         </section>
         <div className="lg:hidden sticky bottom-0 flex flex-col p-2 w-full bg-white">
           <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">

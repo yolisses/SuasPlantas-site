@@ -19,26 +19,26 @@ export function FAQItem({
   }
 
   return (
-    <>
-      <dt className="flex flex-row items-center">
-        {open
-          ? <FaChevronDown size={12} />
-          : <FaChevronRight size={12} />}
+    <dl>
+      <dt>
         <button
           type="button"
           aria-controls={id}
           aria-expanded={open}
           onClick={handleClick}
-          className="text-lg cursor-pointer"
+          className="text-x l cursor-pointer center-row gap-1"
         >
+          {open
+            ? <FaChevronDown size={12} />
+            : <FaChevronRight size={12} />}
           {title}
         </button>
       </dt>
-      <dd className={`bg-gray-100 p-2 rounded-lg ${open ? '' : 'hidden'}`}>
+      <dd className={`bg-gray-100 p-2 rounded-lg shadow-lg ${open ? '' : 'hidden'}`}>
         <p id={id}>
           {children}
         </p>
       </dd>
-    </>
+    </dl>
   );
 }

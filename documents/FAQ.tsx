@@ -5,7 +5,7 @@ export function FAQ() {
   const [current, setCurrent] = useState<string>('1');
 
   return (
-    <dl className="w-full flex flex-col gap-2">
+    <>
       <FAQItem
         id="1"
         current={current}
@@ -41,6 +41,6 @@ export function FAQ() {
       >
         Basta pedir para ir buscar ou que seja enviado pelo correio. Quem pede o envio é quem paga o frete, adiantado.
       </FAQItem>
-    </dl>
+    </>
   );
 }

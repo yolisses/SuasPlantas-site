@@ -84,6 +84,14 @@ animation: rollout 0.2s;
   .label-inactive{
     @apply left-3 top-4 text-base px-0
   }
+
+  .center-col{
+    @apply flex flex-col items-center
+  }
+
+  .center-row{
+    @apply flex flex-row items-center
+  }
 }
 
 input {
