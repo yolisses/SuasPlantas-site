@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaQuestion, FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
+  FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
 } from 'react-icons/fa';
 import { ShareButtons } from '../share/ShareButtons';
 import { FAQ } from './FAQ';
-import { FAQItem } from './FAQItem';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
+import { NotificationsExample } from './NotificationsExample';
 
 export function LandingPage() {
   return (
@@ -54,6 +54,11 @@ export function LandingPage() {
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
         </p>
         <LocationExample />
+        <h2 className="text-2xl flex flex-row items-center gap-2">
+          <FaRegUser size={25} />
+          Faça parte da comunidade
+        </h2>
+        <NotificationsExample />
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegQuestionCircle size={25} />
           Perguntas frequentes
