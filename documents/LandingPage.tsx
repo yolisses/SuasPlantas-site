@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaRegCommentAlt, FaRegMap, FaRegUser } from 'react-icons/fa';
+import {
+  FaQuestion, FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
+} from 'react-icons/fa';
 import { ShareButtons } from '../share/ShareButtons';
+import { FAQ } from './FAQ';
+import { FAQItem } from './FAQItem';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
 
@@ -50,6 +54,11 @@ export function LandingPage() {
           Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
         </p>
         <LocationExample />
+        <h2 className="text-2xl flex flex-row items-center gap-2">
+          <FaRegQuestionCircle size={25} />
+          Perguntas frequentes
+        </h2>
+        <FAQ />
       </div>
       <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
         <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
