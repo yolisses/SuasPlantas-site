@@ -51,7 +51,7 @@ export function LandingPage() {
           </span>
         </h2>
         <div>
-          Fica bem mais fácil de se conseguir mudinhas quando se mora perto, por isso criamos um sistema de mapa super simples de usar
+          Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
         </div>
         <LocationExample />
       </div>
