@@ -51,13 +51,17 @@ export function LandingPage() {
           Plantas perto de você
         </h2>
         <p className="text-lg">
-          Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar
+          Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar.
         </p>
         <LocationExample />
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegUser size={25} />
           Faça parte da comunidade
         </h2>
+        <p className="text-lg">
+          O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
+
+        </p>
         <NotificationsExample />
         <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegQuestionCircle size={25} />
