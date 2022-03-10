@@ -24,7 +24,7 @@ function SessionWithExample({
   title, Icon, children, Example, reverse,
 }:SessionWithExampleProps) {
   return (
-    <div className={`flex flex-col gap-2 items-center lg:max-w-4xl ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+    <section className={`flex flex-col gap-2 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
         <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
           <Icon size={25} />
@@ -37,7 +37,7 @@ function SessionWithExample({
       <div className="">
         {Example}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -46,28 +46,25 @@ export function LandingPage() {
   const { lg } = useSize();
 
   return (
-    <div>
-      <div>
-        <header className="h-14 z-50 w-full absolute flex flex-row items-center p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
-          <div className="flex flex-row items-center gap-1">
-            <Image
-              src="/landing/white.png"
-              className="inline-flex"
-              width={iconSize}
-              height={iconSize}
-            />
-            <span>Suas Plantas</span>
-          </div>
-          <div className="ml-auto" />
-          <button className="flex flex-row gap-2 items-center">
-            <FaRegUser />
-            <span>
-              Entrar
-            </span>
-          </button>
-        </header>
-      </div>
-
+    <div className="flex flex-col items-center">
+      <header className="h-14 z-50 w-full absolute flex flex-row items-center p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
+        <div className="flex flex-row items-center gap-1">
+          <Image
+            src="/landing/white.png"
+            className="inline-flex"
+            width={iconSize}
+            height={iconSize}
+          />
+          <span>Suas Plantas</span>
+        </div>
+        <div className="ml-auto" />
+        <button className="flex flex-row gap-2 items-center">
+          <FaRegUser />
+          <span>
+            Entrar
+          </span>
+        </button>
+      </header>
       <div className="relative center overflow-hidden">
         <div style={{ maxHeight: 'calc(100vh - 4rem)' }}>
           <Image
@@ -92,10 +89,9 @@ export function LandingPage() {
             Entrar
           </button>
         </div>
-
       </div>
 
-      <div className="p-2 flex flex-col items-center gap-16">
+      <div className="w-full p-2 flex flex-col items-center gap-16 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -118,13 +114,13 @@ export function LandingPage() {
         >
           O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
-        <h2 className="text-2xl flex flex-row items-center gap-2">
-          <FaRegQuestionCircle size={25} />
-          Perguntas frequentes
-        </h2>
-        <div className="mb-2" />
-        <FAQ />
-        {' '}
+        <section>
+          <h2 className="text-2xl lg:text-3xl flex flex-row items-center gap-2">
+            <FaRegQuestionCircle size={25} />
+            Perguntas frequentes
+          </h2>
+          <FAQ />
+        </section>
         <div className="lg:hidden sticky bottom-0 flex flex-col p-2 w-full bg-white">
           <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
             <FaRegUser />
@@ -132,8 +128,7 @@ export function LandingPage() {
           </button>
         </div>
       </div>
-
-      <footer className="bg-slate-900 text-white flex flex-col gap-2 p-2">
+      <footer className="bg-slate-900 w-full text-white flex flex-col gap-2 p-2 lg:flex-row lg:justify-center lg:gap-6 ">
         <div className="flex flex-col gap-1">
           <div className="text-green-200">Links</div>
           <Link href="/privacy-policy">Política de privacidade</Link>
