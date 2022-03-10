@@ -17,9 +17,8 @@ function NotificationExampleItem({
 }:NotificationExampleItemProps) {
   const imageSize = 150;
   return (
-    <div className="center-row w-72 bg-gray-200 rounded-r-lg gap-2 pr-2">
-      <div className="aspect-square h-16 relative">
-
+    <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-r-lg gap-2 pr-2">
+      <div className="aspect-square h-16 lg:h-24 relative">
         <Image
           src={image}
           width={imageSize}
@@ -28,15 +27,13 @@ function NotificationExampleItem({
           className="rounded-lg"
         />
         <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
-          <Icon color="#080" size={20} />
+          <Icon color="#080" size={25} />
         </div>
-
       </div>
-      <div className="whitespace-normal text-left text-sm">
+      <div className="whitespace-normal text-left text-sm lg:text-base">
         {children}
       </div>
-      {marked
-      && (
+      {marked && (
       <div>
         <div className="bg-green-500 h-3 w-3 rounded-full" />
       </div>
