@@ -24,7 +24,7 @@ function SessionWithExample({
   title, Icon, children, Example, reverse,
 }:SessionWithExampleProps) {
   return (
-    <section className={`flex flex-col gap-2 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+    <section className={`flex flex-col gap-2 lg:gap-6 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
         <h2 className="text-2xl lg:text-3xl center-row gap-2">
           <Icon size={25} />
@@ -91,7 +91,7 @@ export function LandingPage() {
         </div>
       </div>
 
-      <div className="w-full p-2 center-col gap-16 lg:max-w-4xl">
+      <div className="w-full p-2 center-col gap-32 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -144,6 +144,21 @@ export function LandingPage() {
           </div>
           <div className="flex flex-row gap-2 pt-1">
             <ShareButtons shareUrl="https://suasplantas.com" socialIconProps={{ size: 35, borderRadius: 1000 }} />
+          </div>
+        </div>
+
+        <div>
+          <div className="text-green-200">
+            Feito com
+            {' '}
+            <span className="text-xs">💚</span>
+          </div>
+          <div>
+            Suas Plantas
+            {' '}
+            <span className="text-xs">©</span>
+            {' '}
+            {(new Date()).getFullYear()}
           </div>
         </div>
       </footer>
