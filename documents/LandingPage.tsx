@@ -130,6 +130,7 @@ export function LandingPage() {
           </button>
         </div>
       </div>
+      <div className="mb-10" />
       <footer className="bg-slate-900 w-full text-white flex flex-col gap-2 p-2 lg:flex-row lg:justify-center lg:gap-6 ">
         <div className="flex flex-col gap-1">
           <div className="text-green-200">Links</div>
