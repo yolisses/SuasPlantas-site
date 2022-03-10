@@ -46,7 +46,8 @@ function NotificationExampleItem({
 }
 
 export function NotificationsExample() {
-  const { location: { city } } = useLocation();
+  const { location } = useLocation();
+
   return (
     <div className="my-6 flex flex-col-reverse mr-4">
       <div className="transform scale-[80%] -rotate-3 shadow-lg translate-x-9">
@@ -74,7 +75,7 @@ export function NotificationsExample() {
             Rosa do deserto
           </strong>
           {' '}
-          {city ? `em ${city}` : ''}
+          {location?.city ? `em ${location.city}` : ''}
         </NotificationExampleItem>
       </div>
 
