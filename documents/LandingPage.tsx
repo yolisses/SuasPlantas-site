@@ -33,14 +33,14 @@ export function LandingPage() {
         </button>
       </div>
       <div className="p-2 flex flex-col items-center">
-        <h2 className="text-xl flex flex-row items-center gap-2  ">
+        <h2 className="text-2xl flex flex-row items-center gap-2">
           <FaRegCommentAlt size={25} />
           <span>
             Envie mensagens
           </span>
         </h2>
         <div>
-          Contamos com um sistema de mensagens integrado, onde você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
+          Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
         </div>
         <MessagesExample />
       </div>
