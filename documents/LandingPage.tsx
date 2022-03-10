@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaRegCommentAlt, FaRegUser } from 'react-icons/fa';
+import { FaRegCommentAlt, FaRegMap, FaRegUser } from 'react-icons/fa';
 import { ShareButtons } from '../share/ShareButtons';
+import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
 
 export function LandingPage() {
@@ -43,6 +44,16 @@ export function LandingPage() {
           Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
         </div>
         <MessagesExample />
+        <h2 className="text-2xl flex flex-row items-center gap-2">
+          <FaRegMap size={25} />
+          <span>
+            Plantas perto de você
+          </span>
+        </h2>
+        <div>
+          Fica bem mais fácil de se conseguir mudinhas quando se mora perto, por isso criamos um sistema de mapa super simples de usar
+        </div>
+        <LocationExample />
       </div>
       <div>
         <div className="sticky bottom-0 flex flex-col p-2 w-full bg-white">
