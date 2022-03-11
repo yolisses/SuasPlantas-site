@@ -9,6 +9,7 @@ import { SnackView } from '../snack/SnackView';
 import { ExitIntent } from '../intent/ExitIntent';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
+import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { HeaderSelector } from '../header/HeaderSelector';
@@ -18,7 +19,6 @@ import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
-import { DefaultPageMeta } from '../document/DefaultPageMeta';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
 import { LocationContextProvider } from '../location/LocationContext';
@@ -33,7 +33,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <DefaultPageMeta />
+        <title>
+          {devIndicator}
+          Suas Plantas - Trocar mudas de plantas
+        </title>
+        <meta
+          name="description"
+          content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
+        />
       </Head>
       <Twemoji options={{ className: 'twemoji' }}>
         <SnackContextProvider>
