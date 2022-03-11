@@ -36,6 +36,7 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
+import { LoginHeader } from '../header/LoginHeader';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -79,7 +80,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 <PushNotificationContextProvider>
                                   <SizeContextProvider>
                                     <Twemoji options={{ className: 'twemoji' }}>
-                                      <Header />
+                                      {/* <Header /> */}
+                                      <LoginHeader />
                                       <Component {...pageProps} />
                                       <PreviewWarn />
                                       <SnackView />
