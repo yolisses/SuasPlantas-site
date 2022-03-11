@@ -1,11 +1,12 @@
 import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
+import { isDev } from '../utils/isDev';
 import { PWAMeta } from '../document/PWAMeta';
+import { interact } from '../interactions/interact';
 import { FaviconMeta } from '../document/FaviconMeta';
 import { LeafletStyle } from '../document/LeafletStyle';
 import { HotjarScript } from '../document/HotjarScript';
-import { interact } from '../interactions/interact';
 import { AdSenseScript } from '../document/AdSenseScript';
 import { SmartlookScript } from '../document/SmartlookScript';
 import { DefaultPageMeta } from '../document/DefaultPageMeta';
@@ -27,13 +28,17 @@ class MyDocument extends Document {
           <PWAMeta />
           <FaviconMeta />
           <LeafletStyle />
-          <HotjarScript />
           <AdSenseScript />
           <DefaultPageMeta />
-          <SmartlookScript />
           <FacebookButtonScript />
-          <GoogleOptimizeScript />
-          <GoogleAnalyticsScript />
+          {!isDev && (
+          <>
+            <HotjarScript />
+            <SmartlookScript />
+            <GoogleOptimizeScript />
+            <GoogleAnalyticsScript />
+          </>
+          )}
         </Head>
         <body>
           <Main />
