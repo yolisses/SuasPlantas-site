@@ -29,24 +29,24 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SnackContextProvider>
-      <ModalContextProvider>
-        <SizeContextProvider>
-          <TourContextProvider>
-            {/* depend on location and text searct */}
-            <TextSearchContextProvider>
-              <LocationContextProvider>
-                <PaginationProvider Context={usersContext} apiRoute="users">
-                  <PaginationProvider Context={plantsContext} apiRoute="plants">
-                    <PaginationProvider Context={questsContext} apiRoute="quests">
-                      <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                        {/* depend on user */}
-                        <UserContextProvider>
-                          <PushNotificationContextProvider>
-                            {/* depend on user and socket */}
-                            <SocketContextProvider>
-                              <ChatsContextProvider>
-                                <Twemoji options={{ className: 'twemoji' }}>
+    <Twemoji options={{ className: 'twemoji' }}>
+      <SnackContextProvider>
+        <ModalContextProvider>
+          <SizeContextProvider>
+            <TourContextProvider>
+              {/* depend on location and text searct */}
+              <TextSearchContextProvider>
+                <LocationContextProvider>
+                  <PaginationProvider Context={usersContext} apiRoute="users">
+                    <PaginationProvider Context={plantsContext} apiRoute="plants">
+                      <PaginationProvider Context={questsContext} apiRoute="quests">
+                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                          {/* depend on user */}
+                          <UserContextProvider>
+                            <PushNotificationContextProvider>
+                              {/* depend on user and socket */}
+                              <SocketContextProvider>
+                                <ChatsContextProvider>
                                   <HeaderSelector />
                                   <Component {...pageProps} />
                                   <SnackView />
@@ -56,20 +56,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                   <ResetOnChangeUser />
                                   <ChangePageInteract />
                                   <GoogleOptimizeHydrate />
-                                </Twemoji>
-                              </ChatsContextProvider>
-                            </SocketContextProvider>
-                          </PushNotificationContextProvider>
-                        </UserContextProvider>
+                                </ChatsContextProvider>
+                              </SocketContextProvider>
+                            </PushNotificationContextProvider>
+                          </UserContextProvider>
+                        </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
                   </PaginationProvider>
-                </PaginationProvider>
-              </LocationContextProvider>
-            </TextSearchContextProvider>
-          </TourContextProvider>
-        </SizeContextProvider>
-      </ModalContextProvider>
-    </SnackContextProvider>
+                </LocationContextProvider>
+              </TextSearchContextProvider>
+            </TourContextProvider>
+          </SizeContextProvider>
+        </ModalContextProvider>
+      </SnackContextProvider>
+    </Twemoji>
   );
 }
