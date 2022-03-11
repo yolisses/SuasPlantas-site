@@ -1,14 +1,14 @@
 import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
+  Html, Head, Main, NextScript,
 } from 'next/document';
 import { interact } from '../interactions/interact';
+import { GoogleOptimizeTag } from '../app/GoogleOptimizeTags';
+import { googleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
 
 class MyDocument extends Document {
   componentDidMount() {
     interact({ type: 'start session', localTime: new Date() });
+    googleOptimizeHydrate();
   }
 
   render() {
@@ -19,6 +19,7 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/icon.png" />
           <meta name="theme-color" content="#fff" />
         </Head>
+        <GoogleOptimizeTag />
         <body>
           <Main />
           <NextScript />
