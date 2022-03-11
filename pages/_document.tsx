@@ -1,8 +1,16 @@
 import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
+import { PWAMeta } from '../app/PWAMeta';
+import { FaviconMeta } from '../app/FaviconMeta';
+import { LeafletStyle } from '../app/LeafletStyle';
+import { HotjarScript } from '../app/HotjarScript';
 import { interact } from '../interactions/interact';
-import { GoogleOptimizeScript } from '../app/GoogleOptimizeScripts';
+import { AdSenseScript } from '../app/AdSenseScript';
+import { SmartlookScript } from '../app/SmartlookScript';
+import { DefaultPageMeta } from '../app/DefaultPageMeta';
+import { GoogleOptimizeScript } from '../app/GoogleOptimizeScript';
+import { FacebookButtonScript } from '../app/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
 import { GoogleAnalyticsScript } from '../app/GoogleAnalyticsScript';
 
@@ -16,11 +24,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <PWAMeta />
+          <FaviconMeta />
+          <LeafletStyle />
+          <HotjarScript />
+          <AdSenseScript />
+          <DefaultPageMeta />
+          <SmartlookScript />
+          <FacebookButtonScript />
           <GoogleOptimizeScript />
           <GoogleAnalyticsScript />
-          <meta name="theme-color" content="#fff" />
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icon.png" />
         </Head>
         <body>
           <Main />
