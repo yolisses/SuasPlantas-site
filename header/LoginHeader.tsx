@@ -4,9 +4,11 @@ import { useSize } from '../common/SizeContext';
 import { MoreMenuButton } from './MoreMenuButton';
 import { FacebookButton } from '../auth/FacebookButton';
 import { LoginButtonAlt } from '../auth/LoginButtonAlt';
+import { useUser } from '../auth/userContext';
 
 export function LoginHeader() {
   const { lg } = useSize();
+  const { loginResolved } = useUser();
 
   return (
     <>
@@ -19,10 +21,10 @@ export function LoginHeader() {
           </a>
         </Link>
         <Spacer />
-        {lg ? (
+        {loginResolved && (lg ? (
           <FacebookButton />
         )
-          : <LoginButtonAlt />}
+          : <LoginButtonAlt />)}
         <MoreMenuButton />
       </header>
       <div className="h-12" />
