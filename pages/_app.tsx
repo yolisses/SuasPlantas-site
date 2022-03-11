@@ -17,6 +17,7 @@ import { PreviewWarn } from '../preview/PreviewWarn';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
+import { FacebookButtonTag } from '../auth/FacebookTag';
 import { HeaderSelector } from '../header/HeaderSelector';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
@@ -60,6 +61,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AdSenseTags />
       <FaviconTags />
       <SmartlookTag />
+      <FacebookButtonTag />
       <GoogleOptimizeTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
