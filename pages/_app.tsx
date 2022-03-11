@@ -62,7 +62,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <FaviconTags />
       <SmartlookTag />
       <FacebookButtonTag />
-      <GoogleOptimizeTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
         <PreviewProvider>
@@ -88,6 +87,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                       <PreviewWarn />
                                       <GooglePrompt />
                                       <ResetOnChangeUser />
+                                      <GoogleOptimizeTag />
                                       <ChangePageInteract />
                                     </Twemoji>
                                   </SizeContextProvider>
