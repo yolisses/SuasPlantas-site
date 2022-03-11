@@ -19,3 +19,8 @@ export function googleOptimizeHydrate() {
 export function useGoogleOptimizeHydrate() {
   return useEffect(googleOptimizeHydrate);
 }
+
+export function GoogleOptimizeHydrate() {
+  useGoogleOptimizeHydrate();
+  return null;
+}

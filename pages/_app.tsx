@@ -29,7 +29,7 @@ import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
-import { useGoogleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
+import { GoogleOptimizeHydrate, useGoogleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
@@ -38,8 +38,6 @@ import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useGoogleOptimizeHydrate();
-
   return (
     <>
       <Head>
@@ -64,7 +62,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <FaviconTags />
       <SmartlookTag />
       <FacebookButtonTag />
-      <GoogleAnalyticsTags />
       <TourContextProvider>
         <PreviewProvider>
           <UserContextProvider>
@@ -90,6 +87,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                       <GooglePrompt />
                                       <ResetOnChangeUser />
                                       <ChangePageInteract />
+                                      <GoogleOptimizeHydrate />
                                     </Twemoji>
                                   </SizeContextProvider>
                                 </PushNotificationContextProvider>

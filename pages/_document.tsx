@@ -4,6 +4,7 @@ import Document, {
 import { interact } from '../interactions/interact';
 import { GoogleOptimizeTag } from '../app/GoogleOptimizeTags';
 import { googleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
+import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
 
 class MyDocument extends Document {
   componentDidMount() {
@@ -15,11 +16,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <GoogleOptimizeTag />
+          <GoogleAnalyticsTags />
+          <meta name="theme-color" content="#fff" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png" />
-          <meta name="theme-color" content="#fff" />
         </Head>
-        <GoogleOptimizeTag />
         <body>
           <Main />
           <NextScript />
