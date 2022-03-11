@@ -3,11 +3,9 @@ import {
   useState,
   ReactNode,
   useContext,
-  ReactChild,
   createContext,
   SetStateAction,
 } from 'react';
-import { Modal } from './Modal';
 
 interface IModalContext{
     modal?:JSX.Element

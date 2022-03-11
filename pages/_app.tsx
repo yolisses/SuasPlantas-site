@@ -21,31 +21,34 @@ import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
-import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
+import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <TourContextProvider>
-      <PreviewProvider>
-        <UserContextProvider>
-          <SocketContextProvider>
-            <SnackContextProvider>
-              <ModalContextProvider>
-                <TextSearchContextProvider>
-                  <LocationContextProvider>
-                    <ChatsContextProvider>
-                      <PaginationProvider Context={usersContext} apiRoute="users">
-                        <PaginationProvider Context={plantsContext} apiRoute="plants">
-                          <PaginationProvider Context={questsContext} apiRoute="quests">
-                            <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                              <PushNotificationContextProvider>
-                                <SizeContextProvider>
+    <PreviewProvider>
+
+      <SnackContextProvider>
+        <ModalContextProvider>
+          <SizeContextProvider>
+            <TourContextProvider>
+              <TextSearchContextProvider>
+                <LocationContextProvider>
+                  {/* depend on location and text searct */}
+                  <PaginationProvider Context={usersContext} apiRoute="users">
+                    <PaginationProvider Context={plantsContext} apiRoute="plants">
+                      <PaginationProvider Context={questsContext} apiRoute="quests">
+                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                          <UserContextProvider>
+                            {/* depend on user */}
+                            <ChatsContextProvider>
+                              <SocketContextProvider>
+                                <PushNotificationContextProvider>
                                   <Twemoji options={{ className: 'twemoji' }}>
                                     <HeaderSelector />
                                     <Component {...pageProps} />
@@ -58,20 +61,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                     <ChangePageInteract />
                                     <GoogleOptimizeHydrate />
                                   </Twemoji>
-                                </SizeContextProvider>
-                              </PushNotificationContextProvider>
-                            </PaginationProvider>
-                          </PaginationProvider>
+                                </PushNotificationContextProvider>
+                              </SocketContextProvider>
+                            </ChatsContextProvider>
+                          </UserContextProvider>
                         </PaginationProvider>
                       </PaginationProvider>
-                    </ChatsContextProvider>
-                  </LocationContextProvider>
-                </TextSearchContextProvider>
-              </ModalContextProvider>
-            </SnackContextProvider>
-          </SocketContextProvider>
-        </UserContextProvider>
-      </PreviewProvider>
-    </TourContextProvider>
+                    </PaginationProvider>
+                  </PaginationProvider>
+                </LocationContextProvider>
+              </TextSearchContextProvider>
+            </TourContextProvider>
+          </SizeContextProvider>
+        </ModalContextProvider>
+      </SnackContextProvider>
+    </PreviewProvider>
   );
 }

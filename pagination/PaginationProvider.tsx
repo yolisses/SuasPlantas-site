@@ -34,13 +34,12 @@ interface PaginationProviderProps<T>{
 }
 
 export function PaginationProvider<T>({ children, Context, apiRoute }:PaginationProviderProps<T>) {
+  const { location } = useLocation();
   const { text } = useTextSearchContext();
   const [items, setItems] = useState<T[]>();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<Filters>();
   const [pageData, setPageData] = useState<PageData>();
-
-  const { location } = useLocation();
 
   async function loadMore(callback?:(pageData:PageData)=>void) {
     if (loading || pageData?.nextPage === null) return;

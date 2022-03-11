@@ -23,9 +23,9 @@ interface ChatsContext{
 export const chatsContext = createContext({} as ChatsContext);
 
 export function ChatsContextProvider({ children }:{children:ReactNode}) {
-  const [chats] = useState({} as ChatsGroup);
-  const refresh = useRefresh();
   const { user } = useUser();
+  const refresh = useRefresh();
+  const [chats] = useState({} as ChatsGroup);
 
   async function getChats() {
     const res = await api.get('chat/contacts');

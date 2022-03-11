@@ -24,9 +24,9 @@ interface IPushNotification{
 const pushNotificationContext = createContext({} as IPushNotification);
 
 export function PushNotificationContextProvider({ children }:{children:ReactNode}) {
-  const [subscribed, setSubscribedValue] = useState<boolean>();
-  const [permission, setPermission] = useState<string>();
   const { user } = useUser();
+  const [permission, setPermission] = useState<string>();
+  const [subscribed, setSubscribedValue] = useState<boolean>();
 
   useEffect(() => {
     OneSignal.init({
