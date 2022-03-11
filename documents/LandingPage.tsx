@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import {
   FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
 } from 'react-icons/fa';
+import { useIsLogged } from '../auth/useIsLogged';
 import { ShareButtons } from '../share/ShareButtons';
 import { useSize } from '../size/SizeContext';
 import { FAQ } from './FAQ';
@@ -15,9 +16,34 @@ import { NotificationsExample } from './NotificationsExample';
 interface SessionWithExampleProps{
   title:string
   Icon:IconType
-  children:ReactNode
-  Example:ReactNode
   reverse?:boolean
+  Example:ReactNode
+  children:ReactNode
+}
+
+function LoginButton() {
+  const { isLogged } = useIsLogged();
+  return (
+    <button
+      onClick={isLogged}
+      className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500"
+    >
+      <FaRegUser />
+      Entrar
+    </button>
+  );
+}
+
+function LoginButtonAlt() {
+  const { isLogged } = useIsLogged();
+  return (
+    <button className="flex flex-row gap-2 items-center scale-active" onClick={isLogged}>
+      <FaRegUser />
+      <span>
+        Entrar
+      </span>
+    </button>
+  );
 }
 
 function H2({ children }:{children:ReactNode}) {
@@ -71,12 +97,7 @@ export function LandingPage() {
           <span>Suas Plantas</span>
         </div>
         <div className="ml-auto" />
-        <button className="flex flex-row gap-2 items-center">
-          <FaRegUser />
-          <span>
-            Entrar
-          </span>
-        </button>
+        <LoginButtonAlt />
       </header>
       <div className="relative center overflow-hidden">
         <div style={{ maxHeight: 'calc(100vh - 4rem)' }}>
@@ -95,12 +116,8 @@ export function LandingPage() {
             style={{ textShadow: '0 0 1rem #000' }}
           >
             Encontre pessoas que adoram plantas
-
           </h1>
-          <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
-            <FaRegUser />
-            Entrar
-          </button>
+          <LoginButton />
         </div>
       </div>
 
@@ -137,10 +154,7 @@ export function LandingPage() {
           </div>
         </section>
         <div className="lg:hidden sticky bottom-0 flex flex-col p-2 w-full bg-white">
-          <button className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
-            <FaRegUser />
-            Entrar
-          </button>
+          <LoginButton />
         </div>
       </div>
       <div className="hidden lg:flex center-row gap-3 transform translate-y-3 mt-24">
@@ -149,10 +163,7 @@ export function LandingPage() {
           <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
             Então, que tal?
           </h2>
-          <button className="main-button w-full max-w-md text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500">
-            <FaRegUser />
-            Entrar
-          </button>
+          <LoginButton />
         </div>
       </div>
       <footer className="bg-slate-900 w-full text-white grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
