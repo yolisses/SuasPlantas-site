@@ -33,15 +33,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ModalContextProvider>
         <SizeContextProvider>
           <TourContextProvider>
+            {/* depend on location and text searct */}
             <TextSearchContextProvider>
               <LocationContextProvider>
-                {/* depend on location and text searct */}
                 <PaginationProvider Context={usersContext} apiRoute="users">
                   <PaginationProvider Context={plantsContext} apiRoute="plants">
                     <PaginationProvider Context={questsContext} apiRoute="quests">
                       <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                        {/* depend on user */}
                         <UserContextProvider>
-                          {/* depend on user */}
                           <ChatsContextProvider>
                             <SocketContextProvider>
                               <PushNotificationContextProvider>
