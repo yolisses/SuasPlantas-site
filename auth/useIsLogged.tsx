@@ -7,11 +7,11 @@ export function useIsLogged() {
   const { user } = useUser();
   const { setModal } = useModal();
 
-  function isLogged() {
+  function isLogged(callback?:()=>void) {
     if (!user) {
       setModal(
         <Modal>
-          <SignInBox />
+          <SignInBox callback={callback} />
         </Modal>,
       );
       return false;

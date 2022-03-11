@@ -4,8 +4,8 @@ import { PlantsPage } from '../home/PlantsPage';
 
 export default PlantsPage;
 
-export const getServerSideProps:GetServerSideProps = async ({ req }) => {
-  const coisa = authenticate(req);
+export const getServerSideProps:GetServerSideProps = async (ctx) => {
+  const coisa = authenticate(ctx);
 
   if (coisa) return { props: {} };
 

@@ -11,6 +11,7 @@ import {
   createContext,
   SetStateAction,
 } from 'react';
+import { useRouter } from 'next/router';
 import { api } from '../api/api';
 import { User } from '../user/User';
 import { usePreview } from '../preview/PreviewContext';
@@ -31,11 +32,13 @@ interface IUserContextProvider{
 export const userContext = createContext({} as IUserContextProvider);
 
 export function UserContextProvider({ children }: {children:ReactNode}) {
+  const router = useRouter();
   const [user, setUser] = useState<User>();
   const { code: previewCode } = usePreview();
   const [loginResolved, setLoginResolved] = useState(false);
 
   async function logOut() {
+    router.push('/landing');
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
     await api.post('users/logout');
     delete api.defaults.headers.common.Authorization;

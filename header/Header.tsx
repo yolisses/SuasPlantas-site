@@ -23,7 +23,7 @@ export function Header() {
         <Link href="/">
           <a
             onClick={handleHomeClick}
-            className="text-lg leading-5 text-white cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 p-2 rounded-lg"
+            className="text-lg leading-5 text-white cursor-pointer select-none hover:bg-green-500 hover:bg-opacity-30 py-3 px-1 rounded-lg"
           >
             Suas Plantas
           </a>

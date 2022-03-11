@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import {
@@ -23,9 +24,16 @@ interface SessionWithExampleProps{
 
 function LoginButton() {
   const { isLogged } = useIsLogged();
+  const { push } = useRouter();
+  function handleClick() {
+    isLogged(() => {
+      push('/');
+    });
+  }
+
   return (
     <button
-      onClick={isLogged}
+      onClick={handleClick}
       className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500"
     >
       <FaRegUser />
@@ -36,8 +44,18 @@ function LoginButton() {
 
 function LoginButtonAlt() {
   const { isLogged } = useIsLogged();
+  const { push } = useRouter();
+  function handleClick() {
+    isLogged(() => {
+      push('/');
+    });
+  }
+
   return (
-    <button className="flex flex-row gap-2 items-center scale-active" onClick={isLogged}>
+    <button
+      onClick={handleClick}
+      className="flex flex-row gap-2 items-center scale-active"
+    >
       <FaRegUser />
       <span>
         Entrar
