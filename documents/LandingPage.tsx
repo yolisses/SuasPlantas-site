@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import {
   FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
@@ -20,16 +20,26 @@ interface SessionWithExampleProps{
   reverse?:boolean
 }
 
+function H2({ children }:{children:ReactNode}) {
+  return (
+    <h2
+      className="text-2xl lg:text-4xl center-row gap-2 bg-gradient-to-r bg-clip-text text-transparent from-emerald-700 to-lime-500 self-start"
+    >
+      {children}
+    </h2>
+  );
+}
+
 function SessionWithExample({
   title, Icon, children, Example, reverse,
 }:SessionWithExampleProps) {
   return (
     <section className={`flex flex-col gap-2 lg:gap-6 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
-        <h2 className="text-2xl lg:text-3xl center-row gap-2">
-          <Icon size={25} />
+        <H2>
+          <Icon size={28} color="#047857" />
           {title}
-        </h2>
+        </H2>
         <p className="text-lg lg:text-xl">
           {children}
         </p>
@@ -44,6 +54,7 @@ function SessionWithExample({
 export function LandingPage() {
   const iconSize = 20;
   const endSize = 250;
+  const storeImageResize = 4;
 
   const { lg } = useSize();
 
@@ -116,11 +127,11 @@ export function LandingPage() {
         >
           O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
-        <section className="w-full">
-          <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
-            <FaRegQuestionCircle size={25} />
+        <section className="w-full flex flex-col">
+          <H2>
+            <FaRegQuestionCircle size={25} color="#047857" />
             Perguntas frequentes
-          </h2>
+          </H2>
           <div className="flex flex-col gap-4 text-lg">
             <FAQ />
           </div>
@@ -144,12 +155,12 @@ export function LandingPage() {
           </button>
         </div>
       </div>
-      <footer className="bg-slate-900 w-full text-white flex flex-col gap-2 p-2 lg:flex-row lg:justify-center lg:gap-6 py-6">
+      <footer className="bg-slate-900 w-full text-white grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
         <div className="flex flex-col gap-1">
           <div className="text-green-200">Links</div>
           <Link href="/contact">Contato</Link>
-          <Link href="/privacy-policy">Política de privacidade</Link>
           <Link href="/about">Sobre nós</Link>
+          <Link href="/privacy-policy">Política de privacidade</Link>
           <div />
         </div>
         <div>
@@ -174,6 +185,17 @@ export function LandingPage() {
             {(new Date()).getFullYear()}
           </div>
         </div>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.suasplantas&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+        >
+          <Image
+            width={646 / storeImageResize}
+            height={250 / storeImageResize}
+            objectFit="contain"
+            alt="Disponível no Google Play"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png"
+          />
+        </a>
       </footer>
     </div>
   );
