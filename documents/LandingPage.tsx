@@ -1,20 +1,20 @@
+import {
+  FaRegMap,
+  FaRegUser,
+  FaRegCommentAlt,
+  FaRegQuestionCircle,
+} from 'react-icons/fa';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
-import {
-  FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
-} from 'react-icons/fa';
-import { LoginButtonAlt } from '../auth/LoginButtonAlt';
-import { useIsLogged } from '../auth/useIsLogged';
-import { useLoginButton } from '../auth/useLoginButton';
-import { ShareButtons } from '../share/ShareButtons';
-import { useSize } from '../size/SizeContext';
+
 import { FAQ } from './FAQ';
 import { Footer } from './Footer';
+import { useSize } from '../size/SizeContext';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
+import { LoginButtonAlt } from '../auth/LoginButtonAlt';
+import { useLoginButton } from '../auth/useLoginButton';
 import { NotificationsExample } from './NotificationsExample';
 
 interface SessionWithExampleProps{
@@ -90,17 +90,19 @@ export function LandingPage() {
         <div className="ml-auto" />
         <LoginButtonAlt />
       </header>
-      <div className="relative center overflow-hidden">
-        <div style={{ maxHeight: 'calc(100vh - 4rem)' }}>
+      <div className="w-full relative center overflow-hidden">
+        <div
+          style={{ maxHeight: 'calc(100vh - 4rem)' }}
+          className="w-full bg-green-600 bg-gradient-to-tr from-emerald-800 to-green-600"
+        >
           <Image
             height={1200}
             objectFit="cover"
             width={lg ? 1800 : 1000}
-            className="brightness-75 bg-green-600 bg-gradient-to-tr from-emerald-600 to-green-600 select-none pointer-events-none"
+            className="brightness-75 select-none pointer-events-none"
             src="/landing/resource.svg"
           />
         </div>
-
         <div className="absolute flex flex-col p-6 gap-4">
           <h1
             id="optimize-title"
