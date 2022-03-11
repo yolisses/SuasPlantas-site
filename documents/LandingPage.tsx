@@ -22,19 +22,24 @@ interface SessionWithExampleProps{
   children:ReactNode
 }
 
-function LoginButton() {
+function useLoginButton() {
   const { isLogged } = useIsLogged();
   const { push } = useRouter();
   function handleClick() {
-    isLogged(() => {
+    const alreadyLogged = isLogged(() => {
       push('/');
     });
+    if (alreadyLogged) push('/');
   }
+  return { handleClick };
+}
 
+function LoginButton() {
+  const { handleClick } = useLoginButton();
   return (
     <button
       onClick={handleClick}
-      className="main-button text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500"
+      className="center-row gap-2 p-3 justify-center rounded-lg text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500"
     >
       <FaRegUser />
       Entrar
@@ -43,14 +48,7 @@ function LoginButton() {
 }
 
 function LoginButtonAlt() {
-  const { isLogged } = useIsLogged();
-  const { push } = useRouter();
-  function handleClick() {
-    isLogged(() => {
-      push('/');
-    });
-  }
-
+  const { handleClick } = useLoginButton();
   return (
     <button
       onClick={handleClick}
@@ -171,7 +169,7 @@ export function LandingPage() {
             <FAQ />
           </div>
         </section>
-        <div className="lg:hidden sticky bottom-0 flex flex-col p-2 w-full bg-white">
+        <div className="lg:hidden sticky bottom-0 flex flex-col py-2 w-full bg-white">
           <LoginButton />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { requireLogin } from '../common/requireLogin';
-import { UsersPage } from '../user/UsersPage';
+import { QuestsPage } from '../quest/QuestsPage';
 
-export default UsersPage;
+export default QuestsPage;
 
 export const getServerSideProps = requireLogin;
