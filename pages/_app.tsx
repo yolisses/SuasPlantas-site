@@ -14,7 +14,7 @@ import { questsContext } from '../quest/questsContext';
 import { HeaderSelector } from '../header/HeaderSelector';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
-import { SizeContextProvider } from '../size/SizeContext';
+import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
 import { PreviewProvider } from '../preview/PreviewContext';
 import { ModalContextProvider } from '../modal/ModalContext';

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { useChats } from '../chat/ChatsContext';
-import { useSize } from '../size/SizeContext';
+import { useSize } from '../common/SizeContext';
 
 export function ChatButton() {
   const { lg } = useSize();

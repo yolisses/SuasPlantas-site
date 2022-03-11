@@ -13,7 +13,7 @@ import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
-import { ShareButtons } from '../share/ShareButtons';
+import { ShareButtons } from '../common/ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
 import { PlantStructuredData } from './PlantStructuredData';
 import { availabilitiesToString } from './availabilitiesToString';

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useChats } from './ChatsContext';
 import { ChatReader } from './ChatReader';
-import { useSize } from '../size/SizeContext';
+import { useSize } from '../common/SizeContext';
 import { ContactsPage } from './ContactsPage';
 
 export function ChatPage() {

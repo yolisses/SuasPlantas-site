@@ -1,6 +1,6 @@
 import { FaShareAlt } from 'react-icons/fa';
 import { useState } from 'react';
-import { ShareButtons } from '../share/ShareButtons';
+import { ShareButtons } from '../common/ShareButtons';
 
 export function ShareButton() {
   const [active, setActive] = useState(false);

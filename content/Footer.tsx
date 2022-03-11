@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShareButtons } from '../share/ShareButtons';
+import { ShareButtons } from '../common/ShareButtons';
 
 export function Footer() {
   const storeImageResize = 4;

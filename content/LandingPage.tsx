@@ -10,7 +10,7 @@ import { IconType } from 'react-icons';
 
 import { FAQ } from './FAQ';
 import { Footer } from './Footer';
-import { useSize } from '../size/SizeContext';
+import { useSize } from '../common/SizeContext';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
 import { LoginButtonAlt } from '../auth/LoginButtonAlt';

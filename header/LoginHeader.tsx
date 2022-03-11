@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Spacer } from '../common/Spacer';
-import { useSize } from '../size/SizeContext';
+import { useSize } from '../common/SizeContext';
 import { MoreMenuButton } from './MoreMenuButton';
 import { FacebookButton } from '../auth/FacebookButton';
 import { LoginButtonAlt } from '../auth/LoginButtonAlt';
