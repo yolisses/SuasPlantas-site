@@ -30,6 +30,7 @@ import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { GoogleOptimizeTag } from '../app/GoogleOptimizeTags';
 import { SocketContextProvider } from '../socket/SocketContext';
 import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
+import { GoogleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
@@ -61,6 +62,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AdSenseTags />
       <FaviconTags />
       <SmartlookTag />
+      <GoogleOptimizeTag />
       <FacebookButtonTag />
       <GoogleAnalyticsTags />
       <TourContextProvider>
@@ -87,8 +89,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                       <PreviewWarn />
                                       <GooglePrompt />
                                       <ResetOnChangeUser />
-                                      <GoogleOptimizeTag />
                                       <ChangePageInteract />
+                                      <GoogleOptimizeHydrate />
                                     </Twemoji>
                                   </SizeContextProvider>
                                 </PushNotificationContextProvider>
