@@ -11,7 +11,7 @@ import { NotificationMenuButton } from '../notification/NotificationMenuButton';
 
 const hideHeader = {
   '/landing': true,
-};
+} as {[key:string]:true};
 
 export function Header() {
   const { setFilters: setPlantsFilters } = usePlants();
