@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
-import { api } from '../../../api/api';
-import { PlantPage } from '../../../plant/PlantPage';
-import { authenticate } from '../../../auth/authenticate';
+import { api } from '../../api/api';
+import { PlantPage } from '../../plant/PlantPage';
+import { authenticate } from '../../auth/authenticate';
 
 export default PlantPage;
 
