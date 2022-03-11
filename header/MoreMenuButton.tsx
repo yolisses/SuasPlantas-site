@@ -9,8 +9,8 @@ import {
   RiLoginBoxLine,
   RiLogoutBoxRLine,
 } from 'react-icons/ri';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 import { Menu } from '../common/menu/Menu';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
@@ -21,6 +21,10 @@ export function MoreMenuButton() {
 
   const { isLogged } = useIsLogged();
   const imageSize = 20;
+
+  function handleSignInClick() {
+    isLogged();
+  }
 
   return (
     <div>
@@ -74,7 +78,7 @@ export function MoreMenuButton() {
               </button>
             ) : (
               <button className="menu-button" onClick={() => { setMenu(null); isLogged(); }}>
-                <RiLoginBoxLine size={20} color="gray" onClick={isLogged} />
+                <RiLoginBoxLine size={20} color="gray" onClick={handleSignInClick} />
                 {' '}
                 Entrar
               </button>

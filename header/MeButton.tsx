@@ -15,6 +15,10 @@ export function MeButton() {
 
   const user = previewUser || actualUser;
 
+  function handleClick() {
+    isLogged();
+  }
+
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -40,7 +44,7 @@ export function MeButton() {
         </Link>
       ) : (
         <button
-          onClick={isLogged}
+          onClick={handleClick}
           className="secondary-button center-row gap-1 cursor-pointer text-white"
         >
           <FaRegUser size={18} />

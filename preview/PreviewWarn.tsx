@@ -9,6 +9,10 @@ export function PreviewWarn() {
 
   if (!user) return null;
 
+  function handleClick() {
+    isLogged();
+  }
+
   return (
     <div className="fixed bottom-0 rounded-lg">
       <div className="bg-black text-white p-4 md:rounded-tr-2xl">
@@ -20,7 +24,7 @@ export function PreviewWarn() {
         ,
         {' '}
         <button
-          onClick={isLogged}
+          onClick={handleClick}
           className="inline text-white border border-white"
         >
           clique aqui
