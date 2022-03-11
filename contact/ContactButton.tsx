@@ -12,10 +12,10 @@ export function ContactButton({
 }:ContactButtonProps) {
   return (
     <a
+      href={href}
       tabIndex={-1}
       target="_blank"
       rel="noopener noreferrer"
-      href={href}
       className="w-full max-w-sm"
     >
       <button

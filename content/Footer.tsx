@@ -37,12 +37,14 @@ export function Footer() {
         </div>
       </div>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href="https://play.google.com/store/apps/details?id=com.suasplantas&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
       >
         <Image
+          objectFit="contain"
           width={646 / storeImageResize}
           height={250 / storeImageResize}
-          objectFit="contain"
           alt="Disponível no Google Play"
           src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png"
         />
