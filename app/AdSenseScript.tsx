@@ -1,4 +1,4 @@
-export function AdSenseTags() {
+export function AdSenseScript() {
   return (
     <script
       async

@@ -6,18 +6,18 @@ import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
-import { HotjarTags } from '../app/HotjarTags';
-import { AdSenseTags } from '../app/AdSenseTags';
+import { HotjarScript } from '../app/HotjarScript';
+import { AdSenseScript } from '../app/AdSenseScript';
 import { FaviconTags } from '../app/FaviconTags';
 import { ExitIntent } from '../intent/ExitIntent';
-import { SmartlookTag } from '../app/SmartlookTag';
+import { SmartlookScript } from '../app/SmartlookScript';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
 import { PreviewWarn } from '../preview/PreviewWarn';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
-import { FacebookButtonTag } from '../auth/FacebookTag';
+import { FacebookButtonScript } from '../auth/FacebookTag';
 import { HeaderSelector } from '../header/HeaderSelector';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
@@ -28,7 +28,7 @@ import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
-import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
+import { GoogleAnalyticsScript } from '../app/GoogleAnalyticsScript';
 import { GoogleOptimizeHydrate, useGoogleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
@@ -57,11 +57,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           crossOrigin=""
         />
       </Head>
-      <HotjarTags />
-      <AdSenseTags />
+      <HotjarScript />
+      <AdSenseScript />
       <FaviconTags />
-      <SmartlookTag />
-      <FacebookButtonTag />
+      <SmartlookScript />
+      <FacebookButtonScript />
       <TourContextProvider>
         <PreviewProvider>
           <UserContextProvider>

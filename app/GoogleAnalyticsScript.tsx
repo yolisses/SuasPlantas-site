@@ -1,8 +1,4 @@
-import { isDev } from '../utils/isDev';
-
-export function GoogleAnalyticsTags() {
-  // if (isDev) return null;
-
+export function GoogleAnalyticsScript() {
   return (
     <>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-SV4DSGVC8F" />

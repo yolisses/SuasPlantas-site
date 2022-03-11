@@ -2,9 +2,9 @@ import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
 import { interact } from '../interactions/interact';
-import { GoogleOptimizeTag } from '../app/GoogleOptimizeTags';
+import { GoogleOptimizeScript } from '../app/GoogleOptimizeScripts';
 import { googleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
-import { GoogleAnalyticsTags } from '../app/GoogleAnalyticsTags';
+import { GoogleAnalyticsScript } from '../app/GoogleAnalyticsScript';
 
 class MyDocument extends Document {
   componentDidMount() {
@@ -16,8 +16,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <GoogleOptimizeTag />
-          <GoogleAnalyticsTags />
+          <GoogleOptimizeScript />
+          <GoogleAnalyticsScript />
           <meta name="theme-color" content="#fff" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png" />
