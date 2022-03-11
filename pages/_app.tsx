@@ -42,9 +42,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                       <PaginationProvider Context={notificationsContext} apiRoute="notifications">
                         {/* depend on user */}
                         <UserContextProvider>
-                          <ChatsContextProvider>
+                          <PushNotificationContextProvider>
+                            {/* depend on user and socket */}
                             <SocketContextProvider>
-                              <PushNotificationContextProvider>
+                              <ChatsContextProvider>
                                 <Twemoji options={{ className: 'twemoji' }}>
                                   <HeaderSelector />
                                   <Component {...pageProps} />
@@ -56,9 +57,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                   <ChangePageInteract />
                                   <GoogleOptimizeHydrate />
                                 </Twemoji>
-                              </PushNotificationContextProvider>
+                              </ChatsContextProvider>
                             </SocketContextProvider>
-                          </ChatsContextProvider>
+                          </PushNotificationContextProvider>
                         </UserContextProvider>
                       </PaginationProvider>
                     </PaginationProvider>
