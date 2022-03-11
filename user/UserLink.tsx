@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { User } from './User';
 import { userImage } from '../images/user';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface UserLinkProps {
   user: User;
@@ -24,13 +23,8 @@ export function UserLink({ user, imgSize = 50 }: UserLinkProps) {
         <div className="flex flex-col">
           <div className="font-semibold text-black">
             {user.name}
-            {' '}
-            { user.preview && <PreviewIndicator />}
           </div>
           <div className="text-gray-700 text-sm">
-            {/* Entrou no Suas Plantas em
-            {' '}
-            <time>{new Date(user.createdAt).getFullYear()}</time> */}
             {user.city}
             ,
             {' '}

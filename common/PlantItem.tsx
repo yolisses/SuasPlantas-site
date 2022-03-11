@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plant } from '../plant/Plant';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 interface PlantItemDTO {
   item: Plant
@@ -11,33 +10,31 @@ interface PlantItemDTO {
 export function PlantItem({
   item, size: sizeParam,
 }: PlantItemDTO) {
-  const { card, preview } = item;
+  const {
+    card, id, name, user,
+  } = item;
 
   const size = sizeParam || 200;
   return (
-    <Link href={`/plants/${item.id}`}>
+    <Link href={`/plants/${id}`}>
       <a className={`highlight rounded-xl flex flex-col ${!card ? 'bg-gray-100 justify-center py-3' : ''}`}>
         {!!card && (
         <Image
           src={card}
           width={size}
           height={size}
-          alt={item.name}
+          alt={name}
           objectFit="cover"
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         )}
         <div className="px-2 pb-1 text-center">
-          <span className={`text-lg ${!card ? 'text-2xl' : ''}`}>{item.name}</span>
-          {' '}
-          {preview && <PreviewIndicator />}
-
-          {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
-          {(!!item.user) && (
+          <span className={`text-lg ${!card ? 'text-2xl' : ''}`}>{name}</span>
+          {(!!user) && (
             <div className="text-sm">
-              {item.user.city}
-              {!!item.user.state && ', '}
-              {item.user.state}
+              {user.city}
+              {!!user.state && ', '}
+              {user.state}
             </div>
           )}
         </div>

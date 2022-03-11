@@ -13,13 +13,12 @@ import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
-import { ShareButtons } from '../common/ShareButtons';
 import { devIndicator } from '../utils/devIndicator';
-import { PlantStructuredData } from './PlantStructuredData';
-import { availabilitiesToString } from './availabilitiesToString';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
+import { ShareButtons } from '../common/ShareButtons';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from './ContactsIndicator';
+import { PlantStructuredData } from './PlantStructuredData';
+import { availabilitiesToString } from './availabilitiesToString';
 
 interface PlantPageProps{
   data:Plant
@@ -35,7 +34,6 @@ export function PlantPage({ data }:PlantPageProps) {
     swap,
     price,
     donate,
-    preview,
     description,
     updatedAt: updatedAtString,
   } = data;
@@ -93,7 +91,6 @@ export function PlantPage({ data }:PlantPageProps) {
                       );
                     })}
                   </Carousel>
-                  {/* {JSON.stringify(data.images)} */}
                 </div>
               </div>
             )}
@@ -101,9 +98,6 @@ export function PlantPage({ data }:PlantPageProps) {
             <div className="p-2 gap-4 flex flex-col">
               <div>
                 <h1 className="text-2xl inline">{name}</h1>
-                {' '}
-                {preview && <PreviewIndicator />}
-                {/* <AvailabilityInfo {...{ swap, donate, price }} /> */}
               </div>
               <div className="flex flex-row md:flex-row-reverse md:justify-end gap-2">
                 {!selfUser && <MessageButton user={user} />}
@@ -142,7 +136,6 @@ export function PlantPage({ data }:PlantPageProps) {
                 Descrição
                 <div>
                   {description}
-                  {/* {loremIpsum} */}
                 </div>
               </div>
               )}
@@ -178,7 +171,6 @@ export function PlantPage({ data }:PlantPageProps) {
           </div>
         </div>
       )}
-        {/* {loremIpsum} */}
       </div>
     </>
   );

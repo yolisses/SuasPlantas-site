@@ -19,14 +19,11 @@ import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
-import { usePreview } from '../preview/PreviewContext';
 import { MessageButton } from '../chat/MessageButton';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
 
 interface UserPageProps {
   user: User;
-  preview?:boolean
 }
 
 interface TabProps{
@@ -46,13 +43,11 @@ function Tab({ tab, currentTab, children }:TabProps) {
   );
 }
 
-export function UserPage({ user: paramUser, preview }: UserPageProps) {
+export function UserPage({ user }: UserPageProps) {
   const [tab, setTab] = useState('plants');
   const { refreshUser } = useUser();
   const { push } = useRouter();
   const { user: actualUser } = useUser();
-  const { user: previewUser } = usePreview();
-  const user = preview ? previewUser : paramUser;
 
   const selfUser = actualUser?.id === user?.id;
 
@@ -89,8 +84,6 @@ export function UserPage({ user: paramUser, preview }: UserPageProps) {
               <div className="flex flex-col w-full">
                 <div>
                   <span className="overflow-ellipsis text-lg">{user.name}</span>
-                  {' '}
-                  {user.preview && <PreviewIndicator />}
                 </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
               </div>
@@ -181,9 +174,6 @@ function QuestsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
         { items.map((item) => (
           <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">
             {item.name}
-            {' '}
-            {item.preview
-            && <PreviewIndicator />}
           </div>
         ))}
       </div>

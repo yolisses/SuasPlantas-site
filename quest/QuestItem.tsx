@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { userImage } from '../images/user';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 import { Quest } from './Quest';
 
 export function QuestItem({ item }:{item:Quest}) {
@@ -13,7 +12,6 @@ export function QuestItem({ item }:{item:Quest}) {
           <div className="text-lg">
             {item.name}
             {' '}
-            {item.preview && <PreviewIndicator />}
           </div>
           {!!user && (
           <div className="flex flex-row gap-2 items-center">

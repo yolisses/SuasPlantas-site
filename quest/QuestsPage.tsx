@@ -4,19 +4,16 @@ import { HomePage } from '../home/HomePage';
 import { useTour } from '../tour/TourContext';
 import { AddButton } from '../home/AddButton';
 import { questsContext } from './questsContext';
-import { usePreview } from '../preview/PreviewContext';
 import { questsTourSteps } from '../tour/questsTourSteps';
 
 export function QuestsPage() {
   const { blockQuestsTour } = useTour();
-  const { user } = usePreview();
 
   return (
     <HomePage
       tab="quests"
       tourName="Quests"
       context={questsContext}
-      aditionalItems={user?.quests}
       firstActionButton={<AddButton url="quests/edit" />}
       tourSteps={!blockQuestsTour ? questsTourSteps : undefined}
     >

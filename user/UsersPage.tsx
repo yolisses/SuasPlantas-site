@@ -8,23 +8,18 @@ import { ShareButton } from './ShareButton';
 import { usersContext } from './usersContext';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { usePreview } from '../preview/PreviewContext';
 
 export function UsersPage() {
   const size = 80;
 
-  const { user: previewUser } = usePreview();
   const { user } = useUser();
   const { isLogged } = useIsLogged();
 
   return (
     <HomePage
-      context={usersContext}
       tab="users"
-      firstActionButton={(
-        <ShareButton />
-    )}
-      aditionalItems={previewUser && [previewUser]}
+      context={usersContext}
+      firstActionButton={<ShareButton />}
     >
       {(items) => (
         <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">

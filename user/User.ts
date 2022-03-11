@@ -22,5 +22,4 @@ export interface User {
     createdAt: string;
     updatedAt: string;
     quests: Quest[]
-    preview?:true
 }

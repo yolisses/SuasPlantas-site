@@ -8,7 +8,6 @@ import { SnackView } from '../snack/SnackView';
 import { ExitIntent } from '../intent/ExitIntent';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
-import { PreviewWarn } from '../preview/PreviewWarn';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { HeaderSelector } from '../header/HeaderSelector';
@@ -16,7 +15,6 @@ import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
 import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
-import { PreviewProvider } from '../preview/PreviewContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
@@ -31,50 +29,46 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <PreviewProvider>
-
-      <SnackContextProvider>
-        <ModalContextProvider>
-          <SizeContextProvider>
-            <TourContextProvider>
-              <TextSearchContextProvider>
-                <LocationContextProvider>
-                  {/* depend on location and text searct */}
-                  <PaginationProvider Context={usersContext} apiRoute="users">
-                    <PaginationProvider Context={plantsContext} apiRoute="plants">
-                      <PaginationProvider Context={questsContext} apiRoute="quests">
-                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                          <UserContextProvider>
-                            {/* depend on user */}
-                            <ChatsContextProvider>
-                              <SocketContextProvider>
-                                <PushNotificationContextProvider>
-                                  <Twemoji options={{ className: 'twemoji' }}>
-                                    <HeaderSelector />
-                                    <Component {...pageProps} />
-                                    <SnackView />
-                                    <ModalView />
-                                    <ExitIntent />
-                                    <PreviewWarn />
-                                    <GooglePrompt />
-                                    <ResetOnChangeUser />
-                                    <ChangePageInteract />
-                                    <GoogleOptimizeHydrate />
-                                  </Twemoji>
-                                </PushNotificationContextProvider>
-                              </SocketContextProvider>
-                            </ChatsContextProvider>
-                          </UserContextProvider>
-                        </PaginationProvider>
+    <SnackContextProvider>
+      <ModalContextProvider>
+        <SizeContextProvider>
+          <TourContextProvider>
+            <TextSearchContextProvider>
+              <LocationContextProvider>
+                {/* depend on location and text searct */}
+                <PaginationProvider Context={usersContext} apiRoute="users">
+                  <PaginationProvider Context={plantsContext} apiRoute="plants">
+                    <PaginationProvider Context={questsContext} apiRoute="quests">
+                      <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                        <UserContextProvider>
+                          {/* depend on user */}
+                          <ChatsContextProvider>
+                            <SocketContextProvider>
+                              <PushNotificationContextProvider>
+                                <Twemoji options={{ className: 'twemoji' }}>
+                                  <HeaderSelector />
+                                  <Component {...pageProps} />
+                                  <SnackView />
+                                  <ModalView />
+                                  <ExitIntent />
+                                  <GooglePrompt />
+                                  <ResetOnChangeUser />
+                                  <ChangePageInteract />
+                                  <GoogleOptimizeHydrate />
+                                </Twemoji>
+                              </PushNotificationContextProvider>
+                            </SocketContextProvider>
+                          </ChatsContextProvider>
+                        </UserContextProvider>
                       </PaginationProvider>
                     </PaginationProvider>
                   </PaginationProvider>
-                </LocationContextProvider>
-              </TextSearchContextProvider>
-            </TourContextProvider>
-          </SizeContextProvider>
-        </ModalContextProvider>
-      </SnackContextProvider>
-    </PreviewProvider>
+                </PaginationProvider>
+              </LocationContextProvider>
+            </TextSearchContextProvider>
+          </TourContextProvider>
+        </SizeContextProvider>
+      </ModalContextProvider>
+    </SnackContextProvider>
   );
 }

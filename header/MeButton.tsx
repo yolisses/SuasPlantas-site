@@ -4,16 +4,11 @@ import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { usePreview } from '../preview/PreviewContext';
-import { PreviewIndicator } from '../preview/PreviewIndicator';
 
 export function MeButton() {
-  const { user: actualUser } = useUser();
-  const { user: previewUser } = usePreview();
-  const { isLogged } = useIsLogged();
   const size = 30;
-
-  const user = previewUser || actualUser;
+  const { user } = useUser();
+  const { isLogged } = useIsLogged();
 
   function handleClick() {
     isLogged();
@@ -33,13 +28,6 @@ export function MeButton() {
               src={user?.image || userImage}
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
-            {user.preview && (
-              <div className="relative">
-                <div className="absolute bottom-1 -left-4">
-                  <PreviewIndicator />
-                </div>
-              </div>
-            )}
           </a>
         </Link>
       ) : (

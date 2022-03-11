@@ -14,7 +14,6 @@ export interface Plant {
   name: string
   amount:number
   card?: string
-  preview?:true
   swap: boolean
   liked?:boolean
   images: Image[]
