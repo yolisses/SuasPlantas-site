@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Footer } from './Footer';
 
 export function AboutPage() {
   return (
@@ -65,6 +66,7 @@ export function AboutPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
