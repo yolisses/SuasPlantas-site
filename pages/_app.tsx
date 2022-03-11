@@ -21,7 +21,7 @@ import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
-import { GoogleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
+import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';

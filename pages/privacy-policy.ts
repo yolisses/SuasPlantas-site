@@ -1,3 +1,3 @@
-import { PrivacyPolicyPage } from '../documents/PrivacyPolicyPage';
+import { PrivacyPolicyPage } from '../content/PrivacyPolicyPage';
 
 export default PrivacyPolicyPage;

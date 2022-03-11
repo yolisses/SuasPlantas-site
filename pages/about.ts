@@ -1,3 +1,3 @@
-import { AboutPage } from '../documents/AboutPage';
+import { AboutPage } from '../content/AboutPage';
 
 export default AboutPage;

@@ -4,7 +4,7 @@ import { parseCookies, setCookie } from 'nookies';
 import { Modal } from '../modal/Modal';
 import { useModal } from '../modal/ModalContext';
 import { interact } from '../interactions/interact';
-import { FeedbackBox } from '../documents/FeedbackBox';
+import { FeedbackBox } from '../content/FeedbackBox';
 
 const MIN_TIME_IN_SITE = 5000; // 5 seconds
 

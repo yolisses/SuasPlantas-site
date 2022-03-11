@@ -1,18 +1,18 @@
 import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
-import { PWAMeta } from '../app/PWAMeta';
-import { FaviconMeta } from '../app/FaviconMeta';
-import { LeafletStyle } from '../app/LeafletStyle';
-import { HotjarScript } from '../app/HotjarScript';
+import { PWAMeta } from '../document/PWAMeta';
+import { FaviconMeta } from '../document/FaviconMeta';
+import { LeafletStyle } from '../document/LeafletStyle';
+import { HotjarScript } from '../document/HotjarScript';
 import { interact } from '../interactions/interact';
-import { AdSenseScript } from '../app/AdSenseScript';
-import { SmartlookScript } from '../app/SmartlookScript';
-import { DefaultPageMeta } from '../app/DefaultPageMeta';
-import { GoogleOptimizeScript } from '../app/GoogleOptimizeScript';
-import { FacebookButtonScript } from '../app/FacebookButtonScript';
-import { googleOptimizeHydrate } from '../app/GoogleOptimizeHydrate';
-import { GoogleAnalyticsScript } from '../app/GoogleAnalyticsScript';
+import { AdSenseScript } from '../document/AdSenseScript';
+import { SmartlookScript } from '../document/SmartlookScript';
+import { DefaultPageMeta } from '../document/DefaultPageMeta';
+import { GoogleOptimizeScript } from '../document/GoogleOptimizeScript';
+import { FacebookButtonScript } from '../document/FacebookButtonScript';
+import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
+import { GoogleAnalyticsScript } from '../document/GoogleAnalyticsScript';
 
 class MyDocument extends Document {
   componentDidMount() {
