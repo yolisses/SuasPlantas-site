@@ -6,7 +6,9 @@ import { IconType } from 'react-icons';
 import {
   FaRegCommentAlt, FaRegMap, FaRegQuestionCircle, FaRegUser,
 } from 'react-icons/fa';
+import { LoginButtonAlt } from '../auth/LoginButtonAlt';
 import { useIsLogged } from '../auth/useIsLogged';
+import { useLoginButton } from '../auth/useLoginButton';
 import { ShareButtons } from '../share/ShareButtons';
 import { useSize } from '../size/SizeContext';
 import { FAQ } from './FAQ';
@@ -22,18 +24,6 @@ interface SessionWithExampleProps{
   children:ReactNode
 }
 
-function useLoginButton() {
-  const { isLogged } = useIsLogged();
-  const { push } = useRouter();
-  function handleClick() {
-    const alreadyLogged = isLogged(() => {
-      push('/');
-    });
-    if (alreadyLogged) push('/');
-  }
-  return { handleClick };
-}
-
 function LoginButton() {
   const { handleClick } = useLoginButton();
   return (
@@ -43,21 +33,6 @@ function LoginButton() {
     >
       <FaRegUser />
       Entrar
-    </button>
-  );
-}
-
-function LoginButtonAlt() {
-  const { handleClick } = useLoginButton();
-  return (
-    <button
-      onClick={handleClick}
-      className="flex flex-row gap-2 items-center scale-active"
-    >
-      <FaRegUser />
-      <span>
-        Entrar
-      </span>
     </button>
   );
 }
