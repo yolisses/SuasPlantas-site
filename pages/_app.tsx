@@ -80,13 +80,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                     <Twemoji options={{ className: 'twemoji' }}>
                                       <HeaderSelector />
                                       <Component {...pageProps} />
-                                      <PreviewWarn />
                                       <SnackView />
                                       <ModalView />
-                                      <ResetOnChangeUser />
                                       <ExitIntent />
-                                      <ChangePageInteract />
+                                      <PreviewWarn />
                                       <GooglePrompt />
+                                      <ResetOnChangeUser />
+                                      <ChangePageInteract />
                                     </Twemoji>
                                   </SizeContextProvider>
                                 </PushNotificationContextProvider>
