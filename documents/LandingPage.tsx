@@ -194,7 +194,7 @@ export function LandingPage() {
           <div className="text-green-200">
             Compartilhe essa ideia
           </div>
-          <div className="flex flex-row gap-2 pt-1">
+          <div className="flex flex-row gap-1 pt-1">
             <ShareButtons shareUrl="https://suasplantas.com" socialIconProps={{ size: 35, borderRadius: 1000 }} />
           </div>
         </div>
