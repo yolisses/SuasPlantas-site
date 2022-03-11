@@ -21,16 +21,17 @@ module.exports = withPlugins(
     reactStrictMode: true,
     images: {
       domains: [
-        'unsplash.com',
-        'images.unsplash.com',
         'github.com',
-        'lh3.googleusercontent.com',
         'unsplash.it',
+        'unsplash.com',
+        'play.google.com',
+        'images.unsplash.com',
+        'maps.googleapis.com',
+        'lh3.googleusercontent.com',
+        'scontent-for1-1.xx.fbcdn.net',
         'platform-lookaside.fbsbx.com',
         'suasplantas.s3.sa-east-1.amazonaws.com',
         'plantei-dev.s3.sa-east-1.amazonaws.com',
-        'scontent-for1-1.xx.fbcdn.net',
-        'maps.googleapis.com',
       ],
     },
     async redirects() {

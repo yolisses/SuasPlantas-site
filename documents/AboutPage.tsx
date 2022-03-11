@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 export function AboutPage() {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="center-col gap-4">
       <div className="flex flex-col sm:flex-row items-center gap-2">
         <div className="h-32 sm:h-auto overflow-hidden flex flex-col justify-end">
           <Image
-            src="/cover5.jpg"
+            src="/about/about.jpg"
             width={450}
             height={450}
             objectFit="cover"

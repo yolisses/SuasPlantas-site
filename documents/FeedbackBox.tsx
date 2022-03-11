@@ -41,7 +41,7 @@ export function FeedbackBox({ source }:{source:string}) {
   }
 
   return (
-    <div className="flex flex-col items-center p-2">
+    <div className="center-col p-2">
       <div className="flex flex-col md:flex-row gap-4 w-full items-center md:items-start justify-center md:py-4">
         <fieldset className="flex flex-col gap-3 items-stretch w-full max-w-md">
           <Controller

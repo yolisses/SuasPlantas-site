@@ -31,7 +31,7 @@ export function UsersPage() {
           {!user
           && (
           <button
-            className="bg-gray-100 flex flex-col items-center p-2 rounded-lg hover:bg-gray-300 gap-0 text-black"
+            className="bg-gray-100 center-col p-2 rounded-lg hover:bg-gray-300 gap-0 text-black"
             onClick={(e) => {
               if (!isLogged()) {
                 e.preventDefault();

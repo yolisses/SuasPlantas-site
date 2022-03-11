@@ -7,7 +7,7 @@ export function SignInPage() {
   return (
     <div className="h-full flex flex-col sm:flex-row">
       <div className="flex flex-col sm:w-1/4 h-36 sm:h-full">
-        <Image src="/cover4.jpg" width={1000} height={2000} objectFit="cover" />
+        <Image src="/signin/signin.jpg" width={1000} height={2000} objectFit="cover" />
       </div>
       <div className="flex flex-col flex-1">
         <div className="h-4 bg-white absolute w-full top-32 rounded-t-full sm:hidden" />

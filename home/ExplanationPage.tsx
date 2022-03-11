@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function ExplanationPage() {
   return (
-    <div className="p-4 flex flex-col items-center">
+    <div className="p-4 center-col">
       <div className="flex flex-col max-w-xl gap-4">
         <div className="text-green-700 text-xl">Bem vindo(a) ao SuasPlantas.com</div>
         <p>

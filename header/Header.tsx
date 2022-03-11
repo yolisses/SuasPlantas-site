@@ -1,32 +1,33 @@
 import Link from 'next/link';
 
+import { useRouter } from 'next/router';
 import { MeButton } from './MeButton';
 import { Spacer } from '../common/Spacer';
+import { ChatButton } from './ChatButton';
 import { MoreMenuButton } from './MoreMenuButton';
 import { usePlants } from '../plant/plantsContext';
-import { useQuests } from '../quest/questsContext';
 import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
-import { ChatButton } from './ChatButton';
+
+const hideHeader = {
+  '/landing': true,
+};
 
 export function Header() {
-  const { reset: resetPlants, setFilters: setPlantsFilters } = usePlants();
-  const { reset: resetQuests, setFilters: setQuestsFilters } = useQuests();
+  const { setFilters: setPlantsFilters } = usePlants();
+  const { asPath } = useRouter();
 
   function handleHomeClick() {
     if (window.location.pathname === '/') {
-      resetPlants();
       setPlantsFilters({});
-    }
-    if (window.location.pathname === '/quests') {
-      resetQuests();
-      setQuestsFilters({});
     }
   }
 
+  if (hideHeader[asPath]) return null;
+
   return (
     <>
-      <div className="fixed flex flex-row px-2 h-12 items-center w-full gap-1 sm:gap-2 z-50 bg-emerald-700 shadow-md">
+      <header className="fixed flex flex-row px-2 h-12 items-center w-full gap-1 sm:gap-2 z-50 bg-emerald-700 shadow-md">
         <Link href="/">
           <a
             onClick={handleHomeClick}
@@ -44,7 +45,7 @@ export function Header() {
         <ChatButton />
         <NotificationMenuButton />
         <MoreMenuButton />
-      </div>
+      </header>
       <div className="h-12" />
     </>
   );

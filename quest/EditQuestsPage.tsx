@@ -69,7 +69,7 @@ export function EditQuestsPage() {
   );
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="center-col">
       <Link href="/quests">
         <button onClick={reset} className="self-start">
           <h1 className="flex flex-row p-2 items-center text-lg gap-1 text-black">
@@ -80,8 +80,8 @@ export function EditQuestsPage() {
           </h1>
         </button>
       </Link>
-      <div className="w-full flex flex-col items-center gap-2">
-        <div className="w-full max-w-lg flex flex-col items-center" style={{ minHeight: '25vh' }}>
+      <div className="w-full center-col gap-2">
+        <div className="w-full max-w-lg center-col" style={{ minHeight: '25vh' }}>
           {loading && <Spinner />}
           {quests.length && !loading ? (
             <div className="flex flex-row flex-wrap gap-1 justify-center">
@@ -111,7 +111,7 @@ export function EditQuestsPage() {
         >
           {!!selected
           && (
-          <div className="flex flex-row items-center justify-between">
+          <div className="center-row justify-between">
             <div>
               <span className="text-green-700">
                 Editando:

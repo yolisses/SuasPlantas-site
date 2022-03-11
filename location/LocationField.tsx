@@ -82,7 +82,7 @@ export function LocationField({
       >
         <div className="flex flex-col max-h-screen bg-white w-full max-w-3xl rounded-none md:rounded-lg shadow-xl">
           <div className="px-2 pb-2">
-            <div className="h-12 flex flex-row items-center justify-between">
+            <div className="h-12 center-row justify-between">
               <div className="pl-1">{title || 'Selecionar localização'}</div>
               <button
                 disabled={loading}
@@ -100,7 +100,7 @@ export function LocationField({
             />
           </div>
           {!!radiusOptions && (
-          <div className="flex flex-row items-center px-2 gap-1">
+          <div className="center-row px-2 gap-1">
             <span>
               Distância máxima
             </span>
@@ -124,7 +124,7 @@ export function LocationField({
               className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
               style={{ zIndex: 500 }}
             >
-              <Image width={40} height={40} src="/map_center.png" />
+              <Image width={40} height={40} src="/map/map_center.png" />
             </div>
             <Map
               center={center!}

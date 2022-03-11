@@ -19,7 +19,7 @@ export function NotificationsToggleWarn() {
           <div>
             <img
               className="select-none"
-              src="/toggle_notification.png"
+              src="/notification/toggle_notification.png"
               alt="para desbloquear as notificações do dispositivo, acesse as configurações do site, próximo ao endereço suasplantas.com, e ligue a opção notificações"
             />
           </div>

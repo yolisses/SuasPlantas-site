@@ -138,7 +138,7 @@ export function NewHomePage() {
         </>
       </InfiniteScroll>
       {loading && (
-      <div className="p-4 flex-1 flex flex-col items-center justify-center">
+      <div className="p-4 flex-1 center-col justify-center">
         <Spinner />
       </div>
       )}

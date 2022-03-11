@@ -14,7 +14,7 @@ export function ChatItem({ chat, current }:ChatButtonProps) {
   return (
     <Link href={`/chat/${chat.userId}`}>
       <button
-        className={`highlight flex flex-row items-center gap-2 p-2 w-full rounded-md ${
+        className={`highlight center-row gap-2 p-2 w-full rounded-md ${
           current ? 'bg-gray-100' : ''
         }`}
       >
