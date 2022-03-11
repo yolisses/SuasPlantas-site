@@ -159,7 +159,7 @@ export function LandingPage() {
       </div>
       <div className="hidden lg:flex center-row gap-3 transform translate-y-3 mt-24">
         <Image src="/landing/pot3.png" width={endSize} height={endSize} objectFit="cover" />
-        <div>
+        <div className="flex flex-col">
           <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
             Então, que tal?
           </h2>
