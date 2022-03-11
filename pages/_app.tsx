@@ -4,8 +4,6 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
-
-import { Header } from '../header/Header';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
 import { HotjarTags } from '../app/HotjarTags';
@@ -19,6 +17,7 @@ import { PreviewWarn } from '../preview/PreviewWarn';
 import { devIndicator } from '../utils/devIndicator';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
+import { HeaderSelector } from '../header/HeaderSelector';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
 import { SizeContextProvider } from '../size/SizeContext';
@@ -36,7 +35,6 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { notificationsContext } from '../notification/notificationsContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { LoginHeader } from '../header/LoginHeader';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -80,8 +78,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 <PushNotificationContextProvider>
                                   <SizeContextProvider>
                                     <Twemoji options={{ className: 'twemoji' }}>
-                                      {/* <Header /> */}
-                                      <LoginHeader />
+                                      <HeaderSelector />
                                       <Component {...pageProps} />
                                       <PreviewWarn />
                                       <SnackView />
