@@ -121,7 +121,7 @@ export function LandingPage() {
             height={1200}
             objectFit="cover"
             width={lg ? 1800 : 1000}
-            className="brightness-75 bg-green-600 bg-gradient-to-tr from-emerald-600 to-green-600"
+            className="brightness-75 bg-green-600 bg-gradient-to-tr from-emerald-600 to-green-600 select-none pointer-events-none"
             src="/landing/resource.svg"
           />
         </div>
