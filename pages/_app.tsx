@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import '../styles/globals.css';
 
+import Head from 'next/head';
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
 import { ModalView } from '../modal/ModalView';
@@ -17,6 +18,7 @@ import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
 import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
+import { DefaultPageMeta } from '../document/DefaultPageMeta';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
 import { LocationContextProvider } from '../location/LocationContext';
@@ -29,47 +31,52 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Twemoji options={{ className: 'twemoji' }}>
-      <SnackContextProvider>
-        <ModalContextProvider>
-          <SizeContextProvider>
-            <TourContextProvider>
-              {/* depend on location and text searct */}
-              <TextSearchContextProvider>
-                <LocationContextProvider>
-                  <PaginationProvider Context={usersContext} apiRoute="users">
-                    <PaginationProvider Context={plantsContext} apiRoute="plants">
-                      <PaginationProvider Context={questsContext} apiRoute="quests">
-                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                          {/* depend on user */}
-                          <UserContextProvider>
-                            <PushNotificationContextProvider>
-                              {/* depend on user and socket */}
-                              <SocketContextProvider>
-                                <ChatsContextProvider>
-                                  <HeaderSelector />
-                                  <Component {...pageProps} />
-                                  <SnackView />
-                                  <ModalView />
-                                  <ExitIntent />
-                                  <GooglePrompt />
-                                  <ResetOnChangeUser />
-                                  <ChangePageInteract />
-                                  <GoogleOptimizeHydrate />
-                                </ChatsContextProvider>
-                              </SocketContextProvider>
-                            </PushNotificationContextProvider>
-                          </UserContextProvider>
+    <>
+      <Head>
+        <DefaultPageMeta />
+      </Head>
+      <Twemoji options={{ className: 'twemoji' }}>
+        <SnackContextProvider>
+          <ModalContextProvider>
+            <SizeContextProvider>
+              <TourContextProvider>
+                {/* depend on location and text searct */}
+                <TextSearchContextProvider>
+                  <LocationContextProvider>
+                    <PaginationProvider Context={usersContext} apiRoute="users">
+                      <PaginationProvider Context={plantsContext} apiRoute="plants">
+                        <PaginationProvider Context={questsContext} apiRoute="quests">
+                          <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                            {/* depend on user */}
+                            <UserContextProvider>
+                              <PushNotificationContextProvider>
+                                {/* depend on user and socket */}
+                                <SocketContextProvider>
+                                  <ChatsContextProvider>
+                                    <HeaderSelector />
+                                    <Component {...pageProps} />
+                                    <SnackView />
+                                    <ModalView />
+                                    <ExitIntent />
+                                    <GooglePrompt />
+                                    <ResetOnChangeUser />
+                                    <ChangePageInteract />
+                                    <GoogleOptimizeHydrate />
+                                  </ChatsContextProvider>
+                                </SocketContextProvider>
+                              </PushNotificationContextProvider>
+                            </UserContextProvider>
+                          </PaginationProvider>
                         </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
-                  </PaginationProvider>
-                </LocationContextProvider>
-              </TextSearchContextProvider>
-            </TourContextProvider>
-          </SizeContextProvider>
-        </ModalContextProvider>
-      </SnackContextProvider>
-    </Twemoji>
+                  </LocationContextProvider>
+                </TextSearchContextProvider>
+              </TourContextProvider>
+            </SizeContextProvider>
+          </ModalContextProvider>
+        </SnackContextProvider>
+      </Twemoji>
+    </>
   );
 }

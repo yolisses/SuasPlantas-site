@@ -9,11 +9,11 @@ import { LeafletStyle } from '../document/LeafletStyle';
 import { HotjarScript } from '../document/HotjarScript';
 import { AdSenseScript } from '../document/AdSenseScript';
 import { SmartlookScript } from '../document/SmartlookScript';
-import { DefaultPageMeta } from '../document/DefaultPageMeta';
 import { GoogleOptimizeScript } from '../document/GoogleOptimizeScript';
 import { FacebookButtonScript } from '../document/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { GoogleAnalyticsScript } from '../document/GoogleAnalyticsScript';
+import { devIndicator } from '../utils/devIndicator';
 
 class MyDocument extends Document {
   componentDidMount() {
@@ -29,7 +29,6 @@ class MyDocument extends Document {
           <FaviconMeta />
           <LeafletStyle />
           <AdSenseScript />
-          <DefaultPageMeta />
           <FacebookButtonScript />
           {!isDev && (
           <>
