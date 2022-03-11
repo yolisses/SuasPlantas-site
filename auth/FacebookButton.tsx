@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from './userContext';
 import { loginButtonProps } from './loginButtonProps';
 
@@ -17,6 +17,7 @@ declare global {
 
 export function FacebookButton({ callback } : loginButtonProps) {
   const { signIn } = useUser();
+  const [rendered, setRendered] = useState(false);
 
   async function handleFacebookResponse(e: FacebookResponse) {
     const { accessToken } = e.authResponse;
@@ -26,6 +27,7 @@ export function FacebookButton({ callback } : loginButtonProps) {
 
   useEffect(() => {
     window.handleFacebookResponse = handleFacebookResponse;
+    setRendered(true);
   }, []);
 
   return (
@@ -35,7 +37,7 @@ export function FacebookButton({ callback } : loginButtonProps) {
           async
           src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=256482496640231&autoLogAppEvents=1"
         />
-        <script>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>
+        {rendered && <script async>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>}
       </Head>
       <div
         data-width="300"
