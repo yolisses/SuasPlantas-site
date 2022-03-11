@@ -103,6 +103,7 @@ export function LandingPage() {
 
         <div className="absolute flex flex-col p-6 gap-4">
           <h1
+            id="optimize-title"
             className="text-4xl text-white"
             style={{ textShadow: '0 0 1rem #000' }}
           >
