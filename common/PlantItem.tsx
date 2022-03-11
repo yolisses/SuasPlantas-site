@@ -29,7 +29,7 @@ export function PlantItem({
         />
         )}
         <div className="px-2 pb-1 text-center">
-          <span className={`text-lg ${!card ? 'text-2xl' : ''}`}>{name}</span>
+          <span className={!card ? 'text-2xl' : 'text-lg'}>{name}</span>
           {(!!user) && (
             <div className="text-sm">
               {user.city}
