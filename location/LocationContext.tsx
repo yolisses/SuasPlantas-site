@@ -2,13 +2,7 @@ import {
   createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
 import { api } from '../api/api';
-
-interface Location{
-  city:string
-  state:string
-  radius:number
-  position:[number, number]
-}
+import { Location } from './Location';
 
 interface LocationContext{
   text:string|null

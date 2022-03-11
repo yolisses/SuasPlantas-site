@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { api } from '../api/api';
-import { defaultPosition } from '../location/defaultPosition';
+import { Location } from '../location/Location';
+import { interact } from '../interactions/interact';
 import { useLocation } from '../location/LocationContext';
+import { defaultPosition } from '../location/defaultPosition';
 import { LocationField, SelectLocationResult } from '../location/LocationField';
 
 export function LocationFilterInput() {
@@ -19,12 +21,14 @@ export function LocationFilterInput() {
       },
     });
     const { city, state } = res.data;
-    setLocation({
+    const location :Location = {
       city,
       state,
       position,
       radius: radius!,
-    });
+    };
+    interact({ type: 'set location', location });
+    setLocation(location);
     setLoading(false);
     return true;
   }
