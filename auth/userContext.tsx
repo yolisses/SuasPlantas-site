@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
+import { interact } from '../interactions/interact';
 
 interface ISignIn{
   provider: 'google' | 'facebook',
@@ -46,6 +47,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
 
   async function signIn({ provider, accessToken }:ISignIn) {
     const res = await api.post('users', { provider, accessToken });
+    interact({ type: 'sign in', user });
     const token = res.headers.authorization;
     api.defaults.headers.common.Authorization = token;
     setCookie(undefined, 'suasplantas.token', token, {

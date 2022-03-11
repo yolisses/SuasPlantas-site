@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { PlayStoreButton } from './PlayStoreButton';
 import { ShareButtons } from '../common/ShareButtons';
 
 export function Footer() {
-  const storeImageResize = 4;
   return (
     <footer className="bg-slate-900 w-full text-white grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
       <div className="flex flex-col gap-1">
@@ -36,19 +35,7 @@ export function Footer() {
           {(new Date()).getFullYear()}
         </div>
       </div>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://play.google.com/store/apps/details?id=com.suasplantas&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-      >
-        <Image
-          objectFit="contain"
-          width={646 / storeImageResize}
-          height={250 / storeImageResize}
-          alt="Disponível no Google Play"
-          src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png"
-        />
-      </a>
+      <PlayStoreButton imageResize={4} />
     </footer>
   );
 }

@@ -1,5 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { interact } from '../interactions/interact';
 
 interface FAQItemProps{
     id:string
@@ -15,6 +16,7 @@ export function FAQItem({
   const open = current === id;
 
   function handleClick() {
+    interact({ type: 'click faq item', id, title });
     setCurrent((old) => (old === id ? '' : id));
   }
 

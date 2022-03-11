@@ -8,9 +8,7 @@ export function ChangePageInteract() {
 
   useEffect(() => {
     interact({ type: 'load page', path });
-  }, [
-    path,
-  ]);
+  }, [path]);
 
   return null;
 }
