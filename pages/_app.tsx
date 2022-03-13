@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import '../styles/globals.css';
 
-import Head from 'next/head';
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
 import { ModalView } from '../modal/ModalView';
@@ -9,7 +8,7 @@ import { SnackView } from '../snack/SnackView';
 import { ExitIntent } from '../intent/ExitIntent';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
-import { devIndicator } from '../utils/devIndicator';
+import { DefaultMeta } from '../document/DefaultMeta';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { HeaderSelector } from '../header/HeaderSelector';
@@ -32,16 +31,7 @@ import { PushNotificationContextProvider } from '../notification/PushNotificatio
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <title>
-          {devIndicator}
-          Suas Plantas - Trocar mudas de plantas
-        </title>
-        <meta
-          name="description"
-          content="Site para trocar mudas de plantas com vários outros usuários. Super simples, seguro e com grande variedade."
-        />
-      </Head>
+      <DefaultMeta />
       <Twemoji options={{ className: 'twemoji' }}>
         <SnackContextProvider>
           <ModalContextProvider>

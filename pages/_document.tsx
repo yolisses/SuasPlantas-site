@@ -14,6 +14,7 @@ import { FacebookButtonScript } from '../document/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { GoogleAnalyticsScript } from '../document/GoogleAnalyticsScript';
 import { devIndicator } from '../utils/devIndicator';
+import { DefaultMeta } from '../document/DefaultMeta';
 
 class MyDocument extends Document {
   componentDidMount() {
@@ -40,6 +41,7 @@ class MyDocument extends Document {
           )}
         </Head>
         <body>
+          <DefaultMeta />
           <Main />
           <NextScript />
         </body>
