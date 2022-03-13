@@ -5,6 +5,7 @@ import { isDev } from '../utils/isDev';
 import { PWAMeta } from '../document/PWAMeta';
 import { interact } from '../interactions/interact';
 import { FaviconMeta } from '../document/FaviconMeta';
+import { DefaultMeta } from '../document/DefaultMeta';
 import { LeafletStyle } from '../document/LeafletStyle';
 import { HotjarScript } from '../document/HotjarScript';
 import { AdSenseScript } from '../document/AdSenseScript';
@@ -13,8 +14,6 @@ import { GoogleOptimizeScript } from '../document/GoogleOptimizeScript';
 import { FacebookButtonScript } from '../document/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { GoogleAnalyticsScript } from '../document/GoogleAnalyticsScript';
-import { devIndicator } from '../utils/devIndicator';
-import { DefaultMeta } from '../document/DefaultMeta';
 
 class MyDocument extends Document {
   componentDidMount() {
