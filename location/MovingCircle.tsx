@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Circle, useMapEvents } from 'react-leaflet';
+import { useMapImport } from './leaflet/MapImportContext';
 
-export function MovingCircle({ initialCenter, radius }:{initialCenter:[number, number], radius:number}) {
+export interface MovingCircleProps{
+  initialCenter:[number, number]
+  radius:number
+}
+
+export function MovingCircle({ initialCenter, radius }:MovingCircleProps) {
+  const { imports, loaded } = useMapImport();
+  if (!loaded) return null;
+
   const [center, setCenter] = useState<[number, number]>([...initialCenter]);
 
   function updateCenter(e:any) {
     const newCenter = e.target.getCenter();
     setCenter([newCenter.lat, newCenter.lng]);
   }
-  const map = useMapEvents({
+
+  const map = imports.useMapEvents({
     move: updateCenter,
     drag: updateCenter,
   });
@@ -21,5 +30,12 @@ export function MovingCircle({ initialCenter, radius }:{initialCenter:[number, n
     setCenter(initialCenter);
   }, [initialCenter]);
 
-  return <Circle center={center} radius={radius * 1000} opacity={0.5} fillOpacity={0.075} />;
+  return (
+    <imports.Circle
+      opacity={0.5}
+      center={center}
+      fillOpacity={0.075}
+      radius={radius * 1000} // kilometers to meters
+    />
+  );
 }

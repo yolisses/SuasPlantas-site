@@ -1,6 +1,5 @@
 /* eslint-disable prefer-destructuring */
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { GrClose } from 'react-icons/gr';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -8,12 +7,10 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
 import { MovingCircle } from './MovingCircle';
-import { UpdateMapCenter } from './UpdateMapCenter';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 import { useMapImport } from './leaflet/MapImportContext';
-
-const Map = dynamic(() => import('./Map'), { ssr: false });
+import { UpdateMapCenter } from './UpdateMapCenter';
 
 export interface SelectLocationResult{
     radius?:number
@@ -146,19 +143,19 @@ export function LocationField({
               doubleClickZoom={false}
               closePopupOnClick={false}
             >
-              {/* <UpdateMapCenter
+              <UpdateMapCenter
                 center={center}
                 circleRadius={circleRadius}
-              /> */}
+              />
               <imports.TileLayer
                 attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              {/* {!!circleRadius && (
+              {!!circleRadius && (
               <MovingCircle
                 radius={circleRadius}
                 initialCenter={center}
-              /> */}
+              />
               )}
             </imports.MapContainer>
           </div>

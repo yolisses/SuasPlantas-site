@@ -33,5 +33,3 @@ export function Map({ center, circleRadius }:MapProps) {
     </MapContainer>
   );
 }
-
-export default Map;
