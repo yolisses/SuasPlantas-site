@@ -1,5 +1,6 @@
 import { User } from '../user/User';
 import { Image } from '../upload/Image';
+import { AlsoSaw } from './AlsoSaw';
 
 export type PlantId = number;
 
@@ -18,9 +19,9 @@ export interface Plant {
   liked?:boolean
   images: Image[]
   donate: boolean
-  alsoSaw?:Plant[]
   createdAt: string
   updatedAt: string
+  alsoSaw?:AlsoSaw[]
   description: string
   price: string | null
 }
