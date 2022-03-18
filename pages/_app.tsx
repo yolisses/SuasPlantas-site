@@ -26,6 +26,7 @@ import { ChangePageInteract } from '../interactions/ChangePageInteract';
 import { TextSearchContextProvider } from '../search/TextSearchContext';
 import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
+import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -50,15 +51,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 {/* depend on user and socket */}
                                 <SocketContextProvider>
                                   <ChatsContextProvider>
-                                    <HeaderSelector />
-                                    <Component {...pageProps} />
-                                    <SnackView />
-                                    <ModalView />
-                                    <ExitIntent />
-                                    <GooglePrompt />
-                                    <ResetOnChangeUser />
-                                    <ChangePageInteract />
-                                    <GoogleOptimizeHydrate />
+                                    <MapImportContextProvider>
+                                      <HeaderSelector />
+                                      <Component {...pageProps} />
+                                      <SnackView />
+                                      <ModalView />
+                                      <ExitIntent />
+                                      <GooglePrompt />
+                                      <ResetOnChangeUser />
+                                      <ChangePageInteract />
+                                      <GoogleOptimizeHydrate />
+                                    </MapImportContextProvider>
                                   </ChatsContextProvider>
                                 </SocketContextProvider>
                               </PushNotificationContextProvider>
