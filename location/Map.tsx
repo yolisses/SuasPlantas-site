@@ -12,12 +12,17 @@ interface MapProps{
 export function Map({ center, circleRadius }:MapProps) {
   return (
     <MapContainer
+      dragging
       zoom={14}
       minZoom={3.5}
       center={center}
-      scrollWheelZoom
-      zoomControl={false}
+      touchZoom={false}
       style={{ flex: 1 }}
+      zoomControl={false}
+      trackResize={false}
+      scrollWheelZoom={false}
+      doubleClickZoom={false}
+      closePopupOnClick={false}
     >
       <UpdateMapCenter center={center} circleRadius={circleRadius} />
       <TileLayer
