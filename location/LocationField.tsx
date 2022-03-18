@@ -7,8 +7,11 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
+import { MovingCircle } from './MovingCircle';
+import { UpdateMapCenter } from './UpdateMapCenter';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
+import { useMapImport } from './leaflet/MapImportContext';
 
 const Map = dynamic(() => import('./Map'), { ssr: false });
 
@@ -38,6 +41,7 @@ export function LocationField({
 }:LocationFieldProps) {
   const [active, setActive] = useState(false);
   const [radius, setRadius] = useState(initialRadius);
+  const { imports } = useMapImport();
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
 
@@ -69,6 +73,9 @@ export function LocationField({
   }
 
   useEffect(() => { setRadius(initialRadius); }, [initialRadius]);
+
+  const circleRadius = radiusOptions ? radius : undefined;
+
   return (
     <div>
       <button onClick={handleOpen} className="secondary-button">
@@ -126,10 +133,34 @@ export function LocationField({
             >
               <Image width={40} height={40} src="/map/map_center.png" />
             </div>
-            <Map
-              center={center!}
-              circleRadius={radiusOptions ? radius : undefined}
-            />
+            <imports.MapContainer
+              dragging
+              zoom={14}
+              minZoom={3.5}
+              center={center}
+              touchZoom={false}
+              style={{ flex: 1 }}
+              zoomControl={false}
+              trackResize={false}
+              scrollWheelZoom={false}
+              doubleClickZoom={false}
+              closePopupOnClick={false}
+            >
+              {/* <UpdateMapCenter
+                center={center}
+                circleRadius={circleRadius}
+              /> */}
+              <imports.TileLayer
+                attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {/* {!!circleRadius && (
+              <MovingCircle
+                radius={circleRadius}
+                initialCenter={center}
+              /> */}
+              )}
+            </imports.MapContainer>
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <button
