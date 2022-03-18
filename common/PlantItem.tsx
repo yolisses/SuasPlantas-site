@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plant } from '../plant/Plant';
+import { AlsoSaw } from '../plant/AlsoSaw';
 
 interface PlantItemDTO {
-  item: Plant
+  item: Plant&AlsoSaw
   size?:number
 }
 
@@ -11,8 +12,11 @@ export function PlantItem({
   item, size: sizeParam,
 }: PlantItemDTO) {
   const {
-    card, id, name, user,
+    card, id, name,
   } = item;
+
+  const city = item.city || item.user.city;
+  const state = item.state || item.user.state;
 
   const size = sizeParam || 200;
   return (
@@ -30,13 +34,12 @@ export function PlantItem({
         )}
         <div className="px-2 pb-1 text-center">
           <span className={!card ? 'text-2xl' : 'text-lg'}>{name}</span>
-          {(!!user) && (
-            <div className="text-sm">
-              {user.city}
-              {!!user.state && ', '}
-              {user.state}
-            </div>
-          )}
+          <div className="text-sm">
+            {city}
+            ,
+            {' '}
+            {state}
+          </div>
         </div>
       </a>
     </Link>
