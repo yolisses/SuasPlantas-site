@@ -166,7 +166,7 @@ export function PlantPage({ data }:PlantPageProps) {
         {!!(data.alsoSaw && data.alsoSaw.length)
       && (
         <div className="p-2 flex flex-col gap-2">
-          <h2 className="text-lg">Outras pessoas também viram</h2>
+          <h2 className="text-xl">Outras pessoas também viram</h2>
           <div className="grid gap-2 grid-cols-2 md:grid-cols-5 xl:grid-cols-7">
             {data.alsoSaw.map((plant:AlsoSaw) => <PlantItem key={plant.id} item={plant} />)}
           </div>
