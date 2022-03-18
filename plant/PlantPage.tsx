@@ -79,7 +79,14 @@ export function PlantPage({ data }:PlantPageProps) {
                     renderThumbs={() => {
                       const SIZE = 70;
                       return data.images.map(({ uri }) => (
-                        <Image src={uri} alt={name} width={SIZE} height={SIZE} objectFit="cover" key={uri} />
+                        <Image
+                          src={uri}
+                          key={uri}
+                          alt={name}
+                          width={SIZE}
+                          height={SIZE}
+                          objectFit="cover"
+                        />
                       ));
                     }}
                   >
