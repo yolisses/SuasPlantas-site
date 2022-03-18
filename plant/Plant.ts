@@ -24,4 +24,5 @@ export interface Plant {
   alsoSaw?:AlsoSaw[]
   description: string
   price: string | null
+  __typename: 'Official',
 }

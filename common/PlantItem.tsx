@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Plant } from '../plant/Plant';
 import { AlsoSaw } from '../plant/AlsoSaw';
 
 interface PlantItemDTO {
-  item: Plant&AlsoSaw
+  item: AlsoSaw
   size?:number
 }
 
@@ -15,8 +14,8 @@ export function PlantItem({
     card, id, name,
   } = item;
 
-  const city = item.city || item.user.city;
-  const state = item.state || item.user.state;
+  const city = item.city || item.user?.city;
+  const state = item.state || item.user?.state;
 
   const size = sizeParam || 200;
   return (
