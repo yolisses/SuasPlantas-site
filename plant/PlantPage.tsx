@@ -9,6 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 import { Plant } from './Plant';
 import { tagEmoji } from './tags';
+import { AlsoSaw } from './AlsoSaw';
 import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
 import { useUser } from '../auth/userContext';
@@ -167,7 +168,7 @@ export function PlantPage({ data }:PlantPageProps) {
         <div className="p-2 flex flex-col gap-2">
           <h2 className="text-lg">Outras pessoas também viram</h2>
           <div className="grid gap-2 grid-cols-2 md:grid-cols-5 xl:grid-cols-7">
-            {data.alsoSaw.map((plant:Plant) => <PlantItem key={plant.id} item={plant} />)}
+            {data.alsoSaw.map((plant:AlsoSaw) => <PlantItem key={plant.id} item={plant} />)}
           </div>
         </div>
       )}
