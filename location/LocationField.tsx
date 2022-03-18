@@ -7,10 +7,10 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
 import { MovingCircle } from './MovingCircle';
+import { UpdateMapCenter } from './UpdateMapCenter';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 import { useMapImport } from './leaflet/MapImportContext';
-import { UpdateMapCenter } from './UpdateMapCenter';
 
 export interface SelectLocationResult{
     radius?:number
