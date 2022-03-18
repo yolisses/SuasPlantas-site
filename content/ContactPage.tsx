@@ -44,8 +44,8 @@ export function ContactPage() {
   }
 
   return (
-    <>
-      <div className="center-col p-2 pb-10">
+    <div className="min-h-no-header flex flex-col">
+      <div className="center-col p-2 pb-10 flex-1">
         <h1 className="text-3xl">Contato</h1>
         <p className="text-gray-500">Adoramos receber mensagens!</p>
         <div className="flex flex-col md:flex-row gap-4 w-full items-center md:items-start justify-center md:py-4">
@@ -159,6 +159,6 @@ export function ContactPage() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -30,31 +30,31 @@ animation: rollout 0.2s;
 
 @layer components {
   .center{
-    @apply flex items-center justify-center
+    @apply flex items-center justify-center;
   }
 
   .scale-active{
-    @apply active:transform active:scale-95 transition-transform duration-150
+    @apply active:transform active:scale-95 transition-transform duration-150;
   }
 
   .main-button{
-    @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 center rounded-lg shadow-lg
+    @apply cursor-pointer transition-all scale-active text-white gap-2 p-2 hover:bg-green-700 bg-green-600 center rounded-lg shadow-lg;
   }
 
   .secondary-button{
-    @apply highlight center text-green-700 rounded-lg gap-2 p-2
+    @apply highlight center text-green-700 rounded-lg gap-2 p-2;
   }
 
   .disabled-button{
-    @apply cursor-default text-gray-500 hover:bg-gray-300 bg-gray-300
+    @apply cursor-default text-gray-500 hover:bg-gray-300 bg-gray-300;
   }
 
   button:disabled {
-    @apply disabled-button
+    @apply disabled-button;
   }
 
   .highlight{
-    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10
+    @apply cursor-pointer hover:bg-black hover:bg-opacity-10 active:bg-black active:bg-opacity-10;
   }
 
   .icon-button {
@@ -62,35 +62,39 @@ animation: rollout 0.2s;
   }
 
   .menu-button {
-    @apply highlight text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2 flex
+    @apply highlight text-black whitespace-nowrap p-2 w-full items-center rounded-md justify-start gap-2 flex;
   }
 
   .fab{
-    @apply rollout aspect-square h-14 transition-all scale-active hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-full shadow-xl
+    @apply rollout aspect-square h-14 transition-all scale-active hover:bg-green-700 bg-green-600 flex items-center justify-center rounded-full shadow-xl;
   }
   
   .link{
-    @apply text-green-700 underline
+    @apply text-green-700 underline;
   }
 
-  .h-screen-no-header{
-    height: calc(100vh - 3rem)
+  .h-no-header{
+    height: calc(100vh - 3rem);
+  }
+
+  .min-h-no-header{
+    min-height: calc(100vh - 3rem);
   }
 
   .label-active{
-    @apply -top-2 left-2 text-xs px-1 text-gray-500 leading-none
+    @apply -top-2 left-2 text-xs px-1 text-gray-500 leading-none;
   }
 
   .label-inactive{
-    @apply left-3 top-4 text-base px-0
+    @apply left-3 top-4 text-base px-0;
   }
 
   .center-col{
-    @apply flex flex-col items-center
+    @apply flex flex-col items-center;
   }
 
   .center-row{
-    @apply flex flex-row items-center
+    @apply flex flex-row items-center;
   }
 }
 

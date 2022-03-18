@@ -13,7 +13,7 @@ export function ChatPage() {
 
   return (
 
-    <div className="h-screen-no-header flex flex-row overflow-hidden">
+    <div className="h-no-header flex flex-row overflow-hidden">
       {lg && (
       <div className="w-full max-w-md overflow-y-auto shadow">
         <ContactsPage current={chat} />
