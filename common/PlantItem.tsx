@@ -32,8 +32,14 @@ export function PlantItem({
           className="bg-gray-200 flex-shrink-0 rounded-xl"
         />
         )}
-        <div className="px-2 pb-1 text-center">
-          <span className={!card ? 'text-2xl' : 'text-lg'}>{name}</span>
+        <div className="px-2 pb-1 text-center overflow-hidden">
+          <span className={`overflow-hidden whitespace-nowrap ${
+            !card
+              ? 'text-2xl'
+              : 'text-lg'}`}
+          >
+            {name}
+          </span>
           <div className="text-sm">
             {city}
             ,
