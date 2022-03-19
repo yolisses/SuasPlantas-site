@@ -2,12 +2,14 @@ import {
   createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState,
 } from 'react';
 
-type importsType = typeof import('react-leaflet')
+type lImportsType = typeof import('leaflet')
+type rlImportsType = typeof import('react-leaflet')
 
 interface MapImportContext{
   loaded:boolean
   shouldLoad:boolean
-  imports:importsType
+  lImports:lImportsType
+  rlImports:rlImportsType
   setLoaded:Dispatch<SetStateAction<boolean>>
   setShouldLoad:Dispatch<SetStateAction<boolean>>
 }
@@ -17,12 +19,12 @@ const mapImportContext = createContext({} as MapImportContext);
 export function MapImportContextProvider({ children }:{children:ReactNode}) {
   const [loaded, setLoaded] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
-  const [imports, setImports] = useState<importsType>();
+  const [lImports, setLImports] = useState<lImportsType>();
+  const [rlImports, setRlImports] = useState<rlImportsType>();
 
   async function load() {
-    const imports = await import('react-leaflet');
-    console.log(imports);
-    setImports(imports);
+    setLImports(await import('leaflet'));
+    setRlImports(await import('react-leaflet'));
     setLoaded(true);
   }
 
@@ -35,7 +37,8 @@ export function MapImportContextProvider({ children }:{children:ReactNode}) {
   return (
     <mapImportContext.Provider value={{
       loaded,
-      imports,
+      lImports,
+      rlImports,
       setLoaded,
       shouldLoad,
       setShouldLoad,
