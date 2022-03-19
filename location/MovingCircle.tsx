@@ -7,7 +7,7 @@ export interface MovingCircleProps{
 }
 
 export function MovingCircle({ initialCenter, radius }:MovingCircleProps) {
-  const { imports, loaded } = useMapImport();
+  const { rlImports, loaded } = useMapImport();
   if (!loaded) return null;
 
   const [center, setCenter] = useState<[number, number]>([...initialCenter]);
@@ -17,7 +17,7 @@ export function MovingCircle({ initialCenter, radius }:MovingCircleProps) {
     setCenter([newCenter.lat, newCenter.lng]);
   }
 
-  const map = imports.useMapEvents({
+  const map = rlImports.useMapEvents({
     move: updateCenter,
     drag: updateCenter,
   });
@@ -31,7 +31,7 @@ export function MovingCircle({ initialCenter, radius }:MovingCircleProps) {
   }, [initialCenter]);
 
   return (
-    <imports.Circle
+    <rlImports.Circle
       opacity={0.5}
       center={center}
       fillOpacity={0.075}

@@ -23,8 +23,8 @@ export function MapImportContextProvider({ children }:{children:ReactNode}) {
   const [rlImports, setRlImports] = useState<rlImportsType>();
 
   async function load() {
-    setLImports(await import('leaflet'));
     setRlImports(await import('react-leaflet'));
+    setLImports(await import('leaflet'));
     setLoaded(true);
   }
 

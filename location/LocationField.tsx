@@ -36,9 +36,9 @@ export function LocationField({
   radiusOptions,
   initialLocation,
 }:LocationFieldProps) {
+  const { rlImports } = useMapImport();
   const [active, setActive] = useState(false);
   const [radius, setRadius] = useState(initialRadius);
-  const { imports } = useMapImport();
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
 
@@ -130,7 +130,7 @@ export function LocationField({
             >
               <Image width={40} height={40} src="/map/map_center.png" />
             </div>
-            <imports.MapContainer
+            <rlImports.MapContainer
               dragging
               zoom={14}
               minZoom={3.5}
@@ -147,7 +147,7 @@ export function LocationField({
                 center={center}
                 circleRadius={circleRadius}
               />
-              <imports.TileLayer
+              <rlImports.TileLayer
                 attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
@@ -157,7 +157,7 @@ export function LocationField({
                 initialCenter={center}
               />
               )}
-            </imports.MapContainer>
+            </rlImports.MapContainer>
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <button

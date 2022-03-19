@@ -12,7 +12,7 @@ interface UpdateMapProps{
 }
 
 export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
-  const { loaded, imports } = useMapImport();
+  const { loaded, rlImports } = useMapImport();
   if (!loaded) return null;
 
   function updateCenter(e:any) {
@@ -21,7 +21,7 @@ export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
     center[1] = newCenter.lng;
   }
 
-  const map = imports.useMapEvents({
+  const map = rlImports.useMapEvents({
     moveend: updateCenter,
     dragend: updateCenter,
   });
