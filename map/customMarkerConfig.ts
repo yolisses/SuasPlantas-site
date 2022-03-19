@@ -1,11 +1,10 @@
 import { IconOptions } from 'leaflet';
 
-const iconResizer = 2.6;
-const iconWidth = 89 / iconResizer;
-const iconHeight = 124 / iconResizer;
+const iconWidth = 32;
+const iconHeight = 48;
 
 export const customMarkerConfig:IconOptions = {
-  iconUrl: '/map/marker.png',
+  iconUrl: '/map/marker.svg',
   iconSize: [iconWidth, iconHeight],
   popupAnchor: [0, -iconHeight],
   iconAnchor: [iconWidth / 2, iconHeight],
