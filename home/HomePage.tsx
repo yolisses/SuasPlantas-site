@@ -14,6 +14,7 @@ import { TopTab, TopTabs } from '../common/TopTabs';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 import { LocationFilterInput } from './LocationFilterInput';
+import { Footer } from '../footer/Footer';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -82,6 +83,7 @@ export function HomePage<T>({
         <div id="tour_start" />
       </div>
       {!!tourSteps && (<Tour steps={tourSteps} tourName={tourName} />)}
+      <Footer selected="home" />
     </>
   );
 }

@@ -34,7 +34,6 @@ export function Header() {
         </div>
         <Spacer />
         <MeButton />
-        <ChatButton />
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
