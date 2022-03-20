@@ -39,7 +39,7 @@ export function Header() {
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
-      <div className="h-14" />
+      <div className="h-12" />
     </>
   );
 }
