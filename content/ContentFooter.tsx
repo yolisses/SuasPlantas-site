@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PlayStoreButton } from './PlayStoreButton';
 import { ShareButtons } from '../common/ShareButtons';
 
-export function Footer() {
+export function ContentFooter() {
   return (
     <footer className="bg-slate-900 w-full text-white grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
       <div className="flex flex-col gap-1">

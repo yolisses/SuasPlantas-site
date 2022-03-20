@@ -9,8 +9,8 @@ import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 
 import { FAQ } from './FAQ';
-import { Footer } from './Footer';
 import { useSize } from '../common/SizeContext';
+import { ContentFooter } from './ContentFooter';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
 import { LoginButtonAlt } from '../auth/LoginButtonAlt';
@@ -160,7 +160,7 @@ export function LandingPage() {
           <LoginButton />
         </div>
       </div>
-      <Footer />
+      <ContentFooter />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Footer } from './Footer';
+import { ContentFooter } from './ContentFooter';
 import styles from './PrivacyPolicyPage.module.css';
 
 export function PrivacyPolicyPage() {
@@ -99,7 +99,7 @@ export function PrivacyPolicyPage() {
       <div className="mt-12 p-2">
         👋 Tenha um ótimo dia
       </div>
-      <Footer />
+      <ContentFooter />
     </>
   );
 }

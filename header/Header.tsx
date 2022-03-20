@@ -33,7 +33,6 @@ export function Header() {
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        <MeButton />
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
