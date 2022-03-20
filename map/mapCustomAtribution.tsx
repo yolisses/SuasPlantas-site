@@ -1,6 +1,6 @@
 export function MapCustomAtribution() {
   return (
-    <div className="text-xs bg-white px-1">
+    <div className="bg-white px-1" style={{ fontSize: '0.65rem' }}>
       <a
         target="_blank"
         rel="noreferrer"
