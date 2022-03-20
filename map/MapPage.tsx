@@ -15,13 +15,11 @@ export function MapPage() {
   const { rlImports, lImports, loaded } = useMapImport();
   if (!loaded) return null;
 
-  const { user: currentUser } = useUser();
   const { location } = useLocation();
-  const position = location?.position || currentUser?.location?.coordinates;
-
+  const { user: currentUser } = useUser();
   const [user, setUser] = useState<User>();
-  const markerIcon = lImports.icon(customMarkerConfig);
   const [users, setUsers] = useState<User[]>([]);
+  const position = location?.position || currentUser?.location?.coordinates;
 
   function handleClose() {
     setUser(undefined);
