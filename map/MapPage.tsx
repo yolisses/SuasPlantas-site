@@ -65,6 +65,7 @@ export function MapPage() {
       </div>
       <rlImports.MapContainer
         zoom={10}
+        minZoom={2}
         center={position}
         style={{ flex: 1 }}
         zoomControl={false}
