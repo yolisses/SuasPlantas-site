@@ -1,6 +1,6 @@
 export function MapCustomAtribution() {
   return (
-    <div className="bg-white px-1" style={{ fontSize: '0.65rem' }}>
+    <div className="backdrop-blur-lg px-1" style={{ fontSize: '0.65rem' }}>
       <a
         target="_blank"
         rel="noreferrer"
@@ -12,6 +12,7 @@ export function MapCustomAtribution() {
       </a>
       {' '}
       | &copy;
+      {' '}
       <a
         target="_blank"
         rel="noreferrer"
