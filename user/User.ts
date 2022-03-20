@@ -11,7 +11,7 @@ export interface User {
     description?: string;
     instagramUsername?: string;
     whatsappNumber?: number;
-    location:{
+    location?:{
         type:'Point'
         coordinates:[number, number]
     }
