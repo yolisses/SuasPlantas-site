@@ -8,8 +8,8 @@ type rlImportsType = typeof import('react-leaflet')
 interface MapImportContext{
   loaded:boolean
   shouldLoad:boolean
-  lImports:lImportsType
-  rlImports:rlImportsType
+  lImports?:lImportsType
+  rlImports?:rlImportsType
   setLoaded:Dispatch<SetStateAction<boolean>>
   setShouldLoad:Dispatch<SetStateAction<boolean>>
 }

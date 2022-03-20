@@ -3,11 +3,13 @@ import { api } from '../api/api';
 import { useUser } from '../auth/userContext';
 import { useSnack } from '../snack/SnackContext';
 import { defaultPosition } from './defaultPosition';
+import { useLocation } from './LocationContext';
 import { LocationField, SelectLocationResult } from './LocationField';
 
 export function EditUserLocation() {
   const { setSnack } = useSnack();
   const { user, setUser } = useUser();
+  const { location } = useLocation();
   const [loading, setLoading] = useState(false);
 
   async function submit({ position }:SelectLocationResult) {
@@ -48,7 +50,7 @@ export function EditUserLocation() {
       loading={loading}
       title="Sua localização"
       text={`${user?.city}, ${user?.state}`}
-      initialLocation={user?.location.coordinates || defaultPosition}
+      initialLocation={user?.location?.coordinates || location?.position || defaultPosition}
     />
   );
 }

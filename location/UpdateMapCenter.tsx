@@ -12,8 +12,8 @@ interface UpdateMapProps{
 }
 
 export function UpdateMapCenter({ center, circleRadius }:UpdateMapProps) {
-  const { loaded, rlImports } = useMapImport();
-  if (!loaded) return null;
+  const { rlImports } = useMapImport();
+  if (!rlImports) return null;
 
   function updateCenter(e:any) {
     const newCenter = e.target.getCenter();

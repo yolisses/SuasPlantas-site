@@ -14,8 +14,8 @@ import { Footer } from '../footer/Footer';
 import { MapCustomAtribution } from './mapCustomAtribution';
 
 export function MapPage() {
-  const { rlImports, lImports, loaded } = useMapImport();
-  if (!loaded) return null;
+  const { rlImports, lImports } = useMapImport();
+  if (!rlImports || !lImports) return null;
 
   const { location } = useLocation();
   const { user: currentUser } = useUser();

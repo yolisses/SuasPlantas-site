@@ -7,8 +7,8 @@ export interface MovingCircleProps{
 }
 
 export function MovingCircle({ initialCenter, radius }:MovingCircleProps) {
-  const { rlImports, loaded } = useMapImport();
-  if (!loaded) return null;
+  const { rlImports } = useMapImport();
+  if (!rlImports) return null;
 
   const [center, setCenter] = useState<[number, number]>([...initialCenter]);
 

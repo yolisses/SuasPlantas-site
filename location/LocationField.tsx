@@ -37,6 +37,7 @@ export function LocationField({
   initialLocation,
 }:LocationFieldProps) {
   const { rlImports } = useMapImport();
+  if (!rlImports) return null;
   const [active, setActive] = useState(false);
   const [radius, setRadius] = useState(initialRadius);
   // this variable is mutable, to support fast changes on map move
