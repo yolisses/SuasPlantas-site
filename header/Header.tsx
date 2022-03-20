@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import Image from 'next/image';
 import { Spacer } from '../common/Spacer';
 import { MoreMenuButton } from './MoreMenuButton';
 import { usePlants } from '../plant/plantsContext';
@@ -8,6 +7,7 @@ import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
 import { navigationItems } from '../footer/NavigationItems';
 import { HeaderNavigationItem } from './HeaderNavigationItem';
+import { useSize } from '../common/SizeContext';
 
 export function Header() {
   const { setFilters: setPlantsFilters } = usePlants();
@@ -18,10 +18,11 @@ export function Header() {
     }
   }
 
-  const iconSize = 35;
+  const { lg } = useSize();
+
   return (
     <>
-      <header className="fixed bg-emerald-700 text-white flex flex-row px-2 h-12 items-center w-full gap-1 sm:gap-2 z-50 shadow-md">
+      <header className="fixed bg-emerald-700 text-white flex flex-row px-2 h-12 items-center w-full gap-4 sm:gap-2 z-50 shadow-md">
         <Link href="/">
           <a
             onClick={handleHomeClick}
@@ -34,7 +35,7 @@ export function Header() {
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        {navigationItems.map((item) => <HeaderNavigationItem item={item} />)}
+        {lg && navigationItems.map((item) => <HeaderNavigationItem item={item} />)}
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>

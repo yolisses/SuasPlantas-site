@@ -11,7 +11,7 @@ export function HeaderNavigationItem({ item, ...rest }:HeaderNavigationProps) {
     <button className="secondary-button text-white gap-1 center-row" {...rest}>
       {!!item.Icon && <item.Icon size={20} />}
       {item.asIcon}
-      <div className="capitalize">
+      <div className="capitalize hidden lg:inline-block">
         {item.text}
       </div>
     </button>
