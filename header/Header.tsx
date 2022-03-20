@@ -18,7 +18,7 @@ export function Header() {
     }
   }
 
-  const { lg } = useSize();
+  const { md } = useSize();
 
   return (
     <>
@@ -31,11 +31,11 @@ export function Header() {
             Suas Plantas
           </a>
         </Link>
-        <div className="w-full max-w-sm hidden sm:inline-flex">
+        <div className="w-full max-w-sm hidden md:inline-flex">
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        {lg && navigationItems.map((item) => <HeaderNavigationItem item={item} />)}
+        {md && navigationItems.map((item) => <HeaderNavigationItem item={item} />)}
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
