@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import {
   FaQuestion,
   FaSeedling,
   FaUserFriends,
 } from 'react-icons/fa';
-import { Link } from './Link';
 import { TabSelector } from './TabSelector';
 
 export type TopTab = 'plants'|'quests'|'users'|'map'
