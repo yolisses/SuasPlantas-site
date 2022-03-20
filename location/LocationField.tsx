@@ -123,41 +123,47 @@ export function LocationField({
             </select>
           </div>
           )}
-          <div className="h-screen flex flex-col relative z-10">
+          <div className="h-screen flex flex-col relative z-0">
             <div
-              className="absolute bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
-              style={{ zIndex: 500 }}
+              className="absolute z-10 bottom-0 top-0 left-0 right-0 flex items-center justify-center select-none pointer-events-none"
             >
-              <Image width={40} height={40} src="/map/map_center.png" />
+              <Image
+                width={40}
+                height={40}
+                src="/map/map_center.png"
+              />
             </div>
-            <rlImports.MapContainer
-              dragging
-              zoom={14}
-              minZoom={3.5}
-              center={center}
-              touchZoom={false}
-              style={{ flex: 1 }}
-              zoomControl={false}
-              trackResize={false}
-              scrollWheelZoom={false}
-              doubleClickZoom={false}
-              closePopupOnClick={false}
-            >
-              <UpdateMapCenter
+            <div className="z-0 flex flex-1">
+              <rlImports.MapContainer
+                dragging
+                zoom={14}
+                minZoom={3.5}
                 center={center}
-                circleRadius={circleRadius}
-              />
-              <rlImports.TileLayer
-                attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              {!!circleRadius && (
-              <MovingCircle
-                radius={circleRadius}
-                initialCenter={center}
-              />
-              )}
-            </rlImports.MapContainer>
+                touchZoom={false}
+                style={{ flex: 1 }}
+                zoomControl={false}
+                trackResize={false}
+                scrollWheelZoom={false}
+                doubleClickZoom={false}
+                closePopupOnClick={false}
+              >
+                <UpdateMapCenter
+                  center={center}
+                  circleRadius={circleRadius}
+                />
+                <rlImports.TileLayer
+                  attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {!!circleRadius && (
+                <MovingCircle
+                  radius={circleRadius}
+                  initialCenter={center}
+                />
+                )}
+              </rlImports.MapContainer>
+            </div>
+
           </div>
           <div className="p-1 flex flex-row justify-end gap-4">
             <button

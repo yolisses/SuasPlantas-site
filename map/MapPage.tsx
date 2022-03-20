@@ -65,52 +65,54 @@ export function MapPage() {
           ) }
         </div>
         <div className="flex-1 flex z-0">
-          <div className="fixed top-12 right-0" style={{ zIndex: 500 }}>
+          <div className="fixed top-12 right-0 z-10">
             <MapCustomAtribution />
           </div>
-          <rlImports.MapContainer
-            zoom={10}
-            minZoom={2}
-            center={position}
-            style={{ flex: 1 }}
-            zoomControl={false}
-            doubleClickZoom={false}
-            attributionControl={false}
-          >
-            <rlImports.TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {users.map((user) => {
-              if (user.location) {
-                return (
-                  <rlImports.Marker
-                    position={user.location.coordinates}
-                    icon={lImports.divIcon({
-                      html: ReactDOMServer.renderToString(
-                        <div className="relative">
-                          <img
-                            src="/map/marker.svg"
-                            alt=""
-                          />
-                          <img
-                            width="32.8px"
-                            alt={user.name}
-                            src={user.image}
-                            className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900 bg-emerald-700"
-                          />
-                        </div>,
-                      ),
-                      ...customMarkerConfig,
-                      className: 'border-none bg-none',
-                    })}
-                    eventHandlers={{
-                      click: () => setUser(user),
-                    }}
-                  />
-                );
-              }
-            })}
-          </rlImports.MapContainer>
+          <div className="z-0 flex flex-1">
+            <rlImports.MapContainer
+              zoom={10}
+              minZoom={2}
+              center={position}
+              style={{ flex: 1 }}
+              zoomControl={false}
+              doubleClickZoom={false}
+              attributionControl={false}
+            >
+              <rlImports.TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {users.map((user) => {
+                if (user.location) {
+                  return (
+                    <rlImports.Marker
+                      position={user.location.coordinates}
+                      icon={lImports.divIcon({
+                        html: ReactDOMServer.renderToString(
+                          <div className="relative">
+                            <img
+                              src="/map/marker.svg"
+                              alt=""
+                            />
+                            <img
+                              width="32.8px"
+                              alt={user.name}
+                              src={user.image}
+                              className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900 bg-emerald-700"
+                            />
+                          </div>,
+                        ),
+                        ...customMarkerConfig,
+                        className: 'border-none bg-none',
+                      })}
+                      eventHandlers={{
+                        click: () => setUser(user),
+                      }}
+                    />
+                  );
+                }
+              })}
+            </rlImports.MapContainer>
+          </div>
         </div>
       </div>
       <Footer selected="map" />
