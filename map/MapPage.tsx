@@ -1,6 +1,7 @@
 import { GrClose } from 'react-icons/gr';
 import { FaRegMap } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
@@ -16,7 +17,7 @@ export function MapPage() {
 
   const { user: currentUser } = useUser();
   const { location } = useLocation();
-  const position = location?.position || currentUser?.location.coordinates;
+  const position = location?.position || currentUser?.location?.coordinates;
 
   const [user, setUser] = useState<User>();
   const markerIcon = lImports.icon(customMarkerConfig);
@@ -69,13 +70,24 @@ export function MapPage() {
         zoomControl={false}
         doubleClickZoom={false}
       >
-        <rlImports.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <rlImports.TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
         {users.map((user) => {
           if (user.location) {
             return (
               <rlImports.Marker
                 position={user.location.coordinates}
-                icon={markerIcon}
+                icon={lImports.divIcon({
+                  html: ReactDOMServer.renderToString(
+                    <div className="relative">
+                      <img src="/map/marker.svg" />
+                      <img src={user.image} className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900" width="32.8px" />
+                    </div>,
+                  ),
+                  ...customMarkerConfig,
+                  className: 'border-none bg-none',
+                })}
                 eventHandlers={{
                   click: () => setUser(user),
                 }}

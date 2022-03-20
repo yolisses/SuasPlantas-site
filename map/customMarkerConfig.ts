@@ -1,6 +1,6 @@
 import { IconOptions } from 'leaflet';
 
-const iconWidth = 32;
+const iconWidth = 32.8;
 const iconHeight = 48;
 
 export const customMarkerConfig:IconOptions = {
