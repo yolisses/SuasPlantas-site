@@ -21,6 +21,7 @@ import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
+import { loremIpsum } from '../mock/loremIpsum';
 
 interface UserPageProps {
   user: User;
@@ -78,7 +79,7 @@ export function UserPage({ user }: UserPageProps) {
               objectFit="cover"
               alt={user.name}
               src={user.image || userImage}
-              className="rounded-full bg-cover w-24 h-24"
+              className="rounded-full bg-cover w-24 h-24 bg-gray-50"
             />
             <div className="flex-1 flex-wrap flex overflow-ellipsis">
               <div className="flex flex-col w-full">

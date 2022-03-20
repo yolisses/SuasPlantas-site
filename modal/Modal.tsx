@@ -53,12 +53,12 @@ export function Modal({
       >
         {showCloseButton && (
           <div className="flex flex-row justify-end w-full">
-            <div
+            <button
               onClick={close}
               className="cursor-pointer p-2 hover:bg-black hover:bg-opacity-10 rounded-full"
             >
               <GrClose size={18} />
-            </div>
+            </button>
           </div>
         )}
         {children}
