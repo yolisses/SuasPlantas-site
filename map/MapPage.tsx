@@ -28,8 +28,7 @@ export function MapPage() {
   }
 
   async function getUsers() {
-    const res = await api.get('users');
-    console.log('aqui', res);
+    const res = await api.get('users', { params: { profileRelations: true } });
     setUsers(res.data.content);
   }
 
