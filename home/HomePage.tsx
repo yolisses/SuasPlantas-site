@@ -74,7 +74,7 @@ export function HomePage<T>({
         <WithoutResultsWarn />
       </div>
       )}
-      <div id="tour_add_button" className="fixed right-10 bottom-10">
+      <div id="tour_add_button" className="fixed right-6 bottom-16">
         {firstActionButton}
       </div>
       <div

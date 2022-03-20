@@ -21,10 +21,13 @@ import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
+import { Footer } from '../footer/Footer';
+import { loremIpsum } from '../mock/loremIpsum';
 
 interface UserPageProps {
   user: User;
   mini?:boolean
+  footer?:boolean
 }
 
 interface TabProps{
@@ -44,7 +47,7 @@ function Tab({ tab, currentTab, children }:TabProps) {
   );
 }
 
-export function UserPage({ user, mini }: UserPageProps) {
+export function UserPage({ user, mini, footer }: UserPageProps) {
   const [tab, setTab] = useState('plants');
   const { refreshUser } = useUser();
   const { push } = useRouter();
@@ -144,6 +147,7 @@ export function UserPage({ user, mini }: UserPageProps) {
           </Tab>
         </div>
       </div>
+      {footer && <Footer selected={selfUser ? 'user' : 'home'} />}
     </>
   );
 }
@@ -154,7 +158,7 @@ interface ItemsDrawerProps{
   withoutItemsMessage:string
 }
 
-function ItemsDrawer({ items, mini = false, withoutItemsMessage }:ItemsDrawerProps) {
+function ItemsDrawer({ items, mini, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div

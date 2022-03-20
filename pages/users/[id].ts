@@ -8,6 +8,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params!;
   const res = await api.get(`users/${id}`);
   return {
-    props: { user: res.data },
+    props: { user: res.data, footer: true },
   };
 };
