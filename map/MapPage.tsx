@@ -39,7 +39,7 @@ export function MapPage() {
         >
           <GrClose size={18} />
         </button>
-        {user && <UserPage user={user} />}
+        {user && <UserPage user={user} mini />}
       </div>
       <rlImports.MapContainer
         zoom={10}

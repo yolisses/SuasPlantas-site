@@ -21,10 +21,10 @@ import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
-import { loremIpsum } from '../mock/loremIpsum';
 
 interface UserPageProps {
   user: User;
+  mini?:boolean
 }
 
 interface TabProps{
@@ -44,7 +44,7 @@ function Tab({ tab, currentTab, children }:TabProps) {
   );
 }
 
-export function UserPage({ user }: UserPageProps) {
+export function UserPage({ user, mini }: UserPageProps) {
   const [tab, setTab] = useState('plants');
   const { refreshUser } = useUser();
   const { push } = useRouter();
@@ -123,18 +123,21 @@ export function UserPage({ user }: UserPageProps) {
           </div>
           <Tab tab="plants" currentTab={tab}>
             <ItemsDrawer
+              mini={mini}
               items={user.plants}
               withoutItemsMessage="Nenhuma planta por enquanto"
             />
           </Tab>
           <Tab tab="likes" currentTab={tab}>
             <ItemsDrawer
+              mini={mini}
               items={user.likedPlants}
               withoutItemsMessage="Nenhuma curtida por enquanto"
             />
           </Tab>
           <Tab tab="quests" currentTab={tab}>
             <QuestsDrawer
+              mini={mini}
               items={user.quests}
               withoutItemsMessage="Nenhum procurando por enquanto"
             />
@@ -145,13 +148,17 @@ export function UserPage({ user }: UserPageProps) {
   );
 }
 
-interface ItemsDrawerProps{ items:any[]; withoutItemsMessage:string }
+interface ItemsDrawerProps{
+  items:any[]
+  mini?:boolean
+  withoutItemsMessage:string
+}
 
-function ItemsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
+function ItemsDrawer({ items, mini = false, withoutItemsMessage }:ItemsDrawerProps) {
   if (items && items.length) {
     return (
       <div
-        className="grid gap-2 grid-cols-2 md:grid-cols-5"
+        className={`grid gap-2 grid-cols-2 ${mini ? 'md:grid-cols-3' : 'md:grid-cols-5'}`}
       >
         { items.map((item) => (
           <PlantItem item={item} key={item.id} />
