@@ -48,18 +48,20 @@ export function MapPage() {
         >
           <GrClose size={18} />
         </button>
-        {user && <UserPage user={user} mini />}
         {user && (
-        <div className="rollout md:hidden cursor-pointer fixed bottom-2 w-full center">
-          <button
-            onClick={handleClose}
-            className="main-button shadow-lg bg-green-800 rounded-full"
-          >
-            <FaRegMap />
-            Voltar para o mapa
-          </button>
-        </div>
-        )}
+        <>
+          <UserPage user={user} mini />
+          <div className="rollout md:hidden cursor-pointer fixed bottom-2 w-full center">
+            <button
+              onClick={handleClose}
+              className="main-button shadow-lg bg-green-800 rounded-full"
+            >
+              <FaRegMap />
+              Voltar para o mapa
+            </button>
+          </div>
+        </>
+        ) }
       </div>
       <rlImports.MapContainer
         zoom={10}
