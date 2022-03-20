@@ -1,19 +1,15 @@
-import { useEffect, useState } from 'react';
 import { GrClose } from 'react-icons/gr';
-
 import { FaRegMap } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+
+import { api } from '../api/api';
 import { User } from '../user/User';
 import { UserPage } from '../user/UserPage';
 import { useUser } from '../auth/userContext';
 import { customMarkerConfig } from './customMarkerConfig';
-import { generateArray } from '../dev/utils/generateArray';
-import { defaultPosition } from '../location/defaultPosition';
-import { useMapImport } from '../location/leaflet/MapImportContext';
 import { useLocation } from '../location/LocationContext';
-import { api } from '../api/api';
+import { useMapImport } from '../location/leaflet/MapImportContext';
 
-const locations:[number, number][] = generateArray(10)
-  .map((item) => [defaultPosition[0] + Math.random(), defaultPosition[1] + Math.random()]);
 export function MapPage() {
   const { rlImports, lImports, loaded } = useMapImport();
   if (!loaded) return null;
@@ -58,7 +54,7 @@ export function MapPage() {
         <div className="rollout md:hidden cursor-pointer fixed bottom-2 w-full center">
           <button
             onClick={handleClose}
-            className="main-button bg-green-800 rounded-full"
+            className="main-button shadow-lg bg-green-800 rounded-full"
           >
             <FaRegMap />
             Voltar para o mapa
@@ -73,10 +69,7 @@ export function MapPage() {
         zoomControl={false}
         doubleClickZoom={false}
       >
-        <rlImports.TileLayer
-          attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <rlImports.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {users.map((user) => {
           if (user.location) {
             return (
