@@ -7,8 +7,8 @@ interface FooterProps{
 }
 
 export function Footer({ selected }:FooterProps) {
-  const { md } = useSize();
-  if (md) return null;
+  const { sm, md } = useSize();
+  if (!sm || md) return null;
   return (
     <div className="h-12 relative">
       <div
