@@ -89,12 +89,15 @@ export function MapPage() {
                     icon={lImports.divIcon({
                       html: ReactDOMServer.renderToString(
                         <div className="relative">
-                          <img src="/map/marker.svg" alt="" />
+                          <img
+                            src="/map/marker.svg"
+                            alt=""
+                          />
                           <img
                             width="32.8px"
                             alt={user.name}
                             src={user.image}
-                            className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900"
+                            className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900 bg-emerald-700"
                           />
                         </div>,
                       ),

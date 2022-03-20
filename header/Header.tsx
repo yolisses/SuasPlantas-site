@@ -26,7 +26,7 @@ export function Header() {
         <Link href="/">
           <a
             onClick={handleHomeClick}
-            className="secondary-button text-white p-1 text-lg"
+            className="secondary-button text-white h-12 text-lg"
           >
             Suas Plantas
           </a>

@@ -8,7 +8,7 @@ interface HeaderNavigationProps extends HTMLAttributes<HTMLButtonElement>{
 
 export function HeaderNavigationItem({ item, ...rest }:HeaderNavigationProps) {
   const content = (
-    <button className="secondary-button text-white gap-1 center-row" {...rest}>
+    <button className="secondary-button py-3 text-white gap-1 center-row" {...rest}>
       {!!item.Icon && <item.Icon size={20} />}
       {item.asIcon}
       <div className="capitalize hidden lg:inline-block">
