@@ -7,16 +7,18 @@ interface FooterProps{
 }
 
 export function Footer({ selected }:FooterProps) {
-  const { sm, md } = useSize();
-  if (!sm || md) return null;
+  const { md } = useSize();
+  if (md !== false) return null;
   return (
-    <div className="h-12 relative">
+    <>
+      <div className="h-12 relative" />
       <div
         style={{ boxShadow: '0 0 4px #0008' }}
-        className="h-12 bg-white fixed w-full bottom-0 flex flex-row items-center justify-around"
+        className="h-12 bg-white sticky w-full bottom-0 flex flex-row items-center justify-around"
       >
         {navigationItems.map((item) => <FooterNavigationItem key={item.id} item={item} selected={item.id === selected} />)}
       </div>
-    </div>
+    </>
+
   );
 }

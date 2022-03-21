@@ -3,11 +3,11 @@ import {
 } from 'react';
 
 interface SizeContext{
-    sm:boolean
-    md:boolean
-    lg:boolean
-    xl:boolean
-    '2xl':boolean
+    sm:boolean|null
+    md:boolean|null
+    lg:boolean|null
+    xl:boolean|null
+    '2xl':boolean|null
 }
 
 type MediaName = 'sm'|'md'|'lg'|'xl'|'2xl'
@@ -23,8 +23,8 @@ export function SizeContextProvider({ children }:{children:ReactNode}) {
     '2xl': '(min-width: 1536px)',
   } as const;
 
-  const [value, setValue] = useState({
-    sm: false, md: false, lg: false, xl: false, '2xl': false,
+  const [value, setValue] = useState<SizeContext>({
+    sm: null, md: null, lg: null, xl: null, '2xl': null,
   });
 
   function setValueByKey(key:MediaName, value:boolean) {
