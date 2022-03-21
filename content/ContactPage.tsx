@@ -11,6 +11,7 @@ import { ContentFooter } from './ContentFooter';
 import { TextField } from '../common/TextField';
 import { rateIcons } from '../common/rateIcons';
 import { useSnack } from '../snack/SnackContext';
+import { DirectMessageContact } from './DirectMessageContact';
 
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -102,6 +103,7 @@ export function ContactPage() {
                 facebook.com/suasplantas.com.br
               </a>
             </div>
+            <DirectMessageContact />
           </address>
           <fieldset className="flex flex-col gap-3 items-stretch w-full max-w-md">
             <div>Enviar feedback</div>
