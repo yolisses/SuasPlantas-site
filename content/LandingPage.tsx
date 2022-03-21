@@ -98,6 +98,9 @@ export function LandingPage() {
             Encontre pessoas que adoram plantas
           </h1>
           <RegisterButton />
+          <div className="text-white text-right">
+            É grátis e sempre será
+          </div>
         </div>
       </div>
 
