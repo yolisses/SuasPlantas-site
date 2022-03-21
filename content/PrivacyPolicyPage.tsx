@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { ContentFooter } from './ContentFooter';
-import styles from './PrivacyPolicyPage.module.css';
 
 export function PrivacyPolicyPage() {
   return (
     <>
       <div className="p-4 center-col">
         <div className="max-w-3xl">
-          <h1 className={styles.title}>
+          <h1 className="text-2xl mb-4">
             Política de Privacidade
           </h1>
           <p>
@@ -29,7 +28,7 @@ export function PrivacyPolicyPage() {
             páginas no Instagram. Não temos poder sobre esses serviços e essa política de
             privacidade não se aplica a eles.
           </p>
-          <h2 className={styles.topic}>
+          <h2 className="text-xl mt-4">
             Os dados que coletamos
           </h2>
           <p>
@@ -62,7 +61,7 @@ export function PrivacyPolicyPage() {
             Também coletamos o endereço de IP, que pode ser usado para verificações de segurança
             e personalização.
           </p>
-          <h2 className={styles.topic}>
+          <h2 className="text-xl mt-4">
             Uso de cookies
           </h2>
           <p>
@@ -76,7 +75,7 @@ export function PrivacyPolicyPage() {
             Você pode, a qualquer momento, desativar o uso de cookies quando usando um navegador
             para acessar os serviços, mas isso pode prejudicar algumas funcionalidades.
           </p>
-          <h2 className={styles.topic}>
+          <h2 className="text-xl mt-4">
             Processamento dos dados
           </h2>
           <p>
@@ -86,7 +85,7 @@ export function PrivacyPolicyPage() {
             alguns dados ao poder público, como em caso de danos à propriedade intelectual, venda de
             material ilícito ou outros crimes virtuais.
           </p>
-          <h2 className={styles.topic}>
+          <h2 className="text-xl mt-4">
             Compartilhamento de dados
           </h2>
           <p>
