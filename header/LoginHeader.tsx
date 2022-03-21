@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Spacer } from '../common/Spacer';
+import { useUser } from '../auth/userContext';
 import { useSize } from '../common/SizeContext';
 import { MoreMenuButton } from './MoreMenuButton';
 import { FacebookButton } from '../auth/FacebookButton';
-import { LoginButtonAlt } from '../auth/LoginButtonAlt';
-import { useUser } from '../auth/userContext';
+import { RegisterButton } from '../content/RegisterButton';
 
 export function LoginHeader() {
   const { lg } = useSize();
@@ -24,7 +24,7 @@ export function LoginHeader() {
         {loginResolved && (lg ? (
           <FacebookButton />
         )
-          : <LoginButtonAlt />)}
+          : <RegisterButton alt />)}
         <MoreMenuButton />
       </header>
       <div className="h-12" />

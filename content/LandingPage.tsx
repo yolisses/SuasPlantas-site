@@ -11,10 +11,9 @@ import { IconType } from 'react-icons';
 import { FAQ } from './FAQ';
 import { useSize } from '../common/SizeContext';
 import { ContentFooter } from './ContentFooter';
+import { RegisterButton } from './RegisterButton';
 import { LocationExample } from './LocationExample';
 import { MessagesExample } from './MessagesExample';
-import { LoginButtonAlt } from '../auth/LoginButtonAlt';
-import { useLoginButton } from '../auth/useLoginButton';
 import { NotificationsExample } from './NotificationsExample';
 
 interface SessionWithExampleProps{
@@ -23,19 +22,6 @@ interface SessionWithExampleProps{
   reverse?:boolean
   Example:ReactNode
   children:ReactNode
-}
-
-function LoginButton() {
-  const { handleClick } = useLoginButton();
-  return (
-    <button
-      onClick={handleClick}
-      className="center-row gap-2 p-3 justify-center rounded-lg text-lg bg-gradient-to-r text-white from-green-500 to-emerald-500"
-    >
-      <FaRegUser />
-      Entrar
-    </button>
-  );
 }
 
 function H2({ children }:{children:ReactNode}) {
@@ -88,7 +74,7 @@ export function LandingPage() {
           <span>Suas Plantas</span>
         </div>
         <div className="ml-auto" />
-        <LoginButtonAlt />
+        <RegisterButton alt />
       </header>
       <div className="w-full relative center overflow-hidden">
         <div
@@ -111,7 +97,7 @@ export function LandingPage() {
           >
             Encontre pessoas que adoram plantas
           </h1>
-          <LoginButton />
+          <RegisterButton />
         </div>
       </div>
 
@@ -121,7 +107,9 @@ export function LandingPage() {
           Icon={FaRegCommentAlt}
           Example={<MessagesExample />}
         >
-          Contamos com um sistema de mensagens integrado. Você pode enviar mensagens com a segurança de poder reportar qualquer inconveniente.
+          Contamos com um sistema de mensagens integrado.
+          Você pode enviar mensagens com a segurança de
+          poder reportar qualquer inconveniente.
         </SessionWithExample>
         <SessionWithExample
           Icon={FaRegMap}
@@ -129,14 +117,18 @@ export function LandingPage() {
           Example={<LocationExample />}
           reverse
         >
-          Fica bem mais fácil de se conseguir mudinhas quando se mora perto. Por isso criamos um sistema de mapa super simples de usar.
+          Fica bem mais fácil de se conseguir mudinhas
+          quando se mora perto. Por isso criamos um sistema
+          de mapa super simples de usar.
         </SessionWithExample>
         <SessionWithExample
           Icon={FaRegUser}
           title="Faça parte da comunidade"
           Example={<NotificationsExample />}
         >
-          O Suas Plantas é uma rede social completa, com comentários, curtidas e notificações. Tudo para ajudar todos que gostam de plantas.
+          O Suas Plantas é uma rede social completa,
+          com comentários, curtidas e notificações.
+          Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
         <section className="w-full flex flex-col">
           <H2>
@@ -148,7 +140,7 @@ export function LandingPage() {
           </div>
         </section>
         <div className="lg:hidden sticky bottom-0 flex flex-col py-2 w-full bg-white">
-          <LoginButton />
+          <RegisterButton />
         </div>
       </div>
       <div className="hidden lg:flex center-row gap-3 transform translate-y-3 mt-24">
@@ -157,7 +149,7 @@ export function LandingPage() {
           <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">
             Então, que tal?
           </h2>
-          <LoginButton />
+          <RegisterButton />
         </div>
       </div>
       <ContentFooter />
