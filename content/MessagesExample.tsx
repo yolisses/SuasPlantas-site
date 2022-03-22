@@ -9,15 +9,15 @@ export function MessagesExample() {
         <div className="bg-black bg-opacity-10 flex flex-row h-20 overflow-hidden">
           <div className="">
             <Image
-              src="/landing/thumb.jpg"
+              src="/landing/graptoveria.jpg"
               height={imageSize}
               width={imageSize}
               objectFit="cover"
             />
           </div>
           <div className="p-2 flex-1 flex flex-col">
-            <div className="font-bold overflow-ellipsis">Echeveria orion</div>
-            <div className="flex-1 text-sm overflow-ellipsis">Estou podando dessa suculenta, se alguém quiser, é dizer o endereço que eu envio por carta</div>
+            <div className="font-bold overflow-ellipsis">Graptoveria</div>
+            <div className="flex-1 text-sm overflow-ellipsis">Podei essa suculenta, se alguém quiser os brotos, é só dizer que eu envio por carta</div>
           </div>
         </div>
         <div className="lg:p-1">

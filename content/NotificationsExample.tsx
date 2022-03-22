@@ -62,7 +62,7 @@ export function NotificationsExample() {
       </div>
       <div className="transform rotate-6">
         <NotificationExampleItem
-          image="/landing/thumb2.jpg"
+          image="/landing/desert_rose.jpg"
           marked
           Icon={HiOutlineSparkles}
         >
