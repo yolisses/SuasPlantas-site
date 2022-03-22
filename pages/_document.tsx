@@ -26,21 +26,22 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <PWAMeta />
+          <DefaultMeta />
           <FaviconMeta />
           <LeafletStyle />
           <AdSenseScript />
           <FacebookButtonScript />
           {!isDev && (
-          <>
-            <HotjarScript />
-            <SmartlookScript />
-            <GoogleOptimizeScript />
-            <GoogleAnalyticsScript />
-          </>
+            <>
+              <HotjarScript />
+              <SmartlookScript />
+              <GoogleOptimizeScript />
+              <GoogleAnalyticsScript />
+            </>
           )}
         </Head>
+        <DefaultMeta />
         <body>
-          <DefaultMeta />
           <Main />
           <NextScript />
         </body>
