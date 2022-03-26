@@ -20,7 +20,7 @@ export function ContactsIndicator({ user }:{user:User}) {
         <div>
           <Link href="/account/edit">
             <a className="link">
-              Adicionar uma forma de contato para poder receber mensagens
+              Adicionar formas de contato
             </a>
           </Link>
         </div>
