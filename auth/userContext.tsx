@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { api } from '../api/api';
 import { User } from '../user/User';
 import { interact } from '../interactions/interact';
+import { reportSubscription } from '../ads/reportSubscription';
 
 interface ISignIn{
   provider: 'google' | 'facebook',
@@ -47,6 +48,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
 
   async function signIn({ provider, accessToken }:ISignIn) {
     const res = await api.post('users', { provider, accessToken });
+    reportSubscription();
     interact({ type: 'sign in', user });
     const token = res.headers.authorization;
     api.defaults.headers.common.Authorization = token;

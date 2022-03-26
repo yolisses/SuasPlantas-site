@@ -10,6 +10,7 @@ import { LeafletStyle } from '../document/LeafletStyle';
 import { HotjarScript } from '../document/HotjarScript';
 import { AdSenseScript } from '../document/AdSenseScript';
 import { SmartlookScript } from '../document/SmartlookScript';
+import { GoogleAdsScript } from '../document/GoogleAdsScript';
 import { GoogleOptimizeScript } from '../document/GoogleOptimizeScript';
 import { FacebookButtonScript } from '../document/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
@@ -35,6 +36,7 @@ class MyDocument extends Document {
             <>
               <HotjarScript />
               <SmartlookScript />
+              <GoogleAdsScript />
               <GoogleOptimizeScript />
               <GoogleAnalyticsScript />
             </>
