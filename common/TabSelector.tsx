@@ -21,17 +21,11 @@ export function TabSelector({
     <button
       id={id}
       onClick={handleClick}
-      className="secondary-button center-row h-11 px-2 sm:px-4 justify-center gap-1"
-      style={selected ? {
-        color: mainColor,
-        borderColor: mainColor,
-        borderStyle: 'solid',
-        borderBottomWidth: 2,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-      } : {
-        color: 'gray',
-      }}
+      className={`secondary-button center-row h-11 px-2 sm:px-4 justify-center gap-1 ${
+        selected
+          ? 'text-green-600 border-green-600 border-b-2 rounded-b-none'
+          : 'text-gray-500'
+      }`}
     >
       {children}
     </button>
