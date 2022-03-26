@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-import { mainColor } from './mainColor';
+import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
 interface TabSelectorProps{
   id?:string
@@ -10,8 +9,8 @@ interface TabSelectorProps{
 }
 
 export function TabSelector({
-  children, value, tab, setTab, id,
-}:TabSelectorProps) {
+  children, value, tab, setTab, id, ...rest
+}:TabSelectorProps&DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) {
   function handleClick() {
     if (setTab && value) { setTab(value); }
   }
@@ -26,6 +25,7 @@ export function TabSelector({
           ? 'text-green-600 border-green-600 border-b-2 rounded-b-none'
           : 'text-gray-500'
       }`}
+      {...rest}
     >
       {children}
     </button>
