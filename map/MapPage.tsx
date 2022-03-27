@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { GrClose } from 'react-icons/gr';
 import { FaRegMap } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
@@ -5,13 +6,13 @@ import ReactDOMServer from 'react-dom/server';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
+import { Footer } from '../footer/Footer';
 import { UserPage } from '../user/UserPage';
 import { useUser } from '../auth/userContext';
 import { customMarkerConfig } from './customMarkerConfig';
 import { useLocation } from '../location/LocationContext';
-import { useMapImport } from '../location/leaflet/MapImportContext';
-import { Footer } from '../footer/Footer';
 import { MapCustomAtribution } from './mapCustomAtribution';
+import { useMapImport } from '../location/leaflet/MapImportContext';
 
 export function MapPage() {
   const { rlImports, lImports } = useMapImport();
@@ -29,12 +30,19 @@ export function MapPage() {
 
   async function getUsers() {
     const res = await api.get('users', { params: { profileRelations: true } });
-    setUsers(res.data.content);
+    const users = (res.data.content as User[]).map((user:User) => {
+      if (user.location && user.id !== currentUser?.id) {
+        user.location.coordinates[0] += Math.random() / 10;
+        user.location.coordinates[1] += Math.random() / 10;
+      }
+      return user;
+    });
+    setUsers(users);
   }
 
   useEffect(() => {
-    getUsers();
-  }, [position]);
+    if (currentUser) { getUsers(); }
+  }, [position, currentUser]);
 
   return (
     <div className="flex flex-col h-no-header">
