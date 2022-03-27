@@ -1,10 +1,7 @@
 export function DevPage() {
   return (
-    <div>
+    <div className="bg-red-500 flex-1">
       oie
-      <div className="bg-red-500 container">
-        quale
-      </div>
     </div>
   );
 }

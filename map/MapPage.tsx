@@ -44,7 +44,7 @@ export function MapPage() {
   }, [position, currentUser]);
 
   return (
-    <div className="flex flex-row h-screen relative overflow-hidden">
+    <div className="flex flex-row flex-1 relative overflow-hidden">
       <div
         className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
           user ? 'max-w-md' : 'max-w-0'}`}
@@ -74,8 +74,8 @@ export function MapPage() {
         <div className="fixed top-0 right-0 z-10">
           <MapCustomAtribution />
         </div>
-        <div className="fixed bottom-0 right-0 z-10">
-          <div className="backdrop-blur-lg text-xs">As localizações no mapa são aproximadas</div>
+        <div className="absolute bottom-0 right-0 z-10">
+          <div className="text-xs">As localizações no mapa são aproximadas</div>
         </div>
         <div className="z-0 flex flex-1">
           <rlImports.MapContainer

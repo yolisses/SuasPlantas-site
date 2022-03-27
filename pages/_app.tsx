@@ -3,6 +3,9 @@ import '../styles/globals.css';
 
 import Twemoji from 'react-twemoji';
 import type { AppProps } from 'next/app';
+
+import { Nav } from '../nav/Nav';
+import { Footer } from '../footer/Footer';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
 import { ExitIntent } from '../intent/ExitIntent';
@@ -27,8 +30,6 @@ import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
 import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { Nav } from '../nav/Nav';
-import { Footer } from '../footer/Footer';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -57,7 +58,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                         <div className="hidden md:inline-block">
                                           <Nav />
                                         </div>
-                                        <div className="flex-1">
+                                        <div className="flex-1 flex flex-col min-h-screen">
                                           <Component {...pageProps} />
                                           <Footer />
                                         </div>
