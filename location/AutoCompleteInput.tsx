@@ -52,6 +52,7 @@ export function AutoCompleteInput<type>({
           <input
             type="text"
             value={text}
+            data-hj-allow
             onBlur={handleBlur}
             onFocus={handleFocus}
             onChange={handleChange}

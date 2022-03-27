@@ -143,6 +143,7 @@ export function ImagesInput({
             hidden
             multiple
             type="file"
+            data-hj-allow
             onBlur={onBlur}
             onChange={handleFilesSelected}
             accept=".jpg, .jpeg, .png, .webp"

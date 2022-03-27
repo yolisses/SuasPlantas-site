@@ -127,6 +127,7 @@ export function EditQuestsPage() {
           <input
             type="text"
             value={text}
+            data-hj-allow
             disabled={loading}
             placeholder="Nome da planta"
             className="p-4 border border-gray-400 rounded-lg"

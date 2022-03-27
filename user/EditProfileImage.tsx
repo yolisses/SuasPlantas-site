@@ -55,10 +55,11 @@ export function EditProfileImage() {
         <div className="text-center">Foto de perfil</div>
         <label className="center-row gap-1">
           <input
+            hidden
             type="file"
+            data-hj-allow
             onChange={handleFilesSelected}
             accept=".jpg, .jpeg, .png, .webp"
-            hidden
           />
           <div className={`p-2 flex flex-row gap-2 items-center rounded-lg ${loading ? 'disabled-button' : 'secondary-button'}`}>
             {loading && <Spinner />}

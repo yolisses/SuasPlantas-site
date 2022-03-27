@@ -55,6 +55,7 @@ export function MessageInput({ chat }:MessageInputProps) {
     >
       <input
         type="text"
+        data-hj-allow
         value={text || ''}
         onChange={(e) => setText(e.target.value)}
         placeholder="Escrever mensagem"
