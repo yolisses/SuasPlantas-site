@@ -28,6 +28,7 @@ import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
 import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
+import { Nav } from '../nav/Nav';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -53,7 +54,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                   <ChatsContextProvider>
                                     <MapImportContextProvider>
                                       <HeaderSelector />
-                                      <Component {...pageProps} />
+                                      <div className="flex flex-row">
+                                        <Nav />
+                                        <div>
+                                          <Component {...pageProps} />
+                                        </div>
+                                      </div>
                                       <SnackView />
                                       <ModalView />
                                       <ExitIntent />

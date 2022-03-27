@@ -34,7 +34,6 @@ export function Header() {
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        {md && <NavItems styleContext="header" />}
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
