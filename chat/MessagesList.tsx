@@ -37,7 +37,7 @@ export function MessagesList({ messages }:MessagesListProps) {
           return (
             <>
               <MessageItem message={item} key={item.id} />
-              { showDate && <div className="self-center bg-gray-100 p-2 rounded-lg">{itemDate}</div>}
+              { showDate && <div className="self-center bg-gray-100 py-1 px-2 rounded-lg text-sm">{itemDate}</div>}
             </>
           );
         })}
