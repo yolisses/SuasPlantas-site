@@ -45,7 +45,7 @@ export function ContactPage() {
   }
 
   return (
-    <div className="min-h-no-header flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <div className="center-col p-2 pb-10 flex-1">
         <h1 className="text-3xl">Contato</h1>
         <p className="text-gray-500">Adoramos receber mensagens!</p>

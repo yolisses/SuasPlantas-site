@@ -73,14 +73,6 @@ animation: rollout 0.2s;
     @apply text-green-700 underline;
   }
 
-  .h-no-header{
-    height: calc(100vh - 3rem);
-  }
-
-  .min-h-no-header{
-    min-height: calc(100vh - 3rem);
-  }
-
   .label-active{
     @apply -top-2 left-2 text-xs px-1 text-gray-500 leading-none;
   }

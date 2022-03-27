@@ -13,12 +13,8 @@ export function ChatPage() {
 
   return (
 
-    <div className="h-no-header flex flex-row overflow-hidden">
-      {lg && (
-      <div className="w-full max-w-md overflow-y-auto shadow">
-        <ContactsPage current={chat} />
-      </div>
-      )}
+    <div className="h-screen flex flex-row overflow-hidden">
+
       <div className="flex flex-col w-full">
         {chat ? (<ChatReader chat={chat} />) : (
           <div className="flex-1 flex items-center justify-center text-slate-600">
@@ -26,6 +22,12 @@ export function ChatPage() {
           </div>
         )}
       </div>
+      {' '}
+      {lg && (
+      <div className="w-full max-w-sm overflow-y-auto shadow">
+        <ContactsPage current={chat} />
+      </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  FaBell,
   FaCommentAlt, FaEnvelope, FaFile, FaHome, FaMap, FaSeedling,
 } from 'react-icons/fa';
 import { userImage } from '../images/user';
@@ -21,6 +22,13 @@ export function NavItems({ selected, expanded }:NavItemProps) {
           text="Início"
           Icon={FaHome}
           selected
+        />
+      </Link>
+      <Link href="/notifications">
+        <LateralNavButton
+          text="Notificações"
+          Icon={FaBell}
+          selected={selected === 'notifications'}
         />
       </Link>
       <Link href="/map">

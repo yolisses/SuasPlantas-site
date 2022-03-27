@@ -17,7 +17,6 @@ export function Nav() {
       <HomeButton />
       <nav className="flex flex-col flex-1 overflow-y-aut w-full overflow-y-auto">
         <NavItems expanded={expanded} />
-        <NotificationMenuButton />
         <LateralNavButton
           onClick={handleClick}
           text={expanded ? 'Ver menos' : 'Ver mais'}
