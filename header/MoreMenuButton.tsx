@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { Menu } from '../common/menu/Menu';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
+import { NavButton } from '../footer/NavButton';
 
 export function MoreMenuButton() {
   const [open, setOpen] = useState(false);
@@ -31,11 +32,11 @@ export function MoreMenuButton() {
 
   return (
     <div>
-      <button
+      <NavButton
         onClick={() => { setOpen(true); }}
-      >
-        <FaBars />
-      </button>
+        Icon={FaBars}
+        text="mais"
+      />
       <div className="fixed right-0 sm:right-2">
         <div className="absolute right-0">
           {open && (

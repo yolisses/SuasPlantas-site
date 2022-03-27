@@ -23,6 +23,5 @@ export function NavItems() {
         <NavButton Icon={FaUser} text="perfil" />
       </Link>
     </>
-
   );
 }

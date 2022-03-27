@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaBell } from 'react-icons/fa';
 import { Menu } from '../common/menu/Menu';
+import { NavButton } from '../footer/NavButton';
 import { NotificationsMenu } from './NotificationsMenu';
 import { NotificationsToggleWarn } from './NotificationsToggleWarn';
 
@@ -13,11 +14,11 @@ export function NotificationMenuButton() {
 
   return (
     <div>
-      <button
+      <NavButton
         onClick={() => { setOpen(true); }}
-      >
-        <FaBell />
-      </button>
+        Icon={FaBell}
+        text="notificações"
+      />
       {open && (
       <div className="fixed right-0 sm:right-2">
         <div className="absolute right-0">

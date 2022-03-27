@@ -9,7 +9,7 @@ extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonEle
 
 export function NavButton({ Icon, text, ...rest }:NavButtonProps) {
   return (
-    <button {...rest}>
+    <button {...rest} className="secondary-button text-white gap-1 capitalize">
       {Icon && <Icon />}
       {text}
     </button>
