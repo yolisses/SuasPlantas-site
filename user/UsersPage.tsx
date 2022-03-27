@@ -10,8 +10,7 @@ import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
 
 export function UsersPage() {
-  const size = 80;
-
+  const imageSize = 80;
   const { user } = useUser();
   const { isLogged } = useIsLogged();
 
@@ -37,8 +36,8 @@ export function UsersPage() {
             <Image
               src={userImage}
               objectFit="cover"
-              width={size}
-              height={size}
+              width={imageSize}
+              height={imageSize}
               className="rounded-full"
             />
             <div className="text-lg pt-2">
