@@ -21,7 +21,7 @@ export function UsersPage() {
       firstActionButton={<ShareButton />}
     >
       {(items) => (
-        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-5 xl:px-20">
+        <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5">
           {!user
           && (
           <button

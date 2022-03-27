@@ -18,7 +18,7 @@ export function QuestsPage() {
       tourSteps={!blockQuestsTour ? questsTourSteps : undefined}
     >
       {(items) => (
-        <div className="p-2 pt-4 grid gap-2 grid-cols-2 md:grid-cols-4 xl:grid-cols-5 xl:px-20">
+        <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-4 xl:grid-cols-5">
           {!!items && items.map((item: Quest) => (
             <QuestItem item={item} key={item.id} />
           ))}
