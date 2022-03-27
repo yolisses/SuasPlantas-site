@@ -2,10 +2,10 @@ import Link from 'next/link';
 import {
   FaCommentAlt, FaHome, FaMap,
 } from 'react-icons/fa';
-import { NavButton } from './NavButton';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { StyleContext } from './styleContext';
+import { LateralNavButton } from '../nav/LateralNavItem';
 
 interface NavItemProps {
   selected?:string,
@@ -18,33 +18,29 @@ export function NavItems({ selected, styleContext }:NavItemProps) {
   return (
     <>
       <Link href="/">
-        <NavButton
+        <LateralNavButton
           text="início"
           Icon={FaHome}
-          styleContext={styleContext}
-          selected={selected === 'home'}
+          selected
         />
       </Link>
       <Link href="/map">
-        <NavButton
+        <LateralNavButton
           text="mapa"
           Icon={FaMap}
-          styleContext={styleContext}
           selected={selected === 'map'}
         />
       </Link>
       <Link href="/chat">
-        <NavButton
+        <LateralNavButton
           text="conversas"
           Icon={FaCommentAlt}
-          styleContext={styleContext}
           selected={selected === 'chat'}
         />
       </Link>
       <Link href={user ? `/users/${user.id}` : '/landing'}>
-        <NavButton
+        <LateralNavButton
           text="perfil"
-          styleContext={styleContext}
           selected={selected === 'user'}
           imageSrc={user?.image || userImage}
         />

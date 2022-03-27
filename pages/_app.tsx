@@ -11,7 +11,6 @@ import { usersContext } from '../user/usersContext';
 import { DefaultMeta } from '../document/DefaultMeta';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
-import { HeaderSelector } from '../header/HeaderSelector';
 import { UserContextProvider } from '../auth/userContext';
 import { TourContextProvider } from '../tour/TourContext';
 import { SizeContextProvider } from '../common/SizeContext';
@@ -53,10 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 <SocketContextProvider>
                                   <ChatsContextProvider>
                                     <MapImportContextProvider>
-                                      <HeaderSelector />
-                                      <div className="flex flex-row">
+                                      <div className="flex flex-row w-full">
                                         <Nav />
-                                        <div>
+                                        <div className="w-full">
                                           <Component {...pageProps} />
                                         </div>
                                       </div>
