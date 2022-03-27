@@ -77,7 +77,7 @@ export function MoreMenuButton() {
                 Contato
               </a>
             </Link>
-            {user && (
+            {!user && (
               <button className="menu-button" onClick={() => { close(); isLogged(); }}>
                 <RiLoginBoxLine size={20} color="gray" onClick={handleSignInClick} />
                 {' '}
