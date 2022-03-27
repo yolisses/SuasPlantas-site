@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePlants } from '../plant/plantsContext';
 
@@ -10,13 +11,16 @@ export function HomeButton() {
     }
   }
 
+  const imageSize = 24;
+
   return (
     <Link href="/">
       <a
         onClick={handleHomeClick}
-        className="secondary-button h-12 text-lg"
+        className="secondary-button h-12 text-lg justify-start"
       >
-        Suas Plantas
+        <Image src="/icon/icon.svg" width={imageSize} height={imageSize} />
+        SuasPlantas
       </a>
     </Link>
   );

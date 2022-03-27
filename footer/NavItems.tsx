@@ -1,18 +1,17 @@
 import Link from 'next/link';
 import {
-  FaCommentAlt, FaHome, FaMap,
+  FaCommentAlt, FaEnvelope, FaFile, FaHome, FaMap, FaSeedling,
 } from 'react-icons/fa';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
-import { StyleContext } from './styleContext';
 import { LateralNavButton } from '../nav/LateralNavItem';
 
 interface NavItemProps {
   selected?:string,
-  styleContext:StyleContext
+  expanded?:boolean
 }
 
-export function NavItems({ selected, styleContext }:NavItemProps) {
+export function NavItems({ selected, expanded }:NavItemProps) {
   const { user } = useUser();
 
   return (
@@ -45,6 +44,30 @@ export function NavItems({ selected, styleContext }:NavItemProps) {
           imageSrc={user?.image || userImage}
         />
       </Link>
+      {expanded && (
+      <>
+        <Link href="/about">
+          <LateralNavButton
+            text="sobre"
+            Icon={FaSeedling}
+          />
+        </Link>
+        <Link href="/privacy-policy">
+          <LateralNavButton
+            text="política de privacidade"
+            Icon={FaFile}
+            selected={selected === 'map'}
+          />
+        </Link>
+        <Link href="/contact">
+          <LateralNavButton
+            text="contato"
+            Icon={FaEnvelope}
+            selected={selected === 'map'}
+          />
+        </Link>
+      </>
+      )}
     </>
   );
 }

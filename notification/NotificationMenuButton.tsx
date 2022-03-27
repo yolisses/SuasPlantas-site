@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaBell } from 'react-icons/fa';
 import { Menu } from '../common/menu/Menu';
-import { NavButton } from '../footer/NavButton';
+import { LateralNavButton } from '../nav/LateralNavItem';
 import { NotificationsMenu } from './NotificationsMenu';
 import { NotificationsToggleWarn } from './NotificationsToggleWarn';
 
@@ -14,10 +14,9 @@ export function NotificationMenuButton() {
 
   return (
     <div>
-      <NavButton
+      <LateralNavButton
         Icon={FaBell}
         text="notificações"
-        styleContext="header"
         onClick={() => { setOpen(true); }}
       />
       {open && (

@@ -45,7 +45,7 @@ export function MapPage() {
   }, [position, currentUser]);
 
   return (
-    <div className="flex flex-col h-no-header">
+    <div className="flex flex-col h-full">
       <div className="flex flex-row relative flex-1 overflow-hidden">
         <div
           className={`z-10 transition-all container bg-white md:shadow-lg fixed top-12 bottom-12 md:bottom-0 left-0 overflow-y-auto ${

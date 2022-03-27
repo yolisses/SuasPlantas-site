@@ -17,7 +17,7 @@ export function LateralNavButton({
   return (
     <button
       {...rest}
-      className={`center-row capitalize gap-2 p-4 md:p-3 rounded-full md:rounded-lg highlight ${
+      className={`flex flex-row items-center px-2 capitalize gap-2 h-12 w-full whitespace-nowrap rounded-full md:rounded-lg highlight ${
         selected
           ? 'text-emerald-700'
           : 'text-gray-500'
