@@ -33,9 +33,10 @@ export function MoreMenuButton() {
   return (
     <div>
       <NavButton
-        onClick={() => { setOpen(true); }}
-        Icon={FaBars}
         text="mais"
+        Icon={FaBars}
+        styleContext="header"
+        onClick={() => { setOpen(true); }}
       />
       <div className="fixed right-0 sm:right-2">
         <div className="absolute right-0">

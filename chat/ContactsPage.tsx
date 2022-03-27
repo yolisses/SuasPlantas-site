@@ -21,7 +21,7 @@ export function ContactsPage({ current }:{current?:Chat}) {
             </div>
           )}
       </div>
-      <Footer selected="chats" />
+      <Footer selected="chat" />
     </>
   );
 }

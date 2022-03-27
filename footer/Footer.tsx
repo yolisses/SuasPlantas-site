@@ -15,7 +15,7 @@ export function Footer({ selected }:FooterProps) {
         style={{ boxShadow: '0 0 4px #0008' }}
         className="h-12 bg-white fixed w-full bottom-0 flex flex-row items-center justify-around"
       >
-        <NavItems />
+        <NavItems selected={selected} styleContext="footer" />
       </div>
     </>
   );

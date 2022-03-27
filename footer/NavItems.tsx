@@ -4,23 +4,49 @@ import {
 } from 'react-icons/fa';
 import { useUser } from '../auth/userContext';
 import { NavButton } from './NavButton';
+import { StyleContext } from './styleContext';
 
-export function NavItems() {
+interface NavItemProps {
+  selected?:string,
+  styleContext:StyleContext
+}
+
+export function NavItems({ selected, styleContext }:NavItemProps) {
   const { user } = useUser();
 
   return (
     <>
       <Link href="/">
-        <NavButton Icon={FaHome} text="início" />
+        <NavButton
+          text="início"
+          Icon={FaHome}
+          styleContext={styleContext}
+          selected={selected === 'home'}
+        />
       </Link>
       <Link href="/map">
-        <NavButton Icon={FaMap} text="mapa" />
+        <NavButton
+          text="mapa"
+          Icon={FaMap}
+          styleContext={styleContext}
+          selected={selected === 'map'}
+        />
       </Link>
       <Link href="/chat">
-        <NavButton Icon={FaCommentAlt} text="conversas" />
+        <NavButton
+          text="conversas"
+          Icon={FaCommentAlt}
+          styleContext={styleContext}
+          selected={selected === 'chat'}
+        />
       </Link>
       <Link href={user ? `/users/${user.id}` : '/landing'}>
-        <NavButton Icon={FaUser} text="perfil" />
+        <NavButton
+          text="perfil"
+          Icon={FaUser}
+          styleContext={styleContext}
+          selected={selected === 'profile'}
+        />
       </Link>
     </>
   );

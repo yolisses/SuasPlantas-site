@@ -15,9 +15,10 @@ export function NotificationMenuButton() {
   return (
     <div>
       <NavButton
-        onClick={() => { setOpen(true); }}
         Icon={FaBell}
         text="notificações"
+        styleContext="header"
+        onClick={() => { setOpen(true); }}
       />
       {open && (
       <div className="fixed right-0 sm:right-2">

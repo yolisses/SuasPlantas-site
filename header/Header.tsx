@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed bg-emerald-700 text-white flex flex-row px-2 h-12 items-center w-full gap-4 sm:gap-2 z-50 shadow-md">
+      <header className="fixed bg-emerald-700 text-white flex flex-row px-2 h-12 items-center w-full z-50">
         <Link href="/">
           <a
             onClick={handleHomeClick}
@@ -30,11 +30,11 @@ export function Header() {
             Suas Plantas
           </a>
         </Link>
-        <div className="w-full max-w-sm hidden md:inline-flex">
+        <div className="w-full max-w-sm hidden md:inline-flex px-2">
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        {md && <NavItems />}
+        {md && <NavItems styleContext="header" />}
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>
