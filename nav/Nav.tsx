@@ -13,9 +13,9 @@ export function Nav() {
   }
 
   return (
-    <div className="w-52 shadow">
+    <div className="w-72 shadow h-screen overflow-x-hidden flex flex-col">
       <HomeButton />
-      <nav className="flex flex-col h-screen overflow-y-auto">
+      <nav className="flex flex-col flex-1 overflow-y-aut w-full overflow-y-auto">
         <NavItems expanded={expanded} />
         <NotificationMenuButton />
         <LateralNavButton

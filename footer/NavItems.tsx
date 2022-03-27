@@ -18,28 +18,28 @@ export function NavItems({ selected, expanded }:NavItemProps) {
     <>
       <Link href="/">
         <LateralNavButton
-          text="início"
+          text="Início"
           Icon={FaHome}
           selected
         />
       </Link>
       <Link href="/map">
         <LateralNavButton
-          text="mapa"
+          text="Mapa"
           Icon={FaMap}
           selected={selected === 'map'}
         />
       </Link>
       <Link href="/chat">
         <LateralNavButton
-          text="conversas"
+          text="Conversas"
           Icon={FaCommentAlt}
           selected={selected === 'chat'}
         />
       </Link>
       <Link href={user ? `/users/${user.id}` : '/landing'}>
         <LateralNavButton
-          text="perfil"
+          text="Perfil"
           selected={selected === 'user'}
           imageSrc={user?.image || userImage}
         />
@@ -48,20 +48,20 @@ export function NavItems({ selected, expanded }:NavItemProps) {
       <>
         <Link href="/about">
           <LateralNavButton
-            text="sobre"
+            text="Sobre"
             Icon={FaSeedling}
           />
         </Link>
         <Link href="/privacy-policy">
           <LateralNavButton
-            text="política de privacidade"
+            text="Política de privacidade"
             Icon={FaFile}
             selected={selected === 'map'}
           />
         </Link>
         <Link href="/contact">
           <LateralNavButton
-            text="contato"
+            text="Contato"
             Icon={FaEnvelope}
             selected={selected === 'map'}
           />
