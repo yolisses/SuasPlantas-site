@@ -13,9 +13,11 @@ export function Nav() {
 
   return (
     <>
-      <div className="w-52 shadow" />
-      <div className="fixed h-screen z-50 bg-white">
-        <nav className="fixed flex w-52 flex-col items-stretch">
+      <div className="relative">
+        <nav
+          style={{ boxShadow: '0 0 4px #0005' }}
+          className="fixed flex w-52 flex-col items-stretch h-screen bg-white z-50"
+        >
           <HomeButton />
           <NavItems expanded={expanded} />
           <LateralNavButton
@@ -25,7 +27,7 @@ export function Nav() {
           />
         </nav>
       </div>
-
+      <div className="w-52" />
     </>
   );
 }
