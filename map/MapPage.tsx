@@ -76,7 +76,7 @@ export function MapPage() {
           <div className="fixed top-0 right-0 z-10">
             <MapCustomAtribution />
           </div>
-          <div className="fixed bottom-12 md:bottom-0 p-2 right-0 z-10">
+          <div className="fixed bottom-0 right-0 z-10">
             <div className="backdrop-blur-lg text-xs">As localizações no mapa são aproximadas</div>
           </div>
           <div className="z-0 flex flex-1">

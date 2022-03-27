@@ -24,7 +24,7 @@ export function ChatPage() {
       </div>
       {' '}
       {lg && (
-      <div className="w-full max-w-sm overflow-y-auto shadow">
+      <div className="w-full max-w-sm overflow-y-auto shadow bg-white">
         <ContactsPage current={chat} />
       </div>
       )}
