@@ -14,7 +14,7 @@ export function Nav() {
   return (
     <>
       <div className="w-72" />
-      <div className="w-72 fixed h-screen" style={{ boxShadow: '0 0 4px #0003' }}>
+      <div className="w-72 fixed h-screen z-50 bg-white" style={{ boxShadow: '0 0 4px #0003' }}>
         <nav className="flex w-72 flex-col items-stretch fixed top-0">
           <HomeButton />
           <NavItems expanded={expanded} />
