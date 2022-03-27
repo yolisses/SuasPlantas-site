@@ -28,6 +28,7 @@ import { notificationsContext } from '../notification/notificationsContext';
 import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
 import { Nav } from '../nav/Nav';
+import { Footer } from '../footer/Footer';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -59,6 +60,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                         <div className="flex-1">
                                           <Component {...pageProps} />
                                         </div>
+                                        <Footer />
                                       </div>
                                       <SnackView />
                                       <ModalView />
