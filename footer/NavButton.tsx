@@ -1,21 +1,23 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import Image from 'next/image';
 import { IconType } from 'react-icons';
-import { mainColor } from '../common/mainColor';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyleContext } from './styleContext';
 
 interface NavButtonProps
 extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
   text:string
   Icon?:IconType
+  imageSrc?:string
   selected?:boolean
   styleContext:StyleContext
 }
 
 export function NavButton({
-  Icon, text, selected, styleContext, ...rest
+  Icon, text, selected, styleContext, imageSrc, ...rest
 }:NavButtonProps) {
   const isFooter = styleContext === 'footer';
   const isHeader = styleContext === 'header';
+  const imageSize = isHeader ? 24 : 20;
   return (
     <button
       {...rest}
@@ -26,6 +28,18 @@ export function NavButton({
             : 'text-gray-500 '}`
           : 'gap-1 p-4 md:p-3 rounded-full md:rounded-lg highlight'}`}
     >
+      {imageSrc
+      && (
+        <div className={selected ? 'border-2 center border-emerald-700 rounded-full' : ''}>
+          <Image
+            src={imageSrc}
+            objectFit="cover"
+            width={imageSize}
+            height={imageSize}
+            className="bg-gray-200 rounded-full"
+          />
+        </div>
+      )}
       {Icon && (
       <Icon
         size={20}

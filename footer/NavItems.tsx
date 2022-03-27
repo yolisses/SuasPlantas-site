@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import {
-  FaCommentAlt, FaHome, FaMap, FaUser,
+  FaCommentAlt, FaHome, FaMap,
 } from 'react-icons/fa';
-import { useUser } from '../auth/userContext';
 import { NavButton } from './NavButton';
+import { userImage } from '../images/user';
+import { useUser } from '../auth/userContext';
 import { StyleContext } from './styleContext';
 
 interface NavItemProps {
@@ -43,9 +44,9 @@ export function NavItems({ selected, styleContext }:NavItemProps) {
       <Link href={user ? `/users/${user.id}` : '/landing'}>
         <NavButton
           text="perfil"
-          Icon={FaUser}
           styleContext={styleContext}
-          selected={selected === 'profile'}
+          selected={selected === 'user'}
+          imageSrc={user?.image || userImage}
         />
       </Link>
     </>
