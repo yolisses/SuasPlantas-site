@@ -15,14 +15,13 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { User } from './User';
+import { Footer } from '../footer/Footer';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
-import { Footer } from '../footer/Footer';
-import { loremIpsum } from '../mock/loremIpsum';
 
 interface UserPageProps {
   user: User;

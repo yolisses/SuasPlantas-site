@@ -1,13 +1,12 @@
 import Link from 'next/link';
 
 import { Spacer } from '../common/Spacer';
+import { NavItems } from '../footer/NavItems';
+import { useSize } from '../common/SizeContext';
 import { MoreMenuButton } from './MoreMenuButton';
 import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
 import { NotificationMenuButton } from '../notification/NotificationMenuButton';
-import { navigationItems } from '../footer/NavigationItems';
-import { HeaderNavigationItem } from './HeaderNavigationItem';
-import { useSize } from '../common/SizeContext';
 
 export function Header() {
   const { setFilters: setPlantsFilters } = usePlants();
@@ -35,7 +34,7 @@ export function Header() {
           <SearchField resetButtonColor="#fff" />
         </div>
         <Spacer />
-        {md && navigationItems.map((item) => <HeaderNavigationItem item={item} />)}
+        {md && <NavItems />}
         <NotificationMenuButton />
         <MoreMenuButton />
       </header>

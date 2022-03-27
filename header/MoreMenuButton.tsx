@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   FaBars,
   FaFile,
@@ -7,18 +6,17 @@ import {
 } from 'react-icons/fa';
 import {
   RiLoginBoxLine,
-  RiLogoutBoxRLine,
 } from 'react-icons/ri';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Menu } from '../common/menu/Menu';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
-import { HeaderNavigationItem } from './HeaderNavigationItem';
 
 export function MoreMenuButton() {
   const [open, setOpen] = useState(false);
-  const { user, logOut } = useUser();
+  const { user } = useUser();
 
   const { isLogged } = useIsLogged();
   const imageSize = 20;
@@ -33,14 +31,11 @@ export function MoreMenuButton() {
 
   return (
     <div>
-      <HeaderNavigationItem
+      <button
         onClick={() => { setOpen(true); }}
-        item={{
-          Icon: FaBars,
-          id: 'more',
-          text: 'Mais',
-        }}
-      />
+      >
+        <FaBars />
+      </button>
       <div className="fixed right-0 sm:right-2">
         <div className="absolute right-0">
           {open && (
@@ -80,14 +75,7 @@ export function MoreMenuButton() {
                 Contato
               </a>
             </Link>
-            {user ? (
-              null
-            // <button className="menu-button text-red-900" onClick={() => { logOut(); close(); }}>
-            // <RiLogoutBoxRLine size={20} color="rgb(127,29,29)" />
-            // {' '}
-            // Sair
-            // </button>
-            ) : (
+            {user && (
               <button className="menu-button" onClick={() => { close(); isLogged(); }}>
                 <RiLoginBoxLine size={20} color="gray" onClick={handleSignInClick} />
                 {' '}
