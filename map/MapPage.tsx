@@ -45,7 +45,7 @@ export function MapPage() {
   }, [position, currentUser]);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-screen">
       <div className="flex flex-row relative flex-1 overflow-hidden">
         <div
           className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
@@ -73,7 +73,7 @@ export function MapPage() {
           ) }
         </div>
         <div className="flex-1 flex z-0">
-          <div className="fixed top-12 right-0 z-10">
+          <div className="fixed top-0 right-0 z-10">
             <MapCustomAtribution />
           </div>
           <div className="fixed bottom-12 md:bottom-0 p-2 right-0 z-10">
