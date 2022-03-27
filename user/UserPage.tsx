@@ -15,7 +15,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { User } from './User';
-import { Footer } from '../footer/Footer';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
@@ -146,7 +145,6 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
           </Tab>
         </div>
       </div>
-      {footer && <Footer selected={selfUser ? 'user' : 'home'} />}
     </>
   );
 }

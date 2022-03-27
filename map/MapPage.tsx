@@ -6,7 +6,6 @@ import ReactDOMServer from 'react-dom/server';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
-import { Footer } from '../footer/Footer';
 import { UserPage } from '../user/UserPage';
 import { useUser } from '../auth/userContext';
 import { customMarkerConfig } from './customMarkerConfig';
@@ -45,13 +44,12 @@ export function MapPage() {
   }, [position, currentUser]);
 
   return (
-    <div className="flex flex-col h-screen">
-      <div className="flex flex-row relative flex-1 overflow-hidden">
-        <div
-          className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
-            user ? 'max-w-md' : 'max-w-0'}`}
-        >
-          {user && (
+    <div className="flex flex-row h-screen relative overflow-hidden">
+      <div
+        className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
+          user ? 'max-w-md' : 'max-w-0'}`}
+      >
+        {user && (
           <div className="relative">
             <button
               onClick={handleClose}
@@ -70,63 +68,61 @@ export function MapPage() {
               </button>
             </div>
           </div>
-          ) }
+        ) }
+      </div>
+      <div className="flex-1 flex z-0">
+        <div className="fixed top-0 right-0 z-10">
+          <MapCustomAtribution />
         </div>
-        <div className="flex-1 flex z-0">
-          <div className="fixed top-0 right-0 z-10">
-            <MapCustomAtribution />
-          </div>
-          <div className="fixed bottom-0 right-0 z-10">
-            <div className="backdrop-blur-lg text-xs">As localizações no mapa são aproximadas</div>
-          </div>
-          <div className="z-0 flex flex-1">
-            <rlImports.MapContainer
-              zoom={10}
-              minZoom={2}
-              center={position}
-              style={{ flex: 1 }}
-              zoomControl={false}
-              doubleClickZoom={false}
-              attributionControl={false}
-            >
-              <rlImports.TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              {users.map((user) => {
-                if (user.location) {
-                  return (
-                    <rlImports.Marker
-                      position={user.location.coordinates}
-                      icon={lImports.divIcon({
-                        html: ReactDOMServer.renderToString(
-                          <div className="relative">
-                            <img
-                              src="/map/marker.svg"
-                              alt=""
-                            />
-                            <img
-                              width="32.8px"
-                              alt={user.name}
-                              src={user.image}
-                              className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900"
-                            />
-                          </div>,
-                        ),
-                        ...customMarkerConfig,
-                        className: 'border-none bg-none',
-                      })}
-                      eventHandlers={{
-                        click: () => setUser(user),
-                      }}
-                    />
-                  );
-                }
-              })}
-            </rlImports.MapContainer>
-          </div>
+        <div className="fixed bottom-0 right-0 z-10">
+          <div className="backdrop-blur-lg text-xs">As localizações no mapa são aproximadas</div>
+        </div>
+        <div className="z-0 flex flex-1">
+          <rlImports.MapContainer
+            zoom={10}
+            minZoom={2}
+            center={position}
+            style={{ flex: 1 }}
+            zoomControl={false}
+            doubleClickZoom={false}
+            attributionControl={false}
+          >
+            <rlImports.TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {users.map((user) => {
+              if (user.location) {
+                return (
+                  <rlImports.Marker
+                    position={user.location.coordinates}
+                    icon={lImports.divIcon({
+                      html: ReactDOMServer.renderToString(
+                        <div className="relative">
+                          <img
+                            src="/map/marker.svg"
+                            alt=""
+                          />
+                          <img
+                            width="32.8px"
+                            alt={user.name}
+                            src={user.image}
+                            className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900"
+                          />
+                        </div>,
+                      ),
+                      ...customMarkerConfig,
+                      className: 'border-none bg-none',
+                    })}
+                    eventHandlers={{
+                      click: () => setUser(user),
+                    }}
+                  />
+                );
+              }
+            })}
+          </rlImports.MapContainer>
         </div>
       </div>
-      <Footer selected="map" />
     </div>
   );
 }

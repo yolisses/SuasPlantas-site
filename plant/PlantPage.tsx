@@ -20,7 +20,6 @@ import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from './ContactsIndicator';
 import { PlantStructuredData } from './PlantStructuredData';
 import { availabilitiesToString } from './availabilitiesToString';
-import { Footer } from '../footer/Footer';
 
 interface PlantPageProps{
   data:Plant
@@ -181,7 +180,6 @@ export function PlantPage({ data }:PlantPageProps) {
         </div>
       )}
       </div>
-      <Footer selected="home" />
     </>
   );
 }
