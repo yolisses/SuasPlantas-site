@@ -12,16 +12,20 @@ export function Nav() {
   }
 
   return (
-    <div className="w-72 shadow h-screen overflow-x-hidden flex flex-col">
-      <HomeButton />
-      <nav className="flex flex-col flex-1 overflow-y-aut w-full overflow-y-auto">
-        <NavItems expanded={expanded} />
-        <LateralNavButton
-          onClick={handleClick}
-          text={expanded ? 'Ver menos' : 'Ver mais'}
-          Icon={expanded ? FaChevronDown : FaChevronUp}
-        />
-      </nav>
-    </div>
+    <>
+      <div className="w-72" />
+      <div className="w-72 fixed h-screen" style={{ boxShadow: '0 0 4px #0003' }}>
+        <nav className="flex w-72 flex-col items-stretch fixed top-0">
+          <HomeButton />
+          <NavItems expanded={expanded} />
+          <LateralNavButton
+            onClick={handleClick}
+            text={expanded ? 'Ver menos' : 'Ver mais'}
+            Icon={expanded ? FaChevronDown : FaChevronUp}
+          />
+        </nav>
+      </div>
+
+    </>
   );
 }

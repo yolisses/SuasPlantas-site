@@ -17,7 +17,7 @@ export function LateralNavButton({
   return (
     <button
       {...rest}
-      className={`secondary-button justify-start flex flex-row items-center px-2 h-12 w-full whitespace-nowrap ${
+      className={`secondary-button justify-start flex flex-row items-center px-2 h-12 whitespace-nowrap ${
         selected
           ? 'text-emerald-700'
           : 'text-gray-500'

@@ -52,9 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 <SocketContextProvider>
                                   <ChatsContextProvider>
                                     <MapImportContextProvider>
-                                      <div className="flex flex-row w-full">
+                                      <div className="flex flex-row relative">
                                         <Nav />
-                                        <div className="w-full">
+                                        <div className="flex-1">
                                           <Component {...pageProps} />
                                         </div>
                                       </div>

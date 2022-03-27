@@ -43,10 +43,8 @@ class MyDocument extends Document {
           )}
         </Head>
         <DefaultMeta />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+        <Main />
+        <NextScript />
       </Html>
     );
   }
