@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { NavItems } from '../footer/NavItems';
-import { NotificationMenuButton } from '../notification/NotificationMenuButton';
 import { HomeButton } from './HomeButton';
+import { NavItems } from '../footer/NavItems';
 import { LateralNavButton } from './LateralNavItem';
 
 export function Nav() {
