@@ -59,8 +59,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                         </div>
                                         <div className="flex-1">
                                           <Component {...pageProps} />
+                                          <Footer />
                                         </div>
-                                        <Footer />
                                       </div>
                                       <SnackView />
                                       <ModalView />
