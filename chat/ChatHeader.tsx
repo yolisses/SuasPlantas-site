@@ -6,7 +6,7 @@ import { Chat } from './Chat';
 export function ChatHeader({ chat }:{chat:Chat}) {
   const imageSize = 40;
   return (
-    <div className="shadow center-row h-12 gap-2 p-2">
+    <div className="title-header">
       <Link href="/chat">
         <button className="icon-button lg:hidden">
           <FaChevronLeft />

@@ -7,17 +7,19 @@ export function ContactsPage({ current }:{current?:Chat}) {
   const values = Object.values(chats);
 
   return (
-    <div className="p-2">
-      <div className="mb-2 text-lg">Conversas</div>
-      {values.length
-        ? values.map((item:Chat) => (
-          <ChatItem chat={item} current={item.userId === current?.userId} />
-        ))
-        : (
-          <div className="pt-6 flex-1 flex items-center justify-center text-slate-600">
-            Sem conversas por enquanto
-          </div>
-        )}
-    </div>
+    <>
+      <div className="title-header">Conversas</div>
+      <div className="p-2">
+        {values.length
+          ? values.map((item:Chat) => (
+            <ChatItem chat={item} current={item.userId === current?.userId} />
+          ))
+          : (
+            <div className="pt-6 flex-1 flex items-center justify-center text-slate-600">
+              Sem conversas por enquanto
+            </div>
+          )}
+      </div>
+    </>
   );
 }

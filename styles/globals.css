@@ -88,6 +88,10 @@ animation: rollout 0.2s;
   .center-row{
     @apply flex flex-row items-center;
   }
+
+  .title-header{
+    @apply text-lg h-12 shadow center-row p-3 gap-2;
+  }
 }
 
 input {
