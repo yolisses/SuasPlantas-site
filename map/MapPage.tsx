@@ -49,14 +49,20 @@ export function MapPage() {
         className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
           user ? 'max-w-md' : 'max-w-0'}`}
       >
-        {user && (
-          <div className="relative">
+        <div className="sticky top-0 flex flex-row justify-end w-full z-30">
+          <div className="absolute">
+
             <button
               onClick={handleClose}
-              className="hidden md:inline-block cursor-pointer absolute top-2 right-2 p-2 hover:bg-black hover:bg-opacity-10 rounded-full"
+              className="cursor-pointer hover:bg-gray-200 aspect-square center rounded-bl-3xl bg-white h-14"
             >
               <GrClose size={18} />
             </button>
+          </div>
+
+        </div>
+        {user && (
+          <>
             <UserPage user={user} mini />
             <div className="rollout md:hidden cursor-pointer fixed bottom-16 p-2 w-full center pointer-events-none">
               <button
@@ -67,7 +73,7 @@ export function MapPage() {
                 Voltar para o mapa
               </button>
             </div>
-          </div>
+          </>
         ) }
       </div>
       <div className="flex-1 flex z-0">
