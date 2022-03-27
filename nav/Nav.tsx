@@ -19,7 +19,7 @@ export function Nav() {
           className="fixed flex w-52 flex-col items-stretch h-screen bg-white"
         >
           <HomeButton />
-          <NavItems expanded={expanded} />
+          <NavItems expanded={expanded} styleType="lateral" />
           <LateralNavButton
             onClick={handleClick}
             text={expanded ? 'Ver menos' : 'Ver mais'}
