@@ -23,7 +23,7 @@ export function Nav() {
           <LateralNavButton
             onClick={handleClick}
             text={expanded ? 'Ver menos' : 'Ver mais'}
-            Icon={expanded ? FaChevronDown : FaChevronUp}
+            Icon={expanded ? FaChevronUp : FaChevronDown}
           />
         </nav>
       </div>
