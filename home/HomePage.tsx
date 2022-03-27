@@ -52,7 +52,7 @@ export function HomePage<T>({
         </div>
         <TopTabs tab={tab} />
       </div>
-      <div className="md:hidden">
+      <div className="max-w-md">
         <SearchField resetButtonColor="gray" />
       </div>
       <InfiniteScroll

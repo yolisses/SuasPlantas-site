@@ -14,7 +14,7 @@ interface TopTabsProps{
 
 export function TopTabs({ tab }: TopTabsProps) {
   return (
-    <div className="flex flex-row flex-wrap bg-white" id="tour_top_tabs">
+    <div className="flex flex-row flex-wrap" id="tour_top_tabs">
       <Link href="/">
         <TabSelector id="tour_tab_plants" tab="plants" value={tab}>
           <FaSeedling />

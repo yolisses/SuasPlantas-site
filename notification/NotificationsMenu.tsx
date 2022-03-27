@@ -6,7 +6,7 @@ import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useNotifications } from './notificationsContext';
 
-export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
+export function NotificationsMenu() {
   const {
     items, reset, loadMore, pageData,
   } = useNotifications();
@@ -41,10 +41,9 @@ export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
         if (!entity) return null;
         return (
           <Link href={`/plants/${notification.entityId}`}>
-            <a
+            <button
               className="menu-button"
               onClick={async () => {
-                closeMenu();
                 if (notification.viewed === false) {
                   await api.patch(`notifications/${id}/viewed`);
                   reset();
@@ -70,7 +69,7 @@ export function NotificationsMenu({ closeMenu }:{closeMenu:()=>void}) {
                 <div className="bg-green-500 h-3 w-3 rounded-full" />
               </div>
               )}
-            </a>
+            </button>
           </Link>
         );
       })}
