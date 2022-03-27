@@ -51,14 +51,14 @@ export function MapPage() {
           className={`z-10 transition-all container bg-white md:shadow-lg fixed top-0 bottom-0 left-0 overflow-y-auto ${
             user ? 'max-w-md' : 'max-w-0'}`}
         >
-          <button
-            onClick={handleClose}
-            className="hidden md:inline-block cursor-pointer absolute top-2 right-2 p-2 hover:bg-black hover:bg-opacity-10 rounded-full"
-          >
-            <GrClose size={18} />
-          </button>
           {user && (
-          <div>
+          <div className="relative">
+            <button
+              onClick={handleClose}
+              className="hidden md:inline-block cursor-pointer absolute top-2 right-2 p-2 hover:bg-black hover:bg-opacity-10 rounded-full"
+            >
+              <GrClose size={18} />
+            </button>
             <UserPage user={user} mini />
             <div className="rollout md:hidden cursor-pointer fixed bottom-16 p-2 w-full center pointer-events-none">
               <button

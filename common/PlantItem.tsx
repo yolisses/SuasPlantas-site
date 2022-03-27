@@ -32,19 +32,22 @@ export function PlantItem({
         />
         )}
         <div className="px-2 pb-1 text-center overflow-x-hidden text-ellipsis">
-          <span className={`overflow-x-hidden whitespace-nowrap ${
-            !card
-              ? 'text-2xl'
-              : 'text-lg'}`}
+          <span className={`${
+            card
+              ? 'text-lg whitespace-nowrap overflow-x-hidden'
+              : 'text-2xl'
+          }`}
           >
             {name}
           </span>
+          {(city || state) && (
           <div className="text-sm">
             {city}
             ,
             {' '}
             {state}
           </div>
+          )}
         </div>
       </a>
     </Link>

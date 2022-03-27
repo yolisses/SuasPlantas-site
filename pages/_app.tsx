@@ -53,7 +53,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                   <ChatsContextProvider>
                                     <MapImportContextProvider>
                                       <div className="flex flex-row relative">
-                                        <Nav />
+                                        <div className="hidden md:inline-block">
+                                          <Nav />
+                                        </div>
                                         <div className="flex-1">
                                           <Component {...pageProps} />
                                         </div>

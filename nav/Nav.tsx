@@ -16,7 +16,7 @@ export function Nav() {
       <div className="relative">
         <nav
           style={{ boxShadow: '0 0 4px #0005' }}
-          className="fixed flex w-52 flex-col items-stretch h-screen bg-white z-50"
+          className="fixed flex w-52 flex-col items-stretch h-screen bg-white"
         >
           <HomeButton />
           <NavItems expanded={expanded} />
