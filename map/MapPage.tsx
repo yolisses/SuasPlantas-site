@@ -63,7 +63,7 @@ export function MapPage() {
         </div>
         {user && (
           <>
-            <UserPage user={user} mini />
+            <UserPage user={user} mini hideLogout />
             <div className="rollout md:hidden cursor-pointer fixed bottom-16 p-2 w-full center pointer-events-none">
               <button
                 onClick={handleClose}

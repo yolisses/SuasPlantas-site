@@ -13,9 +13,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-
-import { GrLogout } from 'react-icons/gr';
 import { MdLogout } from 'react-icons/md';
+
 import { User } from './User';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
@@ -25,9 +24,9 @@ import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
 
 interface UserPageProps {
-  user: User;
+  user: User
   mini?:boolean
-  footer?:boolean
+  hideLogout?:boolean
 }
 
 interface TabProps{
@@ -47,13 +46,14 @@ function Tab({ tab, currentTab, children }:TabProps) {
   );
 }
 
-export function UserPage({ user, mini, footer }: UserPageProps) {
-  const [tab, setTab] = useState('plants');
-  const { refreshUser } = useUser();
+export function UserPage({ user, mini, hideLogout }: UserPageProps) {
   const { push } = useRouter();
+  const { refreshUser } = useUser();
+  const [tab, setTab] = useState('plants');
   const { user: actualUser, logOut } = useUser();
-
   const selfUser = actualUser?.id === user?.id;
+
+  function handleLogoutClick() { logOut(); }
 
   useEffect(() => {
     if (selfUser) refreshUser();
@@ -64,11 +64,6 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
   }, [user]);
 
   if (!user) return null;
-
-  function handleLogoutClick() {
-    logOut();
-  }
-
   return (
     <>
       <Head>
@@ -77,7 +72,7 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
           content={`Usuário ${user.name}. ${user.city}, ${user.state}. ${user.description}`}
         />
       </Head>
-      <div className="flex pt-2 flex-col items-center w-full">
+      <div className="flex flex-col items-center w-full">
         <div className="p-2 flex flex-col gap-4 max-w-5xl w-full items-center">
           <div className="flex flex-row gap-2 items-center w-full max-w-4xl">
             <Image
@@ -92,10 +87,12 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
               <div className="flex flex-col w-full">
                 <div className="w-full flex flex-row">
                   <span className="overflow-ellipsis text-lg">{user.name}</span>
-                  <button className="secondary-button text-red-800 gap-1 p-1 ml-auto" onClick={handleLogoutClick}>
+                  {selfUser && !hideLogout && (
+                  <button className="secondary-button text-red-800 gap-1 p-1 ml-auto self-start" onClick={handleLogoutClick}>
                     <MdLogout color="#800" />
                     Sair
                   </button>
+                  )}
                 </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
               </div>
