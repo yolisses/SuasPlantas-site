@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
+import { getFirstName } from './getFirstName';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { ImagesInput } from '../../images/ImagesInput';
@@ -20,9 +21,6 @@ export function PlantsInput() {
     });
   }
 
-  let firstName;
-  if (user) { firstName = ` ${user.name.split(' ')[0]}`; }
-
   return (
     <div className="p-2 rounded-xl bg-gray-100 w-full h-fit">
       <div className="flex flex-row gap-4">
@@ -36,8 +34,7 @@ export function PlantsInput() {
               src={user?.image || userImageSVG}
             />
             Quais plantas você tem,
-            {' '}
-            {firstName}
+            {user ? ` ${getFirstName(user)}` : ''}
             ?
           </div>
           <div className="gap-2 center-row">
