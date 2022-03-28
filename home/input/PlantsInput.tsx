@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { FaImage, FaStickyNote } from 'react-icons/fa';
 import { useState } from 'react';
+import { FaFileAlt, FaImage } from 'react-icons/fa';
+
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { ImagesInput } from '../../images/ImagesInput';
@@ -8,15 +9,15 @@ import { ImagesInput } from '../../images/ImagesInput';
 export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
-  const [showImages, setShowImages] = useState(false);
-  const [showDescription, setShowDescription] = useState(false);
+  const defaultVisible = { description: false, images: false };
+  const [visible, setVisible] = useState(defaultVisible);
 
-  function handleImagesClick() {
-    setShowImages((value) => !value);
-  }
-
-  function handleDescriptionClick() {
-    setShowDescription((value) => !value);
+  function toggle(key:keyof typeof defaultVisible) {
+    setVisible((values) => {
+      const copy = { ...values };
+      copy[key] = !copy[key];
+      return copy;
+    });
   }
 
   let firstName;
@@ -46,22 +47,22 @@ export function PlantsInput() {
                 className="placeholder-gray-500 bg-white p-3 rounded-lg"
                 placeholder="Nome da planta"
               />
-              {showDescription && (
+              {visible.description && (
               <textarea
                 rows={3}
                 className="placeholder-gray-500 bg-white p-3 rounded-lg"
                 placeholder="Descrição"
               />
               )}
-              {showImages && (
+              {visible.images && (
               <ImagesInput onChange={() => {}} />
               )}
               <div className="center-row">
-                <button className="icon-button" onClick={handleImagesClick}>
+                <button className="icon-button" onClick={() => toggle('images')}>
                   <FaImage size={20} color="#080" />
                 </button>
-                <button className="icon-button" onClick={handleDescriptionClick}>
-                  <FaStickyNote size={20} color="#080" />
+                <button className="icon-button" onClick={() => toggle('description')}>
+                  <FaFileAlt size={20} color="#080" />
                 </button>
                 <input
                   type="submit"
