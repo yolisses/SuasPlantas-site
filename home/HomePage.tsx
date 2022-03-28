@@ -45,7 +45,7 @@ export function HomePage<T>({
   return (
     <>
       <div
-        className="title-header text-base flex flex-row justify-center md:justify-start"
+        className="title-header px-0 text-base flex flex-row justify-center md:justify-start"
       >
         <TopTabs tab={tab} />
       </div>
