@@ -27,10 +27,10 @@ export function ExitIntent() {
       if (!exitModalClosed) {
         interact({ type: 'exit intent', modalType: 'feedback', action: 'open' });
         setModal(
-          <Modal closeOnClickOut={false} onClose={handleClose}>
+          <Modal onClose={handleClose}>
             <div className="px-2">
-              <h2 className="text-lg">Poderia nos contar o que achou do site?</h2>
-              <div>Sua opinião é muito importante para nós</div>
+              <h2 className="text-lg">O que achou do site?</h2>
+              <div className="text-gray-500 text-sm">Sua opinião é muito importante para nós</div>
               <FeedbackBox source="exit intent modal" />
             </div>
           </Modal>,
