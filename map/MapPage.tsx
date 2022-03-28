@@ -112,7 +112,7 @@ export function MapPage() {
                             width="32.8px"
                             alt={user.name}
                             src={user.image}
-                            className="absolute top-0 aspect-square object-cover rounded-full border border-emerald-900"
+                            className="absolute top-0 aspect-square object-cover overflow-hidden rounded-full border border-emerald-900"
                           />
                         </div>,
                       ),
