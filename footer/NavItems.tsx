@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import {
+  FaMap,
   FaBell,
-  FaCommentAlt, FaEnvelope, FaFile, FaHome, FaMap, FaSeedling,
+  FaHome,
+  FaFile,
+  FaEnvelope,
+  FaSeedling,
+  FaCommentAlt,
 } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import path from 'path';
-import { route } from 'next/dist/server/router';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { FooterNavButton } from './FooterNavButton';
@@ -24,14 +27,6 @@ interface NavItemProps {
   styleType:NavStyle
 }
 
-const pathToSelected = {
-  '': 'home',
-  user: 'user',
-  notification: 'notifications',
-  map: 'map',
-  chat: 'chats',
-};
-
 export function NavItems({ styleType, expanded }:NavItemProps) {
   const { user } = useUser();
   const [selected, setSelected] = useState('');
@@ -39,15 +34,25 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
   const router = useRouter();
 
   function getActual() {
-    const path = router.pathname.slice(1);
-    for (const key in pathToSelected) {
+    const pathToSelected:{[key:string]:string} = {
+      map: 'map',
+      chat: 'chat',
+      profileKey: 'profile',
+      notification: 'notifications',
+    };
+    pathToSelected[`users/${user?.id}`] = 'profile';
+    pathToSelected[''] = 'home';
+    const path = router.asPath.slice(1);
+    Object.keys(pathToSelected).some((key) => {
       if (path.startsWith(key)) {
         setSelected(pathToSelected[key]);
+        return true;
       }
-    }
+      return false;
+    });
   }
 
-  useEffect(getActual, [router.pathname]);
+  useEffect(getActual, [router.pathname, user]);
 
   const NavButton = navButtons[styleType];
 
@@ -84,7 +89,7 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
       <Link href={user ? `/users/${user.id}` : '/landing'}>
         <NavButton
           text="Perfil"
-          selected={selected === 'user'}
+          selected={selected === 'profile'}
           imageSrc={user?.image || userImage}
         />
       </Link>
