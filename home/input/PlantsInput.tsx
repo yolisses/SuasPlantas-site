@@ -38,7 +38,7 @@ export function PlantsInput() {
                 className="flex-1 placeholder-gray-500 bg-white p-3 rounded-xl"
                 placeholder="Nome da planta"
               />
-              <input type="submit" value="Adicionar" className="main-button" />
+              <input type="submit" value="Adicionar" className="main-button max-w-sm" />
             </form>
           </div>
         </div>
