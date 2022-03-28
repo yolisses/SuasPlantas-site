@@ -24,7 +24,14 @@ export function PlantsInput() {
                 src={user?.image || userImageSVG}
               />
             </div>
-            <input type="text" className="flex-1" />
+            <form>
+              <input
+                type="text"
+                className="flex-1 placeholder-gray-500 bg-white p-3 rounded-xl"
+                placeholder="Nome da planta"
+              />
+              <input type="submit" value="Adicionar" className="main-button" />
+            </form>
           </div>
         </div>
         {md && <UserPlantsReminder />}
