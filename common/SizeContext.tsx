@@ -2,27 +2,23 @@ import {
   createContext, ReactNode, useContext, useEffect, useState,
 } from 'react';
 
-interface SizeContext{
-    sm:boolean|null
-    md:boolean|null
-    lg:boolean|null
-    xl:boolean|null
-    '2xl':boolean|null
-}
+const medias = {
+  sm: '(min-width: 640px)',
+  md: '(min-width: 768px)',
+  lg: '(min-width: 1024px)',
+  xl: '(min-width: 1280px)',
+  '2xl': '(min-width: 1536px)',
+} as const;
 
-type MediaName = 'sm'|'md'|'lg'|'xl'|'2xl'
+type MediaName = keyof typeof medias
+
+type SizeContext = {
+  [K in MediaName]:boolean|null
+}
 
 const sizeContext = createContext({} as SizeContext);
 
 export function SizeContextProvider({ children }:{children:ReactNode}) {
-  const medias = {
-    sm: '(min-width: 640px)',
-    md: '(min-width: 768px)',
-    lg: '(min-width: 1024px)',
-    xl: '(min-width: 1280px)',
-    '2xl': '(min-width: 1536px)',
-  } as const;
-
   const [value, setValue] = useState<SizeContext>({
     sm: null, md: null, lg: null, xl: null, '2xl': null,
   });

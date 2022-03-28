@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { FooterNavButton } from './FooterNavButton';
@@ -20,11 +21,9 @@ const navButtons = {
   lateral: LateralNavButton,
 } as const;
 
-type NavStyle = 'footer' | 'lateral'
-
 interface NavItemProps {
   expanded?:boolean
-  styleType:NavStyle
+  styleType:keyof typeof navButtons
 }
 
 export function NavItems({ styleType, expanded }:NavItemProps) {
