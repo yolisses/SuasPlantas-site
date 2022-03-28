@@ -45,43 +45,45 @@ export function HomePage<T>({
   return (
     <>
       <div
-        className="title-header text-base px-0 flex flex-row justify-center md:justify-start"
+        className="title-header text-base flex flex-row justify-center md:justify-start"
       >
         <TopTabs tab={tab} />
       </div>
-      <PlantsInput />
-      <div className="flex flex-col md:flex-row gap-2 p-2 w-full justify-between">
-        <div className="max-w-md w-full">
-          <SearchField />
+      <div className="flex flex-col p-2 gap-2">
+        <PlantsInput />
+        <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
+          <div className="max-w-md w-full">
+            <SearchField />
+          </div>
+          <LocationFilterInput />
         </div>
-        <LocationFilterInput />
-      </div>
-      <InfiniteScroll
-        next={loadMore}
-        dataLength={items?.length || 0}
-        hasMore={!!pageData?.nextPage}
-        scrollThreshold={0.8}
-        loader={(<div />)}
-      >
-        {children(additionalItems ? additionalItems.concat(items || []) : items)}
-      </InfiniteScroll>
-      { loading && (
-      <div className="center-col pt-20 pb-10">
-        <Spinner />
-      </div>
-      )}
-      { (!loading && !!items && !items?.length) && (
-      <div className="center-col pt-20">
-        <WithoutResultsWarn />
-      </div>
-      )}
-      <div id="tour_add_button" className="fixed right-6 bottom-16 md:right-10 md:bottom-10">
-        {firstActionButton}
-      </div>
-      <div
-        className="fixed bottom-0 center-col md:items-start w-full"
-      >
-        <div id="tour_start" />
+        <InfiniteScroll
+          next={loadMore}
+          dataLength={items?.length || 0}
+          hasMore={!!pageData?.nextPage}
+          scrollThreshold={0.8}
+          loader={(<div />)}
+        >
+          {children(additionalItems ? additionalItems.concat(items || []) : items)}
+        </InfiniteScroll>
+        { loading && (
+        <div className="center-col pt-20 pb-10">
+          <Spinner />
+        </div>
+        )}
+        { (!loading && !!items && !items?.length) && (
+        <div className="center-col pt-20">
+          <WithoutResultsWarn />
+        </div>
+        )}
+        <div id="tour_add_button" className="fixed right-6 bottom-16 md:right-10 md:bottom-10">
+          {firstActionButton}
+        </div>
+        <div
+          className="fixed bottom-0 center-col md:items-start w-full"
+        >
+          <div id="tour_start" />
+        </div>
       </div>
       {!!tourSteps && (<Tour steps={tourSteps} tourName={tourName} />)}
     </>

@@ -31,7 +31,7 @@ export function SearchField() {
     <div className="flex flex-row w-full">
       <form
         onSubmit={submit}
-        className="flex flex-row flex-1 bg-white rounded-full h-9 items-center overflow-hidden pl-3 border border-gray-300"
+        className="flex flex-row flex-1 bg-white rounded-full h-10 items-center overflow-hidden pl-3 border border-gray-300"
       >
         <input
           type="text"
