@@ -44,8 +44,8 @@ export function PlantsInput() {
               className="rounded-full"
               src={user?.image || userImageSVG}
             />
-            Quais plantas você tem,
-            {user ? ` ${getFirstName(user)}` : ''}
+            Quais plantas você tem
+            {user ? `, ${getFirstName(user)}` : ''}
             ?
           </div>
           <div className="gap-2 center-row">
