@@ -45,7 +45,7 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
   async function handleSuggestionSelect(image:string) {
     if (!customRef?.current) return;
     const file = await getFileFromImageUrl(image);
-    customRef.current.addFile(file);
+    customRef.current.addFiles([file]);
   }
 
   async function submit(data:any) {

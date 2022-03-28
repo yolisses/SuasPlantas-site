@@ -2,22 +2,21 @@
 import {
   useState,
   useEffect,
-  DragEvent,
   ChangeEvent,
 } from 'react';
 import { FaImage } from 'react-icons/fa';
 
-import { isEmpty } from '../utils/isEmpty';
+import { isImage } from './isImage';
 import { Sending } from '../upload/Sending';
 import { SelectedImage } from './SelectedImage';
 import { useRefresh } from '../utils/useRefresh';
-
-export type SendingsCollection = { [key: number]: Sending };
+import { useDragAndDrop } from './useDragAndDrop';
+import { SendingsCollection } from './SendingsCollection';
 
 export interface ImageInputCustomRef{
   current?:{
-    addFile:(file:File)=>void
     sendings:SendingsCollection
+    addFiles:(file:File[])=>void
   }
 }
 
@@ -28,26 +27,13 @@ interface ImagesInputProps{
   onChange:(sendings:SendingsCollection)=>void
 }
 
-type IgnoreType = () => any
-
 export function ImagesInput({
   onChange, onBlur, initialSendings, customRef,
 }:ImagesInputProps) {
   const refresh = useRefresh();
-  const [dragging, setDragging] = useState(false);
   const [sendings, setSendings] = useState<SendingsCollection>(initialSendings || {});
-
-  if (customRef) {
-    // eslint-disable-next-line no-param-reassign
-    customRef.current = {
-      addFile(file:File) {
-        const newFiles: SendingsCollection = {};
-        newFiles[Math.random()] = new Sending({ file, onUpdate: refresh });
-        setSendings((old) => ({ ...old, ...newFiles }));
-      },
-      sendings,
-    };
-  }
+  const entries = Object.entries(sendings);
+  const isEmpty = !entries.length;
 
   function addFiles(files: File[]) {
     const newFiles: SendingsCollection = {};
@@ -55,6 +41,10 @@ export function ImagesInput({
       newFiles[Math.random()] = new Sending({ file, onUpdate: refresh });
     });
     setSendings((old) => ({ ...old, ...newFiles }));
+  }
+
+  function handleDrop(files:File[]) {
+    addFiles(files.filter(isImage));
   }
 
   function handleFilesSelected(e: ChangeEvent<HTMLInputElement>) {
@@ -69,67 +59,43 @@ export function ImagesInput({
     });
   }
 
-  function isImage(file:File) {
-    return file.type.startsWith('image/');
-  }
+  const { dragging } = useDragAndDrop(handleDrop);
 
-  function handleDrop(e:DragEvent):void {
-    setDragging(false);
-    const files = Array.from(e!.dataTransfer!.files!);
-    addFiles(files.filter(isImage));
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  function handleDragOver(e:DragEvent):void {
-    if (!dragging) {
-      setDragging(true);
-    }
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  function handleDragLeave() {
-    setDragging(false);
+  if (customRef) {
+    // eslint-disable-next-line no-param-reassign
+    customRef.current = { addFiles, sendings };
   }
 
   useEffect(() => {
     onChange(sendings);
   }, [sendings]);
 
-  useEffect(() => {
-    window.addEventListener('drop', handleDrop as IgnoreType);
-    window.addEventListener('dragover', handleDragOver as IgnoreType);
-    window.addEventListener('dragleave', handleDragLeave);
-    return () => {
-      window.removeEventListener('drop', handleDrop as IgnoreType);
-      window.removeEventListener('dragover', handleDragOver as IgnoreType);
-      window.removeEventListener('dragover', handleDragLeave);
-    };
-  });
-
   return (
     <div>
       <div
         className={
           `gap-1 ${
-            !isEmpty(sendings) ? ' grid grid-cols-3 sm:grid-cols-4' : ''}`
+            !isEmpty
+              ? ' grid grid-cols-3 sm:grid-cols-4'
+              : ''}`
         }
       >
-        {!isEmpty(sendings)
-          && Object.entries(sendings).map(([key, sending]) => (
-            <SelectedImage
-              id={key}
-              key={key}
-              sending={sending}
-              onRemoveClick={handleRemoveFile}
-            />
-          ))}
+        {!isEmpty && entries.map(([key, sending]) => (
+          <SelectedImage
+            id={key}
+            key={key}
+            sending={sending}
+            onRemoveClick={handleRemoveFile}
+          />
+        ))}
         <label>
           <div
             className={
               `bg-gray-300 px-2 flex gap-2 items-center justify-center cursor-pointer select-none rounded-lg ${
-                !isEmpty(sendings) ? ' flex-row gap-1 py-3 h-full mb-2' : 'py-14'}`
+                isEmpty
+                  ? 'py-14'
+                  : ' flex-row gap-1 py-3 h-full mb-2'
+              }`
             }
           >
             <FaImage size={25} className={dragging ? 'animate-bounce' : ''} />

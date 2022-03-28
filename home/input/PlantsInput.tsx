@@ -1,17 +1,28 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
+import { Plant } from '../../plant/Plant';
 import { getFirstName } from './getFirstName';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { ImagesInput } from '../../images/ImagesInput';
+import { SendingsCollection } from '../../images/SendingsCollection';
+
+interface InputValues{
+  name:string
+  description?:string
+  images:SendingsCollection
+}
 
 export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
   const defaultVisible = { description: false, images: false };
   const [visible, setVisible] = useState(defaultVisible);
+
+  const { register } = useForm<Plant>();
 
   function toggle(key:keyof typeof defaultVisible) {
     setVisible((values) => {
@@ -41,8 +52,10 @@ export function PlantsInput() {
             <div className="flex-1 flex flex-col gap-2">
               <input
                 type="text"
+                autoComplete="off"
                 className="placeholder-gray-500 bg-white p-3 rounded-lg"
                 placeholder="Nome da planta"
+                {...register('name')}
               />
               {visible.description && (
               <textarea
