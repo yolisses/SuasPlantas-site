@@ -3,10 +3,14 @@ import {
   FaBell,
   FaCommentAlt, FaEnvelope, FaFile, FaHome, FaMap, FaSeedling,
 } from 'react-icons/fa';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import path from 'path';
+import { route } from 'next/dist/server/router';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
-import { LateralNavButton } from '../nav/LateralNavItem';
 import { FooterNavButton } from './FooterNavButton';
+import { LateralNavButton } from '../nav/LateralNavItem';
 
 const navButtons = {
   footer: FooterNavButton,
@@ -16,13 +20,34 @@ const navButtons = {
 type NavStyle = 'footer' | 'lateral'
 
 interface NavItemProps {
-  styleType:NavStyle
-  selected?:string
   expanded?:boolean
+  styleType:NavStyle
 }
 
-export function NavItems({ styleType, selected, expanded }:NavItemProps) {
+const pathToSelected = {
+  '': 'home',
+  user: 'user',
+  notification: 'notifications',
+  map: 'map',
+  chat: 'chats',
+};
+
+export function NavItems({ styleType, expanded }:NavItemProps) {
   const { user } = useUser();
+  const [selected, setSelected] = useState('');
+
+  const router = useRouter();
+
+  function getActual() {
+    const path = router.pathname.slice(1);
+    for (const key in pathToSelected) {
+      if (path.startsWith(key)) {
+        setSelected(pathToSelected[key]);
+      }
+    }
+  }
+
+  useEffect(getActual, [router.pathname]);
 
   const NavButton = navButtons[styleType];
 
@@ -32,7 +57,7 @@ export function NavItems({ styleType, selected, expanded }:NavItemProps) {
         <NavButton
           text="Início"
           Icon={FaHome}
-          selected
+          selected={selected === 'home'}
         />
       </Link>
       <Link href="/notifications">
