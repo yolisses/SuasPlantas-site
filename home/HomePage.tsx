@@ -3,13 +3,10 @@ import {
   ReactNode,
   useContext,
 } from 'react';
-import { Step } from 'react-joyride';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { Tour } from '../tour/Tour';
 import { TourBottom } from './TourBottom';
 import { Spinner } from '../common/Spinner';
-import { TourName } from '../tour/TourContext';
 import { PlantsInput } from './input/PlantsInput';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
@@ -19,8 +16,6 @@ import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
 interface HomePageProps<T>{
   tab:TopTab
-  tourSteps?:Step[]
-  tourName?:TourName
   additionalItems?:T[]
   children:(items?:T[])=>ReactNode
   context:Context<ItemsContext<T>>
@@ -30,8 +25,6 @@ export function HomePage<T>({
   tab,
   context,
   children,
-  tourName,
-  tourSteps,
   additionalItems,
 }:HomePageProps<T>) {
   const {
@@ -79,7 +72,6 @@ export function HomePage<T>({
         </section>
         <TourBottom />
       </div>
-      {!!tourSteps && (<Tour steps={tourSteps} tourName={tourName} />)}
     </>
   );
 }

@@ -39,49 +39,47 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <SnackContextProvider>
           <ModalContextProvider>
             <SizeContextProvider>
-              <TourContextProvider>
-                {/* depend on location and text searct */}
-                <TextSearchContextProvider>
-                  <LocationContextProvider>
-                    <PaginationProvider Context={usersContext} apiRoute="users">
-                      <PaginationProvider Context={plantsContext} apiRoute="plants">
-                        <PaginationProvider Context={questsContext} apiRoute="quests">
-                          <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                            {/* depend on user */}
-                            <UserContextProvider>
-                              <PushNotificationContextProvider>
-                                {/* depend on user and socket */}
-                                <SocketContextProvider>
-                                  <ChatsContextProvider>
-                                    <MapImportContextProvider>
-                                      <div className="flex flex-row relative">
-                                        <div className="hidden md:inline-block">
-                                          <Nav />
-                                        </div>
-                                        <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
-                                          <Component {...pageProps} />
-                                          <Footer />
-                                        </div>
+              {/* depend on location and text searct */}
+              <TextSearchContextProvider>
+                <LocationContextProvider>
+                  <PaginationProvider Context={usersContext} apiRoute="users">
+                    <PaginationProvider Context={plantsContext} apiRoute="plants">
+                      <PaginationProvider Context={questsContext} apiRoute="quests">
+                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                          {/* depend on user */}
+                          <UserContextProvider>
+                            <PushNotificationContextProvider>
+                              {/* depend on user and socket */}
+                              <SocketContextProvider>
+                                <ChatsContextProvider>
+                                  <MapImportContextProvider>
+                                    <div className="flex flex-row relative">
+                                      <div className="hidden md:inline-block">
+                                        <Nav />
                                       </div>
-                                      <SnackView />
-                                      <ModalView />
-                                      <ExitIntent />
-                                      <GooglePrompt />
-                                      <ResetOnChangeUser />
-                                      <ChangePageInteract />
-                                      <GoogleOptimizeHydrate />
-                                    </MapImportContextProvider>
-                                  </ChatsContextProvider>
-                                </SocketContextProvider>
-                              </PushNotificationContextProvider>
-                            </UserContextProvider>
-                          </PaginationProvider>
+                                      <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
+                                        <Component {...pageProps} />
+                                        <Footer />
+                                      </div>
+                                    </div>
+                                    <SnackView />
+                                    <ModalView />
+                                    <ExitIntent />
+                                    <GooglePrompt />
+                                    <ResetOnChangeUser />
+                                    <ChangePageInteract />
+                                    <GoogleOptimizeHydrate />
+                                  </MapImportContextProvider>
+                                </ChatsContextProvider>
+                              </SocketContextProvider>
+                            </PushNotificationContextProvider>
+                          </UserContextProvider>
                         </PaginationProvider>
                       </PaginationProvider>
                     </PaginationProvider>
-                  </LocationContextProvider>
-                </TextSearchContextProvider>
-              </TourContextProvider>
+                  </PaginationProvider>
+                </LocationContextProvider>
+              </TextSearchContextProvider>
             </SizeContextProvider>
           </ModalContextProvider>
         </SnackContextProvider>
