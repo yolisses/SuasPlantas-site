@@ -17,7 +17,7 @@ export function HomeButton() {
     <Link href="/">
       <a
         onClick={handleHomeClick}
-        className="secondary-button h-12 text-lg justify-start"
+        className="secondary-button text-black h-12 text-lg justify-start"
       >
         <Image src="/icon/icon.svg" width={imageSize} height={imageSize} />
         SuasPlantas

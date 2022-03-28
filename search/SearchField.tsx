@@ -1,12 +1,12 @@
+import { useRouter } from 'next/router';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import { FormEvent, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { useTextSearchContext } from './TextSearchContext';
 
-export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
+export function SearchField() {
+  const router = useRouter();
   const { text: searchText, setText: setSearchText } = useTextSearchContext();
   const [text, setText] = useState(searchText);
-  const router = useRouter();
 
   function submit(e:FormEvent) {
     e.preventDefault();
@@ -27,10 +27,10 @@ export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
   }, [searchText]);
 
   return (
-    <div className="flex flex-row flex-1">
+    <div className="flex flex-row w-full">
       <form
         onSubmit={submit}
-        className="flex flex-row flex-1 bg-white rounded-full text-black h-9 items-center overflow-hidden pl-3 border border-gray-300"
+        className="flex flex-row flex-1 bg-white rounded-full h-9 items-center overflow-hidden pl-3 border border-gray-300"
       >
         <input
           type="text"
@@ -43,13 +43,13 @@ export function SearchField({ resetButtonColor }:{resetButtonColor:string}) {
           type="submit"
           className="icon-button h-9 p-0"
         >
-          <FaSearch size={20} color="#999" />
+          <FaSearch size={20} />
         </button>
       </form>
       {!!text
       && (
       <button className="icon-button p-2" onClick={handleReset}>
-        <FaTimes color={resetButtonColor} size={20} />
+        <FaTimes size={20} />
       </button>
       )}
     </div>

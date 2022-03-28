@@ -109,16 +109,28 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
           </div>
           )}
           <div className="flex flex-row justify-center items-center max-w-sm md:max-w-md">
-            <TabSelector value="plants" tab={tab} setTab={setTab}>
-              <FaSeedling />
+            <TabSelector
+              tab={tab}
+              value="plants"
+              setTab={setTab}
+              Icon={FaSeedling}
+            >
               Plantas
             </TabSelector>
-            <TabSelector value="quests" tab={tab} setTab={setTab}>
-              <FaQuestion />
+            <TabSelector
+              tab={tab}
+              value="quests"
+              setTab={setTab}
+              Icon={FaQuestion}
+            >
               Procurando
             </TabSelector>
-            <TabSelector value="likes" tab={tab} setTab={setTab}>
-              <FaThumbsUp />
+            <TabSelector
+              tab={tab}
+              value="likes"
+              setTab={setTab}
+              Icon={FaThumbsUp}
+            >
               Curtidas
             </TabSelector>
           </div>

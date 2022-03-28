@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { IconType } from 'react-icons';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { mainColor } from '../common/mainColor';
 
 interface NavButtonProps
 extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
@@ -17,27 +18,24 @@ export function LateralNavButton({
   return (
     <button
       {...rest}
-      className={`secondary-button justify-start flex flex-row items-center px-2 h-12 whitespace-nowrap ${
-        selected
-          ? 'text-emerald-700'
-          : 'text-gray-500'
-      }`}
+      className="secondary-button text-black justify-start flex flex-row items-center px-2 h-12 whitespace-nowrap"
     >
       { imageSrc
       && (
-        <div className={selected ? 'border-2 center border-emerald-700 rounded-full' : ''}>
+        <div className={selected ? 'border-2 center border-green-500 rounded-full' : ''}>
           <Image
             src={imageSrc}
             objectFit="cover"
             width={imageSize}
             height={imageSize}
-            className="bg-gray-200 rounded-full"
+            className="bg-[#aaa] rounded-full"
           />
         </div>
       )}
       {Icon && (
       <Icon
         size={20}
+        color={selected ? '#080' : '#aaa'}
       />
       )}
       {text}

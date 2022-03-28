@@ -51,8 +51,10 @@ export function HomePage<T>({
         </div>
         <TopTabs tab={tab} />
       </div>
-      <div className="max-w-md">
-        <SearchField resetButtonColor="gray" />
+      <div className="center-col w-full">
+        <div className="max-w-md w-full">
+          <SearchField />
+        </div>
       </div>
       <InfiniteScroll
         next={loadMore}

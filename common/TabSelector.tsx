@@ -1,15 +1,17 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { IconType } from 'react-icons';
 
 interface TabSelectorProps{
   id?:string
   tab?:string
   value?:string
-  children:ReactNode,
+  Icon?:IconType
+  children:ReactNode
   setTab?:(tab:string)=>void
 }
 
 export function TabSelector({
-  children, value, tab, setTab, id, ...rest
+  children, value, tab, setTab, id, Icon, ...rest
 }:TabSelectorProps&DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) {
   function handleClick() {
     if (setTab && value) { setTab(value); }
@@ -20,13 +22,18 @@ export function TabSelector({
     <button
       id={id}
       onClick={handleClick}
-      className={`secondary-button center-row h-12 px-2 sm:px-4 justify-center gap-1 ${
+      className={`secondary-button text-black center-row h-12 px-2 sm:px-4 justify-center gap-1 ${
         selected
-          ? 'text-green-600 border-green-600 border-b-2 rounded-b-none'
-          : 'text-gray-500'
+          ? 'border-green-600 border-b-2 rounded-b-none'
+          : ''
       }`}
       {...rest}
     >
+      { Icon && (
+      <Icon
+        color={selected ? '#080' : '#bbb'}
+      />
+      )}
       {children}
     </button>
   );
