@@ -9,12 +9,12 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Tour } from '../tour/Tour';
 import { Spinner } from '../common/Spinner';
 import { TourName } from '../tour/TourContext';
+import { PlantsInput } from './input/PlantsInput';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { LocationFilterInput } from './LocationFilterInput';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
-import { PlantsInput } from './PlantsInput';
 
 interface HomePageProps<T>{
   tab:TopTab
