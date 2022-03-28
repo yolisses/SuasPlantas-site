@@ -71,51 +71,42 @@ export function ImagesInput({
   }, [sendings]);
 
   return (
-    <div>
-      <div
+    <div className="flex flex-row flex-wrap justify-between gap-1 items-stretch">
+      {!isEmpty && entries.map(([key, sending]) => (
+        <SelectedImage
+          id={key}
+          key={key}
+          sending={sending}
+          onRemoveClick={handleRemoveFile}
+        />
+      ))}
+
+      <label
         className={
-          `gap-1 ${
-            !isEmpty
-              ? ' grid grid-cols-3 sm:grid-cols-4'
-              : ''}`
-        }
-      >
-        {!isEmpty && entries.map(([key, sending]) => (
-          <SelectedImage
-            id={key}
-            key={key}
-            sending={sending}
-            onRemoveClick={handleRemoveFile}
-          />
-        ))}
-        <label>
-          <div
-            className={
-              `bg-gray-300 px-2 flex gap-2 items-center justify-center cursor-pointer select-none rounded-lg ${
+              `bg-gray-300 hover:brightness-95 flex-1 px-2 flex flex-row row-start-auto flex-wrap gap-2 center cursor-pointer min-h-[4rem] select-none rounded-lg ${
                 isEmpty
                   ? 'py-14'
-                  : ' flex-row gap-1 py-3 h-full mb-2'
+                  : 'flex-col gap-1'
               }`
             }
-          >
-            <FaImage size={25} className={dragging ? 'animate-bounce' : ''} />
-            <div>
-              {dragging
-                ? 'Solte as imagens para adicionar'
-                : 'Adicionar imagens'}
-            </div>
-          </div>
-          <input
-            hidden
-            multiple
-            type="file"
-            data-hj-allow
-            onBlur={onBlur}
-            onChange={handleFilesSelected}
-            accept=".jpg, .jpeg, .png, .webp"
-          />
-        </label>
-      </div>
+      >
+        <FaImage size={25} className={dragging ? 'animate-bounce' : ''} />
+        <span className="text-center">
+          {dragging
+            ? 'Solte as imagens para adicionar'
+            : 'Adicionar imagens'}
+        </span>
+        <input
+          hidden
+          multiple
+          type="file"
+          data-hj-allow
+          onBlur={onBlur}
+          onChange={handleFilesSelected}
+          accept=".jpg, .jpeg, .png, .webp"
+        />
+      </label>
+
     </div>
   );
 }

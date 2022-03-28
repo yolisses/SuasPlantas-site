@@ -2,8 +2,8 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import { Sending } from '../upload/Sending';
-import { SelectedImageItem } from './SelectedImageItem';
 
 interface SelectedImageProps {
   id: any;
@@ -40,18 +40,24 @@ export function SelectedImage({
   }, [sending.file]);
 
   return (
-    <div>
-      <SelectedImageItem src={src} handleRemoveClick={handleRemoveClick} />
-      {false && (
-      <>
-        <div>
-          {sending.progressPercentage}
-        </div>
-        <div>
-          {sending.uri}
-        </div>
-      </>
-      )}
+    <div className="max-w-[calc((100%-0.5rem)/3)] md:max-w-[calc((100%-0.75rem)/4)]">
+      <div className="relative z-10">
+        <button className="icon-button absolute right-0 top-0 p-2">
+          <FaTimes
+            size={26}
+            color="#555"
+            onClick={handleRemoveClick}
+            className="bg-white rounded-full p-1 shadow-md"
+          />
+        </button>
+      </div>
+      <div>
+        <img
+          alt=""
+          src={src}
+          className="rounded-lg aspect-square object-cover"
+        />
+      </div>
     </div>
   );
 }
