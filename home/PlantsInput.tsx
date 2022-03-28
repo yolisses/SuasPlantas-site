@@ -4,11 +4,11 @@ import { userImageSVG } from '../images/user';
 
 export function PlantsInput() {
   const { user } = useUser();
-  const imageSize = 70;
+  const imageSize = 60;
   return (
-    <div className="p-2 rounded-xl bg-gray-200">
+    <div className="p-4 rounded-xl bg-gray-200">
       <div className="text-lg">Quais plantas você tem?</div>
-      <div className="rounded-lg p-2 gap-2 center-row">
+      <div className="gap-2 center-row">
         <Image
           objectFit="cover"
           width={imageSize}
