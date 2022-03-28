@@ -15,6 +15,7 @@ import { GoogleOptimizeScript } from '../document/GoogleOptimizeScript';
 import { FacebookButtonScript } from '../document/FacebookButtonScript';
 import { googleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { GoogleAnalyticsScript } from '../document/GoogleAnalyticsScript';
+import { GtagStarter } from '../document/GtagStarter';
 
 class MyDocument extends Document {
   componentDidMount() {
@@ -28,13 +29,14 @@ class MyDocument extends Document {
         <Head>
           <PWAMeta />
           <DefaultMeta />
+          <GtagStarter />
           <FaviconMeta />
           <LeafletStyle />
-          <AdSenseScript />
           <FacebookButtonScript />
           {!isDev && (
             <>
               <HotjarScript />
+              <AdSenseScript />
               <SmartlookScript />
               <GoogleAdsScript />
               <GoogleOptimizeScript />

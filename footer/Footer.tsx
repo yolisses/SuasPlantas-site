@@ -1,9 +1,13 @@
 import { NavItems } from './NavItems';
 import { useSize } from '../common/SizeContext';
+import { useUser } from '../auth/userContext';
 
 export function Footer() {
+  const { user } = useUser();
   const { md } = useSize();
-  if (md !== false) return null;
+
+  if (md !== false || !user) return null;
+
   return (
     <>
       <div

@@ -1,4 +1,4 @@
-declare let gtag:any;
+import { gtag } from '../document/gtag';
 
 export function reportSubscription() {
   gtag('event', 'conversion', {

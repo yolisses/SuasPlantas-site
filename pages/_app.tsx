@@ -60,7 +60,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                         </div>
                                         <div className="flex-1 flex flex-col min-h-screen">
                                           <Component {...pageProps} />
-                                          {/* <Footer /> */}
+                                          <Footer />
                                         </div>
                                       </div>
                                       <SnackView />

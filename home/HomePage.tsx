@@ -50,7 +50,7 @@ export function HomePage<T>({
         <TopTabs tab={tab} />
       </div>
       <PlantsInput />
-      <div className="center-row p-2 w-full justify-between">
+      <div className="flex flex-col md:flex-row gap-2 p-2 w-full justify-between">
         <div className="max-w-md w-full">
           <SearchField />
         </div>
