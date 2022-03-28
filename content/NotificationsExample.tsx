@@ -17,7 +17,7 @@ function NotificationExampleItem({
 }:NotificationExampleItemProps) {
   const imageSize = 200;
   return (
-    <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-r-lg gap-2 pr-2 shadow-xl">
+    <div className="center-row w-72 lg:w-96 bg-gray-200 rounded-lg gap-2 pr-2 shadow-xl">
       <div className="aspect-square h-16 lg:h-24 relative">
         <Image
           src={image}
