@@ -10,14 +10,12 @@ import { Tour } from '../tour/Tour';
 import { TourBottom } from './TourBottom';
 import { Spinner } from '../common/Spinner';
 import { TourName } from '../tour/TourContext';
-import { useSize } from '../common/SizeContext';
 import { PlantsInput } from './input/PlantsInput';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { LocationFilterInput } from './LocationFilterInput';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
-import { UserPlantsReminder } from './input/UserPlantsReminder';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -42,7 +40,6 @@ export function HomePage<T>({
     loading,
     loadMore,
   } = useContext(context);
-  const { md } = useSize();
 
   return (
     <>
@@ -50,9 +47,8 @@ export function HomePage<T>({
         <TopTabs tab={tab} />
       </div>
       <div className="flex flex-col p-2 pt-4 gap-4">
-        <section className="flex flex-row gap-4">
+        <section className="max-w-xl">
           <PlantsInput />
-          {md && <UserPlantsReminder />}
         </section>
         <section className="flex flex-col gap-2">
           <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
