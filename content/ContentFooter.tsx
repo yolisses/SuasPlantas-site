@@ -4,16 +4,16 @@ import { ShareButtons } from '../common/ShareButtons';
 
 export function ContentFooter() {
   return (
-    <footer className="bg-slate-900 w-full text-white grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
+    <footer className="bg-slate-900 w-full text-white text-sm grid grid-cols-2 lg:flex flex-row justify-center gap-6 p-2 pt-4">
       <div className="flex flex-col gap-1">
-        <div className="text-green-200">Links</div>
+        <div className="text-green-200 text-base">Links</div>
         <Link href="/contact">Contato</Link>
         <Link href="/about">Sobre nós</Link>
         <Link href="/privacy-policy">Política de privacidade</Link>
         <div />
       </div>
       <div>
-        <div className="text-green-200">
+        <div className="text-green-200 text-base">
           Compartilhe essa ideia
         </div>
         <div className="flex flex-row gap-1 pt-1">
@@ -21,7 +21,7 @@ export function ContentFooter() {
         </div>
       </div>
       <div>
-        <div className="text-green-200">
+        <div className="text-green-200 text-base">
           {' '}
           Feito com
           {' '}
