@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { FaPlus } from 'react-icons/fa';
 import { useUser } from '../auth/userContext';
 import { userImageSVG } from '../images/user';
 
 export function PlantsInput() {
   const { user } = useUser();
   const imageSize = 60;
-  const maxPlants = 20;
+  const maxPlants = 10;
+  const plantImageSize = 32;
   return (
     <div className="p-2 rounded-xl bg-gray-100">
       <div className="grid grid-cols-2 gap-2">
@@ -27,8 +27,22 @@ export function PlantsInput() {
         </div>
         <div className="flex flex-row flex-wrap h-fit gap-1 overflow-hidden">
           {user?.plants.slice(0, maxPlants).map((plant) => (
-            <button className="hover:bg-gray-300 p-2 leading-none rounded-full bg-gray-200 overflow-hidden text-ellipsis whitespace-nowrap max-w-xs">
-              {plant.name}
+            <button className={`hover:bg-gray-300 center-row h-8 gap-1 rounded-full max-w-[8rem] bg-gray-200 ${!plant.card ? 'px-1' : 'pr-1'}`}>
+              {plant.card
+              && (
+                <div className="flex-shrink-0 center">
+                  <Image
+                    src={plant.card}
+                    objectFit="cover"
+                    width={plantImageSize}
+                    height={plantImageSize}
+                    className="rounded-full"
+                  />
+                </div>
+              )}
+              <span className=" overflow-hidden text-ellipsis whitespace-nowrap leading-none">
+                {plant.name}
+              </span>
             </button>
           ))}
           {user && user.plants.length > maxPlants && (

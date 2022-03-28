@@ -24,11 +24,11 @@ export function PlantItem({
         {!!card && (
         <Image
           src={card}
+          alt={name}
           width={size}
           height={size}
-          alt={name}
           objectFit="cover"
-          className="bg-gray-200 flex-shrink-0 rounded-xl"
+          className="bg-gray-200 rounded-xl"
         />
         )}
         <div className="px-2 pb-1 text-center overflow-x-hidden text-ellipsis">
