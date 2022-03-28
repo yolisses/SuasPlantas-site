@@ -31,7 +31,8 @@ export function TabSelector({
     >
       { Icon && (
       <Icon
-        color={selected ? '#080' : '#bbb'}
+        size={20}
+        color={selected ? '#080' : '#aaa'}
       />
       )}
       {children}

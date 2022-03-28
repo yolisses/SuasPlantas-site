@@ -65,18 +65,18 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
           selected={selected === 'home'}
         />
       </Link>
-      <Link href="/notifications">
-        <NavButton
-          text="Notificações"
-          Icon={FaBell}
-          selected={selected === 'notifications'}
-        />
-      </Link>
       <Link href="/map">
         <NavButton
           text="Mapa"
           Icon={FaMap}
           selected={selected === 'map'}
+        />
+      </Link>
+      <Link href="/notifications">
+        <NavButton
+          text="Notificações"
+          Icon={FaBell}
+          selected={selected === 'notifications'}
         />
       </Link>
       <Link href="/chat">
