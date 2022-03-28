@@ -9,11 +9,19 @@ export function PlantsInput() {
   const { md } = useSize();
   const { user } = useUser();
 
+  let firstName;
+  if (user) { firstName = ` ${user.name.split(' ')[0]}`; }
+
   return (
     <div className="p-2 rounded-xl bg-gray-100">
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-4">
         <div className="flex flex-col gap-2 flex-1">
-          <div className="text-lg">Quais plantas você tem?</div>
+          <div className="text-lg">
+            Quais plantas você tem
+            {' '}
+            {firstName}
+            ?
+          </div>
           <div className="gap-2 center-row">
             <div>
               <Image
@@ -24,7 +32,7 @@ export function PlantsInput() {
                 src={user?.image || userImageSVG}
               />
             </div>
-            <form>
+            <form className="flex-1 flex flex-col gap-2">
               <input
                 type="text"
                 className="flex-1 placeholder-gray-500 bg-white p-3 rounded-xl"

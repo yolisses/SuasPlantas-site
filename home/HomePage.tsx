@@ -76,9 +76,6 @@ export function HomePage<T>({
           <WithoutResultsWarn />
         </div>
         )}
-        <div id="tour_add_button" className="fixed right-6 bottom-16 md:right-10 md:bottom-10">
-          {firstActionButton}
-        </div>
         <div
           className="fixed bottom-0 center-col md:items-start w-full"
         >
