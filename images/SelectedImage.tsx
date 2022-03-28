@@ -40,7 +40,7 @@ export function SelectedImage({
   }, [sending.file]);
 
   return (
-    <div className="max-w-[calc((100%-0.5rem)/3)] md:max-w-[calc((100%-0.75rem)/4)]">
+    <div className="max-w-[calc((100%-0.5rem)/3)] md:max-w-[calc((100%-0.75rem)/4)] aspect-square">
       <div className="relative z-10">
         <button className="icon-button absolute right-0 top-0 p-2">
           <FaTimes
@@ -51,13 +51,11 @@ export function SelectedImage({
           />
         </button>
       </div>
-      <div>
-        <img
-          alt=""
-          src={src}
-          className="rounded-lg aspect-square object-cover"
-        />
-      </div>
+      <img
+        alt=""
+        src={src}
+        className="rounded-lg object-cover w-full h-full"
+      />
     </div>
   );
 }
