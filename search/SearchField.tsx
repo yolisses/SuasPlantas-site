@@ -37,6 +37,7 @@ export function SearchField() {
           type="text"
           data-hj-allow
           value={text || ''}
+          placeholder="pesquisar"
           className="w-full outline-none bg-transparent"
           onChange={(e) => setText(e.target.value)}
         />

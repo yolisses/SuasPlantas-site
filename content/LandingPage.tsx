@@ -62,8 +62,8 @@ export function LandingPage() {
   const { lg } = useSize();
 
   return (
-    <div className="center-col">
-      <header className="h-14 z-50 w-full absolute center-row p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
+    <div className="center-col relative">
+      <header className="h-14 z-50 absolute w-full center-row p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
         <div className="center-row gap-1">
           <Image
             src="/landing/white.png"
@@ -71,15 +71,15 @@ export function LandingPage() {
             width={iconSize}
             height={iconSize}
           />
-          <span>Suas Plantas</span>
+          <span>SuasPlantas</span>
         </div>
         <div className="ml-auto" />
         <RegisterButton alt />
       </header>
-      <div className="w-full relative center overflow-hidden">
+      <div className="relative center overflow-hidden">
         <div
           style={{ maxHeight: 'calc(100vh - 4rem)' }}
-          className="w-full bg-green-600 bg-gradient-to-tr from-emerald-800 to-green-600"
+          className="bg-green-600 bg-gradient-to-tr from-emerald-800 to-green-600"
         >
           <Image
             height={1200}
@@ -103,8 +103,7 @@ export function LandingPage() {
           </div>
         </div>
       </div>
-
-      <div className="w-full p-2 center-col gap-16 lg:gap-32 lg:max-w-4xl">
+      <div className="p-2 center-col gap-16 lg:gap-32 lg:max-w-4xl">
         <SessionWithExample
           title="Envie mensagens"
           Icon={FaRegCommentAlt}
@@ -133,20 +132,20 @@ export function LandingPage() {
           com comentários, curtidas e notificações.
           Tudo para ajudar todos que gostam de plantas.
         </SessionWithExample>
-        <section className="w-full flex flex-col">
+        <section className="flex flex-col">
           <H2>
-            <FaRegQuestionCircle size={25} color="#047857" />
+            <FaRegQuestionCircle size={28} color="#047857" />
             Perguntas frequentes
           </H2>
           <div className="flex flex-col gap-4 text-lg">
             <FAQ />
           </div>
         </section>
-        <div className="lg:hidden sticky bottom-0 flex flex-col py-2 w-full bg-white">
+        <div className="lg:hidden sticky bottom-0 flex flex-col py-2 w-full">
           <RegisterButton />
         </div>
       </div>
-      <div className="hidden lg:flex center-row gap-3 transform translate-y-3 mt-24">
+      <div className="hidden lg:flex center-row gap-3 transform translate-y-2 mt-24">
         <Image src="/landing/pot3.png" width={endSize} height={endSize} objectFit="cover" />
         <div className="flex flex-col">
           <h2 className="text-2xl lg:text-3xl center-row gap-2 mb-2">

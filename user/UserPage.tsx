@@ -14,6 +14,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import { GrLogout } from 'react-icons/gr';
+import { MdLogout } from 'react-icons/md';
 import { User } from './User';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
@@ -49,7 +51,7 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
   const [tab, setTab] = useState('plants');
   const { refreshUser } = useUser();
   const { push } = useRouter();
-  const { user: actualUser } = useUser();
+  const { user: actualUser, logOut } = useUser();
 
   const selfUser = actualUser?.id === user?.id;
 
@@ -62,6 +64,10 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
   }, [user]);
 
   if (!user) return null;
+
+  function handleLogoutClick() {
+    logOut();
+  }
 
   return (
     <>
@@ -84,8 +90,12 @@ export function UserPage({ user, mini, footer }: UserPageProps) {
             />
             <div className="flex-1 flex-wrap flex overflow-ellipsis">
               <div className="flex flex-col w-full">
-                <div>
+                <div className="w-full flex flex-row">
                   <span className="overflow-ellipsis text-lg">{user.name}</span>
+                  <button className="secondary-button text-red-800 gap-1 p-1 ml-auto" onClick={handleLogoutClick}>
+                    <MdLogout color="#800" />
+                    Sair
+                  </button>
                 </div>
                 <div className="overflow-ellipsis">{`${user.city}, ${user.state}`}</div>
               </div>

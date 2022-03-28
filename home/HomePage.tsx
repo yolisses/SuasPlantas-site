@@ -14,6 +14,7 @@ import { TopTab, TopTabs } from '../common/TopTabs';
 import { LocationFilterInput } from './LocationFilterInput';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
+import { PlantsInput } from './PlantsInput';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -48,6 +49,7 @@ export function HomePage<T>({
       >
         <TopTabs tab={tab} />
       </div>
+      <PlantsInput />
       <div className="center-row p-2 w-full justify-between">
         <div className="max-w-md w-full">
           <SearchField />
