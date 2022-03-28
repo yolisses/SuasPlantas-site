@@ -5,7 +5,6 @@ import {
 } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { TourBottom } from './TourBottom';
 import { Spinner } from '../common/Spinner';
 import { PlantsInput } from './input/PlantsInput';
 import { SearchField } from '../search/SearchField';
@@ -70,7 +69,6 @@ export function HomePage<T>({
           </div>
           )}
         </section>
-        <TourBottom />
       </div>
     </>
   );

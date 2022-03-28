@@ -15,7 +15,6 @@ import { DefaultMeta } from '../document/DefaultMeta';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/userContext';
-import { TourContextProvider } from '../tour/TourContext';
 import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
 import { ModalContextProvider } from '../modal/ModalContext';

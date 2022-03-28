@@ -14,13 +14,12 @@ interface TopTabsProps{
 
 export function TopTabs({ tab }: TopTabsProps) {
   return (
-    <div className="flex flex-row flex-wrap" id="tour_top_tabs">
+    <div className="flex flex-row flex-wrap">
       <Link href="/">
         <TabSelector
           value={tab}
           tab="plants"
           Icon={FaSeedling}
-          id="tour_tab_plants"
         >
           Plantas
         </TabSelector>
@@ -30,7 +29,6 @@ export function TopTabs({ tab }: TopTabsProps) {
           value={tab}
           tab="quests"
           Icon={FaQuestion}
-          id="tour_tab_quests"
         >
           Procurando
         </TabSelector>
@@ -39,7 +37,6 @@ export function TopTabs({ tab }: TopTabsProps) {
         <TabSelector
           value={tab}
           tab="users"
-          id="tour_tab_users"
           Icon={FaUserFriends}
         >
           Pessoas

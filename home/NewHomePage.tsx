@@ -142,7 +142,7 @@ export function NewHomePage() {
         <Spinner />
       </div>
       )}
-      <div id="tour_add_button" className="fixed right-10 bottom-10">
+      <div className="fixed right-10 bottom-10">
         <Link href="/contact">
           <button className="main-button">
             O que achou do site?
