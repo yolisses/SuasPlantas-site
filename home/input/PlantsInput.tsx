@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { useUser } from '../../auth/userContext';
-import { useSize } from '../../common/SizeContext';
 import { userImageSVG } from '../../images/user';
-import { Chip } from './Chip';
+import { useSize } from '../../common/SizeContext';
+import { UserPlantsReminder } from './UserPlantsReminder';
 
 export function PlantsInput() {
   const imageSize = 60;
-  const maxPlants = 10;
   const { md } = useSize();
   const { user } = useUser();
 
@@ -28,16 +27,7 @@ export function PlantsInput() {
             <input type="text" className="flex-1" />
           </div>
         </div>
-        {md && (
-        <div className="flex-1 flex flex-row flex-wrap h-fit gap-1 overflow-hidden max-w-md">
-          {user?.plants.slice(0, maxPlants).map(({ name, card }) => (
-            <Chip text={name} image={card} />
-          ))}
-          {user && user.plants.length > maxPlants && (
-          <Chip text={`+${user.plants.length - maxPlants} outras`} />
-          )}
-        </div>
-        )}
+        {md && <UserPlantsReminder />}
       </div>
     </div>
 
