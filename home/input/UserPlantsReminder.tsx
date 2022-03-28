@@ -2,7 +2,7 @@ import { useUser } from '../../auth/userContext';
 import { Chip } from './Chip';
 
 export function UserPlantsReminder() {
-  const maxPlants = 5;
+  const maxPlants = 7;
   const { user } = useUser();
   return (
     <div>

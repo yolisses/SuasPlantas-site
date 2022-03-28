@@ -1,11 +1,9 @@
 import Image from 'next/image';
-import { FaImage, FaScroll, FaStickyNote } from 'react-icons/fa';
+import { FaImage, FaStickyNote } from 'react-icons/fa';
 import { useState } from 'react';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
-import { useSize } from '../../common/SizeContext';
 import { ImagesInput } from '../../images/ImagesInput';
-import { UserPlantsReminder } from './UserPlantsReminder';
 
 export function PlantsInput() {
   const imageSize = 30;
@@ -21,13 +19,11 @@ export function PlantsInput() {
     setShowDescription((value) => !value);
   }
 
-  const { md } = useSize();
-
   let firstName;
   if (user) { firstName = ` ${user.name.split(' ')[0]}`; }
 
   return (
-    <div className="p-2 rounded-xl bg-gray-100 w-full">
+    <div className="p-2 rounded-xl bg-gray-100 w-full h-fit">
       <div className="flex flex-row gap-4">
         <div className="flex flex-col gap-2 flex-1">
           <div className="text-lg center-row gap-2">
@@ -67,7 +63,11 @@ export function PlantsInput() {
                 <button className="icon-button" onClick={handleDescriptionClick}>
                   <FaStickyNote size={20} color="#080" />
                 </button>
-                <input type="submit" value="Adicionar" className="main-button max-w-sm ml-2" />
+                <input
+                  type="submit"
+                  value="Adicionar"
+                  className="main-button max-w-sm ml-2 shadow"
+                />
               </div>
             </div>
           </div>

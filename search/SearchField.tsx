@@ -43,14 +43,14 @@ export function SearchField() {
         />
         <button
           type="submit"
-          className="icon-button h-9 p-0"
+          className="icon-button h-10 p-0"
         >
           <FaSearch size={20} color={gray} />
         </button>
       </form>
       {!!text
       && (
-      <button className="icon-button p-2" onClick={handleReset}>
+      <button className="icon-button h-10 p-0" onClick={handleReset}>
         <FaTimes size={20} color={gray} />
       </button>
       )}
