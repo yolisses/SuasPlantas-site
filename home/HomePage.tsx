@@ -20,7 +20,7 @@ interface HomePageProps<T>{
   tab:TopTab
   tourSteps?:Step[]
   tourName?:TourName
-  aditionalItems?:T[]
+  additionalItems?:T[]
   firstActionButton:ReactNode
   children:(items?:T[])=>ReactNode
   context:Context<ItemsContext<T>>
@@ -32,7 +32,7 @@ export function HomePage<T>({
   children,
   tourName,
   tourSteps,
-  aditionalItems,
+  additionalItems,
   firstActionButton,
 }:HomePageProps<T>) {
   const {
@@ -63,7 +63,7 @@ export function HomePage<T>({
         scrollThreshold={0.8}
         loader={(<div />)}
       >
-        {children(aditionalItems ? aditionalItems.concat(items || []) : items)}
+        {children(additionalItems ? additionalItems.concat(items || []) : items)}
       </InfiniteScroll>
       { loading && (
       <div className="center-col pt-20 pb-10">
