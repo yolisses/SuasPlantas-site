@@ -15,6 +15,8 @@ import { TopTab, TopTabs } from '../common/TopTabs';
 import { LocationFilterInput } from './LocationFilterInput';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
+import { useSize } from '../common/SizeContext';
+import { UserPlantsReminder } from './input/UserPlantsReminder';
 
 interface HomePageProps<T>{
   tab:TopTab
@@ -33,7 +35,6 @@ export function HomePage<T>({
   tourName,
   tourSteps,
   additionalItems,
-  firstActionButton,
 }:HomePageProps<T>) {
   const {
     items,
@@ -41,6 +42,7 @@ export function HomePage<T>({
     loading,
     loadMore,
   } = useContext(context);
+  const { md } = useSize();
 
   return (
     <>
@@ -49,8 +51,12 @@ export function HomePage<T>({
       >
         <TopTabs tab={tab} />
       </div>
-      <div className="flex flex-col p-2 gap-2">
-        <PlantsInput />
+      <div className="flex flex-col p-2 pt-7 gap-2">
+        <div className="flex flex-row gap-4">
+          <PlantsInput />
+          {md && <UserPlantsReminder />}
+        </div>
+        <div className="pt-4" />
         <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
           <div className="max-w-md w-full">
             <SearchField />

@@ -2,12 +2,12 @@ import { useUser } from '../../auth/userContext';
 import { Chip } from './Chip';
 
 export function UserPlantsReminder() {
-  const maxPlants = 10;
+  const maxPlants = 5;
   const { user } = useUser();
   return (
     <div>
       <div>Já adicionadas</div>
-      <div className="flex-1 flex flex-row flex-wrap h-fit gap-1 overflow-hidden max-w-md">
+      <div className="flex-1 flex flex-row flex-wrap h-fit gap-1.5 overflow-hidden max-w-md">
         {user?.plants.slice(0, maxPlants).map(({ name, card }) => (
           <Chip text={name} image={card} />
         ))}
