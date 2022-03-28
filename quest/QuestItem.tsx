@@ -23,9 +23,9 @@ export function QuestItem({ item }:{item:Quest}) {
               src={user.image || userImage}
               className="rounded-full flex-nowrap shrink-0"
             />
-            <div className="flex-1 overflow-y-hidden text-sm">
+            <div className="flex-1 overflow-hidden text-sm">
               <div className="overflow-ellipsis text-left whitespace-nowrap font-semibold">{user.name}</div>
-              <div className="overflow-ellipsis text-left">
+              <div className="overflow-ellipsis text-left whitespace-nowrap">
                 {user.city}
                 ,
                 {' '}

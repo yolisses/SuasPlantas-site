@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { IconType } from 'react-icons';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { mainColor } from '../common/mainColor';
+import { gray } from '../common/gray';
 
 interface NavButtonProps
 extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
@@ -35,7 +36,7 @@ export function LateralNavButton({
       {Icon && (
       <Icon
         size={20}
-        color={selected ? '#080' : '#aaa'}
+        color={selected ? '#080' : gray}
       />
       )}
       {text}

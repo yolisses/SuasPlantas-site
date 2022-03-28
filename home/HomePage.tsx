@@ -44,17 +44,15 @@ export function HomePage<T>({
   return (
     <>
       <div
-        className=" flex flex-col md:flex-row-reverse items-center justify-between"
+        className="title-header text-base px-0"
       >
-        <div className="flex flex-row justify-center flex-1">
-          <LocationFilterInput />
-        </div>
         <TopTabs tab={tab} />
       </div>
-      <div className="center-col w-full">
+      <div className="center-row p-2 w-full justify-between">
         <div className="max-w-md w-full">
           <SearchField />
         </div>
+        <LocationFilterInput />
       </div>
       <InfiniteScroll
         next={loadMore}

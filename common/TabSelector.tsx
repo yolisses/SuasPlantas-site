@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 import { IconType } from 'react-icons';
+import { gray } from './gray';
 
 interface TabSelectorProps{
   id?:string
@@ -32,7 +33,7 @@ export function TabSelector({
       { Icon && (
       <Icon
         size={20}
-        color={selected ? '#080' : '#aaa'}
+        color={selected ? '#080' : gray}
       />
       )}
       {children}
