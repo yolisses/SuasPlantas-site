@@ -134,7 +134,7 @@ export function PlantsInput() {
                   className="main-button w-full max-w-sm py-3 ml-2 shadow text-base"
                 >
                   {loading && <Spinner size={24} /> }
-                  Adicionar
+                  {loading ? 'Adicionando' : 'Adicionar'}
                 </button>
               </div>
             </form>

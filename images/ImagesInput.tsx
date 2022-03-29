@@ -70,6 +70,12 @@ export function ImagesInput({
     onChange({ target: { value: sendings } });
   }, [sendings]);
 
+  useEffect(() => {
+    if (initialSendings) {
+      setSendings(initialSendings);
+    }
+  }, [initialSendings]);
+
   return (
     <div className="flex flex-row flex-wrap justify-between gap-1 items-stretch">
       {!isEmpty && entries.map(([key, sending]) => (
