@@ -8,12 +8,12 @@ export function PlantsPage() {
   return (
     <HomePage
       tab="plants"
+      context={plantsContext}
       topChildren={(
         <section className="max-w-xl">
           <PlantsInput />
         </section>
       )}
-      context={plantsContext}
     >
       {(items) => (
         <div className="grid gap-2 grid-cols-2 md:grid-cols-5">
