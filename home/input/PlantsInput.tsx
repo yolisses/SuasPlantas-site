@@ -25,7 +25,11 @@ const defaultVisible = {
   description: false,
 };
 
-export function PlantsInput() {
+interface PlantsInputProps{
+  text:string
+}
+
+export function PlantsInput({ text }:PlantsInputProps) {
   const imageSize = 30;
   const { user } = useUser();
   const { setSnack } = useSnack();
@@ -83,9 +87,7 @@ export function PlantsInput() {
               className="rounded-full"
               src={user?.image || userImageSVG}
             />
-            Quais plantas você tem
-            {user ? `, ${getFirstName(user)}` : ''}
-            ?
+            {text}
           </div>
           <div className="gap-2 center-row">
             <form

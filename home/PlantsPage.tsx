@@ -2,15 +2,19 @@ import { HomePage } from './HomePage';
 import { PlantItem } from '../common/PlantItem';
 import { PlantsInput } from './input/PlantsInput';
 import { plantsContext } from '../plant/plantsContext';
+import { useVocative } from './input/useVocative';
 
 export function PlantsPage() {
+  const { vocative } = useVocative();
   return (
     <HomePage
       tab="plants"
       context={plantsContext}
       topChildren={(
         <section className="max-w-xl">
-          <PlantsInput />
+          <PlantsInput
+            text={`Quais plantas tem${vocative}?`}
+          />
         </section>
       )}
     >
