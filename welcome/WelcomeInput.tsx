@@ -1,5 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { NameButton } from './NameButton';
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 interface WelcomeInputProps{
@@ -24,6 +25,10 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
     }
   }
 
+  function remove(value:string) {
+    setNames((names) => names.filter((name) => name !== value));
+  }
+
   return (
     <label
       htmlFor={`field_${type}`}
@@ -39,12 +44,11 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
       >
         <div className="flex flex-row gap-1 flex-wrap">
           {names.map((name) => (
-            <span className="bg-gray-300 pl-1 rounded-full h-8 center" style={{ animation: 'rollout 0.05s' }}>
-              {name}
-              <button className="icon-button p-2">
-                <FaTimes color="white" size={16} />
-              </button>
-            </span>
+            <NameButton
+              key={name}
+              text={name}
+              remove={remove}
+            />
           ))}
         </div>
         <textarea
