@@ -12,6 +12,7 @@ import { allImagesSent } from '../../images/allImagesSent';
 import { api } from '../../api/api';
 import { useSnack } from '../../snack/SnackContext';
 import { usePlants } from '../../plant/plantsContext';
+import { Spinner } from '../../common/Spinner';
 
 type InputValues = {
   name:string
@@ -27,16 +28,17 @@ const defaultVisible = {
 export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
-  const { reset } = usePlants();
   const { setSnack } = useSnack();
+  const { reset: resetPlants } = usePlants();
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(defaultVisible);
 
-  const { register, handleSubmit, control } = useForm<InputValues>({
-    defaultValues: {
-      images: {},
-    },
-  });
+  const {
+    control,
+    register,
+    handleSubmit,
+    reset: resetForm,
+  } = useForm<InputValues>({ defaultValues: { images: {} } });
 
   function getToggle(key:keyof typeof defaultVisible) {
     return function toggle(e:MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {
@@ -60,12 +62,13 @@ export function PlantsInput() {
         severity: 'success',
         text: 'Sua planta foi adicionada!',
       });
+      resetForm();
     } catch (err:any) {
       setSnack({ severity: 'error', text: err.message });
       throw err;
     }
     setLoading(false);
-    reset();
+    resetPlants();
   }
 
   return (
@@ -126,11 +129,13 @@ export function PlantsInput() {
                 <button className="icon-button" onClick={getToggle('description')}>
                   <FaFileAlt size={20} color="#080" />
                 </button>
-                <input
-                  type="submit"
-                  value="Adicionar"
-                  className="main-button max-w-sm ml-2 shadow"
-                />
+                <button
+                  disabled={loading}
+                  className="main-button w-full max-w-sm py-3 ml-2 shadow text-base"
+                >
+                  {loading && <Spinner size={24} /> }
+                  Adicionar
+                </button>
               </div>
             </form>
           </div>
