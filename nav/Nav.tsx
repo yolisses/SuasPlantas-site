@@ -4,16 +4,18 @@ import { HomeButton } from './HomeButton';
 import { NavItems } from '../footer/NavItems';
 import { LateralNavButton } from './LateralNavItem';
 import { useUser } from '../auth/userContext';
+import { useSize } from '../common/SizeContext';
 
 export function Nav() {
-  const [expanded, setExpanded] = useState(false);
+  const { md } = useSize();
   const { user } = useUser();
+  const [expanded, setExpanded] = useState(false);
 
   function handleClick() {
     setExpanded((value) => !value);
   }
 
-  if (!user) return null;
+  if (md !== true || !user) return null;
 
   return (
     <>
