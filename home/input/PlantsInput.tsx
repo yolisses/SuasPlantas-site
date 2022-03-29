@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
@@ -8,6 +8,10 @@ import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { ImagesInput } from '../../images/ImagesInput';
 import { SendingsCollection } from '../../images/SendingsCollection';
+import { allImagesSent } from '../../images/allImagesSent';
+import { api } from '../../api/api';
+import { useSnack } from '../../snack/SnackContext';
+import { usePlants } from '../../plant/plantsContext';
 
 type InputValues = {
   name:string
@@ -15,10 +19,17 @@ type InputValues = {
   images:SendingsCollection
 }
 
+const defaultVisible = {
+  description: false,
+  images: true,
+};
+
 export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
-  const defaultVisible = { description: false, images: true };
+  const { reset } = usePlants();
+  const { setSnack } = useSnack();
+  const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(defaultVisible);
 
   const { register, handleSubmit, control } = useForm<InputValues>({
@@ -27,16 +38,34 @@ export function PlantsInput() {
     },
   });
 
-  function toggle(key:keyof typeof defaultVisible) {
-    setVisible((values) => {
-      const copy = { ...values };
-      copy[key] = !copy[key];
-      return copy;
-    });
+  function getToggle(key:keyof typeof defaultVisible) {
+    return function toggle(e:MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {
+      e.preventDefault();
+      setVisible((values) => {
+        const copy = { ...values };
+        copy[key] = !copy[key];
+        return copy;
+      });
+    };
   }
 
-  function submit(data:InputValues) {
+  async function submit(data:InputValues) {
     console.log(data);
+    setLoading(true);
+    try {
+      await allImagesSent(data.images);
+      const images = Object.values(data.images).map((value) => (value).uri);
+      await api.post('plants', { ...data, images });
+      setSnack({
+        severity: 'success',
+        text: 'Sua planta foi adicionada!',
+      });
+    } catch (err:any) {
+      setSnack({ severity: 'error', text: err.message });
+      throw err;
+    }
+    setLoading(false);
+    reset();
   }
 
   return (
@@ -91,10 +120,10 @@ export function PlantsInput() {
               />
               )}
               <div className="center-row">
-                <button className="icon-button" onClick={() => toggle('images')}>
+                <button className="icon-button" onClick={getToggle('images')}>
                   <FaImage size={20} color="#080" />
                 </button>
-                <button className="icon-button" onClick={() => toggle('description')}>
+                <button className="icon-button" onClick={getToggle('description')}>
                   <FaFileAlt size={20} color="#080" />
                 </button>
                 <input
