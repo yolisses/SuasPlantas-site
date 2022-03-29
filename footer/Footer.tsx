@@ -6,6 +6,8 @@ export function Footer() {
   const { user } = useUser();
   const { md } = useSize();
 
+  return null;
+
   if (md !== false || !user) return null;
 
   return (
