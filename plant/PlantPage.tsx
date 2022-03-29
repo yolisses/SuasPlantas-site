@@ -41,7 +41,6 @@ export function PlantPage({ data }:PlantPageProps) {
   const updatedAt = new Date(updatedAtString);
   const multipleImages = data.images.length > 1;
   const selfUser = currentUser?.id === data.user.id;
-  const stringAvailability = availabilitiesToString({ price, swap, donate });
 
   useEffect(() => {
     if (carousel && carousel.current) {
@@ -53,11 +52,14 @@ export function PlantPage({ data }:PlantPageProps) {
     <>
       <Head>
         <title>
-          {`${devIndicator}${name} - ${stringAvailability}`}
+          {`${devIndicator}${name} - Suas Plantas`}
         </title>
         <meta
           name="description"
-          content={`Nome: ${name}, Disponível para ${stringAvailability}, Pertence a ${user.name}${description ? `, Descrição: ${description}` : ''}`}
+          content={`Planta: ${name}, Pertence a ${
+            user.name
+          }${description ? `, Descrição: ${description}` : ''
+          }. Essa e outras plantas para trocar em Suas Plantas`}
         />
       </Head>
       <PlantStructuredData plant={data} />
