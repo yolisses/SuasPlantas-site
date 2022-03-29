@@ -1,9 +1,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import { FaPen } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -157,17 +155,6 @@ export function PlantPage({ data }:PlantPageProps) {
                 </div>
               </div>
             </div>
-            {selfUser && (
-            <div className="sticky bottom-0">
-              <div className="absolute bottom-10 right-10">
-                <Link href={`/plants/${data.id}/edit`}>
-                  <a className="fab">
-                    <FaPen size={22} color="white" />
-                  </a>
-                </Link>
-              </div>
-            </div>
-            )}
           </div>
         </div>
         {!!(data.alsoSaw && data.alsoSaw.length)
