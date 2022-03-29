@@ -13,7 +13,15 @@ export function PlantsPage() {
       topChildren={(
         <section className="max-w-xl">
           <PlantsInput
-            text={`Quais plantas tem${vocative}?`}
+            text={(
+              <span>
+                Quais plantas você
+                {' '}
+                <strong>tem</strong>
+                {vocative}
+                ?
+              </span>
+            )}
           />
         </section>
       )}

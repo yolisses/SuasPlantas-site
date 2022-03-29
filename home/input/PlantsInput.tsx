@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, ReactNode, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
@@ -26,7 +26,7 @@ const defaultVisible = {
 };
 
 interface PlantsInputProps{
-  text:string
+  text:ReactNode
 }
 
 export function PlantsInput({ text }:PlantsInputProps) {
