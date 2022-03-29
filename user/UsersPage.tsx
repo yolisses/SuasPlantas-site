@@ -4,7 +4,6 @@ import { User } from './User';
 import { UserItem } from './UserItem';
 import { userImage } from '../images/user';
 import { HomePage } from '../home/HomePage';
-import { ShareButton } from './ShareButton';
 import { usersContext } from './usersContext';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
@@ -18,7 +17,6 @@ export function UsersPage() {
     <HomePage
       tab="users"
       context={usersContext}
-      firstActionButton={<ShareButton />}
     >
       {(items) => (
         <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5">
