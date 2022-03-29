@@ -17,7 +17,7 @@ export function PlantsPage() {
     >
       {(items) => (
         <div className="grid gap-2 grid-cols-2 md:grid-cols-5">
-          {!!items && items.map((item: Plant) => (
+          {!!items && items.map((item) => (
             <PlantItem key={item.id} item={item} size={300} />
           ))}
         </div>
