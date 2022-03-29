@@ -19,19 +19,19 @@ export function LateralNavButton({
   return (
     <button
       {...rest}
-      className="secondary-button text-black justify-start flex flex-row items-center px-2 h-12 whitespace-nowrap"
+      className="highlight p-2 gap-2 rounded-lg center-row px-2 h-12 whitespace-nowrap"
     >
       { imageSrc
       && (
-        <div className={selected ? 'border-2 center border-green-500 rounded-full' : ''}>
-          <Image
-            src={imageSrc}
-            objectFit="cover"
-            width={imageSize}
-            height={imageSize}
-            className="bg-[#aaa] rounded-full"
-          />
-        </div>
+      <div className={`center ${selected ? 'ring-2 ring-[#080] rounded-full' : ''}`}>
+        <Image
+          src={imageSrc}
+          objectFit="cover"
+          width={imageSize}
+          height={imageSize}
+          className="bg-[#aaa] rounded-full h-5"
+        />
+      </div>
       )}
       {Icon && (
       <Icon
