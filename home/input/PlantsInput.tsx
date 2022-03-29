@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
-import { Plant } from '../../plant/Plant';
 import { getFirstName } from './getFirstName';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { ImagesInput } from '../../images/ImagesInput';
 import { SendingsCollection } from '../../images/SendingsCollection';
 
-interface InputValues{
+type InputValues = {
   name:string
   description?:string
   images:SendingsCollection
@@ -19,10 +18,14 @@ interface InputValues{
 export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
-  const defaultVisible = { description: false, images: false };
+  const defaultVisible = { description: false, images: true };
   const [visible, setVisible] = useState(defaultVisible);
 
-  const { register } = useForm<Plant>();
+  const { register, handleSubmit, control } = useForm<InputValues>({
+    defaultValues: {
+      images: {},
+    },
+  });
 
   function toggle(key:keyof typeof defaultVisible) {
     setVisible((values) => {
@@ -30,6 +33,10 @@ export function PlantsInput() {
       copy[key] = !copy[key];
       return copy;
     });
+  }
+
+  function submit(data:InputValues) {
+    console.log(data);
   }
 
   return (
@@ -49,23 +56,39 @@ export function PlantsInput() {
             ?
           </div>
           <div className="gap-2 center-row">
-            <div className="flex-1 flex flex-col gap-2">
+            <form
+              className="flex-1 flex flex-col gap-2"
+              onSubmit={handleSubmit(submit as SubmitHandler<InputValues>)}
+            >
               <input
+                {...register('name')}
                 type="text"
                 autoComplete="off"
-                className="placeholder-gray-500 bg-white p-3 rounded-lg"
                 placeholder="Nome da planta"
-                {...register('name')}
+                className="placeholder-gray-500 bg-white p-3 rounded-lg"
               />
               {visible.description && (
-              <textarea
-                rows={3}
-                className="placeholder-gray-500 bg-white p-3 rounded-lg"
-                placeholder="Descrição"
-              />
+                <textarea
+                  {...register('description')}
+                  rows={3}
+                  placeholder="Descrição"
+                  className="placeholder-gray-500 bg-white p-3 rounded-lg"
+                />
               )}
               {visible.images && (
-              <ImagesInput onChange={() => {}} />
+              <Controller
+                name="images"
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                }) => (
+                  <ImagesInput
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    initialSendings={value as SendingsCollection}
+                  />
+                )}
+              />
               )}
               <div className="center-row">
                 <button className="icon-button" onClick={() => toggle('images')}>
@@ -80,7 +103,7 @@ export function PlantsInput() {
                   className="main-button max-w-sm ml-2 shadow"
                 />
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

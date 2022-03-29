@@ -14,8 +14,9 @@ import { useSnack } from '../snack/SnackContext';
 import { allImagesSent } from '../images/allImagesSent';
 import { ImagesSuggestions } from './ImagesSuggestions';
 import { imagesToSendings } from '../images/imagesToSendings';
+import { SendingsCollection } from '../images/SendingsCollection';
 import { getFileFromImageUrl } from '../upload/getFileFromImageUrl';
-import { ImageInputCustomRef, ImagesInput, SendingsCollection } from '../images/ImagesInput';
+import { ImageInputCustomRef, ImagesInput } from '../images/ImagesInput';
 
 interface EditPlantProps{
   edit?:boolean

@@ -24,7 +24,7 @@ interface ImagesInputProps{
   onBlur?:(value:any)=>void
   customRef?:ImageInputCustomRef
   initialSendings?:SendingsCollection
-  onChange:(sendings:SendingsCollection)=>void
+  onChange:(e:{target:{value:SendingsCollection}})=>void
 }
 
 export function ImagesInput({
@@ -67,7 +67,7 @@ export function ImagesInput({
   }
 
   useEffect(() => {
-    onChange(sendings);
+    onChange({ target: { value: sendings } });
   }, [sendings]);
 
   return (
@@ -106,7 +106,6 @@ export function ImagesInput({
           accept=".jpg, .jpeg, .png, .webp"
         />
       </label>
-
     </div>
   );
 }
