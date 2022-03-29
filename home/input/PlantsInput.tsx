@@ -21,8 +21,8 @@ type InputValues = {
 }
 
 const defaultVisible = {
+  images: false,
   description: false,
-  images: true,
 };
 
 export function PlantsInput() {
