@@ -38,7 +38,7 @@ export function HomePage<T>({
       <div className="title-header px-0 text-base flex flex-row justify-center md:justify-start">
         <TopTabs tab={tab} />
       </div>
-      <div className="flex flex-col p-2 pt-4 gap-4">
+      <div className="flex flex-col px-2 py-4 gap-4">
         <section className="max-w-xl">
           <PlantsInput />
         </section>
