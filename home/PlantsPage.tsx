@@ -1,12 +1,18 @@
 import { HomePage } from './HomePage';
 import { Plant } from '../plant/Plant';
 import { PlantItem } from '../common/PlantItem';
+import { PlantsInput } from './input/PlantsInput';
 import { plantsContext } from '../plant/plantsContext';
 
 export function PlantsPage() {
   return (
     <HomePage
       tab="plants"
+      topChildren={(
+        <section className="max-w-xl">
+          <PlantsInput />
+        </section>
+      )}
       context={plantsContext}
     >
       {(items) => (

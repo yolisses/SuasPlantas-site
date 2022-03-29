@@ -6,7 +6,6 @@ import {
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Spinner } from '../common/Spinner';
-import { PlantsInput } from './input/PlantsInput';
 import { SearchField } from '../search/SearchField';
 import { TopTab, TopTabs } from '../common/TopTabs';
 import { LocationFilterInput } from './LocationFilterInput';
@@ -16,6 +15,7 @@ import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 interface HomePageProps<T>{
   tab:TopTab
   additionalItems?:T[]
+  topChildren?:ReactNode
   children:(items?:T[])=>ReactNode
   context:Context<ItemsContext<T>>
 }
@@ -24,6 +24,7 @@ export function HomePage<T>({
   tab,
   context,
   children,
+  topChildren,
   additionalItems,
 }:HomePageProps<T>) {
   const {
@@ -39,9 +40,7 @@ export function HomePage<T>({
         <TopTabs tab={tab} />
       </div>
       <div className="flex flex-col px-2 py-4 gap-4">
-        <section className="max-w-xl">
-          <PlantsInput />
-        </section>
+        {topChildren}
         <section className="flex flex-col gap-2">
           <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
             <div className="max-w-md w-full">
