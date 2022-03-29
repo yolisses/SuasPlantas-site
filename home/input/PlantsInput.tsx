@@ -97,18 +97,20 @@ export function PlantsInput() {
               onSubmit={handleSubmit(submit as SubmitHandler<InputValues>)}
             >
               <input
-                {...register('name')}
                 type="text"
+                data-hj-allow
                 autoComplete="off"
                 placeholder="Nome da planta"
                 className="placeholder-gray-500 bg-white p-3 rounded-lg"
+                {...register('name')}
               />
               {visible.description && (
                 <textarea
-                  {...register('description')}
                   rows={3}
+                  data-hj-allow
                   placeholder="Descrição"
                   className="placeholder-gray-500 bg-white p-3 rounded-lg"
+                  {...register('description')}
                 />
               )}
               {visible.images && (

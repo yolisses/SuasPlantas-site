@@ -72,11 +72,12 @@ export function QuestsInput() {
               onSubmit={handleSubmit(submit as SubmitHandler<InputValues>)}
             >
               <input
-                {...register('name')}
                 type="text"
+                data-hj-allow
                 autoComplete="off"
                 placeholder="Nome da planta"
                 className="placeholder-gray-500 bg-white p-3 rounded-lg"
+                {...register('name')}
               />
               <div className="center-row">
                 <button
