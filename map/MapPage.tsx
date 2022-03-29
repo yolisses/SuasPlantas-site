@@ -31,8 +31,8 @@ export function MapPage() {
     const res = await api.get('users', { params: { profileRelations: true } });
     const users = (res.data.content as User[]).map((user:User) => {
       if (user.location && user.id !== currentUser?.id) {
-        user.location.coordinates[0] += (Math.random() - 0.5) / 10;
-        user.location.coordinates[1] += (Math.random() - 0.5) / 10;
+        user.location.coordinates[0] += (Math.random() - 0.5) / 16;
+        user.location.coordinates[1] += (Math.random() - 0.5) / 16;
       }
       return user;
     });
