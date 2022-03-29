@@ -1,18 +1,18 @@
 import Image from 'next/image';
-import { MouseEvent, ReactNode, useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { MouseEvent, useState } from 'react';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { getFirstName } from './getFirstName';
+import { api } from '../../api/api';
+import { useVocative } from './useVocative';
+import { Spinner } from '../../common/Spinner';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
-import { ImagesInput } from '../../images/ImagesInput';
-import { SendingsCollection } from '../../images/SendingsCollection';
-import { allImagesSent } from '../../images/allImagesSent';
-import { api } from '../../api/api';
 import { useSnack } from '../../snack/SnackContext';
 import { usePlants } from '../../plant/plantsContext';
-import { Spinner } from '../../common/Spinner';
+import { ImagesInput } from '../../images/ImagesInput';
+import { allImagesSent } from '../../images/allImagesSent';
+import { SendingsCollection } from '../../images/SendingsCollection';
 
 type InputValues = {
   name:string
@@ -25,14 +25,11 @@ const defaultVisible = {
   description: false,
 };
 
-interface PlantsInputProps{
-  text:ReactNode
-}
-
-export function PlantsInput({ text }:PlantsInputProps) {
+export function PlantsInput() {
   const imageSize = 30;
   const { user } = useUser();
   const { setSnack } = useSnack();
+  const { vocative } = useVocative();
   const { reset: resetPlants } = usePlants();
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(defaultVisible);
@@ -56,7 +53,6 @@ export function PlantsInput({ text }:PlantsInputProps) {
   }
 
   async function submit(data:InputValues) {
-    console.log(data);
     setLoading(true);
     try {
       await allImagesSent(data.images);
@@ -87,7 +83,13 @@ export function PlantsInput({ text }:PlantsInputProps) {
               className="rounded-full"
               src={user?.image || userImageSVG}
             />
-            {text}
+            <span>
+              Quais plantas você
+              {' '}
+              <strong>tem</strong>
+              {vocative}
+              ?
+            </span>
           </div>
           <div className="gap-2 center-row">
             <form
