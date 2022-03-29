@@ -24,10 +24,10 @@ export function QuestItem({ item }:{item:Quest}) {
               className="rounded-full flex-nowrap shrink-0"
             />
             <div className="flex-1 overflow-hidden text-sm">
-              <div className="overflow-ellipsis text-left whitespace-nowrap font-semibold">
+              <div className="text-left font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
                 {user.name}
               </div>
-              <div className="overflow-ellipsis text-left whitespace-nowrap">
+              <div className="text-left overflow-hidden text-ellipsis whitespace-nowrap">
                 {user.city}
                 ,
                 {' '}

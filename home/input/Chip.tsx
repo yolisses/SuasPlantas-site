@@ -25,7 +25,7 @@ export function Chip({ text, image }:ChipProps) {
         />
       </div>
       )}
-      <span className=" overflow-hidden text-ellipsis whitespace-nowrap leading-none">
+      <span className="overflow-hidden text-ellipsis whitespace-nowrap leading-none">
         {text}
       </span>
     </button>
