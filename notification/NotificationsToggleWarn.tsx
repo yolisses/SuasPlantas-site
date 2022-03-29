@@ -38,7 +38,7 @@ export function NotificationsToggleWarn() {
         ? 'bloqueadas'
         : 'desativadas'}
       .
-      <button className="secondary-button" onClick={handleButtonClick}>
+      <button className="secondary-button inline" onClick={handleButtonClick}>
         {permission === 'denied'
           ? 'Como desbloquear'
           : 'Ativar'}
