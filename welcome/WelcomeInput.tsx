@@ -34,15 +34,27 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
       htmlFor={`field_${type}`}
       className="flex flex-col gap-2"
     >
-      <div>
-        {type === 'plants'
-          ? 'Quais plantas você tem?'
-          : 'Quais plantas você está procurando?'}
-      </div>
+      {type === 'plants'
+        ? (
+          <span>
+            Quais plantas você
+            {' '}
+            <strong>tem</strong>
+            ?
+          </span>
+        )
+        : (
+          <span>
+            Quais plantas você está
+            {' '}
+            <strong>procurando</strong>
+            ?
+          </span>
+        )}
       <div
         className="border-2 border-gray-400 focus-within:border-black w-full p-1 flex flex-row flex-wrap rounded-xl"
       >
-        <div className="flex flex-row gap-1 flex-wrap">
+        <div className="flex flex-row gap-1 flex-wrap overflow-hidden">
           {names.map((name) => (
             <NameButton
               key={name}

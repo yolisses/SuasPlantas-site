@@ -13,9 +13,11 @@ export function NameButton({ text, remove }:NameButtonProps) {
   return (
     <span
       style={{ animation: 'rollout 0.05s' }}
-      className="bg-gray-300 pl-1 rounded-full h-8 center"
+      className="bg-gray-300 pl-1 rounded-full h-8 center-row overflow-hidden"
     >
-      {text}
+      <span className="flex-1 overflow-hidden whitespace-nowrap text-ellipsis">
+        {text}
+      </span>
       <button
         onClick={handleRemoveClick}
         className="icon-button p-2"
