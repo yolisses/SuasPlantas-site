@@ -66,10 +66,10 @@ export function LandingPage() {
       <header className="h-14 z-50 absolute w-full center-row p-2 bg-gradient-to-b from-[#000b] to-transparent text-white text-xl">
         <div className="center-row gap-1">
           <Image
-            src="/landing/white.png"
-            className="inline-flex"
             width={iconSize}
             height={iconSize}
+            src="/icon/icon.svg"
+            className="inline-flex"
           />
           <span>SuasPlantas</span>
         </div>
@@ -85,8 +85,8 @@ export function LandingPage() {
             height={1200}
             objectFit="cover"
             width={lg ? 1800 : 1000}
-            className="brightness-75 select-none pointer-events-none"
             src="/landing/resource.svg"
+            className="brightness-75 select-none pointer-events-none"
           />
         </div>
         <div className="absolute flex flex-col p-6 gap-4">
