@@ -13,7 +13,7 @@ export function NameButton({ text, remove }:NameButtonProps) {
   return (
     <span
       style={{ animation: 'rollout 0.05s' }}
-      className="bg-gray-300 pl-1 rounded-full h-8 center-row overflow-hidden"
+      className="bg-gray-300 pl-2 rounded-full h-8 center-row overflow-hidden"
     >
       <span className="flex-1 overflow-hidden whitespace-nowrap text-ellipsis">
         {text}
