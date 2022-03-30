@@ -36,8 +36,10 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
     const pathToSelected:{[key:string]:string} = {
       map: 'map',
       chat: 'chat',
+      contact: 'contact',
       profileKey: 'profile',
       notification: 'notifications',
+      'privacy-policy': 'privacy-policy',
     };
     pathToSelected[`users/${user?.id}`] = 'profile';
     pathToSelected[''] = 'home';
@@ -104,14 +106,14 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
           <NavButton
             text="Política de privacidade"
             Icon={FaFile}
-            selected={selected === 'map'}
+            selected={selected === 'privacy-policy'}
           />
         </Link>
         <Link href="/contact">
           <NavButton
             text="Contato"
             Icon={FaEnvelope}
-            selected={selected === 'map'}
+            selected={selected === 'contact'}
           />
         </Link>
       </>
