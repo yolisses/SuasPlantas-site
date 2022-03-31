@@ -8,7 +8,7 @@ export function WelcomePage() {
 
   const imageSize = 24;
   return (
-    <div className="center-col min-h-screen gap-2">
+    <div className="center-col flex-1 gap-2">
       <div className="center-row items-start w-full p-2 text-lg gap-2 select-none">
         <Image src="/icon/icon.svg" width={imageSize} height={imageSize} />
         SuasPlantas
