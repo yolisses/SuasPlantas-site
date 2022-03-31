@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { white } from '../common/colors';
 
@@ -7,7 +8,9 @@ interface NameButtonProps{
 }
 
 export function NameButton({ text, remove }:NameButtonProps) {
-  function handleRemoveClick() {
+  function handleRemoveClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    e.stopPropagation();
     remove(text);
   }
 
