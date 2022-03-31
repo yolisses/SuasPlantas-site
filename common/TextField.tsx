@@ -31,10 +31,11 @@ export const TextField = forwardRef(({
     >
       {startAdornment}
       <input
-        type="text"
-        className="peer outline-none inline"
-        placeholder=" "
         ref={ref}
+        type="text"
+        data-hj-allow
+        placeholder=" "
+        className="peer outline-none inline"
         {...rest}
       />
       <span className="absolute bg-white transition-all duration-150 label-active peer-placeholder-shown:label-inactive peer-focus:label-active peer-focus:text-green-600">
