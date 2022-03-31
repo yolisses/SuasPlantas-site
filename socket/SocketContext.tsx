@@ -7,8 +7,8 @@ import {
 } from 'react';
 import Client, { Socket } from 'socket.io-client';
 import { baseURL } from '../api/baseURL';
-import { getAuthToken } from '../api/getAuthToken';
 import { useUser } from '../auth/UserContext';
+import { getAuthToken } from '../api/getAuthToken';
 
 interface SocketContext{
   socket:Socket
@@ -17,7 +17,7 @@ interface SocketContext{
 const socketContext = createContext({} as SocketContext);
 
 export function SocketContextProvider({ children }:{children:ReactNode}) {
-  const { user, loading: loadingUser } = useUser();
+  const { user } = useUser();
   const [socket] = useState(() => {
     const socket = Client(baseURL);
     socket.emit('ping');
@@ -25,7 +25,7 @@ export function SocketContextProvider({ children }:{children:ReactNode}) {
   });
 
   useEffect(() => {
-    if (!loadingUser) {
+    if (user) {
       const token = getAuthToken();
       if (token) {
         socket.emit('auth', token, (res:{userId:number}) => {
@@ -35,7 +35,7 @@ export function SocketContextProvider({ children }:{children:ReactNode}) {
         });
       }
     }
-  }, [loadingUser]);
+  }, [user]);
 
   return (
     <socketContext.Provider value={{ socket }}>

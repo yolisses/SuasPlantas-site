@@ -52,7 +52,7 @@ export function UserPage({ user, mini, hideLogout }: UserPageProps) {
   const { refreshUser } = useUser();
   const [tab, setTab] = useState('plants');
   const { user: actualUser, logOut } = useUser();
-  const selfUser = actualUser.id === user.id;
+  const selfUser = actualUser?.id === user.id;
 
   function handleLogoutClick() { logOut(); }
 

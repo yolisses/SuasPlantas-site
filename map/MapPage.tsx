@@ -21,7 +21,7 @@ export function MapPage() {
   const { user: currentUser } = useUser();
   const [user, setUser] = useState<User>();
   const [users, setUsers] = useState<User[]>([]);
-  const position = location?.position || currentUser.location?.coordinates;
+  const position = location?.position || currentUser?.location?.coordinates;
 
   function handleClose() {
     setUser(undefined);
@@ -30,7 +30,7 @@ export function MapPage() {
   async function getUsers() {
     const res = await api.get('users', { params: { profileRelations: true } });
     const users = (res.data.content as User[]).map((user:User) => {
-      if (user.location && user.id !== currentUser.id) {
+      if (user.location && user.id !== currentUser?.id) {
         user.location.coordinates[0] += (Math.random() - 0.5) / 16;
         user.location.coordinates[1] += (Math.random() - 0.5) / 16;
       }

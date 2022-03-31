@@ -18,10 +18,10 @@ export const EditProfilePage = () => {
 
   const { register, handleSubmit, watch } = useForm({
     defaultValues: {
-      name: user.name,
-      description: user.description,
-      whatsappNumber: user.whatsappNumber,
-      instagramUsername: user.instagramUsername,
+      name: user?.name,
+      description: user?.description,
+      whatsappNumber: user?.whatsappNumber,
+      instagramUsername: user?.instagramUsername,
     },
   });
 

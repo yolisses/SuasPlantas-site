@@ -17,7 +17,6 @@ import { ShareButtons } from '../common/ShareButtons';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from './ContactsIndicator';
 import { PlantStructuredData } from './PlantStructuredData';
-import { availabilitiesToString } from './availabilitiesToString';
 
 interface PlantPageProps{
   data:Plant
@@ -30,9 +29,6 @@ export function PlantPage({ data }:PlantPageProps) {
     id,
     user,
     name,
-    swap,
-    price,
-    donate,
     description,
     updatedAt: updatedAtString,
   } = data;
@@ -40,7 +36,7 @@ export function PlantPage({ data }:PlantPageProps) {
   const carousel = useRef<Carousel>();
   const updatedAt = new Date(updatedAtString);
   const multipleImages = data.images.length > 1;
-  const selfUser = currentUser.id === data.user.id;
+  const selfUser = currentUser?.id === data.user.id;
 
   useEffect(() => {
     if (carousel && carousel.current) {

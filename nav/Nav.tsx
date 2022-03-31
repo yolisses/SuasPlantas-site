@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { HomeButton } from './HomeButton';
 import { NavItems } from '../footer/NavItems';
-import { LateralNavButton } from './LateralNavItem';
 import { useUser } from '../auth/UserContext';
 import { useSize } from '../common/SizeContext';
+import { LateralNavButton } from './LateralNavItem';
 
 export function Nav() {
   const { md } = useSize();
@@ -20,9 +20,7 @@ export function Nav() {
   return (
     <>
       <div className="relative">
-        <nav
-          className="fixed flex w-52 flex-col items-stretch h-screen border-r border-gray-200"
-        >
+        <nav className="fixed flex w-52 flex-col items-stretch h-screen border-r border-gray-200">
           <HomeButton />
           <NavItems expanded={expanded} styleType="lateral" />
           <LateralNavButton

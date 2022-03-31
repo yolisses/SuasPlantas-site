@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNotifications } from '../notification/notificationsContext';
 import { useUser } from './UserContext';
 

@@ -13,10 +13,10 @@ interface LikeButtonProps{
 }
 
 export function LikeButton({ url, active }:LikeButtonProps) {
-  const [isActive, setIsActive] = useState(active || false);
+  const size = 20;
   const { user } = useUser();
   const { setModal } = useModal();
-  const size = 20;
+  const [isActive, setIsActive] = useState(active || false);
 
   async function handleClick() {
     if (!user) {

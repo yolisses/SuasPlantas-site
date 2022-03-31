@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { useState, useEffect, FormEvent } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 
@@ -58,8 +59,8 @@ export function MessageInput({ chat }:MessageInputProps) {
         type="text"
         data-hj-allow
         value={text || ''}
-        onChange={(e) => setText(e.target.value)}
         placeholder="Escrever mensagem"
+        onChange={(e) => setText(e.target.value)}
         className="p-2 rounded-full shadow-md px-3"
       />
       <button type="submit" className="icon-button">

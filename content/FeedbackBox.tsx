@@ -23,8 +23,8 @@ export function FeedbackBox({ source }:{source:string}) {
       source,
       message: '',
       rating: undefined,
-      name: user.name || '',
-      email: user.email || '',
+      name: user?.name || '',
+      email: user?.email || '',
     },
   });
 

@@ -26,9 +26,9 @@ export function ContactPage() {
     defaultValues: {
       message: '',
       rating: undefined,
-      name: user.name || '',
+      name: user?.name || '',
       source: 'contact page',
-      email: user.email || '',
+      email: user?.email || '',
     },
   });
 

@@ -35,9 +35,15 @@ export function EditProfileImage() {
     try {
       const res = await api.patch('users', { image: sending.uri });
       user!.image = res.data.image;
-      setSnack({ severity: 'success', text: 'Foto de perfil alterada com sucesso' });
+      setSnack({
+        severity: 'success',
+        text: 'Foto de perfil alterada com sucesso',
+      });
     } catch (err:any) {
-      setSnack({ severity: 'error', text: 'Não foi possível alterar a foto de perfil' });
+      setSnack({
+        severity: 'error',
+        text: 'Não foi possível alterar a foto de perfil',
+      });
     }
     setLoading(false);
   };
@@ -49,7 +55,7 @@ export function EditProfileImage() {
         height={imageSize}
         className="rounded-full"
         objectFit="cover"
-        src={sending?.src || user.image || userImage}
+        src={sending?.src || user?.image || userImage}
       />
       <div className="flex flex-col">
         <div className="text-center">Foto de perfil</div>
@@ -61,7 +67,11 @@ export function EditProfileImage() {
             onChange={handleFilesSelected}
             accept=".jpg, .jpeg, .png, .webp"
           />
-          <div className={`p-2 flex flex-row gap-2 items-center rounded-lg ${loading ? 'disabled-button' : 'secondary-button'}`}>
+          <div className={`p-2 flex flex-row gap-2 items-center rounded-lg ${
+            loading
+              ? 'disabled-button'
+              : 'secondary-button'}`}
+          >
             {loading && <Spinner />}
             Alterar foto
           </div>
