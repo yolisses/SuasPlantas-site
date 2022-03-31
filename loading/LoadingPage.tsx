@@ -7,7 +7,12 @@ export function LoadingPage() {
   return (
     <div className="center w-screen h-screen">
       <div className={`flex ${style.spinner} select-none pointer-events-none`}>
-        <Image src="/icon/icon margin 2.svg" width={imageSize} height={imageSize} />
+        <Image
+          priority
+          width={imageSize}
+          height={imageSize}
+          src="/icon/icon margin 2.svg"
+        />
       </div>
     </div>
   );

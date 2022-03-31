@@ -1,3 +1,4 @@
+import { getAuthToken } from '../api/getAuthToken';
 import { useUser } from '../auth/UserContext';
 import { LoadingPage } from './LoadingPage';
 
@@ -6,8 +7,10 @@ interface LoadingGuardProps{
 }
 
 export function LoadingGuard({ children }:LoadingGuardProps) {
-  const { loading } = useUser();
+  const authToken = getAuthToken();
+  const { user } = useUser();
 
-  if (loading) return <LoadingPage />;
+  if (authToken && !user) return <LoadingPage />;
+
   return children;
 }

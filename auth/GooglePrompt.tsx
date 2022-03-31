@@ -14,7 +14,7 @@ declare global {
 }
 
 export function GooglePrompt({ callback }:loginButtonProps) {
-  const { signIn, user } = useUser();
+  const { signIn, user, loading } = useUser();
 
   async function handleGoogleResponse(e: GoogleResponse) {
     const accessToken = e.credential;
@@ -26,7 +26,7 @@ export function GooglePrompt({ callback }:loginButtonProps) {
     window.handleGoogleResponse = handleGoogleResponse;
   }, []);
 
-  if (!user) return null;
+  if (!loading && !user) return null;
 
   return (
     <>
