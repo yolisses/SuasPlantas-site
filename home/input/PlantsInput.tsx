@@ -6,7 +6,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { api } from '../../api/api';
 import { useVocative } from './useVocative';
 import { Spinner } from '../../common/Spinner';
-import { green500 } from '../../common/colors';
+import { green500, green600 } from '../../common/colors';
 import { useUser } from '../../auth/userContext';
 import { userImageSVG } from '../../images/user';
 import { useSnack } from '../../snack/SnackContext';
@@ -131,10 +131,10 @@ export function PlantsInput() {
               )}
               <div className="center-row">
                 <button className="icon-button" onClick={getToggle('images')}>
-                  <FaImage size={20} color={green500} />
+                  <FaImage size={20} color={green600} />
                 </button>
                 <button className="icon-button" onClick={getToggle('description')}>
-                  <FaFileAlt size={20} color={green500} />
+                  <FaFileAlt size={20} color={green600} />
                 </button>
                 <button
                   disabled={loading}
