@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface AutocompleteOptionProps<type> {
   value: type;
-  onSelect: (value: type) => void;
   children: ReactNode;
+  onSelect: (value: type) => void;
 }
 
 export function AutocompleteOption<type>({
