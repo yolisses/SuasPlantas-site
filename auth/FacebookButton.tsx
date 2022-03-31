@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useUser } from './UserContext';
@@ -33,7 +34,14 @@ export function FacebookButton({ callback } : loginButtonProps) {
   return (
     <>
       <Head>
-        {rendered && <script async>if(typeof FB !== 'undefined') FB.XFBML.parse();</script>}
+        {rendered && (
+        <script
+          async
+          dangerouslySetInnerHTML={{
+            __html: "if(typeof FB !== 'undefined') FB.XFBML.parse();",
+          }}
+        />
+        )}
       </Head>
       <div
         data-width="300"
