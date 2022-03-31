@@ -27,13 +27,11 @@ export function SocketContextProvider({ children }:{children:ReactNode}) {
   useEffect(() => {
     if (user) {
       const token = getAuthToken();
-      if (token) {
-        socket.emit('auth', token, (res:{userId:number}) => {
-          if (res?.userId !== user.id) {
-            throw new Error('Could not authenticate socket');
-          }
-        });
-      }
+      socket.emit('auth', token, (res:{userId:number}) => {
+        if (res?.userId !== user.id) {
+          throw new Error('Could not authenticate socket');
+        }
+      });
     }
   }, [user]);
 
