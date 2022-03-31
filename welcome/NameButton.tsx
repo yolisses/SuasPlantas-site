@@ -8,7 +8,7 @@ interface NameButtonProps{
 }
 
 export function NameButton({ text, remove }:NameButtonProps) {
-  function handleRemoveClick(e: MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleRemoveClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     e.stopPropagation();
     remove(text);

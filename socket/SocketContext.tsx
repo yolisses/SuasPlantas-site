@@ -17,7 +17,7 @@ interface SocketContext{
 const socketContext = createContext({} as SocketContext);
 
 export function SocketContextProvider({ children }:{children:ReactNode}) {
-  const { user } = useUser();
+  const { user, loading: loadingUser } = useUser();
   const [socket] = useState(() => {
     const socket = Client(baseURL);
     socket.emit('ping');
@@ -25,7 +25,7 @@ export function SocketContextProvider({ children }:{children:ReactNode}) {
   });
 
   useEffect(() => {
-    if (user) {
+    if (!loadingUser) {
       const token = getAuthToken();
       if (token) {
         socket.emit('auth', token, (res:{userId:number}) => {
@@ -35,7 +35,7 @@ export function SocketContextProvider({ children }:{children:ReactNode}) {
         });
       }
     }
-  }, [user]);
+  }, [loadingUser]);
 
   return (
     <socketContext.Provider value={{ socket }}>

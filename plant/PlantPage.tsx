@@ -40,7 +40,7 @@ export function PlantPage({ data }:PlantPageProps) {
   const carousel = useRef<Carousel>();
   const updatedAt = new Date(updatedAtString);
   const multipleImages = data.images.length > 1;
-  const selfUser = currentuser.id === data.user.id;
+  const selfUser = currentUser.id === data.user.id;
 
   useEffect(() => {
     if (carousel && carousel.current) {

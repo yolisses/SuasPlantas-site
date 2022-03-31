@@ -20,12 +20,12 @@ interface ISignIn{
   accessToken: string,
 }
 interface IUserContextProvider{
-    user?:User
+    user:User
     loading:boolean
     logOut:()=>void
     refreshUser:()=>void
     signIn:(params:ISignIn)=>Promise<void>
-    setUser:Dispatch<SetStateAction<User|undefined>>
+    setUser:Dispatch<SetStateAction<User>>
 }
 
 export const userContext = createContext({} as IUserContextProvider);

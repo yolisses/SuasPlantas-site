@@ -14,8 +14,8 @@ export function PlantItem({
     card, id, name,
   } = item;
 
-  const city = item.city || item.user.city;
-  const state = item.state || item.user.state;
+  const city = item.city || item.user?.city;
+  const state = item.state || item.user?.state;
 
   const size = sizeParam || 200;
   return (
