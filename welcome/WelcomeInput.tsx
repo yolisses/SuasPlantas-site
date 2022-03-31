@@ -1,5 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { ChangeEvent, useState } from 'react';
 import { NameButton } from './NameButton';
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -11,22 +10,35 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
   const [names, setNames] = useState<string[]>([]);
   const [text, setText] = useState('');
 
-  function handleChange(e:ChangeEvent<HTMLTextAreaElement>) {
-    let newNames = e.target.value.split(/[.,\n]/);
+  function separateWords(text:string) {
+    return text.split(/[.,\n]/);
+  }
 
-    const last = newNames.pop();
-    setText(last || '');
-
-    newNames = newNames
+  function addNames(newNames:string[]) {
+    const filteredNames = newNames
       .map((name:string) => name.trim())
       .filter((name:string) => name && !names.includes(name));
-    if (newNames.length) {
-      setNames((value) => [...value, ...newNames]);
+    if (filteredNames.length) {
+      setNames((value) => [...value, ...filteredNames]);
     }
   }
 
   function remove(value:string) {
     setNames((names) => names.filter((name) => name !== value));
+  }
+
+  function handleChange(e:ChangeEvent<HTMLTextAreaElement>) {
+    const newNames = separateWords(e.target.value);
+
+    const last = newNames.pop();
+    setText(last || '');
+    addNames(newNames);
+  }
+
+  function handleBlur() {
+    const newNames = separateWords(text);
+    setText('');
+    addNames(newNames);
   }
 
   return (
@@ -65,11 +77,13 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
         </div>
         <textarea
           rows={1}
-          id={`field_${type}`}
           value={text}
+          data-hj-allow
+          onBlur={handleBlur}
+          id={`field_${type}`}
           onChange={handleChange}
-          className="outline-none resize-none items-center w-full p-3"
           placeholder="orquídea, aranto, etc"
+          className="outline-none resize-none items-center w-full p-3"
         />
       </div>
     </label>
