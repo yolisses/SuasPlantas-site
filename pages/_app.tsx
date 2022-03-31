@@ -28,8 +28,11 @@ import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
 import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
+import { LoadingPage } from '../loading/LoadingPage';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const loading = true;
+
   return (
     <>
       <DefaultMeta />
@@ -51,13 +54,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                               <SocketContextProvider>
                                 <ChatsContextProvider>
                                   <MapImportContextProvider>
-                                    <div className="flex flex-row relative">
-                                      <Nav />
-                                      <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
-                                        <Component {...pageProps} />
-                                        <Footer />
-                                      </div>
-                                    </div>
+                                    {loading
+                                      ? <LoadingPage />
+                                      : (
+                                        <div className="flex flex-row relative">
+                                          <Nav />
+                                          <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
+                                            <Component {...pageProps} />
+                                            <Footer />
+                                          </div>
+                                        </div>
+                                      )}
                                     <SnackView />
                                     <ModalView />
                                     <GooglePrompt />

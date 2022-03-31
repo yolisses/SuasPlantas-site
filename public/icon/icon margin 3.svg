@@ -10,13 +10,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="511.99997"
-   height="512"
-   viewBox="0 0 135.46666 135.46667"
+   width="724.07733"
+   height="724.07727"
+   viewBox="0 0 191.5788 191.57878"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="icon margin 2.svg"
+   sodipodi:docname="icon margin 3.svg"
    inkscape:export-filename="/home/ulisses/SuasPlantas/website/public/icon/icon margin 2.png"
    inkscape:export-xdpi="192.00002"
    inkscape:export-ydpi="192.00002">
@@ -109,9 +109,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.19093267"
-     inkscape:cx="-382.40531"
-     inkscape:cy="-51.280014"
+     inkscape:zoom="0.38186534"
+     inkscape:cx="317.24569"
+     inkscape:cy="362.26671"
      inkscape:document-units="mm"
      inkscape:current-layer="g904"
      showgrid="false"
@@ -133,7 +133,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -141,14 +141,14 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(46.984162,-56.877919)">
+     transform="translate(75.040232,-28.821869)">
     <g
        id="g904"
        style="stroke:none"
        transform="rotate(-45,38.001798,-2.2717342)">
       <g
          id="g1005"
-         transform="rotate(-45,-208.79605,429.21948)">
+         transform="translate(-263.09436,-26.718476)">
         <g
            transform="translate(1.2924095e-6,1.2924095e-6)"
            id="g921"
@@ -222,7 +222,7 @@
       <g
          id="g1003"
          style="fill:url(#linearGradient1011);fill-opacity:1;stroke:none;stroke-width:0.49999997"
-         transform="matrix(2.0000001,0,0,2.0000001,-7.6138209,-272.01795)">
+         transform="matrix(1.4142136,1.4142136,-1.4142136,1.4142136,221.44978,-130.49323)">
         <rect
            style="opacity:0.3;fill:url(#linearGradient1676);fill-opacity:1;stroke:none;stroke-width:0.13250001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
            id="rect906-3"
