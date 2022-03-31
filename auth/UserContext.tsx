@@ -8,7 +8,7 @@ import {
   SetStateAction,
 } from 'react';
 import { useRouter } from 'next/router';
-import { setCookie, destroyCookie } from 'nookies';
+import { setCookie, destroyCookie, parseCookies } from 'nookies';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
@@ -20,28 +20,27 @@ interface ISignIn{
   accessToken: string,
 }
 interface IUserContextProvider{
-    user:User
+    user:User|null
     loading:boolean
     logOut:()=>void
     refreshUser:()=>void
     signIn:(params:ISignIn)=>Promise<void>
-    setUser:Dispatch<SetStateAction<User>>
+    setUser:Dispatch<SetStateAction<User|null>>
 }
 
 export const userContext = createContext({} as IUserContextProvider);
 
 export function UserContextProvider({ children }: {children:ReactNode}) {
-  const noUser = {} as User;
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<User>(noUser);
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User|null>(null);
 
   async function logOut() {
     router.push('/landing');
-    destroyCookie(undefined, 'suasplantas.token', { path: '/' });
+    destroyCookie(undefined, 'authToken', { path: '/' });
     await api.post('users/logout');
     delete api.defaults.headers.common.Authorization;
-    setUser(noUser);
+    setUser(null);
   }
 
   async function signIn({ provider, accessToken }:ISignIn) {
@@ -50,7 +49,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
     interact({ type: 'sign in', user });
     const token = res.headers.authorization;
     api.defaults.headers.common.Authorization = token;
-    setCookie(undefined, 'suasplantas.token', token, {
+    setCookie(undefined, 'authToken', token, {
       path: '/',
       maxAge: 1000 * 60 * 60 * 24 * 7, // one week
     });
@@ -58,16 +57,20 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
   }
 
   async function refreshUser() {
-    try {
-      const res = await api.get('users/me');
-      setUser(res.data);
-      setLoading(false);
-    } catch (err:any) {
-      if (err?.response?.status === 403) {
-        setUser(noUser);
+    const { authToken } = parseCookies();
+    if (authToken) {
+      setLoading(true);
+      try {
+        const res = await api.get('users/me');
+        setUser(res.data);
         setLoading(false);
-      } else {
-        throw err;
+      } catch (err:any) {
+        if (err?.response?.status === 403) {
+          setUser(null);
+          setLoading(false);
+        } else {
+          throw err;
+        }
       }
     }
   }
