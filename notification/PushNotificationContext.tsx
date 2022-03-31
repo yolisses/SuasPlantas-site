@@ -6,12 +6,12 @@ import {
   useContext,
   createContext,
   SetStateAction,
-
 } from 'react';
 import Head from 'next/head';
 import OneSignal from 'react-onesignal';
 import { api } from '../api/api';
 import { useUser } from '../auth/UserContext';
+import { welcomeNotification } from './welcomeNotification';
 
 interface IPushNotification{
     permission?:string
@@ -30,16 +30,12 @@ export function PushNotificationContextProvider({ children }:{children:ReactNode
 
   useEffect(() => {
     OneSignal.init({
+      welcomeNotification,
+      notifyButton: { enable: false },
+      allowLocalhostAsSecureOrigin: true,
       appId: process.env.NEXT_PUBLIC_ONE_SIGNAL_APP_ID!,
       safari_web_id: process.env.NEXT_PUBLIC_ONE_SIGNAL_SAFARI_WEB_ID,
-      welcomeNotification: {
-        title: 'Obrigado por ligar as notificações',
-        message: 'É assim que elas aparecem',
-      },
-      allowLocalhostAsSecureOrigin: true,
-      notifyButton: {
-        enable: false,
-      },
+
     });
     OneSignal.isPushNotificationsEnabled(
       (isSubscribed:boolean) => setSubscribedValue(isSubscribed),
