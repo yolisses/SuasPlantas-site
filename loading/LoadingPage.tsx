@@ -6,7 +6,10 @@ export function LoadingPage() {
 
   return (
     <div className="center w-screen h-screen">
-      <div className={`flex ${style.spinner} select-none pointer-events-none`}>
+      <div className={`flex select-none pointer-events-none ${
+        style.spinner
+      }`}
+      >
         <Image
           priority
           width={imageSize}
