@@ -23,11 +23,11 @@ export function Snack({ snack }:{ snack:ISnack}) {
   }
 
   useEffect(() => {
-    window.addEventListener('click', handleClickOutside);
     window.addEventListener('keydown', handleEsc);
+    window.addEventListener('click', handleClickOutside);
     return () => {
-      window.removeEventListener('click', handleClickOutside);
       window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -40,7 +40,7 @@ export function Snack({ snack }:{ snack:ISnack}) {
     >
       <div className={`p-3 text-white rounded-lg flex flex-row gap-2 items-center shadow-lg ${
         {
-          success: 'bg-green-600',
+          success: 'bg-green-700',
           error: 'bg-red-700',
         }[snack.severity]}`}
       >
