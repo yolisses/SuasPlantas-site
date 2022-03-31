@@ -14,7 +14,7 @@ interface LocationFieldProps{
     center:[number, number]
 }
 
-export function LocationField({
+export function LocationFieldMap({
   radius,
   center,
 }:LocationFieldProps) {
