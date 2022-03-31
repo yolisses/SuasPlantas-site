@@ -21,9 +21,9 @@ interface ISignIn{
 }
 interface IUserContextProvider{
     user?:User
+    loading:boolean
     logOut:()=>void
     refreshUser:()=>void
-    loginResolved:boolean
     signIn:(params:ISignIn)=>Promise<void>
     setUser:Dispatch<SetStateAction<User|undefined>>
 }

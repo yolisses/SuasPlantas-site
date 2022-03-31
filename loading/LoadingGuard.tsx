@@ -1,3 +1,4 @@
+import { useUser } from '../auth/UserContext';
 import { LoadingPage } from './LoadingPage';
 
 interface LoadingGuardProps{
@@ -5,7 +6,7 @@ interface LoadingGuardProps{
 }
 
 export function LoadingGuard({ children }:LoadingGuardProps) {
-  const loading = true;
+  const { loading } = useUser();
 
   if (loading) return <LoadingPage />;
   return children;
