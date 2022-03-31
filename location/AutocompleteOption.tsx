@@ -16,8 +16,8 @@ export function AutocompleteOption<type>({
   }
 
   return (
-    <div className="w-full p-2" onMouseDown={handleClick}>
+    <button className="w-full p-2 highlight text-left" onMouseDown={handleClick}>
       {children}
-    </div>
+    </button>
   );
 }
