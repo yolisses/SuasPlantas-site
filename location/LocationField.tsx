@@ -3,13 +3,11 @@ import { GrClose } from 'react-icons/gr';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
-import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
 import { green700 } from '../common/colors';
 import { LocationFieldMap } from './LocationFieldMap';
-import { AutoCompleteInput } from './AutoCompleteInput';
-import { getFeaturesByText } from './getFeaturesByText';
 import { useMapImport } from './leaflet/MapImportContext';
+import { LocationFieldSearch } from './LocationFieldSearch';
 
 export interface SelectLocationResult{
     radius?:number
@@ -41,14 +39,6 @@ export function LocationField({
   const [radius, setRadius] = useState(initialRadius);
   // this variable is mutable, to support fast changes on map move
   const [center, setCenter] = useState<[number, number]>([0, 0]);
-
-  function handleChange(value: Feature) {
-    setCenter([value.center[1], value.center[0]]);
-  }
-
-  function getText(value: Feature) { return value.place_name.replace('Brazil', 'Brasil'); }
-
-  function keyExtractor(value: Feature) { return value.id; }
 
   function handleOpen() {
     if (initialLocation) {
@@ -96,12 +86,7 @@ export function LocationField({
                 <GrClose size={18} />
               </button>
             </div>
-            <AutoCompleteInput
-              getText={getText}
-              onChange={handleChange}
-              ketExtractor={keyExtractor}
-              getOptions={getFeaturesByText}
-            />
+            <LocationFieldSearch setCenter={setCenter} />
           </div>
           {!!radiusOptions && (
           <div className="center-row px-2 gap-1">

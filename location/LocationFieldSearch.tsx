@@ -5,18 +5,13 @@ import { Feature } from './Feature';
 import { AutoCompleteInput } from './AutoCompleteInput';
 import { getFeaturesByText } from './getFeaturesByText';
 
-export interface SelectLocationResult{
-    radius?:number
-    position:[number, number]
-}
-
-interface LocationFieldProps{
+interface LocationFieldSearchProps{
   setCenter:Dispatch<SetStateAction<LatLng>>
 }
 
-export function LocationField({
+export function LocationFieldSearch({
   setCenter,
-}:LocationFieldProps) {
+}:LocationFieldSearchProps) {
   function handleChange(value: Feature) {
     setCenter([value.center[1], value.center[0]]);
   }
