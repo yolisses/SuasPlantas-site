@@ -8,6 +8,7 @@ import { green700 } from '../common/colors';
 import { LocationFieldMap } from './LocationFieldMap';
 import { useMapImport } from './leaflet/MapImportContext';
 import { LocationFieldSearch } from './LocationFieldSearch';
+import { LocationFieldRadius } from './LocationFieldRadius';
 
 export interface SelectLocationResult{
     radius?:number
@@ -48,10 +49,6 @@ export function LocationField({
     setActive(true);
   }
 
-  function handleChangeRadius(e:ChangeEvent<HTMLSelectElement>) {
-    setRadius(parseInt(e.target.value, 10));
-  }
-
   function hancleClose() { setActive(false); }
 
   async function handleSubmit() {
@@ -89,24 +86,11 @@ export function LocationField({
             <LocationFieldSearch setCenter={setCenter} />
           </div>
           {!!radiusOptions && (
-          <div className="center-row px-2 gap-1">
-            <span>
-              Distância máxima
-            </span>
-            <select
-              defaultChecked
-              onChange={handleChangeRadius}
-              className="secondary-button text-black bg-transparent"
-            >
-              {radiusOptions?.map((value) => (
-                <option value={value} selected={value === radius}>
-                  {value}
-                  {' '}
-                  Km
-                </option>
-              ))}
-            </select>
-          </div>
+          <LocationFieldRadius
+            radius={radius}
+            setRadius={setRadius}
+            options={radiusOptions}
+          />
           )}
           <LocationFieldMap
             center={center}
