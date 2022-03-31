@@ -6,7 +6,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
-import { green500, green700 } from '../common/colors';
+import { green700 } from '../common/colors';
 import { MovingCircle } from './MovingCircle';
 import { UpdateMapCenter } from './UpdateMapCenter';
 import { AutoCompleteInput } from './AutoCompleteInput';
