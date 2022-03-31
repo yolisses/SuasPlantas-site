@@ -83,7 +83,7 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
           id={`field_${type}`}
           onChange={handleChange}
           placeholder="orquídea, aranto, etc"
-          className="outline-none resize-none items-center w-full p-3"
+          className="outline-none resize-none items-center w-full p-2"
         />
       </div>
     </label>
