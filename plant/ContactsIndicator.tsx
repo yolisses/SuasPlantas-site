@@ -7,7 +7,7 @@ import { WhatsappButton } from '../contact/WhatsappButton';
 
 export function ContactsIndicator({ user }:{user:User}) {
   const { user: currentUser } = useUser();
-  const selfUser = user.id === currentUser?.id;
+  const selfUser = user.id === currentuser.id;
   return (
     <div className="flex flex-row w-full justify-center gap-2 max-w-md">
       {!!user.whatsappNumber && (

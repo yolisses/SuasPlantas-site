@@ -49,7 +49,7 @@ export function EditProfileImage() {
         height={imageSize}
         className="rounded-full"
         objectFit="cover"
-        src={sending?.src || user?.image || userImage}
+        src={sending?.src || user.image || userImage}
       />
       <div className="flex flex-col">
         <div className="text-center">Foto de perfil</div>

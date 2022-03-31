@@ -41,7 +41,7 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
       notification: 'notifications',
       'privacy-policy': 'privacy-policy',
     };
-    pathToSelected[`users/${user?.id}`] = 'profile';
+    pathToSelected[`users/${user.id}`] = 'profile';
     pathToSelected[''] = 'home';
     const path = router.asPath.slice(1);
     Object.keys(pathToSelected).some((key) => {
@@ -91,7 +91,7 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
         <NavButton
           text="Perfil"
           selected={selected === 'profile'}
-          imageSrc={user?.image || userImage}
+          imageSrc={user.image || userImage}
         />
       </Link>
       {expanded && (

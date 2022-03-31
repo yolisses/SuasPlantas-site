@@ -56,7 +56,7 @@ export function QuestsInput() {
               width={imageSize}
               height={imageSize}
               className="rounded-full"
-              src={user?.image || userImageSVG}
+              src={user.image || userImageSVG}
             />
             <span>
               Quais plantas você está

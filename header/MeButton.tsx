@@ -18,14 +18,14 @@ export function MeButton() {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       { user ? (
-        <Link href={`/users/${user?.id}`}>
+        <Link href={`/users/${user.id}`}>
           <a className="icon-button p-2">
             <Image
               width={size}
               height={size}
               objectFit="cover"
-              alt={user?.name}
-              src={user?.image || userImage}
+              alt={user.name}
+              src={user.image || userImage}
               className="bg-gray-300 rounded-full shadow-md cursor-pointer"
             />
           </a>

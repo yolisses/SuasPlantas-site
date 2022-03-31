@@ -7,7 +7,7 @@ export function QuestItem({ item }:{item:Quest}) {
   const imageSize = 30;
   const user = item?.user;
   return (
-    <Link href={`users/${user?.id}`}>
+    <Link href={`users/${user.id}`}>
       <button className="center-col p-2 rounded-lg shadow gap-2 bg-gray-100 highlight">
         <div className="text-lg">{item.name}</div>
         {!!user && (

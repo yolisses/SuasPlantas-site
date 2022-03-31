@@ -48,7 +48,7 @@ export function UsersPage() {
           </button>
           )}
           {!!items && items
-            // .filter((item:User) => item.id !== user?.id)
+            // .filter((item:User) => item.id !== user.id)
             .map((item: User) => (
               <UserItem key={item.id} item={item} />
             ))}
