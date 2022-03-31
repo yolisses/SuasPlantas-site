@@ -1,6 +1,6 @@
 import { parseCookies } from 'nookies';
 
 export function getAuthToken() {
-  const { 'suasplantas.token': token } = parseCookies();
-  return token;
+  const { authToken } = parseCookies();
+  return authToken;
 }

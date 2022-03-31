@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { api } from '../api/api';
 
 export function authenticate(ctx:GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) {
-  const { 'suasplantas.token': token } = parseCookies(ctx);
-  if (token) { api.defaults.headers.common.Authorization = token; }
-  return token || undefined;
+  const { authToken } = parseCookies(ctx);
+  if (authToken) { api.defaults.headers.common.Authorization = authToken; }
+  return authToken || undefined;
 }
