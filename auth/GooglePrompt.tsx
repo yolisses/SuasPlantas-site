@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from './UserContext';
 import { loginButtonProps } from './loginButtonProps';
 
@@ -14,7 +14,8 @@ declare global {
 }
 
 export function GooglePrompt({ callback }:loginButtonProps) {
-  const { signIn, user, loading } = useUser();
+  const { signIn } = useUser();
+  const [show, setShow] = useState(false);
 
   async function handleGoogleResponse(e: GoogleResponse) {
     const accessToken = e.credential;
@@ -23,23 +24,29 @@ export function GooglePrompt({ callback }:loginButtonProps) {
   }
 
   useEffect(() => {
-    window.handleGoogleResponse = handleGoogleResponse;
+    const loggedOnce = localStorage.getItem('loggedOnce');
+    if (loggedOnce) {
+      window.handleGoogleResponse = handleGoogleResponse;
+      setShow(true);
+    }
   }, []);
 
-  if (!loading && !user) return null;
+  if (show) {
+    return (
+      <>
+        <Head>
+          <script src="https://accounts.google.com/gsi/client" async />
+        </Head>
+        <div
+          id="g_id_onload"
+          data-auto_prompt="true"
+          data-cancel_on_tap_outside="false"
+          data-callback="handleGoogleResponse"
+          data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
+        />
+      </>
+    );
+  }
 
-  return (
-    <>
-      <Head>
-        <script src="https://accounts.google.com/gsi/client" async />
-      </Head>
-      <div
-        id="g_id_onload"
-        data-auto_prompt="true"
-        data-cancel_on_tap_outside="false"
-        data-callback="handleGoogleResponse"
-        data-client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
-      />
-    </>
-  );
+  return null;
 }

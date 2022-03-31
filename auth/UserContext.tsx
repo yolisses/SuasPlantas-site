@@ -54,6 +54,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       maxAge: 1000 * 60 * 60 * 24 * 7, // one week
     });
     setUser(res.data);
+    localStorage.setItem('loggedOnce', 'true');
   }
 
   async function refreshUser() {
