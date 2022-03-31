@@ -8,6 +8,7 @@ import { UserId } from '../user/User';
 import { useUser } from '../auth/UserContext';
 import { useRefresh } from '../utils/useRefresh';
 import { useSocket } from '../socket/SocketContext';
+import { deleteKeyByKey } from '../common/deleteKeyByKey';
 
 interface ChatsGroup{
   [key:string]:Chat
@@ -63,6 +64,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   async function getMessages(chat:Chat) {
     if (chat.messages.length) return;
     const res = await api.get(`chat/${chat.userId}`);
+    // eslint-disable-next-line no-param-reassign
     chat.messages = res.data.content;
     refresh();
   }
@@ -79,9 +81,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   }
 
   function reset() {
-    for (const key in chats) {
-      delete chats[key];
-    }
+    deleteKeyByKey(chats);
     refresh();
   }
 
@@ -102,6 +102,7 @@ export function ChatsContextProvider({ children }:{children:ReactNode}) {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <chatsContext.Provider value={{
       chats,
       addChat,
