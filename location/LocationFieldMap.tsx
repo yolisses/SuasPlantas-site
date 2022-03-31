@@ -4,11 +4,6 @@ import { MovingCircle } from './MovingCircle';
 import { UpdateMapCenter } from './UpdateMapCenter';
 import { useMapImport } from './leaflet/MapImportContext';
 
-export interface SelectLocationResult{
-    radius?:number
-    position:[number, number]
-}
-
 interface LocationFieldProps{
     radius?:number
     center:[number, number]
