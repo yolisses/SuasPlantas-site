@@ -23,7 +23,7 @@ export function NotificationsMenu() {
   if (!items.length) {
     return (
       <div className="text-center text-gray-500 whitespace-nowrap">
-        Sem notificações para mostrar
+        Sem notificações no momento
       </div>
     );
   }
