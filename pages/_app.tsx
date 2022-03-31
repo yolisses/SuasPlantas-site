@@ -63,7 +63,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                     </LoadingGuard>
                                     <SnackView />
                                     <ModalView />
-                                    <GooglePrompt />
+                                    {/* <GooglePrompt /> */}
                                     <ResetOnChangeUser />
                                     <ChangePageInteract />
                                     <GoogleOptimizeHydrate />
