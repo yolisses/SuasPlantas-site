@@ -32,6 +32,7 @@
 }
 
 .spinner{
+    animation-delay: 2s;
     animation-name: spin;
     animation-duration: 10s;
     animation-iteration-count: infinite;
