@@ -21,7 +21,6 @@ interface ISignIn{
 }
 interface IUserContextProvider{
     user:User|null
-    loading:boolean
     logOut:()=>void
     refreshUser:()=>void
     signIn:(params:ISignIn)=>Promise<void>
@@ -32,7 +31,6 @@ export const userContext = createContext({} as IUserContextProvider);
 
 export function UserContextProvider({ children }: {children:ReactNode}) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User|null>(null);
 
   async function logOut() {
@@ -60,15 +58,12 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
   async function refreshUser() {
     const { authToken } = parseCookies();
     if (authToken) {
-      setLoading(true);
       try {
         const res = await api.get('users/me');
         setUser(res.data);
-        setLoading(false);
       } catch (err:any) {
         if (err?.response?.status === 403) {
           setUser(null);
-          setLoading(false);
         } else {
           throw err;
         }
@@ -77,11 +72,7 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
   }
 
   useEffect(() => {
-    try {
-      refreshUser();
-    } catch (err:any) {
-      console.error(err);
-    }
+    refreshUser();
   }, []);
 
   return (
@@ -90,7 +81,6 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       logOut,
       signIn,
       setUser,
-      loading,
       refreshUser,
     }}
     >

@@ -115,3 +115,45 @@ a {
   display: inline-block;
   vertical-align: middle;
 }
+
+@keyframes spin {
+  0%{
+      transform: rotate(0deg);
+  }
+  10%{
+      transform: rotate(calc(90deg/1));
+  }
+  20%{
+      transform: rotate(calc(-90deg/2));
+  }
+  30%{
+      transform: rotate(calc(90deg/4));
+  }
+  40%{
+      transform: rotate(calc(-90deg/8));
+  }
+  60%{
+      transform: rotate(calc(90deg/16));
+  }
+  70%{
+      transform: rotate(calc(-90deg/32));
+  }
+  80%{
+      transform: rotate(calc(90deg/64));
+  }
+  90%{
+      transform: rotate(calc(-90deg/128));
+  }
+  90%{
+      transform: rotate(calc(90deg/256));
+  }
+}
+
+.loading{
+  animation-delay: 2s;
+  animation-name: spin;
+  animation-duration: 10s;
+  animation-direction: both;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
