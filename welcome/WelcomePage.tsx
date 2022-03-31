@@ -13,12 +13,12 @@ export function WelcomePage() {
         <Image src="/icon/icon.svg" width={imageSize} height={imageSize} />
         SuasPlantas
       </div>
-      <div className="p-3 flex flex-col gap-4 text-xl w-full max-w-3xl flex-1">
+      <div className="p-3 flex flex-col gap-4 text-lg w-full max-w-3xl flex-1">
         <h1 className="text-2xl">
           Seja bem vindo(a)
           {vocative}
         </h1>
-        <h3 className="text-lg text-gray-500">Só duas perguntinhas para deixarmos tudo pronto...</h3>
+        <h3 className="text-gray-500">Só duas perguntinhas para deixarmos tudo pronto...</h3>
         <WelcomeInput type="plants" />
         <WelcomeInput type="quests" />
         <div className="flex-1" />
