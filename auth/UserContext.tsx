@@ -1,8 +1,4 @@
 import {
-  setCookie,
-  destroyCookie,
-} from 'nookies';
-import {
   useState,
   Dispatch,
   ReactNode,
@@ -12,6 +8,7 @@ import {
   SetStateAction,
 } from 'react';
 import { useRouter } from 'next/router';
+import { setCookie, destroyCookie } from 'nookies';
 
 import { api } from '../api/api';
 import { User } from '../user/User';
@@ -34,16 +31,17 @@ interface IUserContextProvider{
 export const userContext = createContext({} as IUserContextProvider);
 
 export function UserContextProvider({ children }: {children:ReactNode}) {
+  const noUser = {} as User;
   const router = useRouter();
-  const [user, setUser] = useState<User>();
-  const [loginResolved, setLoginResolved] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User>(noUser);
 
   async function logOut() {
     router.push('/landing');
     destroyCookie(undefined, 'suasplantas.token', { path: '/' });
     await api.post('users/logout');
     delete api.defaults.headers.common.Authorization;
-    setUser(undefined);
+    setUser(noUser);
   }
 
   async function signIn({ provider, accessToken }:ISignIn) {
@@ -63,11 +61,11 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
     try {
       const res = await api.get('users/me');
       setUser(res.data);
-      setLoginResolved(true);
+      setLoading(false);
     } catch (err:any) {
       if (err?.response?.status === 403) {
-        setUser(undefined);
-        setLoginResolved(true);
+        setUser(noUser);
+        setLoading(false);
       } else {
         throw err;
       }
@@ -88,8 +86,8 @@ export function UserContextProvider({ children }: {children:ReactNode}) {
       logOut,
       signIn,
       setUser,
+      loading,
       refreshUser,
-      loginResolved,
     }}
     >
       {children}
