@@ -55,7 +55,7 @@ export function Modal({
           <div className="flex flex-row justify-end w-full">
             <button
               onClick={close}
-              className="cursor-pointer p-2 hover:bg-black hover:bg-opacity-10 rounded-full"
+              className="icon-button"
             >
               <GrClose size={18} />
             </button>
