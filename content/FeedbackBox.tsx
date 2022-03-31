@@ -4,7 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { TextField } from '../common/TextField';
 import { rateIcons } from '../common/rateIcons';
 import { useSnack } from '../snack/SnackContext';

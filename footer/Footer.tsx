@@ -1,6 +1,6 @@
 import { NavItems } from './NavItems';
 import { useSize } from '../common/SizeContext';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 
 export function Footer() {
   const { user } = useUser();

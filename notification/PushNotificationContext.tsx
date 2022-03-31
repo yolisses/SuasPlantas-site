@@ -11,7 +11,7 @@ import {
 import Head from 'next/head';
 import OneSignal from 'react-onesignal';
 import { api } from '../api/api';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 
 interface IPushNotification{
     permission?:string

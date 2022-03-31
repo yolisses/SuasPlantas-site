@@ -5,7 +5,7 @@ import { UserItem } from './UserItem';
 import { userImage } from '../images/user';
 import { HomePage } from '../home/HomePage';
 import { usersContext } from './usersContext';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useIsLogged } from '../auth/useIsLogged';
 
 export function UsersPage() {

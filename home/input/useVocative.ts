@@ -1,4 +1,4 @@
-import { useUser } from '../../auth/userContext';
+import { useUser } from '../../auth/UserContext';
 import { getFirstName } from './getFirstName';
 
 export function useVocative() {

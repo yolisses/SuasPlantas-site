@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaRegUser } from 'react-icons/fa';
 import { userImage } from '../images/user';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useIsLogged } from '../auth/useIsLogged';
 
 export function MeButton() {

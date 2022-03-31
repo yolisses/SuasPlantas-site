@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { userImage } from '../images/user';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { FooterNavButton } from './FooterNavButton';
 import { LateralNavButton } from '../nav/LateralNavItem';
 

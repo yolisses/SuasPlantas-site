@@ -7,7 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 import { api } from '../api/api';
 import { User } from '../user/User';
 import { UserPage } from '../user/UserPage';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { customMarkerConfig } from './customMarkerConfig';
 import { useLocation } from '../location/LocationContext';
 import { MapCustomAtribution } from './mapCustomAtribution';

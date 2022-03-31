@@ -18,7 +18,7 @@ import { MdLogout } from 'react-icons/md';
 import { User } from './User';
 import { red800 } from '../common/colors';
 import { userImage } from '../images/user';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { PlantItem } from '../common/PlantItem';
 import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';

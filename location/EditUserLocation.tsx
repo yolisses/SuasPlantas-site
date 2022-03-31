@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { api } from '../api/api';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useSnack } from '../snack/SnackContext';
 import { defaultPosition } from './defaultPosition';
 import { useLocation } from './LocationContext';

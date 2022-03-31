@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { User } from '../user/User';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { hasContact } from '../utils/hasContact';
 import { InstagramButton } from '../contact/InstagramButton';
 import { WhatsappButton } from '../contact/WhatsappButton';

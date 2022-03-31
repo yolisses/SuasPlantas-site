@@ -8,7 +8,7 @@ import {
 import Client, { Socket } from 'socket.io-client';
 import { baseURL } from '../api/baseURL';
 import { getAuthToken } from '../api/getAuthToken';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 
 interface SocketContext{
   socket:Socket

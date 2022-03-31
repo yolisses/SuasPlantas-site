@@ -3,7 +3,7 @@ import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
 import { Modal } from '../modal/Modal';
 import { white } from '../common/colors';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { SignInBox } from '../auth/SignInBox';
 import { useModal } from '../modal/ModalContext';
 

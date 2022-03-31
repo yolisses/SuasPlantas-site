@@ -4,7 +4,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
 import { gray600 } from '../common/colors';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useIsLogged } from '../auth/useIsLogged';
 import { getAuthToken } from '../api/getAuthToken';
 import { useSocket } from '../socket/SocketContext';

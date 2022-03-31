@@ -10,7 +10,7 @@ import { tagEmoji } from './tags';
 import { AlsoSaw } from './AlsoSaw';
 import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { PlantItem } from '../common/PlantItem';
 import { devIndicator } from '../utils/devIndicator';
 import { ShareButtons } from '../common/ShareButtons';

@@ -1,5 +1,5 @@
 import { SignInBox } from './SignInBox';
-import { useUser } from './userContext';
+import { useUser } from './UserContext';
 import { useModal } from '../modal/ModalContext';
 import { Modal } from '../modal/Modal';
 

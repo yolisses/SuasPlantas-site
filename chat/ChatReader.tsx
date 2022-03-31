@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
 import { ChatHeader } from './ChatHeader';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { MessageInput } from './MessageInput';
 import { MessagesList } from './MessagesList';
 

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { api } from '../../api/api';
 import { useVocative } from './useVocative';
 import { Spinner } from '../../common/Spinner';
-import { useUser } from '../../auth/userContext';
+import { useUser } from '../../auth/UserContext';
 import { userImageSVG } from '../../images/user';
 import { useSnack } from '../../snack/SnackContext';
 import { useQuests } from '../../quest/questsContext';

@@ -1,4 +1,4 @@
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { Message } from './Message';
 
 export function MessageItem({ message }:{message:Message}) {

@@ -3,7 +3,7 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { HomeButton } from './HomeButton';
 import { NavItems } from '../footer/NavItems';
 import { LateralNavButton } from './LateralNavItem';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useSize } from '../common/SizeContext';
 
 export function Nav() {

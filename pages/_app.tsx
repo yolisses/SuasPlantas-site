@@ -11,9 +11,10 @@ import { SnackView } from '../snack/SnackView';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
 import { DefaultMeta } from '../document/DefaultMeta';
+import { LoadingGuard } from '../loading/LoadingGuard';
 import { plantsContext } from '../plant/plantsContext';
 import { questsContext } from '../quest/questsContext';
-import { UserContextProvider } from '../auth/userContext';
+import { UserContextProvider } from '../auth/UserContext';
 import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
 import { ModalContextProvider } from '../modal/ModalContext';
@@ -28,12 +29,8 @@ import { GoogleOptimizeHydrate } from '../document/GoogleOptimizeHydrate';
 import { notificationsContext } from '../notification/notificationsContext';
 import { MapImportContextProvider } from '../location/leaflet/MapImportContext';
 import { PushNotificationContextProvider } from '../notification/PushNotificationContext';
-import { LoadingPage } from '../loading/LoadingPage';
-import { LoadingGuard } from '../loading/LoadingGuard';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const loading = true;
-
   return (
     <>
       <DefaultMeta />

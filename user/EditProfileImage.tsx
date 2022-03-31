@@ -6,7 +6,7 @@ import { api } from '../api/api';
 import { userImage } from '../images/user';
 import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useSnack } from '../snack/SnackContext';
 import { useRefresh } from '../utils/useRefresh';
 

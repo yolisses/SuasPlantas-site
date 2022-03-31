@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNotifications } from '../notification/notificationsContext';
-import { useUser } from './userContext';
+import { useUser } from './UserContext';
 
 export function ResetOnChangeUser() {
   const { user } = useUser();

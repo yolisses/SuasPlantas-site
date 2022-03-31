@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useUser } from './userContext';
+import { useUser } from './UserContext';
 import { loginButtonProps } from './loginButtonProps';
 
 interface GoogleResponse {

@@ -5,7 +5,7 @@ import { Chat } from './Chat';
 import { api } from '../api/api';
 import { Message } from './Message';
 import { UserId } from '../user/User';
-import { useUser } from '../auth/userContext';
+import { useUser } from '../auth/UserContext';
 import { useRefresh } from '../utils/useRefresh';
 import { useSocket } from '../socket/SocketContext';
 
