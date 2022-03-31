@@ -8,7 +8,6 @@ import { Nav } from '../nav/Nav';
 import { Footer } from '../footer/Footer';
 import { ModalView } from '../modal/ModalView';
 import { SnackView } from '../snack/SnackView';
-import { ExitIntent } from '../intent/ExitIntent';
 import { GooglePrompt } from '../auth/GooglePrompt';
 import { usersContext } from '../user/usersContext';
 import { DefaultMeta } from '../document/DefaultMeta';
@@ -61,7 +60,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                     </div>
                                     <SnackView />
                                     <ModalView />
-                                    <ExitIntent />
                                     <GooglePrompt />
                                     <ResetOnChangeUser />
                                     <ChangePageInteract />
