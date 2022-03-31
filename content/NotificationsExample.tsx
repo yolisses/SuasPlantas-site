@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { HiOutlineSparkles } from 'react-icons/hi';
+import { green500 } from '../common/colors';
 import { useLocation } from '../location/LocationContext';
 
 interface NotificationExampleItemProps{
@@ -27,7 +28,7 @@ function NotificationExampleItem({
           className="rounded-lg"
         />
         <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
-          <Icon color="#080" size={25} />
+          <Icon color={green500} size={25} />
         </div>
       </div>
       <div className="whitespace-normal text-left text-sm lg:text-base">

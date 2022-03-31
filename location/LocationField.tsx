@@ -6,6 +6,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { Feature } from './Feature';
 import { Spinner } from '../common/Spinner';
+import { green500, green700 } from '../common/colors';
 import { MovingCircle } from './MovingCircle';
 import { UpdateMapCenter } from './UpdateMapCenter';
 import { AutoCompleteInput } from './AutoCompleteInput';
@@ -77,7 +78,7 @@ export function LocationField({
   return (
     <div>
       <button onClick={handleOpen} className="secondary-button">
-        <FaMapMarkerAlt size={20} color="#080" />
+        <FaMapMarkerAlt size={20} color={green700} />
         {text || 'Selecionar local'}
       </button>
       {active && (

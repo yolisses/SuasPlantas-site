@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';
+import { white } from '../common/colors';
 import { useIsLogged } from '../auth/useIsLogged';
 
 interface AddButtonProps{
@@ -19,7 +20,7 @@ export function AddButton({ url }:AddButtonProps) {
           }
         }}
       >
-        <FaPlus size={24} color="white" />
+        <FaPlus size={24} color={white} />
       </a>
     </Link>
   );

@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Plant } from './Plant';
 import { api } from '../api/api';
+import { gray500 } from '../common/colors';
 import { Sending } from '../upload/Sending';
 import { Spinner } from '../common/Spinner';
 import { usePlants } from './plantsContext';
@@ -120,8 +121,8 @@ export function EditPlantPage({ edit, data }:EditPlantProps) {
           className="secondary-button text-black self-start center-row justify-start gap-1"
         >
           {optional
-            ? <FaMinus color="gray" className="pb-1" />
-            : <FaPlus color="gray" className="pb-1" />}
+            ? <FaMinus color={gray500} className="pb-1" />
+            : <FaPlus color={gray500} className="pb-1" />}
           Mostrar
           {' '}
           {optional ? 'menos' : 'mais'}

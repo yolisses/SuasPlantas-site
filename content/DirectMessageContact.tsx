@@ -1,11 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
+import { FaRegUser } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { FaRegUser, FaUser } from 'react-icons/fa';
-import { RiFacebookCircleLine } from 'react-icons/ri';
 import { api } from '../api/api';
-import { MessageButton } from '../chat/MessageButton';
 import { User } from '../user/User';
+import { green700 } from '../common/colors';
+import { MessageButton } from '../chat/MessageButton';
 
 export function DirectMessageContact() {
   const [user, setUser] = useState<User>();
@@ -24,9 +24,8 @@ export function DirectMessageContact() {
   return (
     <div className="flex flex-col">
       <h2 className="center-row gap-1">
-        <FaRegUser color="green" />
-        {' '}
-        Perfil do responsável
+        <FaRegUser color={green700} />
+        Ou chame por aqui mesmo
       </h2>
       <div className="center-row gap-2 bg-gray-100 self-start rounded-lg p-2 overflow-x-hidden">
         <Image

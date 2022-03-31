@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { IconType } from 'react-icons';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { mainColor } from '../common/mainColor';
-import { gray } from '../common/gray';
+import {
+  gray300, gray400, gray500, green500, green600,
+} from '../common/colors';
 
 interface NavButtonProps
 extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
@@ -23,7 +24,7 @@ export function LateralNavButton({
     >
       { imageSrc
       && (
-      <div className={`center ${selected ? 'ring-2 ring-[#080] rounded-full' : ''}`}>
+      <div className={`center ${selected ? 'ring-2 ring-green-500 rounded-full' : ''}`}>
         <Image
           src={imageSrc}
           objectFit="cover"
@@ -36,7 +37,7 @@ export function LateralNavButton({
       {Icon && (
       <Icon
         size={20}
-        color={selected ? '#080' : gray}
+        color={selected ? green600 : gray400}
       />
       )}
       {text}

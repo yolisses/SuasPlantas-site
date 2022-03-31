@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { green500 } from '../common/colors';
 
 export function LocationExample() {
   const imageSize = 1000;
@@ -15,7 +16,7 @@ export function LocationExample() {
         />
       </div>
       <div className="absolute blur-md aspect-square h-8 bg-green-500" />
-      <FaMapMarkerAlt className="absolute mb-10" color="#080" size={40} />
+      <FaMapMarkerAlt className="absolute mb-10" color={green500} size={40} />
     </div>
   );
 }

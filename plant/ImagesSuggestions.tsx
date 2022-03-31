@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { api } from '../api/api';
+import { green500 } from '../common/colors';
 
 export interface ImageSuggestion{
     original:string
@@ -77,7 +78,7 @@ export function ImagesSuggestions({ text, onSelect }:ImagesSuggestionsProps) {
                   }`}
                 />
                 {!!selected
-                && <FaCheck color="#0a0" className="absolute" size={30} />}
+                && <FaCheck color={green500} className="absolute" size={30} />}
               </button>
             );
           })}

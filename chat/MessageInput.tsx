@@ -3,6 +3,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 
 import { Chat } from './Chat';
 import { useChats } from './ChatsContext';
+import { gray600 } from '../common/colors';
 import { useUser } from '../auth/userContext';
 import { useIsLogged } from '../auth/useIsLogged';
 import { getAuthToken } from '../api/getAuthToken';
@@ -62,7 +63,7 @@ export function MessageInput({ chat }:MessageInputProps) {
         className="p-2 rounded-full shadow-md px-3"
       />
       <button type="submit" className="icon-button">
-        <FaPaperPlane size={23} color="#444" />
+        <FaPaperPlane size={23} color={gray600} />
       </button>
     </form>
   );

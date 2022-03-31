@@ -3,6 +3,7 @@ import {
   useEffect,
 } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { gray600 } from '../common/colors';
 import { Sending } from '../upload/Sending';
 
 interface SelectedImageProps {
@@ -45,7 +46,7 @@ export function SelectedImage({
         <button className="icon-button absolute right-0 top-0 p-2">
           <FaTimes
             size={26}
-            color="#555"
+            color={gray600}
             onClick={handleRemoveClick}
             className="bg-white rounded-full p-1 shadow-md"
           />

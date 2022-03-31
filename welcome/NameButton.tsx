@@ -1,4 +1,5 @@
 import { FaTimes } from 'react-icons/fa';
+import { white } from '../common/colors';
 
 interface NameButtonProps{
     text:string
@@ -22,7 +23,7 @@ export function NameButton({ text, remove }:NameButtonProps) {
         onClick={handleRemoveClick}
         className="icon-button p-2"
       >
-        <FaTimes color="white" size={16} />
+        <FaTimes color={white} size={16} />
       </button>
     </span>
   );

@@ -17,9 +17,9 @@ interface FacebookButtonProps{
 export function FacebookButton({ facebookId }:FacebookButtonProps) {
   return (
     <ContactButton
-      gradient={gradientByColors(facebookColors, ['left', 'bottom'])}
-      Icon={FaFacebook}
       text="Facebook"
+      Icon={FaFacebook}
+      gradient={gradientByColors(facebookColors, ['left', 'bottom'])}
       href={`https://facebook.com/groups/221704719133593/user/${facebookId}`}
     />
   );

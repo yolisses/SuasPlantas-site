@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import { FormEvent, useEffect, useState } from 'react';
+import { gray500 } from '../common/colors';
 import { useTextSearchContext } from './TextSearchContext';
-import { gray } from '../common/gray';
 
 export function SearchField() {
   const router = useRouter();
@@ -45,13 +45,13 @@ export function SearchField() {
           type="submit"
           className="icon-button h-10 p-0"
         >
-          <FaSearch size={20} color={gray} />
+          <FaSearch size={20} color={gray500} />
         </button>
       </form>
       {!!text
       && (
       <button className="icon-button h-10 p-0" onClick={handleReset}>
-        <FaTimes size={20} color={gray} />
+        <FaTimes size={20} color={gray500} />
       </button>
       )}
     </div>

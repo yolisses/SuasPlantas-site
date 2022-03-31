@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 import { api } from '../api/api';
-import { SignInBox } from '../auth/SignInBox';
-import { useUser } from '../auth/userContext';
 import { Modal } from '../modal/Modal';
+import { white } from '../common/colors';
+import { useUser } from '../auth/userContext';
+import { SignInBox } from '../auth/SignInBox';
 import { useModal } from '../modal/ModalContext';
 
 interface LikeButtonProps{
@@ -51,12 +52,12 @@ export function LikeButton({ url, active }:LikeButtonProps) {
         ? (
           <FaThumbsUp
             size={size}
-            color="white"
+            color={white}
           />
         ) : (
           <FaRegThumbsUp
             size={size}
-            color="white"
+            color={white}
           />
         )}
       {user && isActive ? 'Curtido' : 'Curtir'}

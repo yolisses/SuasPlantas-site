@@ -6,8 +6,9 @@ import { api } from '../api/api';
 import { Spinner } from '../common/Spinner';
 import { useUser } from '../auth/userContext';
 import { TextField } from '../common/TextField';
-import { useSnack } from '../snack/SnackContext';
 import { rateIcons } from '../common/rateIcons';
+import { useSnack } from '../snack/SnackContext';
+import { amber500, gray400, green700 } from '../common/colors';
 
 export function FeedbackBox({ source }:{source:string}) {
   const [loading, setLoading] = useState(false);
@@ -59,9 +60,9 @@ export function FeedbackBox({ source }:{source:string}) {
                     }}
                   >
                     <Icon
-                      className="hover:scale-125 transition-transform"
                       size={32}
-                      color={(field.value === index + 1) ? '#ffb000' : '#999'}
+                      className="hover:scale-125 transition-transform"
+                      color={(field.value === index + 1) ? amber500 : gray400}
                     />
                   </button>
                 ))}
@@ -73,7 +74,7 @@ export function FeedbackBox({ source }:{source:string}) {
           {sent
             ? (
               <div className="flex flex-row justify-center items-center gap-2">
-                <FaCheck color="green" />
+                <FaCheck color={green700} />
                 Enviado
               </div>
             )

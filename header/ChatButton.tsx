@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaRegCommentAlt } from 'react-icons/fa';
+import { white } from '../common/colors';
 import { useChats } from '../chat/ChatsContext';
 import { useSize } from '../common/SizeContext';
 
@@ -11,7 +12,7 @@ export function ChatButton() {
   return (
     <Link href={href}>
       <button className="icon-button">
-        <FaRegCommentAlt color="#fff" size={25} />
+        <FaRegCommentAlt color={white} size={25} />
       </button>
     </Link>
   );

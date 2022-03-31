@@ -9,6 +9,7 @@ import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 
 import { FAQ } from './FAQ';
+import { emerald700 } from '../common/colors';
 import { useSize } from '../common/SizeContext';
 import { ContentFooter } from './ContentFooter';
 import { RegisterButton } from './RegisterButton';
@@ -41,7 +42,7 @@ function SessionWithExample({
     <section className={`flex flex-col gap-2 lg:gap-6 items-center ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
       <div className="flex-1 flex flex-col gap-2">
         <H2>
-          <Icon size={28} color="#047857" />
+          <Icon size={28} color={emerald700} />
           {title}
         </H2>
         <p className="text-lg lg:text-xl">
@@ -134,7 +135,7 @@ export function LandingPage() {
         </SessionWithExample>
         <section className="flex flex-col">
           <H2>
-            <FaRegQuestionCircle size={28} color="#047857" />
+            <FaRegQuestionCircle size={28} color={emerald700} />
             Perguntas frequentes
           </H2>
           <div className="flex flex-col gap-4 text-lg">

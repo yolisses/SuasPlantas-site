@@ -12,6 +12,7 @@ import { TextField } from '../common/TextField';
 import { rateIcons } from '../common/rateIcons';
 import { useSnack } from '../snack/SnackContext';
 import { DirectMessageContact } from './DirectMessageContact';
+import { amber500, gray400, green700 } from '../common/colors';
 
 export function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -53,14 +54,14 @@ export function ContactPage() {
           <address className="not-italic py-4 flex flex-col gap-4 w-full max-w-md">
             <div>
               <h2 className="center-row gap-1">
-                <BiEnvelope color="green" />
+                <BiEnvelope color={green700} />
                 Email
               </h2>
               suasplantascontato@gmail.com
             </div>
             <div>
               <h2 className="center-row gap-1">
-                <FaWhatsapp color="green" />
+                <FaWhatsapp color={green700} />
                 {' '}
                 Telefone/Whatsapp
               </h2>
@@ -75,7 +76,7 @@ export function ContactPage() {
             </div>
             <div>
               <h2 className="center-row gap-1">
-                <FaInstagram color="green" />
+                <FaInstagram color={green700} />
                 {' '}
                 Instagram
               </h2>
@@ -90,7 +91,7 @@ export function ContactPage() {
             </div>
             <div>
               <h2 className="center-row gap-1">
-                <RiFacebookCircleLine color="green" />
+                <RiFacebookCircleLine color={green700} />
                 {' '}
                 Facebook
               </h2>
@@ -128,9 +129,9 @@ export function ContactPage() {
                           }}
                         >
                           <Icon
-                            className="hover:scale-125 transition-transform"
                             size={32}
-                            color={(field.value === index + 1) ? '#ffb000' : '#999'}
+                            className="hover:scale-125 transition-transform"
+                            color={(field.value === index + 1) ? amber500 : gray400}
                           />
                         </button>
                       ))}
@@ -143,7 +144,7 @@ export function ContactPage() {
             {sent
               ? (
                 <div className="flex flex-row justify-center items-center gap-2">
-                  <FaCheck color="green" />
+                  <FaCheck color={green700} />
                   Enviado
                 </div>
               )

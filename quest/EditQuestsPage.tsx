@@ -2,10 +2,10 @@ import { FormEvent, useEffect, useState } from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import Link from 'next/link';
 import { api } from '../api/api';
-import { mainColor } from '../common/mainColor';
 import { Quest } from './Quest';
 import { useQuests } from './questsContext';
 import { Spinner } from '../common/Spinner';
+import { green700 } from '../common/colors';
 
 export function EditQuestsPage() {
   const [quests, setQuests] = useState<Quest[]>([]);
@@ -74,7 +74,7 @@ export function EditQuestsPage() {
         <button onClick={reset} className="self-start">
           <h1 className="flex flex-row p-2 items-center text-lg gap-1 text-black">
             <div className="bg-gray-200 p-1 rounded-lg">
-              <FaQuestion color={mainColor} />
+              <FaQuestion color={green700} />
             </div>
             Procurando
           </h1>

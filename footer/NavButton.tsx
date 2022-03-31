@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { IconType } from 'react-icons';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyleContext } from './styleContext';
+import { emerald700, gray500 } from '../common/colors';
 
 interface NavButtonProps
 extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
@@ -46,8 +47,8 @@ export function NavButton({
         color={
           isFooter
             ? selected
-              ? ' rgb(4 120 87)'
-              : 'rgb(156 163 175)'
+              ? emerald700
+              : gray500
             : undefined
       }
       />

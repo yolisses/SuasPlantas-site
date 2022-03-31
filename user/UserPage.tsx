@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { MdLogout } from 'react-icons/md';
 
 import { User } from './User';
+import { red800 } from '../common/colors';
 import { userImage } from '../images/user';
 import { useUser } from '../auth/userContext';
 import { PlantItem } from '../common/PlantItem';
@@ -89,7 +90,7 @@ export function UserPage({ user, mini, hideLogout }: UserPageProps) {
                   <span className="overflow-ellipsis text-lg">{user.name}</span>
                   {selfUser && !hideLogout && (
                   <button className="secondary-button text-red-800 gap-1 p-1 ml-auto self-start" onClick={handleLogoutClick}>
-                    <MdLogout color="#800" />
+                    <MdLogout color={red800} />
                     Sair
                   </button>
                   )}

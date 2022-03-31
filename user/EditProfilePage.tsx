@@ -10,6 +10,7 @@ import { TextField } from '../common/TextField';
 import { useSnack } from '../snack/SnackContext';
 import { EditProfileImage } from './EditProfileImage';
 import { EditUserLocation } from '../location/EditUserLocation';
+import { gray500 } from '../common/colors';
 
 export const EditProfilePage = () => {
   const { setUser, user } = useUser();
@@ -61,7 +62,7 @@ export const EditProfilePage = () => {
             {...register('instagramUsername')}
             startAdornment={(
               <>
-                <FaInstagram size={25} color="gray" className="inline" />
+                <FaInstagram size={25} color={gray500} className="inline" />
                 <span className="text-gray-500">
                   @
                 </span>
@@ -88,7 +89,7 @@ export const EditProfilePage = () => {
             label="Whatsapp"
             type="number"
             {...register('whatsappNumber')}
-            startAdornment={(<FaWhatsapp size={25} color="gray" />)}
+            startAdornment={(<FaWhatsapp size={25} color={gray500} />)}
           />
           {!!watch('whatsappNumber') && (
             <a
