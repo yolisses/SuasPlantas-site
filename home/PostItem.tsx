@@ -12,6 +12,7 @@ import { Quest } from '../quest/Quest';
 import { PostButton } from './PostButton';
 import { userImageSVG } from '../images/user';
 import { ShareButtons } from '../common/ShareButtons';
+import { gray400, green600, green700 } from '../common/colors';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -32,7 +33,7 @@ export function PostItem({ item }:PostItemProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2 max-h-screen bg-red-300">
+    <div className="flex flex-col gap-2 max-h-screen">
       <div className="center-row gap-1">
         <Image
           width={imageSize}
@@ -75,18 +76,20 @@ export function PostItem({ item }:PostItemProps) {
         <PostButton Icon={FaComments} />
         <div className="relative">
           {share && (
-            <div className="bg-white center-row gap-1 p-2 rounded-xl shadow-lg absolute right-0 -top-10">
+            <div className="bg-white center-row gap-1 p-2 rounded-xl shadow-lg absolute right-0 -top-12">
               <ShareButtons
+                reverse
                 socialIconProps={{ size: 36, borderRadius: 100 }}
                 shareUrl={`https://suasplantas.com/plants/${id}`}
               />
             </div>
           )}
-          <PostButton
-            Icon={FaShare}
-            selected={share}
+          <button
+            className="icon-button"
             onClick={handleShareButton}
-          />
+          >
+            <FaShare color={share ? green600 : gray400} />
+          </button>
         </div>
       </div>
     </div>

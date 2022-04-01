@@ -16,15 +16,15 @@ export function NewHomePage() {
   if (!plants || !quests) return null;
   return (
     <div className="flex flex-row">
-      <div className="flex flex-col gap-2 p-2 flex-1 bg-green-300">
+      <div className="flex flex-col gap-2 p-2 flex-1">
         <PlantsInput />
         {!lg && (
-        <div className="bg-red-600 flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <SearchField />
           <LocationFilterInput />
         </div>
         )}
-        <div>
+        <div className="flex flex-col gap-4">
           {([...plants, ...quests])
             .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .map((item) => (
