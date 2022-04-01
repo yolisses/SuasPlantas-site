@@ -1,17 +1,12 @@
-import {
-  FaThumbsUp,
-  FaComments,
-  FaCommentAlt,
-  FaMapMarkerAlt,
-} from 'react-icons/fa';
+import Link from 'next/link';
 import Image from 'next/image';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Plant } from '../plant/Plant';
 import { Quest } from '../quest/Quest';
-import { PostButton } from './PostButton';
 import { userImageSVG } from '../images/user';
+import { PostLikeButton } from './PostLikeButton';
 import { PostShareButton } from './PostShareButton';
 import { PostMessageButton } from './PostMessageButton';
-import { PostLikeButton } from './PostLikeButton';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -26,7 +21,7 @@ export function PostItem({ item }:PostItemProps) {
   const cardSize = 500;
 
   return (
-    <div className="flex flex-col gap-2 max-h-screen">
+    <div className="flex flex-col gap-1 max-h-screen">
       <div className="center-row gap-1">
         <Image
           width={imageSize}
@@ -36,9 +31,11 @@ export function PostItem({ item }:PostItemProps) {
           className="bg-gray-300 rounded-full"
         />
         <div>
-          <div className="font-semibold">
-            {user.name}
-          </div>
+          <Link href={`users/${user.id}`}>
+            <a className="font-semibold hover:underline">
+              {user.name}
+            </a>
+          </Link>
           <div className="text-sm text-gray-500">
             {' '}
             <FaMapMarkerAlt className="inline pb-0.5" />
