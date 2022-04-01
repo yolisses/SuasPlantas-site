@@ -20,12 +20,12 @@ interface ShareButtonsProps{
 export function ShareButtons({ shareUrl, socialIconProps }:ShareButtonsProps) {
   return (
     <>
-      <FacebookShareButton url={shareUrl}>
-        <FacebookIcon {...socialIconProps} />
-      </FacebookShareButton>
       <WhatsappShareButton url={shareUrl}>
         <WhatsappIcon {...socialIconProps} />
       </WhatsappShareButton>
+      <FacebookShareButton url={shareUrl}>
+        <FacebookIcon {...socialIconProps} />
+      </FacebookShareButton>
       <FacebookMessengerShareButton
         url={shareUrl}
         appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID as string}
