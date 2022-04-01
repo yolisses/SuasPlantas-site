@@ -1,12 +1,9 @@
 import { QuestItem } from './QuestItem';
 import { HomePage } from '../home/HomePage';
 import { questsContext } from './questsContext';
-import { useVocative } from '../home/input/useVocative';
 import { QuestsInput } from '../home/input/QuestsInput';
 
 export function QuestsPage() {
-  const { vocative } = useVocative();
-
   return (
     <HomePage
       tab="quests"

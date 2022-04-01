@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import {
-  FaCommentAlt, FaMapMarkerAlt, FaShare, FaThumbsUp,
+  FaCommentAlt, FaComments, FaMapMarkerAlt, FaShare, FaThumbsUp,
 } from 'react-icons/fa';
 import { userImageSVG } from '../images/user';
 import { Plant } from '../plant/Plant';
@@ -41,16 +41,16 @@ export function PostItem({ item }:PostItemProps) {
             {user.state}
           </span>
         </div>
-        <div>
+        <div className="flex flex-row items-start">
           adicionou a planta
-          {' '}
-          <span className="text-lg">
+          <span className="text-lg p-4 py-6">
             {name}
           </span>
         </div>
         <div className="center-row gap-4">
           <PostButton Icon={FaCommentAlt} count={3421} />
           <PostButton Icon={FaThumbsUp} count={3421} />
+          <PostButton Icon={FaComments} />
           <PostButton Icon={FaShare} />
         </div>
       </div>

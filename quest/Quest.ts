@@ -5,4 +5,6 @@ export interface Quest{
     user:User
     name:string
     userId:UserId
+    createdAt: string
+    updatedAt: string
 }

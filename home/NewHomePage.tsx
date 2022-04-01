@@ -22,9 +22,11 @@ export function NewHomePage() {
           <LocationFilterInput />
         </div>
         <div>
-          {[...plants, ...quests].map((item) => (
-            <PostItem item={item} />
-          ))}
+          {([...plants, ...quests])
+            .sort((a, b) => (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+            .map((item) => (
+              <PostItem item={item} />
+            ))}
         </div>
       </div>
       <div className="lg:w-60" />

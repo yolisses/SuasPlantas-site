@@ -8,6 +8,7 @@ import {
   FaSeedling,
   FaCommentAlt,
   FaUserFriends,
+  FaComments,
 } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -102,7 +103,7 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
         <Link href="/chat">
           <NavButton
             text="Conversas"
-            Icon={FaCommentAlt}
+            Icon={FaComments}
             selected={selected === 'chat'}
           />
         </Link>
