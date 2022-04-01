@@ -20,7 +20,7 @@ export function Nav() {
   return (
     <>
       <div className="relative">
-        <nav className="fixed flex w-52 flex-col items-stretch h-screen border-r border-gray-200">
+        <nav className="fixed flex w-60 flex-col items-stretch h-screen border-r border-gray-200">
           <HomeButton />
           <NavItems expanded={expanded} styleType="lateral" />
           <LateralNavButton
@@ -30,7 +30,7 @@ export function Nav() {
           />
         </nav>
       </div>
-      <div className="w-52" />
+      <div className="w-60" />
     </>
   );
 }
