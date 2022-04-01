@@ -37,7 +37,7 @@ export function NavButton({
             objectFit="cover"
             width={imageSize}
             height={imageSize}
-            className="bg-gray-200 rounded-full"
+            className="bg-gray-500 rounded-full"
           />
         </div>
       )}
