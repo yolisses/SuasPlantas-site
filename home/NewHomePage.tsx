@@ -25,7 +25,7 @@ export function NewHomePage() {
         </div>
       </div>
       <div className="w-80">
-        <div className="p-2 flex flex-col gap-2 h-screen border-l border-gray-200 fixed top-0">
+        <div className="w-80 p-2 flex flex-col gap-4 h-screen border-l border-gray-200 fixed top-0">
           <SearchField />
           <LocationFilterInput />
         </div>
