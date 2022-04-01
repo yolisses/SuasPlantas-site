@@ -24,7 +24,6 @@ export function NewHomePage() {
           <LocationFilterInput />
         </div>
         )}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-2" />
         <div>
           {([...plants, ...quests])
             .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
