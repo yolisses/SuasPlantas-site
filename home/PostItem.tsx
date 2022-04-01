@@ -11,6 +11,7 @@ import { PostButton } from './PostButton';
 import { userImageSVG } from '../images/user';
 import { PostShareButton } from './PostShareButton';
 import { PostMessageButton } from './PostMessageButton';
+import { PostLikeButton } from './PostLikeButton';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -62,9 +63,8 @@ export function PostItem({ item }:PostItemProps) {
           />
         )}
       </div>
-      <div className="center-row gap-4">
-        <PostButton Icon={FaCommentAlt} count={3421} />
-        <PostButton Icon={FaThumbsUp} count={3421} />
+      <div className="center-row gap-2">
+        <PostLikeButton id={id} />
         <PostMessageButton user={user} />
         <PostShareButton id={id} />
       </div>
