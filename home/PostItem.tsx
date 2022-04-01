@@ -10,6 +10,7 @@ import { Quest } from '../quest/Quest';
 import { PostButton } from './PostButton';
 import { userImageSVG } from '../images/user';
 import { PostShareButton } from './PostShareButton';
+import { PostMessageButton } from './PostMessageButton';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -17,7 +18,7 @@ interface PostItemProps{
 
 export function PostItem({ item }:PostItemProps) {
   const {
-    name, user, images, card, id,
+    name, user, card, id,
   } = item;
   const imageSize = 40;
 
@@ -64,7 +65,7 @@ export function PostItem({ item }:PostItemProps) {
       <div className="center-row gap-4">
         <PostButton Icon={FaCommentAlt} count={3421} />
         <PostButton Icon={FaThumbsUp} count={3421} />
-        <PostButton Icon={FaComments} />
+        <PostMessageButton user={user} />
         <PostShareButton id={id} />
       </div>
     </div>

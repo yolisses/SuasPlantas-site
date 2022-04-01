@@ -53,7 +53,7 @@ export function MessageInput({ chat }:MessageInputProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-100 w-full p-3 flex flex-row gap-2"
+      className="bg-gray-200 w-full p-3 flex flex-row gap-2"
     >
       <input
         type="text"
