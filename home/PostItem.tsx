@@ -13,7 +13,7 @@ interface PostItemProps{
 
 export function PostItem({ item }:PostItemProps) {
   const { name, user } = item;
-  const imageSize = 45;
+  const imageSize = 40;
 
   return (
     <div className="flex flex-row highlight hover:bg-gray-100 p-2 gap-2 rounded-xl">
