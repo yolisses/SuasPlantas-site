@@ -18,7 +18,6 @@ export function WelcomePage() {
   const { handleSubmit, control } = useForm<WelcomeFormData>();
 
   async function submit(data:WelcomeFormData) {
-    console.log(data);
     const { plants, quests } = data;
     await Promise.all(
       [
@@ -44,7 +43,7 @@ export function WelcomePage() {
           Seja bem vindo(a)
           {vocative}
         </h1>
-        <h3 className="text-gray-500">Só duas perguntinhas para deixarmos tudo pronto...</h3>
+        <h3 className="text-gray-500">Só duas perguntas para deixarmos tudo pronto...</h3>
         <Controller
           name="plants"
           control={control}
