@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Image from 'next/image';
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { WelcomeInput } from './WelcomeInput';
 import { useVocative } from '../home/input/useVocative';
+import { api } from '../api/api';
 
 interface WelcomeFormData{
   plants:string[]
@@ -11,11 +13,20 @@ interface WelcomeFormData{
 
 export function WelcomePage() {
   const { vocative } = useVocative();
+  const { push } = useRouter();
 
   const { handleSubmit, control } = useForm<WelcomeFormData>();
 
   async function submit(data:WelcomeFormData) {
     console.log(data);
+    const { plants, quests } = data;
+    await Promise.all(
+      [
+        Promise.all(plants.map((name) => api.post('plants', { name }))),
+        Promise.all(quests.map((name) => api.post('quests', { name }))),
+      ],
+    );
+    push('/');
   }
 
   const imageSize = 24;
