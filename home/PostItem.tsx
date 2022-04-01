@@ -7,6 +7,7 @@ import { userImageSVG } from '../images/user';
 import { PostLikeButton } from './PostLikeButton';
 import { PostShareButton } from './PostShareButton';
 import { PostMessageButton } from './PostMessageButton';
+import { useUser } from '../auth/UserContext';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -17,8 +18,10 @@ export function PostItem({ item }:PostItemProps) {
     name, user, card, id,
   } = item;
   const imageSize = 40;
+  const { user: currentUser } = useUser();
 
   const cardSize = 500;
+  const selfUser = currentUser.id === user.id;
 
   return (
     <div className="flex flex-col gap-1 max-h-screen">
@@ -62,7 +65,7 @@ export function PostItem({ item }:PostItemProps) {
       </div>
       <div className="center-row gap-2">
         <PostLikeButton id={id} />
-        <PostMessageButton user={user} />
+        {!selfUser && <PostMessageButton user={user} />}
         <PostShareButton id={id} />
       </div>
     </div>
