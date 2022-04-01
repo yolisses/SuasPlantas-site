@@ -7,6 +7,7 @@ import {
   FaEnvelope,
   FaSeedling,
   FaCommentAlt,
+  FaUserFriends,
 } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -40,9 +41,11 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
       profileKey: 'profile',
       notification: 'notifications',
       'privacy-policy': 'privacy-policy',
+      // order matters
+      [`users/${user?.id}`]: 'profile',
+      users: 'users',
+      '': 'home',
     };
-    pathToSelected[`users/${user?.id}`] = 'profile';
-    pathToSelected[''] = 'home';
     const path = router.asPath.slice(1);
     Object.keys(pathToSelected).some((key) => {
       if (path.startsWith(key)) {
@@ -73,18 +76,18 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
           selected={selected === 'map'}
         />
       </Link>
+      <Link href="/users">
+        <NavButton
+          text="Pessoas"
+          Icon={FaUserFriends}
+          selected={selected === 'users'}
+        />
+      </Link>
       <Link href="/notifications">
         <NavButton
           text="Notificações"
           Icon={FaBell}
           selected={selected === 'notifications'}
-        />
-      </Link>
-      <Link href="/chat">
-        <NavButton
-          text="Conversas"
-          Icon={FaCommentAlt}
-          selected={selected === 'chat'}
         />
       </Link>
       <Link href={user ? `/users/${user.id}` : '/landing'}>
@@ -96,6 +99,13 @@ export function NavItems({ styleType, expanded }:NavItemProps) {
       </Link>
       {expanded && (
       <>
+        <Link href="/chat">
+          <NavButton
+            text="Conversas"
+            Icon={FaCommentAlt}
+            selected={selected === 'chat'}
+          />
+        </Link>
         <Link href="/about">
           <NavButton
             text="Sobre"

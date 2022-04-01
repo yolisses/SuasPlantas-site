@@ -1,7 +1,6 @@
 import {
   FaQuestion,
   FaSeedling,
-  FaUserFriends,
 } from 'react-icons/fa';
 import Link from 'next/link';
 import { TabSelector } from './TabSelector';
@@ -31,15 +30,6 @@ export function TopTabs({ tab }: TopTabsProps) {
           Icon={FaQuestion}
         >
           Procurando
-        </TabSelector>
-      </Link>
-      <Link href="/users">
-        <TabSelector
-          value={tab}
-          tab="users"
-          Icon={FaUserFriends}
-        >
-          Pessoas
         </TabSelector>
       </Link>
     </div>
