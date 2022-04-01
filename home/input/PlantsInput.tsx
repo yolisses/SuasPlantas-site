@@ -6,7 +6,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { api } from '../../api/api';
 import { useVocative } from './useVocative';
 import { Spinner } from '../../common/Spinner';
-import { green500, green600 } from '../../common/colors';
+import { green600 } from '../../common/colors';
 import { useUser } from '../../auth/UserContext';
 import { userImageSVG } from '../../images/user';
 import { useSnack } from '../../snack/SnackContext';

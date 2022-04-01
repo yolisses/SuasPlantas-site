@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Image from 'next/image';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { WelcomeInput } from './WelcomeInput';
 import { useVocative } from '../home/input/useVocative';
 
@@ -12,9 +12,9 @@ interface WelcomeFormData{
 export function WelcomePage() {
   const { vocative } = useVocative();
 
-  const { register, handleSubmit } = useForm<WelcomeFormData>();
+  const { handleSubmit, control } = useForm<WelcomeFormData>();
 
-  function submit(data:WelcomeFormData) {
+  async function submit(data:WelcomeFormData) {
     console.log(data);
   }
 
@@ -34,8 +34,34 @@ export function WelcomePage() {
           {vocative}
         </h1>
         <h3 className="text-gray-500">Só duas perguntinhas para deixarmos tudo pronto...</h3>
-        <WelcomeInput type="plants" {...register('plants')} />
-        <WelcomeInput type="quests" {...register('quests')} />
+        <Controller
+          name="plants"
+          control={control}
+          render={({
+            field: { onChange, onBlur, value },
+          }) => (
+            <WelcomeInput
+              type="plants"
+              value={value}
+              onBlur={onBlur}
+              onChange={onChange}
+            />
+          )}
+        />
+        <Controller
+          name="quests"
+          control={control}
+          render={({
+            field: { onChange, onBlur, value },
+          }) => (
+            <WelcomeInput
+              type="quests"
+              value={value}
+              onBlur={onBlur}
+              onChange={onChange}
+            />
+          )}
+        />
         <div className="flex-1" />
         <button className="secondary-button">
           Prosseguir

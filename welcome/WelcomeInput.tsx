@@ -1,13 +1,17 @@
 import { ChangeEvent, useState } from 'react';
 import { NameButton } from './NameButton';
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
 interface WelcomeInputProps{
-    type:'plants'|'quests'
+  name?:string
+  value?:string[]
+  onBlur?:()=>void
+  type:'plants'|'quests'
+  onChange?:(value:string[])=>void
 }
 
-export function WelcomeInput({ type }:WelcomeInputProps) {
-  const [names, setNames] = useState<string[]>([]);
+export function WelcomeInput({
+  type, onChange, onBlur, name, value: names = [],
+}:WelcomeInputProps) {
   const [text, setText] = useState('');
 
   function separateWords(text:string) {
@@ -18,13 +22,15 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
     const filteredNames = newNames
       .map((name:string) => name.trim())
       .filter((name:string) => name && !names.includes(name));
-    if (filteredNames.length) {
-      setNames((value) => [...value, ...filteredNames]);
+    if (filteredNames.length && onChange) {
+      onChange([...names, ...filteredNames]);
     }
   }
 
   function remove(value:string) {
-    setNames((names) => names.filter((name) => name !== value));
+    if (onChange) {
+      onChange(names.filter((name) => name !== value));
+    }
   }
 
   function handleChange(e:ChangeEvent<HTMLTextAreaElement>) {
@@ -39,6 +45,7 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
     const newNames = separateWords(text);
     setText('');
     addNames(newNames);
+    if (onBlur) { onBlur(); }
   }
 
   return (
@@ -77,6 +84,7 @@ export function WelcomeInput({ type }:WelcomeInputProps) {
         </div>
         <textarea
           rows={1}
+          name={name}
           value={text}
           data-hj-allow
           onBlur={handleBlur}
