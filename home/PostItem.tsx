@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import {
-  FaCommentAlt,
-  FaRegCommentAlt, FaRegShareSquare, FaRegThumbsUp, FaShare, FaThumbsUp,
+  FaCommentAlt, FaMapMarkerAlt, FaShare, FaThumbsUp,
 } from 'react-icons/fa';
 import { userImageSVG } from '../images/user';
 import { Plant } from '../plant/Plant';
@@ -14,7 +13,7 @@ interface PostItemProps{
 
 export function PostItem({ item }:PostItemProps) {
   const { name, user } = item;
-  const imageSize = 40;
+  const imageSize = 45;
 
   return (
     <div className="flex flex-row highlight hover:bg-gray-100 p-2 gap-2 rounded-xl">
@@ -28,8 +27,19 @@ export function PostItem({ item }:PostItemProps) {
         />
       </div>
       <div>
-        <div className="font-semibold">
-          {user.name}
+        <div className="leading-6">
+          <span className="font-semibold">
+            {user.name}
+          </span>
+          {' '}
+          <span className="text-sm text-gray-500">
+            {' '}
+            <FaMapMarkerAlt className="inline pb-0.5" />
+            {user.city}
+            ,
+            {' '}
+            {user.state}
+          </span>
         </div>
         <div>
           adicionou a planta
