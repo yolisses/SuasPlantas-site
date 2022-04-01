@@ -14,10 +14,7 @@ export function UsersPage() {
   const { isLogged } = useIsLogged();
 
   return (
-    <HomePage
-      tab="users"
-      context={usersContext}
-    >
+    <HomePage context={usersContext}>
       {(items) => (
         <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5">
           {!user

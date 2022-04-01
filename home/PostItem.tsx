@@ -1,6 +1,12 @@
 import Image from 'next/image';
+import {
+  FaCommentAlt,
+  FaRegCommentAlt, FaRegShareSquare, FaRegThumbsUp, FaShare, FaThumbsUp,
+} from 'react-icons/fa';
+import { userImageSVG } from '../images/user';
 import { Plant } from '../plant/Plant';
 import { Quest } from '../quest/Quest';
+import { PostButton } from './PostButton';
 
 interface PostItemProps{
     item:Plant|Quest
@@ -8,23 +14,37 @@ interface PostItemProps{
 
 export function PostItem({ item }:PostItemProps) {
   const { name, user } = item;
-  const imageSize = 20;
+  const imageSize = 40;
 
   return (
-    <div className="highlight p-2 rounded-lg">
-      <div className="center-row gap-1">
+    <div className="flex flex-row highlight hover:bg-gray-100 p-2 gap-2 rounded-xl">
+      <div className="flex-shrink-0">
         <Image
-          src={user.image}
           width={imageSize}
+          objectFit="cover"
           height={imageSize}
+          src={user.image || userImageSVG}
           className="bg-gray-300 rounded-full"
         />
-        {user.name}
       </div>
-      {' '}
-      adicionou a planta
-      {' '}
-      {name}
+      <div>
+        <div className="font-semibold">
+          {user.name}
+        </div>
+        <div>
+          adicionou a planta
+          {' '}
+          <span className="text-lg">
+            {name}
+          </span>
+        </div>
+        <div className="center-row gap-4">
+          <PostButton Icon={FaCommentAlt} count={3421} />
+          <PostButton Icon={FaThumbsUp} count={3421} />
+          <PostButton Icon={FaShare} />
+        </div>
+      </div>
+      <div />
     </div>
   );
 }

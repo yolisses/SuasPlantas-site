@@ -15,16 +15,19 @@ export function NewHomePage() {
     <div className="flex flex-row">
       <div className="flex flex-col gap-2 p-2 flex-1">
         <PlantsInput />
-        {[...plants, ...quests].map((item) => (
-          <PostItem item={item} />
-        ))}
-      </div>
-      <div className="max-w-[18rem] w-full">
-        <div className="flex flex-col sticky p-2 gap-2 top-0 border-l h-screen border-gray-200">
-          <SearchField />
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center gap-2">
+          <div className="max-w-sm w-full">
+            <SearchField />
+          </div>
           <LocationFilterInput />
         </div>
+        <div>
+          {[...plants, ...quests].map((item) => (
+            <PostItem item={item} />
+          ))}
+        </div>
       </div>
+      <div className="lg:w-60" />
     </div>
   );
 }
