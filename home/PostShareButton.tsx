@@ -26,7 +26,7 @@ export function PostShareButton({ id }:PostShareButtonProps) {
   return (
     <div className="relative">
       {open && (
-      <div className="bg-white center-row gap-1 p-2 rounded-xl shadow-lg absolute -right-1 -top-10">
+      <div className="bg-white center-row gap-1 p-2 rounded-xl shadow-lg absolute -right-1 -top-11 z-10">
         <ShareButtons
           reverse
           socialIconProps={{ size: 36, borderRadius: 100 }}
