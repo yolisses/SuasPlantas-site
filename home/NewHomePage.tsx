@@ -15,21 +15,19 @@ export function NewHomePage() {
     <div className="flex flex-row">
       <div className="flex flex-col gap-2 p-2 flex-1">
         <PlantsInput />
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center gap-2">
-          <div className="max-w-sm w-full">
-            <SearchField />
-          </div>
-          <LocationFilterInput />
-        </div>
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center gap-2" />
         <div>
           {([...plants, ...quests])
-            .sort((a, b) => (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+            .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .map((item) => (
               <PostItem item={item} />
             ))}
         </div>
       </div>
-      <div className="lg:w-60" />
+      <div className="w-80 p-2 flex flex-col gap-2 h-screen border-l border-gray-200">
+        <SearchField />
+        <LocationFilterInput />
+      </div>
     </div>
   );
 }

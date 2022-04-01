@@ -62,7 +62,7 @@ export function LocationField({
 
   return (
     <div>
-      <button onClick={handleOpen} className="secondary-button block">
+      <button onClick={handleOpen} className="secondary-button block text-left">
         <FaMapMarkerAlt size={20} color={green700} className="inline" />
         {' '}
         {text || 'Selecionar local'}

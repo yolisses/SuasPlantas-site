@@ -32,7 +32,7 @@ export function HomePage<T>({
   } = useContext(context);
 
   return (
-    <div className="flex flex-col px-2 py-4 gap-4">
+    <div className="flex flex-col p-2 gap-4">
       {topChildren}
       <section className="flex flex-col gap-2">
         <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
