@@ -48,7 +48,7 @@ export function FacebookButton({ callback } : loginButtonProps) {
         data-size="large"
         data-layout="rounded"
         style={{ width: '300px' }}
-        data-use-continue-as="true"
+        data-use-continue-as="false"
         data-auto-logout-link="false"
         data-button-type="continue_with"
         data-onlogin="handleFacebookResponse"
