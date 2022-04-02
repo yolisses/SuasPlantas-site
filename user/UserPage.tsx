@@ -1,9 +1,9 @@
 import {
   useState,
   useEffect,
-  ReactNode,
 } from 'react';
 import {
+  FaQuestion,
   FaRegUser,
   FaSeedling,
   FaThumbsUp,
@@ -23,34 +23,27 @@ import { TabSelector } from '../common/TabSelector';
 import { MessageButton } from '../chat/MessageButton';
 import { ContactsIndicator } from '../plant/ContactsIndicator';
 
+type TabsEnum = 'plants'|'quests'|'likes'
+
 interface UserPageProps {
   user: User
   mini?:boolean
   hideLogout?:boolean
 }
 
-interface TabProps{
-  tab:string
-  currentTab:string
-  children:ReactNode
-}
-
-function Tab({ tab, currentTab, children }:TabProps) {
-  return (
-    <div
-      className="center-col"
-      style={{ display: tab !== currentTab ? 'none' : undefined }}
-    >
-      {children}
-    </div>
-  );
-}
-
 export function UserPage({ user, mini, hideLogout }: UserPageProps) {
   const { push } = useRouter();
   const { refreshUser } = useUser();
-  const [tab, setTab] = useState('plants');
   const { user: actualUser, logOut } = useUser();
+
+  const [tab, setTab] = useState<TabsEnum>('plants');
+
+  const itemsByTab = {
+    likes: user.likedPlants,
+    quests: user.plants.filter((plant) => plant.quest),
+    plants: user.plants.filter((plant) => !plant.quest),
+  };
+  const items = itemsByTab[tab];
   const selfUser = actualUser?.id === user.id;
 
   function handleLogoutClick() { logOut(); }
@@ -119,61 +112,43 @@ export function UserPage({ user, mini, hideLogout }: UserPageProps) {
             <TabSelector
               tab={tab}
               value="plants"
-              setTab={setTab}
               Icon={FaSeedling}
+              setTab={setTab as any}
             >
               Plantas
             </TabSelector>
             <TabSelector
               tab={tab}
+              value="quests"
+              Icon={FaQuestion}
+              setTab={setTab as any}
+            >
+              Procurando
+            </TabSelector>
+            <TabSelector
+              tab={tab}
               value="likes"
-              setTab={setTab}
               Icon={FaThumbsUp}
+              setTab={setTab as any}
             >
               Curtidas
             </TabSelector>
           </div>
-          <Tab tab="plants" currentTab={tab}>
-            <ItemsDrawer
-              mini={mini}
-              items={user.plants}
-              withoutItemsMessage="Nenhuma planta por enquanto"
-            />
-          </Tab>
-          <Tab tab="likes" currentTab={tab}>
-            <ItemsDrawer
-              mini={mini}
-              items={user.likedPlants}
-              withoutItemsMessage="Nenhuma curtida por enquanto"
-            />
-          </Tab>
+          {(items && items.length) ? (
+            <div
+              className={`grid gap-2 grid-cols-2 ${mini ? 'md:grid-cols-3' : 'md:grid-cols-5'}`}
+            >
+              { items.map((item) => (
+                <PlantItem item={item} key={item.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-gray-600 p-10">
+              Nenhum resultado aqui, por enquanto
+            </div>
+          )}
         </div>
       </div>
     </>
-  );
-}
-
-interface ItemsDrawerProps{
-  items:any[]
-  mini?:boolean
-  withoutItemsMessage:string
-}
-
-function ItemsDrawer({ items, mini, withoutItemsMessage }:ItemsDrawerProps) {
-  if (items && items.length) {
-    return (
-      <div
-        className={`grid gap-2 grid-cols-2 ${mini ? 'md:grid-cols-3' : 'md:grid-cols-5'}`}
-      >
-        { items.map((item) => (
-          <PlantItem item={item} key={item.id} />
-        ))}
-      </div>
-    );
-  }
-  return (
-    <div className="text-gray-600 p-10">
-      {withoutItemsMessage}
-    </div>
   );
 }
