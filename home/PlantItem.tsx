@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaQuestion } from 'react-icons/fa';
 import { Plant } from '../plant/Plant';
 import { useUser } from '../auth/UserContext';
 import { userImageSVG } from '../images/user';
@@ -18,6 +18,7 @@ export function PlantItem({ item }:PlantItemProps) {
     card,
     user,
     name,
+    quest,
   } = item;
   const cardSize = 500;
   const imageSize = 40;
@@ -52,6 +53,11 @@ export function PlantItem({ item }:PlantItemProps) {
       </div>
       <div className={`bg-gray-100 flex flex-col rounded-xl ${!card ? 'py-6 center' : ''}`}>
         <div className="text-lg p-2">
+          {quest && (
+          <div className="text-sm text-gray-700">
+            Procurando
+          </div>
+          )}
           {name}
         </div>
         {card && (
