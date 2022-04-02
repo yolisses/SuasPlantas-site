@@ -7,11 +7,10 @@ interface PlantStructuredDataProps{
 
 export function PlantStructuredData({
   plant: {
+    id,
     name,
     images,
     description,
-    id,
-    price,
   },
 }:PlantStructuredDataProps) {
   const stringData = JSON.stringify({
@@ -25,11 +24,9 @@ export function PlantStructuredData({
     priceValidUntil: null,
     offers: {
       '@type': 'Offer',
-      url: `https://suasplantas.com/plants/${id}`,
-      priceCurrency: 'BRL',
-      price,
-      itemCondition: 'https://schema.org/NewCondition',
       availability: 'https://schema.org/InStock',
+      url: `https://suasplantas.com/plants/${id}`,
+      itemCondition: 'https://schema.org/NewCondition',
     },
   });
 

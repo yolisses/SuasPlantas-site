@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 import { Plant } from './Plant';
-import { tagEmoji } from './tags';
 import { AlsoSaw } from './AlsoSaw';
 import { LikeButton } from './LikeButton';
 import { UserLink } from '../user/UserLink';
@@ -116,25 +115,6 @@ export function PlantPage({ data }:PlantPageProps) {
                 {' '}
                 <time>{updatedAt.toLocaleDateString()}</time>
               </div>
-              {!!data.amount
-                && (
-                <div>
-                  {data.amount}
-                  {' '}
-                  {data.amount === 1 ? 'disponível' : 'disponíves'}
-                </div>
-                )}
-              {!!data?.tags?.length && (
-              <div className="flex flex-row flex-wrap gap-2">
-                {data.tags.map(({ name }) => (
-                  <div>
-                    {tagEmoji[name]}
-                    {' '}
-                    {name}
-                  </div>
-                ))}
-              </div>
-              )}
               {!!description?.length && (
               <div>
                 Descrição
