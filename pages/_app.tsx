@@ -19,6 +19,7 @@ import { ModalContextProvider } from '../modal/ModalContext';
 import { SnackContextProvider } from '../snack/SnackContext';
 import { ResetOnChangeUser } from '../auth/ResetOnChangeUser';
 import { SocketContextProvider } from '../socket/SocketContext';
+import { WelcomeContextProvider } from '../welcome/WelcomeContext';
 import { LocationContextProvider } from '../location/LocationContext';
 import { PaginationProvider } from '../pagination/PaginationProvider';
 import { ChangePageInteract } from '../interactions/ChangePageInteract';
@@ -49,21 +50,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                             <SocketContextProvider>
                               <ChatsContextProvider>
                                 <MapImportContextProvider>
-                                  <LoadingGuard>
-                                    <div className="flex flex-row">
-                                      <Nav />
-                                      <div className="flex-1 flex flex-col min-h-screen">
-                                        <Component {...pageProps} />
-                                        <Footer />
+                                  <WelcomeContextProvider>
+                                    <LoadingGuard>
+                                      <div className="flex flex-row">
+                                        <Nav />
+                                        <div className="flex-1 flex flex-col min-h-screen">
+                                          <Component {...pageProps} />
+                                          <Footer />
+                                        </div>
                                       </div>
-                                    </div>
-                                  </LoadingGuard>
-                                  <SnackView />
-                                  <ModalView />
-                                  {/* <GooglePrompt /> */}
-                                  <ResetOnChangeUser />
-                                  <ChangePageInteract />
-                                  <GoogleOptimizeHydrate />
+                                    </LoadingGuard>
+                                    <SnackView />
+                                    <ModalView />
+                                    {/* <GooglePrompt /> */}
+                                    <ResetOnChangeUser />
+                                    <ChangePageInteract />
+                                    <GoogleOptimizeHydrate />
+                                  </WelcomeContextProvider>
                                 </MapImportContextProvider>
                               </ChatsContextProvider>
                             </SocketContextProvider>

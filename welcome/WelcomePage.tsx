@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Controller, useForm } from 'react-hook-form';
 import { api } from '../api/api';
+import { useWelcome } from './WelcomeContext';
 import { WelcomeInput } from './WelcomeInput';
 import { useVocative } from '../home/input/useVocative';
 
@@ -14,8 +15,13 @@ interface WelcomeFormData{
 export function WelcomePage() {
   const { vocative } = useVocative();
   const { push } = useRouter();
+  const { force } = useWelcome();
 
-  const { handleSubmit, control } = useForm<WelcomeFormData>();
+  const { handleSubmit, control, reset } = useForm<WelcomeFormData>({
+    defaultValues: {
+      plants: [], quests: [],
+    },
+  });
 
   async function submit(data:WelcomeFormData) {
     const { plants, quests } = data;
@@ -25,6 +31,8 @@ export function WelcomePage() {
         Promise.all(quests.map((name) => api.post('plants', { name, quest: true }))),
       ],
     );
+    force();
+    reset();
     push('/');
   }
 

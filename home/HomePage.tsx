@@ -3,12 +3,17 @@ import { useSize } from '../common/SizeContext';
 import { PlantsInput } from './input/PlantsInput';
 import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
+import { WelcomePage } from '../welcome/WelcomePage';
+import { useWelcome } from '../welcome/WelcomeContext';
 import { LocationFilterInput } from '../location/LocationFilterInput';
 
 export function HomePage() {
+  const { shouldPass } = useWelcome();
   const { items: plants } = usePlants();
 
   const { lg } = useSize();
+
+  if (!shouldPass) return <WelcomePage />;
 
   if (!plants) return null;
   return (
