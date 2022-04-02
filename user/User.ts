@@ -1,4 +1,3 @@
-import { Quest } from '../quest/Quest';
 import { Plant } from '../plant/Plant';
 
 export type UserId = number;
@@ -6,20 +5,19 @@ export type UserId = number;
 export interface User {
     id: UserId;
     name: string;
+    city: string;
     email: string;
     image: string;
+    state: string;
+    plants: Plant[];
+    createdAt: string;
+    updatedAt: string;
+    likedPlants: Plant[];
     description?: string;
-    instagramUsername?: string;
     whatsappNumber?: number;
+    instagramUsername?: string;
     location?:{
         type:'Point'
         coordinates:[number, number]
     }
-    state: string;
-    city: string;
-    plants: Plant[];
-    likedPlants: Plant[];
-    createdAt: string;
-    updatedAt: string;
-    quests: Quest[]
 }

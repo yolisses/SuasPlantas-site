@@ -13,7 +13,7 @@ export function SearchField() {
     e.preventDefault();
     setSearchText(text || undefined);
     const path = window.location.pathname;
-    if (path !== '/' && path !== '/quests' && path !== '/users') {
+    if (path !== '/' && path !== '/users') {
       router.push('/');
     }
   }

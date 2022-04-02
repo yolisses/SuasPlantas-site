@@ -1,19 +1,16 @@
 import { PostItem } from './PostItem';
 import { useSize } from '../common/SizeContext';
-import { usePlants } from '../plant/plantsContext';
-import { useQuests } from '../quest/questsContext';
-import { SearchField } from '../search/SearchField';
 import { PlantsInput } from './input/PlantsInput';
+import { usePlants } from '../plant/plantsContext';
+import { SearchField } from '../search/SearchField';
 import { LocationFilterInput } from './LocationFilterInput';
-import { plantToPost, questToPost } from './convertToPost';
 
 export function NewHomePage() {
   const { items: plants } = usePlants();
-  const { items: quests } = useQuests();
 
   const { lg } = useSize();
 
-  if (!plants || !quests) return null;
+  if (!plants) return null;
   return (
     <div className="flex flex-row">
       <div className="flex flex-col gap-2 p-2 flex-1">
@@ -25,7 +22,7 @@ export function NewHomePage() {
         </div>
         )}
         <div className="flex flex-col gap-4">
-          {([...plants.map(plantToPost), ...quests.map(questToPost)])
+          {plants
             .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .map((item) => (
               <PostItem item={item} />

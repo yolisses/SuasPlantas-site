@@ -1,11 +1,14 @@
 import { usePlants } from '../plant/plantsContext';
-import { useQuests } from '../quest/questsContext';
 import { useTextSearchContext } from '../search/TextSearchContext';
 
 export function WithoutResultsWarn() {
-  const { setFilters: setPlantsFilters } = usePlants();
-  const { setFilters: setQuestsFilters } = useQuests();
   const { text, setText } = useTextSearchContext();
+  const { setFilters: setPlantsFilters } = usePlants();
+
+  function handleClearClick() {
+    setText(undefined);
+    setPlantsFilters(undefined);
+  }
 
   return (
     <div className="center-col max-w-md">
@@ -27,12 +30,8 @@ export function WithoutResultsWarn() {
       </div>
       {!!text && (
       <button
+        onClick={handleClearClick}
         className="secondary-button"
-        onClick={() => {
-          setPlantsFilters(undefined);
-          setQuestsFilters(undefined);
-          setText(undefined);
-        }}
       >
         Limpar pesquisa
       </button>

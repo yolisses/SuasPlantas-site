@@ -1,5 +1,5 @@
-import { useUser } from '../../auth/UserContext';
 import { Chip } from './Chip';
+import { useUser } from '../../auth/UserContext';
 
 export function UserPlantsReminder() {
   const maxPlants = 7;

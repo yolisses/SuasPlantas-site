@@ -7,7 +7,6 @@ import {
   FaRegUser,
   FaSeedling,
   FaThumbsUp,
-  FaQuestion,
 } from 'react-icons/fa';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -127,14 +126,6 @@ export function UserPage({ user, mini, hideLogout }: UserPageProps) {
             </TabSelector>
             <TabSelector
               tab={tab}
-              value="quests"
-              setTab={setTab}
-              Icon={FaQuestion}
-            >
-              Procurando
-            </TabSelector>
-            <TabSelector
-              tab={tab}
               value="likes"
               setTab={setTab}
               Icon={FaThumbsUp}
@@ -154,13 +145,6 @@ export function UserPage({ user, mini, hideLogout }: UserPageProps) {
               mini={mini}
               items={user.likedPlants}
               withoutItemsMessage="Nenhuma curtida por enquanto"
-            />
-          </Tab>
-          <Tab tab="quests" currentTab={tab}>
-            <QuestsDrawer
-              mini={mini}
-              items={user.quests}
-              withoutItemsMessage="Nenhum procurando por enquanto"
             />
           </Tab>
         </div>
@@ -183,27 +167,6 @@ function ItemsDrawer({ items, mini, withoutItemsMessage }:ItemsDrawerProps) {
       >
         { items.map((item) => (
           <PlantItem item={item} key={item.id} />
-        ))}
-      </div>
-    );
-  }
-  return (
-    <div className="text-gray-600 p-10">
-      {withoutItemsMessage}
-    </div>
-  );
-}
-
-function QuestsDrawer({ items, withoutItemsMessage }:ItemsDrawerProps) {
-  if (items && items.length) {
-    return (
-      <div
-        className="flex flex-row flex-wrap gap-1 max-w-2xl justify-center"
-      >
-        { items.map((item) => (
-          <div key={item.id} className="bg-gray-300 p-2 rounded-lg md:px-4">
-            {item.name}
-          </div>
         ))}
       </div>
     );

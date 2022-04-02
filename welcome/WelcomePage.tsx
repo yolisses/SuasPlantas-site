@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Image from 'next/image';
-import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { Controller, useForm } from 'react-hook-form';
+import { api } from '../api/api';
 import { WelcomeInput } from './WelcomeInput';
 import { useVocative } from '../home/input/useVocative';
-import { api } from '../api/api';
 
 interface WelcomeFormData{
   plants:string[]
@@ -22,7 +22,7 @@ export function WelcomePage() {
     await Promise.all(
       [
         Promise.all(plants.map((name) => api.post('plants', { name }))),
-        Promise.all(quests.map((name) => api.post('quests', { name }))),
+        Promise.all(quests.map((name) => api.post('plants', { name, quest: true }))),
       ],
     );
     push('/');

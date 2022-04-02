@@ -12,7 +12,6 @@ import { usersContext } from '../user/usersContext';
 import { DefaultMeta } from '../document/DefaultMeta';
 import { LoadingGuard } from '../loading/LoadingGuard';
 import { plantsContext } from '../plant/plantsContext';
-import { questsContext } from '../quest/questsContext';
 import { UserContextProvider } from '../auth/UserContext';
 import { SizeContextProvider } from '../common/SizeContext';
 import { ChatsContextProvider } from '../chat/ChatsContext';
@@ -42,36 +41,34 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <LocationContextProvider>
                   <PaginationProvider Context={usersContext} apiRoute="users">
                     <PaginationProvider Context={plantsContext} apiRoute="plants">
-                      <PaginationProvider Context={questsContext} apiRoute="quests">
-                        <PaginationProvider Context={notificationsContext} apiRoute="notifications">
-                          {/* depend on user */}
-                          <UserContextProvider>
-                            <PushNotificationContextProvider>
-                              {/* depend on user and socket */}
-                              <SocketContextProvider>
-                                <ChatsContextProvider>
-                                  <MapImportContextProvider>
-                                    <LoadingGuard>
-                                      <div className="flex flex-row">
-                                        <Nav />
-                                        <div className="flex-1 flex flex-col min-h-screen">
-                                          <Component {...pageProps} />
-                                          <Footer />
-                                        </div>
+                      <PaginationProvider Context={notificationsContext} apiRoute="notifications">
+                        {/* depend on user */}
+                        <UserContextProvider>
+                          <PushNotificationContextProvider>
+                            {/* depend on user and socket */}
+                            <SocketContextProvider>
+                              <ChatsContextProvider>
+                                <MapImportContextProvider>
+                                  <LoadingGuard>
+                                    <div className="flex flex-row">
+                                      <Nav />
+                                      <div className="flex-1 flex flex-col min-h-screen">
+                                        <Component {...pageProps} />
+                                        <Footer />
                                       </div>
-                                    </LoadingGuard>
-                                    <SnackView />
-                                    <ModalView />
-                                    {/* <GooglePrompt /> */}
-                                    <ResetOnChangeUser />
-                                    <ChangePageInteract />
-                                    <GoogleOptimizeHydrate />
-                                  </MapImportContextProvider>
-                                </ChatsContextProvider>
-                              </SocketContextProvider>
-                            </PushNotificationContextProvider>
-                          </UserContextProvider>
-                        </PaginationProvider>
+                                    </div>
+                                  </LoadingGuard>
+                                  <SnackView />
+                                  <ModalView />
+                                  {/* <GooglePrompt /> */}
+                                  <ResetOnChangeUser />
+                                  <ChangePageInteract />
+                                  <GoogleOptimizeHydrate />
+                                </MapImportContextProvider>
+                              </ChatsContextProvider>
+                            </SocketContextProvider>
+                          </PushNotificationContextProvider>
+                        </UserContextProvider>
                       </PaginationProvider>
                     </PaginationProvider>
                   </PaginationProvider>
