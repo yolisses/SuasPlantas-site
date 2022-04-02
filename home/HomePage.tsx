@@ -1,4 +1,4 @@
-import { PostItem } from './PostItem';
+import { PlantItem } from './PlantItem';
 import { useSize } from '../common/SizeContext';
 import { PlantsInput } from './input/PlantsInput';
 import { usePlants } from '../plant/plantsContext';
@@ -30,7 +30,7 @@ export function HomePage() {
           {plants
             .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .map((item) => (
-              <PostItem item={item} />
+              <PlantItem item={item} />
             ))}
         </div>
       </div>
