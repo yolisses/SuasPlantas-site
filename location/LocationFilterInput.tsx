@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { api } from '../api/api';
-import { Location } from '../location/Location';
+import { Location } from './Location';
 import { interact } from '../interactions/interact';
-import { useLocation } from '../location/LocationContext';
-import { defaultPosition } from '../location/defaultPosition';
-import { LocationField, SelectLocationResult } from '../location/LocationField';
+import { useLocation } from './LocationContext';
+import { defaultPosition } from './defaultPosition';
+import { LocationField, SelectLocationResult } from './LocationField';
 
 export function LocationFilterInput() {
   const { text, location, setLocation } = useLocation();

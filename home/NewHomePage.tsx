@@ -3,7 +3,7 @@ import { useSize } from '../common/SizeContext';
 import { PlantsInput } from './input/PlantsInput';
 import { usePlants } from '../plant/plantsContext';
 import { SearchField } from '../search/SearchField';
-import { LocationFilterInput } from './LocationFilterInput';
+import { LocationFilterInput } from '../location/LocationFilterInput';
 
 export function NewHomePage() {
   const { items: plants } = usePlants();

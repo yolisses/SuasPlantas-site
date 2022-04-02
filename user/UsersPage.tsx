@@ -1,56 +1,56 @@
-import Image from 'next/image';
-
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { User } from './User';
 import { UserItem } from './UserItem';
-import { userImage } from '../images/user';
-import { HomePage } from '../home/HomePage';
-import { usersContext } from './usersContext';
-import { useUser } from '../auth/UserContext';
-import { useIsLogged } from '../auth/useIsLogged';
+import { useUsers } from './usersContext';
+
+import { Spinner } from '../common/Spinner';
+import { SearchField } from '../search/SearchField';
+import { LocationFilterInput } from '../location/LocationFilterInput';
+import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
 export function UsersPage() {
-  const imageSize = 80;
-  const { user } = useUser();
-  const { isLogged } = useIsLogged();
+  const {
+    items,
+    loading,
+    loadMore,
+    pageData,
+  } = useUsers();
 
   return (
-    <HomePage context={usersContext}>
-      {(items) => (
-        <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5">
-          {!user
-          && (
-          <button
-            className="bg-gray-100 center-col p-2 rounded-lg hover:bg-gray-300 gap-0 text-black"
-            onClick={(e) => {
-              if (!isLogged()) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            }}
-          >
-            <Image
-              src={userImage}
-              objectFit="cover"
-              width={imageSize}
-              height={imageSize}
-              className="rounded-full"
-            />
-            <div className="text-lg pt-2">
-              Criar um perfil
-            </div>
-            <div>
-              Sua cidade e estado
-            </div>
-            <strong className="text-sm">É totalmente grátis</strong>
-          </button>
-          )}
-          {!!items && items
-            // .filter((item:User) => item.id !== user.id)
-            .map((item: User) => (
-              <UserItem key={item.id} item={item} />
-            ))}
+    <div className="flex flex-col p-2 gap-4">
+      <section className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
+          <div className="max-w-md w-full">
+            <SearchField />
+          </div>
+          <LocationFilterInput />
         </div>
-      )}
-    </HomePage>
+        <InfiniteScroll
+          next={loadMore}
+          loader={(<div />)}
+          scrollThreshold={0.8}
+          hasMore={!!pageData?.nextPage}
+          dataLength={items?.length || 0}
+        >
+          <div className="p-2 grid gap-2 grid-cols-2 md:grid-cols-5">
+            {!!items && items
+              // .filter((item:User) => item.id !== user.id)
+              .map((item: User) => (
+                <UserItem key={item.id} item={item} />
+              ))}
+          </div>
+        </InfiniteScroll>
+        { loading && (
+          <div className="center-col pt-20 pb-10">
+            <Spinner />
+          </div>
+        )}
+        { (!loading && !!items && !items?.length) && (
+          <div className="center-col pt-20">
+            <WithoutResultsWarn />
+          </div>
+        )}
+      </section>
+    </div>
   );
 }

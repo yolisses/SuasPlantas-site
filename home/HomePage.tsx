@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Spinner } from '../common/Spinner';
 import { SearchField } from '../search/SearchField';
-import { LocationFilterInput } from './LocationFilterInput';
+import { LocationFilterInput } from '../location/LocationFilterInput';
 import { ItemsContext } from '../pagination/PaginationProvider';
 import { WithoutResultsWarn } from '../pagination/WithoutResultsWarn';
 
