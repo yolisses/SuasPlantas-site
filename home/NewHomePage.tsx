@@ -1,11 +1,11 @@
+import { PostItem } from './PostItem';
 import { useSize } from '../common/SizeContext';
-import { loremIpsum } from '../mock/loremIpsum';
 import { usePlants } from '../plant/plantsContext';
 import { useQuests } from '../quest/questsContext';
 import { SearchField } from '../search/SearchField';
 import { PlantsInput } from './input/PlantsInput';
 import { LocationFilterInput } from './LocationFilterInput';
-import { PostItem } from './PostItem';
+import { plantToPost, questToPost } from './convertToPost';
 
 export function NewHomePage() {
   const { items: plants } = usePlants();
@@ -25,7 +25,7 @@ export function NewHomePage() {
         </div>
         )}
         <div className="flex flex-col gap-4">
-          {([...plants, ...quests])
+          {([...plants.map(plantToPost), ...quests.map(questToPost)])
             .sort((a, b) => (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .map((item) => (
               <PostItem item={item} />

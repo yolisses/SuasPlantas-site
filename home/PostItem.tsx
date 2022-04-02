@@ -1,27 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { Plant } from '../plant/Plant';
-import { Quest } from '../quest/Quest';
+import { Post } from './Post';
+import { useUser } from '../auth/UserContext';
 import { userImageSVG } from '../images/user';
 import { PostLikeButton } from './PostLikeButton';
 import { PostShareButton } from './PostShareButton';
 import { PostMessageButton } from './PostMessageButton';
-import { useUser } from '../auth/UserContext';
 
 interface PostItemProps{
-    item:Plant|Quest
+    item:Post
 }
 
 export function PostItem({ item }:PostItemProps) {
   const {
-    name, user, card, id,
+    id,
+    card,
+    user,
+    name,
   } = item;
+  const cardSize = 500;
   const imageSize = 40;
   const { user: currentUser } = useUser();
-
-  const cardSize = 500;
-  const selfUser = currentUser.id === user.id;
+  const selfUser = currentUser?.id === user.id;
 
   return (
     <div className="flex flex-col gap-1 max-h-screen">
