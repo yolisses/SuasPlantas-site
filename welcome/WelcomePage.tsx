@@ -27,8 +27,8 @@ export function WelcomePage() {
     const { plants, quests } = data;
     await Promise.all(
       [
-        Promise.all(plants.map((name) => api.post('plants', { name }))),
         Promise.all(quests.map((name) => api.post('plants', { name, quest: true }))),
+        Promise.all(plants.map((name) => api.post('plants', { name, quest: false }))),
       ],
     );
     force();
