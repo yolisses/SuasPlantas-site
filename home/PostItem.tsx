@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { Post } from './Post';
 import { useUser } from '../auth/UserContext';
 import { userImageSVG } from '../images/user';
 import { PostLikeButton } from './PostLikeButton';
 import { PostShareButton } from './PostShareButton';
 import { PostMessageButton } from './PostMessageButton';
+import { Plant } from '../plant/Plant';
 
 interface PostItemProps{
-    item:Post
+    item:Plant
 }
 
 export function PostItem({ item }:PostItemProps) {

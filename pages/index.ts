@@ -1,6 +1,5 @@
-import { PlantsPage } from '../home/PlantsPage';
-import { requireLogin } from '../common/requireLogin';
 import { NewHomePage } from '../home/NewHomePage';
+import { requireLogin } from '../common/requireLogin';
 
 export default NewHomePage;
 
