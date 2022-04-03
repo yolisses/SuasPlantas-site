@@ -15,10 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="icon margin.svg"
-   inkscape:export-filename="/home/ulisses/SuasPlantas/website/public/icon/icon.png"
-   inkscape:export-xdpi="449.87796"
-   inkscape:export-ydpi="449.87796">
+   sodipodi:docname="icon margin bg.svg"
+   inkscape:export-filename="/home/ulisses/SuasPlantas/website/public/icon/icon margin bg.png"
+   inkscape:export-xdpi="192.00002"
+   inkscape:export-ydpi="192.00002">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -28,11 +28,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.50000001"
-     inkscape:cx="231.90382"
-     inkscape:cy="132.38205"
+     inkscape:zoom="0.5"
+     inkscape:cx="139.28195"
+     inkscape:cy="1.9987337"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1005-3"
+     inkscape:current-layer="g904"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="731"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,6 +65,43 @@
        id="g904"
        style="stroke:none"
        transform="rotate(-45,38.001798,-2.2717342)">
+      <g
+         transform="translate(-7.0287567e-6,26.684282)"
+         id="g921-6"
+         style="opacity:1;fill:#ddfae8;fill-opacity:1;stroke:none">
+        <rect
+           transform="rotate(45)"
+           y="11.803325"
+           x="-78.589622"
+           height="67.73333"
+           width="67.73333"
+           id="rect879-7"
+           style="opacity:1;fill:#ddfae8;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+        <rect
+           transform="rotate(45)"
+           y="79.536659"
+           x="-78.589622"
+           height="67.73333"
+           width="67.73333"
+           id="rect879-3-5"
+           style="opacity:1;fill:#ddfae8;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+        <rect
+           transform="rotate(45)"
+           y="11.803325"
+           x="-10.856292"
+           height="67.73333"
+           width="67.73333"
+           id="rect879-3-6-3"
+           style="opacity:1;fill:#ddfae8;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+        <rect
+           transform="rotate(45)"
+           y="79.536644"
+           x="-10.856292"
+           height="67.73333"
+           width="67.73333"
+           id="rect879-3-7-5"
+           style="opacity:1;fill:#ddfae8;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+      </g>
       <g
          id="g1005"
          transform="translate(-240.2417,-76.626937)">
@@ -187,43 +224,6 @@
          style="stroke:none"
          id="g1005-3"
          transform="translate(4.0261919e-6,26.684285)">
-        <g
-           transform="translate(1.2924095e-6,1.2924095e-6)"
-           id="g921-6"
-           style="opacity:0.27099998;fill:#22c55e;fill-opacity:1">
-          <rect
-             transform="rotate(45)"
-             y="11.803325"
-             x="-78.589622"
-             height="67.73333"
-             width="67.73333"
-             id="rect879-7"
-             style="opacity:1;fill:#22c55e;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
-          <rect
-             transform="rotate(45)"
-             y="79.536659"
-             x="-78.589622"
-             height="67.73333"
-             width="67.73333"
-             id="rect879-3-5"
-             style="opacity:1;fill:#22c55e;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
-          <rect
-             transform="rotate(45)"
-             y="11.803325"
-             x="-10.856292"
-             height="67.73333"
-             width="67.73333"
-             id="rect879-3-6-3"
-             style="opacity:1;fill:#22c55e;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
-          <rect
-             transform="rotate(45)"
-             y="79.536644"
-             x="-10.856292"
-             height="67.73333"
-             width="67.73333"
-             id="rect879-3-7-5"
-             style="opacity:1;fill:#22c55e;fill-opacity:1;stroke:none;stroke-width:12.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
-        </g>
         <g
            id="g1065"
            transform="translate(-222.26133,-21.702285)">
